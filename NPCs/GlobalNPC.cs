@@ -9,6 +9,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.GameContent.Personalities;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.NPCs
@@ -63,7 +64,7 @@ namespace PetsOverhaul.NPCs
         public override void GetChat(NPC npc, ref string chat)
         {
             if (PetObtainedCondition.petIsObtained == false && npc.type == NPCID.Guide && Main.rand.NextBool(10))
-                chat = "Hmm. I see you haven't taken care of a Pet yet. I've heard that if you can find one and start keeping it around you, a Pet Tamer may settle in!";
+                chat = Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.GuideQuote");
 
         }
         public static void OnKillInvokeDeathEffects(int playerWhoAmI, NPC npc)
