@@ -916,11 +916,11 @@ Mods: {
 			QueenSlimePetItem:
 				'''
 				<class>
-				- Improves Sparkle Slime Balloon [i:4986] and the Endless variation of it [i:<endless>] globally.
-				 * Enemies: Applies a <slow>% slow to all enemies affected.
-				 * Players: Grants <haste>% pet ability haste which increases how frequently your Pet's ability can be used
-				   and every hit adds 1 counter, (extra chance to add more counter with pet ability haste) when you reach
-				   6th counter, you deal <dmgBonus>x damage and gives you <shield> shield for <shieldTime> seconds.
+				- Gain a bonus Jump while riding a mount, regardless of what the mount is.
+				- Enhances your Mounts damaging enemies in multiple ways.
+				 * Increases Mount damage by <dmg>% and they now count as Pet damage.
+				 * All targets hit are slowed by <slowAmount>% for <slowDuration> seconds.
+				 * You will gain a <shieldAmount> points of shield for <shieldDuration> seconds with <cooldown> seconds cooldown.
 				'''
 			SkeletronPrimePetItem:
 				'''

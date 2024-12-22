@@ -1,4 +1,6 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.PetEffects;
+using PetsOverhaul.Systems;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -6,6 +8,9 @@ using Terraria.ModLoader;
 
 namespace PetsOverhaul.Projectiles
 {
+    /// <summary>
+    /// This Class contains checks for Projectiles to help identify where Projectile is from.
+    /// </summary>
     public sealed class ProjectileSourceChecks : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
@@ -14,16 +19,18 @@ namespace PetsOverhaul.Projectiles
         public bool isFromSentry = false;
         public int sourceNpcId = 0;
         public Item itemProjIsFrom = null;
+        public bool fromMount = false;
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
             isPlanteraProjectile = false;
             petProj = false;
             isFromSentry = false;
-            if (source is EntitySource_ItemUse item && (item.Item.type == ItemID.VenusMagnum || item.Item.type == ItemID.NettleBurst || item.Item.type == ItemID.LeafBlower || item.Item.type == ItemID.FlowerPow || item.Item.type == ItemID.WaspGun || item.Item.type == ItemID.Seedler || item.Item.type == ItemID.GrenadeLauncher))
+            fromMount = false;
+            if (source is EntitySource_ItemUse item && Sapling.PlanteraWeapon.Contains(item.Item.type))
             {
                 isPlanteraProjectile = true;
             }
-            else if (source is EntitySource_Parent parent && parent.Entity is Projectile proj && (proj.type == ProjectileID.Pygmy || proj.type == ProjectileID.Pygmy2 || proj.type == ProjectileID.Pygmy3 || proj.type == ProjectileID.Pygmy4 || proj.type == ProjectileID.FlowerPow || proj.type == ProjectileID.SeedlerNut))
+            else if (source is EntitySource_Parent parent && parent.Entity is Projectile proj && Sapling.PlanteraProj.Contains(proj.type))
             {
                 isPlanteraProjectile = true;
             }
@@ -46,6 +53,10 @@ namespace PetsOverhaul.Projectiles
             else if (source is EntitySource_Parent parent4 && parent4.Entity is Projectile proj3 && proj3.TryGetGlobalProjectile(out ProjectileSourceChecks sourceChecks) && sourceChecks.itemProjIsFrom is not null)
             {
                 itemProjIsFrom = sourceChecks.itemProjIsFrom;
+            }
+            if (source is EntitySource_Mount)
+            {
+                fromMount = true;
             }
         }
     }

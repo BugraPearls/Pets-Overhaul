@@ -397,18 +397,19 @@ namespace PetsOverhaul.NPCs
         /// <summary>
         /// This type of slows creates 'poisoned' dusts on enemy.
         /// </summary>
-        public static List<int> SicknessBasedSlows = [QueenSlime];
+        public static List<int> SicknessBasedSlows = [PrincessSlime, PrinceSlime];
         /// <summary>
         /// Slows with ID lower than 0 won't be overriden by itself by any means and can have multiples of the same ID this way. This value defaults to be PetSlowIDs.ColdBasedSlows[Type] == true.
         /// </summary>
         public const int IndependentSlow = -1;
         public const int Grinch = 0;
         public const int Snowman = 1;
-        public const int QueenSlime = 2;
+        public const int PrincessSlime = 2;
         public const int Deerclops = 3;
         public const int IceQueen = 4;
         public const int VoltBunny = 5;
         public const int PhantasmalIce = 6;
         public const int PhantasmalLightning = 7;
+        public const int PrinceSlime = 8;
     }
 }

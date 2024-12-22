@@ -453,51 +453,6 @@ namespace PetsOverhaul.Systems
 
             return (int)num;
         }
-        public static bool KingSlimePetActive(out Player owner)
-        {
-            bool anyPlayerHasSlimePet = false;
-            owner = null;
-            foreach (var player in Main.ActivePlayers)
-            {
-                if (player.miscEquips[0].type == ItemID.KingSlimePetItem)
-                {
-                    anyPlayerHasSlimePet = true;
-                    owner = player;
-                    break;
-                }
-            }
-            return anyPlayerHasSlimePet == true;
-        }
-        public static bool QueenSlimePetActive(out Player owner)
-        {
-            bool anyPlayerHasSlimePet = false;
-            owner = null;
-            foreach (var player in Main.ActivePlayers)
-            {
-                if (player.miscEquips[0].type == ItemID.QueenSlimePetItem)
-                {
-                    anyPlayerHasSlimePet = true;
-                    owner = player;
-                    break;
-                }
-            }
-            return anyPlayerHasSlimePet == true;
-        }
-        public static bool DualSlimePetActive(out Player owner)
-        {
-            bool anyPlayerHasSlimePet = false;
-            owner = null;
-            foreach (var player in Main.ActivePlayers)
-            {
-                if (player.miscEquips[0].type == ItemID.ResplendentDessert)
-                {
-                    anyPlayerHasSlimePet = true;
-                    owner = player;
-                    break;
-                }
-            }
-            return anyPlayerHasSlimePet == true;
-        }
         public static void HandleShieldBlockMessage(BinaryReader reader, int whoAmI, int damageAmount)
         {
             int player = reader.ReadByte();
