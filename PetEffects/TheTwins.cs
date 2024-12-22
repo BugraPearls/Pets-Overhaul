@@ -16,7 +16,7 @@ namespace PetsOverhaul.PetEffects
         public int longRange = 560;
         public float defLifestealDmgMult = 0.0001f;
         public float regularEnemyHpDmg = 0.01f;
-        public float bossHpDmg = 0.001f;
+        public float bossHpDmg = 0.00075f; 
         public int infernoTime = 240;
         public float defMult = 1.5f;
 
@@ -47,7 +47,6 @@ namespace PetsOverhaul.PetEffects
                     }
                     Pet.timer = Pet.timerMax;
                 }
-
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

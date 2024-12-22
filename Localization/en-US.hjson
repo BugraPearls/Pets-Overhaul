@@ -571,11 +571,14 @@ Mods: {
 				'''
 				<class>
 				- Increases your max mana by <maxMana>%.
-				- Increases your magic damage by <manaToDmg>% for every 1 non-base Mana you have.
-				- Multiplies your magic damage bonuses over 100% by <dmgPenalty>x.
+				- Reduces your magic damage bonuses by <dmgPenalty>%.
+				- Increases your magic damage by <manaToDmg>% for every 1 bonus Mana you have.
+				 * This is not reduced by magic damage bonus penalty.
 				- Reduces Magic damage by 15% when using Spectre set with Spectre Hood. [i:1503]
 				- Reduces Magic damage by how much Mana Sickness currently reduces, divided by 4
-				 * This penalty is not multiplicative like Mana Sickness's penalty.
+				 * This penalty is additive, and does not replace Mana Sickness.
+				- Current Base Mana: <mana> Current Bonus Mana: <bonusMana>
+				  Current Reduced Magic Damage: <reducedDmg>% Current Increased Magic Damage: <increasedDmg>%
 				'''
 			EyeSpring:
 				'''
