@@ -1332,6 +1332,7 @@ Mods: {
 				DisplayName: Pet Tamer
 				// Combine: Combine Light Pets
 				// BestiaryFlavorText: The great Pet Tamer, knows more regarding Pets more than anyone else. Well known for his capabilities in helping Light Pets reach their greatest potential.
+				// GuideQuote: Hmm. I see you haven't taken care of a Pet yet. I've heard that if you can find one and start keeping it around you, a Pet Tamer may settle in!
 
 				Quotes: {
 					// Common1: How is your Pets coming along? Always keep them fed kid, just right.
@@ -1360,6 +1361,8 @@ Mods: {
 					Princess_LovesNPC: I like {NPCName}.
 				}
 			}
+
+			// SlimeServant.DisplayName: Slime Servant
 		}
 
 		Configs: {

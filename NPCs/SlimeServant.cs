@@ -14,10 +14,11 @@ using Microsoft.Xna.Framework;
 using System.IO;
 using System.Drawing;
 using PetsOverhaul.PetEffects;
+using PetsOverhaul.Systems;
 
 namespace PetsOverhaul.NPCs
 {
-    public class SlimeServantOwner : GlobalNPC
+    public sealed class SlimeServantOwner : GlobalNPC
     {
         public int Owner = -1;
         public override bool InstancePerEntity => true;
@@ -26,9 +27,10 @@ namespace PetsOverhaul.NPCs
             return ModContent.NPCType<SlimeServant>() == entity.type;
         }
     }
-    public class SlimeServant : ModNPC
+    public class SlimeServant : ModNPC //I don't know. But this may feel bad due to the IFrames it applies on enemy everytime enemy is hit. Beware. Unsure though.
     {
         public int Owner => NPC.GetGlobalNPC<SlimeServantOwner>().Owner;
+        public int lifespan = 0;
         public override string Texture => $"Terraria/Images/NPC_{NPCID.BlueSlime}";
         public override void SetStaticDefaults()
         {
@@ -44,11 +46,36 @@ namespace PetsOverhaul.NPCs
             NPC.knockBackResist = 0.5f;
             AnimationType = NPCID.BlueSlime;
         }
+        public override void OnKill()
+        {
+            int radius = 100;
+            float slow = 0.35f;
+            int slowDuration = 300;
+            int slimyDuration = 1500; //These are default
+
+            if (Main.player[Owner].TryGetModPlayer(out SlimePrince prince))
+            {
+                radius = prince.radius;
+                slow = prince.slowAmount;
+                slowDuration = prince.slowDuration;
+                slimyDuration = prince.slimyDuration;
+            }
+            GlobalPet.CircularDustEffect(NPC.Center, DustID.BlueMoss, radius, 10, 1);
+            foreach (NPC npc in Main.ActiveNPCs)
+            {
+                if (NPC.Distance(npc.Center) < radius)
+                {
+                    NpcPet.AddSlow(new NpcPet.PetSlow(slow, slowDuration, PetSlowIDs.PrinceSlime), npc);
+                    npc.AddBuff(BuffID.Slimed, slimyDuration);
+                }
+            }
+
+        }
         public override void AI() //This is taken from Vanilla Slime AI. Cut out the non-blue slime parts and adjusted accordingly for targeting Enemies etc.
         {
             void RunTargeting()
             {
-                NPCUtils.TargetSearchResults targeting = NPCUtils.SearchForTarget(NPC, NPCUtils.TargetSearchFlag.NPCs, npcFilter: new NPCUtils.SearchFilter<NPC>(x => x.friendly == false || x.CountsAsACritter == false));
+                NPCUtils.TargetSearchResults targeting = NPCUtils.SearchForTarget(NPC, NPCUtils.TargetSearchFlag.NPCs, npcFilter: new NPCUtils.SearchFilter<NPC>(x => x.friendly == false || x.CountsAsACritter));
                 if (targeting.FoundNPC && targeting.NearestNPCDistance < 800) //Targets nearest NPC if they are within 800 pixels and if they aren't friendly & is a critter.
                 {
                     NPC.target = 300 + targeting.NearestNPCIndex;
@@ -65,6 +92,17 @@ namespace PetsOverhaul.NPCs
                 {
                     NPC.TargetClosest();
                 }
+            }
+
+            lifespan++;
+
+            if (lifespan > 7200)
+            {
+                NPC.life = 0;
+                NPC.HitEffect();
+                NPC.active = false;
+                SoundEngine.PlaySound(NPC.DeathSound, NPC.Center);
+                OnKill();
             }
 
             if (NPC.ai[1] == 1f || NPC.ai[1] == 2f || NPC.ai[1] == 3f)
@@ -204,7 +242,7 @@ namespace PetsOverhaul.NPCs
                 else
                     NPC.velocity.X *= 0.93f;
             }
-            if (Owner < 0)
+            if (Owner >= 0)
             {
                 foreach (NPC npc in Main.ActiveNPCs)
                 {

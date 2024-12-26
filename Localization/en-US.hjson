@@ -868,13 +868,16 @@ Mods: {
 			KingSlimePetItem:
 				'''
 				<class>
-				- Changes Slime Gun and Water Gun to have effects for Enemies & Players globally
-				- Slimy [i:2610]
-				 * Enemies: Deals <burnHp>% health damage if paired with a burn, (<burnCap> cap) and receive <extraKb>x kb.
-				 * Players: Grants affected players <jumpSpd>% jump speed, <kbBoost>x knockback boost and resist. 
-				- Wet [i:2272]
-				 * Enemies: Multiplies damage received by <enemyDmgRecieve>x and multiplies all damage dealt by <enemyDmgDeal>x
-				 * Players: Increases damage by <dmg>%, defense by <def>%, movement speed by <moveSpd>%, and burns run out 2x faster
+				- Press Pet Ability Keybind (<keybind>) to summon a Slime Servant.
+				 * Slime Servant acts the same way a Blue Slime does but more aggressive.
+				 * Attacks nearest Enemy within 50 blocks, if none, follows its summoner.
+				- Slime Servant will copy same stats of Blue Slime alongside the following;
+				 * It gains <kbRes>% more knockback resist.
+				 * Gains an extra <defMult>% of Player's Defense and <hpMult>% of Player's Health.
+				 * It deals extra <dmg> Damage, can Crit, and scale with Generic Player bonuses.
+				- Upon dying, applies a <slowAmount>% slow for <slowDuration> seconds and slimy debuff
+				  for <slimyDuration> seconds to all enemies in a <radius> block radius.
+				- Ability has a <cooldown> second cooldown and each Slime has <lifetime> seconds of lifetime.
 				'''
 			QueenBeePetItem:
 				'''
@@ -1415,6 +1418,7 @@ Mods: {
 				Combine: Combine Light Pets
 				BestiaryFlavorText: The great Pet Tamer, knows more regarding Pets more than anyone else. Well known for his capabilities in helping Light Pets reach their greatest potential.
 				GuideQuote: Hmm. I see you haven't taken care of a Pet yet. I've heard that if you can find one and start keeping it around you, a Pet Tamer may settle in!
+
 				Quotes: {
 					Common1: How is your Pets coming along? Always keep them fed kid, just right.
 					Common2: If you do happen to have multiple Light Pets of the same type, I can combine their best Qualities into one Light Pet!.. For a price of course.
@@ -1442,6 +1446,8 @@ Mods: {
 					Princess_LovesNPC: I like {NPCName}! His pets are SOOOO CUUUTEEE!
 				}
 			}
+
+			SlimeServant.DisplayName: Slime Servant
 		}
 
 		Configs: {
