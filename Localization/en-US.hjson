@@ -872,7 +872,7 @@ Mods: {
 				 * Slime Servant acts the same way a Blue Slime does but more aggressive.
 				 * Attacks nearest Enemy within 50 blocks, if none, follows its summoner.
 				- Slime Servant will copy same stats of Blue Slime alongside the following;
-				 * It gains <kbRes>% more knockback resist.
+				 * It gains 50% more knockback resist.
 				 * Gains an extra <defMult>% of Player's Defense and <hpMult>% of Player's Health.
 				 * It deals extra <dmg> Damage, can Crit, and scale with Generic Player bonuses.
 				- Upon dying, applies a <slowAmount>% slow for <slowDuration> seconds and slimy debuff

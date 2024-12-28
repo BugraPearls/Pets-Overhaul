@@ -21,7 +21,7 @@ namespace PetsOverhaul.PetEffects
     {
         public override Position GetDefaultPosition() => MountJumpPosition;
         public override float GetDurationMultiplier(Player player) => 2.5f;
-        public override void OnStarted(Player player, ref bool playSound)
+        public override void OnStarted(Player player, ref bool playSound) //Same code as Unicorn Mount's double jump
         {
             Vector2 center = player.Center;
             Vector2 vector2 = new Vector2(50f, 20f);
