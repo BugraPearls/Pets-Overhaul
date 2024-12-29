@@ -147,12 +147,12 @@ namespace PetsOverhaul.Config
         [BackgroundColor(35, 120, 54, 190)]
         public bool LowCooldownSoundEnabled { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.LowCooldownTresholdLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.LowCooldownTresholdTooltip")]
+        [LabelKey("$Mods.PetsOverhaul.Config.LowCooldownThresholdLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.LowCooldownThresholdTooltip")]
         [Range(30, 600)]
         [DefaultValue(150)]
         [BackgroundColor(35, 120, 54, 190)]
-        public int LowCooldownTreshold { get; set; }
+        public int LowCooldownThreshold { get; set; }
         #endregion
     }
 }

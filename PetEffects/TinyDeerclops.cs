@@ -16,7 +16,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.DeerclopsPetItem;
         public List<(int storedDamage, int timer)> deerclopsTakenDamage = new();
         public int damageStoreTime = 300;
-        public float healthTreshold = 0.4f;
+        public float healthThreshold = 0.4f;
         public int range = 520;
         public float slow = 0.4f;
         public int applyTime = 300;
@@ -47,7 +47,7 @@ namespace PetsOverhaul.PetEffects
                     deerclopsTakenDamage.RemoveAll(x => x.timer <= 0);
                     int totalDamage = 0;
                     deerclopsTakenDamage.ForEach(x => totalDamage += x.storedDamage);
-                    if (totalDamage > Player.statLifeMax2 * healthTreshold && Pet.timer <= 0)
+                    if (totalDamage > Player.statLifeMax2 * healthThreshold && Pet.timer <= 0)
                     {
                         Pet.timer = Pet.timerMax;
                         if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
@@ -87,8 +87,8 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DeerclopsPetItem")
-                            .Replace("<treshold>", Math.Round(tinyDeerclops.healthTreshold * 100, 2).ToString())
-                            .Replace("<tresholdTime>", Math.Round(tinyDeerclops.damageStoreTime / 60f, 2).ToString())
+                            .Replace("<threshold>", Math.Round(tinyDeerclops.healthThreshold * 100, 2).ToString())
+                            .Replace("<thresholdTime>", Math.Round(tinyDeerclops.damageStoreTime / 60f, 2).ToString())
                             .Replace("<immunityTime>", Math.Round(tinyDeerclops.immuneTime / 60f, 2).ToString())
                             .Replace("<slowAmount>", Math.Round(tinyDeerclops.slow * 100, 2).ToString())
                             .Replace("<range>", Math.Round(tinyDeerclops.range / 16f, 2).ToString())

@@ -211,8 +211,8 @@ Mods: {
 			AbilitySoundTooltip: Desabilita efeitos sonoros de pet que tocam ao processar habilidades, recarga do tempo de espera, etc. (não recomendado, estes sons podem te ajudar)
 			LowCooldownSoundLabel: Desabilitar som de temporizador curto
 			LowCooldownSoundTooltip: Desabilita efeito sonoro de recarga de tempo de espera se o tempo de recarga das habilidades de pet forem menores que 1 segundo.
-			LowCooldownTresholdLabel: Desabilitar Limite do temporizador da habilidade curta
-			LowCooldownTresholdTooltip:
+			LowCooldownThresholdLabel: Desabilitar Limite do temporizador da habilidade curta
+			LowCooldownThresholdTooltip:
 				'''
 				Define o limite para desabilitar os tempos de recarga curtos das habilidades dos pets.
 				reproduzindo sons ao atualizar, em Quadros. (60 quadros = 1 segundo)
@@ -607,8 +607,8 @@ Mods: {
 				- Aumenta a penetração das flechas em <arrowPierce>.
 				- Multiplica a velocidade das suas balas por <bulletVelo>x.
 				- Suas armas de longo alcance especializadas vão criticar
-				inimigos com menos de <treshold>% de saúde o tempo todo.
-				 * O limiar diminui para <bossTreshold>% para chefes.
+				inimigos com menos de <threshold>% de saúde o tempo todo.
+				 * O limiar diminui para <bossThreshold>% para chefes.
 				'''
 			JunimoMaxLevelText: Nível Máximo!
 			JunimoMaxed: Maximizados
@@ -875,9 +875,9 @@ Mods: {
 			DeerclopsPetItem:
 				'''
 				<class>
-				- Armazena o dano que você recebe por <tresholdTime> segundos.
+				- Armazena o dano que você recebe por <thresholdTime> segundos.
 				 * Cada dano é armazenado separadamente, um dano armazenado pode expirar separadamente dos outros.
-				- Se o dano armazenado atingir mais de <treshold>% da sua saúde, ocorre o seguinte:
+				- Se o dano armazenado atingir mais de <threshold>% da sua saúde, ocorre o seguinte:
 				 * Ganhe <immunityTime> segundos de imunidade a todos os tipos.
 				 * Aplique um efeito de lentidão de <slowAmount>%, confusão e frostfire em inimigos em um raio de <range> blocos por <debuffTime> segundos.
 				'''

@@ -221,8 +221,8 @@ Mods: {
 				Enables Pet ability cooldown refreshing sound even if they are below the Threshold option.
 				Have this off if you don't want to hear the cooldown refresh sound effect if it is below the threshold.
 				'''
-			LowCooldownTresholdLabel: Short ability timer disable Threshold
-			LowCooldownTresholdTooltip:
+			LowCooldownThresholdLabel: Short ability timer disable Threshold
+			LowCooldownThresholdTooltip:
 				'''
 				Sets the threshold for disabling short pet ability cooldowns
 				playing sounds upon refreshing, in Frames. (60 frames = 1 second)
@@ -624,8 +624,8 @@ Mods: {
 				- Increases arrow pierce by <arrowPierce>.
 				- Multiplies your bullet speed by <bulletVelo>x.
 				- Your specialist ranged weapons will crit
-				  enemies below <treshold>% health all the time.
-				 * Treshold decreases down to <bossTreshold>% for bosses.
+				  enemies below <threshold>% health all the time.
+				 * Threshold decreases down to <bossThreshold>% for bosses.
 				'''
 			JunimoMaxLevelText: Max Level!
 			JunimoMaxed: Maxed
@@ -894,9 +894,9 @@ Mods: {
 			DeerclopsPetItem:
 				'''
 				<class>
-				- Store damage you take for <tresholdTime> seconds.
+				- Store damage you take for <thresholdTime> seconds.
 				 * Every damage is stored separately, a stored damage may expire separately from others.
-				- If damage stored reaches more than <treshold>% of your health do following:
+				- If damage stored reaches more than <threshold>% of your health do following:
 				 * Gain <immunityTime> seconds of immunity to all types.
 				 * Apply a <slowAmount>% slow, confusion and frostfire on enemies in a <range>-tile radius for <debuffTime> seconds.
 				'''
@@ -918,7 +918,7 @@ Mods: {
 			QueenSlimePetItem:
 				'''
 				<class>
-				- Gain a bonus Jump while riding a mount, regardless of what the mount is.
+				- Gain a bonus Jump while riding a Mount, except for infinite flight Mounts.
 				- Enhances your Mounts damaging enemies in multiple ways.
 				 * Increases Mount damage by <dmg>% and they now count as Pet damage.
 				 * All targets hit are slowed by <slowAmount>% for <slowDuration> seconds.

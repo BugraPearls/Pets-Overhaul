@@ -17,8 +17,8 @@ namespace PetsOverhaul.PetEffects
         public bool specialist = false;
         public float arrowSpd = 0.8f;
         public float bulletSpd = 2.25f;
-        public float specialTreshold = 0.2f;
-        public float specialBossTreshold = 0.06f;
+        public float specialThreshold = 0.2f;
+        public float specialBossThreshold = 0.06f;
         public int arrowPen = 1;
         public override PetClasses PetClassPrimary => PetClasses.Ranged;
         public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -48,11 +48,11 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && proj.GetGlobalProjectile<HoardagronProj>().special)
             {
-                if ((target.boss == true || NpcPet.NonBossTrueBosses.Contains(target.type)) && target.life < (int)(target.lifeMax * specialBossTreshold))
+                if ((target.boss == true || NpcPet.NonBossTrueBosses.Contains(target.type)) && target.life < (int)(target.lifeMax * specialBossThreshold))
                 {
                     modifiers.SetCrit();
                 }
-                else if (target.life < (int)(target.lifeMax * specialTreshold))
+                else if (target.life < (int)(target.lifeMax * specialThreshold))
                 {
                     modifiers.SetCrit();
                 }
@@ -101,7 +101,7 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<arrowVelo>", hoardagron.arrowSpd.ToString())
                         .Replace("<arrowPierce>", hoardagron.arrowPen.ToString())
                         .Replace("<bulletVelo>", hoardagron.bulletSpd.ToString())
-                        .Replace("<treshold>", Math.Round(hoardagron.specialTreshold * 100, 2).ToString())
-                        .Replace("<bossTreshold>", Math.Round(hoardagron.specialBossTreshold * 100, 2).ToString());
+                        .Replace("<threshold>", Math.Round(hoardagron.specialThreshold * 100, 2).ToString())
+                        .Replace("<bossThreshold>", Math.Round(hoardagron.specialBossThreshold * 100, 2).ToString());
     }
 }

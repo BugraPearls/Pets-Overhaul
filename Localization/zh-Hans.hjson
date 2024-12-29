@@ -215,8 +215,8 @@ Mods: {
 				启用宠物技能冷却刷新音效，即使宠物技能的冷却时间低于阈值
 				如果你不想听到频繁的刷新音效，就禁用吧
 				'''
-			LowCooldownTresholdLabel: 短时刷新音效时长阈值
-			LowCooldownTresholdTooltip:
+			LowCooldownThresholdLabel: 短时刷新音效时长阈值
+			LowCooldownThresholdTooltip:
 				'''
 				设置禁用短时宠物技能刷新音效的阈值
 				刷新时播放音效，单位：帧（60帧 = 1秒）
@@ -590,8 +590,8 @@ Mods: {
 				箭的速度乘以<arrowVelo>倍
 				箭的穿透数增加<arrowPierce>
 				子弹的速度乘以<bulletVelo>倍
-				使用其他弹药的远程武器对生命值低于<treshold>%的敌人必定暴击
-				 - Boss则是低于<bossTreshold>%
+				使用其他弹药的远程武器对生命值低于<threshold>%的敌人必定暴击
+				 - Boss则是低于<bossThreshold>%
 				'''
 			JunimoMaxLevelText: 最高等级！
 			JunimoMaxed: 已达上限
@@ -844,8 +844,8 @@ Mods: {
 			DeerclopsPetItem:
 				'''
 				<class>
-				存储受到的伤害<tresholdTime>秒
-				如果存储的伤害总量超过最大生命值的<treshold>%：
+				存储受到的伤害<thresholdTime>秒
+				如果存储的伤害总量超过最大生命值的<threshold>%：
 				 - 获得<immunityTime>秒无敌帧
 				 - 对<range>格范围内的敌人造成<debuffTime>秒的<slowAmount>%减速，困惑和霜冻
 				 - 此效果有30秒冷却时间
