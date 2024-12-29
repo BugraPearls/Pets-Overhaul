@@ -544,8 +544,8 @@ Mods: {
 				'''
 				<class>
 				- Increases max minion slots by <minionSlot>.
-				- Pumpkin Moon weapons gain <dmg>% damage.
-				 * This is increased to <ravenDmg>% for Raven Staff. [i:1802]
+				- All Pumpkin Moon weapons gain <dmg>% damage.
+				 * This is increased by another <ravenDmg>% for Raven Staff. [i:1802]
 				- Increases Whip range by <whipRange>% and speed by <whipSpeed>% per minion slot.
 				 * These bonuses are <darkHarvestMult>x for Dark Harvest. [i:4680]
 				 * Only works while holding a Whip.

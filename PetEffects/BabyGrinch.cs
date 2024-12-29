@@ -1,6 +1,7 @@
 ﻿using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -15,27 +16,21 @@ namespace PetsOverhaul.PetEffects
         public int winterCrit = 10;
         public float grinchSlow = 0.9f;
         public int grinchRange = 400;
-
+        public static List<int> FrostMoonWeapons = [ItemID.ChristmasTreeSword, ItemID.Razorpine, ItemID.ElfMelter, ItemID.ChainGun, ItemID.BlizzardStaff, ItemID.SnowmanCannon, ItemID.NorthPole];
         public override PetClasses PetClassPrimary => PetClasses.Utility;
         public override PetClasses PetClassSecondary => PetClasses.Offensive;
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
-            if (PetIsEquipped())
+            if (PetIsEquipped() && FrostMoonWeapons.Contains(item.type))
             {
-                if (item.netID == ItemID.ChristmasTreeSword || item.netID == ItemID.Razorpine || item.netID == ItemID.ElfMelter || item.netID == ItemID.ChainGun || item.netID == ItemID.BlizzardStaff || item.netID == ItemID.SnowmanCannon || item.netID == ItemID.NorthPole)
-                {
-                    damage += winterDmg;
-                }
+                damage += winterDmg;
             }
         }
         public override void ModifyWeaponCrit(Item item, ref float crit)
         {
-            if (PetIsEquipped())
+            if (PetIsEquipped() && FrostMoonWeapons.Contains(item.type))
             {
-                if (item.netID == ItemID.ChristmasTreeSword || item.netID == ItemID.Razorpine || item.netID == ItemID.ElfMelter || item.netID == ItemID.ChainGun || item.netID == ItemID.BlizzardStaff || item.netID == ItemID.SnowmanCannon || item.netID == ItemID.NorthPole)
-                {
-                    crit += winterCrit;
-                }
+                crit += winterCrit;
             }
         }
         public override void PostUpdateMiscEffects()

@@ -1,5 +1,6 @@
 ﻿using PetsOverhaul.Systems;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,17 +15,15 @@ namespace PetsOverhaul.PetEffects
         public float whipSpeed = 0.0075f;
         public float whipRange = 0.01f;
         public float pumpkinWeaponDmg = 0.1f;
-        public float ravenDmg = 0.175f;
+        public float ravenDmg = 0.075f;
         public int maxMinion = 1;
         public float darkHarvestMult = 1.5f;
+        public static List<int> PumpkinMoonWeapons = [ItemID.StakeLauncher, ItemID.TheHorsemansBlade, ItemID.BatScepter, ItemID.CandyCornRifle, ItemID.ScytheWhip, ItemID.JackOLanternLauncher, ItemID.RavenStaff];
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
-            if (PetIsEquipped())
+            if (PetIsEquipped() && PumpkinMoonWeapons.Contains(item.type))
             {
-                if (item.netID == ItemID.StakeLauncher || item.netID == ItemID.TheHorsemansBlade || item.netID == ItemID.BatScepter || item.netID == ItemID.CandyCornRifle || item.netID == ItemID.ScytheWhip || item.netID == ItemID.JackOLanternLauncher)
-                {
-                    damage += pumpkinWeaponDmg;
-                }
+                damage += pumpkinWeaponDmg;
                 if (item.netID == ItemID.RavenStaff)
                 {
                     damage += ravenDmg;

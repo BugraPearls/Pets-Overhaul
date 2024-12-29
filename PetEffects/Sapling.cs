@@ -1,6 +1,7 @@
 ﻿using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -10,6 +11,8 @@ namespace PetsOverhaul.PetEffects
 {
     public sealed class Sapling : PetEffect
     {
+        public static List<int> PlanteraWeapon = [ItemID.VenusMagnum, ItemID.NettleBurst, ItemID.LeafBlower, ItemID.FlowerPow, ItemID.WaspGun, ItemID.Seedler, ItemID.GrenadeLauncher, ItemID.TheAxe, ItemID.Seedler];
+        public static List<int> PlanteraProj = [ProjectileID.Pygmy, ProjectileID.Pygmy2, ProjectileID.Pygmy3, ProjectileID.Pygmy4, ProjectileID.FlowerPow, ProjectileID.SeedlerNut];
         public override int PetItemID => ItemID.Seedling;
         public float planteraLifesteal = 0.03f;
         public float regularLifesteal = 0.015f;
@@ -40,7 +43,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
             {
-                if (item.type == ItemID.Seedler || item.type == ItemID.TheAxe)
+                if (PlanteraWeapon.Contains(item.type))
                 {
                     Pet.PetRecovery(damageDone, planteraLifesteal);
                 }
