@@ -869,14 +869,13 @@ Mods: {
 				'''
 				<class>
 				- Press Pet Ability Keybind (<keybind>) to summon a Slime Servant.
-				 * Slime Servant acts the same way a Blue Slime does but more aggressive.
-				 * Attacks nearest Enemy within 50 blocks, if none, follows its summoner.
-				- Slime Servant will copy same stats of Blue Slime alongside the following;
-				 * It gains 50% more knockback resist.
-				 * Gains an extra <defMult>% of Player's Defense and <hpMult>% of Player's Health.
-				 * It deals extra <dmg> Damage, can Crit, and scale with Generic Player bonuses.
-				- Upon dying, applies a <slowAmount>% slow for <slowDuration> seconds and slimy debuff
-				  for <slimyDuration> seconds to all enemies in a <radius> block radius.
+				 * Slime Servant acts the same way a Blue Slime does but more aggressive,
+				   attacks nearest Enemy within 50 blocks, if none, follows its summoner.
+				 * It also has 50% more knockback resist than a regular Blue Slime,
+				   extra <defMult>% of Player's Defense, extra <hpMult>% of Player's Health and
+				   deals extra <dmg> Damage, can Crit, and scale with Generic Player bonuses.
+				 * Upon dying, applies a <slowAmount>% slow for <slowDuration> seconds and slimy debuff
+				   for <slimyDuration> seconds to all enemies in a <radius> block radius.
 				- Ability has a <cooldown> second cooldown and each Slime has <lifetime> seconds of lifetime.
 				'''
 			QueenBeePetItem:
@@ -1102,10 +1101,17 @@ Mods: {
 				'''
 			ResplendentDessert:
 				'''
-				- It's both Prince and Princess Slime Pets' abilities combined while being slightly weaker.
-				 * Effects of Prince or Princess are overridden if there is another Prince or Princess active.
-				   Press <keybind> to swap the Tooltip (This is solely for display, and has no effects on perks)
-				<tooltip>
+				<class>
+				- Enhances your Mounts damaging enemies in multiple ways.
+				 * Increases Mount damage by <dmg>% and they now count as Pet damage.
+				 * With a <cooldown> seconds cooldown, your Mount hits will summon a Slime Servant on
+				   top of the target hit and you will gain a <shieldAmount> points of shield for <shieldDuration> seconds.
+				 * Slime Servant acts the same way a Blue Slime does but more aggressive,
+				   attacks nearest Enemy within 50 blocks, if none, follows its summoner.
+				 * It also has 50% more knockback resist than a regular Blue Slime,
+				   extra <defMult>% of Player's Defense, extra <hpMult>% of Player's Health and
+				   deals extra <baseDmg> Damage, can Crit, and scale with Generic Player bonuses.
+				 * Each Slime Servant has a <lifetime> seconds of lifetime before dying.
 				'''
 			Carrot:
 				'''
