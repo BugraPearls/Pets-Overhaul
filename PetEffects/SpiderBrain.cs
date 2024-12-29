@@ -12,7 +12,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.BrainOfCthulhuPetItem;
         public int lifePool = 0;
         public float lifePoolMaxPerc = 0.3f;
-        public int cdToAddToPool = 180;
+        public int cdToAddToPool = 165;
         public float lifestealAmount = 0.035f;
 
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
@@ -24,7 +24,7 @@ namespace PetsOverhaul.PetEffects
                 if (Pet.inCombatTimer <= 0)
                     cdToAddToPool = 90;
                 else
-                    cdToAddToPool = 180;
+                    cdToAddToPool = 165;
             }
         }
         public override void PreUpdateBuffs()
@@ -40,6 +40,13 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
             {
                 int decreaseFromPool = Pet.PetRecovery(damageDone, lifestealAmount, doHeal: false);
+                int maxCanBeHealed = Player.statLifeMax2 - Player.statLife;
+                if (decreaseFromPool > maxCanBeHealed) 
+                { 
+                    decreaseFromPool = maxCanBeHealed;
+                }
+                if (decreaseFromPool <= 0)
+                    return;
                 if (decreaseFromPool >= lifePool)
                 {
                     Pet.PetRecovery(lifePool, 1f);
