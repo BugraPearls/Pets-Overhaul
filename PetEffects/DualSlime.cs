@@ -1,7 +1,11 @@
-﻿using PetsOverhaul.Items;
+﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Items;
+using PetsOverhaul.NPCs;
+using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.Localization;
@@ -9,34 +13,262 @@ using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
 {
-    public sealed class DualSlime : PetEffect //Pet will be reworked post 3.0 update
+    public sealed class DualSlime : PetEffect
     {
         public override int PetItemID => ItemID.ResplendentDessert;
-        public bool swapTooltip = false;
-        public override PetClasses PetClassPrimary => PetClasses.Supportive;
-        // King, in SlimePrince
-        public float wetSpeed = 0.09f;
-        public float wetDmg = 0.07f;
-        public float wetDef = 0.07f;
-        public float slimyKb = 1.45f;
-        public float slimyJump = 1.8f;
-        public float wetDealtLower = 0.94f;
-        public float wetRecievedHigher = 1.07f;
-        public float bonusKb = 1.45f;
-        public float healthDmg = 0.012f;
-        public int burnCap = 45;
-        // Queen, in SlimePrincess
-        public float slow = 0.59f;
-        public float haste = 0.26f;
-        public int shield = 6;
-        public int shieldTime = 240;
-        public float dmgBoost = 1.22f;
-        public int baseCounterChnc = 90;
-        public override void ProcessTriggers(TriggersSet triggersSet)
+        public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override PetClasses PetClassSecondary => PetClasses.Defensive;
+        public int shield = 55;
+        public int shieldTime = 1500;
+        public float mountDmgIncr = 0.45f;
+        public int cooldown = 1200;
+        public float knockback = 8f;
+        public int baseDmg = 18; //Most values are used inside the SlimeServant's code
+        public float defMult = 0.2f;
+        public float hpMult = 0.45f;
+        public override int PetAbilityCooldown => cooldown;
+        public void OnMountHit(NPC npc)
         {
-            if (PetKeybinds.PetTooltipSwap.JustPressed)
+            if (Pet.timer <= 0)
             {
-                swapTooltip = !swapTooltip;
+                SoundEngine.PlaySound(SoundID.Item44 with { PitchVariance = 1.6f, Volume = 0.6f }, Player.Center);
+                NPC npC = NPC.NewNPCDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<SlimeServant>());
+                npC.GetGlobalNPC<SlimeServantOwner>().Owner = Player.whoAmI;
+                npC.defense += Player.statDefense * defMult;
+                npC.lifeMax += (int)(Player.statLifeMax2 * hpMult);
+                npC.life = npC.lifeMax;
+                Pet.timer = Pet.timerMax;
+                Pet.AddShield(shield, shieldTime);
+            }
+        }
+        public override void Load()
+        {
+            On_Player.CollideWithNPCs += TryToCollideWithNPCs;
+            On_Player.JumpMovement += JumpMovementMountHit;
+        }
+
+        private static void JumpMovementMountHit(On_Player.orig_JumpMovement orig, Player self) //This is copy paste of Vanilla JumpMovement Code. Done to have damage changes for Slime Mounts & Golf Cart.
+        {
+            if (self.TryGetModPlayer(out DualSlime dual) && dual.PetIsEquipped())
+            {
+                if (self.mount.Active && self.mount.IsConsideredASlimeMount && self.wetSlime == 0 && self.velocity.Y > 0f)
+                {
+                    Rectangle rect = self.getRect();
+                    rect.Offset(0, self.height - 1);
+                    rect.Height = 2;
+                    rect.Inflate(12, 6);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        NPC nPC = Main.npc[i];
+                        if (!nPC.active || nPC.dontTakeDamage || nPC.friendly || nPC.immune[self.whoAmI] != 0 || !self.CanNPCBeHitByPlayerOrPlayerProjectile(nPC))
+                        {
+                            continue;
+                        }
+                        Rectangle rect2 = nPC.getRect();
+                        if (rect.Intersects(rect2) && (nPC.noTileCollide || Collision.CanHit(self.position, self.width, self.height, nPC.position, nPC.width, nPC.height)))
+                        {
+                            float num = self.GetTotalDamage(DamageClass.Summon).ApplyTo(40f);
+                            float knockback = 5f;
+                            int num2 = self.direction;
+                            if (self.velocity.X < 0f)
+                            {
+                                num2 = -1;
+                            }
+                            if (self.velocity.X > 0f)
+                            {
+                                num2 = 1;
+                            }
+                            if (self.whoAmI == Main.myPlayer)
+                            {
+                                self.ApplyDamageToNPC(nPC, dual.Pet.PetDamage((dual.mountDmgIncr + 1) * num), knockback, num2, crit: false, DamageClass.Summon);
+                                dual.OnMountHit(nPC);
+
+                            }
+                            nPC.immune[self.whoAmI] = 10;
+                            self.velocity.Y = -10f;
+                            self.GiveImmuneTimeForCollisionAttack(6);
+                            break;
+                        }
+                    }
+                }
+                if (self.mount.Active && self.mount.Type == 17 && self.velocity.Y > 0f)
+                {
+                    Rectangle rect3 = self.getRect();
+                    rect3.Offset(0, self.height - 1);
+                    rect3.Height = 2;
+                    rect3.Inflate(12, 6);
+                    for (int j = 0; j < 200; j++)
+                    {
+                        NPC nPC2 = Main.npc[j];
+                        if (!nPC2.active || nPC2.dontTakeDamage || nPC2.friendly || nPC2.immune[self.whoAmI] != 0 || !self.CanNPCBeHitByPlayerOrPlayerProjectile(nPC2))
+                        {
+                            continue;
+                        }
+                        Rectangle rect4 = nPC2.getRect();
+                        if (rect3.Intersects(rect4) && (nPC2.noTileCollide || Collision.CanHit(self.position, self.width, self.height, nPC2.position, nPC2.width, nPC2.height)))
+                        {
+                            float num3 = 40f;
+                            float knockback2 = 5f;
+                            int num4 = self.direction;
+                            if (self.velocity.X < 0f)
+                            {
+                                num4 = -1;
+                            }
+                            if (self.velocity.X > 0f)
+                            {
+                                num4 = 1;
+                            }
+                            if (self.whoAmI == Main.myPlayer)
+                            {
+                                self.ApplyDamageToNPC(nPC2, dual.Pet.PetDamage(num3 * (dual.mountDmgIncr + 1)), knockback2, num4);
+                                dual.OnMountHit(nPC2);
+                            }
+                            nPC2.immune[self.whoAmI] = 12;
+                            self.GiveImmuneTimeForCollisionAttack(12);
+                            break;
+                        }
+                    }
+                }
+                if (self.controlJump)
+                {
+                    if (self.sliding)
+                    {
+                        self.autoJump = false;
+                    }
+                    bool flag = false;
+                    if (self.mount.Active && self.mount.IsConsideredASlimeMount && self.wetSlime > 0)
+                    {
+                        self.wetSlime = 0;
+                        flag = true;
+                    }
+                    if (self.mount.Active && self.mount.Type == 43 && self.releaseJump && self.velocity.Y != 0f)
+                    {
+                        self.isPerformingPogostickTricks = true;
+                    }
+                    if (self.jump > 0)
+                    {
+                        if (self.velocity.Y == 0f)
+                        {
+                            self.jump = 0;
+                        }
+                        else
+                        {
+                            self.velocity.Y = (0f - Player.jumpSpeed) * self.gravDir;
+                            if (self.merman && (!self.mount.Active || !self.mount.Cart))
+                            {
+                                if (self.swimTime <= 10)
+                                {
+                                    self.swimTime = 30;
+                                }
+                            }
+                            else
+                            {
+                                self.jump--;
+                            }
+                        }
+                    }
+                    else if ((self.sliding || self.velocity.Y == 0f || flag || self.AnyExtraJumpUsable()) && (self.releaseJump || (self.autoJump && (self.velocity.Y == 0f || self.sliding))))
+                    {
+                        if (self.mount.Active && MountID.Sets.Cart[self.mount.Type])
+                        {
+                            self.position.Y -= 0.001f;
+                        }
+                        if (self.sliding || self.velocity.Y == 0f)
+                        {
+                            self.justJumped = true;
+                        }
+                        bool flag2 = false;
+                        bool attemptDoubleJumps = !flag;
+                        self.canRocket = false;
+                        self.rocketRelease = false;
+                        if (self.velocity.Y == 0f || self.sliding || (self.autoJump && self.justJumped))
+                        {
+                            self.RefreshExtraJumps();
+                        }
+                        if (self.velocity.Y == 0f || flag2 || self.sliding || flag)
+                        {
+                            if (self.mount.Active && self.mount.Type == 43)
+                            {
+                                SoundEngine.PlaySound(in SoundID.Item168, self.Center);
+                            }
+                            self.velocity.Y = (0f - Player.jumpSpeed) * self.gravDir;
+                            self.jump = Player.jumpHeight;
+                            if (self.portableStoolInfo.IsInUse)
+                            {
+                                self.position.Y -= self.portableStoolInfo.HeightBoost;
+                                self.gfxOffY += self.portableStoolInfo.HeightBoost;
+                            }
+                            if (self.sliding)
+                            {
+                                self.velocity.X = 3 * -self.slideDir;
+                            }
+                        }
+                        else if (attemptDoubleJumps && !self.blockExtraJumps)
+                        {
+                            ExtraJumpLoader.ProcessJumps(self);
+                        }
+                    }
+                    self.releaseJump = false;
+                }
+                else
+                {
+                    self.jump = 0;
+                    self.releaseJump = true;
+                    self.rocketRelease = true;
+                }
+            }
+            else
+                orig(self);
+        }
+
+        private static int TryToCollideWithNPCs(On_Player.orig_CollideWithNPCs orig, Player self, Rectangle myRect, float Damage, float Knockback, int NPCImmuneTime, int PlayerImmuneTime, DamageClass damageType) //This is copy paste of Vanilla CollideWithNPCs Code.
+        {
+            if (self.TryGetModPlayer(out DualSlime dual) && dual.PetIsEquipped())
+            {
+                int num = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    NPC nPC = Main.npc[i];
+                    if (!nPC.active || nPC.dontTakeDamage || nPC.friendly || nPC.immune[self.whoAmI] != 0 || !self.CanNPCBeHitByPlayerOrPlayerProjectile(nPC))
+                    {
+                        continue;
+                    }
+                    Rectangle rect = nPC.getRect();
+                    if (myRect.Intersects(rect) && (nPC.noTileCollide || Collision.CanHit(self.position, self.width, self.height, nPC.position, nPC.width, nPC.height)))
+                    {
+                        int num2 = self.direction;
+                        if (self.velocity.X < 0f)
+                        {
+                            num2 = -1;
+                        }
+                        if (self.velocity.X > 0f)
+                        {
+                            num2 = 1;
+                        }
+                        if (self.whoAmI == Main.myPlayer)
+                        {
+                            self.ApplyDamageToNPC(nPC, dual.Pet.PetDamage(Damage * dual.mountDmgIncr), Knockback, num2, crit: false, damageType);
+                            dual.OnMountHit(nPC); //This is same code as whats called in original method (orig), except it will give Player shield, increase damage by the Mount and slow the npc on hit.
+                        }
+                        nPC.immune[self.whoAmI] = NPCImmuneTime;
+                        self.GiveImmuneTimeForCollisionAttack(PlayerImmuneTime);
+                        num++;
+                        break;
+                    }
+                }
+                return num;
+            }
+            else
+            {
+                return orig(self, myRect, Damage, Knockback, NPCImmuneTime, PlayerImmuneTime, damageType);
+            }
+        }
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (PetIsEquipped() && proj.TryGetGlobalProjectile(out ProjectileSourceChecks check) && check.fromMount)
+            {
+                modifiers.FinalDamage *= (1 + mountDmgIncr) * Pet.petDirectDamageMultiplier;
+                OnMountHit(target);
             }
         }
     }
@@ -54,38 +286,17 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<DualSlime>();
             }
         }
-        public override string PetsTooltip
-        {
-            get
-            {
-                string tip = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ResplendentDessert")
-                .Replace("<approxWeak>", "10")
-                .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipSwap))
-                .Replace("<tooltip>", Language.GetTextValue($"Mods.PetsOverhaul.PetItemTooltips.{(dualSlime.swapTooltip ? "KingSlimePetItem" : "QueenSlimePetItem")}"));
-                if (dualSlime.swapTooltip)
-                {
-                    tip = tip.Replace("<burnHp>", Math.Round(dualSlime.healthDmg * 100, 2).ToString())
-                .Replace("<burnCap>", dualSlime.burnCap.ToString())
-                .Replace("<extraKb>", dualSlime.bonusKb.ToString())
-                .Replace("<jumpSpd>", Math.Round(dualSlime.slimyJump * 100, 2).ToString())
-                .Replace("<kbBoost>", dualSlime.slimyKb.ToString())
-                .Replace("<enemyDmgRecieve>", dualSlime.wetRecievedHigher.ToString())
-                .Replace("<enemyDmgDeal>", dualSlime.wetDealtLower.ToString())
-                .Replace("<dmg>", Math.Round(dualSlime.wetDmg * 100, 2).ToString())
-                .Replace("<def>", Math.Round(dualSlime.wetDef * 100, 2).ToString())
-                .Replace("<moveSpd>", Math.Round(dualSlime.wetSpeed * 100, 2).ToString());
-                }
-                else
-                {
-                    tip = tip.Replace("<slow>", Math.Round(dualSlime.slow * 100, 2).ToString())
-                .Replace("<haste>", Math.Round(dualSlime.haste * 100, 2).ToString())
-                .Replace("<dmgBonus>", dualSlime.dmgBoost.ToString())
-                .Replace("<shield>", dualSlime.shield.ToString())
-                .Replace("<shieldTime>", Math.Round(dualSlime.shieldTime / 60f, 2).ToString())
-                .Replace("<endless>", ModContent.ItemType<EndlessBalloonSack>().ToString());
-                }
-                return tip;
-            }
-        }
+        public override string PetsTooltip =>
+                Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ResplendentDessert")
+            .Replace("<dmg>", Math.Round(dualSlime.mountDmgIncr * 100, 2).ToString())
+                        .Replace("<shieldAmount>", dualSlime.shield.ToString())
+                        .Replace("<shieldDuration>", Math.Round(dualSlime.shieldTime / 60f, 2).ToString())
+            .Replace("<cooldown>", Math.Round(dualSlime.cooldown / 60f, 2).ToString())
+            .Replace("<defMult>", Math.Round(dualSlime.defMult * 100, 2).ToString())
+            .Replace("<hpMult>", Math.Round(dualSlime.hpMult * 100, 2).ToString())
+            .Replace("<baseDmg>", dualSlime.baseDmg.ToString())
+            .Replace("<lifetime>", Math.Round(SlimePrince.lifetimeOfServant / 60f, 2).ToString());
     }
 }
+            
+
