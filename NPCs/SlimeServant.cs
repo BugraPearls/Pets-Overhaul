@@ -48,17 +48,20 @@ namespace PetsOverhaul.NPCs
         }
         public override void OnKill()
         {
-            int radius = 100;
-            float slow = 0.35f;
-            int slowDuration = 300;
-            int slimyDuration = 1500; //These are default
-
-            if (Main.player[Owner].TryGetModPlayer(out SlimePrince prince))
+            int slimyDuration;
+            int slowDuration;
+            float slow;
+            int radius;
+            if (Main.player[Owner].TryGetModPlayer(out SlimePrince prince) && prince.PetIsEquipped())
             {
                 radius = prince.radius;
                 slow = prince.slowAmount;
                 slowDuration = prince.slowDuration;
                 slimyDuration = prince.slimyDuration;
+            }
+            else //If Prince isn't equipped, doesn't slow/add slimy
+            {
+                return;
             }
             GlobalPet.CircularDustEffect(NPC.Center, DustID.BlueMoss, radius, 10, 1);
             foreach (NPC npc in Main.ActiveNPCs)
@@ -75,7 +78,7 @@ namespace PetsOverhaul.NPCs
         {
             void RunTargeting()
             {
-                NPCUtils.TargetSearchResults targeting = NPCUtils.SearchForTarget(NPC, NPCUtils.TargetSearchFlag.NPCs, npcFilter: new NPCUtils.SearchFilter<NPC>(x => x.friendly == false || x.CountsAsACritter));
+                NPCUtils.TargetSearchResults targeting = NPCUtils.SearchForTarget(NPC, NPCUtils.TargetSearchFlag.NPCs, npcFilter: new NPCUtils.SearchFilter<NPC>(x => x.friendly == false && x.CountsAsACritter == false));
                 if (targeting.FoundNPC && targeting.NearestNPCDistance < 800) //Targets nearest NPC if they are within 800 pixels and if they aren't friendly & is a critter.
                 {
                     NPC.target = 300 + targeting.NearestNPCIndex;
@@ -254,12 +257,19 @@ namespace PetsOverhaul.NPCs
                         bool crit = false;
                         float kb = 0f;
                         float luck = 0;
-                        if (Main.player[Owner].TryGetModPlayer(out SlimePrince prince))
+                        if (Main.player[Owner].TryGetModPlayer(out SlimePrince prince) && prince.PetIsEquipped())
                         {
                             damage = prince.Pet.PetDamage(prince.Player.GetTotalDamage<GenericDamageClass>().ApplyTo(prince.baseDmg + damage)); //This deals correct damage with scalings
                             crit = Main.rand.NextBool((int)Math.Min(prince.Player.GetTotalCritChance<GenericDamageClass>(), 100), 100);
                             kb = prince.knockback;
                             luck = prince.Player.luck;
+                        }
+                        else if (Main.player[Owner].TryGetModPlayer(out DualSlime dual) && dual.PetIsEquipped())
+                        {
+                            damage = dual.Pet.PetDamage(dual.Player.GetTotalDamage<GenericDamageClass>().ApplyTo(dual.baseDmg + damage)); //This deals correct damage with scalings
+                            crit = Main.rand.NextBool((int)Math.Min(dual.Player.GetTotalCritChance<GenericDamageClass>(), 100), 100);
+                            kb = dual.knockback;
+                            luck = dual.Player.luck;
                         }
                         npc.SimpleStrikeNPC(damage, npc.direction, crit, kb, DamageClass.Generic, true, luck);
                         npc.GetImmuneTime(Owner, 10);
