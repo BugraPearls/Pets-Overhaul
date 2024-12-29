@@ -106,7 +106,7 @@ namespace PetsOverhaul.PetEffects
                         Rectangle rect2 = nPC.getRect();
                         if (rect.Intersects(rect2) && (nPC.noTileCollide || Collision.CanHit(self.position, self.width, self.height, nPC.position, nPC.width, nPC.height)))
                         {
-                            float num = self.GetTotalDamage(DamageClass.Summon).ApplyTo(40f);
+                            float num = 40f;
                             float knockback = 5f;
                             int num2 = self.direction;
                             if (self.velocity.X < 0f)
@@ -119,7 +119,7 @@ namespace PetsOverhaul.PetEffects
                             }
                             if (self.whoAmI == Main.myPlayer)
                             {
-                                self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage((princess.mountDmgIncr+1) * num), knockback, num2, crit: false, DamageClass.Summon);
+                                self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage((princess.mountDmgIncr+1) * num, DamageClass.Summon), knockback, num2, crit: false, DamageClass.Summon);
                                 princess.OnMountHit(nPC);
 
                             }
@@ -159,7 +159,7 @@ namespace PetsOverhaul.PetEffects
                             }
                             if (self.whoAmI == Main.myPlayer)
                             {
-                                self.ApplyDamageToNPC(nPC2, princess.Pet.PetDamage(num3 * (princess.mountDmgIncr+1)), knockback2, num4);
+                                self.ApplyDamageToNPC(nPC2, princess.Pet.PetDamage(num3 * (princess.mountDmgIncr+1),DamageClass.Summon), knockback2, num4);
                                 princess.OnMountHit(nPC2);
                             }
                             nPC2.immune[self.whoAmI] = 12;
@@ -262,7 +262,7 @@ namespace PetsOverhaul.PetEffects
 
         private static int TryToCollideWithNPCs(On_Player.orig_CollideWithNPCs orig, Player self, Rectangle myRect, float Damage, float Knockback, int NPCImmuneTime, int PlayerImmuneTime, DamageClass damageType) //This is copy paste of Vanilla CollideWithNPCs Code.
         {
-            if (self.TryGetModPlayer(out SlimePrincess princess) && princess.PetIsEquipped())
+            if (self.TryGetModPlayer(out SlimePrincess princess) && princess.PetIsEquipped() && princess.Player.mount.Active)
             {
                 int num = 0;
                 for (int i = 0; i < 200; i++)
@@ -286,7 +286,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         if (self.whoAmI == Main.myPlayer)
                         {
-                            self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage(Damage*princess.mountDmgIncr), Knockback, num2, crit: false, damageType);
+                            self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage(Damage*(princess.mountDmgIncr+1), damageType), Knockback, num2, crit: false, damageType);
                             princess.OnMountHit(nPC); //This is same code as whats called in original method (orig), except it will give Player shield, increase damage by the Mount and slow the npc on hit.
                         }
                         nPC.immune[self.whoAmI] = NPCImmuneTime;

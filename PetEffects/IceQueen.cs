@@ -70,7 +70,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         if (NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && Player.Distance(npc.Center) < queenRange && GlobalPet.LifestealCheck(npc))
                         {
-                            npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck);
+                            npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage, DamageClass.Generic), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck);
                         }
                     }
                     if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)

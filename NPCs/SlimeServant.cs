@@ -259,14 +259,14 @@ namespace PetsOverhaul.NPCs
                         float luck = 0;
                         if (Main.player[Owner].TryGetModPlayer(out SlimePrince prince) && prince.PetIsEquipped())
                         {
-                            damage = prince.Pet.PetDamage(prince.Player.GetTotalDamage<GenericDamageClass>().ApplyTo(prince.baseDmg + damage)); //This deals correct damage with scalings
+                            damage = prince.Pet.PetDamage(prince.baseDmg + damage, DamageClass.Generic);
                             crit = Main.rand.NextBool((int)Math.Min(prince.Player.GetTotalCritChance<GenericDamageClass>(), 100), 100);
                             kb = prince.knockback;
                             luck = prince.Player.luck;
                         }
                         else if (Main.player[Owner].TryGetModPlayer(out DualSlime dual) && dual.PetIsEquipped())
                         {
-                            damage = dual.Pet.PetDamage(dual.Player.GetTotalDamage<GenericDamageClass>().ApplyTo(dual.baseDmg + damage)); //This deals correct damage with scalings
+                            damage = dual.Pet.PetDamage(dual.baseDmg + damage, DamageClass.Generic);
                             crit = Main.rand.NextBool((int)Math.Min(dual.Player.GetTotalCritChance<GenericDamageClass>(), 100), 100);
                             kb = dual.knockback;
                             luck = dual.Player.luck;

@@ -370,8 +370,9 @@ namespace PetsOverhaul.Systems
             }
             return -1;
         }
-        public int PetDamage(float damage)
+        public int PetDamage(float damage, DamageClass damageClass)
         {
+            damage = Player.GetTotalDamage(damageClass).ApplyTo(damage);
             damage *= petDirectDamageMultiplier;
             return (int)Math.Max(damage, 1);
 

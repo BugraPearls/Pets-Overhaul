@@ -88,7 +88,7 @@ namespace PetsOverhaul.PetEffects
                             location = proj.Center;
                         }
                     }
-                Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), location, new Vector2(Main.MouseWorld.X - location.X - Main.rand.NextFloat(3f, -3f), Main.MouseWorld.Y - location.Y - Main.rand.NextFloat(6f, 7f)), ProjectileID.CultistBossFireBall, Pet.PetDamage(fireBase), fireKnockback, Player.whoAmI);
+                Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), location, new Vector2(Main.MouseWorld.X - location.X - Main.rand.NextFloat(3f, -3f), Main.MouseWorld.Y - location.Y - Main.rand.NextFloat(6f, 7f)), ProjectileID.CultistBossFireBall, Pet.PetDamage(fireBase, DamageClass.Generic), fireKnockback, Player.whoAmI);
                 petProjectile.DamageType = DamageClass.Generic;
                 petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
             }
@@ -111,13 +111,13 @@ namespace PetsOverhaul.PetEffects
                 {
                     case 0: //Ice
                         Vector2 velocity = Main.rand.NextVector2CircularEdge(4f, 4f);
-                        Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, Pet.PetDamage(iceBase), 0, Player.whoAmI, 0f, 1f);
+                        Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, Pet.PetDamage(iceBase, DamageClass.Generic), 0, Player.whoAmI, 0f, 1f);
                         petProjectile.DamageType = DamageClass.Generic;
                         petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
                         petProjectile.netUpdate = true;
                         break;
                     case 1: //Lightning
-                        Projectile petProj = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase), 0, Player.whoAmI, 0f);
+                        Projectile petProj = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
                         petProj.DamageType = DamageClass.Generic;
                         petProj.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
                         petProj.netUpdate = true;

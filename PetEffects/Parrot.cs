@@ -25,7 +25,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < GlobalPet.Randomizer(meleeChance); i++)
                 {
-                    target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * meleeDamage), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck);
+                    target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * meleeDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck);
                     PlayParrotSound();
                 }
             }
@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < GlobalPet.Randomizer(meleeChance); i++)
                 {
-                    target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * projDamage), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck);
+                    target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * projDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck);
                     PlayParrotSound();
                 }
             }
@@ -76,7 +76,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (Main.player[projectile.owner].TryGetModPlayer(out Parrot parrot) && parrot.PetIsEquipped() && projectile.usesOwnerMeleeHitCD == false && projectile.ownerHitCheck == false && projectile.damage > 0 && projectile.type != ProjectileID.TrueNightsEdge && projectile.minion == false && projectile.sentry == false) //We check if Projectile is a 'melee' projectile, or a direct 'melee hit' of a Minion/Sentry. True Nights Edge does not use usesOwnerMeleeHitCD or ownerHitCheck, reason for its exception.
             {
-                DamageClass damageType = DamageClass.Default;
+                DamageClass damageType = DamageClass.Generic;
                 if (source is EntitySource_ItemUse entity1 && entity1.Item is not null)
                 {
                     damageType = entity1.Item.DamageType;
@@ -90,7 +90,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     for (int i = 0; i < GlobalPet.Randomizer(parrot.projChance); i++)
                     {
-                        Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, parrot.Pet.PetDamage(projectile.damage * parrot.projDamage), projectile.knockBack, projectile.owner);
+                        Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, parrot.Pet.PetDamage(projectile.damage * parrot.projDamage, damageType), projectile.knockBack, projectile.owner);
                         petProjectile.DamageType = damageType;
                         petProjectile.CritChance = (int)parrot.Player.GetTotalCritChance(damageType);
                         parrot.PlayParrotSound();

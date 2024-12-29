@@ -64,14 +64,13 @@ namespace PetsOverhaul.PetEffects
                 if (info.DamageSource.TryGetCausingEntity(out Entity entity))
                 {
                     int damageTaken = Math.Min(info.SourceDamage, Player.statLife);
-                    if (entity is Projectile projectile && projectile.TryGetGlobalProjectile<ProjectileSourceChecks>(out ProjectileSourceChecks proj) && Main.npc[proj.sourceNpcId].active)
+                    if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out ProjectileSourceChecks proj) && Main.npc[proj.sourceNpcId].active)
                     {
-                        Main.npc[proj.sourceNpcId].SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflectProjectile), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
+                        Main.npc[proj.sourceNpcId].SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflectProjectile, DamageClass.Generic), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
                     }
                     else if (entity is NPC npc && npc.active == true)
                     {
-
-                        npc.SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflect), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
+                        npc.SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflect, DamageClass.Generic), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
                     }
                 }
                 currentStacks--;
