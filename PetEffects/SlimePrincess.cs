@@ -66,7 +66,7 @@ namespace PetsOverhaul.PetEffects
         public int slowDuration = 240;
         public int shield = 15;
         public int shieldTime = 420;
-        public float mountDmgIncr = 0.4f;
+        public float mountDmgIncr = 0.35f;
         public int cooldown = 180;
         public override int PetAbilityCooldown => cooldown;
         public override PetClasses PetClassPrimary => PetClasses.Utility;
@@ -304,7 +304,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (proj.TryGetGlobalProjectile(out ProjectileSourceChecks check) && check.fromMount)
+            if (PetIsEquipped() && proj.TryGetGlobalProjectile(out ProjectileSourceChecks check) && check.fromMount)
             {
                 modifiers.FinalDamage *= (1+mountDmgIncr) * Pet.petDirectDamageMultiplier;
                 OnMountHit(target);
