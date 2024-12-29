@@ -1,6 +1,7 @@
 ﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -11,17 +12,35 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.MartianPetItem;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
-        public float accelerator = 0.50f;
-        public float wingTime = 0.25f;
-        public float speedMult = 1.2f;
-        public float accMult = 1.35f;
-        public float speedAccIncr = 0.2f;
+        public float accelerator = 0.10f;
+        public float speedMult = 1.05f;
+        public float accMult = 1.1f;
+        public float speedAccIncr = 0.25f;
+        public float wingTimeStore = 0.5f;
+        private float wingTimeBank = 0;
         public override void PostUpdateRunSpeeds()
         {
             if (PetIsEquipped())
             {
                 Player.runAcceleration *= accelerator + 1f;
-                Player.wingTimeMax = (int)(Player.wingTimeMax * (1f + wingTime));
+                if (wingTimeBank >= 1 && Player.wingTime < Player.wingTimeMax)
+                {
+                    Player.wingTime++;
+                    wingTimeBank--;
+                }
+            }
+        }
+        public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            if (Player.wingTime > 0 && PetIsEquipped() && triggersSet.Jump && Player.dead == false && Player.equippedWings is not null)
+            {
+                float total = Math.Abs(Player.velocity.Y) + Math.Abs(Player.velocity.X);
+                float xRemain = Math.Abs(Player.velocity.X) / total;
+                if (xRemain is float.NaN) 
+                {
+                    xRemain = 0;
+                }
+                wingTimeBank += Math.Abs(xRemain * wingTimeStore);
             }
         }
     }
@@ -54,7 +73,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MartianPetItem")
-                .Replace("<wingMult>", Math.Round(alienSkater.wingTime * 100, 2).ToString())
+                .Replace("<wingTimeSave>", Math.Round(alienSkater.wingTimeStore * 100, 2).ToString())
                 .Replace("<acc>", Math.Round(alienSkater.accelerator * 100, 2).ToString())
                 .Replace("<speedMult>", alienSkater.speedMult.ToString())
                 .Replace("<accMult>", alienSkater.accMult.ToString())
