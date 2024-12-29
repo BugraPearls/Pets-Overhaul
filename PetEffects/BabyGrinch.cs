@@ -67,7 +67,8 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<slowAmount>", Math.Round(babyGrinch.grinchSlow * 100, 2).ToString())
                 .Replace("<slowRange>", Math.Round(babyGrinch.grinchRange / 16f, 2).ToString())
                 .Replace("<dmg>", Math.Round(babyGrinch.winterDmg * 100, 2).ToString())
-                .Replace("<crit>", babyGrinch.winterCrit.ToString());
+                .Replace("<crit>", babyGrinch.winterCrit.ToString())
+            .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(BabyGrinch.FrostMoonWeapons));
     }
 }
 

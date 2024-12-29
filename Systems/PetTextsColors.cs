@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Config;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -127,6 +128,20 @@ namespace PetsOverhaul.Systems
         public static string PetClassLocalized(PetClasses petClass)
         {
             return Language.GetTextValue("Mods.PetsOverhaul.Classes." + petClass.ToString());
+        }
+        /// <summary>
+        /// Converts all integers in given list to be in [i:ItemID] format, which is shown in game as the item itself within the string.
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
+        public static string ItemsToTooltipImages(List<int> items)
+        {
+            string result = "";
+            foreach (int item in items)
+            {
+                result += "[i:" + item.ToString() + "] ";
+            }
+            return result;
         }
     }
 }

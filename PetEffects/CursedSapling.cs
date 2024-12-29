@@ -24,7 +24,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && PumpkinMoonWeapons.Contains(item.type))
             {
                 damage += pumpkinWeaponDmg;
-                if (item.netID == ItemID.RavenStaff)
+                if (item.type == ItemID.RavenStaff)
                 {
                     damage += ravenDmg;
                 }
@@ -64,6 +64,7 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.CursedSapling")
                         .Replace("<minionSlot>", cursedSapling.maxMinion.ToString())
                         .Replace("<dmg>", Math.Round(cursedSapling.pumpkinWeaponDmg * 100, 2).ToString())
+                        .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(CursedSapling.PumpkinMoonWeapons))
                         .Replace("<ravenDmg>", Math.Round(cursedSapling.ravenDmg * 100, 2).ToString())
                         .Replace("<whipRange>", Math.Round(cursedSapling.whipRange * 100, 2).ToString())
                         .Replace("<whipSpeed>", Math.Round(cursedSapling.whipSpeed * 100, 2).ToString())

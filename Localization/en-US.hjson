@@ -378,7 +378,7 @@ Mods: {
 				- Slows all non-boss enemies in a <slowRange>-block radius by <slowAmount>%.
 				- Grants a permanent warmth effect, reducing cold-sourced damage.
 				- All weapons from Frost Moon gains <dmg>% damage and <crit>% crit chance.
-				  Affected Weapons: [i:1928] [i:1930] [i:1910] [i:1929] [i:1931] [i:1947] [i:1946]
+				  Affected Weapons: <weapons>
 				'''
 			Nectar:
 				'''
@@ -544,8 +544,9 @@ Mods: {
 				'''
 				<class>
 				- Increases max minion slots by <minionSlot>.
-				- All Pumpkin Moon weapons gain <dmg>% damage.
+				- All Pumpkin Moon weapons gain <dmg>% damage. 
 				 * This is increased by another <ravenDmg>% for Raven Staff. [i:1802]
+				 * All affected weapons: <weapons>
 				- Increases Whip range by <whipRange>% and speed by <whipSpeed>% per minion slot.
 				 * These bonuses are <darkHarvestMult>x for Dark Harvest. [i:4680]
 				 * Only works while holding a Whip.
@@ -732,7 +733,7 @@ Mods: {
 				- Multiplies damage you deal by <dmgPenalty>x.
 				- Gain <lifesteal>% lifesteal. 
 				 * Increased to <planteraSteal>% for Plantera's weapons.
-				   Affected weapons: [i:1255] [i:788] [i:1178] [i:1259] [i:1155] [i:3018] [i:1157] [i:1305]
+				   Affected weapons: <weapons>
 				'''
 			SpiderEgg:
 				'''
