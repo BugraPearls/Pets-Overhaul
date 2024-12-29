@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.Seaweed;
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public float moveSpd = 0.12f;
-        public float def = 0.1f;
+        public float def = 0.07f;
         public float kbResist = 0.55f;
 
         private int timer = 0;

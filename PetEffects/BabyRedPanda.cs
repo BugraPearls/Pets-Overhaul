@@ -17,10 +17,10 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.BambooLeaf;
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
-        public float regularAtkSpd = 0.05f;
-        public float jungleBonusSpd = 0.04f;
+        public float regularAtkSpd = 0.035f;
+        public float jungleBonusSpd = 0.025f;
         public int bambooChance = 50;
-        public int alertTime = 300;
+        public int alertTime = 480;
         public int alertCd = 1800;
         public float alertMs = 0.03f;
         public float alertAs = 0.015f;
@@ -48,6 +48,7 @@ namespace PetsOverhaul.PetEffects
                     Player.GetAttackSpeed<GenericDamageClass>() += alertAs * alertEnemies;
                     Player.moveSpeed += alertMs * alertEnemies;
                     Player.aggro -= alertAggro * alertEnemies;
+                    Player.AddBuff(BuffID.Hunter, 1);
                 }
             }
         }

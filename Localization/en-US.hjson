@@ -417,6 +417,7 @@ Mods: {
 				- Press Pet Ability Keybind (<keybind>) to go on Alert mode.
 				 * Increases your attack speed by <alertAs>%, movement speed by <alertMs>%.
 				 * Decreases your aggro value by <alertAggro>.
+				 * Gain Hunter effect, so you can be aware of where the enemies are.
 				 * Values increased by enemies nearby within <alertRadius> blocks, up to <alertMax> enemies.
 				 * Benefits last <alertDuration> seconds and has a <alertCd> seconds cooldown.
 				- Always gain <atkSpd>% attack speed.
@@ -787,8 +788,6 @@ Mods: {
 				 * Achieves this by multiplying the maximum Y speed you can get by <glide>x.
 				 * Does not grant fall damage immunity, but gliding resets your fall damage.
 				 * Can be used alongside Wings, providing even more gliding power.
-				- Multiplies horizontal wing speed and acceleration by <speed>x and <acceleration>x respectively.
-				- Increases horizontal wing speed and acceleration by a flat <flatIncrease>%.
 				'''
 			TikiTotem:
 				'''
@@ -969,7 +968,9 @@ Mods: {
 			MartianPetItem:
 				'''
 				<class>
-				- Increases maximum wing time by <wingMult>%.
+				- Flying horizontally saves up up to <wingTimeSave>% wing time.
+				 * For example, flying on a cross path will save up half of this time.
+				   Flying entirely vertically will end up saving 0 wing time.
 				- Increases all acceleration by <acc>%.
 				- Multiplies horizontal flight speed by <speedMult>x, acceleration by <accMult>x.
 				- Increases horizontal flight speed and acceleration by a flat <flatSpdAcc>%.
