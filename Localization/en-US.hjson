@@ -750,11 +750,11 @@ Mods: {
 			OrnateShadowKey:
 				'''
 				<class>
-				- Increases regular enemy loot coin drops by <npcCoin>% and item drops by <npcItem>%.
-				- Increases boss enemy loot coin drops by <bossCoin>% and item drops by <bossItem>%.
-				 * Boss bags are unaffected by item drop boost.
-				- Increases bag opening loot coin drops by <bagCoin>% and item drops by <bagItem>%.
-				 * Bag opening is things such as presents, crates, oysters, etc.
+				- Improves loot you gain from NPC's and all types of loot bags.
+				- Loot with drop chance below <threshold>% has their drop chance increased by <chanceIncrease>%.
+				- If above, with <chanceToDouble>% chance, the loot's stack is doubled.
+				 * Set items are unaffected. (Ex. Loot is a guarantee drop of one of 5 items)
+				 * Items with their max stack being 1 is unnaffected.
 				'''
 			SharkBait:
 				'''
