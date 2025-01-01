@@ -118,6 +118,8 @@ Mods: {
 			// PetList: List of <class> Pets:
 			// All: all
 			// NoPets: No pets available for this class. (You may be missing an addon for this class?)
+			// Items: All items affected by <class> class of Pet Effects (Only when naturally obtained):
+			// ClassArgumentInvalidItems: The given class is invalid, try any of the following: {harvesting|mining|fishing}.
 			// ClassArgumentInvalid: The given class is invalid, try any of the following: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: Аргумент недействителен, вот список команд Pets Overhaul: (команды нечувствительны к регистру)
 			UseInMultiplayer: Используйте эту команду в многопользовательской игре! Если вы хотите увидеть свои навыки Junimo, используйте /pet junimo, /pet junimoscoreboard или /pet junimoleaderboard.

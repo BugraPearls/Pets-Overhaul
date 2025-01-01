@@ -312,6 +312,41 @@ namespace PetsOverhaul.Commands
                                     break;
                             }
                             break;
+                        case "item" or "items":
+                            string itemReply = Language.GetTextValue("Mods.PetsOverhaul.Commands.Items");
+                            switch (args[1].ToLower())
+                            {
+                                case "harvesting":
+                                    List<int> harv = new();
+                                    foreach (var item in Junimo.HarvestingXpPerGathered)
+                                    {
+                                        harv.AddRange(item.plantList);
+                                    }
+                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetTextsColors.ItemsToTooltipImages(harv, 22, 0);
+
+                                    break;
+                                case "mining":
+                                    List<int> mining = new();
+                                    foreach (var item in Junimo.MiningXpPerBlock)
+                                    {
+                                        mining.AddRange(item.oreList);
+                                    }
+                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)) + "\n" + PetTextsColors.ItemsToTooltipImages(mining, 22, 0);
+                                    break;
+                                case "fishing":
+                                    List<int> fish = new();
+                                    foreach (var item in Junimo.FishingXpPerCaught)
+                                    {
+                                        fish.AddRange(item.fishList);
+                                    }
+                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)) + "\n" + PetTextsColors.ItemsToTooltipImages(fish, 22, 0);
+                                    break;
+                                default:
+                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ClassArgumentInvalidItems"), Color.Red);
+                                    break;
+                            }
+                            caller.Reply(itemReply);
+                            break;
                         default:
                             caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
                             caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);

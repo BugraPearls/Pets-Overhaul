@@ -82,6 +82,7 @@ Mods: {
 				/pet faq, /pet question -> Displays frequently asked questions regarding Pets Overhaul.
 				/pet pets, class {all|ability(or cooldown)|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
 				-> Displays all Pets in chat that has the class given in the 2nd argument. 'all' argument will show ALL Pet effects regardless of the class.
+				/pet item, items {harvesting|mining|fishing} -> Displays all items affected by bonuses of given class of Pets.
 				'''
 			FAQ:
 				'''
@@ -122,6 +123,8 @@ Mods: {
 			PetList: List of <class> Pets:
 			All: all
 			NoPets: No pets available for this class. (You may be missing an addon for this class?)
+			Items: All items affected by <class> class of Pet Effects (Only when naturally obtained):
+			ClassArgumentInvalidItems: The given class is invalid, try any of the following: {harvesting|mining|fishing}.
 			ClassArgumentInvalid: The given class is invalid, try any of the following: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: The given argument was invalid, here is a list of Pets Overhaul commands: (commands are not case sensitive)
 			UseInMultiplayer: Please use this command on Multiplayer! If you want to see your Junimo Skills, use /pet junimo, /pet junimoscoreboard, or /pet junimoleaderboard
