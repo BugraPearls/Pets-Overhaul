@@ -1,4 +1,5 @@
 ﻿using PetsOverhaul.Systems;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -12,23 +13,18 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassPrimary => PetClasses.Fishing;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
         internal int penguinOldChilledTime = 0;
-        public int snowFish = 25;
-        public int oceanFish = 25;
+        public int snowAndOceanPower = 25;
         public int regularFish = 20;
         public float chillingMultiplier = 0.45f;
         public int snowFishChance = 80;
+        public static List<int> IceFishingDrops = [ItemID.FrostMinnow, ItemID.AtlanticCod, ItemID.FrostDaggerfish, ItemID.FrozenCrate, ItemID.FrozenCrateHard];
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped(false))
             {
-                if (Player.ZoneSnow)
+                if (Player.ZoneSnow || Player.ZoneBeach)
                 {
-                    Player.fishingSkill += snowFish;
-                    Player.accFlipper = true;
-                }
-                else if (Player.ZoneBeach)
-                {
-                    Player.fishingSkill += oceanFish;
+                    Player.fishingSkill += snowAndOceanPower;
                     Player.accFlipper = true;
                 }
                 else
@@ -50,7 +46,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void ModifyCaughtFish(Item fish)
         {
-            if (PetIsEquipped(false) && (fish.type == ItemID.FrostMinnow || fish.type == ItemID.AtlanticCod || fish.type == ItemID.FrostDaggerfish || fish.type == ItemID.FrozenCrate || fish.type == ItemID.FrozenCrateHard))
+            if (PetIsEquipped(false) && IceFishingDrops.Contains(fish.type))
             {
                 for (int i = 0; i < GlobalPet.Randomizer(snowFishChance * fish.stack); i++)
                 {
@@ -74,9 +70,9 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.Fish")
                 .Replace("<fp>", babyPenguin.regularFish.ToString())
-                .Replace("<oceanFp>", babyPenguin.oceanFish.ToString())
-                .Replace("<snowFp>", babyPenguin.snowFish.ToString())
+                .Replace("<moreFp>", babyPenguin.snowAndOceanPower.ToString())
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())
+                .Replace("<items>", PetTextsColors.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
                 .Replace("<chilledMult>", babyPenguin.chillingMultiplier.ToString());
     }
 }

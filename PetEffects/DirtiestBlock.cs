@@ -1,6 +1,7 @@
 ﻿using PetsOverhaul.Items;
 using PetsOverhaul.Systems;
 using System;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -14,6 +15,7 @@ namespace PetsOverhaul.PetEffects
         public int dirtCoin = 850;
         public int soilCoin = 600;
         public int everythingCoin = 300;
+        public static List<int> CommonBlock = [ItemID.MudBlock, ItemID.SnowBlock, ItemID.AshBlock, ItemID.ClayBlock, ItemID.Marble, ItemID.Granite, ItemID.EbonstoneBlock, ItemID.CrimstoneBlock, ItemID.PearlstoneBlock, ItemID.SandBlock, ItemID.EbonsandBlock, ItemID.CrimsandBlock, ItemID.PearlsandBlock, ItemID.CorruptSandstone, ItemID.Sandstone, ItemID.CrimsonSandstone, ItemID.HallowSandstone, ItemID.HardenedSand, ItemID.CorruptHardenedSand, ItemID.CrimsonHardenedSand, ItemID.HallowHardenedSand, ItemID.IceBlock, ItemID.PurpleIceBlock, ItemID.RedIceBlock, ItemID.PinkIceBlock, ItemID.StoneBlock];
         public override void Load()
         {
             PetsOverhaul.OnPickupActions += PreOnPickup;
@@ -28,7 +30,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     PickerPet.GiveCoins(GlobalPet.Randomizer(item.stack * dirt.dirtCoin));
                 }
-                else if (itemChck.commonBlock == true)
+                else if (CommonBlock.Contains(item.type))
                 {
                     PickerPet.GiveCoins(GlobalPet.Randomizer(item.stack * dirt.soilCoin));
                 }
@@ -56,6 +58,7 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DirtiestBlock")
                         .Replace("<any>", Math.Round(dirtiestBlock.everythingCoin / 100f, 2).ToString())
                         .Replace("<soil>", Math.Round(dirtiestBlock.soilCoin / 100f, 2).ToString())
+                        .Replace("<soilItems>", PetTextsColors.ItemsToTooltipImages(DirtiestBlock.CommonBlock, 12))
                         .Replace("<dirt>", Math.Round(dirtiestBlock.dirtCoin / 100f, 2).ToString());
     }
 }
