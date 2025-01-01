@@ -16,7 +16,7 @@ Additions
 
 Pets Overhaul currently supports Russian (By: Teokai), Brazilian Portuguese (By: Erstarisk, Previous: Starite_Fusion) and Simplified Chinese (By: ROH, Previous: Celestepic) besides English for localization options.
 
-To give direct feedback, report bugs or to give suggestions join our [url=https://discord.gg/KubSpqvDGE]Discord server[/url]!
+To give direct feedback, report bugs or to give suggestions join our [url=https://discord.gg/KubSpqvDGE]Discord server![/url]
 
 Check out our [url=https://github.com/BugraPearls/Pets-Overhaul]GitHub Page[/url] to check the code, contribute & submit issues!
 
