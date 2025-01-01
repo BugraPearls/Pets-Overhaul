@@ -39,7 +39,7 @@ Mods: {
 		JojaCola: A nature-related NPC may be able to Purify this
 		Notice:
 			'''
-			[c/90C2AA:Pets Overhaul 3.3, latest changes: Pet Reworks, fixed Damage Scaling with Pet damage, More Item Compatibility, New command]
+			[c/90C2AA:Pets Overhaul 3.3, latest changes: Pet Reworks, fixed Damage Scaling with Pet damage, Moonling & Item Compatibility, New command]
 			[c/90C2AA:Full-Reworked Prince, Princess and Dual Slime Pets and Shadow Mimic Pet, Semi-Reworked Alien Skater and Fennec Fox Pets]
 			[c/90C2AA:Added /pet item & items {harvesting|mining|fishing} commands, showing you the items that are benefited by the given class of Pets.]
 			[c/90C2AA:Full Chinese, Russian and Portuguese translation for both Main mod and Calamity Addon, By: ROH, Teokai and Erstarisk.]
@@ -1069,8 +1069,6 @@ Mods: {
 				'''
 				<class>
 				- Adapts to whichever class has more damage. Current Class: <currentClass>
-				 * If there are equal values, perk selection priority is as follows:
-				 * Melee -> Ranged -> Magic -> Summoner.
 				- Press <keybind> to swap the current tooltip.
 				<tooltip>
 				'''

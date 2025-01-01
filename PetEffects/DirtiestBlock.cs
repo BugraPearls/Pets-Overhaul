@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public int dirtCoin = 850;
         public int soilCoin = 600;
         public int everythingCoin = 300;
-        public static List<int> CommonBlock = [ItemID.MudBlock, ItemID.SnowBlock, ItemID.AshBlock, ItemID.ClayBlock, ItemID.Marble, ItemID.Granite, ItemID.EbonstoneBlock, ItemID.CrimstoneBlock, ItemID.PearlstoneBlock, ItemID.SandBlock, ItemID.EbonsandBlock, ItemID.CrimsandBlock, ItemID.PearlsandBlock, ItemID.CorruptSandstone, ItemID.Sandstone, ItemID.CrimsonSandstone, ItemID.HallowSandstone, ItemID.HardenedSand, ItemID.CorruptHardenedSand, ItemID.CrimsonHardenedSand, ItemID.HallowHardenedSand, ItemID.IceBlock, ItemID.PurpleIceBlock, ItemID.RedIceBlock, ItemID.PinkIceBlock, ItemID.StoneBlock];
+        public static List<int> CommonBlock = [ItemID.SiltBlock, ItemID.SlushBlock, ItemID.DesertFossil, ItemID.MudBlock, ItemID.AshBlock, ItemID.ClayBlock, ItemID.Marble, ItemID.Granite, ItemID.EbonstoneBlock, ItemID.CrimstoneBlock, ItemID.PearlstoneBlock, ItemID.SandBlock, ItemID.EbonsandBlock, ItemID.CrimsandBlock, ItemID.PearlsandBlock, ItemID.Sandstone, ItemID.CorruptSandstone, ItemID.CrimsonSandstone, ItemID.HallowSandstone, ItemID.HardenedSand, ItemID.CorruptHardenedSand, ItemID.CrimsonHardenedSand, ItemID.HallowHardenedSand, ItemID.SnowBlock, ItemID.IceBlock, ItemID.PurpleIceBlock, ItemID.RedIceBlock, ItemID.PinkIceBlock, ItemID.StoneBlock];
         public override void Load()
         {
             PetsOverhaul.OnPickupActions += PreOnPickup;

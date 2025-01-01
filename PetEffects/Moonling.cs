@@ -1,5 +1,6 @@
 ﻿using PetsOverhaul.Systems;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.GameInput;
@@ -12,6 +13,40 @@ namespace PetsOverhaul.PetEffects
 {
     public sealed class Moonling : PetEffect
     {
+        public List<string> Tooltips
+        {
+            get
+            {
+                List<string> tooltips = [Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MeleeTooltip")
+                                            .Replace("<dr>", Math.Round(meleeDr * 100, 2).ToString())
+                                            .Replace("<meleeSpd>", Math.Round(meleeSpd * 100, 2).ToString())
+                                            .Replace("<meleeDmg>", Math.Round(meleeDmg * 100, 2).ToString())
+                                            .Replace("<def>", defense.ToString()),
+                    Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.RangedTooltip")
+                                            .Replace("<armorPen>", rangedPen.ToString())
+                                            .Replace("<rangedCrit>", rangedCr.ToString())
+                                            .Replace("<rangedCritDmg>", Math.Round(rangedCrDmg * 100, 2).ToString())
+                                            .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString()),
+                    Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MagicTooltip")
+                                            .Replace("<mana>", magicMana.ToString())
+                                            .Replace("<manaCost>", Math.Round(magicManaCost * 100, 2).ToString())
+                                            .Replace("<magicCrit>", magicCrit.ToString())
+                                            .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString()),
+                    Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SummonerTooltip")
+                                            .Replace("<sumRange>", Math.Round(sumWhipRng * 100, 2).ToString())
+                                            .Replace("<sumSpd>", Math.Round(sumWhipSpd * 100, 2).ToString())
+                                            .Replace("<sumMax>", sumMinion.ToString())
+                                            .Replace("<sumMaxSentry>", sumSentry.ToString())];
+                if (ExternalTooltips.Count != 0)
+                tooltips.AddRange(ExternalTooltips);
+                return tooltips;
+            }
+        }
+        /// <summary>
+        /// Remember to .Add to this List the tooltip of your class somewhere after ResetEffects() and before Pet Effects are ran.
+        /// </summary>
+        public List<string> ExternalTooltips = new();
+        public string CurrentClass = PetTextsColors.PetClassLocalized(PetClasses.None);
         public override int PetItemID => ItemID.MoonLordPetItem;
         public int defense = 10;
         public float meleeDr = 0.1f;
@@ -32,49 +67,74 @@ namespace PetsOverhaul.PetEffects
         public float sumWhipSpd = 0.3f;
         public int sumMinion = 2;
         public int sumSentry = 2;
-        public StatModifier HighestDamage
+        public List<StatModifier> Stats
         {
             get
             {
-                StatModifier[] stats = { Player.GetDamage<MeleeDamageClass>(), Player.GetDamage<RangedDamageClass>(), Player.GetDamage<MagicDamageClass>(), Player.GetDamage<SummonDamageClass>() };
-                return stats.MaxBy(x => x.Additive);
+                List<StatModifier> stats = [Player.GetTotalDamage<MeleeDamageClass>(), Player.GetTotalDamage<RangedDamageClass>(), Player.GetTotalDamage<MagicDamageClass>(), Player.GetTotalDamage<SummonDamageClass>()];
+                if (ExternalStats.Count != 0)
+                stats.AddRange(ExternalStats);
+                return stats;
             }
-            set { }
         }
-        public int currentTooltip = 0; //0=Melee 1=Ranged 2=Magic 3=Summoner
+        /// <summary>
+        /// Remember to .Add to this List the tooltip of your class somewhere after ResetEffects() and before Pet Effects are ran.
+        /// </summary>
+        public List<StatModifier> ExternalStats = new();
+        public StatModifier HighestDamage => Stats.MaxBy(x => x.Additive);
+
+        public int currentTooltip = 0; //0=Melee 1=Ranged 2=Magic 3=Summoner more is also added as if their tooltip is in Tooltips property
 
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override void ResetEffects()
+        {
+            ExternalStats.Clear();
+            ExternalTooltips.Clear();
+        }
         public override void PostUpdateMiscEffects()
         {
-            if (PetIsEquipped())
+            if (HighestDamage == Player.GetTotalDamage<MeleeDamageClass>())
             {
-                if (HighestDamage == Player.GetDamage<MeleeDamageClass>())
+                if (PetIsEquipped())
                 {
                     Player.endurance += meleeDr;
                     Player.GetAttackSpeed<MeleeDamageClass>() += meleeSpd;
                     Player.GetDamage<MeleeDamageClass>() += meleeDmg;
                     Player.statDefense += defense;
                 }
-                else if (HighestDamage == Player.GetDamage<RangedDamageClass>())
+                CurrentClass = PetTextsColors.PetClassLocalized(PetClasses.Melee);
+            }
+            else if (HighestDamage == Player.GetTotalDamage<RangedDamageClass>())
+            {
+                if (PetIsEquipped())
                 {
                     Player.GetArmorPenetration<RangedDamageClass>() += rangedPen;
                     Player.GetDamage<RangedDamageClass>() += rangedDmg;
                     Player.GetCritChance<RangedDamageClass>() += rangedCr;
                 }
-                else if (HighestDamage == Player.GetDamage<MagicDamageClass>())
+                CurrentClass = PetTextsColors.PetClassLocalized(PetClasses.Ranged);
+            }
+            else if (HighestDamage == Player.GetTotalDamage<MagicDamageClass>())
+            {
+                if (PetIsEquipped())
                 {
                     Player.statManaMax2 += magicMana;
                     Player.GetDamage<MagicDamageClass>() += magicDmg;
                     Player.GetCritChance<MagicDamageClass>() += magicCrit;
                     Player.manaCost -= magicManaCost;
                 }
-                else if (HighestDamage == Player.GetDamage<SummonDamageClass>())
+                CurrentClass = PetTextsColors.PetClassLocalized(PetClasses.Magic);
+            }
+            else if (HighestDamage == Player.GetTotalDamage<SummonDamageClass>())
+            {
+                if (PetIsEquipped())
                 {
                     Player.whipRangeMultiplier += sumWhipRng;
                     Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += sumWhipSpd;
                     Player.maxMinions += sumMinion;
                     Player.maxTurrets += sumSentry;
                 }
+                CurrentClass = PetTextsColors.PetClassLocalized(PetClasses.Summoner);
             }
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -82,13 +142,13 @@ namespace PetsOverhaul.PetEffects
             if (PetKeybinds.PetTooltipSwap.JustPressed)
             {
                 currentTooltip++;
-                if (currentTooltip > 3)
+                if (currentTooltip >= Tooltips.Count)
                     currentTooltip = 0;
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (PetIsEquipped() && modifiers.DamageType == DamageClass.Ranged && HighestDamage == Player.GetDamage<RangedDamageClass>())
+            if (PetIsEquipped() && modifiers.DamageType == DamageClass.Ranged && HighestDamage == Player.GetTotalDamage<RangedDamageClass>())
             {
                 modifiers.CritDamage += rangedCrDmg;
             }
@@ -118,46 +178,9 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Moonling>();
             }
         }
-        public override string PetsTooltip
-        {
-            get
-            {
-                string tooltip = moonling.currentTooltip switch //Current tooltip is separate from current class, tooltips can be switched with Pet Tooltip Swap keybind.
-                {
-                    0 => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MeleeTooltip")
-                                            .Replace("<dr>", Math.Round(moonling.meleeDr * 100, 2).ToString())
-                                            .Replace("<meleeSpd>", Math.Round(moonling.meleeSpd * 100, 2).ToString())
-                                            .Replace("<meleeDmg>", Math.Round(moonling.meleeDmg * 100, 2).ToString())
-                                            .Replace("<def>", moonling.defense.ToString()),
-                    1 => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.RangedTooltip"
-                                            ).Replace("<armorPen>", moonling.rangedPen.ToString())
-                                            .Replace("<rangedCrit>", moonling.rangedCr.ToString())
-                                            .Replace("<rangedCritDmg>", Math.Round(moonling.rangedCrDmg * 100, 2).ToString())
-                                            .Replace("<rangedDmg>", Math.Round(moonling.rangedDmg * 100, 2).ToString()),
-                    2 => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MagicTooltip")
-                                            .Replace("<mana>", moonling.magicMana.ToString())
-                                            .Replace("<manaCost>", Math.Round(moonling.magicManaCost * 100, 2).ToString())
-                                            .Replace("<magicCrit>", moonling.magicCrit.ToString())
-                                            .Replace("<magicDmg>", Math.Round(moonling.magicDmg * 100, 2).ToString()),
-                    3 => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SummonerTooltip")
-                                            .Replace("<sumRange>", Math.Round(moonling.sumWhipRng * 100, 2).ToString())
-                                            .Replace("<sumSpd>", Math.Round(moonling.sumWhipSpd * 100, 2).ToString())
-                                            .Replace("<sumMax>", moonling.sumMinion.ToString())
-                                            .Replace("<sumMaxSentry>", moonling.sumSentry.ToString()),
-                    _ => "",
-                };
-
-                string currentClass = (moonling.HighestDamage == moonling.Player.GetDamage<MeleeDamageClass>()) ? PetTextsColors.ClassText(PetClasses.Melee) :
-                (moonling.HighestDamage == moonling.Player.GetDamage<RangedDamageClass>()) ? PetTextsColors.ClassText(PetClasses.Ranged) :
-                (moonling.HighestDamage == moonling.Player.GetDamage<MagicDamageClass>()) ? PetTextsColors.ClassText(PetClasses.Magic) :
-                (moonling.HighestDamage == moonling.Player.GetDamage<SummonDamageClass>()) ? PetTextsColors.ClassText(PetClasses.Summoner) :
-                PetTextsColors.ClassText(PetClasses.None);
-
-                return Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MoonLordPetItem")
-                    .Replace("<currentClass>", currentClass)
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MoonLordPetItem")
+                    .Replace("<currentClass>", moonling.CurrentClass)
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipSwap))
-                    .Replace("<tooltip>", tooltip);
-            }
-        }
+                    .Replace("<tooltip>", moonling.Tooltips[moonling.currentTooltip]);
     }
 }
