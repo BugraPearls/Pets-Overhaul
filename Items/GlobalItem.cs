@@ -57,14 +57,11 @@ namespace PetsOverhaul.Items
         #endregion
 
         #region Item checks to determine which Pet benefits
-        public bool itemFromNpc = false;
         public bool herbBoost = false;
         public bool oreBoost = false;
         public bool commonBlock = false;
         public bool blockNotByPlayer = false;
         public bool pickedUpBefore = false;
-        public bool itemFromBag = false;
-        public bool itemFromBoss = false;
         public bool harvestingDrop = false;
         public bool miningDrop = false;
         public bool fishingDrop = false;
@@ -126,38 +123,23 @@ namespace PetsOverhaul.Items
                     herbBoost = false;
                 }
             }
-            else if (source is EntitySource_Loot lootSource && lootSource.Entity is NPC npc)
-            {
-                if (npc.boss == true || NpcPet.NonBossTrueBosses.Contains(npc.type))
-                {
-                    itemFromBoss = true;
-                }
-                else
-                {
-                    itemFromNpc = true;
-                }
-            }
-            else if (source is EntitySource_ItemOpen)
-            {
-                itemFromBag = true;
-            }
         }
         #endregion
 
         #region Netcode for checks
         public override void NetSend(Item item, BinaryWriter writer)
         {
-            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, itemFromNpc, itemFromBoss, itemFromBag, herbBoost, oreBoost, commonBlock);
-            BitsByte sources2 = new(globalDrop, harvestingDrop, miningDrop, fishingDrop, fortuneHarvestingDrop, fortuneMiningDrop, fortuneFishingDrop);
+            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost, commonBlock, globalDrop, harvestingDrop, miningDrop);
+            BitsByte sources2 = new(fishingDrop, fortuneHarvestingDrop, fortuneMiningDrop, fortuneFishingDrop);
             writer.Write(sources1);
             writer.Write(sources2);
         }
         public override void NetReceive(Item item, BinaryReader reader)
         {
             BitsByte sources1 = reader.ReadByte();
-            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref itemFromNpc, ref itemFromBoss, ref itemFromBag, ref herbBoost, ref oreBoost, ref commonBlock);
+            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost, ref commonBlock, ref globalDrop, ref harvestingDrop, ref miningDrop);
             BitsByte sources2 = reader.ReadByte();
-            sources2.Retrieve(ref globalDrop, ref harvestingDrop, ref miningDrop, ref fishingDrop, ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
+            sources2.Retrieve(ref fishingDrop, ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
         }
         #endregion
     }
