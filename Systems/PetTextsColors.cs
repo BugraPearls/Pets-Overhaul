@@ -130,16 +130,24 @@ namespace PetsOverhaul.Systems
             return Language.GetTextValue("Mods.PetsOverhaul.Classes." + petClass.ToString());
         }
         /// <summary>
-        /// Converts all integers in given list to be in [i:ItemID] format, which is shown in game as the item itself within the string.
+        /// Converts all integers in given list to be in [i:ItemID] format, which is shown in game as the item itself within the string. Goes down below when countToGoBelow is reached. countStart is where it upstarts the count to go one line below, since there can be a text beforehand.
         /// </summary>
-        /// <param name="items"></param>
+        /// <param name="items">List of items that contains item ID'S</param>
+        /// <param name="countToGoBelow"></param>
         /// <returns></returns>
-        public static string ItemsToTooltipImages(List<int> items)
+        public static string ItemsToTooltipImages(List<int> items, int countToGoBelow = 15, int countStart = 5)
         {
             string result = "";
+            int count = countStart;
             foreach (int item in items)
             {
                 result += "[i:" + item.ToString() + "] ";
+                count++;
+                if (count >= countToGoBelow) 
+                {
+                    count = 0;
+                    result += "\n";
+                }
             }
             return result;
         }

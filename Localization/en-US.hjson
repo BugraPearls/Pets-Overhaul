@@ -404,11 +404,11 @@ Mods: {
 			Fish:
 				'''
 				<class>
-				- Grants <fp> fishing power. This increases depending on the current biome:
-				 * While in the Ocean biome, increases to <oceanFp>.
-				 * While in the Snow biome, increases to <snowFp>.
-				- Increases all vanilla Ice biome-specific fishing catches by <catchChance>%.
-				- Grants Flipper [i:187] effect while in snow and ocean biome.
+				- While in a Snow or Ocean biome, gain 
+				  <moreFp> fishing power and grants Flipper [i:187] effect.
+				 * While you aren't, gain <fp> fishing power instead.
+				- Increases Ice biome-specific fishing catches by <catchChance>%.
+				 * Affected items: <items>
 				- Multiplies Chilled debuff's duration by <chilledMult>x.
 				'''
 			BambooLeaf:
@@ -555,8 +555,10 @@ Mods: {
 			DirtiestBlock:
 				'''
 				<class>
-				- Mining anything [i:12] gives <any> copper coins.
-				- Mining common blocks [i:3] gives <soil> copper coins.
+				- Mining anything gives <any> copper coins.
+				 * This includes everything except items below.
+				- Mining common blocks gives <soil> copper coins.
+				 * Affected items: <soilItems>
 				- Mining dirt [i:2] gives <dirt> copper coins.
 				'''
 			BallOfFuseWire:
@@ -953,7 +955,7 @@ Mods: {
 				   <defLifesteal>x of your defense multiplied by your damage reduction.
 				- Your target being outside of a <longRange> tile range adds <hpDmg>% health damage.
 				 * Maximum health damage is reduced to <bossHpDmg>% for bosses. 
-				 * This has a <hpDmgCooldown> second cooldown.
+				- % health damage and lifesteal has a <hpDmgCooldown> second cooldown.
 				- Both benefits has NO EFFECT if enemy is inside/between the two radiuses.
 				'''
 			EverscreamPetItem:
