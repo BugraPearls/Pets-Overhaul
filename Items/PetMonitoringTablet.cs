@@ -29,7 +29,7 @@ namespace PetsOverhaul.Items
                     switch (line.Name)
                     {
                         case "Tooltip1":
-                            line.Text = line.Text.Replace("<haste>", Math.Round(pet.abilityHaste * 100).ToString());
+                            line.Text = line.Text.Replace("<haste>", Math.Round(pet.abilityHaste * 100, 2).ToString());
                             break;
                         case "Tooltip2":
                             double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
