@@ -23,10 +23,6 @@ namespace PetsOverhaul.Items
         public const int MinimumExpForRarePlant = 1000;
         #region Bool Sets
         /// <summary>
-        /// Includes tiles that are considered 'soil' tiles, except Dirt. Used by Dirtiest Block.
-        /// </summary>
-        public static bool[] commonTiles = TileID.Sets.Factory.CreateBoolSet(false, TileID.Mud, TileID.SnowBlock, TileID.Ash, TileID.ClayBlock, TileID.Marble, TileID.Granite, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone, TileID.Sand, TileID.Ebonsand, TileID.Crimsand, TileID.Pearlsand, TileID.CorruptSandstone, TileID.Sandstone, TileID.CrimsonSandstone, TileID.HallowSandstone, TileID.HardenedSand, TileID.CorruptHardenedSand, TileID.CrimsonHardenedSand, TileID.HallowHardenedSand, TileID.IceBlock, TileID.CorruptIce, TileID.FleshIce, TileID.HallowedIce, TileID.Stone, TileID.Ebonstone, TileID.Crimstone, TileID.Pearlstone);
-        /// <summary>
         /// Includes Gem tiles.
         /// </summary>
         public static bool[] gemTile = TileID.Sets.Factory.CreateBoolSet(false, TileID.Amethyst, TileID.Topaz, TileID.Sapphire, TileID.Emerald, TileID.Ruby, TileID.AmberStoneBlock, TileID.Diamond, TileID.ExposedGems, TileID.Crystals);
@@ -59,7 +55,6 @@ namespace PetsOverhaul.Items
         #region Item checks to determine which Pet benefits
         public bool herbBoost = false;
         public bool oreBoost = false;
-        public bool commonBlock = false;
         public bool blockNotByPlayer = false;
         public bool pickedUpBefore = false;
         public bool harvestingDrop = false;
@@ -110,7 +105,6 @@ namespace PetsOverhaul.Items
                 if (PlayerPlacedBlockList.placedBlocksByPlayer.Contains(new Point16(brokenTile.TileCoords.X, brokenTile.TileCoords.Y)) == false)
                 {
                     oreBoost = TileID.Sets.Ore[tileType] || gemTile[tileType] || extractableAndOthers[tileType] || Junimo.MiningXpPerBlock.Exists(x => x.oreList.Contains(item.type));
-                    commonBlock = TileID.Sets.Conversion.Moss[tileType] || commonTiles[tileType];
                     blockNotByPlayer = true;
                 }
 
@@ -129,17 +123,17 @@ namespace PetsOverhaul.Items
         #region Netcode for checks
         public override void NetSend(Item item, BinaryWriter writer)
         {
-            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost, commonBlock, globalDrop, harvestingDrop, miningDrop);
-            BitsByte sources2 = new(fishingDrop, fortuneHarvestingDrop, fortuneMiningDrop, fortuneFishingDrop);
+            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost,  globalDrop, harvestingDrop, miningDrop, fishingDrop);
+            BitsByte sources2 = new(fortuneHarvestingDrop, fortuneMiningDrop, fortuneFishingDrop);
             writer.Write(sources1);
             writer.Write(sources2);
         }
         public override void NetReceive(Item item, BinaryReader reader)
         {
             BitsByte sources1 = reader.ReadByte();
-            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost, ref commonBlock, ref globalDrop, ref harvestingDrop, ref miningDrop);
+            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost,  ref globalDrop, ref harvestingDrop, ref miningDrop, ref fishingDrop);
             BitsByte sources2 = reader.ReadByte();
-            sources2.Retrieve(ref fishingDrop, ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
+            sources2.Retrieve(ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
         }
         #endregion
     }
