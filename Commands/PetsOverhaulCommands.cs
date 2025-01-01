@@ -313,13 +313,13 @@ namespace PetsOverhaul.Commands
                             }
                             break;
                         default:
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.OneArgument"), Color.Red);
+                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
                             caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);
                             break;
                     }
                     break;
                 default:
-                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.OneArgument"), Color.Red);
+                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
                     caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);
                     break;
             }

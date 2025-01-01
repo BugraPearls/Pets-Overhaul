@@ -120,7 +120,6 @@ Mods: {
 			// NoPets: No pets available for this class. (You may be missing an addon for this class?)
 			// ClassArgumentInvalid: The given class is invalid, try any of the following: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: Аргумент недействителен, вот список команд Pets Overhaul: (команды нечувствительны к регистру)
-			OneArgument: Ожидался только один аргумент, убедитесь, что вы не используете пробелы в аргументе. Список команд Pets Overhaul: (команды нечувствительны к регистру)
 			UseInMultiplayer: Используйте эту команду в многопользовательской игре! Если вы хотите увидеть свои навыки Junimo, используйте /pet junimo, /pet junimoscoreboard или /pet junimoleaderboard.
 			SinglePlayerJunimo: "[c/<color>:Ваш <class> уровень Junimo: <level>, Ваш <class> опыт Junimo: <exp>]"
 			LeaderboardList: "[c/<color>:Список игроков с наибольшим опытом Junimo <class>:]"

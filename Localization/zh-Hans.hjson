@@ -122,7 +122,6 @@ Mods: {
 			NoPets: 没有此职业的宠物。（你没装宠物大修-灾厄附属？）
 			ClassArgumentInvalid: 无效职业参数，以下为有效参数：{all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: 参数无效，以下是宠物大修命令列表：（不区分大小写）
-			OneArgument: 只需一个参数，请确保你在参数之间没有多余的空格。以下是宠物大修命令列表：（不区分大小写）
 			UseInMultiplayer: 请在多人游戏中使用此命令！如果你想查看你的祝尼魔经验值，用/pet junimo，/pet junimoscoreboard，或/pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:你的祝尼魔 <class> 等级： <level> 你的祝尼魔 <class> 经验： <exp>]"
 			LeaderboardList: "[c/<color>:祝尼魔 <class> 最高经验玩家列表：]"
