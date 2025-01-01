@@ -592,11 +592,12 @@ Mods: {
 			ExoticEasternChewToy:
 				'''
 				<class>
-				- While holding a Melee weapon grants the following:
+				- Grants you a decent bonus jump.
+				- Increases movement speed by <moveSpd>%.
+				- Modifies your Melee properties by following:
+				 * Multiplies melee size by <sizeNerf>x.
+				 * Increases melee damage by <dmg>%.
 				 * Increases melee speed by <meleeSpd>%.
-				 * Increases movement speed by <moveSpd>%.
-				- Multiplies melee size by <sizeNerf>x.
-				- Increases melee damage by <dmg>%
 				'''
 			BedazzledNectar:
 				'''
@@ -918,7 +919,7 @@ Mods: {
 			QueenSlimePetItem:
 				'''
 				<class>
-				- Gain a bonus Jump while riding a Mount, except for infinite flight Mounts.
+				- Gain a very strong bonus Jump while on a Mount, except for infinite flight Mounts.
 				- Enhances your Mounts damaging enemies in multiple ways.
 				 * Increases Mount damage by <dmg>% and they now count as Pet damage.
 				 * All targets hit are slowed by <slowAmount>% for <slowDuration> seconds.
