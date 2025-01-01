@@ -39,9 +39,9 @@ Mods: {
 		JojaCola: A nature-related NPC may be able to Purify this
 		Notice:
 			'''
-			[c/90C2AA:Pets Overhaul 3.2, latest changes: New Pet Tamer Town NPC, settling in when you've equipped a Pet at least once.]
-			[c/90C2AA:Added Light Pet Combination UI, Fixed De-shimmering & re-craft spamming Light Pets. Light Pets rolls affected by Luck now.]
-			[c/90C2AA:Added /pet pets & class {ability & cooldown} argument, showing all Pets that uses Pet Ability Timer.]
+			[c/90C2AA:Pets Overhaul 3.3, latest changes: Pet Reworks, fixed Damage Scaling with Pet damage, More Item Compatibility, New command]
+			[c/90C2AA:Full-Reworked Prince, Princess and Dual Slime Pets and Shadow Mimic Pet, Semi-Reworked Alien Skater and Fennec Fox Pets]
+			[c/90C2AA:Added /pet item & items {harvesting|mining|fishing} commands, showing you the items that are benefited by the given class of Pets.]
 			[c/90C2AA:Full Chinese, Russian and Portuguese translation for both Main mod and Calamity Addon, By: ROH, Teokai and Erstarisk.]
 			[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
