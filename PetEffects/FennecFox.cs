@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
 {
     public class FennecFoxJump : ExtraJump
     {
-        public override Position GetDefaultPosition() => MountJumpPosition;
+        public override Position GetDefaultPosition() => BeforeBottleJumps;
         public override float GetDurationMultiplier(Player player) => 1.25f;
         public override void OnStarted(Player player, ref bool playSound)
         {
