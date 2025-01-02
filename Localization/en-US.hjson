@@ -757,7 +757,7 @@ Mods: {
 				<class>
 				- Improves loot you gain from NPC's and all types of loot bags.
 				- Loot with drop chance below <threshold>% has their drop chance increased by <chanceIncrease>%.
-				- If above, with <chanceToDouble>% chance, the loot's stack is doubled.
+				- If drop chance is above <threshold>%, loot's stack is doubled with <chanceToDouble>% chance.
 				 * Set items are unaffected. (Ex. Loot is a guarantee drop of one of 5 items)
 				 * Items with their max stack being 1 is unnaffected.
 				'''
@@ -1384,11 +1384,11 @@ Mods: {
 					Global Fortune: <global>
 					[c/899499:All Mining, Harvesting and Fishing drops are increased by <globalTooltip>%.]
 					[c/899499:Also increases all non-classified Pet item Drops by <globalTooltipIncr>%.]
-					Mining Fortune: <mining> (Ores, minerals, crystals etc.)
+					Mining Fortune: <mining> (Ores etc., check all with /pet items mining)
 					[c/899499:All Mining drops are increased by <miningTooltip>%. If item is from a Pet, increased to <miningTooltipIncr>%.]
-					Harvesting Fortune: <harvesting> (Trees, plants, natural renewable resources etc.)
+					Harvesting Fortune: <harvesting> (Trees, plants, etc., check all with /pet items harvesting)
 					[c/899499:All Harvesting drops are increased by <harvestingTooltip>%. If item is from a Pet, increased to <harvestingTooltipIncr>%.]
-					Fishing Fortune: <fishing> (Fishing catches)
+					Fishing Fortune: <fishing> (Fishing catches, check all with /pet items fishing)
 					[c/899499:All Fishing drops are increased by <fishingTooltip>%. If item is from a Pet, increased to <fishingTooltipIncr>%.]
 					'''
 			}
