@@ -1052,7 +1052,7 @@ Mods: {
 				- Instead of taking fatal damage, go in a frozen state for <frozenTombTime> seconds.
 				 * During the freeze, slow all enemies in a <range>-block radius by <slowAmount>%.
 				 * While frozen, be immune to all types of damage.
-				 * Recover <healthRecovery> health and gain <shield> shield for <shieldTime> seconds.
+				 * Recover <healthRecovery> health and gain <shield> shield for <shieldDuration> seconds.
 				 * After the freeze ends, deal <baseDmg> base damage to all enemies in the slow range.
 				 * Gain immunity to all types of damage <postTombImmunity> more seconds on top of freeze's immunity.
 				 * This effect has a <tombCooldown>-minute cooldown.

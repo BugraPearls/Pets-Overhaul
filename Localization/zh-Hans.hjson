@@ -257,10 +257,10 @@ Mods: {
 				'''
 			CrimsonHeart:
 				'''
-				最大生命值增加：<hp>，移速增加：<ms>
+				最大生命值增加：<hp>，宠物治疗量增加：<heal>
 				钓鱼时运提高：<fortune>，钓鱼时运会增加你的钓鱼收获
 				最大生命值加成： <hpLine>
-				移速加成： <msLine>
+				宠物治疗量加成：<healLine>
 				钓鱼时运加成： <fortuneLine>
 				'''
 			FairyBell:
@@ -298,10 +298,10 @@ Mods: {
 				'''
 			ShadowOrb:
 				'''
-				最大魔力值增加：<mana>，移动速度增加：<ms>
+				最大魔力值增加：<mana>，宠物护盾量增加：<shield>
 				采集时运增加：<fortune>，提高你的采集掉落
 				最大魔力加成： <manaLine>
-				移动速度加成： <msLine>
+				宠物护盾量加成： <shieldLine>
 				采集时运加成： <fortuneLine>
 				'''
 			SuspiciousLookingTentacle:
@@ -365,8 +365,9 @@ Mods: {
 				'''
 				<class>
 				<slowRange>方块范围内的非Boss敌人降低<slowAmount>%移动速度
-				霜月事件掉落的所有武器伤害增加<dmg>%，暴击率增加<crit>%
 				永久获得温暖增益，降低冷系伤害
+				霜月事件掉落的所有武器伤害增加<dmg>%，暴击率增加<crit>%
+				 - 受影响的武器：<weapons>
 				'''
 			Nectar:
 				'''
@@ -391,11 +392,10 @@ Mods: {
 			Fish:
 				'''
 				<class>
-				渔力提高<fp>点
-				 - 在海洋中改为提高<oceanFp>点
-				 - 在雪原中改为提高<snowFp>点
+				在雪原和海洋中提高<moreFp>点渔力并获得脚蹼[i:187]效果
+				 - 否则提高<fp>点渔力
 				钓上的雪原专属渔获有<catchChance>%几率增加
-				在雪原和海洋中获得脚蹼[i:187]效果
+				 - 受影响的物品：<items>
 				冷冻减益的持续时间变为<chilledMult>倍.
 				'''
 			BambooLeaf:
@@ -404,6 +404,7 @@ Mods: {
 				按下宠物技能键（<keybind>）以进入警戒模式：
 				 - 攻击速度增加<alertAs>%，移动速度增加<alertMs>%
 				 - 仇恨值降低<alertAggro>
+				 - 获得狩猎药水效果，高亮标记屏幕中的所有敌怪
 				 - 上述数值会乘以<alertRadius>格内敌人数量倍，最高<alertMax>个敌人
 				 - 警戒模式会持续<alertDuration>秒，并具有<alertCd>秒冷却时间
 				攻击速度提高<atkSpd>%
@@ -520,16 +521,19 @@ Mods: {
 				<class>
 				增加<minionSlot>个召唤栏位
 				南瓜月事件掉落的所有武器伤害提高<dmg>%
-				 - 乌鸦法杖伤害改为提高<ravenDmg>%[i:1802]
+				 - 乌鸦法杖[i:1802]伤害额外提高<ravenDmg>%
+				 - 所有受影响的武器：<weapons>
 				每有一个召唤栏位，鞭子范围增加<whipRange>%，攻速增加<whipSpeed>%
-				 - 对暗黑收割加成翻倍[i:4680]
+				 - 对暗黑收割[i:4680]加成为<darkHarvestMult>倍 
 				 - 仅在手持鞭子时生效
 				'''
 			DirtiestBlock:
 				'''
 				<class>
 				挖掘任何方块[i:12]时获得<any>枚铜币
+				 - 包括下列物品以外的所有物品
 				挖掘环境方块[i:3]时获得<soil>枚铜币
+				 - 受影响的物品：<soilItems>
 				挖掘土块[i:2]时获得<dirt>枚铜币
 				'''
 			BallOfFuseWire:
@@ -545,10 +549,13 @@ Mods: {
 				'''
 				<class>
 				最大魔力值增加<maxMana>%
-				魔法伤害高于100%时，多出部分的加成减少为<dmgPenalty>倍.
+				魔法伤害加成减少<dmgPenalty>%
 				最大魔力高于200时，每多出一点，魔法伤害增加<manaToDmg>%，不会被前者减少
-				装备幽灵兜帽套装时魔法伤害额外减少15%
-				耐魔性减益的魔法伤害惩罚除以4
+				装备幽灵兜帽[i:1503]套装时魔法伤害额外减少15%
+				魔力疾病额外降低25%魔法伤害
+				 - 此惩罚为加性，且不会取代魔力疾病
+				当前基础魔力：<mana>，当前额外魔力：<bonusMana>
+				当前魔法伤害减少：<reducedDmg>%，当前魔法伤害增加：<increasedDmg>%
 				'''
 			EyeSpring:
 				'''
@@ -560,11 +567,12 @@ Mods: {
 			ExoticEasternChewToy:
 				'''
 				<class>
-				持有近战武器时：
+				获得一次额外的二段跳
+				移动速度提高<moveSpd>%
+				近战属性提高：
 				 - 近战攻击速度提高<meleeSpd>%
-				 - 移动速度提高<moveSpd>%
-				近战武器大小变为<sizeNerf>倍
-				近战伤害增加<dmg>%
+				 - 近战武器大小变为<sizeNerf>倍
+				 - 近战伤害增加<dmg>%
 				'''
 			BedazzledNectar:
 				'''
@@ -697,7 +705,7 @@ Mods: {
 				造成的伤害乘以<dmgPenalty>
 				获得<lifesteal>%吸血效果
 				 - 世纪之花掉落的武器吸血效果提高至<planteraSteal>%
-				    - 影响武器：[i:1255] [i:788] [i:1178] [i:1259] [i:1155] [i:3018] [i:1157] [i:1305]
+				   影响武器：<weapons>
 				'''
 			SpiderEgg:
 				'''
@@ -712,11 +720,11 @@ Mods: {
 			OrnateShadowKey:
 				'''
 				<class>
-				敌人有<npcCoin>%几率掉落更多钱币，<npcItem>%几率掉落更多物品
-				Boss有<bossCoin>%几率掉落更多钱币，<bossItem>%几率掉落更多物品
-				 - 宝藏袋不受影响
-				摸彩袋物品有<bagCoin>%几率掉落更多钱币，<bagItem>%几率掉落更多物品
-				 - 摸彩袋物品即礼袋、匣子、牡蛎等
+				提高来自敌人和所有摸彩袋的掉落
+				掉落几率低于<threshold>%的战利品会增加<chanceIncrease>%掉落几率
+				否则，有<chanceToDouble>%几率翻倍战利品数量
+				 - 不影响固定物品（如，从几种物品中抽取一种掉落）
+				 - 最大堆叠数为1的物品不受影响
 				'''
 			SharkBait:
 				'''
@@ -823,13 +831,12 @@ Mods: {
 			KingSlimePetItem:
 				'''
 				<class>
-				更改史莱姆减益与潮湿减益的效果
-				史莱姆减益[i:2610]
-				 - 对敌怪：如果同时受到燃烧类减益，减益伤害提高最大生命值的<burnHp>%（上限<burnCap>）并受到<extraKb>倍击退
-				 - 对玩家：提高<jumpSpd>%跳跃速度，<kbBoost>倍击退加成和击退抗性
-				潮湿减益[i:2272]
-				 - 对敌怪：受到的伤害乘以<enemyDmgRecieve>倍，造成的伤害乘以<enemyDmgDeal>倍
-				 - 对玩家：增加<dmg>%伤害，<def>%防御，<moveSpd>%移动速度，燃烧减益流逝速度翻倍
+				按下宠物技能键（<keybind>）召唤一个史莱姆仆从
+				 - 史莱姆仆从运动方式和蓝史莱姆相同，但更具攻击性
+				   攻击50格内最近的敌人，如果没有，跟随主人
+				 - 具有比蓝史莱姆高50%的击退抗性，玩家防御<defMult>%的防御，
+				   玩家生命值<hpMult>%的额外生命值，造成额外<dmg>伤害，可以暴击且受玩家通用职业加成
+				 - 死亡后，对半径<radius>格内的所有敌人造成<slowAmount>%减速<slowDuration>秒和史莱姆减益<slimyDuration>秒
 				'''
 			QueenBeePetItem:
 				'''
@@ -868,11 +875,11 @@ Mods: {
 			QueenSlimePetItem:
 				'''
 				<class>
-				增强了闪耀史莱姆气球[i:4986]和无尽版本[i:<endless>]
-				 - 使敌人减速<slow>%
-				 - 使玩家提高<haste>%宠物技能急速，减少宠物技能冷却时间
-				每次攻击命中增加1点计数（急速有几率额外增加计数）
-				达到6点计数后下一击造成<dmgBonus>倍伤害并获得<shield>点护盾<shieldTime>秒
+				骑乘坐骑时获得一个强力跳跃，无限飞行宠物除外
+				坐骑会通过各种方式提高对敌人的伤害
+				 - 增加<dmg>%坐骑伤害，坐骑伤害现在视为宠物伤害
+				 - 所有由坐骑造成的伤害还会造成<slowDuration>秒的<slowAmount>%减速
+				 - 同时获得<shieldDuration>秒的<shieldAmount>点护盾，此效果有<cooldown>秒冷却时间
 				'''
 			SkeletronPrimePetItem:
 				'''
@@ -900,7 +907,8 @@ Mods: {
 				攻击<longRange>格范围外的敌人时：
 				 - 伤害增加敌人最大生命值<hpDmg>%点
 				 - 对Boss效果为<bossHpDmg>%
-				 - 此效果有<hpDmgCooldown>秒冷却时间
+				百分比伤害和吸血效果有<hpDmgCooldown>秒冷却时间
+				对两个范围之间的敌人没有效果
 				'''
 			EverscreamPetItem:
 				'''
@@ -915,7 +923,9 @@ Mods: {
 			MartianPetItem:
 				'''
 				<class>
-				最大飞行时间提高<wingMult>%
+				水平飞行最多会节省<wingTimeSave>%飞行时间
+				 - 例如，斜向飞行会节省至多一半飞行时间
+				 - 完全垂直飞行不会节省飞行时间
 				加速度提高<acc>%
 				水平飞行速度变为<speedMult>倍
 				水平飞行加速度变为<accMult>倍
@@ -986,7 +996,8 @@ Mods: {
 				'''
 				<class>
 				受到致命伤害改为冰冻自身<frozenTombTime>秒
-				 - 期间免疫所有伤害并恢复<healthRecovery>点生命值
+				 - 期间免疫所有伤害
+				 - 恢复<healthRecovery>点生命值并获得<shieldDuration>秒的<shield>点护盾
 				 - 对<range>格范围内所有敌人减速<slowAmount>%
 				 - 冰冻结束后，对<range>格内所有敌人造成<baseDmg>点基础伤害并再次免疫所有伤害<postTombImmunity>秒
 				 - 此效果有<tombCooldown>分钟冷却
@@ -1002,7 +1013,6 @@ Mods: {
 				'''
 				<class>
 				根据最高职业伤害获得加成。当前职业：<currentClass>
-				 - 如果相等，优先级近战 > 远程 > 魔法 > 召唤
 				按下<keybind>键切换物品描述
 				<tooltip>
 				'''
@@ -1295,39 +1305,39 @@ Mods: {
 			}
 
 			PetMonitoringTablet: {
-				DisplayName: 宠物管理面板
+				DisplayName: 宠物监测平板
 				Tooltip:
 					'''
 					显示所有宠物大修相关玩家属性
 					宠物技能急速：<haste>%
 					[c/899499:你的宠物技能冷却速度比正常<hastePosiOrNega><hasteValue>]
-					Pet Damage Multiplier: <damage>x
-					[c/899499:Projectiles and Direct Damages sourcing from your Pets deal <damageTooltip>% damage.]
-					Pet Healing Multiplier: <heal>x
-					[c/899499:Any sorts of heals sourcing from your Pets heal <healTooltip>%.]
-					Pet Shielding Multiplier: <shield>x
-					[c/899499:All shielding effects by your pets grant <shieldTooltip>% shield.]
-					Global Fortune: <global>
-					[c/899499:All Mining, Harvesting and Fishing drops are increased by <globalTooltip>%.]
-					[c/899499:Also increases all non-classified Pet item Drops by <globalTooltipIncr>%.]
-					Mining Fortune: <mining> (Ores, minerals, crystals etc.)
-					[c/899499:All Mining drops are increased by <miningTooltip>%. If item is from a Pet, increased to <miningTooltipIncr>%.]
-					Harvesting Fortune: <harvesting> (Trees, plants, natural renewable resources etc.)
-					[c/899499:All Harvesting drops are increased by <harvestingTooltip>%. If item is from a Pet, increased to <harvestingTooltipIncr>%.]
-					Fishing Fortune: <fishing> (Fishing catches)
-					[c/899499:All Fishing drops are increased by <fishingTooltip>%. If item is from a Pet, increased to <fishingTooltipIncr>%.]
+					宠物伤害加成：<damage>倍
+					[c/899499:宠物造成的伤害和生成的弹幕伤害变为<damageTooltip>%]
+					宠物治疗加成：<heal>倍
+					[c/899499:来自宠物的治疗量为<healTooltip>%]
+					宠物护盾加成：<shield>倍
+					[c/899499:来自宠物的护盾值为<shieldTooltip>%]
+					通用时运：<global>
+					[c/899499:所有挖掘、采集和钓鱼掉落有<globalTooltip>%几率增加]
+					[c/899499:同时所有非特定职业宠物的物品掉落也有<globalTooltipIncr>%几率增加]
+					挖掘时运：<mining> （矿石、宝石、水晶等）
+					[c/899499:所有挖掘掉落有<miningTooltip>%几率增加。如果其来源为宠物，增加至<miningTooltipIncr>%]
+					采集时运：<harvesting> （木材，植物，可再生的自然资源等）
+					[c/899499:所有采集掉落有<harvestingTooltip>%几率增加。如果其来源为宠物，增加至<harvestingTooltipIncr>%]
+					钓鱼时运：<fishing> （渔获）
+					[c/899499:所有钓鱼掉落有<fishingTooltip>%几率增加。如果其来源为宠物，增加至<fishingTooltipIncr>%]
 					'''
 			}
 
 			Bonemerang: {
-				// DisplayName: Bonemerang
-				// Tooltip: You can still hear it crying for its parent.
+				DisplayName: 回骨镖
+				Tooltip: 你还能听到它在呼唤它的主人。
 			}
 		}
 
 		Projectiles: {
 			PetExplosion: 宠物爆炸
-			BonemerangProj.DisplayName: 骨头
+			BonemerangProj.DisplayName: 骨头回旋镖
 		}
 
 		Keybinds: {
@@ -1351,40 +1361,40 @@ Mods: {
 			MasteryShard5: 月亮领主掉落，每个世界只能掉落一个
 
 			PetTamer: {
-				DisplayName: Pet Tamer
-				// Combine: Combine Light Pets
-				// BestiaryFlavorText: The great Pet Tamer, knows more regarding Pets more than anyone else. Well known for his capabilities in helping Light Pets reach their greatest potential.
-				// GuideQuote: Hmm. I see you haven't taken care of a Pet yet. I've heard that if you can find one and start keeping it around you, a Pet Tamer may settle in!
+				DisplayName: 宠物驯养师
+				Combine: 融合照明宠物
+				BestiaryFlavorText: 出色的宠物驯养师，没人比他更了解宠物。因其帮助照明宠物发挥最大潜能的能力而闻名。
+				GuideQuote: 我看你还没照顾过宠物。我听说如果你能找到一只并把它放在身边，一只宠物驯养师可能会入住！
 
 				Quotes: {
-					// Common1: How is your Pets coming along? Always keep them fed kid, just right.
-					// Common2: If you do happen to have multiple Light Pets of the same type, I can combine their best Qualities into one Light Pet!.. For a price of course.
-					// Common3: Hm? You'd like to know more regarding your Pets strength? I do happen to have Pet Monitoring Tablet I can sell to you. How convenient.
-					// Common4: One time I've dropped my whole bag into that shiny looking purple liquid in the underground. I was so worried because had my Wisp in a Bottle in the bag! Weirdly enough, as I saw everything turn into something else, my Wisp just stood there, unfazed! I wonder what that liquid was.
-					// Common5: Oh yeah. Someone gave me the recipe to make a Crimson Heart out of a Shadow Orb. I've crafted it. Guess what kid? It refused to be any stronger than its predecessor!
-					// Rare1: Whats this whip for? For the ones that tries to hurt my Pets of course! What else did ya think?
-					// WizardQuote: Its crazy, when <name> told me im extremely lucky that day, all Light Pets I've been training during that day seemed to have higher potential.
+					Common1: 你的宠物怎么样了？好好照顾它们。
+					Common2: 如果你刚好有多只同种的照明宠物，我可以把它们最好的品质融合成一只照明宠物！当然是要收费的。
+					Common3: 嗯？你想知道更多关于你的宠物的能力？我正好有宠物监测平板可以卖给你。多方便啊。
+					Common4: 有一次，我把我的整个包都丢进了地下那闪闪发光的粉色液体里。我很担心，因为包里有妖灵瓶！奇怪的是，当我看到所有东西都变成了别的东西，我的妖灵瓶还在那里，毫发无损！我想知道那是什么液体。
+					Common5: 哦。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它不愿比它的前身更强！
+					Rare1: 这条鞭子是干什么用的？当然是为了教训那些试图伤害我宠物的人！你以为干什么？
+					WizardQuote: 这太疯狂了，当<name>那天告诉我我非常幸运时，我那天训练的所有照明宠物似乎都超常发挥了。
 				}
 
 				TownNPCMood: {
-					Content: I am content.
-					NoHome: I hate not having a home.
-					FarFromHome: I am too far from home.
-					LoveSpace: I love having so much space.
-					DislikeCrowded: I dislike how crowded I am.
-					HateCrowded: I hate how crowded I am.
-					LikeBiome: I like {BiomeName}.
-					DislikeBiome: I dislike {BiomeName}.
-					LoveNPC: I love {NPCName}.
-					LikeNPC: I like {NPCName}.
-					DislikeNPC: I dislike {NPCName}.
-					HateNPC: I hate {NPCName}.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
+					Content: 我们感觉棒极了！
+					NoHome: 我和我的宠物确实需要一个住的地方。我不喜欢看到他们不舒服...
+					FarFromHome: 可以散散步，但是为了我的宠物的安全，我们应该回家。
+					LoveSpace: 我的宠物有生活和玩耍的空间，我很开心。
+					DislikeCrowded: 我的宠物不喜欢周围有太多外人。
+					HateCrowded: 我的宠物在太多的人面前很拘束，我真的不喜欢现在的情况。
+					LikeBiome: 你知道，住在{BiomeName}对我的宠物来说非常好。
+					DislikeBiome: 住在{BiomeName}时，我的宠物看起来很不舒服。
+					LoveNPC: 我爱{NPCName}！她总是在我不在的时候照顾我的宠物，我的宠物和她的宠物相处得很好！
+					LikeNPC: 我喜欢{NPCName}。我的宠物喜欢和他的宠物在一起！
+					DislikeNPC: 我不喜欢{NPCName}。我知道他没有恶意，但是他想给我的宠物的毛发染色把她吓跑了。
+					HateNPC: 不行，不行。{NPCName}用枪吓唬我的宠物，我听说他也伤害动物！我和我的宠物都不想靠近他！
+					LikeNPC_Princess: 我喜欢{NPCName}！她喜欢和我的宠物玩耍。
+					Princess_LovesNPC: 我喜欢{NPCName}！他的宠物太太太太太太可爱了！
 				}
 			}
 
-			// SlimeServant.DisplayName: Slime Servant
+			SlimeServant.DisplayName: 史莱姆仆从
 		}
 
 		Configs: {
