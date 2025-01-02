@@ -1374,7 +1374,7 @@ Mods: {
 					'''
 					Shows all Pets Overhaul related Player Stats.
 					Pet Ability Haste: <haste>%
-					[c/899499:Your Pet abilities cool off <hasteTooltip> than normal.]
+					[c/899499:Your Pet abilities cool off <hasteValue> <hastePosiOrNega> than normal.]
 					Pet Damage Multiplier: <damage>x
 					[c/899499:Projectiles and Direct Damages sourcing from your Pets deal <damageTooltip>% damage.]
 					Pet Healing Multiplier: <heal>x

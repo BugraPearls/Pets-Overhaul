@@ -8,26 +8,26 @@ Mods: {
 		Secs: 秒
 		Pet: 宠物
 		And: 和
-		// Ability: Ability
-		// Faster: Faster
-		// Slower: Slower
+		Ability: 技能
+		Faster: 快
+		Slower: 慢
 
 		LightPetCombineUI: {
-			// Header: Light Pet Combining Menu
-			// Combine: Combine
-			/* InfoText:
+			Header: 照明宠物融合菜单
+			Combine: 融合
+			InfoText:
 				'''
-				Put down two Light Pets of same type to combine them into one.
-				New Light Pet will inherit highest qualities of its parents.
-				Cannot combine if combination results in no benefit.
-				''' */
-			// Price: Price:
-			// State1: Place two Light Pets of same type.
-			// State2: Ready to combine.
-			// State3: Cannot afford combination cost.
-			// State4: Both items are not Light Pets.
-			// State5: First item is not a Light Pet.
-			// State6: Second item is not a Light Pet.
+				放置两个同种的照明宠物可以将它们融合为一个
+				融合出的照明宠物品级会继承两者属性的最高者
+				无法进行无效融合
+				'''
+			Price: 价格：
+			State1: 请放置同种照明宠物
+			State2: 按下融合
+			State3: 无法支付融合费用
+			State4: 两个物品都不是照明宠
+			State5: 第一个物品不是照明宠物
+			State6: 第二个物品不是照明宠物
 		}
 
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
@@ -39,11 +39,11 @@ Mods: {
 		JojaCola: 某个与自然相关的NPC也许可以净化它
 		Notice:
 			'''
-			[c/90C2AA:Pets Overhaul（宠物大修）3.1最新更新：为此模组和灾厄附属添加了完整汉化，作者：ROH]
-			[c/90C2AA:添加/pet class {arg}或/pet pets {arg}命令来查看对应职业宠物列表，为宠物的范围效果添加了圆形粒子]
-			[c/90C2AA:--（arg参数可选项：all->全职业，melee->近战，ranged->远程，magic->魔法，summoner->召唤，utility->通用，mobility->机动，harvesting->采集，mining->挖掘，fishing->钓鱼，offensive->进攻，defensive->防御，supportive->辅助，rogue->盗贼）]
-			[c/90C2AA:击杀效果现在不需要你来完成最后一击，添加了照明宠物最高品级颜色的模组配置]
-			[c/90C2AA:大量的后端更改，以提高代码的可重用性、性能、可读性等。修复大量Bug。]
+			[c/90C2AA:Pets Overhaul（宠物大修）3.3最新更新：宠物重做，修复宠物伤害和月亮乌贼不受玩家职业伤害加成的bug，新命令]
+			[c/90C2AA:完全重做皇家怡口，皇家美食，华美甜点和暗影宝箱怪宠物，小幅重做了宇宙滑板和奇异咀嚼玩具]
+			[c/90C2AA:添加/pet item {arg} 命令以显示会受给定职业效果影响的物品]
+			[c/90C2AA:--（arg参数可选项：harvesting->采集，mining->挖掘，fishing->钓鱼）]
+			[c/90C2AA:完整的中文、俄文和葡萄牙语本地化，作者分别为：ROH, Teokai和Erstarisk]
 			[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
 			[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
 			'''
@@ -80,9 +80,10 @@ Mods: {
 				/pet junimo，/pet junimoscoreboard，/pet junimoleaderboard -> 显示祝尼魔三个职业总计经验值最高的前三名在线玩家
 				/pet {mining|fishing|harvesting}scoreboard，/pet {mining|fishing|harvesting}leaderboard -> 显示所有玩家的祝尼魔对应职业的经验值
 				/pet faq，/pet question -> 显示关于宠物大修的常见问题
-				/pet pets 或/pet class {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
+				/pet pets 或/pet class {all|ability（或cooldown）|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
 				-> 在聊天栏中显示参数中的职业宠物列表。“all”参数会显示所有宠物。
 				->all->全职业，melee->近战，ranged->远程，magic->魔法，summoner->召唤，utility->通用，mobility->机动，harvesting->采集，mining->挖掘，fishing->钓鱼，offensive->进攻，defensive->防御，supportive->辅助，rogue->盗贼
+				/pet item {harvesting|mining|fishing} -> 显示受给定职业效果影响的物品，参数分别为采集/挖掘/钓鱼
 				'''
 			FAQ:
 				'''
@@ -120,8 +121,8 @@ Mods: {
 			PetList: <class>宠物列表：
 			All: 所有
 			NoPets: 没有此职业的宠物。（你没装宠物大修-灾厄附属？）
-			// Items: All items affected by <class> class of Pet Effects (Only when naturally obtained):
-			// ClassArgumentInvalidItems: The given class is invalid, try any of the following: {harvesting|mining|fishing}.
+			Items: 受<class>职业宠物效果影响的物品：（仅当自然获取时）
+			ClassArgumentInvalidItems: 无效职业参数，以下为有效参数：{harvesting|mining|fishing}.
 			ClassArgumentInvalid: 无效职业参数，以下为有效参数：{all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: 参数无效，以下是宠物大修命令列表：（不区分大小写）
 			UseInMultiplayer: 请在多人游戏中使用此命令！如果你想查看你的祝尼魔经验值，用/pet junimo，/pet junimoscoreboard，或/pet junimoleaderboard
@@ -158,7 +159,7 @@ Mods: {
 			ShieldLocationTooltip:
 				'''
 				如果你的宠物具有护盾效果，改变宠物护盾显示的位置
-				生命值选项在游戏分辨率1920x1080时为宜，否则可能导致显示错误。
+				生命值选项在游戏分辨率1920x1080时为宜。
 				'''
 			DisableAbilityUnusedLabel: 宠物技能冷却显示常开
 			DisableAbilityUnusedTooltip: 使宠物技能冷却固定显示在屏幕右下角，即使当前宠物没有技能
@@ -182,7 +183,7 @@ Mods: {
 			DustAmountTooltip:
 				'''
 				修改显示宠物的效果范围的粒子数量
-				设为无可以完全禁用，以外部方式修改此值可能导致错误
+				设为无可以完全禁用
 				'''
 			DustInsideBlocksLabel: 宠物范围显示粒子可以在方块里生成
 			DustInsideBlocksTooltip:
@@ -1295,7 +1296,27 @@ Mods: {
 
 			PetMonitoringTablet: {
 				DisplayName: 宠物管理面板
-				Tooltip: ""
+				Tooltip:
+					'''
+					显示所有宠物大修相关玩家属性
+					宠物技能急速：<haste>%
+					[c/899499:你的宠物技能冷却速度比正常<hastePosiOrNega><hasteValue>]
+					Pet Damage Multiplier: <damage>x
+					[c/899499:Projectiles and Direct Damages sourcing from your Pets deal <damageTooltip>% damage.]
+					Pet Healing Multiplier: <heal>x
+					[c/899499:Any sorts of heals sourcing from your Pets heal <healTooltip>%.]
+					Pet Shielding Multiplier: <shield>x
+					[c/899499:All shielding effects by your pets grant <shieldTooltip>% shield.]
+					Global Fortune: <global>
+					[c/899499:All Mining, Harvesting and Fishing drops are increased by <globalTooltip>%.]
+					[c/899499:Also increases all non-classified Pet item Drops by <globalTooltipIncr>%.]
+					Mining Fortune: <mining> (Ores, minerals, crystals etc.)
+					[c/899499:All Mining drops are increased by <miningTooltip>%. If item is from a Pet, increased to <miningTooltipIncr>%.]
+					Harvesting Fortune: <harvesting> (Trees, plants, natural renewable resources etc.)
+					[c/899499:All Harvesting drops are increased by <harvestingTooltip>%. If item is from a Pet, increased to <harvestingTooltipIncr>%.]
+					Fishing Fortune: <fishing> (Fishing catches)
+					[c/899499:All Fishing drops are increased by <fishingTooltip>%. If item is from a Pet, increased to <fishingTooltipIncr>%.]
+					'''
 			}
 
 			Bonemerang: {
