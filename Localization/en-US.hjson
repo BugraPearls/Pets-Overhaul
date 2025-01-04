@@ -236,6 +236,7 @@ Mods: {
 				Sets how much % lower damage the Player will deal and how much % extra damage the Player will receive.
 				This is implemented due to Pets Overhaul adding extra Powercreep into the game. Min 0, Max 20%.
 				Keep it at 0 if you wish it to be disabled. It's recommended it to be around 7 to 10%.
+				This won't take in effect until you obtain a Pet, since in that case this has no reason to be active.
 				'''
 			SwapCooldownLabel: Enable Pet Swap cooldown
 			SwapCooldownTooltip:
