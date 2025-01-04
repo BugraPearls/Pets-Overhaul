@@ -614,7 +614,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0)
+            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && PetObtainedCondition.petIsObtained)
             {
                 modifiers.FinalDamage *= 1f - ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
@@ -622,7 +622,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0)
+            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && PetObtainedCondition.petIsObtained)
             {
                 modifiers.FinalDamage *= 1f + ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
