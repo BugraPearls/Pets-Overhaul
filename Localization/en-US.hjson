@@ -1069,8 +1069,7 @@ Mods: {
 			MoonLordPetItem:
 				'''
 				<class>
-				- Adapts to whichever class has more damage. Current Class: <currentClass>
-				- Press <keybind> to swap the current tooltip.
+				- Press Pet Ability Switch Keybind (<keybind>) to switch effects of this Pet.
 				<tooltip>
 				'''
 			MeleeTooltip:
