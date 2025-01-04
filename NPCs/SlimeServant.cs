@@ -276,6 +276,7 @@ namespace PetsOverhaul.NPCs
                     }
                 }
             }
+            NPC.netUpdate = true;
         }
     }
 }
