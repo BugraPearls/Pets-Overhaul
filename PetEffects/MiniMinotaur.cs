@@ -12,12 +12,12 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.TartarSauce;
         public int minotaurStack = 0;
         public int minotaurCd = 12;
-        public int oocMaxDuration = 15;
+        public int oocMaxDuration = 20;
         public int maxStack = 80;
         public float meleeSpd = 0.0023f;
         public float meleeDmg = 0.00125f;
-        public float moveSpd = 0.0025f;
-        public float defMult = 0.0023f;
+        public float moveSpd = 0.0018f;
+        public float defMult = 0.0012f;
 
         public override PetClasses PetClassPrimary => PetClasses.Melee;
         public override int PetAbilityCooldown => minotaurCd;
@@ -99,9 +99,9 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<maxMeleeSpd>", Math.Round(miniMinotaur.meleeSpd * 100 * miniMinotaur.maxStack, 2).ToString())
                         .Replace("<maxDmg>", Math.Round(miniMinotaur.meleeDmg * 100 * miniMinotaur.maxStack, 2).ToString())
                         .Replace("<maxSpd>", Math.Round(miniMinotaur.moveSpd * 100 * miniMinotaur.maxStack, 2).ToString())
-                        .Replace("<meleeSpd>", Math.Round(miniMinotaur.meleeSpd * 100, 2).ToString())
-                        .Replace("<moveSpd>", Math.Round(miniMinotaur.moveSpd * 100, 2).ToString())
-                        .Replace("<dmg>", Math.Round(miniMinotaur.meleeDmg * 100, 2).ToString())
-                        .Replace("<def>", Math.Round(miniMinotaur.defMult * 100, 2).ToString());
+                        .Replace("<meleeSpd>", Math.Round(miniMinotaur.meleeSpd * 100, 3).ToString())
+                        .Replace("<moveSpd>", Math.Round(miniMinotaur.moveSpd * 100, 3).ToString())
+                        .Replace("<dmg>", Math.Round(miniMinotaur.meleeDmg * 100, 3).ToString())
+                        .Replace("<def>", Math.Round(miniMinotaur.defMult * 100, 3).ToString());
     }
 }

@@ -1,4 +1,5 @@
 ﻿using PetsOverhaul.Systems;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -15,8 +16,8 @@ namespace PetsOverhaul.PetEffects
         internal int penguinOldChilledTime = 0;
         public int snowAndOceanPower = 25;
         public int regularFish = 20;
-        public float chillingMultiplier = 0.45f;
-        public int snowFishChance = 80;
+        public float chillingMultiplier = 0.8f;
+        public int snowFishChance = 60;
         public static List<int> IceFishingDrops = [ItemID.FrostMinnow, ItemID.AtlanticCod, ItemID.FrostDaggerfish, ItemID.FrozenCrate, ItemID.FrozenCrateHard];
         public override void PostUpdateMiscEffects()
         {
@@ -73,6 +74,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<moreFp>", babyPenguin.snowAndOceanPower.ToString())
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())
                 .Replace("<items>", PetTextsColors.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
-                .Replace("<chilledMult>", babyPenguin.chillingMultiplier.ToString());
+                .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier*100,2).ToString());
     }
 }

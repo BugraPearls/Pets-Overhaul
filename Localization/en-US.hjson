@@ -412,7 +412,7 @@ Mods: {
 				 * While you aren't, gain <fp> fishing power instead.
 				- Increases Ice biome-specific fishing catches by <catchChance>%.
 				 * Affected items: <items>
-				- Multiplies Chilled debuff's duration by <chilledMult>x.
+				- Reduces Chilled debuff's duration by <chilledReduce>%.
 				'''
 			BambooLeaf:
 				'''

@@ -13,8 +13,8 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.EyeSpring;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
-        public float acceleration = 0.15f;
-        public float jumpBoost = 4.50f;
+        public float acceleration = 0.16f;
+        public float jumpBoost = 4.55f;
         public float ascentPenaltyMult = 0.55f;
         public override void PostUpdateMiscEffects()
         {
