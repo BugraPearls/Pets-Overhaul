@@ -645,7 +645,7 @@ Mods: {
 				- Allows you to gain EXP for each respective class, further improving the perks of this Pet.
 				 * Gathering any of the Harvesting, Mining, and Fishing items gives you money depending on the
 				   item's exp value, and levels are maxed at level <maxLvl>. Cap can be increased with following unique boss kills;
-				   Eater of Worlds or Brain of Cthulhu, Wall of Flesh, Any Mech Boss, Plantera and Lunatic Cultist.
+				   Eater of Worlds or Brain of Cthulhu, Wall of Flesh, Any Mech Boss, Plantera, Lunatic Cultist<moreBoss>.
 				- <harvesting> Current level: <harvestLevel> Experience needed for next level: <harvestNext> Current total experience: <harvestCurrent>
 				 * Gain <harvestingProfit> times exp value of items as copper coins and gain <flatHealth> maximum health.
 				- <mining> Current level: <miningLevel> Experience needed for next level: <miningNext> Current total experience: <miningCurrent>

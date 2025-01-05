@@ -20,7 +20,9 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.JunimoPetItem;
         public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public string extraBosses = "";
         public int maxLvls = 25;
+        public int externalLvlIncr = 0;
         public int maxXp = 2147480000;
         public float miningResistPerLevel = 0.0022f;
         public float fishingDamagePerLevel = 0.0025f;
@@ -509,6 +511,10 @@ namespace PetsOverhaul.PetEffects
                 maxLvls += 5;
             if (NPC.downedAncientCultist)
                 maxLvls += 5;
+            maxLvls += externalLvlIncr;
+            externalLvlIncr = 0;
+
+            extraBosses = "";
 
             junimoHarvestingLevel = Math.Clamp(junimoHarvestingLevel, 1, maxLvls);
             junimoMiningLevel = Math.Clamp(junimoMiningLevel, 1, maxLvls);
@@ -665,6 +671,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoPetItem")
                         .Replace("<maxLvl>", junimo.maxLvls.ToString())
+                        .Replace("<moreBoss>", junimo.extraBosses)
                         .Replace("<harvestingProfit>", Math.Round(junimo.harvestingCoin * junimo.junimoHarvestingLevel, 2).ToString())
                         .Replace("<flatHealth>", Math.Round(junimo.junimoHarvestingLevel * junimo.harvestingHealthperLevel, 1).ToString())
                         .Replace("<harvestLevel>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{junimo.junimoHarvestingLevel}]")
