@@ -89,6 +89,9 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static List<Point16> updateReplacedTile = new();
 
+        /// <summary>
+        /// shieldTimer is reduced in PostUpdate(), so if you want to do a '1 frame passive shield', make the timer 2 instead of 1.
+        /// </summary>
         public List<(int shieldAmount, int shieldTimer)> petShield = new();
         public int currentShield = 0;
         public int shieldToBeReduced = 0;
@@ -354,7 +357,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         /// <param name="shieldAmount">Pet Shield to be added to Player.</param>
         /// <param name="shieldDuration">Duration of this individual Shield on the Player.</param>
-        /// <param name="applyPetShieldMult">Set to false to prevent from petShieldMultiplier from being applied..</param>
+        /// <param name="applyPetShieldMult">Set to false to prevent from petShieldMultiplier from being applied.</param>
         /// <returns>Value of the added shield, -1 if failed to add.</returns>
         public int AddShield(int shieldAmount, int shieldDuration, bool applyPetShieldMult = true)
         {
