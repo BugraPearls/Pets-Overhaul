@@ -23,11 +23,12 @@ namespace PetsOverhaul.PetEffects
 
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override int PetAbilityCooldown => shieldRecovery;
         public override void ExtraPreUpdate()
         {
             shieldedStatBoostActive = false;
         }
-        private void AddShield() //I don't think I will touch Mini Prime's systems for a while. This Pet's shield mechanic is way more complex than others and its working properly and was second most difficult Pet to have it working properly. Its ok rn, imma not break it.
+        private void AddShield() //This Pet gives me headaches.
         {
             if (oldShieldCount > shieldIndex && Pet.petShield[shieldIndex].shieldAmount < lastShield)
             {
@@ -39,7 +40,7 @@ namespace PetsOverhaul.PetEffects
             else
             {
                 shieldIndex = Pet.petShield.Count - 1;
-                Pet.petShield[shieldIndex] = ((int)(Player.statLifeMax2 * shieldMult * Pet.petShieldMultiplier), 2);
+                Pet.petShield[shieldIndex] = ((int)Math.Round(Player.statLifeMax2 * shieldMult * Pet.petShieldMultiplier), 2);
             }
         }
         public override void PostUpdateMiscEffects()
