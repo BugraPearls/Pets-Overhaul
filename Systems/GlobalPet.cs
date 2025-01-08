@@ -361,7 +361,7 @@ namespace PetsOverhaul.Systems
             int shield = shieldAmount;
             if (applyPetShieldMult)
             {
-                shield = (int)(shield * petShieldMultiplier);
+                shield = (int)Math.Ceiling(shield * petShieldMultiplier);
             }
             if (shield > 0 && shieldDuration > 0)
             {
