@@ -115,6 +115,7 @@ Mods: {
 				2° Passo: Desabilite a visibilidade do Pet atualmente equipado no icone de olho no slot do Pet.
 				3° Passo: 'Use' o Pet que você quer que fique visível pelo seu item no inventário e pronto!
 				'''
+			// LightPetList: List of all Light Pets:
 			// PetList: List of <class> Pets:
 			// All: all
 			// NoPets: No pets available for this class. (You may be missing an addon for this class?)

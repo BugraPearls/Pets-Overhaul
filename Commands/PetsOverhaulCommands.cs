@@ -205,6 +205,24 @@ namespace PetsOverhaul.Commands
                             caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.FAQ"));
                             break;
 
+                        case "light" or "lightpet" or "lightpets":
+                            string reply = Language.GetTextValue("Mods.PetsOverhaul.Commands.LightPetList") + " ";
+                                int counterToGoDown = 5;
+                                foreach (ModPlayer player in caller.Player.ModPlayers)
+                                {
+                                    if (player is LightPetEffect light)
+                                    {
+                                        counterToGoDown++;
+                                        reply += "[i:" + light.LightPetItemID + "] ";
+                                        if (counterToGoDown >= 20)
+                                        {
+                                            reply += "\n";
+                                            counterToGoDown = 0;
+                                        }
+                                    }
+                                }
+                                caller.Reply(reply);
+                            break;
                         default:
                             caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
                             caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);

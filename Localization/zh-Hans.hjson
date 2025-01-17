@@ -118,6 +118,7 @@ Mods: {
 				第2步：点击宠物栏右上角的小眼睛禁用当前宠物的可见性
 				第3步：从背包中使用你想要其可见的宠物物品，完成！
 				'''
+			// LightPetList: List of all Light Pets:
 			PetList: <class>宠物列表：
 			All: 所有
 			NoPets: 没有此职业的宠物。（你没装宠物大修-灾厄附属？）

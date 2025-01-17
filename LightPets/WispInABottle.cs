@@ -13,6 +13,7 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class WispInABottleEffect : LightPetEffect
     {
+        public override int LightPetItemID => ItemID.WispinaBottle;
         public override void PostUpdateEquips()
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle))

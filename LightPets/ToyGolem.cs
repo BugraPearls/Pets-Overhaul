@@ -12,6 +12,7 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class ToyGolemEffect : LightPetEffect
     {
+        public override int LightPetItemID => ItemID.GolemPetItem;
         public override void PostUpdateEquips()
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out ToyGolem toyGolem))

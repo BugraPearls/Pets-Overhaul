@@ -12,6 +12,7 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class CreeperEggEffect : LightPetEffect
     {
+        public override int LightPetItemID => ItemID.DD2PetGhost;
         public override void PostUpdateEquips()
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out CreeperEgg creeperEgg))

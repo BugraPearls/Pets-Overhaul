@@ -12,6 +12,7 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class CrimsonHeartEffect : LightPetEffect
     {
+        public override int LightPetItemID => ItemID.CrimsonHeart;
         public override void PostUpdateEquips()
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out CrimsonHeart crimsonHeart))

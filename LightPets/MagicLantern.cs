@@ -12,6 +12,7 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class MagicLanternEffect : LightPetEffect
     {
+        public override int LightPetItemID => ItemID.MagicLantern;
         public override void PostUpdateEquips()
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out MagicLantern magicLantern))

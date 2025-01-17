@@ -41,7 +41,7 @@ Mods: {
 			'''
 			[c/90C2AA:Pets Overhaul 3.3, latest changes: Pet Reworks, fixed Damage Scaling with Pet damage, Moonling & Item Compatibility, New command]
 			[c/90C2AA:Full-Reworked Prince, Princess and Dual Slime Pets and Shadow Mimic Pet, Semi-Reworked Alien Skater and Fennec Fox Pets]
-			[c/90C2AA:Added /pet item & items {harvesting|mining|fishing} commands, showing you the items that are benefited by the given class of Pets.]
+			[c/90C2AA:Added /pet item & items {harvesting|mining|fishing} and /pet light & lightpet & lightpets commands.]
 			[c/90C2AA:Full Chinese, Russian and Portuguese translation for both Main mod and Calamity Addon, By: ROH, Teokai and Erstarisk.]
 			[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
@@ -82,6 +82,7 @@ Mods: {
 				/pet faq, /pet question -> Displays frequently asked questions regarding Pets Overhaul.
 				/pet pets, class {all|ability(or cooldown)|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
 				-> Displays all Pets in chat that has the class given in the 2nd argument. 'all' argument will show ALL Pet effects regardless of the class.
+				/pet light, lightpet, lightpets -> Displays all Light Pets.
 				/pet item, items {harvesting|mining|fishing} -> Displays all items affected by bonuses of given class of Pets.
 				'''
 			FAQ:
@@ -120,6 +121,7 @@ Mods: {
 				Step 2: Disable the currently equipped Pet's visibility from Little Eye next to the Pet Slot.
 				Step 3: 'Use' the Pet you want to be visible via the Pet Item from your inventory. Done!
 				'''
+			LightPetList: List of all Light Pets:
 			PetList: List of <class> Pets:
 			All: all
 			NoPets: No pets available for this class. (You may be missing an addon for this class?)

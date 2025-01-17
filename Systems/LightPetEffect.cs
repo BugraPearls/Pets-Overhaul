@@ -41,6 +41,10 @@ namespace PetsOverhaul.Systems
     public abstract class LightPetEffect : ModPlayer
     {
         public GlobalPet Pet => Player.GetModPlayer<GlobalPet>();
+        /// <summary>
+        /// This field is to make this Light Pet appear on /pet light|lightpet|lightpets command(s).
+        /// </summary>
+        public abstract int LightPetItemID { get; }
     }
     public abstract class LightPetItem : GlobalItem
     {

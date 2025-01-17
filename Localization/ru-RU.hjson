@@ -115,6 +115,7 @@ Mods: {
 				Шаг 2: Отключите видимость текущего питомца, нажав на глазик рядом со слотом питомца.
 				Шаг 3: "Используйте" питомца, которого вы хотите видеть, через предмет питомца в вашем инвентаре. Готово!
 				'''
+			// LightPetList: List of all Light Pets:
 			// PetList: List of <class> Pets:
 			// All: all
 			// NoPets: No pets available for this class. (You may be missing an addon for this class?)
