@@ -218,6 +218,7 @@ namespace PetsOverhaul.NPCs
             var npcShop = new NPCShop(Type, shop1)
             .Add<PetMonitoringTablet>()
             .Add<PetForgeItem>()
+            .Add<PetFood>()
             ;
             npcShop.Register(); // Name of this shop tab
         }

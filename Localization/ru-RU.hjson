@@ -1400,7 +1400,16 @@ Mods: {
 				/* Tooltip:
 					'''
 					Allows you to craft all Pets.
-					I know its just a Furnace recolor...
+					[c/899499:I know its just a Furnace recolor...]
+					''' */
+			}
+
+			PetFood: {
+				// DisplayName: Pet Food
+				/* Tooltip:
+					'''
+					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
+					Its used in crafting recipes of every single Pet.
 					''' */
 			}
 		}
