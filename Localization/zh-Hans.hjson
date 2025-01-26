@@ -1334,6 +1334,15 @@ Mods: {
 				DisplayName: 回骨镖
 				Tooltip: 你还能听到它在呼唤它的主人。
 			}
+
+			PetForgeItem: {
+				// DisplayName: Pet Forge
+				/* Tooltip:
+					'''
+					Allows you to craft all Pets.
+					I know its just a Furnace recolor...
+					''' */
+			}
 		}
 
 		Projectiles: {
@@ -1373,6 +1382,7 @@ Mods: {
 					Common3: 嗯？你想知道更多关于你的宠物的能力？我正好有宠物监测平板可以卖给你。多方便啊。
 					Common4: 有一次，我把我的整个包都丢进了地下那闪闪发光的粉色液体里。我很担心，因为包里有妖灵瓶！奇怪的是，当我看到所有东西都变成了别的东西，我的妖灵瓶还在那里，毫发无损！我想知道那是什么液体。
 					Common5: 哦。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它不愿比它的前身更强！
+					// Common6: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
 					Rare1: 这条鞭子是干什么用的？当然是为了教训那些试图伤害我宠物的人！你以为干什么？
 					WizardQuote: 这太疯狂了，当<name>那天告诉我我非常幸运时，我那天训练的所有照明宠物似乎都超常发挥了。
 				}

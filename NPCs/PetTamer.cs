@@ -2,6 +2,7 @@
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs.Gores;
 using PetsOverhaul.Systems;
+using PetsOverhaul.Tiles;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;
@@ -179,6 +180,7 @@ namespace PetsOverhaul.NPCs
             chat.Add(Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.Quotes.Common3"), 10);
             chat.Add(Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.Quotes.Common4"), 10);
             chat.Add(Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.Quotes.Common5"), 10);
+            chat.Add(Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.Quotes.Common6"), 10);
             chat.Add(Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.Quotes.Rare1"), 1);
 
             int wiz = NPC.FindFirstNPC(NPCID.Wizard);
@@ -214,7 +216,9 @@ namespace PetsOverhaul.NPCs
         public override void AddShops()
         {
             var npcShop = new NPCShop(Type, shop1)
-            .Add<PetMonitoringTablet>();
+            .Add<PetMonitoringTablet>()
+            .Add<PetForgeItem>()
+            ;
             npcShop.Register(); // Name of this shop tab
         }
 
