@@ -41,7 +41,7 @@ Mods: {
 			'''
 			[c/90C2AA:Pets Overhaul（宠物大修）3.3最新更新：宠物重做，修复宠物伤害和月亮乌贼不受玩家职业伤害加成的bug，新命令]
 			[c/90C2AA:完全重做皇家怡口，皇家美食，华美甜点和暗影宝箱怪宠物，小幅重做了宇宙滑板和奇异咀嚼玩具]
-			[c/90C2AA:添加/pet item {arg} 命令以显示会受给定职业效果影响的物品]
+			[c/90C2AA:添加/pet item {arg} 命令以显示会受给定职业效果影响的物品，以及/pet light命令以显示照明宠物]
 			[c/90C2AA:--（arg参数可选项：harvesting->采集，mining->挖掘，fishing->钓鱼）]
 			[c/90C2AA:完整的中文、俄文和葡萄牙语本地化，作者分别为：ROH, Teokai和Erstarisk]
 			[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
@@ -231,6 +231,7 @@ Mods: {
 				设置玩家造成的伤害减少%，受到的伤害增加%。最小0，最大20
 				这是由于此模组在游戏中添加了许多强力的加成
 				如果希望其禁用，请将其拖动至0。建议调整为7到10左右
+				在你获得一个宠物之前没有任何效果
 				'''
 			SwapCooldownLabel: 启用宠物交换冷却
 			SwapCooldownTooltip:
@@ -397,7 +398,7 @@ Mods: {
 				 - 否则提高<fp>点渔力
 				钓上的雪原专属渔获有<catchChance>%几率增加
 				 - 受影响的物品：<items>
-				冷冻减益的持续时间变为<chilledMult>倍.
+				减少<chilledReduce>%冷冻减益的持续时间.
 				'''
 			BambooLeaf:
 				'''
@@ -614,7 +615,7 @@ Mods: {
 				允许你获得每个职业的经验值以提高这个宠物的额外奖励
 				 - 获得采集，挖掘和钓鱼物品时会给你钱币，取决于物品的经验值
 				 - 当前等级上限为<maxLvl>级，击败以下Boss可提高等级上限：
-				 - 世界吞噬怪/克苏鲁之脑，血肉墙，任何机械Boss，世纪之花和拜月教邪教徒
+				 - 世界吞噬怪/克苏鲁之脑，血肉墙，任何机械Boss，世纪之花，拜月教邪教徒，<moreboss>
 				<harvesting> 当前等级: <harvestLevel> 下一级所需的经验: <harvestNext> 当前总经验: <harvestCurrent>
 				 - 获取任何植物，可砍伐物都会给你<harvestingProfit>倍经验数量的铜币，最大生命增加<flatHealth>点
 				<mining> 当前等级: <miningLevel> 下一级所需的经验: <miningNext> 当前总经验: <miningCurrent>
@@ -1013,8 +1014,7 @@ Mods: {
 			MoonLordPetItem:
 				'''
 				<class>
-				根据最高职业伤害获得加成。当前职业：<currentClass>
-				按下<keybind>键切换物品描述
+				按下宠物技能切换键（<keybind>）切换此宠物的效果
 				<tooltip>
 				'''
 			MeleeTooltip:
@@ -1336,21 +1336,21 @@ Mods: {
 			}
 
 			PetForgeItem: {
-				// DisplayName: Pet Forge
-				/* Tooltip:
+				DisplayName: 宠物熔炉
+				Tooltip:
 					'''
-					Allows you to craft all Pets.
-					[c/899499:I know its just a Furnace recolor...]
-					''' */
+					允许你制作所有宠物
+					[c/899499:我知道这只是一个熔炉改色……]
+					'''
 			}
 
 			PetFood: {
-				// DisplayName: Pet Food
-				/* Tooltip:
+				DisplayName: 宠物食物
+				Tooltip:
 					'''
-					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
-					Its used in crafting recipes of every single Pet.
-					''' */
+					没有宠物能拒绝这种多味宠物食品！
+					用于制作所有宠物
+					'''
 			}
 		}
 
@@ -1391,7 +1391,7 @@ Mods: {
 					Common3: 嗯？你想知道更多关于你的宠物的能力？我正好有宠物监测平板可以卖给你。多方便啊。
 					Common4: 有一次，我把我的整个包都丢进了地下那闪闪发光的粉色液体里。我很担心，因为包里有妖灵瓶！奇怪的是，当我看到所有东西都变成了别的东西，我的妖灵瓶还在那里，毫发无损！我想知道那是什么液体。
 					Common5: 哦。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它不愿比它的前身更强！
-					// Common6: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
+					Common6: 是的！通过宠物熔炉，你可以制作任何你想要的宠物。不过可能需要付出一点精力。
 					Rare1: 这条鞭子是干什么用的？当然是为了教训那些试图伤害我宠物的人！你以为干什么？
 					WizardQuote: 这太疯狂了，当<name>那天告诉我我非常幸运时，我那天训练的所有照明宠物似乎都超常发挥了。
 				}
