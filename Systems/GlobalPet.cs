@@ -853,6 +853,7 @@ namespace PetsOverhaul.Systems
         {
             timer = -1;
             petShield.Clear();
+            inCombatTimer = 0;
         }
         public override void ModifyCaughtFish(Item fish)
         {
