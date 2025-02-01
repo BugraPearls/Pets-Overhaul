@@ -20,6 +20,7 @@
     <None Remove="Items\egg.png" />
     <None Remove="Items\LihzahrdWrench.png" />
     <None Remove="Items\MasteryShard.png" />
+    <None Remove="Items\PetFood.png" />
     <None Remove="Items\PrismaticOptic.png" />
     <None Remove="Items\PumpkingsHead.png" />
     <None Remove="Localization\mastery_shard_sprite_sheet.png" />
@@ -32,6 +33,8 @@
     <None Remove="NPCs\PetTamer_gore_Leg.png" />
     <None Remove="NPCs\PetTamer_Head.png" />
     <None Remove="Projectiles\PetExplosion.png" />
+    <None Remove="Tiles\PetForge.png" />
+    <None Remove="Tiles\PetForgeItem.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="UI\PetShield.png" />
