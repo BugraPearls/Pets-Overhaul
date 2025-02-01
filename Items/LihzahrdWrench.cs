@@ -17,10 +17,15 @@ namespace PetsOverhaul.Items
             Item.width = 38;
             Item.height = 38;
             Item.consumable = true;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useTurn = true;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.UseSound = SoundID.Item29;
         }
-        public override bool ConsumeItem(Player player)
+        public override bool? UseItem(Player player)
         {
-            if (player.TryGetModPlayer(out GlobalPet pet) && pet.golemConsumed == false)
+            if (player.whoAmI == Main.myPlayer && player.TryGetModPlayer(out GlobalPet pet) && pet.golemConsumed == false)
             {
                 pet.golemConsumed = true;
                 return true;

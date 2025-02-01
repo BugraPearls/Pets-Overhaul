@@ -84,6 +84,16 @@ namespace PetsOverhaul.Items
                             line.Text = line.Text.Replace("<fishingTooltip>", Math.Round(pet.fishingFortune * 0.5f, 2).ToString())
                                 .Replace("<fishingTooltipIncr>", pet.fishingFortune.ToString());
                             break;
+                        case "Tooltip18":
+                            List<int> items = new();
+                            if (pet.eolConsumed)
+                                items.Add(ModContent.ItemType<PrismaticOptic>());
+                            if (pet.golemConsumed)
+                                items.Add(ModContent.ItemType<LihzahrdWrench>());
+                            if (pet.pumpkingConsumed) 
+                                items.Add(ModContent.ItemType<PumpkingsHead>());
+                            line.Text = line.Text.Replace("<items>", PetTextsColors.ItemsToTooltipImages(items));
+                            break;
                         default:
                             break;
                     }

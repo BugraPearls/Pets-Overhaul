@@ -18,7 +18,7 @@ namespace PetsOverhaul.Items
         {
             Item.maxStack = 9999;
             Item.rare = ItemRarityID.Master;
-            Item.value = 10000;
+            Item.value = Item.sellPrice(gold: 10);
             Item.master = true;
             Item.width = 24;
             Item.height = 24;

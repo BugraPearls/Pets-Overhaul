@@ -17,6 +17,11 @@ namespace PetsOverhaul.Items
             Item.width = 30;
             Item.height = 30;
             Item.consumable = true;
+            Item.useAnimation = 30;
+            Item.useTime = 30;
+            Item.useTurn = true;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.UseSound = SoundID.Item29;
         }
         public override bool ConsumeItem(Player player)
         {

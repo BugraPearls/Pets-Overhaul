@@ -1387,6 +1387,7 @@ Mods: {
 					[c/899499:All Harvesting drops are increased by <harvestingTooltip>%. If item is from a Pet, increased to <harvestingTooltipIncr>%.]
 					Fishing Fortune: <fishing> (Fishing catches, check all with /pet items fishing)
 					[c/899499:All Fishing drops are increased by <fishingTooltip>%. If item is from a Pet, increased to <fishingTooltipIncr>%.]
+					Consumed Master Mode Light Pet Items: <items>
 					''' */
 			}
 
