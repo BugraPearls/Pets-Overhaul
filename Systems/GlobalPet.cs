@@ -25,9 +25,9 @@ namespace PetsOverhaul.Systems
     public sealed class GlobalPet : ModPlayer
     {
         public static InputMode PlayerInputMode => PlayerInput.CurrentProfile.InputModes.ContainsKey(InputMode.Keyboard) ? InputMode.Keyboard : InputMode.XBoxGamepad;
-        public bool eolConsumed = false;
-        public bool golemConsumed = false;
-        public bool pumpkingConsumed = false;
+        public static bool eolConsumed = false;
+        public static bool golemConsumed = false;
+        public static bool pumpkingConsumed = false;
         /// <summary>
         /// Modify this value if you want to reduce or increase lifesteal & healing by Pets for any reason, such as a Mod applying an effect that reduces healings. Basically a modifier on heals from Pets. Used in PetRecovery().
         /// </summary>

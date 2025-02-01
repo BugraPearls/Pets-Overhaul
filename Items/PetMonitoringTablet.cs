@@ -86,11 +86,11 @@ namespace PetsOverhaul.Items
                             break;
                         case "Tooltip18":
                             List<int> items = new();
-                            if (pet.eolConsumed)
+                            if (GlobalPet.eolConsumed)
                                 items.Add(ModContent.ItemType<PrismaticOptic>());
-                            if (pet.golemConsumed)
+                            if (GlobalPet.golemConsumed)
                                 items.Add(ModContent.ItemType<LihzahrdWrench>());
-                            if (pet.pumpkingConsumed) 
+                            if (GlobalPet.pumpkingConsumed) 
                                 items.Add(ModContent.ItemType<PumpkingsHead>());
                             line.Text = line.Text.Replace("<items>", PetTextsColors.ItemsToTooltipImages(items));
                             break;

@@ -1,9 +1,16 @@
 ﻿using System.IO;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.Systems
 {
+    public static class PetCraftingConditions
+    {
+        public static Condition ConsumedHead = new("Mods.PetsOverhaul.RequireHead", () => GlobalPet.pumpkingConsumed);
+        public static Condition ConsumedOptic = new("Mods.PetsOverhaul.RequireOptic", () => GlobalPet.eolConsumed);
+        public static Condition ConsumedWrench = new("Mods.PetsOverhaul.RequireWrench", () => GlobalPet.golemConsumed);
+    }
     public class PetObtainedCondition : ModSystem
     {
         public static bool petIsObtained = false;

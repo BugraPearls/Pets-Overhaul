@@ -23,11 +23,11 @@ namespace PetsOverhaul.Items
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.UseSound = SoundID.Item29;
         }
-        public override bool ConsumeItem(Player player)
+        public override bool? UseItem(Player player)
         {
-            if (player.TryGetModPlayer(out GlobalPet pet) && pet.pumpkingConsumed == false)
+            if (player.whoAmI == Main.myPlayer && GlobalPet.pumpkingConsumed == false)
             {
-                pet.pumpkingConsumed = true;
+                GlobalPet.pumpkingConsumed = true;
                 return true;
             }
             return false;

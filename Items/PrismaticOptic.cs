@@ -31,9 +31,9 @@ namespace PetsOverhaul.Items
         }
         public override bool? UseItem(Player player)
         {
-            if (player.whoAmI == Main.myPlayer && player.TryGetModPlayer(out GlobalPet pet) && pet.eolConsumed == false)
+            if (player.whoAmI == Main.myPlayer && GlobalPet.eolConsumed == false)
             {
-                pet.eolConsumed = true;
+                GlobalPet.eolConsumed = true;
                 return true;
             }
             return false;

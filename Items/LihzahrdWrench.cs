@@ -25,9 +25,9 @@ namespace PetsOverhaul.Items
         }
         public override bool? UseItem(Player player)
         {
-            if (player.whoAmI == Main.myPlayer && player.TryGetModPlayer(out GlobalPet pet) && pet.golemConsumed == false)
+            if (player.whoAmI == Main.myPlayer && GlobalPet.golemConsumed == false)
             {
-                pet.golemConsumed = true;
+                GlobalPet.golemConsumed = true;
                 return true;
             }
             return false;

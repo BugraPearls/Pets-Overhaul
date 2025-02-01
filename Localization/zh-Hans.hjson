@@ -11,25 +11,9 @@ Mods: {
 		Ability: 技能
 		Faster: 快
 		Slower: 慢
-
-		LightPetCombineUI: {
-			Header: 照明宠物融合菜单
-			Combine: 融合
-			InfoText:
-				'''
-				放置两个同种的照明宠物可以将它们融合为一个
-				融合出的照明宠物品级会继承两者属性的最高者
-				无法进行无效融合
-				'''
-			Price: 价格：
-			State1: 请放置同种照明宠物
-			State2: 按下融合
-			State3: 无法支付融合费用
-			State4: 两个物品都不是照明宠
-			State5: 第一个物品不是照明宠物
-			State6: 第二个物品不是照明宠物
-		}
-
+		// RequireOptic: Prismatic Optic must be consumed for this recipe.
+		// RequireWrench: Lihzahrd Wrench must be consumed for this recipe.
+		// RequireHead: Pumpking's Head must be consumed for this recipe.
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
@@ -242,6 +226,24 @@ Mods: {
 				'''
 			PhantasmalDragonShootLabel: 幻影龙宝宝的火球连射会从它的嘴巴发射
 			PhantasmalDragonShootTooltip: 使幻影龙宝宝的第三个技能，火球连射从它的嘴巴发出，而不是玩家位置。
+		}
+
+		LightPetCombineUI: {
+			Header: 照明宠物融合菜单
+			Combine: 融合
+			InfoText:
+				'''
+				放置两个同种的照明宠物可以将它们融合为一个
+				融合出的照明宠物品级会继承两者属性的最高者
+				无法进行无效融合
+				'''
+			Price: 价格：
+			State1: 请放置同种照明宠物
+			State2: 按下融合
+			State3: 无法支付融合费用
+			State4: 两个物品都不是照明宠
+			State5: 第一个物品不是照明宠物
+			State6: 第二个物品不是照明宠物
 		}
 
 		LightPetTooltips: {

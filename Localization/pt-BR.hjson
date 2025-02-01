@@ -11,25 +11,9 @@ Mods: {
 		// Ability: Ability
 		// Faster: Faster
 		// Slower: Slower
-
-		LightPetCombineUI: {
-			// Header: Light Pet Combining Menu
-			// Combine: Combine
-			/* InfoText:
-				'''
-				Put down two Light Pets of same type to combine them into one.
-				New Light Pet will inherit highest qualities of its parents.
-				Cannot combine if combination results in no benefit.
-				''' */
-			// Price: Price:
-			// State1: Place two Light Pets of same type.
-			// State2: Ready to combine.
-			// State3: Cannot afford combination cost.
-			// State4: Both items are not Light Pets.
-			// State5: First item is not a Light Pet.
-			// State6: Second item is not a Light Pet.
-		}
-
+		// RequireOptic: Prismatic Optic must be consumed for this recipe.
+		// RequireWrench: Lihzahrd Wrench must be consumed for this recipe.
+		// RequireHead: Pumpking's Head must be consumed for this recipe.
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
@@ -230,6 +214,24 @@ Mods: {
 				Habilita o 3º feitiço do Dragão Fantasmal, Rajada de Bolas de Fogo, para ser lançado da
 				boca do Dragão (O Pet Dragão que te segue), em vez de do Jogador.
 				'''
+		}
+
+		LightPetCombineUI: {
+			// Header: Light Pet Combining Menu
+			// Combine: Combine
+			/* InfoText:
+				'''
+				Put down two Light Pets of same type to combine them into one.
+				New Light Pet will inherit highest qualities of its parents.
+				Cannot combine if combination results in no benefit.
+				''' */
+			// Price: Price:
+			// State1: Place two Light Pets of same type.
+			// State2: Ready to combine.
+			// State3: Cannot afford combination cost.
+			// State4: Both items are not Light Pets.
+			// State5: First item is not a Light Pet.
+			// State6: Second item is not a Light Pet.
 		}
 
 		LightPetTooltips: {
