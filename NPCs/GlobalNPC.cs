@@ -14,6 +14,12 @@ using Terraria.ModLoader;
 
 namespace PetsOverhaul.NPCs
 {
+    public class NotABossCondition : IItemDropRuleCondition, IProvideItemConditionDescription
+    {
+        public bool CanDrop(DropAttemptInfo info) => !info.npc.boss;
+        public bool CanShowItemDropInUI() => true;
+        public string GetConditionDescription() => null;
+    }
     public sealed class NpcPet : GlobalNPC
     {
         /// <summary>
@@ -139,6 +145,11 @@ namespace PetsOverhaul.NPCs
                     npcLoot.Add(ItemDropRule.Common(ItemID.SuspiciousLookingTentacle));
                 }
             }
+        }
+        public override void ModifyGlobalLoot(GlobalLoot globalLoot)
+        {
+            globalLoot.Add(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsABoss(), ModContent.ItemType<MasteryShard>(), 100)); //1% for bosses (Most bosses that isn't boss = true does become boss = true at some point. EoW is fine without it as 0.02% is triggered multiple times
+            globalLoot.Add(ItemDropRule.ByCondition(new NotABossCondition(), ModContent.ItemType<MasteryShard>(), 5000)); // 0.02% for non-bosses
         }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {

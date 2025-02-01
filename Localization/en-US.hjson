@@ -1327,9 +1327,9 @@ Mods: {
 				DisplayName: Mastery Shard
 				Tooltip:
 					'''
-					Combine with any Boss trophy to craft
-					their respective Master Mode pet.
-					Drops only 5 times per world.
+					A Core crafting ingredient in Master Mode Pet recipes.
+					Rarely dropped by any boss and extremely rarely dropped by any enemy.
+					Only once per world, drops with 100% chance from 5 select bosses.
 					'''
 			}
 
