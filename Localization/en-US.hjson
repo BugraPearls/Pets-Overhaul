@@ -1344,29 +1344,20 @@ Mods: {
 
 			LihzahrdWrench: {
 				DisplayName: Lihzahrd Wrench
-				Tooltip:
-					'''
-					Keep this in your inventory or void bag to allow 
-					crafting of Toy Golem Pet infinitely.
-					'''
+				Tooltip: Consume this to unlock crafting recipe for Toy Golem Light Pet permanently.
 			}
 
 			PrismaticOptic: {
 				DisplayName: Prismatic Optic
-				Tooltip:
-					'''
-					Keep this in your inventory or void bag to allow 
-					crafting of Fairy Princess Pet infinitely.
-					'''
+				Tooltip: Consume this to unlock crafting recipe for Fairy Princess Light Pet permanently.
 			}
 
 			PumpkingsHead: {
 				DisplayName: Pumpking's Head
 				Tooltip:
 					'''
-					This year's harvest seems to be bountiful.
-					Keep this in your inventory or void bag to allow 
-					crafting of Jack O'Lantern Pet infinitely.
+					This year's harvest seems to be quite bountiful.
+					Consume this to unlock crafting recipe for Jack 'O Lantern Light Pet permanently.
 					'''
 			}
 
