@@ -25,6 +25,9 @@ namespace PetsOverhaul.Systems
     public sealed class GlobalPet : ModPlayer
     {
         public static InputMode PlayerInputMode => PlayerInput.CurrentProfile.InputModes.ContainsKey(InputMode.Keyboard) ? InputMode.Keyboard : InputMode.XBoxGamepad;
+        public bool eolConsumed = false;
+        public bool golemConsumed = false;
+        public bool pumpkingConsumed = false;
         /// <summary>
         /// Modify this value if you want to reduce or increase lifesteal & healing by Pets for any reason, such as a Mod applying an effect that reduces healings. Basically a modifier on heals from Pets. Used in PetRecovery().
         /// </summary>
@@ -595,6 +598,9 @@ namespace PetsOverhaul.Systems
         {
             tag.Add("SkinColor", skin);
             tag.Add("SkinColorChanged", skinColorChanged);
+            tag.Add("eolConsume", eolConsumed);
+            tag.Add("golemConsume", golemConsumed);
+            tag.Add("pumpkingConsume",pumpkingConsumed);
         }
         public override void LoadData(TagCompound tag)
         {
@@ -606,6 +612,21 @@ namespace PetsOverhaul.Systems
             if (tag.TryGet("SkinColorChanged", out bool skinChanged))
             {
                 skinColorChanged = skinChanged;
+            }
+            
+            if (tag.TryGet("eolConsume", out bool eol))
+            {
+                eolConsumed = eol;
+            }
+
+            if (tag.TryGet("golemConsume", out bool golem))
+            {
+                golemConsumed = golem;
+            }
+
+            if (tag.TryGet("pumpkingConsume", out bool pumpking))
+            {
+                pumpkingConsumed = pumpking;
             }
         }
         public override void NaturalLifeRegen(ref float regen)

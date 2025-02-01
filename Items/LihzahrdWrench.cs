@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,6 +16,16 @@ namespace PetsOverhaul.Items
             Item.master = true;
             Item.width = 38;
             Item.height = 38;
+            Item.consumable = true;
+        }
+        public override bool ConsumeItem(Player player)
+        {
+            if (player.TryGetModPlayer(out GlobalPet pet) && pet.golemConsumed == false)
+            {
+                pet.golemConsumed = true;
+                return true;
+            }
+            return false;
         }
         public override void PostUpdate()
         {

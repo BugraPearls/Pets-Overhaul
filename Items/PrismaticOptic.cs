@@ -22,6 +22,16 @@ namespace PetsOverhaul.Items
             Item.width = 42;
             Item.height = 42;
             Item.alpha = 100;
+            Item.consumable = true;
+        }
+        public override bool ConsumeItem(Player player)
+        {
+            if (player.TryGetModPlayer(out GlobalPet pet) && pet.eolConsumed == false)
+            {
+                pet.eolConsumed = true;
+                return true;
+            }
+            return false;
         }
         public override void PostUpdate()
         {
