@@ -11,9 +11,9 @@ Mods: {
 		Ability: Ability
 		Faster: Faster
 		Slower: Slower
-		RequireOptic: Consuming a Prismatic Optic.
-		RequireWrench: Consuming a Lihzahrd Wrench.
-		RequireHead: Consuming a Pumpking's Head.
+		RequireOptic: Consuming a Prismatic Optic
+		RequireWrench: Consuming a Lihzahrd Wrench
+		RequireHead: Consuming a Pumpking's Head
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
@@ -23,10 +23,9 @@ Mods: {
 		JojaCola: A nature-related NPC may be able to Purify this
 		Notice:
 			'''
-			[c/90C2AA:Pets Overhaul 3.3, latest changes: Pet Reworks, fixed Damage Scaling with Pet damage, Moonling & Item Compatibility, New command]
-			[c/90C2AA:Full-Reworked Prince, Princess and Dual Slime Pets and Shadow Mimic Pet, Semi-Reworked Alien Skater and Fennec Fox Pets]
-			[c/90C2AA:Added /pet item & items {harvesting|mining|fishing} and /pet light & lightpet & lightpets commands.]
-			[c/90C2AA:Full Chinese, Russian and Portuguese translation for both Main mod and Calamity Addon, By: ROH, Teokai and Erstarisk.]
+			[c/90C2AA:Pets Overhaul 3.4, latest changes: Added Recipes for ALL Pets! Crafted on a Pet Forge.]
+			[c/90C2AA:All Recipes contain & associated with new item Pet Food (Sold by Pet Tamer) Adjusted all old recipes.]
+			[c/90C2AA:Mastery Shard now drops from all enemies (0.02%) and all bosses (1%) besides the guarantee drops.]
 			[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 			'''
