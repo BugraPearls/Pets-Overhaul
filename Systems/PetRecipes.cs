@@ -108,6 +108,21 @@ namespace PetsOverhaul.Systems
             PetRecipe(Recipe.Create(ItemID.Seaweed).AddIngredient(ItemID.FishingSeaweed).AddIngredient(ItemID.Seashell,10).AddIngredient(ItemID.ShellPileBlock,4).AddIngredient(ItemID.ThornsPotion).AddIngredient(ItemID.JungleSpores,12).AddRecipeGroup(RecipeGroupID.Sand,250),150);
             PetRecipe(Recipe.Create(ItemID.LightningCarrot).AddIngredient(ItemID.Bunny).AddIngredient(ItemID.Wire, 25).AddIngredient(ItemID.FallenStar, 25).AddIngredient(ItemID.RainCloud, 25).AddCondition(Condition.BestiaryFilledPercent(50)), 700);
             PetRecipe(Recipe.Create(ItemID.ZephyrFish).AddIngredient(ItemID.Cloud, 250).AddIngredient(ItemID.ApprenticeBait,25).AddRecipeGroup(RecipeGroupsForPets.AllBugs,5).AddCondition(Condition.AnglerQuestsFinishedOver(30)),500);
+
+            PetRecipe(Recipe.Create(ItemID.DD2PetGhost).AddIngredient(ItemID.DefenderMedal, 5).AddIngredient(ItemID.WaterCandle).AddIngredient(ItemID.SoulofNight, 4).AddIngredient(ItemID.SoulofLight, 4).AddIngredient(ItemID.Silk, 6), 70);
+            PetRecipe(Recipe.Create(ItemID.CrimsonHeart).AddIngredient(ItemID.TissueSample, 4).AddIngredient(ItemID.CrimtaneBar, 3).AddIngredient(ItemID.ViciousMushroom, 2), 10);
+            PetRecipe(Recipe.Create(ItemID.FairyBell).AddIngredient(ItemID.Bell).AddRecipeGroup(RecipeGroupsForPets.Fairies).AddIngredient(ItemID.SoulofSight, 5).AddIngredient(ItemID.PixieDust, 8), 80);
+            PetRecipe(Recipe.Create(ItemID.PumpkingPetItem).AddIngredient(ItemID.SpookyCandle).AddIngredient(ItemID.SpookyWood, 50).AddIngredient(ItemID.Pumpkin, 30).AddCondition(PetCraftingConditions.ConsumedHead), 75);
+            PetRecipe(Recipe.Create(ItemID.FairyQueenPetItem).AddIngredient(ItemID.SoulofFlight, 8).AddIngredient(ItemID.CrystalShard, 14).AddCondition(PetCraftingConditions.ConsumedOptic), 125);
+            PetRecipe(Recipe.Create(ItemID.MagicLantern).AddIngredient(ItemID.Glass, 10).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Torch,10).AddRecipeGroup(RecipeGroupsForPets.Copper, 2).AddRecipeGroup(RecipeGroupID.IronBar, 2).AddRecipeGroup(RecipeGroupsForPets.Silver, 2).AddRecipeGroup(RecipeGroupsForPets.Gold,2).AddCondition(Condition.MoonPhaseFull).AddCondition(Condition.TimeNight), 175);
+            PetRecipe(Recipe.Create(ItemID.ShadowOrb).AddIngredient(ItemID.ShadowScale, 4).AddIngredient(ItemID.DemoniteBar, 3).AddIngredient(ItemID.VileMushroom, 2), 10);
+            PetRecipe(Recipe.Create(ItemID.SuspiciousLookingTentacle).AddIngredient(ItemID.FragmentNebula, 6).AddIngredient(ItemID.FragmentSolar, 6).AddIngredient(ItemID.FragmentStardust, 6).AddIngredient(ItemID.FragmentVortex, 6).AddIngredient(ItemID.SoulofFright, 3).AddIngredient(ItemID.SoulofMight, 3).AddIngredient(ItemID.SoulofSight, 3).AddCondition(Condition.DownedMoonLord), 400);
+            PetRecipe(Recipe.Create(ItemID.GolemPetItem).AddIngredient(ItemID.LihzahrdBrick, 15).AddIngredient(ItemID.LunarTabletFragment).AddIngredient(ItemID.BeetleHusk, 3).AddIngredient(ItemID.Wire, 25).AddCondition(PetCraftingConditions.ConsumedWrench), 125);
+            PetRecipe(Recipe.Create(ItemID.WispinaBottle).AddIngredient(ItemID.Ectoplasm, 8).AddIngredient(ItemID.Bottle).AddIngredient(ItemID.SoulofLight).AddIngredient(ItemID.SoulofNight), 150);
+
+            MasterModePetRecipe(Recipe.Create(ModContent.ItemType<LihzahrdWrench>()).AddIngredient(ItemID.LihzahrdPowerCell).AddIngredient(ItemID.SoulofFright, 5).AddIngredient(ItemID.SoulofMight, 5).AddIngredient(ItemID.SoulofSight, 5).AddIngredient(ItemID.LihzahrdFurnace).AddCondition(Condition.DownedGolem), 50);
+            MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PrismaticOptic>()).AddIngredient(ItemID.Lens, 5).AddIngredient(ItemID.QueenSlimeCrystal).AddIngredient(ItemID.CrystalShard, 20).AddIngredient(ItemID.EmpressButterfly).AddIngredient(ItemID.PearlstoneBlock, 65).AddCondition(Condition.DownedEmpressOfLight), 50);
+            MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PumpkingsHead>()).AddIngredient(ItemID.SpookyWood, 50).AddIngredient(ItemID.Pumpkin, 50).AddIngredient(ItemID.PumpkingTrophy).AddIngredient(ItemID.Ectoplasm, 15).AddCondition(Condition.DownedPumpking),50);
         }
     }
 }

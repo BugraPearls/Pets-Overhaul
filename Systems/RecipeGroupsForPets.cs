@@ -20,6 +20,7 @@ namespace PetsOverhaul.Systems
         public static RecipeGroup Crowns; //WHY in Vanilla there is no Crown recipe group?????
         public static RecipeGroup AllBugs;
         public static RecipeGroup DemoniteBar;
+        public static RecipeGroup Fairies;
 
         public override void AddRecipeGroups()
         {
@@ -51,6 +52,8 @@ namespace PetsOverhaul.Systems
             RecipeGroup.RegisterGroup(nameof(ItemID.Buggy), AllBugs);
             DemoniteBar = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.DemoniteBar)}", ItemID.DemoniteBar, ItemID.CrimtaneBar);
             RecipeGroup.RegisterGroup(nameof(ItemID.DemoniteBar), DemoniteBar);
+            Fairies = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("RandomWorldName_Noun.Fairies")}", ItemID.FairyCritterBlue, ItemID.FairyCritterGreen, ItemID.FairyCritterPink);
+            RecipeGroup.RegisterGroup(nameof(ItemID.FairyCritterBlue), Fairies);
         }
     }
 }
