@@ -1,20 +1,20 @@
 Mods: {
 	PetsOverhaul: {
-		// BaseCd: Base Pet Ability Cooldown:
-		// NoCd: Current Pet has no Ability Cooldown!
-		// RemainingCd: Remaining Pet Ability Cooldown:
-		// ReadyCd: Pet Ability Ready!
-		// Sec: Second
-		// Secs: Seconds
+		BaseCd: Базовое время восстановления способности питомца:
+		NoCd: У текущего питомца нет времени восстановления способности!
+		RemainingCd: Оставшееся время восстановления способности питомца:
+		ReadyCd: Способность питомца готова!
+		Sec: Секунда
+		Secs: Секунды
 		Pet: Питомец
 		And: и
-		// Ability: Ability
-		// Faster: Faster
-		// Slower: Slower
-		// RequireOptic: Consuming a Prismatic Optic
-		// RequireWrench: Consuming a Lihzahrd Wrench
-		// RequireHead: Consuming a Pumpking's Head
-		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
+		Ability: Способность
+		Faster: Быстрее
+		Slower: Медленнее
+		RequireOptic: Требуется призматическая оптика
+		RequireWrench: Требуется ключ Ящщера
+		RequireHead: Требуется голова Тыквенного короля
+		Операторы предназначены для случаев, когда в языке они не используются при указании бонуса, а применяются только слова. Оставьте "" если их нужно убрать.
 		%: %
 		x: x
 		+: +
@@ -99,13 +99,13 @@ Mods: {
 				Шаг 2: Отключите видимость текущего питомца, нажав на глазик рядом со слотом питомца.
 				Шаг 3: "Используйте" питомца, которого вы хотите видеть, через предмет питомца в вашем инвентаре. Готово!
 				'''
-			// LightPetList: List of all Light Pets:
-			// PetList: List of <class> Pets:
-			// All: all
-			// NoPets: No pets available for this class. (You may be missing an addon for this class?)
-			// Items: All items affected by <class> class of Pet Effects (Only when naturally obtained):
-			// ClassArgumentInvalidItems: The given class is invalid, try any of the following: {harvesting|mining|fishing}.
-			// ClassArgumentInvalid: The given class is invalid, try any of the following: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
+			LightPetList: Список всех светящихся питомцев:
+			PetList: Список питомцев класса <class>:
+			All: все
+			NoPets: Для данного класса нет доступных питомцев. (Возможно, у вас отсутствует аддон для этого класса?)
+			Items: Все предметы, затронутые эффектами питомцев класса <class> (Только при естественном получении):
+			ClassArgumentInvalidItems: Указанный класс недействителен, попробуйте один из следующих: {harvesting|mining|fishing}.
+			ClassArgumentInvalid: Указанный класс недействителен, попробуйте один из следующих: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: Аргумент недействителен, вот список команд Pets Overhaul: (команды нечувствительны к регистру)
 			UseInMultiplayer: Используйте эту команду в многопользовательской игре! Если вы хотите увидеть свои навыки Junimo, используйте /pet junimo, /pet junimoscoreboard или /pet junimoleaderboard.
 			SinglePlayerJunimo: "[c/<color>:Ваш <class> уровень Junimo: <level>, Ваш <class> опыт Junimo: <exp>]"
@@ -233,21 +233,21 @@ Mods: {
 		}
 
 		LightPetCombineUI: {
-			// Header: Light Pet Combining Menu
-			// Combine: Combine
-			/* InfoText:
+			Header: Меню комбинирования светящихся питомцев
+			Combine: Объединить
+			InfoText:
 				'''
-				Put down two Light Pets of same type to combine them into one.
-				New Light Pet will inherit highest qualities of its parents.
-				Cannot combine if combination results in no benefit.
+				Поместите двух светящихся питомцев одного типа, чтобы объединить их в одного.
+				Новый светящийся питомец унаследует лучшие качества своих родителей.
+				Нельзя объединять, если комбинация не дает никаких преимуществ.
 				''' */
-			// Price: Price:
-			// State1: Place two Light Pets of same type.
-			// State2: Ready to combine.
-			// State3: Cannot afford combination cost.
-			// State4: Both items are not Light Pets.
-			// State5: First item is not a Light Pet.
-			// State6: Second item is not a Light Pet.
+			Price: Цена:
+			State1: Поместите двух светящихся питомцев одного типа.
+			State2: Готово к объединению.
+			State3: Недостаточно средств для объединения.
+			State4: Оба предмета не являются светящимися питомцами.
+			State5: Первый предмет не является светящимся питомцем.
+			State6: Второй предмет не является светящимся питомцем.
 		}
 
 		LightPetTooltips: {
@@ -1368,52 +1368,52 @@ Mods: {
 			}
 
 			PetMonitoringTablet: {
-				// DisplayName: Pet Monitoring Tablet
-				/* Tooltip:
+				DisplayName: Планшет мониторинга питомцев
+				Tooltip:
 					'''
-					Shows all Pets Overhaul related Player Stats.
-					Pet Ability Haste: <haste>%
-					[c/899499:Your Pet abilities cool off <hasteValue> <hastePosiOrNega> than normal.]
-					Pet Damage Multiplier: <damage>x
-					[c/899499:Projectiles and Direct Damages sourcing from your Pets deal <damageTooltip>% damage.]
-					Pet Healing Multiplier: <heal>x
-					[c/899499:Any sorts of heals sourcing from your Pets heal <healTooltip>%.]
-					Pet Shielding Multiplier: <shield>x
-					[c/899499:All shielding effects by your pets grant <shieldTooltip>% shield.]
-					Global Fortune: <global>
-					[c/899499:All Mining, Harvesting and Fishing drops are increased by <globalTooltip>%.]
-					[c/899499:Also increases all non-classified Pet item Drops by <globalTooltipIncr>%.]
-					Mining Fortune: <mining> (Ores etc., check all with /pet items mining)
-					[c/899499:All Mining drops are increased by <miningTooltip>%. If item is from a Pet, increased to <miningTooltipIncr>%.]
-					Harvesting Fortune: <harvesting> (Trees, plants, etc., check all with /pet items harvesting)
-					[c/899499:All Harvesting drops are increased by <harvestingTooltip>%. If item is from a Pet, increased to <harvestingTooltipIncr>%.]
-					Fishing Fortune: <fishing> (Fishing catches, check all with /pet items fishing)
-					[c/899499:All Fishing drops are increased by <fishingTooltip>%. If item is from a Pet, increased to <fishingTooltipIncr>%.]
-					Consumed Master Mode Light Pet Items: <items>
-					''' */
+					Отображает все игровые показатели, связанные с переработкой питомцев.
+					Скорость восстановления способностей питомца: <haste>%
+					[c/899499:Способности вашего питомца восстанавливаются на <hasteValue> <hastePosiOrNega> быстрее/медленнее, чем обычно.]
+					Множитель урона питомца: <damage>x
+					[c/899499:Снаряды и прямой урон, наносимый вашими питомцами, составляют <damageTooltip>% от нормального урона.]
+					Множитель исцеления питомца: <heal>x
+					[c/899499:Любое исцеление от ваших питомцев восстанавливает <healTooltip>% от стандартного значения.]
+					Множитель защиты питомца: <shield>x
+					[c/899499:Все защитные эффекты от ваших питомцев обеспечивают <shieldTooltip>% щита.]
+					Глобальная удача: <global>
+					[c/899499:Добыча ресурсов (шахтёрство, собирательсво и рыбалка) увеличена на <globalTooltip>%.]
+					[c/899499:Также увеличивает шанс выпадения всех неклассифицированных предметов питомцев на <globalTooltipIncr>%.]
+					Удача в шахтёрстве: <mining> (Руды и т. д., полный список: /pet items mining)
+					[c/899499:Все добытые полезные ископаемые увеличены на <miningTooltip>%. Если предмет получен от питомца, бонус увеличивается до <miningTooltipIncr>%.]
+					Удача в собирательстве: <harvesting> (Деревья, растения и т. д., полный список: /pet items harvesting)
+					[c/899499:Все собранные урожаи увеличены на <harvestingTooltip>%. Если предмет получен от питомца, бонус увеличивается до <harvestingTooltipIncr>%.]
+					Удача в рыбалке: <fishing> (Улов, полный список: /pet items fishing)
+					[c/899499:Все пойманные рыбой предметы увеличены на <fishingTooltip>%. Если предмет получен от питомца, бонус увеличивается до <fishingTooltipIncr>%.]
+					Использованные предметы светящихся питомцев режима Мастер: <items>
+					'''
 			}
 
 			Bonemerang: {
-				// DisplayName: Bonemerang
-				// Tooltip: You can still hear it crying for its parent.
-			}
+				DisplayName: Костемеранг  
+				Tooltip: Кажется, вы все еще слышите, как он плачет по своему родителю.  
+			}  
 
-			PetForgeItem: {
-				// DisplayName: Pet Forge
-				/* Tooltip:
-					'''
-					Allows you to craft all Pets.
-					[c/899499:I know its just a Furnace recolor...]
-					''' */
-			}
+			PetForgeItem: {  
+				DisplayName: Кузница питомцев  
+				Tooltip:  
+					'''  
+					Позволяет создать любого питомца.  
+					[c/899499:Я знаю, что это просто перекрашенная печь...]  
+					''' 
+			}  
 
-			PetFood: {
-				// DisplayName: Pet Food
-				/* Tooltip:
-					'''
-					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
-					Used in crafting recipes of every single Pet.
-					''' */
+			PetFood: {  
+				DisplayName: Корм для питомцев  
+				Tooltip:  
+					'''  
+					Нет ни одного питомца, которому не понравится этот корм!  
+					Используется в рецептах создания каждого питомца.  
+					''' 
 			}
 		}
 
@@ -1431,58 +1431,58 @@ Mods: {
 
 		NPCs: {
 			LizardTail.DisplayName: Хвост ящерицы
-			/* LizardTailBestiaryEntry:
+			LizardTailBestiaryEntry:  
+				'''  
+				Это лучший способ спастись от опасности.  
+				Так ваша ящерица помогает вам улизнуть от неприятностей!  
 				'''
-				Its the best way to escape off of danger.
-				Its your Lizard Pet's way of sneaking you out of Danger!
-				''' */
-			// MasteryShard1: Dropped only once per world by killing Eye of Cthulhu.
-			// MasteryShard2: Dropped only once per world by killing Wall of Flesh.
-			// MasteryShard3: Dropped only once per world by killing Golem.
-			// MasteryShard4: Dropped only once per world by killing Skeletron.
-			// MasteryShard5: Dropped only once per world by killing Moon Lord.
+			MasteryShard1: Выпадает только один раз за мир при убийстве Глаза Ктулху.  
+			MasteryShard2: Выпадает только один раз за мир при убийстве Стены Плоти.  
+			MasteryShard3: Выпадает только один раз за мир при убийстве Голема.  
+			MasteryShard4: Выпадает только один раз за мир при убийстве Скелетрона.  
+			MasteryShard5: Выпадает только один раз за мир при убийстве Лунного Лорда.  
 
-			PetTamer: {
-				// DisplayName: Pet Tamer
-				// Combine: Combine Light Pets
-				// BestiaryFlavorText: The great Pet Tamer, knows more regarding Pets more than anyone else. Well known for his capabilities in helping Light Pets reach their greatest potential.
-				// GuideQuote: Hmm. I see you haven't taken care of a Pet yet. I've heard that if you can find one and start keeping it around you, a Pet Tamer may settle in!
+			PetTamer: {  
+				DisplayName: Укротитель питомцев  
+				Combine: Объединить светящихся питомцев  
+				BestiaryFlavorText: Великий укротитель питомцев, знает о них больше, чем кто-либо другой. Он известен своими способностями помогать светящимся питомцам достичь их высшего потенциала.  
+				GuideQuote: Хм. Вижу, ты еще не заботился о питомце. Я слышал, что если ты найдешь одного и начнешь держать его рядом, укротитель питомцев может поселиться у тебя!  
 
-				Quotes: {
-					// Common1: How is your Pets coming along? Always keep them fed kid, just right.
-					// Common2: If you do happen to have multiple Light Pets of the same type, I can combine their best Qualities into one Light Pet!.. For a price of course.
-					// Common3: Hm? You'd like to know more regarding your Pets strength? I do happen to have Pet Monitoring Tablet I can sell to you. How convenient.
-					// Common4: One time I've dropped my whole bag into that shiny looking purple liquid in the underground. I was so worried because had my Wisp in a Bottle in the bag! Weirdly enough, as I saw everything turn into something else, my Wisp just stood there, unfazed! I wonder what that liquid was.
-					// Common5: Oh yeah. Someone gave me the recipe to make a Crimson Heart out of a Shadow Orb. I've crafted it. Guess what kid? It refused to be any stronger than its predecessor!
-					// Common6: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
-					// Rare1: Whats this whip for? For the ones that tries to hurt my Pets of course! What else did ya think?
-					// WizardQuote: Its crazy, when <name> told me im extremely lucky that day, all Light Pets I've been training during that day seemed to have higher potential.
-				}
+				Quotes: {  
+					Common1: Как там твои питомцы? Всегда следи, чтобы они были накормлены, приятель.  
+					Common2: Если у тебя есть несколько светящихся питомцев одного типа, я могу объединить их лучшие качества в одного питомца! ...За определенную плату, конечно.  
+					Common3: Хм? Ты хочешь узнать больше о силе своих питомцев? У меня есть планшет мониторинга питомцев, который я могу тебе продать. Как удачно.  
+					Common4: Однажды я уронил свою сумку в ту блестящую фиолетовую жидкость в подземелье. Я так волновался, ведь там был мой светлячок в бутылке! Но, как ни странно, когда я увидел, как все превращается во что-то другое, мой светлячок просто стоял там, невозмутимый! Интересно, что это была за жидкость?  
+					Common5: О да. Кто-то дал мне рецепт, как сделать Багровое Сердце из Теневого Шара. Я его создал. И угадай что, приятель? Оно отказалось становиться сильнее своего предшественника!  
+					Common6: Да! В кузнице питомцев можно получить любого питомца. Хотя это может быть немного сложно и требовать усилий.  
+					Rare1: Этот кнут? Для тех, кто пытается навредить моим питомцам, конечно! А ты что подумал?  
+					WizardQuote: Это безумие, когда <name> сказал мне, что у меня сегодня невероятная удача, все светящиеся питомцы, которых я тренировал в тот день, показали больший потенциал.  
+				}  
 
-				TownNPCMood: {
-					// Content: We are feeling great!
-					// NoHome: My pets and I do require somewhere to stay. I don't like seeing them uncomfortable...
-					// FarFromHome: Taking a walk is OK, but for safety of my pets we should be back at our home.
-					// LoveSpace: Since my pets have the space to breathe and play around, that is making me happy.
-					// DislikeCrowded: My pets don't like too many people around besides me.
-					// HateCrowded: Because my pets are unable to be theirselves with too many people around, I really don't like the current conditions.
-					// LikeBiome: You know, being in {BiomeName} is very nice for my pets.
-					// DislikeBiome: While we're at {BiomeName}, my pets seem uncomfortable.
-					// LoveNPC: I love {NPCName}! She always takes cares of my Pets when I am not around, and my pets and her pets get along very well!
-					// LikeNPC: I like {NPCName}. My pets enjoy their time with his own pet!
-					// DislikeNPC: I dislike {NPCName}. I know he had no bad intentions, but him trying to dye the fur of my pet scared her off.
-					// HateNPC: No, no. {NPCName} is scaring my pets with all those guns and I've heard he hurts animals too! Neither I or my pets wants to be near him!
-					// LikeNPC_Princess: I like {NPCName}! She loves to play with my pets.
-					// Princess_LovesNPC: I like {NPCName}! His pets are SOOOO CUUUTEEE!
+				TownNPCMood: {  
+					Content: Мы чувствуем себя отлично!  
+					NoHome: Моим питомцам и мне нужно место для проживания. Мне не нравится видеть, как им неудобно...  
+					FarFromHome: Прогулка - это хорошо, но ради безопасности моих питомцев нам стоит вернуться домой.  
+					LoveSpace: Поскольку у моих питомцев есть пространство для отдыха и игр, это делает меня счастливым.  
+					DislikeCrowded: Моим питомцам не нравится, когда вокруг слишком много людей.  
+					HateCrowded: Из-за большого количества людей мои питомцы не могут быть самими собой, и мне это очень не нравится.  
+					LikeBiome: Знаешь, находиться в {BiomeName} очень приятно для моих питомцев.  
+					DislikeBiome: Пока мы в {BiomeName}, мои питомцы выглядят обеспокоенными.  
+					LoveNPC: Я обожаю {NPCName}! Она всегда заботится о моих питомцах, когда меня нет рядом, и ее питомцы прекрасно ладят с моими!  
+					LikeNPC: Мне нравится {NPCName}. Моим питомцам весело проводить время с его питомцем!  
+					DislikeNPC: Мне не нравится {NPCName}. Я знаю, он не хотел ничего плохого, но его попытка покрасить мех моего питомца напугала ее.  
+					HateNPC: Нет, нет. {NPCName} пугает моих питомцев всеми этими пушками, и я слышал, что он причиняет вред животным! Ни я, ни мои питомцы не хотим быть рядом с ним!  
+					LikeNPC_Princess: Мне нравится {NPCName}! Она любит играть с моими питомцами.  
+					Princess_LovesNPC: Мне нравится {NPCName}! Его питомцы ТАКИЕ МИЛЫЕ!  
 				}
 			}
 
-			// SlimeServant.DisplayName: Slime Servant
+			// SlimeServant.DisplayName: Слизневый слуга
 		}
 
 		Configs: {
 			ShieldPosition.Tooltip: ""
-			// ParticleAmount.Tooltip: ""
+			ParticleAmount.Tooltip: ""
 		}
 	}
 }
