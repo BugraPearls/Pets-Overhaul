@@ -11,9 +11,9 @@ Mods: {
 		Ability: 技能
 		Faster: 快
 		Slower: 慢
-		// RequireOptic: Consuming a Prismatic Optic
-		// RequireWrench: Consuming a Lihzahrd Wrench
-		// RequireHead: Consuming a Pumpking's Head
+		RequireOptic: 消耗一个棱晶镜头
+		RequireWrench: 消耗一个丛林蜥蜴扳手
+		RequireHead: 消耗一个南瓜头
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
@@ -1265,8 +1265,10 @@ Mods: {
 				DisplayName: 大师碎片
 				Tooltip:
 					'''
-					能和任意Boss纪念章制作出对应的大师模式宠物
-					每个世界只能掉落5个
+					大师模式宠物配方的一个核心制作材料
+					有很小概率由任意BOSS掉落，也有极小概率由任意敌怪掉落
+					此外，在每个世界第一次击杀下列BOSS时，必定会掉落一个
+					 - 克苏鲁之眼，骷髅王，血肉墙，石巨人，月亮领主
 					'''
 			}
 
@@ -1281,29 +1283,20 @@ Mods: {
 
 			LihzahrdWrench: {
 				DisplayName: 丛林蜥蜴扳手
-				Tooltip:
-					'''
-					放在背包或虚空袋以解锁石巨人守卫[i:4807]的合成配方
-					（使用日耀碑牌碎片制作）
-					'''
+				Tooltip: 使用以永久解锁石巨人守卫[i:4807]的合成配方
 			}
 
 			PrismaticOptic: {
 				DisplayName: 棱晶镜头
-				Tooltip:
-					'''
-					放在背包或虚空袋以解锁光之珠宝[i:4811]的合成配方
-					（使用飞翔之魂制作）
-					'''
+				Tooltip: 使用以永久解锁光之珠宝[i:4811]的合成配方
 			}
 
 			PumpkingsHead: {
 				DisplayName: 南瓜头
 				Tooltip:
 					'''
-					今年的收成似乎很好
-					放在背包或虚空袋以解锁南瓜香味蜡烛[i:4812]的合成配方
-					（使用南瓜和阴森木制作）
+					今年的收成似乎非常好
+					使用以永久解锁南瓜香味蜡烛[i:4812]的合成配方
 					'''
 			}
 
@@ -1329,6 +1322,7 @@ Mods: {
 					[c/899499:所有采集掉落有<harvestingTooltip>%几率增加。如果其来源为宠物，增加至<harvestingTooltipIncr>%]
 					钓鱼时运：<fishing> （渔获）
 					[c/899499:所有钓鱼掉落有<fishingTooltip>%几率增加。如果其来源为宠物，增加至<fishingTooltipIncr>%]
+					已解锁的大师模式照明宠物配方：<items>
 					'''
 			}
 
