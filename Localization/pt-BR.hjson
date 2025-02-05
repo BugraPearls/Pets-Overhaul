@@ -104,13 +104,13 @@ Mods: {
 				2° Passo: Desabilite a visibilidade do Pet atualmente equipado no icone de olho no slot do Pet.
 				3° Passo: 'Use' o Pet que você quer que fique visível pelo seu item no inventário e pronto!
 				'''
-			LightPetList: Lista de todos os PET's de Luz:  
-			PetList: Lista de PET's da classe <class>:  
-			All: todos  
-			NoPets: Nenhum PET disponível para esta classe. (Talvez você esteja sem um addon para esta classe?)  
-			Items: Todos os itens afetados pelos efeitos de PET's da classe <class> (Apenas quando obtidos naturalmente):  
-			ClassArgumentInvalidItems: A classe fornecida é inválida, tente uma das seguintes: {harvesting|mining|fishing}.  
-			ClassArgumentInvalid: A classe fornecida é inválida, tente uma das seguintes: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.  
+			LightPetList: Lista de todos os PET's de Luz:
+			PetList: Lista de PET's da classe <class>:
+			All: todos
+			NoPets: Nenhum PET disponível para esta classe. (Talvez você esteja sem um addon para esta classe?)
+			Items: Todos os itens afetados pelos efeitos de PET's da classe <class> (Apenas quando obtidos naturalmente):
+			ClassArgumentInvalidItems: A classe fornecida é inválida, tente uma das seguintes: {harvesting|mining|fishing}.
+			ClassArgumentInvalid: A classe fornecida é inválida, tente uma das seguintes: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
 			ArgumentInvalid: O argumento enviado foi invalido, aqui está a lista de comandos do Pet Overhaul: (comandos não são sensíveis a maiúsculas e minúsculas)
 			UseInMultiplayer: Por favor, use esse comando no Multiplayer! Se você quer ver as habilidades do seu Junimo. use /pet junimo, /pet junimoscoreboard ou /pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:O nível de <class> do seu Junimo: <level> A experiência da <class> do seu Junimo: <exp>]"
@@ -199,17 +199,17 @@ Mods: {
 			PassiveSoundLabel: Habilita sons passivos de pet
 			PassiveSoundTooltip: Habilita efeitos sonoros de pet que tocam aleatóriamente sem efeitos similar à efeitos sonoros de ambiente.
 			AbilitySoundLabel: Habilita sons de habilidades
-			AbilitySoundTooltip:  
-				'''  
+			AbilitySoundTooltip:
+				'''
 				Ativa os efeitos sonoros dos Pets que tocam ao ativar habilidades, ao recarregar o tempo de recarga  
 				e em outras situações semelhantes. (não é recomendado desativar, pois esses sons podem ajudar na sua percepção.)  
-				'''  
+				'''
 			LowCooldownSoundLabel: Habilita som de temporizador curto
-			LowCooldownSoundTooltip:  
-				'''  
+			LowCooldownSoundTooltip:
+				'''
 				Ativa o som de recarga da habilidade do Pet mesmo que esteja abaixo da opção de limite.  
 				Desative esta opção se não quiser ouvir o efeito sonoro de recarga quando estiver abaixo do limite.  
-				'''  
+				'''
 			LowCooldownThresholdLabel: Desabilitar Limite do temporizador da habilidade curta
 			LowCooldownThresholdTooltip:
 				'''
@@ -217,21 +217,21 @@ Mods: {
 				reproduzindo sons ao atualizar, em Quadros. (60 quadros = 1 segundo)
 				Alterar isso não tem efeito se "Habilitar som do temporizador de habilidade curta" estiver ativado.
 				'''
-			MoreDifficultLabel: Definir Desvantagem do Jogador  
-			MoreDifficultTooltip:  
-				'''  
+			MoreDifficultLabel: Definir Desvantagem do Jogador
+			MoreDifficultTooltip:
+				'''
 				Define a porcentagem de redução de dano causado pelo jogador e o aumento de dano recebido.  
 				Isto foi implementado porque o Pets Overhaul adiciona um aumento de poder ao jogo. Mínimo: 0%, Máximo: 20%.  
 				Mantenha em 0% para desativar. O recomendado é entre 7% e 10%.  
 				Isso só terá efeito após obter um PET, pois, antes disso, não faz sentido estar ativo.  
-				'''  
-			SwapCooldownLabel: Ativar Recarga de Troca de PET  
-			SwapCooldownTooltip:  
-				'''  
+				'''
+			SwapCooldownLabel: Ativar Recarga de Troca de PET
+			SwapCooldownTooltip:
+				'''
 				Permite que o jogador receba o Debuff de PET Desatento ao trocar de Pet.  
 				Isto impede que quaisquer benefícios relacionados ao combate fiquem ativos durante esse período.  
 				(Recomendado manter ativado por razões óbvias de balanceamento.)  
-				'''  
+				'''
 			PhantasmalDragonShootLabel: Habilitar o feitiço de Rajada de Fogo do Dragão Fantasmal vindo do Dragão.
 			PhantasmalDragonShootTooltip:
 				'''
@@ -240,22 +240,22 @@ Mods: {
 				'''
 		}
 
-		LightPetCombineUI: {  
-			Header: Menu de Combinação de PET's de Luz  
-			Combine: Combinar  
-			InfoText:  
-				'''  
+		LightPetCombineUI: {
+			Header: Menu de Combinação de PET's de Luz
+			Combine: Combinar
+			InfoText:
+				'''
 				Coloque dois PET's de Luz do mesmo tipo para combiná-los em um só.  
 				O novo PET de Luz herdará as melhores qualidades de seus pais.  
 				Não é possível combinar se o resultado não trouxer benefícios.  
 				'''
-			Price: Preço:  
-			State1: Coloque dois PET's de Luz do mesmo tipo.  
-			State2: Pronto para combinar.  
-			State3: Não é possível pagar o custo da combinação.  
-			State4: Ambos os itens não são PET's de Luz.  
-			State5: O primeiro item não é um PET' de Luz.  
-			State6: O segundo item não é um PET' de Luz.  
+			Price: Preço:
+			State1: Coloque dois PET's de Luz do mesmo tipo.
+			State2: Pronto para combinar.
+			State3: Não é possível pagar o custo da combinação.
+			State4: Ambos os itens não são PET's de Luz.
+			State5: O primeiro item não é um PET' de Luz.
+			State6: O segundo item não é um PET' de Luz.
 		}
 
 		LightPetTooltips: {
@@ -449,8 +449,8 @@ Mods: {
 				- Aplica uma lentidão de <slowAmount>% por <slowTime> segundos ao atingir.
 				 * Todos os valores são multiplicados por <frostMult> se a Armadura de Gelo [i:684] completa estiver equipada.
 				'''
-			StrangeGlowingMushroom:  
-				'''  
+			StrangeGlowingMushroom:
+				'''
 				<class>  
 				- Acertos recuperam o tempo restante dos buffs em <buffRecover> segundos.  
 				 * Possui um tempo de recarga de <cooldown> segundos e só funciona com Buffs.  
@@ -458,7 +458,7 @@ Mods: {
 				- Concede permanentemente o buff de Visão Noturna.  
 				- Aumenta TODOS os atributos do Jogador em <intIncr> ou <intIncr>%.  
 				<hiddenTip>  
-				'''  
+				'''
 			MushroomHiddenTooltip: Segure o Atalho de Mudança de Dica (<keybind>) para ver estatísticas.
 			MushroomStats:
 				'''
@@ -567,9 +567,9 @@ Mods: {
 				'''
 				<class>
 				- Minerar qualquer coisa [i:12] dá <any> moedas de cobre.
-  				 * Isso inclui tudo, exceto os itens abaixo.  
+						 * Isso inclui tudo, exceto os itens abaixo.  
 				- Minerar blocos comuns [i:3] dá <soil> moedas de cobre.
-  				 * Itens afetados: <soilItems>  
+						 * Itens afetados: <soilItems>  
 				- Minerar terra [i:2] dá <dirt> moedas de cobre.
 				'''
 			BallOfFuseWire:
@@ -591,10 +591,11 @@ Mods: {
 				 * Isso não é reduzido pela redução de bõnus de dano mágico.
 				- Reduz o dano mágico em 15% ao usar o conjunto Espectro com o Capuz Espectral. [i:1503]
 				- Reduz o dano mágico pela quantidade que o Enjoo de Mana está atualmente reduzindo, dividida por 4.
-  				 * Essa penalidade é aditiva e não substitui o Enjoo de Mana.  
-  				- Mana Base Atual: <mana> Bônus de Mana Atual: <bonusMana>  
-  				  Redução Atual de Dano Mágico: <reducedDmg>% Aumento Atual de Dano Mágico: <increasedDmg>%  
-  				'''
+						 * Essa penalidade é aditiva e não substitui o Enjoo de Mana.  
+						- Mana Base Atual: <mana> Bônus de Mana Atual: <bonusMana>  
+						  Redução Atual de Dano Mágico: <reducedDmg>% Aumento Atual de Dano Mágico: <increasedDmg>%  
+						
+				'''
 			EyeSpring:
 				'''
 				<class>
@@ -1258,10 +1259,7 @@ Mods: {
 
 			TownPetDiva: {
 				DisplayName: Aura De <Name>
-				Description: 
-					'''
-					Lhe devolve <DivaDisc>% do preço base de um item que comprar como reembolso
-					'''
+				Description: Lhe devolve <DivaDisc>% do preço base de um item que comprar como reembolso
 			}
 
 			TownPetMystic: {
@@ -1423,11 +1421,11 @@ Mods: {
 			}
 
 			PetFood: {
-				// DisplayName: Comida de PET's
+				// DisplayName: Pet Food
 				/* Tooltip:
 					'''
-					Não existe nenhum PET que esta iguaria multissabor não agrade!
-					Usada em receitas de criação de todos os PET's.
+					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
+					Used in crafting recipes of every single Pet.
 					''' */
 			}
 		}

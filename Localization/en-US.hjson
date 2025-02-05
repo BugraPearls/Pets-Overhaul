@@ -651,9 +651,9 @@ Mods: {
 				   item's exp value, and levels are maxed at level <maxLvl>. Cap can be increased with following unique boss kills;
 				   Eater of Worlds or Brain of Cthulhu, Wall of Flesh, Any Mech Boss, Plantera, Lunatic Cultist<moreBoss>.
 				- <harvesting> Current level: <harvestLevel> Experience needed for next level: <harvestNext> Current total experience: <harvestCurrent>
-				 * Gain <harvestingProfit> times exp value of items as copper coins and gain <flatHealth> maximum health.
+				 * Gain <harvestingProfit> times exp value of items as copper coins and gain <bonusMs>% movement speed.
 				- <mining> Current level: <miningLevel> Experience needed for next level: <miningNext> Current total experience: <miningCurrent>
-				 * Gain <miningProfit> times exp value of items as copper coins and gain <bonusReduction>% damage reduction.
+				 * Gain <miningProfit> times exp value of items as copper coins and gain <flatHealth> maximum health.
 				- <fishing> Current level: <fishingLevel> Experience needed for next level: <fishingNext> Current total experience: <fishingCurrent>
 				 * Gain <fishingProfit> times exp value of items as copper coins and gain <bonusDamage>% damage boost.
 				'''
