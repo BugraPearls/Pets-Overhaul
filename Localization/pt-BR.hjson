@@ -8,12 +8,12 @@ Mods: {
 		Secs: Segundos
 		Pet: PET
 		And: e
-		// Ability: Ability
-		// Faster: Faster
-		// Slower: Slower
-		// RequireOptic: Consuming a Prismatic Optic
-		// RequireWrench: Consuming a Lihzahrd Wrench
-		// RequireHead: Consuming a Pumpking's Head
+		Ability: Habilidade
+		Faster: Mais Rápido
+		Slower: Mais Lerdo
+		RequireOptic: Consumindo uma Óptica Prismática
+		RequireWrench: Consumindo uma Chave Inglesa Lagharto
+		RequireHead: Consumindo uma Cabeça de Abóbora
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
@@ -23,10 +23,9 @@ Mods: {
 		JojaCola: Um NPC relacinado a natureza pode ser capaz de Purificar isso
 		Notice:
 			'''
-			[c/90C2AA:Mudanças atuais no Pets Overhaul 3.0: Lançamento de Addon para Calamity, Melhorias no sistema principal, muitos consertos de bugs, várias mudanças no balanceamento]
-			[c/90C2AA:Algumas das suas opções de configuração podem ter sido resetadas, verifique-as para deixar tudo funcionando do seu jeito!]
-			[c/90C2AA:Adicionado tradução Russa completa! Por: Teokai, Adicionado tradução Português Brasileiro completo! Por: Erstarisk]
-			[c/90C2AA:Ícone de Mod Aprimorado, e adicionado novo vídeo de trailer e canal do Mod! Tudo feito por: Furqi]
+			[c/90C2AA:Pets Overhaul 3.4, últimas mudanças: Foi Adicionado Receitas para TODOS os Pets! Criadas em uma Forja de PET's.]
+			[c/90C2AA:Todas as receitas contêm & estão associadas ao novo item Comida de PET's (Vendido pelo Domador de Pets). Foram Ajustadas Todas as Receitas Antigas.]
+			[c/90C2AA:Fragmento de Maestria agora é dropado por todos os inimigos (0,02%) e todos os chefes (1%), além dos drops garantidos.]
 			[c/b4bfc5:Entre no nosso discord para feedback e reportar problemas! discord.gg/KubSpqvDGE]
 			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:para ver mais comandos do Pets Overhaul, lhe dando mais informações!]
 			'''
@@ -57,13 +56,17 @@ Mods: {
 		Commands: {
 			Help:
 				'''
-				[c/90C2AA:Lista de comandos do Pets Overhaul:] (comandos não são sensíveis a maiúsculas e minúsculas)
-				/pet fortune, /pet fortunestat, /pet fortunestats -> Mostra seus status atuais de fortuna e explica sua funcionalidade. 
+				[c/90C2AA:Lista de comandos do Pets Overhaul:] (os comandos não diferenciam maiúsculas de minúsculas)
+				/pet fortune, /pet fortunestat, /pet fortunestats -> Mostra seus status atuais de fortuna e explica sua funcionalidade.
 				/pet vanity, /pet vanitypet -> Explica como usar um pet 'Estético'.
 				/pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Mostra os 3 melhores jogadores online com as maiores contagens de Exp para todas as 3 habilidades de Junimo.
 				/pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
 				Mostra uma quantidade ilimitada de jogadores online com as maiores contagens de Exp na habilidade escolhida entre as 3 habilidades de Junimo.
-				/pet faq, /pet question -> Mostra perguntas frequentemente perguntadas sobre o Pets Overhaul.
+				/pet faq, /pet question -> Mostra perguntas frequentes sobre o Pets Overhaul.
+				/pet pets, class {all|ability(or cooldown)|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
+				-> Mostra todos os PET's no chat que possuem a classe informada no segundo argumento. O argumento 'all' exibirá TODOS os efeitos de Pets, independentemente da classe.
+				/pet light, lightpet, lightpets -> Exibe todos os PET's de Luz.
+				/pet item, items {harvesting|mining|fishing} -> Exibe todos os itens afetados pelos bônus da classe de PET's informada.
 				'''
 			FAQ:
 				'''
@@ -71,12 +74,14 @@ Mods: {
 				A: Atualmente, o Addon Calamity está disponível com o nome: 'Pets Overhaul: Calamity Addon'! O próximo em planejamento é o mod Thorium!
 				Q: Alguma forma de aumentar o número de Sorteamento dos PET's de Luz?
 				A: Atualmente, não. Talvez no futuro possa ter um recurso que também é planejado para ser usado em Sorteamentos altos, então é melhor manter seus Sorteamentos no Máximo.
-				Q: Como consigo o tal PET?
+				Q: Como consigo tal PET?
 				A: Use as Wiki's ou uma ferramenta no jogo para descobrir como conseguir tal PET, a Wiki do jogo original pode ser útil nisso.
 				Q: Por que eu estou aleatóriamente conseguindo peixes, caixas e etc no meu inventário?
 				A: 99% das vezes, é um mod de auto-pesca fisgando peixes para sua Fortuna em Pesca. (use /pet fortune para saber mais sobre)
 				Q: Por que os efeitos do meu Pet não funcionam? E como os Efeitos de PET são ativados?
 				A: Tenha certeza que os Efeitos do PET que você quer, estejam no PET equipado no slot exclusivo de PET na categoria de Equipamento, encima do slot de Capacete
+				Q: Existe uma maneira de ver os efeitos recentemente adicionados pelo Pets Overhaul a os PET's?  
+				A: Use /pet pets all ou /pet class all para visualizar todos os efeitos de PET's adicionados pelo Pets Overhaul. Como você pode passar o mouse sobre eles, poderá ver seus efeitos atualizados.
 				'''
 			FortuneInfo:
 				'''
@@ -99,13 +104,13 @@ Mods: {
 				2° Passo: Desabilite a visibilidade do Pet atualmente equipado no icone de olho no slot do Pet.
 				3° Passo: 'Use' o Pet que você quer que fique visível pelo seu item no inventário e pronto!
 				'''
-			// LightPetList: List of all Light Pets:
-			// PetList: List of <class> Pets:
-			// All: all
-			// NoPets: No pets available for this class. (You may be missing an addon for this class?)
-			// Items: All items affected by <class> class of Pet Effects (Only when naturally obtained):
-			// ClassArgumentInvalidItems: The given class is invalid, try any of the following: {harvesting|mining|fishing}.
-			// ClassArgumentInvalid: The given class is invalid, try any of the following: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
+			LightPetList: Lista de todos os PET's de Luz:  
+			PetList: Lista de PET's da classe <class>:  
+			All: todos  
+			NoPets: Nenhum PET disponível para esta classe. (Talvez você esteja sem um addon para esta classe?)  
+			Items: Todos os itens afetados pelos efeitos de PET's da classe <class> (Apenas quando obtidos naturalmente):  
+			ClassArgumentInvalidItems: A classe fornecida é inválida, tente uma das seguintes: {harvesting|mining|fishing}.  
+			ClassArgumentInvalid: A classe fornecida é inválida, tente uma das seguintes: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.  
 			ArgumentInvalid: O argumento enviado foi invalido, aqui está a lista de comandos do Pet Overhaul: (comandos não são sensíveis a maiúsculas e minúsculas)
 			UseInMultiplayer: Por favor, use esse comando no Multiplayer! Se você quer ver as habilidades do seu Junimo. use /pet junimo, /pet junimoscoreboard ou /pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:O nível de <class> do seu Junimo: <level> A experiência da <class> do seu Junimo: <exp>]"
@@ -183,20 +188,28 @@ Mods: {
 				Habilita a possibilidade de particulas de poeira em PET's com efeitos em raio serem criadas dentro de blocos
 				Isso pode reduzir a quantidade de particulas de poeira desnecessárias, então se você tem problemas com performance, isso pode ser útil.
 				'''
-			MaxQualityColor1Label: 1st Color of Maximum Quality 1ª Cor de Qualidade Máxima
+			MaxQualityColor1Label: 1ª Cor de Qualidade Máxima
 			MaxQualityColor1Tooltip: Ajusta a primeira cor que vai alternar com a segunda em Qualidades Máximas para PET's de Luz.
-			MaxQualityColor2Label: 2nd Color of Maximum Quality 2ª Cor de Qualidade Máxima
+			MaxQualityColor2Label: 2ª Cor de Qualidade Máxima
 			MaxQualityColor2Tooltip: Ajusta a segunda cor que vai alternar com a primeira em Qualidades Máximas para PET's de Luz.
-			HurtSoundLabel: Desabilitar sons de dor personalizados
-			HurtSoundTooltip: Desabilita efeitos sonoros adicionados por pets quando o jogador recebe dano.
-			DeathSoundLabel: Desabilitar sons de morte personalizados
-			DeathSoundTooltip: Desabilita sons de morte personalizados quando o jogador morre.
-			PassiveSoundLabel: Desabilitar sons passivos de pet
-			PassiveSoundTooltip: Desabilita efeitos sonoros de pet que tocam aleatóriamente sem efeitos similar à efeitos sonoros de ambiente.
-			AbilitySoundLabel: Desabilitar sons de habilidades
-			AbilitySoundTooltip: Desabilita efeitos sonoros de pet que tocam ao processar habilidades, recarga do tempo de espera, etc. (não recomendado, estes sons podem te ajudar)
-			LowCooldownSoundLabel: Desabilitar som de temporizador curto
-			LowCooldownSoundTooltip: Desabilita efeito sonoro de recarga de tempo de espera se o tempo de recarga das habilidades de pet forem menores que 1 segundo.
+			HurtSoundLabel: Habilita sons de dor personalizados
+			HurtSoundTooltip: Habilita efeitos sonoros adicionados por pets quando o jogador recebe dano.
+			DeathSoundLabel: Habilita sons de morte personalizados
+			DeathSoundTooltip: Habilita sons de morte personalizados quando o jogador morre.
+			PassiveSoundLabel: Habilita sons passivos de pet
+			PassiveSoundTooltip: Habilita efeitos sonoros de pet que tocam aleatóriamente sem efeitos similar à efeitos sonoros de ambiente.
+			AbilitySoundLabel: Habilita sons de habilidades
+			AbilitySoundTooltip:  
+				'''  
+				Ativa os efeitos sonoros dos Pets que tocam ao ativar habilidades, ao recarregar o tempo de recarga  
+				e em outras situações semelhantes. (não é recomendado desativar, pois esses sons podem ajudar na sua percepção.)  
+				'''  
+			LowCooldownSoundLabel: Habilita som de temporizador curto
+			LowCooldownSoundTooltip:  
+				'''  
+				Ativa o som de recarga da habilidade do Pet mesmo que esteja abaixo da opção de limite.  
+				Desative esta opção se não quiser ouvir o efeito sonoro de recarga quando estiver abaixo do limite.  
+				'''  
 			LowCooldownThresholdLabel: Desabilitar Limite do temporizador da habilidade curta
 			LowCooldownThresholdTooltip:
 				'''
@@ -204,10 +217,21 @@ Mods: {
 				reproduzindo sons ao atualizar, em Quadros. (60 quadros = 1 segundo)
 				Alterar isso não tem efeito se "Habilitar som do temporizador de habilidade curta" estiver ativado.
 				'''
-			MoreDifficultLabel: Desabilitar jogador ser mais fraco
-			MoreDifficultTooltip: Desabilita o jogador causar 5% menos dano e receber 5% mais dano, que é implementado para contrariar o mod adicionar um aumento de poder
-			SwapCooldownLabel: Desabilitar tempo de recarga em troca de pet
-			SwapCooldownTooltip: Desabilita o jogador de ganhar o Debuff Pet Desatento ao trocar de pet. Prevenindo qualquer vantagem relacionada à combate de ativar durante esse tempo (Não recomendado)
+			MoreDifficultLabel: Definir Desvantagem do Jogador  
+			MoreDifficultTooltip:  
+				'''  
+				Define a porcentagem de redução de dano causado pelo jogador e o aumento de dano recebido.  
+				Isto foi implementado porque o Pets Overhaul adiciona um aumento de poder ao jogo. Mínimo: 0%, Máximo: 20%.  
+				Mantenha em 0% para desativar. O recomendado é entre 7% e 10%.  
+				Isso só terá efeito após obter um PET, pois, antes disso, não faz sentido estar ativo.  
+				'''  
+			SwapCooldownLabel: Ativar Recarga de Troca de PET  
+			SwapCooldownTooltip:  
+				'''  
+				Permite que o jogador receba o Debuff de PET Desatento ao trocar de Pet.  
+				Isto impede que quaisquer benefícios relacionados ao combate fiquem ativos durante esse período.  
+				(Recomendado manter ativado por razões óbvias de balanceamento.)  
+				'''  
 			PhantasmalDragonShootLabel: Habilitar o feitiço de Rajada de Fogo do Dragão Fantasmal vindo do Dragão.
 			PhantasmalDragonShootTooltip:
 				'''
@@ -216,22 +240,22 @@ Mods: {
 				'''
 		}
 
-		LightPetCombineUI: {
-			// Header: Light Pet Combining Menu
-			// Combine: Combine
-			/* InfoText:
+		LightPetCombineUI: {  
+			Header: Menu de Combinação de PET's de Luz  
+			Combine: Combinar  
+			InfoText:  
+				'''  
+				Coloque dois PET's de Luz do mesmo tipo para combiná-los em um só.  
+				O novo PET de Luz herdará as melhores qualidades de seus pais.  
+				Não é possível combinar se o resultado não trouxer benefícios.  
 				'''
-				Put down two Light Pets of same type to combine them into one.
-				New Light Pet will inherit highest qualities of its parents.
-				Cannot combine if combination results in no benefit.
-				''' */
-			// Price: Price:
-			// State1: Place two Light Pets of same type.
-			// State2: Ready to combine.
-			// State3: Cannot afford combination cost.
-			// State4: Both items are not Light Pets.
-			// State5: First item is not a Light Pet.
-			// State6: Second item is not a Light Pet.
+			Price: Preço:  
+			State1: Coloque dois PET's de Luz do mesmo tipo.  
+			State2: Pronto para combinar.  
+			State3: Não é possível pagar o custo da combinação.  
+			State4: Ambos os itens não são PET's de Luz.  
+			State5: O primeiro item não é um PET' de Luz.  
+			State6: O segundo item não é um PET' de Luz.  
 		}
 
 		LightPetTooltips: {
@@ -336,7 +360,7 @@ Mods: {
 				<class>
 				- Cavar um minério, joia, ou extraível tem <oreChance>% de chance
 				de dar ao jogador um minério ou joia aleatória normalmente dropada
-				de blocos de limo.
+				de blocos de limo e semelhantes.
 				 * Minérios e gemas menos valiosas tem mais tendencia de dropar
 				'''
 			EatersBone:
@@ -368,14 +392,13 @@ Mods: {
 			Nectar:
 				'''
 				<class>
-				- Se você for envenenado ou sofrer dano por veneno, cure <antidotePercent>% da vida máxima.
-				 * A cura tem um tempo de recarga de <antidoteCd> segundos.
-				 * Também concede imunidade a ambos os efeitos negativos.
+				- Concede imunidade a debuffs de Veneno e Envenenado.
 				- Diminui a defesa em <def>, dano e chance crítica em <dmgCrit>%.
 				- Aumenta o número máximo de lacaios em <maxMinion> e a velocidade de movimento em <moveSpd>%.
 				- Todos os ataques têm uma chance de <regularChance>% (<summonChance>% para ataques de invocação) de invocar
 				uma abelha amiga com <beeDmg> de dano base e <beeKb> de recuo.
 				 * O Pacote de Colmeia [i:3333] dá uma chance de 33% de invocar uma Abelha Forte em vez de uma normal.
+				 * Invocar uma abelha tem um tempo de recarga de <beeCd>.
 				'''
 			HellCake:
 				'''
@@ -403,6 +426,7 @@ Mods: {
 				- Pressione a tecla de Atalho da Habilidade do Pet (<keybind>) para entrar em modo de Alerta.
 				 * Aumenta sua velocidade de ataque em <alertAs>%, velocidade de movimento em <alertMs>%.
 				 * Diminui seu valor de aggro em <alertAggro>.
+				 * Ganha Visão de Caçador, assim pode descobrir onde seus inimigos estão.
 				 * Valores aumentados por inimigos próximos dentro de <alertRadius> blocos, até <alertMax> inimigos.
 				 * Os benefícios duram <alertDuration> segundos e têm um tempo de recarga de <alertCd> segundos.
 				- Sempre ganhe <atkSpd>% de velocidade de ataque.
@@ -421,23 +445,20 @@ Mods: {
 				'''
 				<class>
 				- Aplica Frostburn melhorado de <frostburnTime> segundos ao atingir.
+				 * Adiciona efeitos visuais de Frostburn a todas as suas armas e projéteis.  
 				- Aplica uma lentidão de <slowAmount>% por <slowTime> segundos ao atingir.
 				 * Todos os valores são multiplicados por <frostMult> se a Armadura de Gelo [i:684] completa estiver equipada.
 				'''
-			StrangeGlowingMushroom:
-				'''
-				<class>
-				- Acertos recuperam o tempo restante dos buffs em <buffRecover> segundos.
-				 * Tem um tempo de recarga de <cooldown> segundos.
-				 * Funciona apenas com Buffs.
-				- Sempre aplica o debuff Confuso em você.
-				- Aumenta quase todas as estatísticas do jogador em <intIncr>.
-				 * Dano, resistência ao retrocesso, chance de crítico, sorte, mana, dano crítico,
-				vida, retrocesso, velocidade de ataque, defesa, penetração de armadura, poder de pesca, 
-				redução de dano, regeneração de mana, velocidade de pulo, tempo de asa e rapidez de habilidade de pet.
-				- Aumenta a velocidade de movimento em <moveSpd>%.
-				- Concede o buff de Visão Noturna permanente.
-				'''
+			StrangeGlowingMushroom:  
+				'''  
+				<class>  
+				- Acertos recuperam o tempo restante dos buffs em <buffRecover> segundos.  
+				 * Possui um tempo de recarga de <cooldown> segundos e só funciona com Buffs.  
+				- Sempre aplica o efeito Confuso em você.  
+				- Concede permanentemente o buff de Visão Noturna.  
+				- Aumenta TODOS os atributos do Jogador em <intIncr> ou <intIncr>%.  
+				<hiddenTip>  
+				'''  
 			MushroomHiddenTooltip: Segure o Atalho de Mudança de Dica (<keybind>) para ver estatísticas.
 			MushroomStats:
 				'''
@@ -508,6 +529,7 @@ Mods: {
 			GlowTulip:
 				'''
 				<class>
+				- Dobra TODO o feno coletado. (Incluindo com as Botas de Flor, etc.)  
 				- Dá a você <harvestChance>% mais plantas enquanto estiver abaixo da Superfície.
 				 * Reduzido para <rarePlantChance>% para plantas raras.
 				 * Árvores de pedras preciosas soltam <gemstoneTreeChance>% a mais além disso.
@@ -536,6 +558,7 @@ Mods: {
 				- Aumenta os slots máximos de lacaios em <minionSlot>.
 				- Armas da Lua de Abóbora ganham <dmg>% de dano.
 				 * Isso aumenta para <ravenDmg>% para o Cajado do Corvo. [i:1802]
+				 * Todas as armas afetadas: <weapons>
 				- Aumenta o alcance do Chicote em <whipRange>% e a velocidade em <whipSpeed>% por slot de lacaio.
 				 * Isso é quadruplicado para a Colheita Sombria. [i:4680]
 				 * Só funciona enquanto segura um Chicote.
@@ -544,7 +567,9 @@ Mods: {
 				'''
 				<class>
 				- Minerar qualquer coisa [i:12] dá <any> moedas de cobre.
+  				 * Isso inclui tudo, exceto os itens abaixo.  
 				- Minerar blocos comuns [i:3] dá <soil> moedas de cobre.
+  				 * Itens afetados: <soilItems>  
 				- Minerar terra [i:2] dá <dirt> moedas de cobre.
 				'''
 			BallOfFuseWire:
@@ -560,13 +585,16 @@ Mods: {
 			CelestialWand:
 				'''
 				<class>
-				- Aumenta sua mana máximo em <maxMana>%.
-				- Aumenta o dano mágico em <manaToDmg>% para cada 1 de Mana não base que você tem.
-				- Multiplica seus bônus de dano mágico acima de 100% por <dmgPenalty>x.
+				- Aumenta sua mana máxima em <maxMana>%.
+				- Reduz seus bônuses de dano mágico em <dmgPenalty>%.
+				- Aumenta o dano mágico em <manaToDmg>% para cada 1 de Bônus de Mana que você tem.
+				 * Isso não é reduzido pela redução de bõnus de dano mágico.
 				- Reduz o dano mágico em 15% ao usar o conjunto Espectro com o Capuz Espectral. [i:1503]
-				- Reduz o dano mágico pela quantidade que a Doença de Mana está atualmente reduzindo, dividida por 4.
-				 * Esta penalidade não é multiplicativa como a penalidade da Doença de Mana.
-				'''
+				- Reduz o dano mágico pela quantidade que o Enjoo de Mana está atualmente reduzindo, dividida por 4.
+  				 * Essa penalidade é aditiva e não substitui o Enjoo de Mana.  
+  				- Mana Base Atual: <mana> Bônus de Mana Atual: <bonusMana>  
+  				  Redução Atual de Dano Mágico: <reducedDmg>% Aumento Atual de Dano Mágico: <increasedDmg>%  
+  				'''
 			EyeSpring:
 				'''
 				<class>
@@ -576,12 +604,13 @@ Mods: {
 				'''
 			ExoticEasternChewToy:
 				'''
-				<class>
-				- Enquanto segura uma arma corpo a corpo, concede o seguinte:
-				 * Aumenta a velocidade de armas corpo a corpo em <meleeSpd>%.
-				 * Aumenta a velocidade de movimento em <moveSpd>%.
-				- Multiplica o tamanho de armas corpo a corpo em <sizeNerf>x.
-				- Aumenta o dano corpo a corpo em <dmg>%.
+				<class>  
+				- Concede um bônus de salto decente.  
+				- Aumenta a velocidade de movimento em <moveSpd>%.  
+				- Modifica suas propriedades de Corpo a Corpo da seguinte forma:  
+				 * Multiplica o tamanho de armas corpo a corpo por <sizeNerf>x.  
+				 * Aumenta o dano de armas corpo a corpo em <dmg>%.  
+				 * Aumenta a velocidade de armas corpo a corpo em <meleeSpd>%.  
 				'''
 			BedazzledNectar:
 				'''
@@ -623,7 +652,8 @@ Mods: {
 				<class>
 				- Permite que você ganhe EXP para cada classe respectiva, melhorando ainda mais os bônus deste Pet.
 				 * Coletar qualquer item de Colheita, Mineração e Pesca lhe dá dinheiro dependendo do
-				valor de exp do item, e os níveis são maximizados no nível <maxLvl>.
+				valor de exp do item, e os níveis são maximizados no nível <maxLvl>. O limite pode ser aumentado matando os seguintes Chefes únicos;
+				Devorador de Mundos ou Cérebro de Cthulhu, Parede de Carne, Qualquer Chefe Mecânico, Plantera, Cultista Lunático<moreBoss>.
 				- <harvesting> Nível atual: <harvestLevel> Experiência necessária para o próximo nível: <harvestNext> Experiência total atual: [c/CDFF00:<harvestCurrent>]
 				 * Ganhe <harvestingProfit>x o valor de exp dos itens em moedas de cobre e ganhe <flatHealth> de saúde máxima.
 				- <mining> Nível atual: <miningLevel> Experiência necessária para o próximo nível: <miningNext> Experiência total atual: [c/96A8B0:<miningCurrent>]
@@ -711,7 +741,6 @@ Mods: {
 				 * Reduzido para <rareCritter>% para criaturas raras. 
 				- Concede <rareCritterCoin>x o valor de raridade da criatura capturada em moedas.
 				- Concede <rareEnemyCoin>x o valor de raridade de um inimigo morto em moedas.
-				 * Você deve dar o golpe final para se beneficiar disso.
 				'''
 			Seedling:
 				'''
@@ -773,8 +802,6 @@ Mods: {
 				 * Isso é alcançado multiplicando sua velocidade máxima em Y que você pode atingir por <glide>x.
 				 * Não concede imunidade a dano de queda, mas planar reinicia seu dano de queda.
 				 * Pode ser usado juntamente com Asas, fornecendo ainda mais poder de planagem.
-				- Multiplica a velocidade horizontal das asas e a aceleração por <speed>x e <acceleration>x, respectivamente.
-				- Aumenta a velocidade horizontal das asas e a aceleração em <flatIncrease>%.
 				'''
 			TikiTotem:
 				'''
@@ -855,13 +882,15 @@ Mods: {
 			KingSlimePetItem:
 				'''
 				<class>
-				- Altera a Arma de Geleia e a Arma d'água para ter efeitos para Inimigos e Jogadores globalmente.
-				- Geleia [i:2610]
-				 * Inimigos: Causa <burnHp>% de dano à saúde se combinado com dano de queimadura, (<burnCap> de limite) e recebe <extraKb>x de recuo.
-				 * Jogadores: Concede aos jogadores afetados <jumpSpd>% de velocidade de salto, <kbBoost>x de aumento de recuo e resistência. 
-				- Molhado [i:2272]
-				 * Inimigos: Multiplica o dano recebido por <enemyDmgRecieve>x e multiplica todo dano causado por <enemyDmgDeal>x.
-				 * Jogadores: Aumenta o dano em <dmg>%, a defesa em <def>%, a velocidade de movimento em <moveSpd>%, e as queimaduras se esgotam 2x mais rápido.
+				- Pressione a tecla de habilidade do PET (<keybind>) para invocar um Servo de Slime.
+				 * O Servo de Slime age da mesma forma que um Slime Azul, mas é mais agressivo,
+				   ataca o inimigo mais próximo dentro de 50 blocos; se não houver, segue seu invocador.
+				 * Ele também tem 50% mais resistência a recuos do que um Slime Azul comum,
+				   <defMult>% extra da Defesa do Jogador, <hpMult>% extra da Saúde do Jogador e
+				   causa <dmg> de dano extra, pode criticar e escalar com os bônus gerais do Jogador.
+				 * Ao morrer, aplica um debuff de lentidão de <slowAmount>% por <slowDuration> segundos e um debuff pegajoso
+				   por <slimyDuration> segundos a todos os inimigos em um raio de <radius> blocos.
+				- A habilidade tem um tempo de recarga de <cooldown> segundos e cada Slime dura <lifetime> segundos.
 				'''
 			QueenBeePetItem:
 				'''
@@ -903,11 +932,11 @@ Mods: {
 			QueenSlimePetItem:
 				'''
 				<class>
-				- Melhora o Balão de Geleia Cintilante [i:4986] e a variação Infinita dele [i:<endless>] globalmente.
-				 * Inimigos: Aplica <slow>% de lentidão a todos os inimigos afetados.
-				 * Jogadores: Concede <haste>% de aceleração de habilidade de pet, o que aumenta a frequência com que a habilidade do seu Pet pode ser usada
-				e cada acerto adiciona 1 contador, (chance extra de adicionar mais contadores com aceleração de habilidade de pet), ao atingir
-				6 contadores, você causa <dmgBonus>x de dano e ganha um escudo de <shield> por <shieldTime> segundos.
+				- Ganhe um bônus de Salto muito forte enquanto estiver em um Montaria, exceto para Montarias de voo infinito.
+				- Aumenta o dano das suas Montarias contra inimigos de várias maneiras.
+				 * Aumenta o dano da Montaria em <dmg>% e agora conta como dano de PET.
+				 * Todos os alvos atingidos são lentificados em <slowAmount>% por <slowDuration> segundos.
+				 * Você ganhará <shieldAmount> pontos de escudo por <shieldDuration> segundos com um tempo de recarga de <cooldown> segundos.
 				'''
 			SkeletronPrimePetItem:
 				'''
@@ -937,7 +966,8 @@ Mods: {
 				 <defLifesteal>x da sua defesa multiplicada pela sua redução de dano.
 				- Seu alvo estando fora de um alcance de <longRange> blocos adiciona <hpDmg>% de dano à vida.
 				 * O dano à vida máxima é reduzido para <bossHpDmg>% em chefes. 
-				 * Isso tem um tempo de recarga de <hpDmgCooldown> segundos.
+				- O dano de % de saúde e o roubo de vida têm um tempo de recarga de <hpDmgCooldown> segundos.
+				- Ambos os benefícios NÃO TÊM EFEITO se o inimigo estiver dentro/entre os dois raios de alcance.
 				'''
 			EverscreamPetItem:
 				'''
@@ -952,7 +982,9 @@ Mods: {
 			MartianPetItem:
 				'''
 				<class>
-				- Aumenta o tempo máximo de voo das asas em <wingMult>%.
+				- Voar horizontalmente economiza até <wingTimeSave>% do tempo de asa.
+				 * Por exemplo, voar em um caminho cruzado economizará metade desse tempo.
+				   Voar completamente na vertical acabará economizando 0 tempo de asa.
 				- Aumenta toda a aceleração em <acc>%.
 				- Multiplica a velocidade de voo horizontal por <speedMult>x, e a aceleração por <accMult>x.
 				- Aumenta a velocidade de voo horizontal e a aceleração em <flatSpdAcc>%.
@@ -969,7 +1001,7 @@ Mods: {
 				- Mas buffando você por:
 				 * Multiplicar o tamanho, dano e recuo de ataques corpo a corpo verdadeiro por <trueMeleeMults>x, a defesa por <defMult>x.
 				 * Aumentar a chance de crítico de ataques corpo a corpo verdadeiro em <trueMeleeCrit>%, a saúde máxima em <healthIncrease>%, a redução de dano em <damageReduction>%.
-				 * Conceder imunidade a recuo.
+				 * Concede imunidade a recuos.
 				'''
 			DukeFishronPetItem:
 				'''
@@ -1048,10 +1080,7 @@ Mods: {
 			MoonLordPetItem:
 				'''
 				<class>
-				- Adapta-se à classe que possui mais dano. Classe Atual: <currentClass>
-				 * Se houver valores iguais, a prioridade de seleção do benefício é a seguinte:
-				 * Corpo a Corpo -> À Distância -> Mágica -> Invocador.
-				- Pressione <keybind> para trocar a dica atual.
+				- Pressione a tecla de alternância de Habilidade do PET (<keybind>) para alternar os efeitos deste Pet.
 				<tooltip>
 				'''
 			MeleeTooltip:
@@ -1088,10 +1117,17 @@ Mods: {
 				'''
 			ResplendentDessert:
 				'''
-				- É a combinação das habilidades dos Pets Príncipe e Princesa Slime, sendo um pouco mais fracas.
-				 * Os efeitos do Príncipe ou da Princesa são substituídos se houver outro Príncipe ou Princesa ativo.
-				Pressione <keybind> para trocar a dica (Isso é apenas para exibição e não tem efeitos sobre os benefícios)
-				<tooltip>
+				<class>
+				- Aumenta o dano das suas Montarias contra inimigos de várias maneiras.
+				 * Aumenta o dano da Montaria em <dmg>% e agora conta como dano de PET.
+				 * Com um tempo de recarga de <cooldown> segundos, os ataques da sua Montaria invocarão um Servo de Slime em
+				   cima do alvo atingido e você ganhará <shieldAmount> pontos de escudo por <shieldDuration> segundos.
+				 * O Servo de Slime age da mesma forma que um Slime Azul, mas é mais agressivo,
+				   ataca o inimigo mais próximo dentro de 50 blocos; se não houver, segue seu invocador.
+				 * Ele também tem 50% mais resistência a recuos do que um Slime Azul comum,
+				   <defMult>% extra da Defesa do Jogador, <hpMult>% extra da Saúde do Jogador e
+				   causa <baseDmg> de dano extra, pode criticar e escalar com os bônus gerais do Jogador.
+				 * Cada Servo de Slime dura <lifetime> segundos antes de morrer.
 				'''
 			Carrot:
 				'''
@@ -1167,7 +1203,7 @@ Mods: {
 			}
 
 			ObliviousPet: {
-				DisplayName: Pet Desatento
+				DisplayName: PET Desatento
 				Description:
 					'''
 					Seu pet não faz ideia do que sequer está acontecendo por ter sido trocado recentemente!
@@ -1176,57 +1212,85 @@ Mods: {
 			}
 
 			TownPetBunny: {
-				DisplayName: Aura De <Name>
-				Description: Aumenta sua velocidade de pulo em <BunnyJump>%
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Aumenta sua velocidade de salto em <BunnyJump>% e
+					a Sorte de Colheita em <BunnyHarvesting>.
+					'''
 			}
 
 			TownPetCat: {
-				DisplayName: Aura De <Name>
-				Description: Multiplica sua velocidade de movimento em <CatMovespd>x
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Multiplica a velocidade de movimento em <CatMovespd>x e
+					a Sorte de Pesca em <CatFish>.
+					'''
 			}
 
 			TownPetDog: {
-				DisplayName: Aura De <Name>
-				Description: Aumenta poder de pesca em +<DogFish>
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Aumenta o Poder de Pesca em <DogFish> e
+					a Sorte de Pesca em <DogFishExp>.
+					'''
 			}
 
 			TownPetClumsy: {
-				DisplayName: Aura De <Name>
-				Description: Aumenta sorte em +<ClumsyLuck>
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Aumenta a Sorte em <ClumsyLuck> e
+					a Sorte Global em <ClumsyGlobal>.
+					'''
 			}
 
 			TownPetCool: {
-				DisplayName: Aura De <Name>
-				Description: Aumenta chance de crítico em <CoolCrit>%
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Aumenta a Chance Crítica em <CoolCrit>% e
+					a Sorte de Mineração em <CoolMining>.
+					'''
 			}
 
 			TownPetDiva: {
 				DisplayName: Aura De <Name>
-				Description: dá <DivaDisc>% de preço base de reembolso após comprar um item
+				Description: 
+					'''
+					Lhe devolve <DivaDisc>% do preço base de um item que comprar como reembolso
+					'''
 			}
 
 			TownPetMystic: {
-				DisplayName: Aura De <Name>
-				Description: Aumenta Velocidade de Habilidade em <MysticHaste>%
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Aumenta a Velocidade da Habilidade do PET em <MysticHaste>%
+					e a Sorte Global em <MysticAllExp>.
+					'''
 			}
 
 			TownPetNerd: {
-				DisplayName: Aura De <Name>
+				DisplayName: Aura de <Name>
 				Description:
 					'''
-					Dá Sentido de Perigo
-					Multiplica sua velocidade de construção em <NerdPlacement>x
+					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
+					Concede um brilho branco com uma escala de <NerdShineScale>x
 					'''
 				PostHardmodeDescription:
 					'''
-					Sentido de Perigo e Visão de Fios
-					Multiplica sua velocidade de construção em <NerdPlacement>x
+					Concede Percepção de Perigo e Visão Noturna
+					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
+					Concede um brilho branco com uma escala de <NerdShineScale>x
 					'''
 				PostMoonlordDescription:
 					'''
-					Dá visão noturna, Luz UltraBrilhante
-					Sentido de Perigo e Visão de Fios
-					Multiplica sua velocidade de construção em <NerdPlacement>x
+					Concede Percepção de Perigo, Visão Noturna e Visão de Fios
+					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
+					Concede um brilho branco com uma escala de <NerdShineScale>x
 					'''
 			}
 
@@ -1234,22 +1298,27 @@ Mods: {
 				DisplayName: Aura De <Name>
 				Description:
 					'''
-					Aumenta defesa em +<OldDef>
-					Multiplica o Recuo em <OldKb>x;
+					Aumenta defesa em <OldDef>,
+					Resistência de Recuos de <OldKb>% e
+					Sorte de Colheita em <OldHarvesting>.
 					'''
 			}
 
 			TownPetSquire: {
-				DisplayName: Aura De <Name>
-				Description: Aumenta o Dano em <SquireDmg>%
+				DisplayName: Aura de <Name>
+				Description:
+					'''
+					Aumenta o Dano em <SquireDmg>% e
+					a Sorte de Mineração em <SquireMining>.
+					'''
 			}
 
 			TownPetSurly: {
 				DisplayName: Aura De <Name>
 				Description:
 					'''
-					Aumenta o Nascimento de inimigos em <SurlySpawn>%
-					e dá o efeito de Vela Sombria
+					Aumenta o Surgimento de inimigos em <SurlySpawn>%
+					e dá o efeito da Vela Sombria
 					'''
 			}
 		}
@@ -1258,21 +1327,21 @@ Mods: {
 			GlommersGoop: {
 				DisplayName: Gosma de Glommer
 				Tooltip: '''"Inseto estranho faz coco estranho."'''
-				Mana: Consome 50 de sanidade. (Mana no mundo do Terraria.)
+				Mana: Consome 50 de sanidade. (Mana no mundo de Terraria.)
 			}
 
 			EndlessBalloonSack: {
 				DisplayName: Saco de Balões Infinitos
-				Tooltip: Enchido com toda a banheira da Garota Da Festa
+				Tooltip: Enchido com a banheira da Garota de Festa
 			}
 
 			MasteryShard: {
 				DisplayName: Fragmento de Maestria
 				Tooltip:
 					'''
-					Combine com qualquer troféu de boss para
-					criar seu respectivo pet do modo mestre.
-					Apenas 3 por mundo.
+					Um ingrediente importante na criação em receitas de PET's do Modo Mestre.
+					Cai raramente de qualquer chefe e mais raramente ainda de qualquer inimigo.
+					Apenas uma vez por mundo, cai com 100% de chance de 5 chefes selecionados.
 					'''
 			}
 
@@ -1280,7 +1349,7 @@ Mods: {
 				DisplayName: Ovo
 				Tooltip:
 					'''
-					É uma pena não ser azul.
+					É uma 'pena' não ser azul.
 					Diferente de Ovos Podres, parece que pode ser cozido.
 					'''
 			}
@@ -1289,8 +1358,8 @@ Mods: {
 				DisplayName: Chave Inglesa Lagharto
 				Tooltip:
 					'''
-					Deixe isso em seu inventário ou na Bolsa do Vazio para permitir
-					a criação do Pet Golem de Brinquedo infinitamente.
+					Consuma isso para que seja possível a criação do 
+					PET Golem de Brinquedo permanentemente.
 					'''
 			}
 
@@ -1298,8 +1367,8 @@ Mods: {
 				DisplayName: Óptica Prismática
 				Tooltip:
 					'''
-					Deixe isso em seu inventário ou na Bolsa do Vazio para permitir
-					a criação do Pet Princesa Fada infinitamente.
+					Consuma isso para que seja possível a criação do 
+					PET Princesa Fada permanentemente.
 					'''
 			}
 
@@ -1308,64 +1377,64 @@ Mods: {
 				Tooltip:
 					'''
 					A colheita deste ano parece ser abundante.
-					Deixe isso em seu inventário ou na Bolsa do Vazio para permitir
-					a criação do Pet de Abóbora do Dia das Bruxas infinitamente.
+					Consuma isso para que seja possível a criação do 
+					PET de Abóbora do Dia das Bruxas permanentemente.
 					'''
 			}
 
 			PetMonitoringTablet: {
-				// DisplayName: Pet Monitoring Tablet
-				/* Tooltip:
+				DisplayName: Tablet de Monitoramento de PET's
+				Tooltip:
 					'''
-					Shows all Pets Overhaul related Player Stats.
-					Pet Ability Haste: <haste>%
-					[c/899499:Your Pet abilities cool off <hasteValue> <hastePosiOrNega> than normal.]
-					Pet Damage Multiplier: <damage>x
-					[c/899499:Projectiles and Direct Damages sourcing from your Pets deal <damageTooltip>% damage.]
-					Pet Healing Multiplier: <heal>x
-					[c/899499:Any sorts of heals sourcing from your Pets heal <healTooltip>%.]
-					Pet Shielding Multiplier: <shield>x
-					[c/899499:All shielding effects by your pets grant <shieldTooltip>% shield.]
-					Global Fortune: <global>
-					[c/899499:All Mining, Harvesting and Fishing drops are increased by <globalTooltip>%.]
-					[c/899499:Also increases all non-classified Pet item Drops by <globalTooltipIncr>%.]
-					Mining Fortune: <mining> (Ores etc., check all with /pet items mining)
-					[c/899499:All Mining drops are increased by <miningTooltip>%. If item is from a Pet, increased to <miningTooltipIncr>%.]
-					Harvesting Fortune: <harvesting> (Trees, plants, etc., check all with /pet items harvesting)
-					[c/899499:All Harvesting drops are increased by <harvestingTooltip>%. If item is from a Pet, increased to <harvestingTooltipIncr>%.]
-					Fishing Fortune: <fishing> (Fishing catches, check all with /pet items fishing)
-					[c/899499:All Fishing drops are increased by <fishingTooltip>%. If item is from a Pet, increased to <fishingTooltipIncr>%.]
-					Consumed Master Mode Light Pet Items: <items>
-					''' */
+					Mostra todas as estatísticas do jogador relacionadas ao PET's Overhaul.
+					Velocidade da Habilidade do PET: <haste>%
+					[c/899499:As habilidades do seu PET recarregam <hasteValue> <hastePosiOrNega> que o normal.]
+					Multiplicador de Dano do PET: <damage>x
+					[c/899499:Projéteis e danos diretos originados de seus PET's causam <damageTooltip>% de dano.]
+					Multiplicador de Cura do PET: <heal>x
+					[c/899499:Qualquer tipo de cura originada de seus PET's cura <healTooltip>%.]
+					Multiplicador de Escudo do PET: <shield>x
+					[c/899499:Todos os efeitos de escudo dos seus PET's concedem <shieldTooltip>% de escudo.]
+					Sorte Global: <global>
+					[c/899499:Todos os drops de Mineração, Colheita e Pesca são aumentados em <globalTooltip>%.]
+					[c/899499:Também aumenta todos os drops de itens de PET não classificados em <globalTooltipIncr>%.]
+					Sorte de Mineração: <mining> (Minérios etc., veja tudo com /pet items mining)
+					[c/899499:Todos os drops de Mineração são aumentados em <miningTooltip>%. Se o item for de um PET, aumenta para <miningTooltipIncr>%.]
+					Sorte de Colheita: <harvesting> (Árvores, plantas, etc., veja tudo com /pet items harvesting)
+					[c/899499:Todos os drops de Colheita são aumentados em <harvestingTooltip>%. Se o item for de um PET, aumenta para <harvestingTooltipIncr>%.]
+					Sorte de Pesca: <fishing> (Capturas de pesca, veja tudo com /pet items fishing)
+					[c/899499:Todos os drops de Pesca são aumentados em <fishingTooltip>%. Se o item for de um PET, aumenta para <fishingTooltipIncr>%.]
+					Itens de PET de Luz do Modo Mestre Consumidos: <items>
+					'''
 			}
 
 			Bonemerang: {
-				// DisplayName: Bonemerang
-				// Tooltip: You can still hear it crying for its parent.
+				DisplayName: Ossomerang
+				Tooltip: Você ainda pode ouvi-lo chorando por seu pai.
 			}
 
 			PetForgeItem: {
-				// DisplayName: Pet Forge
-				/* Tooltip:
+				DisplayName: Forja de PET's
+				Tooltip:
 					'''
-					Allows you to craft all Pets.
-					[c/899499:I know its just a Furnace recolor...]
-					''' */
+					Permite criar todos os Pets.
+					[c/899499:Eu sei que é só uma fornalha recolorida...]
+					'''
 			}
 
 			PetFood: {
-				// DisplayName: Pet Food
+				// DisplayName: Comida de PET's
 				/* Tooltip:
 					'''
-					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
-					Used in crafting recipes of every single Pet.
+					Não existe nenhum PET que esta iguaria multissabor não agrade!
+					Usada em receitas de criação de todos os PET's.
 					''' */
 			}
 		}
 
 		Projectiles: {
-			PetExplosion: Pet Explosão por um Pet
-			// BonemerangProj.DisplayName: Bonemerang
+			PetExplosion: Explosão por um PET
+			BonemerangProj.DisplayName: Ossomerang
 		}
 
 		Keybinds: {
@@ -1382,48 +1451,48 @@ Mods: {
 				É a melhor forma de escapar do perigo eminente
 				É a forma Largatixa de seu PET de lhe tirar de uma enrascada!
 				'''
-			// MasteryShard1: Dropped only once per world by killing Eye of Cthulhu.
-			// MasteryShard2: Dropped only once per world by killing Wall of Flesh.
-			// MasteryShard3: Dropped only once per world by killing Golem.
-			// MasteryShard4: Dropped only once per world by killing Skeletron.
-			// MasteryShard5: Dropped only once per world by killing Moon Lord.
+			MasteryShard1: Dropado apenas uma vez por mundo ao derrotar o Olho de Cthulhu.
+			MasteryShard2: Dropado apenas uma vez por mundo ao derrotar a Parede de Carne.
+			MasteryShard3: Dropado apenas uma vez por mundo ao derrotar o Golem.
+			MasteryShard4: Dropado apenas uma vez por mundo ao derrotar o Esqueletron.
+			MasteryShard5: Dropado apenas uma vez por mundo ao derrotar o Lorde da Lua.
 
 			PetTamer: {
-				// DisplayName: Pet Tamer
-				// Combine: Combine Light Pets
-				// BestiaryFlavorText: The great Pet Tamer, knows more regarding Pets more than anyone else. Well known for his capabilities in helping Light Pets reach their greatest potential.
-				// GuideQuote: Hmm. I see you haven't taken care of a Pet yet. I've heard that if you can find one and start keeping it around you, a Pet Tamer may settle in!
+				DisplayName: Domador de PET's
+				Combine: Combinar PET's de Luz
+				BestiaryFlavorText: O grande Domador de PET's, sabe mais sobre PET's do que qualquer outra pessoa. Conhecido por suas habilidades em ajudar PET's de Luz a alcançarem seu maior potencial.
+				GuideQuote: Hmm. Vejo que você ainda não cuidou de um PET. Ouvi dizer que se encontrar um e começar a mantê-lo por perto, um Domador de PET's pode se estabelecer!
 
 				Quotes: {
-					// Common1: How is your Pets coming along? Always keep them fed kid, just right.
-					// Common2: If you do happen to have multiple Light Pets of the same type, I can combine their best Qualities into one Light Pet!.. For a price of course.
-					// Common3: Hm? You'd like to know more regarding your Pets strength? I do happen to have Pet Monitoring Tablet I can sell to you. How convenient.
-					// Common4: One time I've dropped my whole bag into that shiny looking purple liquid in the underground. I was so worried because had my Wisp in a Bottle in the bag! Weirdly enough, as I saw everything turn into something else, my Wisp just stood there, unfazed! I wonder what that liquid was.
-					// Common5: Oh yeah. Someone gave me the recipe to make a Crimson Heart out of a Shadow Orb. I've crafted it. Guess what kid? It refused to be any stronger than its predecessor!
-					// Common6: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
-					// Rare1: Whats this whip for? For the ones that tries to hurt my Pets of course! What else did ya think?
-					// WizardQuote: Its crazy, when <name> told me im extremely lucky that day, all Light Pets I've been training during that day seemed to have higher potential.
+					Common1: Como estão seus PET's? Sempre os alimente direitinho viu?.
+					Common2: Se por acaso você tiver vários PET's de Luz do mesmo tipo, posso combinar suas melhores qualidades em um único PET de Luz!... Por um preço, é claro.
+					Common3: Hm? Você quer saber mais sobre a força dos seus PET's? Por coincidência, tenho um Tablet de Monitoramento de PET's que posso vender para você.
+					Common4: Uma vez, deixei cair minha bolsa inteira naquele líquido roxo brilhante no subterrâneo. Fiquei tão preocupado porque minha bolsa tinha meu Fantasma na Garrafa! Estranhamente, enquanto via tudo se transformar em outra coisa, meu Fantasma na Garrafa permaneceu lá, impassível! Me pergunto o que era aquele líquido.
+					Common5: Ah, sim. Alguém me deu a receita para transformar um Coração Carmesim em um Orbe Sombrio. Eu o fabriquei. E adivinha? Ele se recusou a ficar mais forte que seu predecessor!
+					Common6: Sim! Com a Forja de PET's, você pode conseguir qualquer PET que quiser. Embora possa ser um pouco difícil e trabalhoso.
+					Rare1: Para que é esse chicote? Para aqueles que tentar machucar meus PET's, é claro! O que mais você pensou hein?
+					WizardQuote: É coisa de louco! Quando <name> me disse que eu estava com muita sorte naquele dia, todos os PET's de Luz que treinei pareciam ter um potencial maior.
 				}
 
 				TownNPCMood: {
-					// Content: We are feeling great!
-					// NoHome: My pets and I do require somewhere to stay. I don't like seeing them uncomfortable...
-					// FarFromHome: Taking a walk is OK, but for safety of my pets we should be back at our home.
-					// LoveSpace: Since my pets have the space to breathe and play around, that is making me happy.
-					// DislikeCrowded: My pets don't like too many people around besides me.
-					// HateCrowded: Because my pets are unable to be theirselves with too many people around, I really don't like the current conditions.
-					// LikeBiome: You know, being in {BiomeName} is very nice for my pets.
-					// DislikeBiome: While we're at {BiomeName}, my pets seem uncomfortable.
-					// LoveNPC: I love {NPCName}! She always takes cares of my Pets when I am not around, and my pets and her pets get along very well!
-					// LikeNPC: I like {NPCName}. My pets enjoy their time with his own pet!
-					// DislikeNPC: I dislike {NPCName}. I know he had no bad intentions, but him trying to dye the fur of my pet scared her off.
-					// HateNPC: No, no. {NPCName} is scaring my pets with all those guns and I've heard he hurts animals too! Neither I or my pets wants to be near him!
-					// LikeNPC_Princess: I like {NPCName}! She loves to play with my pets.
-					// Princess_LovesNPC: I like {NPCName}! His pets are SOOOO CUUUTEEE!
+					Content: Estamos nos sentindo ótimos!
+					NoHome: Meus PET's e eu precisamos de um lugar para ficar. Não gosto de vê-los desconfortáveis...
+					FarFromHome: Passear é bom, mas, para a segurança dos meus PET's, devemos voltar para casa.
+					LoveSpace: Meus PET's têm bastante espaço para respirar e brincar, isso me deixa feliz.
+					DislikeCrowded: Meus PET's não gostam de muitas pessoas por perto, além de mim.
+					HateCrowded: Como meus PET's não podem ser eles mesmos com tantas pessoas ao redor, eu realmente não gosto dessas condições.
+					LikeBiome: Sabe de uma coisa? Esse lugar, {BiomeName}, é muito bom para meus PET's.
+					DislikeBiome: Sabe de uma coisa? Esse lugar, {BiomeName}, deixa todos os meus PET's desconfortáveis.
+					LoveNPC: Eu adoro {NPCName}! Ela sempre cuida dos meus PET's quando não estou por perto, e os PET's dela se dão muito bem com os meus!
+					LikeNPC: Eu gosto de {NPCName}. Meus PET's se divertem com o PET dele!
+					DislikeNPC: Não gosto de {NPCName}. Sei que ele não teve más intenções, mas tentar tingir o pelo do meu PET o deixou arisco.
+					HateNPC: Nananinanão. {NPCName} está assustando meus PET's com todas aquelas armas barulhentas, e ouvi dizer que ele machuca animais também! Nem eu nem meus PET's queremos ficar perto dele!
+					LikeNPC_Princess: Eu gosto de {NPCName}! Ela adora brincar com meus PET's.
+					Princess_LovesNPC: Eu gosto de {NPCName}! Os PET's dele são TÃÃÃÃÃÃÃO FOFINHOOOS!
 				}
 			}
 
-			// SlimeServant.DisplayName: Slime Servant
+			SlimeServant.DisplayName: Servo de Slime
 		}
 
 		Configs: {
