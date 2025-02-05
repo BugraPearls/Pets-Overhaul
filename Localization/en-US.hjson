@@ -442,7 +442,7 @@ Mods: {
 			ToySled:
 				'''
 				<class>
-				- Applies <frostburnTime>-second improved Frostburn on-hit.
+				- Applies <frostburnTime>-second Frostburn on-hit.
 				 * Adds Frostburn visuals to all your weapons & projectiles.
 				- Applies <slowAmount>% slow for <slowTime> seconds on hit.
 				 * All values are multiplied by <frostMult> if full Frost Armor [i:684] is worn.
