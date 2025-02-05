@@ -21,7 +21,6 @@ namespace PetsOverhaul.Items
         {
             Recipe.Create(ItemID.FriedEgg)
                 .AddIngredient(ModContent.ItemType<Egg>(), 3)
-                .AddTile(TileID.Furnaces)
                 .AddTile(TileID.CookingPots)
                 .Register();
         }
