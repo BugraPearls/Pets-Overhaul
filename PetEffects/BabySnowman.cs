@@ -18,13 +18,18 @@ namespace PetsOverhaul.PetEffects
         public int frostMult = 3;
         public int FrostArmorMult => Player.frostBurn ? frostMult : 1;
 
+        /// <summary>
+        /// Pet is obtainable Pre-Hm in some seeds iirc.
+        /// </summary>
+        public int FrostBurnId => Main.hardMode ? BuffID.Frostburn2 : BuffID.Frostburn;
+
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (PetIsEquipped())
             {
-                target.AddBuff(BuffID.Frostburn2, frostburnTime * FrostArmorMult);
+                target.AddBuff(FrostBurnId, frostburnTime * FrostArmorMult);
                 NpcPet.AddSlow(new NpcPet.PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowIDs.Snowman), target);
             }
         }

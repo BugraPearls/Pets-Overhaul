@@ -25,7 +25,6 @@ namespace PetsOverhaul.Systems
         /// Pet Recipes all have Pet Food in their recipes, and crafted on Pet Forge.
         /// </summary>
         /// <param name="recipe">Recipe that will get registered, to be added Pet Food and to be crafted on a Pet Forge.</param>
-        /// <param name="petFoodAmount"></param>
         public static void PetRecipe(Recipe recipe, int petFoodAmount = 1)
         {
             recipe.AddIngredient(ModContent.ItemType<PetFood>(), Math.Max(petFoodAmount, 1))
@@ -41,7 +40,7 @@ namespace PetsOverhaul.Systems
         public override void AddRecipes()
         {
             MasterModePetRecipe(Recipe.Create(ItemID.MartianPetItem).AddIngredient(ItemID.MartianConduitPlating, 750).AddIngredient(ItemID.Hoverboard), 2500); //Example: This is 750 Martian Conduit Plating, 1 Hoverboard, 1.25~ Platinum Coins (2500 Pet Food) and 1 Mastery Shard.
-            PetRecipe(Recipe.Create(ItemID.AmberMosquito).AddRecipeGroup(RecipeGroupsForPets.Silts, 500).AddIngredient(ItemID.DesertFossil, 200).AddIngredient(ItemID.FossilOre, 25).AddIngredient(ItemID.Amber, 25).AddIngredient(ItemID.Amethyst, 5).AddIngredient(ItemID.Topaz, 5).AddIngredient(ItemID.Sapphire, 5).AddIngredient(ItemID.Emerald, 5).AddIngredient(ItemID.Ruby, 5).AddIngredient(ItemID.Diamond, 5));
+            PetRecipe(Recipe.Create(ItemID.AmberMosquito).AddRecipeGroup(RecipeGroupsForPets.Silts, 500).AddIngredient(ItemID.DesertFossil, 200).AddIngredient(ItemID.FossilOre, 25).AddIngredient(ItemID.Amber, 15).AddIngredient(ItemID.Amethyst, 3).AddIngredient(ItemID.Topaz, 3).AddIngredient(ItemID.Sapphire, 3).AddIngredient(ItemID.Emerald, 3).AddIngredient(ItemID.Ruby, 3).AddIngredient(ItemID.Diamond, 3));
             PetRecipe(Recipe.Create(ItemID.EatersBone).AddRecipeGroup(RecipeGroupsForPets.ShadowHelmet).AddRecipeGroup(RecipeGroupsForPets.ShadowScalemail).AddRecipeGroup(RecipeGroupsForPets.ShadowGreaves).AddIngredient(ItemID.EbonstoneBlock, 40).AddIngredient(ItemID.VileMushroom, 12), 25);
             PetRecipe(Recipe.Create(ItemID.BoneRattle).AddIngredient(ItemID.CrimsonHelmet).AddIngredient(ItemID.CrimsonScalemail).AddIngredient(ItemID.CrimsonGreaves).AddIngredient(ItemID.CrimstoneBlock, 40).AddIngredient(ItemID.ViciousMushroom, 12), 25);
             PetRecipe(Recipe.Create(ItemID.BabyGrinchMischiefWhistle).AddRecipeGroup(RecipeGroupsForPets.IceBlocks, 1000).AddIngredient(ItemID.Snowball, 1000).AddIngredient(ItemID.Shiverthorn, 500).AddIngredient(ItemID.FlinxFur, 20).AddCondition(Condition.DownedIceQueen), 2000);

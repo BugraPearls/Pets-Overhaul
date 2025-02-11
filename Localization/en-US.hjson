@@ -23,9 +23,10 @@ Mods: {
 		JojaCola: A nature-related NPC may be able to Purify this
 		Notice:
 			'''
-			[c/90C2AA:Pets Overhaul 3.4, latest changes: Added Recipes for ALL Pets! Crafted on a Pet Forge.]
+			[c/90C2AA:Pets Overhaul 3.4.1, latest changes: Added Recipes for ALL Pets! Crafted on a Pet Forge.]
 			[c/90C2AA:All Recipes contain & associated with new item Pet Food (Sold by Pet Tamer) Adjusted all old recipes.]
 			[c/90C2AA:Mastery Shard now drops from all enemies (0.02%) and all bosses (1%) besides the guarantee drops.]
+			[c/90C2AA:Major Chinese, Brazillian and Russian Translation updates, by: ROH, Erstarisk and Teokai respectively.]
 			[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 			'''
@@ -441,7 +442,7 @@ Mods: {
 			ToySled:
 				'''
 				<class>
-				- Applies <frostburnTime>-second improved Frostburn on-hit.
+				- Applies <frostburnTime>-second Frostburn on-hit.
 				 * Adds Frostburn visuals to all your weapons & projectiles.
 				- Applies <slowAmount>% slow for <slowTime> seconds on hit.
 				 * All values are multiplied by <frostMult> if full Frost Armor [i:684] is worn.
@@ -650,9 +651,9 @@ Mods: {
 				   item's exp value, and levels are maxed at level <maxLvl>. Cap can be increased with following unique boss kills;
 				   Eater of Worlds or Brain of Cthulhu, Wall of Flesh, Any Mech Boss, Plantera, Lunatic Cultist<moreBoss>.
 				- <harvesting> Current level: <harvestLevel> Experience needed for next level: <harvestNext> Current total experience: <harvestCurrent>
-				 * Gain <harvestingProfit> times exp value of items as copper coins and gain <flatHealth> maximum health.
+				 * Gain <harvestingProfit> times exp value of items as copper coins and gain <bonusMs>% movement speed.
 				- <mining> Current level: <miningLevel> Experience needed for next level: <miningNext> Current total experience: <miningCurrent>
-				 * Gain <miningProfit> times exp value of items as copper coins and gain <bonusReduction>% damage reduction.
+				 * Gain <miningProfit> times exp value of items as copper coins and gain <flatHealth> maximum health.
 				- <fishing> Current level: <fishingLevel> Experience needed for next level: <fishingNext> Current total experience: <fishingCurrent>
 				 * Gain <fishingProfit> times exp value of items as copper coins and gain <bonusDamage>% damage boost.
 				'''
