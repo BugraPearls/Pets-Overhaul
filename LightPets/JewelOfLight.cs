@@ -80,13 +80,8 @@ namespace PetsOverhaul.LightPets
                 Acceleration.CurrentRoll = exp;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.JewelOfLight")
+        public override int GetRoll() => WingTime.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.JewelOfLight")
 
                         .Replace("<moveSpd>", MovementSpeed.BaseAndPerQuality())
                         .Replace("<wingTime>", WingTime.BaseAndPerQuality(Math.Round(WingTime.StatPerRoll / 60f, 2).ToString(), Math.Round(WingTime.BaseStat / 60f, 2).ToString()))
@@ -94,12 +89,6 @@ namespace PetsOverhaul.LightPets
 
                         .Replace("<moveSpdLine>", MovementSpeed.StatSummaryLine())
                         .Replace("<wingTimeLine>", WingTime.StatSummaryLine(Math.Round(WingTime.CurrentStatInt / 60f, 2).ToString()))
-                        .Replace("<accelerationLine>", Acceleration.StatSummaryLine())
-                        ));
-            if (WingTime.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<accelerationLine>", Acceleration.StatSummaryLine());
     }
 }

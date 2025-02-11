@@ -193,13 +193,8 @@ namespace PetsOverhaul.LightPets
                 WhipRange.CurrentRoll = whip;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.SuspiciousLookingTentacle")
+        public override int GetRoll() => CritChanceAll.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.SuspiciousLookingTentacle")
 
                         .Replace("<def>", Defense.BaseAndPerQuality())
                         .Replace("<defLine>", Defense.StatSummaryLine())
@@ -235,12 +230,6 @@ namespace PetsOverhaul.LightPets
                         .Replace("<sizeLine>", MeleeSize.StatSummaryLine())
 
                         .Replace("<knockback>", MeleeKnockback.BaseAndPerQuality())
-                        .Replace("<knockbackLine>", MeleeKnockback.StatSummaryLine())
-                        ));
-            if (CritChanceAll.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<knockbackLine>", MeleeKnockback.StatSummaryLine());
     }
 }

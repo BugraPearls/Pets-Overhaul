@@ -59,24 +59,13 @@ namespace PetsOverhaul.LightPets
                 GlobalFortune.CurrentRoll = fort;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.FairyBell")
+        public override int GetRoll() => GlobalFortune.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.FairyBell")
 
                         .Replace("<haste>", AbilityHaste.BaseAndPerQuality())
                         .Replace("<fortune>", GlobalFortune.BaseAndPerQuality())
 
                         .Replace("<hasteLine>", AbilityHaste.StatSummaryLine())
-                        .Replace("<fortuneLine>", GlobalFortune.StatSummaryLine())
-                        ));
-            if (GlobalFortune.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<fortuneLine>", GlobalFortune.StatSummaryLine());
     }
 }
