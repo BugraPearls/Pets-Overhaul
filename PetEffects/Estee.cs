@@ -12,7 +12,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.CelestialWand;
         public override PetClasses PetClassPrimary => PetClasses.Magic;
         public float manaIncrease = 0.15f;
-        public float manaMagicIncreasePer1 = 0.001f;
+        public float manaMagicIncreasePer1 = 0.00115f;
         public float penaltyMult = 0.4f;
         public int manaMult;
         public float CurrentPenalty = 0f;

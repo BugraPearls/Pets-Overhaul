@@ -34,6 +34,20 @@ namespace PetsOverhaul.PetEffects
                 GlobalPet.CircularDustEffect(Player.Center, DustID.SnowflakeIce, queenRange, 50);
             }
         }
+        public override void UpdateBadLifeRegen()
+        {
+            if (PetIsEquipped() && frozenTomb == true && Player.lifeRegen < 0) //This should be enough, and should be fine for consistency. With this, and the one below, dying to DoT's when in immunity shouldn't happen anymore.
+            { 
+                Player.lifeRegen = 0;
+            }
+        }
+        public override void UpdateLifeRegen()
+        {
+            if (PetIsEquipped() && frozenTomb == true && Player.lifeRegen < 0) //This is here just in case, if a Mod works after Ice Queen's UpdateBadLifeRegen() code. This should do nothing and shouldn't be required in 99.9% of the cases. But just in case. 
+            {
+                Player.lifeRegen = 0;
+            }
+        }
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped() && frozenTomb == true)
