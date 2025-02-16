@@ -1460,6 +1460,7 @@ Mods: {
 				Combine: Combinar PET's de Luz
 				BestiaryFlavorText: O grande Domador de PET's, sabe mais sobre PET's do que qualquer outra pessoa. Conhecido por suas habilidades em ajudar PET's de Luz a alcançarem seu maior potencial.
 				GuideQuote: Hmm. Vejo que você ainda não cuidou de um PET. Ouvi dizer que se encontrar um e começar a mantê-lo por perto, um Domador de PET's pode se estabelecer!
+				// Census.SpawnCondition: Requires a Pet to be equipped at least once in either normal or Light Pet inventory slots.
 
 				Quotes: {
 					Common1: Como estão seus PET's? Sempre os alimente direitinho viu?.

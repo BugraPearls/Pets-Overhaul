@@ -115,5 +115,12 @@ namespace PetsOverhaul
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }
+        public override void PostSetupContent()
+        {
+            if (ModLoader.TryGetMod("Census", out Mod censusMod))
+            {
+                censusMod.Call("TownNPCCondition", ModContent.NPCType<PetTamer>(), ModContent.GetInstance<PetTamer>().GetLocalization("Census.SpawnCondition"));
+            }
+        }
     }
 }
