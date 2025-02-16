@@ -35,12 +35,14 @@ namespace PetsOverhaul.TownPets
                 }
             }
         }
-        public override void PostBuyItem(NPC vendor, Item[] shopInventory, Item item)
+        public override bool CanBuyItem(NPC vendor, Item[] shopInventory, Item item)
         {
-            if (Player.HasBuff(ModContent.BuffType<TownPetDiva>()))
+            bool didBuy = base.CanBuyItem(vendor, shopInventory, item);
+            if (didBuy && item.buyOnce == false && Player.HasBuff(ModContent.BuffType<TownPetDiva>()))
             {
                 Player.GetModPlayer<GlobalPet>().GiveCoins(GlobalPet.Randomizer((int)(item.GetStoreValue() * divaDisc * 1000), 1000));
             }
+            return didBuy;
         }
     }
 }
