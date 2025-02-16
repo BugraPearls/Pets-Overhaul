@@ -40,11 +40,11 @@ namespace PetsOverhaul.PetEffects
             {
                 if (Player.anglerQuestsFinished * 0.004f >= maxQuestPower)
                 {
-                    fishingLevel += maxQuestPower;
+                    fishingLevel *= 1f + maxQuestPower;
                 }
                 else
                 {
-                    fishingLevel += Player.anglerQuestsFinished * 0.004f;
+                    fishingLevel *= 1f + Player.anglerQuestsFinished * 0.004f;
                 }
             }
         }

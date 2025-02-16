@@ -24,8 +24,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false))
             {
-                float fishingPowerMult = 0;
-                fishingPowerMult += fishingPowerPenalty;
+                float fishingPowerMult = fishingPowerPenalty;
                 if (Player.anglerQuestsFinished * fpPerQuest > maxQuestPower)
                 {
                     fishingPowerMult += maxQuestPower;
@@ -34,15 +33,14 @@ namespace PetsOverhaul.PetEffects
                 {
                     fishingPowerMult += Player.anglerQuestsFinished * fpPerQuest;
                 }
-
-                fishingLevel += fishingPowerMult;
+                fishingLevel *= fishingPowerMult;
             }
         }
         public override void ModifyCaughtFish(Item fish)
         {
             if (PetIsEquipped(false) && fish.maxStack != 1)
             {
-                for (int i = 0; i < GlobalPet.Randomizer(stackChance + (int)(Player.fishingSkill * multiplier) * fish.stack); i++)
+                for (int i = 0; i < GlobalPet.Randomizer(stackChance + (int)(Player.GetFishingConditions().FinalFishingLevel * multiplier) * fish.stack); i++)
                 {
                     Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.FishingItem), fish.type, 1);
                 }

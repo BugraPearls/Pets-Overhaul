@@ -34,7 +34,7 @@ namespace PetsOverhaul.PetEffects
                 modifiers.FinalDamage *= seaCreatureDamage;
             }
         }
-        public override void UpdateEquips()
+        public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped(false))
             {
