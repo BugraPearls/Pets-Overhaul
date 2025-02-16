@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-
+﻿using PetsOverhaul.Config;
+using System.Collections.Generic;
+using ReLogic.Utilities;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -328,13 +329,16 @@ namespace PetsOverhaul.Systems
                 SoundID.NPCDeath62 with { PitchVariance = 0.5f, Volume = 0.8f}
             }
         };
-        public ReLogic.Utilities.SlotId PlayHurtSoundFromItemId(int itemId)
+        public SlotId PlayHurtSoundFromItemId(int itemId)
         {
+            if (ModContent.GetInstance<PetPersonalization>().HurtSoundEnabled == false)
+                return SlotId.Invalid;
+
             SoundStyle itemsHurtSound = SoundID.MenuClose;
 
-            if (PetItemIdToHurtSound.ContainsKey(itemId))
+            if (PetItemIdToHurtSound.TryGetValue(itemId, out SoundStyle[] value))
             {
-                itemsHurtSound = PetItemIdToHurtSound[itemId][Main.rand.Next(PetItemIdToHurtSound[itemId].Length)];
+                itemsHurtSound = value[Main.rand.Next(value.Length)];
             }
             if (itemId == ItemID.BerniePetItem)
             {
@@ -346,23 +350,49 @@ namespace PetsOverhaul.Systems
 
         public ReLogic.Utilities.SlotId PlayAmbientSoundFromItemId(int itemId)
         {
-            SoundStyle petAmbientSound = SoundID.MenuClose;
-
-            if (PetItemIdToAmbientSound.ContainsKey(itemId))
+            int chance;
+            switch (ModContent.GetInstance<PetPersonalization>().PassiveSoundFrequency)
             {
-                petAmbientSound = PetItemIdToAmbientSound[itemId][Main.rand.Next(PetItemIdToAmbientSound[itemId].Length)];
+                case PassivePetSoundFrequency.None:
+                    return SlotId.Invalid;
+                case PassivePetSoundFrequency.Lowered:
+                    chance = 18000;
+                    break;
+                case PassivePetSoundFrequency.Normal:
+                    chance = 7200;
+                    break;
+                case PassivePetSoundFrequency.Increased:
+                    chance = 3600;
+                    break;
+                default:
+                    chance = 7200;
+                    break;
             }
+            if (Main.myPlayer == Player.whoAmI && Main.rand.NextBool(chance))
+            {
+                SoundStyle petAmbientSound = SoundID.MenuClose;
 
-            return petAmbientSound == SoundID.MenuClose ? ReLogic.Utilities.SlotId.Invalid : SoundEngine.PlaySound(petAmbientSound with { Type = SoundType.Ambient, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew }, Player.Center);
+                if (PetItemIdToAmbientSound.TryGetValue(itemId, out SoundStyle[] value))
+                {
+                    petAmbientSound = value[Main.rand.Next(value.Length)];
+                }
+
+                return petAmbientSound == SoundID.MenuClose ? ReLogic.Utilities.SlotId.Invalid : SoundEngine.PlaySound(petAmbientSound with { Type = SoundType.Ambient, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew }, Player.Center);
+            }
+            return SlotId.Invalid;
+
         }
 
         public ReLogic.Utilities.SlotId PlayKillSoundFromItemId(int itemId)
         {
+            if (ModContent.GetInstance<PetPersonalization>().DeathSoundEnabled == false)
+                return SlotId.Invalid;
+
             SoundStyle petKillSound = SoundID.MenuClose;
 
-            if (PetItemidToKillSound.ContainsKey(itemId))
+            if (PetItemidToKillSound.TryGetValue(itemId, out SoundStyle value))
             {
-                petKillSound = PetItemidToKillSound[itemId];
+                petKillSound = value;
             }
             else if (itemId == ItemID.CompanionCube)
             {

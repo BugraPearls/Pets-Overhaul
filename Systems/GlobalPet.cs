@@ -600,7 +600,7 @@ namespace PetsOverhaul.Systems
             tag.Add("SkinColorChanged", skinColorChanged);
             tag.Add("eolConsume", eolConsumed);
             tag.Add("golemConsume", golemConsumed);
-            tag.Add("pumpkingConsume",pumpkingConsumed);
+            tag.Add("pumpkingConsume", pumpkingConsumed);
         }
         public override void LoadData(TagCompound tag)
         {
@@ -613,7 +613,7 @@ namespace PetsOverhaul.Systems
             {
                 skinColorChanged = skinChanged;
             }
-            
+
             if (tag.TryGet("eolConsume", out bool eol))
             {
                 eolConsumed = eol;
@@ -673,10 +673,7 @@ namespace PetsOverhaul.Systems
         }
         public override void OnHurt(Player.HurtInfo info)
         {
-            if (ModContent.GetInstance<PetPersonalization>().HurtSoundEnabled)
-            {
-                Player.GetModPlayer<PetSounds>().PlayHurtSoundFromItemId(Player.miscEquips[0].type);
-            }
+            Player.GetModPlayer<PetSounds>().PlayHurtSoundFromItemId(Player.miscEquips[0].type);
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
@@ -840,10 +837,7 @@ namespace PetsOverhaul.Systems
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DeathSoundEnabled)
-            {
-                playSound = Player.GetModPlayer<PetSounds>().PlayKillSoundFromItemId(Player.miscEquips[0].type) == ReLogic.Utilities.SlotId.Invalid;
-            }
+            playSound = Player.GetModPlayer<PetSounds>().PlayKillSoundFromItemId(Player.miscEquips[0].type) == ReLogic.Utilities.SlotId.Invalid;
 
             return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
         }
@@ -865,10 +859,7 @@ namespace PetsOverhaul.Systems
 
                 previousPetItem = Player.miscEquips[0].type;
             }
-            if (ModContent.GetInstance<PetPersonalization>().PassiveSoundEnabled && Main.rand.NextBool(3600))
-            {
                 Player.GetModPlayer<PetSounds>().PlayAmbientSoundFromItemId(Player.miscEquips[0].type);
-            }
         }
         public override void UpdateDead()
         {

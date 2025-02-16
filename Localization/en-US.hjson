@@ -195,8 +195,17 @@ Mods: {
 			HurtSoundTooltip: Enables custom sound effects added by Pets when the Player receives damage.
 			DeathSoundLabel: Enable custom death sounds
 			DeathSoundTooltip: Enables custom sound effects added by Pets when the Player dies.
-			PassiveSoundLabel: Enable passive Pet sounds
-			PassiveSoundTooltip: Enables Pet sound effects that play passively similar to vanilla's Ambient sound effects.
+			PassiveSoundNever: Never Played
+			PassiveSoundRarely: Rare (Every 5m~)
+			PassiveSoundNormal: Normal (Every 2m~)
+			PassiveSoundCommon: Common (Every 1m~)
+			PassiveSoundLabel: Frequency of passive Pet sounds
+			PassiveSoundTooltip:
+				'''
+				Adjusts how frequent your Pet can make a passive sound effect.
+				'Never' option will disable passive sound effects by Pets entirely.
+				Its similar to Ambient sound effects in Vanilla. This is fully clientside.
+				'''
 			AbilitySoundLabel: Enable ability sounds
 			AbilitySoundTooltip:
 				'''
@@ -1479,6 +1488,7 @@ Mods: {
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
+			PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }

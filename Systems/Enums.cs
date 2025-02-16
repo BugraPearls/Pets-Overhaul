@@ -65,4 +65,16 @@ namespace PetsOverhaul.Systems
         [LabelKey("$Mods.PetsOverhaul.Config.ParticleIncreased")]
         Increased,
     }
+    public enum PassivePetSoundFrequency
+    {
+        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundNever")]
+        None,
+        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundRarely")]
+        Lowered,
+        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundNormal")]
+        Normal,
+        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundCommon")]
+        Increased,
+
+    }
 }

@@ -184,6 +184,10 @@ Mods: {
 			HurtSoundTooltip: 启用宠物添加的玩家受到伤害时的自定义音效
 			DeathSoundLabel: 启用自定义死亡音效
 			DeathSoundTooltip: 启用宠物添加的玩家死亡时的自定义音效
+			// PassiveSoundNever: Never Played
+			// PassiveSoundRarely: Rare (Every 5m~)
+			// PassiveSoundNormal: Normal (Every 2m~)
+			// PassiveSoundCommon: Common (Every 1m~)
 			PassiveSoundLabel: 启用宠物被动音效
 			PassiveSoundTooltip:
 				'''
@@ -1416,6 +1420,7 @@ Mods: {
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
+			// PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }

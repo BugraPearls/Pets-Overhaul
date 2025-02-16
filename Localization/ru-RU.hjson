@@ -189,6 +189,10 @@ Mods: {
 			HurtSoundTooltip: Включает/отключает пользовательские звуковые эффекты, добавленные питомцами, когда игрок получает урон.
 			DeathSoundLabel: Пользовательские звуки смерти
 			DeathSoundTooltip: Включает/отключает пользовательские звуковые эффекты, добавленные питомцами, когда игрок умирает.
+			// PassiveSoundNever: Never Played
+			// PassiveSoundRarely: Rare (Every 5m~)
+			// PassiveSoundNormal: Normal (Every 2m~)
+			// PassiveSoundCommon: Common (Every 1m~)
 			PassiveSoundLabel: Звуки пассивных питомцев
 			PassiveSoundTooltip: Включает/отключает звуковые эффекты питомцев, которые воспроизводятся пассивно, подобно ванильным фоновым звукам.
 			AbilitySoundLabel: Звуки способностей
@@ -1483,6 +1487,7 @@ Mods: {
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
+			// PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }

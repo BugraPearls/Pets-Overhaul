@@ -129,11 +129,13 @@ namespace PetsOverhaul.Config
         [BackgroundColor(35, 120, 54, 190)]
         public bool DeathSoundEnabled { get; set; }
 
+        [DefaultValue(PassivePetSoundFrequency.Normal)]
         [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.PassiveSoundTooltip")]
-        [DefaultValue(true)]
+        [JsonConverter(typeof(StringEnumConverter))]
         [BackgroundColor(35, 120, 54, 190)]
-        public bool PassiveSoundEnabled { get; set; }
+        [SliderColor(58, 28, 36, 125)]
+        public PassivePetSoundFrequency PassiveSoundFrequency { get; set; }
 
         [LabelKey("$Mods.PetsOverhaul.Config.AbilitySoundLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.AbilitySoundTooltip")]

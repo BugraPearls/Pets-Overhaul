@@ -196,6 +196,10 @@ Mods: {
 			HurtSoundTooltip: Habilita efeitos sonoros adicionados por pets quando o jogador recebe dano.
 			DeathSoundLabel: Habilita sons de morte personalizados
 			DeathSoundTooltip: Habilita sons de morte personalizados quando o jogador morre.
+			// PassiveSoundNever: Never Played
+			// PassiveSoundRarely: Rare (Every 5m~)
+			// PassiveSoundNormal: Normal (Every 2m~)
+			// PassiveSoundCommon: Common (Every 1m~)
 			PassiveSoundLabel: Habilita sons passivos de pet
 			PassiveSoundTooltip: Habilita efeitos sonoros de pet que tocam aleatóriamente sem efeitos similar à efeitos sonoros de ambiente.
 			AbilitySoundLabel: Habilita sons de habilidades
@@ -1496,6 +1500,7 @@ Mods: {
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
+			// PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }
