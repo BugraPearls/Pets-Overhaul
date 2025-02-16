@@ -8,12 +8,12 @@ And to view any class or type of Pet to your liking, use /pet pets or /pet class
 Additions
 - +65 Pet Effects that are; Complex, Unique, build-defining and aiding you with even non-combat tasks!
 - With their unique Quality Rolling system, 10 new Light Pet effects!
-- A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both!
+- A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both! Once you equip a Pet of your own, he will be interested in moving in!
 - More than 10 Aura effects by Town Pets & Slimes, acting in a similar fashion of Campfire etc.
 - Extremely rare Mastery Shard item dropping from any mob and 100% chance only once per world from select bosses allowing you to craft Master Mode exclusive Pets in Non-Master Mode worlds!
 - Added Crafting Recipes for every single Pet, although costly, allowing you to get the Pet you want in an alternative way if you can't obtain it the original way!
 
-Pets Overhaul currently supports Russian (By: Teokai), Brazilian Portuguese (By: Erstarisk, Previous: Starite_Fusion) and Simplified Chinese (By: ROH, Previous: Celestepic) besides English for localization options.
+Pets Overhaul currently supports Simplified Chinese, Russian and Brazilian Portuguese besides English for localization options. (See below for credits)
 
 To give direct feedback, report bugs or to give suggestions join our Discord server!
 https://discord.gg/KubSpqvDGE
@@ -23,10 +23,13 @@ https://github.com/BugraPearls/Pets-Overhaul
 
 Check out our Patreon Page (patreon.com/pearlying) if you'd like to support the Mod!
 
-Mod Trailer video, all icons and artwork made by: Furqi
+Mod Trailer video, Most icons and artwork made by: Furqi
 Chinese Translation by: ROH
 Russian Translation by: Teokai
 Brazillian Portuguese Translation by: Erstarisk
 Previous Chinese Translation by: Celestepic
 Previous Brazillian Portuguese Translation by: Starite_Fusion
-and thanks to WaffleDevs, Andro951 and tModLoader community for helping/contributing to the code!
+Buff Icons by: Furqi & konte1m
+Pet Forge Sprites by: Piper
+Much thanks to my entire community for providing me with Feedback & bug reports & testings!
+and thanks to ROH, WaffleDevs, Andro951 and tModLoader community for helping/contributing to the code!

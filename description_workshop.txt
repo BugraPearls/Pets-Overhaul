@@ -9,13 +9,13 @@ Additions
 [list]
 [*] +65 Pet Effects that are; Complex, Unique, build-defining and aiding you with even non-combat tasks!
 [*] With their unique Quality Rolling system, 10 new Light Pet effects!
-[*] A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both!
+[*] A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both! Once you equip a Pet of your own, he will be interested in moving in!
 [*] More than 10 Aura effects by Town Pets & Slimes, acting in a similar fashion of Campfire etc.
 [*] Extremely rare Mastery Shard item dropping from any mob and 100% chance only once per world from select bosses allowing you to craft Master Mode exclusive Pets in Non-Master Mode worlds!
 [*] Added Crafting Recipes for every single Pet, although costly, allowing you to get the Pet you want in an alternative way if you can't obtain it the original way!
 [/list]
 
-Pets Overhaul currently supports Russian (By: Teokai), Brazilian Portuguese (By: Erstarisk, Previous: Starite_Fusion) and Simplified Chinese (By: ROH, Previous: Celestepic) besides English for localization options.
+Pets Overhaul currently supports Simplified Chinese, Russian and Brazilian Portuguese besides English for localization options. (See below for credits)
 
 To give direct feedback, report bugs or to give suggestions join our [url=https://discord.gg/KubSpqvDGE]Discord server![/url]
 
@@ -23,10 +23,13 @@ Check out our [url=https://github.com/BugraPearls/Pets-Overhaul]GitHub Page[/url
 
 Check out our [url=https://www.patreon.com/pearlying]Patreon Page[/url] if you'd like to support the Mod!
 
-Mod Trailer video, all Icons and Artwork done by: [url=https://steamcommunity.com/id/IsThatFurqi]Furqi[/url]
+Mod Trailer video, Most icons and artwork made by: [url=https://steamcommunity.com/id/IsThatFurqi]Furqi[/url]
 Chinese Translation done by: [url=https://steamcommunity.com/profiles/76561198849203846/]ROH[/url]
 Russian Translation done by: [url=https://steamcommunity.com/id/teokai/]Teokai[/url]
 Brazillian Portuguese Translation by: [url=https://steamcommunity.com/id/Erstarisk/]Erstarisk[/url]
 Previous Chinese Translation done by: [url=https://steamcommunity.com/id/Celestepic/]Celestepic[/url]
 Previous Brazilian Portuguese Translation done by: [url=https://steamcommunity.com/profiles/76561198818085801]Starite_Fusion[/url]
-and thanks to [url=https://steamcommunity.com/id/WaffleDevs]WaffleDevs[/url], [url=https://steamcommunity.com/id/andro951]Andro951[/url] and the tModLoader community for helping/contributing to the code!
+Buff Icons by: [url=https://steamcommunity.com/id/IsThatFurqi]Furqi[/url] & [url=https://steamcommunity.com/id/konte1m/]konte1m[/url]
+Pet Forge Sprites by: Piper
+Much thanks to my entire community for providing me with Feedback & bug reports & testings!
+and thanks to [url=https://steamcommunity.com/profiles/76561198849203846/]ROH[/url], [url=https://steamcommunity.com/id/WaffleDevs]WaffleDevs[/url], [url=https://steamcommunity.com/id/andro951]Andro951[/url] and the tModLoader community for helping/contributing to the code!
