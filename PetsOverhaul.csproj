@@ -16,6 +16,7 @@
   <ItemGroup>
     <None Remove="Buffs\ChillingFear.png" />
     <None Remove="Buffs\HardenedShell.png" />
+    <None Remove="Buffs\HoneyOverdose.png" />
     <None Remove="Buffs\SanityAura.png" />
     <None Remove="Items\egg.png" />
     <None Remove="Items\LihzahrdWrench.png" />
