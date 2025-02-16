@@ -1405,11 +1405,7 @@ Mods: {
 
 			PetForgeItem: {
 				DisplayName: Pet Forge
-				Tooltip:
-					'''
-					Allows you to craft all Pets.
-					[c/899499:I know its just a Furnace recolor...]
-					'''
+				Tooltip: Allows you to craft all Pets.
 			}
 
 			PetFood: {

@@ -1417,11 +1417,7 @@ Mods: {
 
 			PetForgeItem: {
 				DisplayName: Forja de PET's
-				Tooltip:
-					'''
-					Permite criar todos os Pets.
-					[c/899499:Eu sei que é só uma fornalha recolorida...]
-					'''
+				Tooltip: Permite criar todos os Pets.
 			}
 
 			PetFood: {

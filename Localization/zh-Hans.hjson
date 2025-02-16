@@ -1341,11 +1341,7 @@ Mods: {
 
 			PetForgeItem: {
 				DisplayName: 宠物熔炉
-				Tooltip:
-					'''
-					允许你制作所有宠物
-					[c/899499:我知道这只是一个熔炉改色……]
-					'''
+				Tooltip: 允许你制作所有宠物
 			}
 
 			PetFood: {
