@@ -81,13 +81,8 @@ namespace PetsOverhaul.LightPets
                 MiningFortune.CurrentRoll = fort;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.MagicLantern")
+        public override int GetRoll() => Defense.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.MagicLantern")
 
                         .Replace("<dr>", DamageReduction.BaseAndPerQuality())
                         .Replace("<fortune>", MiningFortune.BaseAndPerQuality())
@@ -97,12 +92,6 @@ namespace PetsOverhaul.LightPets
                         .Replace("<drLine>", DamageReduction.StatSummaryLine())
                         .Replace("<fortuneLine>", MiningFortune.StatSummaryLine())
                         .Replace("<defLine>", Defense.StatSummaryLine())
-                        .Replace("<defPercentLine>", DefensePercent.StatSummaryLine())
-                        ));
-            if (Defense.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<defPercentLine>", DefensePercent.StatSummaryLine());
     }
 }

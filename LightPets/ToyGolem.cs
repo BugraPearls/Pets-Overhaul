@@ -70,13 +70,8 @@ namespace PetsOverhaul.LightPets
                 ManaRegen.CurrentRoll = exp;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.ToyGolem")
+        public override int GetRoll() => PercentHealth.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.ToyGolem")
 
                         .Replace("<lifeRegen>", HealthRegen.BaseAndPerQuality())
                         .Replace("<healthPercent>", PercentHealth.BaseAndPerQuality())
@@ -84,12 +79,6 @@ namespace PetsOverhaul.LightPets
 
                         .Replace("<lifeRegenLine>", HealthRegen.StatSummaryLine())
                         .Replace("<healthPercentLine>", PercentHealth.StatSummaryLine())
-                        .Replace("<manaRegenLine>", ManaRegen.StatSummaryLine())
-                        ));
-            if (PercentHealth.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<manaRegenLine>", ManaRegen.StatSummaryLine());
     }
 }

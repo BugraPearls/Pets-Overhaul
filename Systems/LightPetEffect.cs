@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.NPCs;
+﻿using PetsOverhaul.Config;
+using PetsOverhaul.NPCs;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -50,6 +51,7 @@ namespace PetsOverhaul.Systems
     {
         public abstract int LightPetItemID { get; }
         public sealed override bool InstancePerEntity => true;
+        public abstract string PetsTooltip { get; }
 
         public sealed override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
@@ -160,6 +162,31 @@ namespace PetsOverhaul.Systems
         }
         public virtual void ExtraOnCreated(Item item, ItemCreationContext context)
         { }
+
+        /// <summary>
+        /// Checkd for roll missing text. Supposed to return any of LightPetStat's CurrentRoll.
+        /// </summary>
+        /// <returns></returns>
+        public abstract int GetRoll();
+
+        public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
+                return;
+
+            string tip = "\n" + PetsTooltip;
+
+            if (GetRoll() <= 0)
+                tip = string.Concat(tip, "\n" + PetTextsColors.RollMissingText());
+
+            if (tooltips.Exists(x => x.Name == "Tooltip0"))
+                tooltips.Find(x => x.Name == "Tooltip0").Text += tip;
+            else if (tooltips.Exists(x => x.Name == "Equipable"))
+                tooltips.Find(x => x.Name == "Equipable").Text += tip;
+            else if (tooltips.Exists(x => x.Name == "ItemName"))
+                tooltips.Find(x => x.Name == "ItemName").Text += tip;
+
+        }
     }
     /// <summary>
     /// Struct that contains all a singular Light Pet Stat has & methods for easy tooltip.

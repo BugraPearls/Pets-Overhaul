@@ -70,13 +70,8 @@ namespace PetsOverhaul.LightPets
                 HarvestingFortune.CurrentRoll = fort;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.ShadowOrb")
+        public override int GetRoll() => Mana.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.ShadowOrb")
 
                         .Replace("<mana>", Mana.BaseAndPerQuality())
                         .Replace("<shield>", ShieldingPower.BaseAndPerQuality())
@@ -84,12 +79,6 @@ namespace PetsOverhaul.LightPets
 
                         .Replace("<manaLine>", Mana.StatSummaryLine())
                         .Replace("<shieldLine>", ShieldingPower.StatSummaryLine())
-                        .Replace("<fortuneLine>", HarvestingFortune.StatSummaryLine())
-                        ));
-            if (Mana.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<fortuneLine>", HarvestingFortune.StatSummaryLine());
     }
 }

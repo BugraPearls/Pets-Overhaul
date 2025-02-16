@@ -70,13 +70,8 @@ namespace PetsOverhaul.LightPets
                 AttackSpeed.CurrentRoll = aSpd;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.CreeperEgg")
+        public override int GetRoll() => AttackSpeed.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.CreeperEgg")
 
                         .Replace("<sum>", SummonDamage.BaseAndPerQuality())
                         .Replace("<melee>", MeleeDamage.BaseAndPerQuality())
@@ -84,12 +79,6 @@ namespace PetsOverhaul.LightPets
 
                         .Replace("<sumLine>", SummonDamage.StatSummaryLine())
                         .Replace("<meleeLine>", MeleeDamage.StatSummaryLine())
-                        .Replace("<atkSpdLine>", AttackSpeed.StatSummaryLine())
-                        ));
-            if (AttackSpeed.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<atkSpdLine>", AttackSpeed.StatSummaryLine());
     }
 }

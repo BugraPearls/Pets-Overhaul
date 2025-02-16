@@ -78,13 +78,8 @@ namespace PetsOverhaul.LightPets
                 HarvestingFortune.CurrentRoll = exp;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.JackOLantern")
+        public override int GetRoll() => Luck.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.JackOLantern")
 
                         .Replace("<atkSpd>", AttackSpeed.BaseAndPerQuality())
                         .Replace("<luck>", Luck.BaseAndPerQuality(Luck.StatPerRoll.ToString(), Luck.BaseStat.ToString()))
@@ -92,12 +87,6 @@ namespace PetsOverhaul.LightPets
 
                         .Replace("<atkSpdLine>", AttackSpeed.StatSummaryLine())
                         .Replace("<luckLine>", Luck.StatSummaryLine(Math.Round(Luck.CurrentStatFloat, 2).ToString()))
-                        .Replace("<fortuneLine>", HarvestingFortune.StatSummaryLine())
-                        ));
-            if (Luck.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<fortuneLine>", HarvestingFortune.StatSummaryLine());
     }
 }

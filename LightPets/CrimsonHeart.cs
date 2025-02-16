@@ -70,13 +70,8 @@ namespace PetsOverhaul.LightPets
                 FishingFortune.CurrentRoll = fort;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.CrimsonHeart")
+        public override int GetRoll() => HealingPower.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.CrimsonHeart")
 
                         .Replace("<hp>", Health.BaseAndPerQuality())
                         .Replace("<heal>", HealingPower.BaseAndPerQuality())
@@ -84,12 +79,6 @@ namespace PetsOverhaul.LightPets
 
                         .Replace("<hpLine>", Health.StatSummaryLine())
                         .Replace("<healLine>", HealingPower.StatSummaryLine())
-                        .Replace("<fortuneLine>", FishingFortune.StatSummaryLine())
-                        ));
-            if (HealingPower.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<fortuneLine>", FishingFortune.StatSummaryLine());
     }
 }

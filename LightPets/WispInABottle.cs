@@ -88,13 +88,8 @@ namespace PetsOverhaul.LightPets
                 PetDamage.CurrentRoll = petProj;
             }
         }
-        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
-        {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-            {
-                return;
-            }
-            tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.WispInABottle")
+        public override int GetRoll() => MagicDamage.CurrentRoll;
+        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.WispInABottle")
 
                         .Replace("<magic>", MagicDamage.BaseAndPerQuality())
                         .Replace("<ranged>", RangedDamage.BaseAndPerQuality())
@@ -104,12 +99,6 @@ namespace PetsOverhaul.LightPets
                         .Replace("<magicLine>", MagicDamage.StatSummaryLine())
                         .Replace("<rangedLine>", RangedDamage.StatSummaryLine())
                         .Replace("<velocityLine>", ProjectileVelocity.StatSummaryLine())
-                        .Replace("<petDmgLine>", PetDamage.StatSummaryLine())
-                        ));
-            if (MagicDamage.CurrentRoll <= 0)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.RollMissingText()));
-            }
-        }
+                        .Replace("<petDmgLine>", PetDamage.StatSummaryLine());
     }
 }
