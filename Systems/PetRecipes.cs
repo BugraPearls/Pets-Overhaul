@@ -11,17 +11,6 @@ namespace PetsOverhaul.Systems
     public class PetRecipes : ModSystem
     {
         /// <summary>
-        /// Obsolete, will be removed.
-        /// </summary>
-        public static void MasterPetCraft(int result, int itemToPairWithMasteryShard)
-        {
-            Recipe.Create(result)
-            .AddIngredient(ModContent.ItemType<MasteryShard>())
-            .AddIngredient(itemToPairWithMasteryShard)
-            .AddTile(ModContent.TileType<PetForge>())
-            .Register();
-        }
-        /// <summary>
         /// Pet Recipes all have Pet Food in their recipes, and crafted on Pet Forge.
         /// </summary>
         /// <param name="recipe">Recipe that will get registered, to be added Pet Food and to be crafted on a Pet Forge.</param>
