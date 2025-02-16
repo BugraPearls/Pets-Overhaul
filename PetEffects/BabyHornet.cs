@@ -24,7 +24,7 @@ namespace PetsOverhaul.PetEffects
         public float moveSpdIncr = 0.04f;
         public int beeChance = 7;
         public override int PetAbilityCooldown => beeCooldown;
-        public override void PreUpdateBuffs()
+        public override void PostUpdateBuffs()
         {
             if (PetIsEquipped())
             {
