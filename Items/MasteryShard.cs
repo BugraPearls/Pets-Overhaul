@@ -13,6 +13,7 @@ namespace PetsOverhaul.Items
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(7, 8));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
+            Item.ResearchUnlockCount = 3;
         }
         public override void SetDefaults()
         {
