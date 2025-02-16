@@ -2,7 +2,6 @@
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs.Gores;
 using PetsOverhaul.Systems;
-using PetsOverhaul.Tiles;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent;

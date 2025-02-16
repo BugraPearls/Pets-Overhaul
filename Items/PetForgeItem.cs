@@ -1,8 +1,9 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
+using PetsOverhaul.Tiles;
 
-namespace PetsOverhaul.Tiles
+namespace PetsOverhaul.Items
 {
     public class PetForgeItem : ModItem
     {
