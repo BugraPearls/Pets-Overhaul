@@ -543,7 +543,7 @@ Mods: {
 			ChesterPetItem:
 				'''
 				<class>
-				- Increases your Item pickup range by <pickupRange>.
+				- Increases your Item pickup range by <pickupRange> blocks.
 				- Increases your item placement range by <placementRange> blocks.
 				- Grants <chestDef> defense while any container is open.
 				'''

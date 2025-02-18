@@ -1,18 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\tModLoader.targets" />
   <PropertyGroup>
     <AssemblyName>PetsOverhaul</AssemblyName>
-    <TargetFramework>net8.0</TargetFramework>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <ItemGroup>
-    <AdditionalFiles Remove="PetEffects\ThoriumMod\**" />
-    <Compile Remove="PetEffects\ThoriumMod\**" />
-    <EmbeddedResource Remove="PetEffects\ThoriumMod\**" />
-    <None Remove="PetEffects\ThoriumMod\**" />
-  </ItemGroup>
   <ItemGroup>
     <None Remove="Buffs\ChillingFear.png" />
     <None Remove="Buffs\HardenedShell.png" />
@@ -41,6 +33,5 @@
     <None Remove="UI\PetShield.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
 </Project>
