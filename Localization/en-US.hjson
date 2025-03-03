@@ -770,6 +770,7 @@ Mods: {
 				'''
 				<class>
 				- Improves loot you gain from NPC's and all types of loot bags.
+				 * Does not improve 'dropping' a Loot Bag itself, but rather its contents.
 				- Loot with drop chance below <threshold>% has their drop chance increased by <chanceIncrease>%.
 				- If drop chance is above <threshold>%, loot's stack is doubled with <chanceToDouble>% chance.
 				 * Set items are unaffected. (Ex. Loot is a guarantee drop of one of 5 items)

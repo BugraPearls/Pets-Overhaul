@@ -13,7 +13,7 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.ZephyrFish;
         public float powerPerQuest = 0.004f;
-        public float maxQuestPower = 0.4f;
+        public float maxQuestPower = 0.2f;
         public int baseChance = 30;
         public int windChance = 120;
         public int speedMult = 20;

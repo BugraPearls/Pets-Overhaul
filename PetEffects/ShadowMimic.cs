@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public int chanceToRollDoubleItem = 30; //30% chance to double max/min's of stacks
         public int numeratorMult = 125; //effectively 25% increase on numerator, since denominator is also multiplied by 100 to keep the values consistent with percentages.
         public int denominatorMult = 100;
-        public float lowChanceThreshold = 0.1f;
+        public float lowChanceThreshold = 0.25f;
         public override void Load()
         {
             On_ItemDropResolver.ResolveRule += ShadowMimicExtraDrop;
@@ -27,7 +27,7 @@ namespace PetsOverhaul.PetEffects
         private static ItemDropAttemptResult ShadowMimicExtraDrop(On_ItemDropResolver.orig_ResolveRule orig, ItemDropResolver self, IItemDropRule rule, DropAttemptInfo info)
         {
             ItemDropAttemptResult tempResult = new();
-            if (rule is CommonDrop drop && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped()) 
+            if (rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped()) 
             {
                 if ((float)Math.Max(drop.chanceNumerator, 1) / Math.Max(drop.chanceDenominator, 1) <= mimic.lowChanceThreshold)
                 {
