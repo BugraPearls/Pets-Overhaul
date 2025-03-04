@@ -393,6 +393,7 @@ namespace PetsOverhaul.PetEffects
             { (300, [ItemID.Pearlwood, ItemID.SpookyWood, ItemID.Cactus, ItemID.BambooBlock, ItemID.Mushroom, ItemID.VileMushroom, ItemID.ViciousMushroom ]) },
             { (500, [ItemID.Coral, ItemID.Seashell, ItemID.Starfish, ItemID.JungleSpores ]) },
             { (900, [ItemID.LightningWhelkShell, ItemID.TulipShell]) },
+            { (1250, [ModContent.ItemType<PetFood>()]) },
             { (1750, [ItemID.SpicyPepper, ItemID.Pomegranate, ItemID.Elderberry, ItemID.BlackCurrant, ItemID.Apple, ItemID.Apricot, ItemID.Banana, ItemID.BloodOrange, ItemID.Cherry, ItemID.Coconut, ItemID.Grapefruit, ItemID.Lemon, ItemID.Mango, ItemID.Peach, ItemID.Pineapple, ItemID.Plum, ItemID.Rambutan ]) },
             { (2000, [ItemID.JunoniaShell, ModContent.ItemType<Egg>() ]) },
             { (2500, [ItemID.Dragonfruit, ItemID.Starfruit, ItemID.Grapes ]) },

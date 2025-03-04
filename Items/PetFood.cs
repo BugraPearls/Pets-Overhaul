@@ -1,6 +1,9 @@
 ﻿using Terraria;
+using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
 
 namespace PetsOverhaul.Items
 {
@@ -17,6 +20,18 @@ namespace PetsOverhaul.Items
             Item.width = 20;
             Item.rare = ItemRarityID.Blue;
             Item.value = 500;
+        }
+    }
+    public class PetFoodFromTrees : GlobalTile
+    {
+        public override bool ShakeTree(int x, int y, TreeTypes treeType)
+        {
+            if (Main.rand.NextBool(10))
+            {
+                Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), x * 16, y * 16, 16, 16, ModContent.ItemType<PetFood>(), Main.rand.NextBool() ? 1 : 2);
+                return true;
+            }
+            return false;
         }
     }
 }
