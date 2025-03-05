@@ -26,6 +26,13 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static void MasterModePetRecipe(Recipe recipe, int petFoodAmount = 1, int masteryShardAmount = 1) => PetRecipe(recipe.AddIngredient<MasteryShard>(Math.Max(masteryShardAmount, 1)), petFoodAmount);
 
+        public static void PetFoodRecipe(Recipe recipe)
+        {
+            recipe.AddTile(ModContent.TileType<PetForge>())
+                .DisableDecraft()
+                .Register();
+        }
+
         public override void AddRecipes()
         {
             MasterModePetRecipe(Recipe.Create(ItemID.MartianPetItem).AddIngredient(ItemID.MartianConduitPlating, 750).AddIngredient(ItemID.Hoverboard), 2500); //Example: This is 750 Martian Conduit Plating, 1 Hoverboard, 1.25~ Platinum Coins (2500 Pet Food) and 1 Mastery Shard.
@@ -111,6 +118,24 @@ namespace PetsOverhaul.Systems
             MasterModePetRecipe(Recipe.Create(ModContent.ItemType<LihzahrdWrench>()).AddIngredient(ItemID.LihzahrdPowerCell).AddIngredient(ItemID.SoulofFright, 5).AddIngredient(ItemID.SoulofMight, 5).AddIngredient(ItemID.SoulofSight, 5).AddIngredient(ItemID.LihzahrdFurnace).AddCondition(Condition.DownedGolem), 50);
             MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PrismaticOptic>()).AddIngredient(ItemID.Lens, 5).AddIngredient(ItemID.QueenSlimeCrystal).AddIngredient(ItemID.CrystalShard, 20).AddIngredient(ItemID.EmpressButterfly).AddIngredient(ItemID.PearlstoneBlock, 65).AddCondition(Condition.DownedEmpressOfLight), 50);
             MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PumpkingsHead>()).AddIngredient(ItemID.SpookyWood, 50).AddIngredient(ItemID.Pumpkin, 50).AddIngredient(ItemID.PumpkingTrophy).AddIngredient(ItemID.Ectoplasm, 15).AddCondition(Condition.DownedPumpking),50);
+
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 40).AddIngredient(ItemID.LifeFruit));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Seeds,16));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.Hay,75));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.BambooBlock,30));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Herbs,7).AddIngredient(ItemID.Mushroom,3));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.Bone,15));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Herbs).AddRecipeGroup(RecipeGroupsForPets.Seeds).AddIngredient(ItemID.GlowingMushroom,10));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 300).AddRecipeGroup(RecipeGroupsForPets.GoldenAnimals));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 250).AddIngredient(ItemID.TruffleWorm));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddRecipeGroup(RecipeGroupsForPets.Animals));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddRecipeGroup(RecipeGroupID.Fruit));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.CookedFish,4));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 4).AddIngredient(ItemID.CookedShrimp));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 10).AddIngredient(ItemID.Sashimi,7));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.SeafoodDinner));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.LobsterTail));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.ShuckedOyster));
         }
     }
 }
