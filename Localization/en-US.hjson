@@ -14,6 +14,8 @@ Mods: {
 		RequireOptic: Consuming a Prismatic Optic
 		RequireWrench: Consuming a Lihzahrd Wrench
 		RequireHead: Consuming a Pumpking's Head
+		Herb: Herb
+		Animal: Animal
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
@@ -23,9 +25,8 @@ Mods: {
 		JojaCola: A nature-related NPC may be able to Purify this
 		Notice:
 			'''
-			[c/90C2AA:Pets Overhaul 3.4.1, latest changes: Added Recipes for ALL Pets! Crafted on a Pet Forge.]
-			[c/90C2AA:All Recipes contain & associated with new item Pet Food (Sold by Pet Tamer) Adjusted all old recipes.]
-			[c/90C2AA:Mastery Shard now drops from all enemies (0.02%) and all bosses (1%) besides the guarantee drops.]
+			[c/90C2AA:Pets Overhaul 3.4.3, latest changes: Pet Food now can be crafted, and found by shaking Trees]
+			[c/90C2AA:Balance changes & countless bug fixes, system improvements, Census Mod Support for Pet Tamer NPC.]
 			[c/90C2AA:Major Chinese, Brazillian and Russian Translation updates, by: ROH, Erstarisk and Teokai respectively.]
 			[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]

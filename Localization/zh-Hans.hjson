@@ -14,6 +14,8 @@ Mods: {
 		RequireOptic: 消耗一个棱晶镜头
 		RequireWrench: 消耗一个丛林蜥蜴扳手
 		RequireHead: 消耗一个南瓜头
+		// Herb: Herb
+		// Animal: Animal
 		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 		%: %
 		x: x
