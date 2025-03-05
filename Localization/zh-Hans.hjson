@@ -184,11 +184,11 @@ Mods: {
 			HurtSoundTooltip: 启用宠物添加的玩家受到伤害时的自定义音效
 			DeathSoundLabel: 启用自定义死亡音效
 			DeathSoundTooltip: 启用宠物添加的玩家死亡时的自定义音效
-			// PassiveSoundNever: Never Played
-			// PassiveSoundRarely: Rare (Every 5m~)
-			// PassiveSoundNormal: Normal (Every 2m~)
-			// PassiveSoundCommon: Common (Every 1m~)
-			PassiveSoundLabel: 启用宠物被动音效
+			PassiveSoundNever: 从不
+			PassiveSoundRarely: 低（约5分钟一次）
+			PassiveSoundNormal: 正常（约2分钟一次）
+			PassiveSoundCommon: 高（约1分钟一次）
+			PassiveSoundLabel: 宠物被动音效播放频率
 			PassiveSoundTooltip:
 				'''
 				启用被动播放的宠物音效
@@ -729,6 +729,7 @@ Mods: {
 				'''
 				<class>
 				提高来自敌人和所有摸彩袋的掉落
+				 - 不影响摸彩袋本身的掉落，而是其中的内容
 				掉落几率低于<threshold>%的战利品会增加<chanceIncrease>%掉落几率
 				否则，有<chanceToDouble>%几率翻倍战利品数量
 				 - 不影响固定物品（如，从几种物品中抽取一种掉落）
@@ -1384,7 +1385,7 @@ Mods: {
 				Combine: 融合照明宠物
 				BestiaryFlavorText: 出色的宠物驯养师，没人比他更了解宠物。因其帮助照明宠物发挥最大潜能的能力而闻名。
 				GuideQuote: 我看你还没照顾过宠物。我听说如果你能找到一只并把它放在身边，一只宠物驯养师可能会入住！
-				// Census.SpawnCondition: Requires a Pet to be equipped at least once in either normal or Light Pet inventory slots.
+				Census.SpawnCondition: 需要在常规或照明宠物栏中至少装备过一只宠物
 
 				Quotes: {
 					Common1: 你的宠物怎么样了？好好照顾它们。
@@ -1421,7 +1422,7 @@ Mods: {
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
-			// PassivePetSoundFrequency.Tooltip: ""
+			PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }
