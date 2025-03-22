@@ -34,7 +34,8 @@ namespace PetsOverhaul.Systems
         public static RecipeGroup Crowns; //WHY in Vanilla there is no Crown recipe group?????
         public static List<int> crowns = [ItemID.GoldCrown, ItemID.PlatinumCrown];
         public static RecipeGroup AllBugs;
-        public static List<int> allBugs = [ItemID.Buggy, ItemID.EnchantedNightcrawler, ItemID.Firefly, ItemID.Lavafly, ItemID.LightningBug, ItemID.Grasshopper, ItemID.Grubby, ItemID.LadyBug, ItemID.Maggot, ItemID.Scorpion, ItemID.BlackScorpion, ItemID.Sluggy, ItemID.Stinkbug, ItemID.WaterStrider];
+        public static List<int> allBugs = [ItemID.Buggy, ItemID.EnchantedNightcrawler, ItemID.Firefly, ItemID.Lavafly, ItemID.LightningBug, ItemID.Grasshopper, ItemID.Grubby, ItemID.LadyBug, ItemID.Maggot, ItemID.Scorpion, ItemID.BlackScorpion, ItemID.Sluggy, ItemID.Stinkbug, ItemID.WaterStrider,
+                ItemID.BlackDragonfly, ItemID.BlueDragonfly, ItemID.GreenDragonfly, ItemID.OrangeDragonfly, ItemID.RedDragonfly, ItemID.YellowDragonfly];
         public static RecipeGroup DemoniteBar;
         public static List<int> demoniteBar = [ItemID.DemoniteBar, ItemID.CrimtaneBar];
         public static RecipeGroup Fairies;
