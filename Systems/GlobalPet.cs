@@ -24,6 +24,7 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public sealed class GlobalPet : ModPlayer
     {
+        public static bool makePetsBrokenByAllowingThemAllToBeUsedWhileInInventory = false;
         public static InputMode PlayerInputMode => PlayerInput.CurrentProfile.InputModes.ContainsKey(InputMode.Keyboard) ? InputMode.Keyboard : InputMode.XBoxGamepad;
         public static bool eolConsumed = false;
         public static bool golemConsumed = false;
@@ -261,13 +262,17 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public bool PetInUseWithSwapCd(int petItemID)
         {
-            return Player.miscEquips[0].type == petItemID && Player.HasBuff(ModContent.BuffType<ObliviousPet>()) == false;
+            return PetInUse(petItemID) && Player.HasBuff(ModContent.BuffType<ObliviousPet>()) == false;
         }
         /// <summary>
         /// Checks if the given Pet Item is in use without being affected by swapping cooldown.
         /// </summary>
         public bool PetInUse(int petItemID)
         {
+            if (makePetsBrokenByAllowingThemAllToBeUsedWhileInInventory)
+            {
+                return Player.HasItemInAnyInventory(petItemID);
+            }    
             return Player.miscEquips[0].type == petItemID;
         }
         public static bool LifestealCheck(NPC npc)

@@ -1,5 +1,5 @@
 displayName = Pets Overhaul
 author = Pearlie
 buildIgnore = icon_workshop.png
-version = 3.4.3.1
+version = 3.4.3.2
 homepage = https://discord.gg/KubSpqvDGE
