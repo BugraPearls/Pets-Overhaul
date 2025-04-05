@@ -10,6 +10,17 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public abstract class PetEffect : ModPlayer
     {
+        /// <summary>
+        /// Should be replaced with varying field that is the Pet's stack.
+        /// </summary>
+        public virtual int PetStackCurrent => -1;
+        /// <summary>
+        /// Should be replaced with the field/value that determines max stacks. Change this to be 0 if its intended for Max stack to not appear.
+        /// </summary>
+        public virtual int PetStackMax => -1;
+        /// <summary>
+        /// Sets the Pet Ability Cooldown
+        /// </summary>
         public virtual int PetAbilityCooldown => 0;
         /// <summary>
         /// Accesses the GlobalPet class, which has useful methods and fields for Pet implementation.
@@ -44,6 +55,8 @@ namespace PetsOverhaul.Systems
             if (PetIsEquipped(false))
             {
                 Pet.timerMax = PetAbilityCooldown;
+                Pet.currentPetStacks = PetStackCurrent;
+                Pet.currentPetStacksMax = PetStackMax;
                 ExtraPreUpdate();
             }
             ExtraPreUpdateNoCheck();

@@ -111,6 +111,14 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public int timerMax = 0;
         /// <summary>
+        /// Modified in PetEffect code, used by UI to show current stacks of a Pet
+        /// </summary>
+        public int currentPetStacks = -1;
+        /// <summary>
+        /// Modified in PetEffect code, used by UI to show how much current stacks of a Pet can go up to
+        /// </summary>
+        public int currentPetStacksMax = -1;
+        /// <summary>
         /// Used to not play the 'refresh sound' upon Pet Ability timer going below 0 more than once.
         /// </summary>
         public bool AbilityCdSoundPlayed { get; private set; }
