@@ -1,42 +1,44 @@
 Mods: {
 	PetsOverhaul: {
-		BaseCd: Base Pet Ability Cooldown:
-		NoCd: Current Pet has no Ability Cooldown!
-		RemainingCd: Remaining Pet Ability Cooldown:
-		ReadyCd: Pet Ability Ready!
-		Sec: Second
-		Secs: Seconds
-		Pet: Pet
-		And: and
-		Ability: Ability
-		Faster: Faster
-		Slower: Slower
-		RequireOptic: Consuming a Prismatic Optic
-		RequireWrench: Consuming a Lihzahrd Wrench
-		RequireHead: Consuming a Pumpking's Head
-		Herb: Herb
-		Animal: Animal
-		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
-		%: %
-		x: x
-		+: +
-		-: -
-		KeybindMissing: Keybind Not Registered
-		JojaCola: A nature-related NPC may be able to Purify this
-		Notice:
-			'''
-			[c/90C2AA:Pets Overhaul 3.4.3, latest changes: Pet Food now can be crafted, and found by shaking Trees]
-			[c/90C2AA:Balance changes & countless bug fixes, system improvements, Census Mod Support for Pet Tamer NPC.]
-			[c/90C2AA:Major Chinese, Brazillian and Russian Translation updates, by: ROH, Erstarisk and Teokai respectively.]
-			[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
-			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
-			'''
-		CalamityDetected:
-			'''
-			It seems you're using Pets Overhaul alongside Calamity Mod without the addon!
-			You can find the addon under the name 'Pets Overhaul: Calamity Addon'
-			Adding even more unique pets & Calamity compatibility for the vanilla Pet effects!
-			'''
+		Misc: {
+			BaseCd: Base Pet Ability Cooldown:
+			NoCd: Current Pet has no Ability Cooldown!
+			RemainingCd: Remaining Pet Ability Cooldown:
+			ReadyCd: Pet Ability Ready!
+			Sec: Second
+			Secs: Seconds
+			Pet: Pet
+			And: and
+			Ability: Ability
+			Faster: Faster
+			Slower: Slower
+			RequireOptic: Consuming a Prismatic Optic
+			RequireWrench: Consuming a Lihzahrd Wrench
+			RequireHead: Consuming a Pumpking's Head
+			Herb: Herb
+			Animal: Animal
+			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
+			%: %
+			x: x
+			+: +
+			-: -
+			KeybindMissing: Keybind Not Registered
+			JojaCola: A nature-related NPC may be able to Purify this
+			Notice:
+				'''
+				[c/90C2AA:Pets Overhaul 3.4.3, latest changes: Pet Food now can be crafted, and found by shaking Trees]
+				[c/90C2AA:Balance changes & countless bug fixes, system improvements, Census Mod Support for Pet Tamer NPC.]
+				[c/90C2AA:Major Chinese, Brazillian and Russian Translation updates, by: ROH, Erstarisk and Teokai respectively.]
+				[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
+				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
+				'''
+			CalamityDetected:
+				'''
+				It seems you're using Pets Overhaul alongside Calamity Mod without the addon!
+				You can find the addon under the name 'Pets Overhaul: Calamity Addon'
+				Adding even more unique pets & Calamity compatibility for the vanilla Pet effects!
+				'''
+		}
 
 		Classes: {
 			None: None

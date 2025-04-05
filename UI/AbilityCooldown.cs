@@ -38,15 +38,15 @@ namespace PetsOverhaul.UI
             {
                 if (ModContent.GetInstance<PetPersonalization>().AbilityDisplayInfo)
                 {
-                    displayInfo.SetText(Language.GetTextValue("Mods.PetsOverhaul.BaseCd") + "\n" + (BaseCooldown == 0 ? Language.GetTextValue("Mods.PetsOverhaul.NoCd") : Math.Round((float)BaseCooldown / 60, 1).ToString() + " " + (BaseCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Sec"))));
+                    displayInfo.SetText(Language.GetTextValue("Mods.PetsOverhaul.Misc.BaseCd") + "\n" + (BaseCooldown == 0 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.NoCd") : Math.Round((float)BaseCooldown / 60, 1).ToString() + " " + (BaseCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Misc.Sec"))));
                 }
                 if (RemainingCooldown > 0)
                 {
-                    cooldown.SetText(Language.GetTextValue("Mods.PetsOverhaul.RemainingCd") + "\n" + Math.Round((float)RemainingCooldown / 60, 1).ToString() + " " + (RemainingCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Sec")));
+                    cooldown.SetText(Language.GetTextValue("Mods.PetsOverhaul.Misc.RemainingCd") + "\n" + Math.Round((float)RemainingCooldown / 60, 1).ToString() + " " + (RemainingCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Misc.Sec")));
                 }
                 else
                 {
-                    cooldown.SetText(Language.GetTextValue("Mods.PetsOverhaul.RemainingCd") + "\n" + Language.GetTextValue("Mods.PetsOverhaul.ReadyCd"));
+                    cooldown.SetText(Language.GetTextValue("Mods.PetsOverhaul.Misc.RemainingCd") + "\n" + Language.GetTextValue("Mods.PetsOverhaul.Misc.ReadyCd"));
                 }
                 base.Draw(spriteBatch);
             }

@@ -322,7 +322,7 @@ namespace PetsOverhaul.Commands
                                     iterate(PetClasses.Rogue);
                                     break;
                                 case "ability" or "cooldown":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Ability"));
+                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Misc.Ability"));
                                     iterate(PetClasses.None, true);
                                     break;
                                 default:

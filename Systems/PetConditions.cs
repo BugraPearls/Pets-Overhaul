@@ -7,9 +7,9 @@ namespace PetsOverhaul.Systems
 {
     public static class PetCraftingConditions
     {
-        public static Condition ConsumedHead = new("Mods.PetsOverhaul.RequireHead", () => GlobalPet.pumpkingConsumed);
-        public static Condition ConsumedOptic = new("Mods.PetsOverhaul.RequireOptic", () => GlobalPet.eolConsumed);
-        public static Condition ConsumedWrench = new("Mods.PetsOverhaul.RequireWrench", () => GlobalPet.golemConsumed);
+        public static Condition ConsumedHead = new("Mods.PetsOverhaul.Misc.RequireHead", () => GlobalPet.pumpkingConsumed);
+        public static Condition ConsumedOptic = new("Mods.PetsOverhaul.Misc.RequireOptic", () => GlobalPet.eolConsumed);
+        public static Condition ConsumedWrench = new("Mods.PetsOverhaul.Misc.RequireWrench", () => GlobalPet.golemConsumed);
     }
     public class PetObtainedCondition : ModSystem
     {

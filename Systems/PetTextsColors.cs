@@ -100,16 +100,16 @@ namespace PetsOverhaul.Systems
             {
                 {
                     Color color = Color.Lerp(ClassEnumToColor(Class1), ClassEnumToColor(Class2), 0.5f);
-                    return $"[c/{color.Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class1)} {Language.GetTextValue("Mods.PetsOverhaul.And")} {Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class2)} {Language.GetTextValue("Mods.PetsOverhaul.Pet")}]";
+                    return $"[c/{color.Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class1)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.And")} {Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class2)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Pet")}]";
                 }
             }
             else if (Class2 == PetClasses.None)
             {
-                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class1)} {Language.GetTextValue("Mods.PetsOverhaul.Pet")}]";
+                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class1)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Pet")}]";
             }
             else
             {
-                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class2)} {Language.GetTextValue("Mods.PetsOverhaul.Pet")}]";
+                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class2)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Pet")}]";
             }
         }
         /// <summary>
@@ -119,7 +119,7 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static string KeybindText(ModKeybind keybind)
         {
-            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.KeybindMissing")}]";
+            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Misc.KeybindMissing")}]";
         }
         public static string RollMissingText()
         {

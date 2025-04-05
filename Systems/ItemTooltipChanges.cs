@@ -17,7 +17,7 @@ namespace PetsOverhaul.Systems
         {
             if (item.type == ItemID.JojaCola)
             {
-                tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.JojaCola")));
+                tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.Misc.JojaCola")));
             }
             else if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && PetKeybinds.PetTooltipHide != null && !PetKeybinds.PetTooltipHide.Current)
             {

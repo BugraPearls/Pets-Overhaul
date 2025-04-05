@@ -1,44 +1,46 @@
 Mods: {
 	PetsOverhaul: {
-		BaseCd: 基础宠物技能冷却：
-		NoCd: 当前宠物没有技能冷却！
-		RemainingCd: 剩余宠物技能冷却
-		ReadyCd: 宠物技能就绪！
-		Sec: 秒
-		Secs: 秒
-		Pet: 宠物
-		And: 和
-		Ability: 技能
-		Faster: 快
-		Slower: 慢
-		RequireOptic: 消耗一个棱晶镜头
-		RequireWrench: 消耗一个丛林蜥蜴扳手
-		RequireHead: 消耗一个南瓜头
-		// Herb: Herb
-		// Animal: Animal
-		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
-		%: %
-		x: x
-		+: +
-		-: -
-		KeybindMissing: 未绑定键位
-		JojaCola: 某个与自然相关的NPC也许可以净化它
-		Notice:
-			'''
-			[c/90C2AA:Pets Overhaul（宠物大修）3.3最新更新：宠物重做，修复宠物伤害和月亮乌贼不受玩家职业伤害加成的bug，新命令]
-			[c/90C2AA:完全重做皇家怡口，皇家美食，华美甜点和暗影宝箱怪宠物，小幅重做了宇宙滑板和奇异咀嚼玩具]
-			[c/90C2AA:添加/pet item {arg} 命令以显示会受给定职业效果影响的物品，以及/pet light命令以显示照明宠物]
-			[c/90C2AA:--（arg参数可选项：harvesting->采集，mining->挖掘，fishing->钓鱼）]
-			[c/90C2AA:完整的中文、俄文和葡萄牙语本地化，作者分别为：ROH, Teokai和Erstarisk]
-			[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
-			[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
-			'''
-		CalamityDetected:
-			'''
-			看起来你在没有启用灾厄扩展的情况下启动了灾厄
-			你可以在创意工坊搜索“Pets Overhaul: Calamity Addon”来订阅宠物大修：灾厄扩展
-			此扩展添加了很多独特的宠物和原版宠物效果的灾厄适配
-			'''
+		Misc: {
+			BaseCd: 基础宠物技能冷却：
+			NoCd: 当前宠物没有技能冷却！
+			RemainingCd: 剩余宠物技能冷却
+			ReadyCd: 宠物技能就绪！
+			Sec: 秒
+			Secs: 秒
+			Pet: 宠物
+			And: 和
+			Ability: 技能
+			Faster: 快
+			Slower: 慢
+			RequireOptic: 消耗一个棱晶镜头
+			RequireWrench: 消耗一个丛林蜥蜴扳手
+			RequireHead: 消耗一个南瓜头
+			// Herb: Herb
+			// Animal: Animal
+			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
+			%: %
+			x: x
+			+: +
+			-: -
+			KeybindMissing: 未绑定键位
+			JojaCola: 某个与自然相关的NPC也许可以净化它
+			Notice:
+				'''
+				[c/90C2AA:Pets Overhaul（宠物大修）3.3最新更新：宠物重做，修复宠物伤害和月亮乌贼不受玩家职业伤害加成的bug，新命令]
+				[c/90C2AA:完全重做皇家怡口，皇家美食，华美甜点和暗影宝箱怪宠物，小幅重做了宇宙滑板和奇异咀嚼玩具]
+				[c/90C2AA:添加/pet item {arg} 命令以显示会受给定职业效果影响的物品，以及/pet light命令以显示照明宠物]
+				[c/90C2AA:--（arg参数可选项：harvesting->采集，mining->挖掘，fishing->钓鱼）]
+				[c/90C2AA:完整的中文、俄文和葡萄牙语本地化，作者分别为：ROH, Teokai和Erstarisk]
+				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
+				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
+				'''
+			CalamityDetected:
+				'''
+				看起来你在没有启用灾厄扩展的情况下启动了灾厄
+				你可以在创意工坊搜索“Pets Overhaul: Calamity Addon”来订阅宠物大修：灾厄扩展
+				此扩展添加了很多独特的宠物和原版宠物效果的灾厄适配
+				'''
+		}
 
 		Classes: {
 			None: 无

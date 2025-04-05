@@ -1,42 +1,44 @@
 Mods: {
 	PetsOverhaul: {
-		BaseCd: Temporizador Base de Habilidade de PET:
-		NoCd: O PET Atual não tem um Temporizador de Habilidade!
-		RemainingCd: Temporizador de Habilidade do PET Restante:
-		ReadyCd: Habilidade de PET Pronta!
-		Sec: Segundo
-		Secs: Segundos
-		Pet: PET
-		And: e
-		Ability: Habilidade
-		Faster: Mais Rápido
-		Slower: Mais Lerdo
-		RequireOptic: Consumindo uma Óptica Prismática
-		RequireWrench: Consumindo uma Chave Inglesa Lagharto
-		RequireHead: Consumindo uma Cabeça de Abóbora
-		// Herb: Herb
-		// Animal: Animal
-		// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
-		%: %
-		x: x
-		+: +
-		-: -
-		KeybindMissing: Atalho de Teclado não Registrado
-		JojaCola: Um NPC relacinado a natureza pode ser capaz de Purificar isso
-		Notice:
-			'''
-			[c/90C2AA:Pets Overhaul 3.4, últimas mudanças: Foi Adicionado Receitas para TODOS os Pets! Criadas em uma Forja de PET's.]
-			[c/90C2AA:Todas as receitas contêm & estão associadas ao novo item Comida de PET's (Vendido pelo Domador de Pets). Foram Ajustadas Todas as Receitas Antigas.]
-			[c/90C2AA:Fragmento de Maestria agora é dropado por todos os inimigos (0,02%) e todos os chefes (1%), além dos drops garantidos.]
-			[c/b4bfc5:Entre no nosso discord para feedback e reportar problemas! discord.gg/KubSpqvDGE]
-			[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:para ver mais comandos do Pets Overhaul, lhe dando mais informações!]
-			'''
-		CalamityDetected:
-			'''
-			Parece que você está usando Pets Overhaul junto com o mod Calamity sem o addon!
-			Você pode encontrar o addon pelo nome 'Pets Overhaul: Calamity Addon'
-			Adicionando ainda mais pets únicos e compatibilidade com Calamity para efeitos novos nos pets!
-			'''
+		Misc: {
+			BaseCd: Temporizador Base de Habilidade de PET:
+			NoCd: O PET Atual não tem um Temporizador de Habilidade!
+			RemainingCd: Temporizador de Habilidade do PET Restante:
+			ReadyCd: Habilidade de PET Pronta!
+			Sec: Segundo
+			Secs: Segundos
+			Pet: PET
+			And: e
+			Ability: Habilidade
+			Faster: Mais Rápido
+			Slower: Mais Lerdo
+			RequireOptic: Consumindo uma Óptica Prismática
+			RequireWrench: Consumindo uma Chave Inglesa Lagharto
+			RequireHead: Consumindo uma Cabeça de Abóbora
+			// Herb: Herb
+			// Animal: Animal
+			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
+			%: %
+			x: x
+			+: +
+			-: -
+			KeybindMissing: Atalho de Teclado não Registrado
+			JojaCola: Um NPC relacinado a natureza pode ser capaz de Purificar isso
+			Notice:
+				'''
+				[c/90C2AA:Pets Overhaul 3.4, últimas mudanças: Foi Adicionado Receitas para TODOS os Pets! Criadas em uma Forja de PET's.]
+				[c/90C2AA:Todas as receitas contêm & estão associadas ao novo item Comida de PET's (Vendido pelo Domador de Pets). Foram Ajustadas Todas as Receitas Antigas.]
+				[c/90C2AA:Fragmento de Maestria agora é dropado por todos os inimigos (0,02%) e todos os chefes (1%), além dos drops garantidos.]
+				[c/b4bfc5:Entre no nosso discord para feedback e reportar problemas! discord.gg/KubSpqvDGE]
+				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:para ver mais comandos do Pets Overhaul, lhe dando mais informações!]
+				'''
+			CalamityDetected:
+				'''
+				Parece que você está usando Pets Overhaul junto com o mod Calamity sem o addon!
+				Você pode encontrar o addon pelo nome 'Pets Overhaul: Calamity Addon'
+				Adicionando ainda mais pets únicos e compatibilidade com Calamity para efeitos novos nos pets!
+				'''
+		}
 
 		Classes: {
 			None: Nenhum

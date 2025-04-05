@@ -33,8 +33,8 @@ namespace PetsOverhaul.Items
                             break;
                         case "Tooltip2":
                             double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
-                            line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + Language.GetTextValue("Mods.PetsOverhaul.%"))
-                                .Replace("<hastePosiOrNega>",(currentHaste >= 0 ? Language.GetTextValue("Mods.PetsOverhaul.Faster") : Language.GetTextValue("Mods.PetsOverhaul.Slower")));
+                            line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + Language.GetTextValue("Mods.PetsOverhaul.Misc.%"))
+                                .Replace("<hastePosiOrNega>",(currentHaste >= 0 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.Faster") : Language.GetTextValue("Mods.PetsOverhaul.Misc.Slower")));
                             break;
                         case "Tooltip3":
                             line.Text = line.Text.Replace("<damage>", pet.petDirectDamageMultiplier.ToString());
