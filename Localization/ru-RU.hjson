@@ -788,6 +788,8 @@ Mods: {
 				  за каждый надетый предмет из комплекта Тыквенной брони. 
 				Текущие надетые предметы: <pumpkinPieceAmount>.
 				'''
+			// SquashlingHealth: Increases maximum health by <hp>
+			// SquashlingFortune: Harvesting fortune by <fortune>
 			EucaluptusSap:
 				'''
 				<class>

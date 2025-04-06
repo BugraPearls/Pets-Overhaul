@@ -804,6 +804,8 @@ Mods: {
 				- Concede <health> de saúde máxima e <harvFort> de Fortuna de Colheita
 				para cada peça de Armadura de Abóbora equipada. Peças atualmente equipadas: <pumpkinPieceAmount>
 				'''
+			// SquashlingHealth: Increases maximum health by <hp>
+			// SquashlingFortune: Harvesting fortune by <fortune>
 			EucaluptusSap:
 				'''
 				<class>

@@ -801,9 +801,12 @@ Mods: {
 				<class>
 				- Increases all plants and alike you gather by <plant>%.
 				 * Decreased to <rarePlant>% for rare plants.
-				- Grants <health> maximum health and <harvFort> Harvesting Fortune
-				  for every Pumpkin Armor piece is worn. Current worn pieces: <pumpkinPieceAmount>
+				- Pumpkin Armor pieces now grants following benefits:
+				 * +<health> bonus maximum health
+				 * +<harvFort> harvesting fortune
 				'''
+			SquashlingHealth: Increases maximum health by <hp>
+			SquashlingFortune: Harvesting fortune by <fortune>
 			EucaluptusSap:
 				'''
 				<class>
@@ -1409,7 +1412,11 @@ Mods: {
 
 			PetForgeItem: {
 				DisplayName: Pet Forge
-				Tooltip: Allows you to craft all Pets.
+				Tooltip:
+					'''
+					Allows you to craft all Pets.
+					Meticulously designed by the Great Pet Tamer.
+					'''
 			}
 
 			PetFood: {

@@ -763,6 +763,8 @@ Mods: {
 				每装备一件南瓜盔甲部件，最大生命值增加<health>，采集时运增加<harvFort>
 				当前装备部件数量：<pumpkinPieceAmount>
 				'''
+			// SquashlingHealth: Increases maximum health by <hp>
+			// SquashlingFortune: Harvesting fortune by <fortune>
 			EucaluptusSap:
 				'''
 				<class>
