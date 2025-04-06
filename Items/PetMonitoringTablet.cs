@@ -75,7 +75,7 @@ namespace PetsOverhaul.Items
                             break;
                         case "Tooltip15":
                             line.Text = line.Text.Replace("<harvestingTooltip>", Math.Round(pet.harvestingFortune * 0.5f, 2).ToString())
-                                .Replace("<harvestingTooltipIncr>", pet.miningFortune.ToString());
+                                .Replace("<harvestingTooltipIncr>", pet.harvestingFortune.ToString());
                             break;
                         case "Tooltip16":
                             line.Text = line.Text.Replace("<fishing>", pet.fishingFortune.ToString());
