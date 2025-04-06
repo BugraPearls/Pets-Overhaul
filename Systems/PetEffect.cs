@@ -107,14 +107,16 @@ namespace PetsOverhaul.Systems
             {
                 return;
             }
-            string tip = "\n" + PetsTooltip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary));
 
-            if (tooltips.Exists(x => x.Name == "Tooltip0"))
-                tooltips.Find(x => x.Name == "Tooltip0").Text += tip;
-            else if (tooltips.Exists(x => x.Name == "Equipable"))
-                tooltips.Find(x => x.Name == "Equipable").Text += tip;
-            else if (tooltips.Exists(x => x.Name == "ItemName"))
-                tooltips.Find(x => x.Name == "ItemName").Text += tip;
+            int index = tooltips.FindLastIndex(x => x.Name == "Tooltip0");
+            if (index < 0)
+                index = tooltips.FindLastIndex(x => x.Name == "Equipable");
+            if (index < 0)
+                index = tooltips.FindLastIndex(x => x.Name == "ItemName");
+
+            index++; //Both safety net for it to not be -1 somehow, and we want it after the given FindLastIndexes.
+
+            tooltips.Insert(index, new(Mod, "PetTooltip0", PetsTooltip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary))));
         }
         /// <summary>
         /// Defaults to true. Return false to stop default Pet Tooltip code from running, or override and return true to simply do further stuff in ModifyTooltips past the default things a pet does within in its tooltip.
