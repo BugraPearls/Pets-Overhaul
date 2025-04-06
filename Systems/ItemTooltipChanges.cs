@@ -10,16 +10,12 @@ namespace PetsOverhaul.Systems
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return PetItemIDs.PetNamesAndItems.ContainsValue(entity.type) || entity.type == ItemID.JojaCola || PetItemIDs.LightPetNamesAndItems.ContainsValue(entity.type);
+            return PetItemIDs.PetNamesAndItems.ContainsValue(entity.type) || PetItemIDs.LightPetNamesAndItems.ContainsValue(entity.type);
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (item.type == ItemID.JojaCola)
-            {
-                tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.Misc.JojaCola")));
-            }
-            else if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && PetKeybinds.PetTooltipHide != null && !PetKeybinds.PetTooltipHide.Current)
+            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && PetKeybinds.PetTooltipHide != null && !PetKeybinds.PetTooltipHide.Current)
             {
                 tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.Config.TooltipToggleInGame")
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipHide))));
