@@ -37,6 +37,7 @@ Mods: {
 				You can find the addon under the name 'Pets Overhaul: Calamity Addon'
 				Adding even more unique pets & Calamity compatibility for the vanilla Pet effects!
 				'''
+			Current: Current
 		}
 
 		Classes: {
@@ -130,19 +131,19 @@ Mods: {
 			HeaderDisplay: Display Related Settings
 			HeaderSound: Sound-Related Settings
 			HeaderGameplay: Gameplay Settings
-			NoticeLabel: Enable Pets Overhaul's notice
+			NoticeLabel: Log-in Notice
 			NoticeTooltip:
 				'''
 				Enables messages sent by Pets Overhaul upon logging into the world.
 				Notices may contain brief information about the latest updates.
 				'''
-			ModNoticeLabel: Enable notice for missing Mod addons
+			ModNoticeLabel: Log-in Notice for missing addons
 			ModNoticeTooltip:
 				'''
 				Enable message sent upon logging into the world where;
 				An official addon (crossmod) of Pets Overhaul of a Mod exists but is not loaded.
 				'''
-			DisableTooltipToggleLabel: Enable Pet/Item tooltips to be toggleable
+			DisableTooltipToggleLabel: Toggleable tooltips
 			DisableTooltipToggleTooltip:
 				'''
 				Enables the system where Pets Overhaul effects on Pet Item tooltips to be
@@ -177,13 +178,13 @@ Mods: {
 			ParticleLowered: Lowered
 			ParticleNormal: Normal
 			ParticleIncreased: Increased
-			DustAmountLabel: Pet Radius Display Circular Dust Amount
+			DustAmountLabel: Pet Circle Dust Amount
 			DustAmountTooltip:
 				'''
 				Modifies how much Dust will be created for Display of your Pets that has a radius with their effect.
 				Set it to None to disable it entirely.
 				'''
-			DustInsideBlocksLabel: Enable Pet Radius Circular Dust Inside Blocks
+			DustInsideBlocksLabel: Pet Circle Dust Inside Blocks
 			DustInsideBlocksTooltip:
 				'''
 				Enables whether or not Dusts created by Pets with Radius-type effects to be able to spawn inside blocks.
@@ -193,9 +194,9 @@ Mods: {
 			MaxQualityColor1Tooltip: Adjusts first color that will alternate between with the second one for Maximum Qualities for Light Pets.
 			MaxQualityColor2Label: 2nd Color of Maximum Quality
 			MaxQualityColor2Tooltip: Adjusts second color that will alternate between with the first one for Maximum Qualities for Light Pets.
-			HurtSoundLabel: Enable custom hurt sounds
+			HurtSoundLabel: Pet hurt sounds
 			HurtSoundTooltip: Enables custom sound effects added by Pets when the Player receives damage.
-			DeathSoundLabel: Enable custom death sounds
+			DeathSoundLabel: Pet death sounds
 			DeathSoundTooltip: Enables custom sound effects added by Pets when the Player dies.
 			PassiveSoundNever: Never Played
 			PassiveSoundRarely: Rare (Every 5m~)
@@ -208,26 +209,26 @@ Mods: {
 				'Never' option will disable passive sound effects by Pets entirely.
 				Its similar to Ambient sound effects in Vanilla. This is fully clientside.
 				'''
-			AbilitySoundLabel: Enable ability sounds
+			AbilitySoundLabel: Pet ability sounds
 			AbilitySoundTooltip:
 				'''
 				Enables Pet sound effects that play upon ability proccing, cooldown refreshing
 				and other similar things. (not recommended to turn off, these sounds can help with your awareness.)
 				'''
-			LowCooldownSoundLabel: Enable short ability timer sound
+			LowCooldownSoundLabel: Ability sound for short cooldowns
 			LowCooldownSoundTooltip:
 				'''
 				Enables Pet ability cooldown refreshing sound even if they are below the Threshold option.
 				Have this off if you don't want to hear the cooldown refresh sound effect if it is below the threshold.
 				'''
-			LowCooldownThresholdLabel: Short ability timer disable Threshold
+			LowCooldownThresholdLabel: Treshold for short cooldown
 			LowCooldownThresholdTooltip:
 				'''
 				Sets the threshold for disabling short pet ability cooldowns
 				playing sounds upon refreshing, in Frames. (60 frames = 1 second)
-				Changing this has no effect if "Enable short ability timer sound" is enabled.
+				Changing this has no effect if "Ability sound for short cooldowns" is enabled.
 				'''
-			MoreDifficultLabel: Set Player Handicap
+			MoreDifficultLabel: Player Handicap
 			MoreDifficultTooltip:
 				'''
 				Sets how much % lower damage the Player will deal and how much % extra damage the Player will receive.
@@ -235,14 +236,14 @@ Mods: {
 				Keep it at 0 if you wish it to be disabled. It's recommended it to be around 7 to 10%.
 				This won't take in effect until you obtain a Pet, since in that case this has no reason to be active.
 				'''
-			SwapCooldownLabel: Enable Pet Swap cooldown
+			SwapCooldownLabel: Pet Swap cooldown
 			SwapCooldownTooltip:
 				'''
 				Enables Player to gain Oblivious Pet Debuff upon swapping a Pet.
 				Which prevents any Combat-related perks from being active during the time.
 				(Recommended to keep this on due to obvious balancing reasons.)
 				'''
-			PhantasmalDragonShootLabel: Enable Phantasmal Dragon Fire Volley Spell coming from the Dragon
+			PhantasmalDragonShootLabel: Phantasmal Dragon Fire Volley From Dragon
 			PhantasmalDragonShootTooltip:
 				'''
 				Enables Phantasmal Dragon's 3rd spell, Fireball Volley to be cast from
