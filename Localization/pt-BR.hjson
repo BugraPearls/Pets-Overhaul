@@ -673,7 +673,7 @@ Mods: {
 				- <fishing> Nível atual: <fishingLevel> Experiência necessária para o próximo nível: <fishingNext> Experiência total atual: [c/0382E9:<fishingCurrent>]
 				 * Ganhe <fishingProfit>x o valor de exp dos itens em moedas de cobre e ganhe <bonusDamage>% de aumento de dano.
 				'''
-			// ExpStack: <class> exp till next level
+			// ExpStack: <class> exp until next level
 			BirdieRattle:
 				'''
 				<class>

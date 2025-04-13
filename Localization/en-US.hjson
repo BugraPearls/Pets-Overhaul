@@ -672,7 +672,7 @@ Mods: {
 				- <fishing> Current level: <fishingLevel> Experience needed for next level: <fishingNext> Current total experience: <fishingCurrent>
 				 * Gain <fishingProfit> times exp value of items as copper coins and gain <bonusDamage>% damage boost.
 				'''
-			ExpStack: <class> exp till next level
+			ExpStack: <class> exp until next level
 			BirdieRattle:
 				'''
 				<class>

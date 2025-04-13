@@ -37,6 +37,36 @@ namespace PetsOverhaul.PetEffects
         public int popupIndexMining = -1;
         public int popupIndexFish = -1;
         public bool anglerQuestDayCheck = false;
+        public int CurrentExpStack
+        {
+            get
+            {
+                if (classThatGotExp == PetClasses.Harvesting)
+                    return junimoHarvestingExp - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
+                if (classThatGotExp == PetClasses.Mining)
+                    return junimoMiningExp - junimoMiningLevelsToXp[junimoMiningLevel - 1];
+
+                return junimoFishingExp - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
+            }
+        }
+        public int CurrentExpRequiredStack
+        {
+            get
+            {
+                if (classThatGotExp == PetClasses.Harvesting)
+                    return junimoHarvestingLevelsToXp[junimoHarvestingLevel] - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
+                if (classThatGotExp == PetClasses.Mining)
+                    return junimoMiningLevelsToXp[junimoMiningLevel] - junimoMiningLevelsToXp[junimoMiningLevel - 1];
+
+                return junimoFishingLevelsToXp[junimoFishingLevel] - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
+            }
+        }
+        public PetClasses classThatGotExp = PetClasses.Harvesting;
+
+        public override int PetStackCurrent => CurrentExpStack;
+        public override int PetStackMax => CurrentExpRequiredStack;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ExpStack").Replace("<class>", PetTextsColors.PetClassLocalized(classThatGotExp));
+
         /// <summary>
         /// Default exp value used by all classes.
         /// </summary>
@@ -544,6 +574,8 @@ namespace PetsOverhaul.PetEffects
                     juni.junimoHarvestingExp += value;
                     juni.popupExpHarv += value;
                     juni.popupIndexHarv = juni.PopupExp(juni.popupIndexHarv, juni.popupExpHarv, PetTextsColors.HarvestingClass);
+                    juni.classThatGotExp = PetClasses.Harvesting;
+
                 }
                 else if (itemChck.fishingDrop || itemChck.fortuneFishingDrop)
                 {
@@ -556,6 +588,7 @@ namespace PetsOverhaul.PetEffects
                     juni.junimoFishingExp += value;
                     juni.popupExpFish += value;
                     juni.popupIndexFish = juni.PopupExp(juni.popupIndexFish, juni.popupExpFish, PetTextsColors.FishingClass);
+                    juni.classThatGotExp = PetClasses.Fishing;
                 }
                 else if (itemChck.blockNotByPlayer && (itemChck.oreBoost || itemChck.miningDrop || itemChck.fortuneMiningDrop))
                 {
@@ -568,6 +601,7 @@ namespace PetsOverhaul.PetEffects
                     juni.junimoMiningExp += value;
                     juni.popupExpMining += value;
                     juni.popupIndexMining = juni.PopupExp(juni.popupIndexMining, juni.popupExpMining, PetTextsColors.MiningClass);
+                    juni.classThatGotExp = PetClasses.Mining;
                 }
             }
         }
@@ -602,6 +636,7 @@ namespace PetsOverhaul.PetEffects
                 junimoFishingExp += value;
                 popupExpFish += value;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
+                classThatGotExp = PetClasses.Fishing;
             }
         }
         public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
@@ -613,6 +648,7 @@ namespace PetsOverhaul.PetEffects
                 popupExpFish += value;
                 anglerQuestDayCheck = true;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
+                classThatGotExp = PetClasses.Fishing;
             }
         }
         public override void ModifyCaughtFish(Item fish)
@@ -628,6 +664,7 @@ namespace PetsOverhaul.PetEffects
                 junimoFishingExp += value;
                 popupExpFish += value;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
+                classThatGotExp = PetClasses.Fishing;
             }
         }
         public override void ExtraPreUpdateNoCheck()

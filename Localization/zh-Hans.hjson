@@ -636,7 +636,7 @@ Mods: {
 				<fishing> 当前等级: <fishingLevel> 下一级所需的经验: <fishingNext> 当前总经验: <fishingCurrent>
 				 - 钓上渔获时会给你<fishingProfit>倍经验数量的铜币，伤害增加<bonusDamage>%
 				'''
-			// ExpStack: <class> exp till next level
+			// ExpStack: <class> exp until next level
 			BirdieRattle:
 				'''
 				<class>

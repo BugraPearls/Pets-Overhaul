@@ -655,7 +655,7 @@ Mods: {
 				Текущий уровень: <fishingLevel> Опыт до следующего уровня: <fishingNext> Текущий общий опыт: [c/0382E9:<fishingCurrent>]
 				- Получайте <fishingProfit> раз ценность опыта предметов в виде медных монет и увеличивайте наносимый урон на <bonusDamage>%.
 				'''
-			// ExpStack: <class> exp till next level
+			// ExpStack: <class> exp until next level
 			BirdieRattle:
 				'''
 				<class>
