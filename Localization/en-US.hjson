@@ -391,7 +391,7 @@ Mods: {
 				 * Have a <shieldAmount>% health one-hit shield while out of combat for <stage2Time> seconds.
 				- With the Pet, dealing damage cannot set your in combat timer lower than <stage1Time> seconds.
 				'''
-			BoneRattleStacks: regen bonus
+			BoneRattleStack: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -444,7 +444,7 @@ Mods: {
 				 * Increased by another <jungleAtkSpd>% while in the Jungle.
 				- Increases Bamboo [i:4564] you harvest by <bambooChance>%.
 				'''
-			BambooLeafStacks: enemies you're on alert for
+			BambooLeafStack: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -506,7 +506,7 @@ Mods: {
 				 * They recover you <burnDrainMana> mana and <burnDrainHealth> health every second.
 				 * Can only drain Health/Mana from up to <maxDrain> enemies.
 				'''
-			BerniePetItemStacks: burning enemies in radius
+			BerniePetItemStack: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -683,7 +683,7 @@ Mods: {
 				 * You regain the wing time after the cooldown of <cooldown> seconds is refreshed.
 				 * Refreshment cooldown begins the moment you start flying.
 				'''
-			BirdieRattleStacks: remaining wing time
+			BirdieRattleStack: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -843,7 +843,7 @@ Mods: {
 				- Grants <kbResist>% knockback resist.
 				- Reduces movement speed by <moveSpd>%.
 				'''
-			SeaweedStacks: hits to tank
+			SeaweedStack: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -891,7 +891,7 @@ Mods: {
 				 * Pool recovers +1 health every <healthRecovery> second.
 				- Current amount of health in the pool that can be recovered: <pool>
 				'''
-			BrainOfCthulhuPetItemStacks: stacks in health pool
+			BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -912,7 +912,7 @@ Mods: {
 				   for <slimyDuration> seconds to all enemies in a <radius> block radius.
 				- Ability has a <cooldown> second cooldown and each Slime has <lifetime> seconds of lifetime.
 				'''
-			KingSlimePetItemStacks: alive Slime Servants
+			KingSlimePetItemStack: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -935,7 +935,7 @@ Mods: {
 				 * Gain <immunityTime> seconds of immunity to all types.
 				 * Apply a <slowAmount>% slow, confusion and frostfire on enemies in a <range>-tile radius for <debuffTime> seconds.
 				'''
-			DeerclopsPetItemStacks: stored health percentage
+			DeerclopsPetItemStack: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -1158,7 +1158,7 @@ Mods: {
 				 * Can stack up to 10 times.
 				 * Resets to 0 stacks if haven't gained a stack in 4 seconds.
 				'''
-			CarrotStacks: bunnyhop stacks
+			CarrotStack: bunnyhop stacks
 		}
 
 		Buffs: {

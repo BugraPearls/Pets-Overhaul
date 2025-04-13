@@ -380,7 +380,7 @@ Mods: {
 				  * При нахождении вне боя в течение <stage2Time> секунд, у вас появиться однократный щит на <shieldAmount>% здоровья.
 				- С питомцем, нанесение урона не может снизить ваш таймер боя ниже <stage1Time> секунд.
 				'''
-			// BoneRattleStacks: regen bonus
+			// BoneRattleStack: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -432,7 +432,7 @@ Mods: {
 				  * Увеличивается ещё на <jungleAtkSpd>% в джунглях.
 				- Увеличивает количество собранного бамбука [i:4564] на <bambooChance>%.
 				'''
-			// BambooLeafStacks: enemies you're on alert for
+			// BambooLeafStack: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -496,7 +496,7 @@ Mods: {
 				- Они восстанавливают вам <burnDrainMana> маны и <burnDrainHealth> здоровья каждую секунду.
 				  * Можно восстанавливать здоровье/ману только с <maxDrain> врагов.
 				'''
-			// BerniePetItemStacks: burning enemies in radius
+			// BerniePetItemStack: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -666,7 +666,7 @@ Mods: {
 				  * Время полёта восстанавливается после перезарядки в <cooldown> секунд.
 				  * Перезарядка начинается в момент начала полёта.
 				'''
-			// BirdieRattleStacks: remaining wing time
+			// BirdieRattleStack: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -828,7 +828,7 @@ Mods: {
 				- Даёт <kbResist>% сопротивления отбрасыванию.
 				- Уменьшает скорость передвижения на <moveSpd>%.
 				'''
-			// SeaweedStacks: hits to tank
+			// SeaweedStack: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -875,7 +875,7 @@ Mods: {
 				  * Пул восстанавливает +1 ед. здоровья каждую <healthRecovery> секунду.
 				- Текущее количество здоровья в пуле, которое может быть восстановлено: <pool>.
 				'''
-			// BrainOfCthulhuPetItemStacks: stacks in health pool
+			// BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -894,7 +894,7 @@ Mods: {
 				  * Враги: Умножает получаемый урон на <enemyDmgRecieve>x и умножает наносимый урон на <enemyDmgDeal>x.
 				  * Игроки: Увеличивает урон на <dmg>%, защиту на <def>%, скорость передвижения на <moveSpd>%, а ожоги заканчиваются в 2 раза быстрее.
 				'''
-			// KingSlimePetItemStacks: alive Slime Servants
+			// KingSlimePetItemStack: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -917,7 +917,7 @@ Mods: {
 				  * Получите иммунитет ко всем типам урона на <immunityTime> секунд.
 				  * Наложите замедление на <slowAmount>%, Замешательство и Обжигающий холод на врагов в радиусе <range> блоков на <debuffTime> секунд.
 				'''
-			// DeerclopsPetItemStacks: stored health percentage
+			// DeerclopsPetItemStack: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -1133,7 +1133,7 @@ Mods: {
 				  * Может накапливаться до 10 раз.
 				  * Сбрасывается до 0, если стак не был получен в течение 4 секунд.
 				'''
-			// CarrotStacks: bunnyhop stacks
+			// CarrotStack: bunnyhop stacks
 		}
 
 		Buffs: {

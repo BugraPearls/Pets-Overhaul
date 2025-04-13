@@ -373,7 +373,7 @@ Mods: {
 				不受伤，不受持续伤害且没有击中敌人即视为脱战
 				你在拥有第一层效果的情况下击中敌人时，计时器重置到<stage1Time>秒
 				'''
-			// BoneRattleStacks: regen bonus
+			// BoneRattleStack: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -424,7 +424,7 @@ Mods: {
 				 - 在丛林中攻击速度额外提高<jungleAtkSpd>%
 				砍伐竹子[i:4564]有<bambooChance>%几率掉落额外的竹子
 				'''
-			// BambooLeafStacks: enemies you're on alert for
+			// BambooLeafStack: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -478,7 +478,7 @@ Mods: {
 				 -- 最多可叠加<maxDrain>个敌人
 				免疫所有原版燃烧减益
 				'''
-			// BerniePetItemStacks: burning enemies in radius
+			// BerniePetItemStack: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -647,7 +647,7 @@ Mods: {
 				 - 无法滑翔
 				 - 从开始飞行时计算飞行冷却
 				'''
-			// BirdieRattleStacks: remaining wing time
+			// BirdieRattleStack: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -800,7 +800,7 @@ Mods: {
 				击退抗性提高<kbResist>%
 				移动速度降低<moveSpd>%
 				'''
-			// SeaweedStacks: hits to tank
+			// SeaweedStack: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -844,7 +844,7 @@ Mods: {
 				 - 每<healthRecovery>秒恢复血池中1血量
 				当前吸血池血量：<pool>
 				'''
-			// BrainOfCthulhuPetItemStacks: stacks in health pool
+			// BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -861,7 +861,7 @@ Mods: {
 				   玩家生命值<hpMult>%的额外生命值，造成额外<dmg>伤害，可以暴击且受玩家通用职业加成
 				 - 死亡后，对半径<radius>格内的所有敌人造成<slowAmount>%减速<slowDuration>秒和史莱姆减益<slimyDuration>秒
 				'''
-			// KingSlimePetItemStacks: alive Slime Servants
+			// KingSlimePetItemStack: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -883,7 +883,7 @@ Mods: {
 				 - 对<range>格范围内的敌人造成<debuffTime>秒的<slowAmount>%减速，困惑和霜冻
 				 - 此效果有30秒冷却时间
 				'''
-			// DeerclopsPetItemStacks: stored health percentage
+			// DeerclopsPetItemStack: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -1093,7 +1093,7 @@ Mods: {
 				 - 最多叠加10层
 				 - 4秒不跳跃后重置
 				'''
-			// CarrotStacks: bunnyhop stacks
+			// CarrotStack: bunnyhop stacks
 		}
 
 		Buffs: {

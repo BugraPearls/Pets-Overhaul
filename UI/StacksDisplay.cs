@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Humanizer;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
@@ -17,6 +18,7 @@ namespace PetsOverhaul.UI
         static int CurrentStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacks;
         static int MaxStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacksMax;
         static string TextStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackText;
+        static bool ShouldBeSeconds => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackIsSeconds;
         static readonly string Current = Language.GetTextValue("Mods.PetsOverhaul.Misc.Current");
         public override void OnInitialize()
         {
@@ -33,7 +35,14 @@ namespace PetsOverhaul.UI
         {
             if (Main.playerInventory == false && MaxStack >= 0)
             {
-                stacks.SetText($"{Language.GetTextValue("Mods.PetsOverhaul.Misc.Current")} {TextStack}: {CurrentStack} {Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.OutOf")} {MaxStack}");
+                if (MaxStack == 0)
+                {
+                    stacks.SetText($"{Language.GetTextValue("Mods.PetsOverhaul.Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString() + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs")) : CurrentStack.ToString())}");
+                }
+                else
+                {
+                    stacks.SetText($"{Language.GetTextValue("Mods.PetsOverhaul.Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString()) : CurrentStack.ToString())} {Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.OutOf")} {(ShouldBeSeconds ? (Math.Round(MaxStack / 60f, 2).ToString() + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs")) : MaxStack.ToString())}");
+                }
                 base.Draw(spriteBatch);
             }
         }

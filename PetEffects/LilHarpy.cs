@@ -16,6 +16,10 @@ namespace PetsOverhaul.PetEffects
         private bool cooldownStarted;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
         public override int PetAbilityCooldown => harpyCd;
+        public override int PetStackCurrent => harpyFlight;
+        public override int PetStackMax => fuelMax;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BirdieRattleStack");
+        public override bool PetStackIsSeconds => true;
         public override void PostUpdateMiscEffects()
         {
             if (Pet.timer <= 0)

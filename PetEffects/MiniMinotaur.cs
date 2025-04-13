@@ -20,6 +20,9 @@ namespace PetsOverhaul.PetEffects
         public float defMult = 0.0012f;
 
         public override PetClasses PetClassPrimary => PetClasses.Melee;
+        public override int PetStackCurrent => minotaurStack;
+        public override int PetStackMax => maxStack;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.TartarSauceStack");
         public override int PetAbilityCooldown => minotaurCd;
         public override void ExtraPreUpdate()
         {

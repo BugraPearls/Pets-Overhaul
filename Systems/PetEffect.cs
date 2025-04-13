@@ -66,6 +66,7 @@ namespace PetsOverhaul.Systems
                 Pet.currentPetStacks = PetStackCurrent;
                 Pet.currentPetStacksMax = PetStackMax;
                 Pet.currentPetStackText = PetStackText;
+                Pet.currentPetStackIsSeconds = PetStackIsSeconds;
                 ExtraPreUpdate();
             }
             ExtraPreUpdateNoCheck();

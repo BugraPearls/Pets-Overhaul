@@ -389,7 +389,7 @@ Mods: {
 				- Receber dano sempre reinicia o timer para 0, mas causar dano só faz isso se:
 				 * Você tiver passado da marca de <stage1Time> segundos, então reinicia de volta para <stage1Time> segundos.
 				'''
-			// BoneRattleStacks: regen bonus
+			// BoneRattleStack: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -442,7 +442,7 @@ Mods: {
 				 * Aumentado em mais <jungleAtkSpd>% enquanto estiver na Selva.
 				- Aumenta a quantidade de Bambu [i:4564] que você colhe em <bambooChance>%.
 				'''
-			// BambooLeafStacks: enemies you're on alert for
+			// BambooLeafStack: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -506,7 +506,7 @@ Mods: {
 				- Eles recuperam <burnDrainMana> mana e <burnDrainHealth> saúde a cada segundo.
 				 * Só pode drenar Saúde/Mana de até <maxDrain> inimigos.
 				'''
-			// BerniePetItemStacks: burning enemies in radius
+			// BerniePetItemStack: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -684,7 +684,7 @@ Mods: {
 				 * Você recupera o tempo de asa após o tempo de recarga de <cooldown> segundos ser renovado.
 				 * O tempo de recarga começa no momento em que você começa a voar.
 				'''
-			// BirdieRattleStacks: remaining wing time
+			// BirdieRattleStack: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -842,7 +842,7 @@ Mods: {
 				- Concede <kbResist>% de resistência a recuo.
 				- Reduz a velocidade de movimento em <moveSpd>%.
 				'''
-			// SeaweedStacks: hits to tank
+			// SeaweedStack: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -890,7 +890,7 @@ Mods: {
 				 * O pool se recupera +1 de saúde a cada <healthRecovery> segundo.
 				- Quantidade atual de saúde no pool que pode ser recuperada: <pool>
 				'''
-			// BrainOfCthulhuPetItemStacks: stacks in health pool
+			// BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -911,7 +911,7 @@ Mods: {
 				   por <slimyDuration> segundos a todos os inimigos em um raio de <radius> blocos.
 				- A habilidade tem um tempo de recarga de <cooldown> segundos e cada Slime dura <lifetime> segundos.
 				'''
-			// KingSlimePetItemStacks: alive Slime Servants
+			// KingSlimePetItemStack: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -934,7 +934,7 @@ Mods: {
 				 * Ganhe <immunityTime> segundos de imunidade a todos os tipos.
 				 * Aplique um efeito de lentidão de <slowAmount>%, confusão e frostfire em inimigos em um raio de <range> blocos por <debuffTime> segundos.
 				'''
-			// DeerclopsPetItemStacks: stored health percentage
+			// DeerclopsPetItemStack: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -1160,7 +1160,7 @@ Mods: {
 				 * Pode acumular até 10 vezes.
 				 * Redefine para 0 stacks se não ganhar um stack em 4 segundos.
 				'''
-			// CarrotStacks: bunnyhop stacks
+			// CarrotStack: bunnyhop stacks
 		}
 
 		Buffs: {
