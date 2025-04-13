@@ -119,6 +119,14 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public int currentPetStacksMax = -1;
         /// <summary>
+        /// Modified in PetEffect code, used by UI to 'tell' what current stack values are
+        /// </summary>
+        public string currentPetStackText = string.Empty;
+        /// <summary>
+        /// Modified in PetEffect code, used by UI to write the stack as seconds & add seconds at the end.
+        /// </summary>
+        public bool currentPetStackIsSeconds = false;
+        /// <summary>
         /// Used to not play the 'refresh sound' upon Pet Ability timer going below 0 more than once.
         /// </summary>
         public bool AbilityCdSoundPlayed { get; private set; }

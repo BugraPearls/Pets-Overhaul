@@ -19,6 +19,14 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public virtual int PetStackMax => -1;
         /// <summary>
+        /// Should be replaced with given Pet's localization value for their stack text.
+        /// </summary>
+        public virtual string PetStackText => string.Empty;
+        /// <summary>
+        /// Set this to true if you want stacks to be converted to seconds and have it write seconds at the end
+        /// </summary>
+        public virtual bool PetStackIsSeconds => false;
+        /// <summary>
         /// Sets the Pet Ability Cooldown
         /// </summary>
         public virtual int PetAbilityCooldown => 0;
@@ -57,6 +65,7 @@ namespace PetsOverhaul.Systems
                 Pet.timerMax = PetAbilityCooldown;
                 Pet.currentPetStacks = PetStackCurrent;
                 Pet.currentPetStacksMax = PetStackMax;
+                Pet.currentPetStackText = PetStackText;
                 ExtraPreUpdate();
             }
             ExtraPreUpdateNoCheck();
