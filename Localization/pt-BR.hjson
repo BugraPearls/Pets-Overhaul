@@ -158,18 +158,6 @@ Mods: {
 				Opções da Barra de Vida funcionam melhor em monitores com resolução Full HD (1920x1080).
 				Mudar esse valor por meios externos pode causar problemas e erros.
 				'''
-			DisableAbilityUnusedLabel: Ativar Exibição do Tempo de Recarga da Habilidade se Não For Usada.
-			DisableAbilityUnusedTooltip:
-				'''
-				Faz a Exibição do Tempo de Recarga da Habilidade aparecer no canto inferior direito da tela
-				se o Pet atual não tiver uma habilidade que usa o Temporizador da Habilidade do Pet.
-				'''
-			AbilityDisplayInfoLabel: Ativar Exibição do Tempo de Recarga da Habilidade Base
-			AbilityDisplayInfoTooltip:
-				'''
-				Faz a Exibição do Tempo de Recarga da Habilidade aparecer no canto inferior direito da tela
-				incluir o Tempo de Recarga Base do temporizador do Pet atual.
-				'''
 			AbilityDisplayDisableLabel: Ativar Exibição do Tempo de Recarga da Habilidade
 			AbilityDisplayDisableTooltip:
 				'''

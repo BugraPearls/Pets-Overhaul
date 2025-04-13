@@ -156,23 +156,12 @@ Mods: {
 				Changes where Pet Shield should be displayed when a Shield has been provided by your Pet.
 				Healthbar options work best with 1920x1080 Resolutions.
 				'''
-			DisableAbilityUnusedLabel: Enable Ability Cooldown Display If Unused
-			DisableAbilityUnusedTooltip:
-				'''
-				Makes the Ability Cooldown display on the right bottom corner of the screen visible
-				if the current Pet does not have an ability that uses the Pet Ability Timer.
-				'''
-			AbilityDisplayInfoLabel: Enable Base Ability Cooldown Display
-			AbilityDisplayInfoTooltip:
-				'''
-				Makes Ability Cooldown display on the right bottom corner of the screen
-				include the Base Cooldown of the current Pet's ability timer.
-				'''
-			AbilityDisplayDisableLabel: Enable Ability Cooldown Display
+			AbilityDisplayDisableLabel: Pet Ability Cooldown UI
 			AbilityDisplayDisableTooltip:
 				'''
-				Enables the Ability Cooldown Display. If this option is turned off,
-				the display will be forced to be not shown, no matter what other options regarding it.
+				Enables the UI Text where it shows current remaining & base
+				cooldown of abilities that uses a cooldown by your Pet.
+				Only visible if current active Pet has an ability with a cooldown.
 				'''
 			ParticleNone: None
 			ParticleLowered: Lowered

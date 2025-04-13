@@ -34,12 +34,9 @@ namespace PetsOverhaul.UI
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (ModContent.GetInstance<PetPersonalization>().ShowAbilityDisplay && Main.playerInventory == false && (ModContent.GetInstance<PetPersonalization>().AbilityDisplayUnused || BaseCooldown > 0))
+            if (ModContent.GetInstance<PetPersonalization>().ShowAbilityDisplay && Main.playerInventory == false && BaseCooldown > 0)
             {
-                if (ModContent.GetInstance<PetPersonalization>().AbilityDisplayInfo)
-                {
-                    displayInfo.SetText(Language.GetTextValue("Mods.PetsOverhaul.Misc.BaseCd") + "\n" + (BaseCooldown == 0 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.NoCd") : Math.Round((float)BaseCooldown / 60, 1).ToString() + " " + (BaseCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Misc.Sec"))));
-                }
+                displayInfo.SetText(Language.GetTextValue("Mods.PetsOverhaul.Misc.BaseCd") + "\n" + (BaseCooldown == 0 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.NoCd") : Math.Round((float)BaseCooldown / 60, 1).ToString() + " " + (BaseCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Misc.Sec"))));
                 if (RemainingCooldown > 0)
                 {
                     cooldown.SetText(Language.GetTextValue("Mods.PetsOverhaul.Misc.RemainingCd") + "\n" + Math.Round((float)RemainingCooldown / 60, 1).ToString() + " " + (RemainingCooldown > 60 ? Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs") : Language.GetTextValue("Mods.PetsOverhaul.Misc.Sec")));

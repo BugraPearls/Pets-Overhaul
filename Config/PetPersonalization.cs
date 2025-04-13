@@ -69,18 +69,6 @@ namespace PetsOverhaul.Config
         [SliderColor(120, 35, 54, 125)]
         public ShieldPosition ShieldLocation { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.DisableAbilityUnusedLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.DisableAbilityUnusedTooltip")]
-        [DefaultValue(false)]
-        [BackgroundColor(35, 120, 54, 190)]
-        public bool AbilityDisplayUnused { get; set; }
-
-        [LabelKey("$Mods.PetsOverhaul.Config.AbilityDisplayInfoLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.AbilityDisplayInfoTooltip")]
-        [DefaultValue(true)]
-        [BackgroundColor(35, 120, 54, 190)]
-        public bool AbilityDisplayInfo { get; set; }
-
         [LabelKey("$Mods.PetsOverhaul.Config.AbilityDisplayDisableLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.AbilityDisplayDisableTooltip")]
         [DefaultValue(true)]
