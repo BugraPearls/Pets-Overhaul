@@ -37,6 +37,7 @@ Mods: {
 				Você pode encontrar o addon pelo nome 'Pets Overhaul: Calamity Addon'
 				Adicionando ainda mais pets únicos e compatibilidade com Calamity para efeitos novos nos pets!
 				'''
+			// Current: Current
 		}
 
 		Classes: {
@@ -388,6 +389,7 @@ Mods: {
 				- Receber dano sempre reinicia o timer para 0, mas causar dano só faz isso se:
 				 * Você tiver passado da marca de <stage1Time> segundos, então reinicia de volta para <stage1Time> segundos.
 				'''
+			// BoneRattleStacks: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -440,6 +442,7 @@ Mods: {
 				 * Aumentado em mais <jungleAtkSpd>% enquanto estiver na Selva.
 				- Aumenta a quantidade de Bambu [i:4564] que você colhe em <bambooChance>%.
 				'''
+			// BambooLeafStacks: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -503,6 +506,7 @@ Mods: {
 				- Eles recuperam <burnDrainMana> mana e <burnDrainHealth> saúde a cada segundo.
 				 * Só pode drenar Saúde/Mana de até <maxDrain> inimigos.
 				'''
+			// BerniePetItemStacks: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -669,6 +673,7 @@ Mods: {
 				- <fishing> Nível atual: <fishingLevel> Experiência necessária para o próximo nível: <fishingNext> Experiência total atual: [c/0382E9:<fishingCurrent>]
 				 * Ganhe <fishingProfit>x o valor de exp dos itens em moedas de cobre e ganhe <bonusDamage>% de aumento de dano.
 				'''
+			// ExpStack: <class> exp till next level
 			BirdieRattle:
 				'''
 				<class>
@@ -679,6 +684,7 @@ Mods: {
 				 * Você recupera o tempo de asa após o tempo de recarga de <cooldown> segundos ser renovado.
 				 * O tempo de recarga começa no momento em que você começa a voar.
 				'''
+			// BirdieRattleStacks: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -706,6 +712,7 @@ Mods: {
 				 * Ganhe <dmg>% de dano corpo a corpo por stack, máximo <maxDmg>%.
 				 * Ganhe <def>% de defesa por stack, máximo <maxDef>%.
 				'''
+			// TartarSauceStack: minotaur stacks
 			ParrotCracker:
 				'''
 				<class>
@@ -835,6 +842,7 @@ Mods: {
 				- Concede <kbResist>% de resistência a recuo.
 				- Reduz a velocidade de movimento em <moveSpd>%.
 				'''
+			// SeaweedStacks: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -882,6 +890,7 @@ Mods: {
 				 * O pool se recupera +1 de saúde a cada <healthRecovery> segundo.
 				- Quantidade atual de saúde no pool que pode ser recuperada: <pool>
 				'''
+			// BrainOfCthulhuPetItemStacks: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -902,6 +911,7 @@ Mods: {
 				   por <slimyDuration> segundos a todos os inimigos em um raio de <radius> blocos.
 				- A habilidade tem um tempo de recarga de <cooldown> segundos e cada Slime dura <lifetime> segundos.
 				'''
+			// KingSlimePetItemStacks: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -924,6 +934,7 @@ Mods: {
 				 * Ganhe <immunityTime> segundos de imunidade a todos os tipos.
 				 * Aplique um efeito de lentidão de <slowAmount>%, confusão e frostfire em inimigos em um raio de <range> blocos por <debuffTime> segundos.
 				'''
+			// DeerclopsPetItemStacks: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -935,6 +946,7 @@ Mods: {
 				 * Eles recebem o dano armazenado ao longo de 4 segundos.
 				- Se seu golpe causa mais dano que a vida restante de um inimigo, ele é instantaneamente executado.
 				'''
+			// SkeletronPetItemStack: shields available
 			SkeletronDeath1: <name> não pôde conter a maldição do Esqueletron
 			SkeletronDeath2: <name> faleceu de uma forma bem lenta e dolorosa
 			SkeletronDeath3: eeeeeeeeee é cesta!!!
@@ -1148,6 +1160,7 @@ Mods: {
 				 * Pode acumular até 10 vezes.
 				 * Redefine para 0 stacks se não ganhar um stack em 4 segundos.
 				'''
+			// CarrotStacks: bunnyhop stacks
 		}
 
 		Buffs: {

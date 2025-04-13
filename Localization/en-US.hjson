@@ -128,8 +128,8 @@ Mods: {
 			PlayerRight: On the Player, Icon on the right
 			HealthBarLeft: Next to the Healthbar, Icon on the left
 			HealthBarRight: Next to the Healthbar, Icon on the right
-			HeaderDisplay: Display Related Settings
-			HeaderSound: Sound-Related Settings
+			HeaderDisplay: Display Settings
+			HeaderSound: Sound Settings
 			HeaderGameplay: Gameplay Settings
 			NoticeLabel: Log-in Notice
 			NoticeTooltip:
@@ -391,6 +391,7 @@ Mods: {
 				 * Have a <shieldAmount>% health one-hit shield while out of combat for <stage2Time> seconds.
 				- With the Pet, dealing damage cannot set your in combat timer lower than <stage1Time> seconds.
 				'''
+			BoneRattleStacks: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -443,6 +444,7 @@ Mods: {
 				 * Increased by another <jungleAtkSpd>% while in the Jungle.
 				- Increases Bamboo [i:4564] you harvest by <bambooChance>%.
 				'''
+			BambooLeafStacks: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -504,6 +506,7 @@ Mods: {
 				 * They recover you <burnDrainMana> mana and <burnDrainHealth> health every second.
 				 * Can only drain Health/Mana from up to <maxDrain> enemies.
 				'''
+			BerniePetItemStacks: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -669,6 +672,7 @@ Mods: {
 				- <fishing> Current level: <fishingLevel> Experience needed for next level: <fishingNext> Current total experience: <fishingCurrent>
 				 * Gain <fishingProfit> times exp value of items as copper coins and gain <bonusDamage>% damage boost.
 				'''
+			ExpStack: <class> exp till next level
 			BirdieRattle:
 				'''
 				<class>
@@ -679,6 +683,7 @@ Mods: {
 				 * You regain the wing time after the cooldown of <cooldown> seconds is refreshed.
 				 * Refreshment cooldown begins the moment you start flying.
 				'''
+			BirdieRattleStacks: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -706,6 +711,7 @@ Mods: {
 				 * Gain <dmg>% melee damage per stack, max <maxDmg>%.
 				 * Gain <def>% defense per stack, max <maxDef>%.
 				'''
+			TartarSauceStack: minotaur stacks
 			ParrotCracker:
 				'''
 				<class>
@@ -837,6 +843,7 @@ Mods: {
 				- Grants <kbResist>% knockback resist.
 				- Reduces movement speed by <moveSpd>%.
 				'''
+			SeaweedStacks: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -884,6 +891,7 @@ Mods: {
 				 * Pool recovers +1 health every <healthRecovery> second.
 				- Current amount of health in the pool that can be recovered: <pool>
 				'''
+			BrainOfCthulhuPetItemStacks: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -904,6 +912,7 @@ Mods: {
 				   for <slimyDuration> seconds to all enemies in a <radius> block radius.
 				- Ability has a <cooldown> second cooldown and each Slime has <lifetime> seconds of lifetime.
 				'''
+			KingSlimePetItemStacks: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -926,6 +935,7 @@ Mods: {
 				 * Gain <immunityTime> seconds of immunity to all types.
 				 * Apply a <slowAmount>% slow, confusion and frostfire on enemies in a <range>-tile radius for <debuffTime> seconds.
 				'''
+			DeerclopsPetItemStacks: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -937,6 +947,7 @@ Mods: {
 				 * They receive stored damage over 4 seconds.
 				- If the enemy can die to your hit without the DOT, they instantly get executed.
 				'''
+			SkeletronPetItemStack: shields available
 			SkeletronDeath1: <name> could not contain Skeletron's curse.
 			SkeletronDeath2: <name> went through a painful, slow death.
 			SkeletronDeath3: geeettttttt dunked on!!!
@@ -1147,6 +1158,7 @@ Mods: {
 				 * Can stack up to 10 times.
 				 * Resets to 0 stacks if haven't gained a stack in 4 seconds.
 				'''
+			CarrotStacks: bunnyhop stacks
 		}
 
 		Buffs: {

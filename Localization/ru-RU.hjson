@@ -38,6 +38,7 @@ Mods: {
 				Вы можете найти дополнение в мастерской Steam под названием 'Pets Overhaul: Calamity Addon'.
 				Оно добавляет ещё больше уникальных питомцев и совместимость Calamity с эффектами питомцев из оригинальной игры!
 				'''
+			// Current: Current
 		}
 
 		Classes: {
@@ -379,6 +380,7 @@ Mods: {
 				  * При нахождении вне боя в течение <stage2Time> секунд, у вас появиться однократный щит на <shieldAmount>% здоровья.
 				- С питомцем, нанесение урона не может снизить ваш таймер боя ниже <stage1Time> секунд.
 				'''
+			// BoneRattleStacks: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
 				<class>
@@ -430,6 +432,7 @@ Mods: {
 				  * Увеличивается ещё на <jungleAtkSpd>% в джунглях.
 				- Увеличивает количество собранного бамбука [i:4564] на <bambooChance>%.
 				'''
+			// BambooLeafStacks: enemies you're on alert for
 			BoneKey:
 				'''
 				<class>
@@ -493,6 +496,7 @@ Mods: {
 				- Они восстанавливают вам <burnDrainMana> маны и <burnDrainHealth> здоровья каждую секунду.
 				  * Можно восстанавливать здоровье/ману только с <maxDrain> врагов.
 				'''
+			// BerniePetItemStacks: burning enemies in radius
 			UnluckyYarn:
 				'''
 				<class>
@@ -651,6 +655,7 @@ Mods: {
 				Текущий уровень: <fishingLevel> Опыт до следующего уровня: <fishingNext> Текущий общий опыт: [c/0382E9:<fishingCurrent>]
 				- Получайте <fishingProfit> раз ценность опыта предметов в виде медных монет и увеличивайте наносимый урон на <bonusDamage>%.
 				'''
+			// ExpStack: <class> exp till next level
 			BirdieRattle:
 				'''
 				<class>
@@ -661,6 +666,7 @@ Mods: {
 				  * Время полёта восстанавливается после перезарядки в <cooldown> секунд.
 				  * Перезарядка начинается в момент начала полёта.
 				'''
+			// BirdieRattleStacks: remaining wing time
 			LizardEgg:
 				'''
 				<class>
@@ -688,6 +694,7 @@ Mods: {
 				  * Получаете <dmg>% урона в ближнем бою за стак, максимум <maxDmg>%.
 				  * Получаете <def>% защиты за стак, максимум <maxDef>%.
 				'''
+			// TartarSauceStack: minotaur stacks
 			ParrotCracker:
 				'''
 				<class>
@@ -821,6 +828,7 @@ Mods: {
 				- Даёт <kbResist>% сопротивления отбрасыванию.
 				- Уменьшает скорость передвижения на <moveSpd>%.
 				'''
+			// SeaweedStacks: hits to tank
 			LightningCarrot:
 				'''
 				<class>
@@ -867,6 +875,7 @@ Mods: {
 				  * Пул восстанавливает +1 ед. здоровья каждую <healthRecovery> секунду.
 				- Текущее количество здоровья в пуле, которое может быть восстановлено: <pool>.
 				'''
+			// BrainOfCthulhuPetItemStacks: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
 				<class>
@@ -885,6 +894,7 @@ Mods: {
 				  * Враги: Умножает получаемый урон на <enemyDmgRecieve>x и умножает наносимый урон на <enemyDmgDeal>x.
 				  * Игроки: Увеличивает урон на <dmg>%, защиту на <def>%, скорость передвижения на <moveSpd>%, а ожоги заканчиваются в 2 раза быстрее.
 				'''
+			// KingSlimePetItemStacks: alive Slime Servants
 			QueenBeePetItem:
 				'''
 				<class>
@@ -907,6 +917,7 @@ Mods: {
 				  * Получите иммунитет ко всем типам урона на <immunityTime> секунд.
 				  * Наложите замедление на <slowAmount>%, Замешательство и Обжигающий холод на врагов в радиусе <range> блоков на <debuffTime> секунд.
 				'''
+			// DeerclopsPetItemStacks: stored health percentage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -919,6 +930,7 @@ Mods: {
 				- Если враг может умереть от вашего удара без эффекта ДОТ (урон со временем), он будет мгновенно убит.
 
 				'''
+			// SkeletronPetItemStack: shields available
 			SkeletronDeath1: <name> не смог(ла) справиться с проклятием Скелетрона.
 			SkeletronDeath2: <name> пережил(а) мучительную, медленную смерть.
 			SkeletronDeath3: пооооооолучил(а) по заслугам!!!
@@ -1121,6 +1133,7 @@ Mods: {
 				  * Может накапливаться до 10 раз.
 				  * Сбрасывается до 0, если стак не был получен в течение 4 секунд.
 				'''
+			// CarrotStacks: bunnyhop stacks
 		}
 
 		Buffs: {
