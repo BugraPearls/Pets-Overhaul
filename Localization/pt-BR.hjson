@@ -186,7 +186,11 @@ Mods: {
 				a exibição será forçada a não ocorrer, independente de outras opções relacionada a essa.
 				'''
 			// AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
-			// AbilityDisplayLocationTooltip: Determines where on your screen your Pet Ability Cooldown UI will be at.
+			/* AbilityDisplayLocationTooltip:
+				'''
+				Determines where on your screen your Pet Ability Cooldown UI will be at.
+				The selected position will be the upper-left corner of the UI.
+				''' */
 			// ResourceDisplayLabel: Pet Resource UI
 			/* ResourceDisplayTooltip:
 				'''
@@ -194,7 +198,11 @@ Mods: {
 				stacks of some sort. Not visible by default if current Pet does not have stacks etc.
 				''' */
 			// ResourceDisplayLocationLabel: Pet Resource UI Position
-			// ResourceDisplayLocationTooltip: Determines where on your screen your Pet Resource UI will be at.
+			/* ResourceDisplayLocationTooltip:
+				'''
+				Determines where on your screen your Pet Resource UI will be at.
+				The selected position will be the upper-left corner of the UI.
+				''' */
 			DustAmountTooltip:
 				'''
 				Modifica a quantidade de poeira que vai ser criada para a exibição de efeitos em area circular causados por PET's

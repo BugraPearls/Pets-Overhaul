@@ -22,18 +22,12 @@ namespace PetsOverhaul.UI
         static readonly string Current = Language.GetTextValue("Mods.PetsOverhaul.Misc.Current");
         public override void OnInitialize()
         {
-            UIElement canvas = new();
-            canvas.Height.Set(130, 0);
-            canvas.HAlign = 0.6f;
-            canvas.VAlign = 0.68f;
-            Append(canvas);
-
             stacks = new("");
-            canvas.Append(stacks);
+            Append(stacks);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (Main.playerInventory == false && MaxStack >= 0)
+            if (ModContent.GetInstance<PetPersonalization>().ShowResourceDisplay && Main.playerInventory == false && MaxStack >= 0)
             {
                 if (MaxStack == 0)
                 {
@@ -43,6 +37,8 @@ namespace PetsOverhaul.UI
                 {
                     stacks.SetText($"{Language.GetTextValue("Mods.PetsOverhaul.Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString()) : CurrentStack.ToString())} {Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.OutOf")} {(ShouldBeSeconds ? (Math.Round(MaxStack / 60f, 2).ToString() + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs")) : MaxStack.ToString())}");
                 }
+                stacks.Top.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.Y);
+                stacks.Left.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.X);
                 base.Draw(spriteBatch);
             }
         }

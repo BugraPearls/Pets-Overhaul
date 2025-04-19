@@ -77,7 +77,7 @@ namespace PetsOverhaul.Config
 
         [LabelKey("$Mods.PetsOverhaul.Config.AbilityDisplayLocationLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.AbilityDisplayLocationTooltip")]
-        [DefaultValue(typeof(Vector2), "0.23, 0.77")]
+        [DefaultValue(typeof(Vector2), "0.76, 0.73")]
         [BackgroundColor(35, 120, 54, 190)]
         public Vector2 AbilityDisplayPos { get; set; }
 
@@ -89,7 +89,7 @@ namespace PetsOverhaul.Config
 
         [LabelKey("$Mods.PetsOverhaul.Config.ResourceDisplayLocationLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.ResourceDisplayLocationTooltip")]
-        [DefaultValue(typeof(Vector2), "0.23, 0.77")]
+        [DefaultValue(typeof(Vector2), "0.76, 0.67")]
         [BackgroundColor(35, 120, 54, 190)]
         public Vector2 ResourceDisplayPos { get; set; }
 

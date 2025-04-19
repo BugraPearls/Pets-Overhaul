@@ -178,7 +178,11 @@ Mods: {
 				Все другие параметры, касающиеся отображения способностей, не будут иметь эффекта.
 				'''
 			// AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
-			// AbilityDisplayLocationTooltip: Determines where on your screen your Pet Ability Cooldown UI will be at.
+			/* AbilityDisplayLocationTooltip:
+				'''
+				Determines where on your screen your Pet Ability Cooldown UI will be at.
+				The selected position will be the upper-left corner of the UI.
+				''' */
 			// ResourceDisplayLabel: Pet Resource UI
 			/* ResourceDisplayTooltip:
 				'''
@@ -186,7 +190,11 @@ Mods: {
 				stacks of some sort. Not visible by default if current Pet does not have stacks etc.
 				''' */
 			// ResourceDisplayLocationLabel: Pet Resource UI Position
-			// ResourceDisplayLocationTooltip: Determines where on your screen your Pet Resource UI will be at.
+			/* ResourceDisplayLocationTooltip:
+				'''
+				Determines where on your screen your Pet Resource UI will be at.
+				The selected position will be the upper-left corner of the UI.
+				''' */
 			DustAmountTooltip:
 				'''
 				Изменяет количество создаваемых частиц для отображения радиуса действия способностей питомцев с эффектами ауры. 
