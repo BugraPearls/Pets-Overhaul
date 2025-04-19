@@ -173,6 +173,16 @@ Mods: {
 				启用宠物技能冷却显示
 				关闭此选项会完全禁用技能冷却显示
 				'''
+			// AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
+			// AbilityDisplayLocationTooltip: Determines where on your screen your Pet Ability Cooldown UI will be at.
+			// ResourceDisplayLabel: Pet Resource UI
+			/* ResourceDisplayTooltip:
+				'''
+				Enables visibility of UI Text where it shows your current active Pet's resources or
+				stacks of some sort. Not visible by default if current Pet does not have stacks etc.
+				''' */
+			// ResourceDisplayLocationLabel: Pet Resource UI Position
+			// ResourceDisplayLocationTooltip: Determines where on your screen your Pet Resource UI will be at.
 			DustAmountTooltip:
 				'''
 				修改显示宠物的效果范围的粒子数量

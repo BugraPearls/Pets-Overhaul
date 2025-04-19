@@ -18,6 +18,7 @@ namespace PetsOverhaul.PetEffects
         public int stage1regen = 4;
         public int stage2regen = 15;
         public float stage2ShieldMult = 0.05f;
+        public int currentRegen = 0; //Added for UI
 
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override void PreUpdateBuffs() //Since inCombatTimerMax is reset in ResetEffects(), we set the desired inCombatTimerMax here.

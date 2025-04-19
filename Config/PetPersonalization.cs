@@ -75,6 +75,24 @@ namespace PetsOverhaul.Config
         [BackgroundColor(35, 120, 54, 190)]
         public bool ShowAbilityDisplay { get; set; }
 
+        [LabelKey("$Mods.PetsOverhaul.Config.AbilityDisplayLocationLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.AbilityDisplayLocationTooltip")]
+        [DefaultValue(typeof(Vector2), "0.23, 0.77")]
+        [BackgroundColor(35, 120, 54, 190)]
+        public Vector2 AbilityDisplayPos { get; set; }
+
+        [LabelKey("$Mods.PetsOverhaul.Config.ResourceDisplayLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.ResourceDisplayTooltip")]
+        [DefaultValue(true)]
+        [BackgroundColor(35, 120, 54, 190)]
+        public bool ShowResourceDisplay { get; set; }
+
+        [LabelKey("$Mods.PetsOverhaul.Config.ResourceDisplayLocationLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.ResourceDisplayLocationTooltip")]
+        [DefaultValue(typeof(Vector2), "0.23, 0.77")]
+        [BackgroundColor(35, 120, 54, 190)]
+        public Vector2 ResourceDisplayPos { get; set; }
+
         [DefaultValue(ParticleAmount.Normal)]
         [LabelKey("$Mods.PetsOverhaul.Config.DustAmountLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.DustAmountTooltip")]
