@@ -122,13 +122,26 @@ Mods: {
 
 		Config: {
 			Personalization: 个性化设置
-			PlayerLeft: 玩家头顶，图标在左边
-			PlayerRight: 玩家头顶，图标在右边
-			HealthBarLeft: 生命值旁，图标在左边
-			HealthBarRight: 生命值旁，图标在右边
 			HeaderDisplay: 显示相关配置
 			HeaderSound: 音效相关配置
 			HeaderGameplay: 游戏性配置
+			MoreDifficultLabel: 平衡游戏伤害
+			MoreDifficultTooltip:
+				'''
+				设置玩家造成的伤害减少%，受到的伤害增加%。最小0，最大20
+				这是由于此模组在游戏中添加了许多强力的加成
+				如果希望其禁用，请将其拖动至0。建议调整为7到10左右
+				在你获得一个宠物之前没有任何效果
+				'''
+			SwapCooldownLabel: 启用宠物交换冷却
+			SwapCooldownTooltip:
+				'''
+				开启后，玩家在交换宠物时获得遗忘宠物减益
+				在减益生效期间,宠物任何与战斗相关的效果都会被禁用
+				(由于平衡性原因,不推荐禁用)
+				'''
+			PhantasmalDragonShootLabel: 幻影龙宝宝的火球连射会从它的嘴巴发射
+			PhantasmalDragonShootTooltip: 使幻影龙宝宝的第三个技能，火球连射从它的嘴巴发出，而不是玩家位置。
 			NoticeLabel: 禁用此模组通知
 			NoticeTooltip:
 				'''
@@ -150,22 +163,26 @@ Mods: {
 				如果你的宠物具有护盾效果，改变宠物护盾显示的位置
 				生命值选项在游戏分辨率1920x1080时为宜。
 				'''
+			PlayerLeft: 玩家头顶，图标在左边
+			PlayerRight: 玩家头顶，图标在右边
+			HealthBarLeft: 生命值旁，图标在左边
+			HealthBarRight: 生命值旁，图标在右边
 			AbilityDisplayDisableLabel: 显示宠物技能冷却
 			AbilityDisplayDisableTooltip:
 				'''
 				启用宠物技能冷却显示
 				关闭此选项会完全禁用技能冷却显示
 				'''
-			ParticleNone: 无
-			ParticleLowered: 较少
-			ParticleNormal: 正常
-			ParticleIncreased: 较多
-			DustAmountLabel: 宠物范围显示粒子数量
 			DustAmountTooltip:
 				'''
 				修改显示宠物的效果范围的粒子数量
 				设为无可以完全禁用
 				'''
+			ParticleNone: 无
+			ParticleLowered: 较少
+			ParticleNormal: 正常
+			ParticleIncreased: 较多
+			DustAmountLabel: 宠物范围显示粒子数量
 			DustInsideBlocksLabel: 宠物范围显示粒子可以在方块里生成
 			DustInsideBlocksTooltip:
 				'''
@@ -180,16 +197,16 @@ Mods: {
 			HurtSoundTooltip: 启用宠物添加的玩家受到伤害时的自定义音效
 			DeathSoundLabel: 启用自定义死亡音效
 			DeathSoundTooltip: 启用宠物添加的玩家死亡时的自定义音效
-			PassiveSoundNever: 从不
-			PassiveSoundRarely: 低（约5分钟一次）
-			PassiveSoundNormal: 正常（约2分钟一次）
-			PassiveSoundCommon: 高（约1分钟一次）
 			PassiveSoundLabel: 宠物被动音效播放频率
 			PassiveSoundTooltip:
 				'''
 				启用被动播放的宠物音效
 				类似于原版游戏的的环境音效
 				'''
+			PassiveSoundNever: 从不
+			PassiveSoundRarely: 低（约5分钟一次）
+			PassiveSoundNormal: 正常（约2分钟一次）
+			PassiveSoundCommon: 高（约1分钟一次）
 			AbilitySoundLabel: 启用宠物技能音效
 			AbilitySoundTooltip:
 				'''
@@ -209,23 +226,6 @@ Mods: {
 				刷新时播放音效，单位：帧（60帧 = 1秒）
 				如果“启用短时刷新音效”选项为启用状态，修改此项没有任何效果
 				'''
-			MoreDifficultLabel: 平衡游戏伤害
-			MoreDifficultTooltip:
-				'''
-				设置玩家造成的伤害减少%，受到的伤害增加%。最小0，最大20
-				这是由于此模组在游戏中添加了许多强力的加成
-				如果希望其禁用，请将其拖动至0。建议调整为7到10左右
-				在你获得一个宠物之前没有任何效果
-				'''
-			SwapCooldownLabel: 启用宠物交换冷却
-			SwapCooldownTooltip:
-				'''
-				开启后，玩家在交换宠物时获得遗忘宠物减益
-				在减益生效期间,宠物任何与战斗相关的效果都会被禁用
-				(由于平衡性原因,不推荐禁用)
-				'''
-			PhantasmalDragonShootLabel: 幻影龙宝宝的火球连射会从它的嘴巴发射
-			PhantasmalDragonShootTooltip: 使幻影龙宝宝的第三个技能，火球连射从它的嘴巴发出，而不是玩家位置。
 		}
 
 		LightPetCombineUI: {

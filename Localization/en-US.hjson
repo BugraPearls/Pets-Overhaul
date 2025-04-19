@@ -124,13 +124,30 @@ Mods: {
 
 		Config: {
 			Personalization: Settings
-			PlayerLeft: On the Player, Icon on the left
-			PlayerRight: On the Player, Icon on the right
-			HealthBarLeft: Next to the Healthbar, Icon on the left
-			HealthBarRight: Next to the Healthbar, Icon on the right
 			HeaderDisplay: Display Settings
 			HeaderSound: Sound Settings
 			HeaderGameplay: Gameplay Settings
+			MoreDifficultLabel: Player Handicap
+			MoreDifficultTooltip:
+				'''
+				Sets how much % lower damage the Player will deal and how much % extra damage the Player will receive.
+				This is implemented due to Pets Overhaul adding extra Powercreep into the game. Min 0, Max 20%.
+				Keep it at 0 if you wish it to be disabled. It's recommended it to be around 7 to 10%.
+				This won't take in effect until you obtain a Pet, since in that case this has no reason to be active.
+				'''
+			SwapCooldownLabel: Pet Swap cooldown
+			SwapCooldownTooltip:
+				'''
+				Enables Player to gain Oblivious Pet Debuff upon swapping a Pet.
+				Which prevents any Combat-related perks from being active during the time.
+				(Recommended to keep this on due to obvious balancing reasons.)
+				'''
+			PhantasmalDragonShootLabel: Phantasmal Dragon Fire Volley From Dragon
+			PhantasmalDragonShootTooltip:
+				'''
+				Enables Phantasmal Dragon's 3rd spell, Fireball Volley to be cast from
+				Dragon's Mouth (The Dragon Pet that follows you), rather than from the Player.
+				'''
 			NoticeLabel: Log-in Notice
 			NoticeTooltip:
 				'''
@@ -156,6 +173,10 @@ Mods: {
 				Changes where Pet Shield should be displayed when a Shield has been provided by your Pet.
 				Healthbar options work best with 1920x1080 Resolutions.
 				'''
+			PlayerLeft: On the Player, Icon on the left
+			PlayerRight: On the Player, Icon on the right
+			HealthBarLeft: Next to the Healthbar, Icon on the left
+			HealthBarRight: Next to the Healthbar, Icon on the right
 			AbilityDisplayDisableLabel: Pet Ability Cooldown UI
 			AbilityDisplayDisableTooltip:
 				'''
@@ -163,16 +184,16 @@ Mods: {
 				cooldown of abilities that uses a cooldown by your Pet.
 				Only visible if current active Pet has an ability with a cooldown.
 				'''
-			ParticleNone: None
-			ParticleLowered: Lowered
-			ParticleNormal: Normal
-			ParticleIncreased: Increased
-			DustAmountLabel: Pet Circle Dust Amount
 			DustAmountTooltip:
 				'''
 				Modifies how much Dust will be created for Display of your Pets that has a radius with their effect.
 				Set it to None to disable it entirely.
 				'''
+			ParticleNone: None
+			ParticleLowered: Lowered
+			ParticleNormal: Normal
+			ParticleIncreased: Increased
+			DustAmountLabel: Pet Circle Dust Amount
 			DustInsideBlocksLabel: Pet Circle Dust Inside Blocks
 			DustInsideBlocksTooltip:
 				'''
@@ -187,10 +208,6 @@ Mods: {
 			HurtSoundTooltip: Enables custom sound effects added by Pets when the Player receives damage.
 			DeathSoundLabel: Pet death sounds
 			DeathSoundTooltip: Enables custom sound effects added by Pets when the Player dies.
-			PassiveSoundNever: Never Played
-			PassiveSoundRarely: Rare (Every 5m~)
-			PassiveSoundNormal: Normal (Every 2m~)
-			PassiveSoundCommon: Common (Every 1m~)
 			PassiveSoundLabel: Frequency of passive Pet sounds
 			PassiveSoundTooltip:
 				'''
@@ -198,6 +215,10 @@ Mods: {
 				'Never' option will disable passive sound effects by Pets entirely.
 				Its similar to Ambient sound effects in Vanilla. This is fully clientside.
 				'''
+			PassiveSoundNever: Never Played
+			PassiveSoundRarely: Rare (Every 5m~)
+			PassiveSoundNormal: Normal (Every 2m~)
+			PassiveSoundCommon: Common (Every 1m~)
 			AbilitySoundLabel: Pet ability sounds
 			AbilitySoundTooltip:
 				'''
@@ -216,27 +237,6 @@ Mods: {
 				Sets the threshold for disabling short pet ability cooldowns
 				playing sounds upon refreshing, in Frames. (60 frames = 1 second)
 				Changing this has no effect if "Ability sound for short cooldowns" is enabled.
-				'''
-			MoreDifficultLabel: Player Handicap
-			MoreDifficultTooltip:
-				'''
-				Sets how much % lower damage the Player will deal and how much % extra damage the Player will receive.
-				This is implemented due to Pets Overhaul adding extra Powercreep into the game. Min 0, Max 20%.
-				Keep it at 0 if you wish it to be disabled. It's recommended it to be around 7 to 10%.
-				This won't take in effect until you obtain a Pet, since in that case this has no reason to be active.
-				'''
-			SwapCooldownLabel: Pet Swap cooldown
-			SwapCooldownTooltip:
-				'''
-				Enables Player to gain Oblivious Pet Debuff upon swapping a Pet.
-				Which prevents any Combat-related perks from being active during the time.
-				(Recommended to keep this on due to obvious balancing reasons.)
-				'''
-			PhantasmalDragonShootLabel: Phantasmal Dragon Fire Volley From Dragon
-			PhantasmalDragonShootTooltip:
-				'''
-				Enables Phantasmal Dragon's 3rd spell, Fireball Volley to be cast from
-				Dragon's Mouth (The Dragon Pet that follows you), rather than from the Player.
 				'''
 		}
 

@@ -124,13 +124,30 @@ Mods: {
 
 		Config: {
 			Personalization: Personalização
-			PlayerLeft: No Jogador, Ícone na Esquerda
-			PlayerRight: No Jogador, Ícone na Direita
-			HealthBarLeft: Perto da Barra de Vida, Ícone na Esquerda
-			HealthBarRight: Perto da Barra de Vida, Ícone na Direita
 			HeaderDisplay: Mostre Configurações Relacionadas
 			HeaderSound: Configurações de Audio Relacionadas
 			HeaderGameplay: Configurações de Jogatina
+			MoreDifficultLabel: Definir Desvantagem do Jogador
+			MoreDifficultTooltip:
+				'''
+				Define a porcentagem de redução de dano causado pelo jogador e o aumento de dano recebido.  
+				Isto foi implementado porque o Pets Overhaul adiciona um aumento de poder ao jogo. Mínimo: 0%, Máximo: 20%.  
+				Mantenha em 0% para desativar. O recomendado é entre 7% e 10%.  
+				Isso só terá efeito após obter um PET, pois, antes disso, não faz sentido estar ativo.  
+				'''
+			SwapCooldownLabel: Ativar Recarga de Troca de PET
+			SwapCooldownTooltip:
+				'''
+				Permite que o jogador receba o Debuff de PET Desatento ao trocar de Pet.  
+				Isto impede que quaisquer benefícios relacionados ao combate fiquem ativos durante esse período.  
+				(Recomendado manter ativado por razões óbvias de balanceamento.)  
+				'''
+			PhantasmalDragonShootLabel: Habilitar o feitiço de Rajada de Fogo do Dragão Fantasmal vindo do Dragão.
+			PhantasmalDragonShootTooltip:
+				'''
+				Habilita o 3º feitiço do Dragão Fantasmal, Rajada de Bolas de Fogo, para ser lançado da
+				boca do Dragão (O Pet Dragão que te segue), em vez de do Jogador.
+				'''
 			NoticeLabel: Ativar aviso do Pets Overhaul
 			NoticeTooltip:
 				'''
@@ -158,22 +175,26 @@ Mods: {
 				Opções da Barra de Vida funcionam melhor em monitores com resolução Full HD (1920x1080).
 				Mudar esse valor por meios externos pode causar problemas e erros.
 				'''
+			PlayerLeft: No Jogador, Ícone na Esquerda
+			PlayerRight: No Jogador, Ícone na Direita
+			HealthBarLeft: Perto da Barra de Vida, Ícone na Esquerda
+			HealthBarRight: Perto da Barra de Vida, Ícone na Direita
 			AbilityDisplayDisableLabel: Ativar Exibição do Tempo de Recarga da Habilidade
 			AbilityDisplayDisableTooltip:
 				'''
 				Habilita a Exibição do Tempo de Recarga da Habilidade. Se essa opção está desativada,
 				a exibição será forçada a não ocorrer, independente de outras opções relacionada a essa.
 				'''
-			ParticleNone: Nenhuma
-			ParticleLowered: Mínima
-			ParticleNormal: Normal
-			ParticleIncreased: Aumentada
-			DustAmountLabel: Quantidade de Poeira do Raio de Exibição Circular do PET
 			DustAmountTooltip:
 				'''
 				Modifica a quantidade de poeira que vai ser criada para a exibição de efeitos em area circular causados por PET's
 				Coloque em Nenhuma para desabilitar por completo. Editar esse valor por meios externos pode causar erros.
 				'''
+			ParticleNone: Nenhuma
+			ParticleLowered: Mínima
+			ParticleNormal: Normal
+			ParticleIncreased: Aumentada
+			DustAmountLabel: Quantidade de Poeira do Raio de Exibição Circular do PET
 			DustInsideBlocksLabel: Habilitar o Raio de Poeira Circular de PET Dentro de Blocos
 			DustInsideBlocksTooltip:
 				'''
@@ -188,12 +209,12 @@ Mods: {
 			HurtSoundTooltip: Habilita efeitos sonoros adicionados por pets quando o jogador recebe dano.
 			DeathSoundLabel: Habilita sons de morte personalizados
 			DeathSoundTooltip: Habilita sons de morte personalizados quando o jogador morre.
+			PassiveSoundLabel: Habilita sons passivos de pet
+			PassiveSoundTooltip: Habilita efeitos sonoros de pet que tocam aleatóriamente sem efeitos similar à efeitos sonoros de ambiente.
 			// PassiveSoundNever: Never Played
 			// PassiveSoundRarely: Rare (Every 5m~)
 			// PassiveSoundNormal: Normal (Every 2m~)
 			// PassiveSoundCommon: Common (Every 1m~)
-			PassiveSoundLabel: Habilita sons passivos de pet
-			PassiveSoundTooltip: Habilita efeitos sonoros de pet que tocam aleatóriamente sem efeitos similar à efeitos sonoros de ambiente.
 			AbilitySoundLabel: Habilita sons de habilidades
 			AbilitySoundTooltip:
 				'''
@@ -212,27 +233,6 @@ Mods: {
 				Define o limite para desabilitar os tempos de recarga curtos das habilidades dos pets.
 				reproduzindo sons ao atualizar, em Quadros. (60 quadros = 1 segundo)
 				Alterar isso não tem efeito se "Habilitar som do temporizador de habilidade curta" estiver ativado.
-				'''
-			MoreDifficultLabel: Definir Desvantagem do Jogador
-			MoreDifficultTooltip:
-				'''
-				Define a porcentagem de redução de dano causado pelo jogador e o aumento de dano recebido.  
-				Isto foi implementado porque o Pets Overhaul adiciona um aumento de poder ao jogo. Mínimo: 0%, Máximo: 20%.  
-				Mantenha em 0% para desativar. O recomendado é entre 7% e 10%.  
-				Isso só terá efeito após obter um PET, pois, antes disso, não faz sentido estar ativo.  
-				'''
-			SwapCooldownLabel: Ativar Recarga de Troca de PET
-			SwapCooldownTooltip:
-				'''
-				Permite que o jogador receba o Debuff de PET Desatento ao trocar de Pet.  
-				Isto impede que quaisquer benefícios relacionados ao combate fiquem ativos durante esse período.  
-				(Recomendado manter ativado por razões óbvias de balanceamento.)  
-				'''
-			PhantasmalDragonShootLabel: Habilitar o feitiço de Rajada de Fogo do Dragão Fantasmal vindo do Dragão.
-			PhantasmalDragonShootTooltip:
-				'''
-				Habilita o 3º feitiço do Dragão Fantasmal, Rajada de Bolas de Fogo, para ser lançado da
-				boca do Dragão (O Pet Dragão que te segue), em vez de do Jogador.
 				'''
 		}
 
