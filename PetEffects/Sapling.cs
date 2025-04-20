@@ -14,7 +14,7 @@ namespace PetsOverhaul.PetEffects
         public static List<int> PlanteraWeapon = [ItemID.VenusMagnum, ItemID.NettleBurst, ItemID.LeafBlower, ItemID.FlowerPow, ItemID.WaspGun, ItemID.Seedler, ItemID.GrenadeLauncher, ItemID.TheAxe, ItemID.Seedler];
         public static List<int> PlanteraProj = [ProjectileID.Pygmy, ProjectileID.Pygmy2, ProjectileID.Pygmy3, ProjectileID.Pygmy4, ProjectileID.FlowerPow, ProjectileID.SeedlerNut];
         public override int PetItemID => ItemID.Seedling;
-        public float planteraLifesteal = 0.03f;
+        public float planteraLifesteal = 0.019f;
         public float regularLifesteal = 0.015f;
         public float damagePenalty = 0.7f;
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
