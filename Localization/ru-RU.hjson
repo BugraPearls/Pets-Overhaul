@@ -923,7 +923,7 @@ Mods: {
 				  * Получите иммунитет ко всем типам урона на <immunityTime> секунд.
 				  * Наложите замедление на <slowAmount>%, Замешательство и Обжигающий холод на врагов в радиусе <range> блоков на <debuffTime> секунд.
 				'''
-			// DeerclopsPetItemStack: stored health percentage
+			// DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -936,7 +936,7 @@ Mods: {
 				- Если враг может умереть от вашего удара без эффекта ДОТ (урон со временем), он будет мгновенно убит.
 
 				'''
-			// SkeletronPetItemStack: shields available
+			// SkeletronPetItemStack: damage to be taken over time
 			SkeletronDeath1: <name> не смог(ла) справиться с проклятием Скелетрона.
 			SkeletronDeath2: <name> пережил(а) мучительную, медленную смерть.
 			SkeletronDeath3: пооооооолучил(а) по заслугам!!!
@@ -962,6 +962,7 @@ Mods: {
 				  * Щит остаётся активным в течение <shieldLifetime> секунд после получения урона, а затем исчезает.
 
 				'''
+			// SkeletronPrimePetItemStack: shields available
 			DestroyerPetItem:
 				'''
 				<class>
@@ -1139,7 +1140,7 @@ Mods: {
 				  * Может накапливаться до 10 раз.
 				  * Сбрасывается до 0, если стак не был получен в течение 4 секунд.
 				'''
-			// CarrotStack: bunnyhop stacks
+			// CarrotStack: bunny hop stacks
 		}
 
 		Buffs: {

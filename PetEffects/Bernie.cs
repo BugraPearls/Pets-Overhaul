@@ -19,6 +19,9 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassPrimary => PetClasses.Utility;
         public override PetClasses PetClassSecondary => PetClasses.Defensive;
         public override int PetAbilityCooldown => burnDrain;
+        public override int PetStackCurrent => EnemiesBurning;
+        public override int PetStackMax => maxBurning;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BerniePetItemStack");
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())

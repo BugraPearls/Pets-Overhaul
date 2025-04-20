@@ -942,7 +942,7 @@ Mods: {
 				 * Gain <immunityTime> seconds of immunity to all types.
 				 * Apply a <slowAmount>% slow, confusion and frostfire on enemies in a <range>-tile radius for <debuffTime> seconds.
 				'''
-			DeerclopsPetItemStack: stored health percentage
+			DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -954,7 +954,7 @@ Mods: {
 				 * They receive stored damage over 4 seconds.
 				- If the enemy can die to your hit without the DOT, they instantly get executed.
 				'''
-			SkeletronPetItemStack: shields available
+			SkeletronPetItemStack: damage to be taken over time
 			SkeletronDeath1: <name> could not contain Skeletron's curse.
 			SkeletronDeath2: <name> went through a painful, slow death.
 			SkeletronDeath3: geeettttttt dunked on!!!
@@ -978,6 +978,7 @@ Mods: {
 				 * A shield gets recovered every <shieldCooldown> seconds. 
 				 * A shield persists for <shieldLifetime> seconds after receiving damage, then disappears.
 				'''
+			SkeletronPrimePetItemStack: shields available
 			DestroyerPetItem:
 				'''
 				<class>
@@ -1165,7 +1166,7 @@ Mods: {
 				 * Can stack up to 10 times.
 				 * Resets to 0 stacks if haven't gained a stack in 4 seconds.
 				'''
-			CarrotStack: bunnyhop stacks
+			CarrotStack: bunny hop stacks
 		}
 
 		Buffs: {

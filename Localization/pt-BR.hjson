@@ -940,7 +940,7 @@ Mods: {
 				 * Ganhe <immunityTime> segundos de imunidade a todos os tipos.
 				 * Aplique um efeito de lentidão de <slowAmount>%, confusão e frostfire em inimigos em um raio de <range> blocos por <debuffTime> segundos.
 				'''
-			// DeerclopsPetItemStack: stored health percentage
+			// DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -952,7 +952,7 @@ Mods: {
 				 * Eles recebem o dano armazenado ao longo de 4 segundos.
 				- Se seu golpe causa mais dano que a vida restante de um inimigo, ele é instantaneamente executado.
 				'''
-			// SkeletronPetItemStack: shields available
+			// SkeletronPetItemStack: damage to be taken over time
 			SkeletronDeath1: <name> não pôde conter a maldição do Esqueletron
 			SkeletronDeath2: <name> faleceu de uma forma bem lenta e dolorosa
 			SkeletronDeath3: eeeeeeeeee é cesta!!!
@@ -976,6 +976,7 @@ Mods: {
 				 * Um escudo se recupera a cada <shieldCooldown> segundos.
 				 * Um escudo persiste por <shieldLifetime> segundos após receber dano, depois desaparece.
 				'''
+			// SkeletronPrimePetItemStack: shields available
 			DestroyerPetItem:
 				'''
 				<class>
@@ -1166,7 +1167,7 @@ Mods: {
 				 * Pode acumular até 10 vezes.
 				 * Redefine para 0 stacks se não ganhar um stack em 4 segundos.
 				'''
-			// CarrotStack: bunnyhop stacks
+			// CarrotStack: bunny hop stacks
 		}
 
 		Buffs: {

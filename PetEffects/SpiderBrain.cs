@@ -17,6 +17,9 @@ namespace PetsOverhaul.PetEffects
 
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override int PetAbilityCooldown => cdToAddToPool;
+        public override int PetStackCurrent => lifePool;
+        public override int PetStackMax => (int)(Player.statLifeMax2 * lifePoolMaxPerc);
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BrainOfCthulhuPetItemStack");
         public override void ExtraPreUpdate()
         {
             if (PetIsEquipped(false))

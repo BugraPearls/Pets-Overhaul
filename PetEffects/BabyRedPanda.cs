@@ -30,12 +30,16 @@ namespace PetsOverhaul.PetEffects
         public int alertEnemiesMax = 6;
         private int alertTimer = 0;
         public override int PetAbilityCooldown => alertCd;
+        public override int PetStackCurrent => alertEnemies;
+        public override int PetStackMax => alertEnemiesMax;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BambooLeafStack");
         public override void ExtraPreUpdate()
         {
             alertTimer--;
             if (alertTimer <= 0)
             {
                 alertTimer = 0;
+                alertEnemies = 0;
             }
         }
         public override void PostUpdateMiscEffects()

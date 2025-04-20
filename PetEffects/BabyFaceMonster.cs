@@ -18,8 +18,10 @@ namespace PetsOverhaul.PetEffects
         public int stage1regen = 4;
         public int stage2regen = 15;
         public float stage2ShieldMult = 0.05f;
-        public int currentRegen = 0; //Added for UI
-
+        public int currentRegen = 0;
+        public override int PetStackCurrent => currentRegen;
+        public override int PetStackMax => 0;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BoneRattleStack");
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override void PreUpdateBuffs() //Since inCombatTimerMax is reset in ResetEffects(), we set the desired inCombatTimerMax here.
         {
@@ -69,10 +71,12 @@ namespace PetsOverhaul.PetEffects
                 {
                     Pet.AddShield((int)(Player.statLifeMax2 * stage2ShieldMult), 1);
                     Player.lifeRegen += GlobalPet.Randomizer((int)(stage2regen * 100 * Pet.petHealMultiplier));
+                    currentRegen = stage2regen;
                 }
                 else if (Pet.inCombatTimer <= Pet.inCombatTimerMax - (int)(stage1time * (1 / (1 + Pet.abilityHaste))))
                 {
                     Player.lifeRegen += GlobalPet.Randomizer((int)(stage1regen * 100 * Pet.petHealMultiplier));
+                    currentRegen = stage1regen;
                 }
             }
         }

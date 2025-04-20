@@ -893,7 +893,7 @@ Mods: {
 				 - 对<range>格范围内的敌人造成<debuffTime>秒的<slowAmount>%减速，困惑和霜冻
 				 - 此效果有30秒冷却时间
 				'''
-			// DeerclopsPetItemStack: stored health percentage
+			// DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:
 				'''
 				<class>
@@ -903,7 +903,7 @@ Mods: {
 				 - 受击视为闪避，所以不受击退
 				敌怪会受到<dealtMult>倍伤害，并将其分散在4秒内缓慢生效
 				'''
-			// SkeletronPetItemStack: shields available
+			// SkeletronPetItemStack: damage to be taken over time
 			SkeletronDeath1: <name>无法承受骷髅王的诅咒
 			SkeletronDeath2: <name>经历了痛苦而缓慢的死亡。
 			SkeletronDeath3: 扣扣扣扣扣扣篮成功！！！
@@ -926,6 +926,7 @@ Mods: {
 				每<shieldCooldown>秒恢复一个护盾
 				护盾在受到伤害后<shieldLifetime>秒消失
 				'''
+			// SkeletronPrimePetItemStack: shields available
 			DestroyerPetItem:
 				'''
 				<class>
@@ -1103,7 +1104,7 @@ Mods: {
 				 - 最多叠加10层
 				 - 4秒不跳跃后重置
 				'''
-			// CarrotStack: bunnyhop stacks
+			// CarrotStack: bunny hop stacks
 		}
 
 		Buffs: {

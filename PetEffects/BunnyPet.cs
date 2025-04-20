@@ -15,8 +15,12 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
         private int bunnyTimer = 0;
         public int bunnyStack = 0;
+        public int maxStack = 10;
         public float jumpPerStk = 0.02f;
         public float spdPerStk = 0.005f;
+        public override int PetStackCurrent => bunnyStack;
+        public override int PetStackMax => maxStack;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.CarrotStack");
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())
@@ -33,9 +37,9 @@ namespace PetsOverhaul.PetEffects
                     bunnyTimer = 240;
                     Pet.jumpRegistered = true;
                 }
-                if (bunnyStack > 10)
+                if (bunnyStack > maxStack)
                 {
-                    bunnyStack = 10;
+                    bunnyStack = maxStack;
                 }
                 if (bunnyTimer <= 0)
                 {

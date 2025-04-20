@@ -22,7 +22,18 @@ namespace PetsOverhaul.PetEffects
         public int applyTime = 300;
         public int immuneTime = 180;
         public int cooldown = 1800;
-
+        public int CurrentTotalDmgStored
+        {
+            get
+            {
+                int dmg = 0;
+                deerclopsTakenDamage.ForEach(x => dmg += x.storedDamage);
+                return dmg;
+            }
+        }
+        public override int PetStackCurrent => CurrentTotalDmgStored;
+        public override int PetStackMax => (int)(Player.statLifeMax2 * healthThreshold);
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DeerclopsPetItemStack");
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -38,15 +49,7 @@ namespace PetsOverhaul.PetEffects
             {
                 if (deerclopsTakenDamage.Count > 0)
                 {
-                    for (int i = 0; i < deerclopsTakenDamage.Count; i++) //Pet will be reworked Post 3.0 update
-                    {
-                        (int storedDamage, int timer) value = deerclopsTakenDamage[i];
-                        value.timer--;
-                        deerclopsTakenDamage[i] = value;
-                    }
-                    deerclopsTakenDamage.RemoveAll(x => x.timer <= 0);
-                    int totalDamage = 0;
-                    deerclopsTakenDamage.ForEach(x => totalDamage += x.storedDamage);
+                    int totalDamage = CurrentTotalDmgStored;
                     if (totalDamage > Player.statLifeMax2 * healthThreshold && Pet.timer <= 0)
                     {
                         Pet.timer = Pet.timerMax;
@@ -69,6 +72,13 @@ namespace PetsOverhaul.PetEffects
                         }
                         Player.SetImmuneTimeForAllTypes(immuneTime);
                     }
+                    for (int i = 0; i < deerclopsTakenDamage.Count; i++)
+                    {
+                        (int storedDamage, int timer) value = deerclopsTakenDamage[i];
+                        value.timer--;
+                        deerclopsTakenDamage[i] = value;
+                    }
+                    deerclopsTakenDamage.RemoveAll(x => x.timer <= 0);
                 }
             }
         }

@@ -18,7 +18,16 @@ namespace PetsOverhaul.PetEffects
         public float enemyDamageIncrease = 1.2f;
         public float playerDamageTakenSpeed = 4f;
         public float playerTakenMult = 1.00f;
-
+        public override int PetStackCurrent
+        {
+            get {
+            int val = 0;
+                skeletronTakenDamage.ForEach(x => val += x.Item1);
+                return val;
+            }
+        }
+        public override int PetStackMax => 0;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronPetItemStack");
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override void ExtraPreUpdate()
         {

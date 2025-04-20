@@ -66,7 +66,7 @@ namespace PetsOverhaul.NPCs
             GlobalPet.CircularDustEffect(NPC.Center, DustID.BlueMoss, radius, 10, 1);
             foreach (NPC npc in Main.ActiveNPCs)
             {
-                if (NPC.Distance(npc.Center) < radius)
+                if (NPC.Distance(npc.Center) < radius && npc.friendly == false)
                 {
                     NpcPet.AddSlow(new NpcPet.PetSlow(slow, slowDuration, PetSlowIDs.PrinceSlime), npc);
                     npc.AddBuff(BuffID.Slimed, slimyDuration);

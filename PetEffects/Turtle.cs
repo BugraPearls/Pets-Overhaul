@@ -27,6 +27,9 @@ namespace PetsOverhaul.PetEffects
         public float dmgReflect = 1.1f;
         public float dmgReflectProjectile = 0.6f;
         public override int PetAbilityCooldown => shellHardenCd;
+        public override int PetStackCurrent => currentStacks;
+        public override int PetStackMax => shellHardenStacks;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SeaweedStack");
         public override void ExtraPreUpdate()
         {
             timer--;

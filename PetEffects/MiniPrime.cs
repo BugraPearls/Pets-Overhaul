@@ -21,9 +21,14 @@ namespace PetsOverhaul.PetEffects
         private int oldShieldCount = 0;
         public bool shieldedStatBoostActive = false;
 
+        public int howManyShieldsAvailable = 0; //Purely added for UI display
+
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override PetClasses PetClassSecondary => PetClasses.Offensive;
         public override int PetAbilityCooldown => shieldRecovery;
+        public override int PetStackCurrent => howManyShieldsAvailable;
+        public override int PetStackMax => 5;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronPrimePetItemStack");
         public override void ExtraPreUpdate()
         {
             shieldedStatBoostActive = false;
@@ -71,6 +76,9 @@ namespace PetsOverhaul.PetEffects
                 {
                     AddShield();
                 }
+
+                howManyShieldsAvailable = (int)((Pet.timerMax - Pet.timer) / (Pet.timerMax * 0.2f));
+
                 if (oldShieldCount > shieldIndex)
                 {
                     lastShield = Pet.petShield[shieldIndex].shieldAmount;

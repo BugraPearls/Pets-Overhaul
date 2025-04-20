@@ -26,7 +26,22 @@ namespace PetsOverhaul.PetEffects
         public int radius = 100;
         public int cooldown = 900;
         public const int lifetimeOfServant = 7200;
+        public int howManyIsAlive = 0;
         public override int PetAbilityCooldown => cooldown;
+        public override int PetStackCurrent => howManyIsAlive;
+        public override int PetStackMax => 0;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.KingSlimePetItemStack");
+        public override void ExtraPreUpdate()
+        {
+            howManyIsAlive = 0;
+            foreach (NPC npc in Main.ActiveNPCs)
+            {
+                if (npc.type == ModContent.NPCType<SlimeServant>() && npc.GetGlobalNPC<SlimeServantOwner>().Owner == Player.whoAmI)
+                {
+                    howManyIsAlive++;
+                }
+            }    
+        }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
