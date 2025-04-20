@@ -73,17 +73,11 @@ Mods: {
 			FAQ:
 				'''
 				Q: Will there be crossmod content? & Is Pets Overhaul compatible with X mod?
-				A: Currently Calamity Addon is out with the name: 'Pets Overhaul: Calamity Addon'! Next in the plans is the Thorium Mod!
-				Q: Is there any way of increasing rolls of Light Pets?
-				A: Currently, no. There may be a feature added in the future and it is planned to have use of high rolls, so it's advised to keep your max rolls.
-				Q: How do I get X Pet?
-				A: Refer to Wikis or an in-game tool to figure out how to obtain a certain Pet, vanilla Wiki can be a useful tool for this.
+				A: Currently Calamity Addon is out with the name: 'Pets Overhaul: Calamity Addon'! There may be more in the future.
 				Q: Why am I randomly getting fishes, crates, etc. in my inventory?
 				A: 99% due to your autofishing mod catching fishes procs your Fishing Fortune. (refer to /pet fortune for more info)
-				Q: Why is my Pet Effects not working? & How do Pet Effects become activated?
-				A: Make sure the Pet effects you want to take in place are in the Pet slot, which is located in the 'Equipment' section, on top of your Helmet slot.
 				Q: Is there a way for me to see Up-To-Date Pet effects added by Pets Overhaul?
-				A: Use /pet pets all or /pet class all to have all of the Pets added by Pets Overhaul shown to you, as you can hover over them, you can see their up to date effects.
+				A: Use /pet pets all and /pet light to have all of the Pets added by Pets Overhaul shown to you. A Wiki exists, but its mostly empty.
 				'''
 			FortuneInfo:
 				'''
