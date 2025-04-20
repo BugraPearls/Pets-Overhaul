@@ -24,6 +24,10 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.timer <= 0)
             {
+                if (cooldownStarted == true) //If Cooldown has been started (if wings was used) and timer has hit 0, then Wing Time is set to max. Without this, its bugged to not give wing time off cooldown if Wing was used halfway.
+                {
+                    Player.wingTime = fuelMax;
+                }
                 cooldownStarted = false;
                 harpyFlight = fuelMax;
             }
