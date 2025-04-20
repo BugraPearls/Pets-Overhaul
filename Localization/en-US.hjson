@@ -25,9 +25,7 @@ Mods: {
 			KeybindMissing: Keybind Not Registered
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.4.3, latest changes: Pet Food now can be crafted, and found by shaking Trees]
-				[c/90C2AA:Balance changes & countless bug fixes, system improvements, Census Mod Support for Pet Tamer NPC.]
-				[c/90C2AA:Major Chinese, Brazillian and Russian Translation updates, by: ROH, Erstarisk and Teokai respectively.]
+				[c/90C2AA:Pets Overhaul 3.4.3, latest changes: Added Pet Resource/Stack UI Text Display, improved & simplified Config options]
 				[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 				'''
