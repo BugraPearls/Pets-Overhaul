@@ -886,6 +886,7 @@ Mods: {
 				'''
 			EocEnrage: ENFURECIDO!
 			EocCalm: Aliviado.
+			// EyeOfCthulhuPetItemStack: rage points
 			BrainOfCthulhuPetItem:
 				'''
 				<class>

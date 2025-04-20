@@ -32,6 +32,9 @@ namespace PetsOverhaul.PetEffects
         public int dashFrameReduce = 10;
         public float forcedEnrageShield = 0.1f;
         public override int PetAbilityCooldown => phaseCd;
+        public override int PetStackCurrent => ragePoints;
+        public override int PetStackMax => 0;
+        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.EyeOfCthulhuPetItemStack");
         public override void ExtraPreUpdate()
         {
             if (eocTimer >= -1)

@@ -845,6 +845,7 @@ Mods: {
 				'''
 			EocEnrage: 怒了！
 			EocCalm: 冷静下来了
+			// EyeOfCthulhuPetItemStack: rage points
 			BrainOfCthulhuPetItem:
 				'''
 				<class>

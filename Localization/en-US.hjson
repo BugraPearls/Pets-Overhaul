@@ -880,6 +880,7 @@ Mods: {
 				'''
 			EocEnrage: ENRAGED!
 			EocCalm: Calmed Down.
+			EyeOfCthulhuPetItemStack: rage points
 			BrainOfCthulhuPetItem:
 				'''
 				<class>
@@ -888,7 +889,6 @@ Mods: {
 				  and when the pool is empty, [c/f8baba:you cannot lifesteal] before it has health in it again.
 				 * Maximum amount pool contains is equal to <maxPool>% of your max health.
 				 * Pool recovers +1 health every <healthRecovery> second.
-				- Current amount of health in the pool that can be recovered: <pool>
 				'''
 			BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
