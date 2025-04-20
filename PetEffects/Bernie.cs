@@ -92,8 +92,8 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BerniePetItem")
                 .Replace("<burnRange>", Math.Round(bernie.bernieRange / 16f, 2).ToString())
-                .Replace("<burnDrainMana>", Math.Round(bernie.burnDrain * bernie.manaDrain * 0.05f, 2).ToString())
-                .Replace("<burnDrainHealth>", Math.Round(bernie.burnDrain * bernie.healthDrain * 0.05f, 2).ToString())
+                .Replace("<burnDrainMana>", Math.Round(bernie.burnDrain * bernie.manaDrain * 0.005f, 2).ToString())
+                .Replace("<burnDrainHealth>", Math.Round(bernie.burnDrain * bernie.healthDrain * 0.005f, 2).ToString())
                 .Replace("<maxDrain>", bernie.maxBurning.ToString());
     }
 }
