@@ -55,8 +55,8 @@ namespace PetsOverhaul.Config
         [BackgroundColor(35, 120, 54, 190)]
         public bool EnableModNotice { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.DisableTooltipToggleLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.DisableTooltipToggleTooltip")]
+        [LabelKey("$Mods.PetsOverhaul.Config.TooltipToggleLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.TooltipToggleTooltip")]
         [DefaultValue(false)]
         [BackgroundColor(35, 120, 54, 190)]
         public bool EnableTooltipToggle { get; set; }
@@ -69,14 +69,14 @@ namespace PetsOverhaul.Config
         [SliderColor(120, 35, 54, 125)]
         public ShieldPosition ShieldLocation { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.AbilityDisplayDisableLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.AbilityDisplayDisableTooltip")]
+        [LabelKey("$Mods.PetsOverhaul.Config.CooldownDisplayLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.CooldownDisplayTooltip")]
         [DefaultValue(true)]
         [BackgroundColor(35, 120, 54, 190)]
         public bool ShowAbilityDisplay { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.AbilityDisplayLocationLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.AbilityDisplayLocationTooltip")]
+        [LabelKey("$Mods.PetsOverhaul.Config.CooldownDisplayLocationLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.CooldownDisplayLocationTooltip")]
         [DefaultValue(typeof(Vector2), "0.76, 0.73")]
         [BackgroundColor(35, 120, 54, 190)]
         public Vector2 AbilityDisplayPos { get; set; }

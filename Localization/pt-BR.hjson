@@ -160,8 +160,8 @@ Mods: {
 				Habilitar mensagens enviadas ao entrar no mundo quando;
 				Um addon oficial (Conteúdo entre mods) do Pets Overhaul de outro Mod existe, mas não foi ativado.
 				'''
-			DisableTooltipToggleLabel: Habilitar dicas de ferramentas de Pet/Item como alternáveis
-			DisableTooltipToggleTooltip:
+			TooltipToggleLabel: Habilitar dicas de ferramentas de Pet/Item como alternáveis
+			TooltipToggleTooltip:
 				'''
 				Habilitar um sistema onde as dicas sobre os efeitos em Pets do Pet Overhaul
 				apenas fiquem visíveis quando uma tecla registrada por você seja pressionada.
@@ -179,14 +179,14 @@ Mods: {
 			PlayerRight: No Jogador, Ícone na Direita
 			HealthBarLeft: Perto da Barra de Vida, Ícone na Esquerda
 			HealthBarRight: Perto da Barra de Vida, Ícone na Direita
-			AbilityDisplayDisableLabel: Ativar Exibição do Tempo de Recarga da Habilidade
-			AbilityDisplayDisableTooltip:
+			CooldownDisplayLabel: Ativar Exibição do Tempo de Recarga da Habilidade
+			CooldownDisplayTooltip:
 				'''
 				Habilita a Exibição do Tempo de Recarga da Habilidade. Se essa opção está desativada,
 				a exibição será forçada a não ocorrer, independente de outras opções relacionada a essa.
 				'''
-			// AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
-			/* AbilityDisplayLocationTooltip:
+			// CooldownDisplayLocationLabel: Pet Ability Cooldown UI Position
+			/* CooldownDisplayLocationTooltip:
 				'''
 				Determines where on your screen your Pet Ability Cooldown UI will be at.
 				The selected position will be the upper-left corner of the UI.

@@ -152,8 +152,8 @@ Mods: {
 				Enable message sent upon logging into the world where;
 				An official addon (crossmod) of Pets Overhaul of a Mod exists but is not loaded.
 				'''
-			DisableTooltipToggleLabel: Toggleable tooltips
-			DisableTooltipToggleTooltip:
+			TooltipToggleLabel: Toggleable tooltips
+			TooltipToggleTooltip:
 				'''
 				Enables the system where Pets Overhaul effects on Pet Item tooltips to be
 				only visible while your set Keybind is held. (You need to assign a keybinding manually)
@@ -169,15 +169,15 @@ Mods: {
 			PlayerRight: On the Player, Icon on the right
 			HealthBarLeft: Next to the Healthbar, Icon on the left
 			HealthBarRight: Next to the Healthbar, Icon on the right
-			AbilityDisplayDisableLabel: Pet Ability Cooldown UI
-			AbilityDisplayDisableTooltip:
+			CooldownDisplayLabel: Pet Ability Cooldown UI
+			CooldownDisplayTooltip:
 				'''
 				Enables the UI Text where it shows current remaining & base
 				cooldown of abilities that uses a cooldown by your Pet.
 				Only visible if current active Pet has an ability with a cooldown.
 				'''
-			AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
-			AbilityDisplayLocationTooltip:
+			CooldownDisplayLocationLabel: Pet Ability Cooldown UI Position
+			CooldownDisplayLocationTooltip:
 				'''
 				Determines where on your screen your Pet Ability Cooldown UI will be at.
 				The selected position will be the upper-left corner of the UI.

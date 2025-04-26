@@ -154,8 +154,8 @@ Mods: {
 				在启用灾厄模组但没有启用对应的联动附属模组时
 				启用进入世界时的提示
 				'''
-			DisableTooltipToggleLabel: 可开关宠物/物品提示
-			DisableTooltipToggleTooltip: 使宠物大修的额外宠物工具提示在按住按键时才显示（需要在控件中分配按键）
+			TooltipToggleLabel: 可开关宠物/物品提示
+			TooltipToggleTooltip: 使宠物大修的额外宠物工具提示在按住按键时才显示（需要在控件中分配按键）
 			TooltipToggleInGame: 按住<keybind>键以显示宠物提示
 			ShieldLocationLabel: 宠物护盾位置
 			ShieldLocationTooltip:
@@ -167,14 +167,14 @@ Mods: {
 			PlayerRight: 玩家头顶，图标在右边
 			HealthBarLeft: 生命值旁，图标在左边
 			HealthBarRight: 生命值旁，图标在右边
-			AbilityDisplayDisableLabel: 显示宠物技能冷却
-			AbilityDisplayDisableTooltip:
+			CooldownDisplayLabel: 显示宠物技能冷却
+			CooldownDisplayTooltip:
 				'''
 				启用宠物技能冷却显示
 				关闭此选项会完全禁用技能冷却显示
 				'''
-			// AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
-			/* AbilityDisplayLocationTooltip:
+			// CooldownDisplayLocationLabel: Pet Ability Cooldown UI Position
+			/* CooldownDisplayLocationTooltip:
 				'''
 				Determines where on your screen your Pet Ability Cooldown UI will be at.
 				The selected position will be the upper-left corner of the UI.

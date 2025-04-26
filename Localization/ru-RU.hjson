@@ -154,8 +154,8 @@ Mods: {
 				Включает/отключает сообщение, отправляемое Pets Overhaul в чат при входе в мир;
 				Официальное дополнение (кросс-мод) существует, но не загружен.
 				'''
-			DisableTooltipToggleLabel: Переключение всплывающих подсказок питомцев/предметов
-			DisableTooltipToggleTooltip:
+			TooltipToggleLabel: Переключение всплывающих подсказок питомцев/предметов
+			TooltipToggleTooltip:
 				'''
 				Включает/отключает систему, где эффекты Pets Overhaul для всплывающих подсказок предметов питомцев
 				отображаются только при удерживании назначенной клавиши. (Необходимо вручную назначить клавишу)
@@ -171,14 +171,14 @@ Mods: {
 			PlayerRight: Возле игрока, иконка справа
 			HealthBarLeft: Возле  здоровья, иконка слева
 			HealthBarRight: Возле здоровья, иконка справа
-			AbilityDisplayDisableLabel: Отображение перезарядки способностей
-			AbilityDisplayDisableTooltip:
+			CooldownDisplayLabel: Отображение перезарядки способностей
+			CooldownDisplayTooltip:
 				'''
 				Полностью включает/отключает отображение перезарядки способностей, оно не будет отображаться ни при каких условиях.
 				Все другие параметры, касающиеся отображения способностей, не будут иметь эффекта.
 				'''
-			// AbilityDisplayLocationLabel: Pet Ability Cooldown UI Position
-			/* AbilityDisplayLocationTooltip:
+			// CooldownDisplayLocationLabel: Pet Ability Cooldown UI Position
+			/* CooldownDisplayLocationTooltip:
 				'''
 				Determines where on your screen your Pet Ability Cooldown UI will be at.
 				The selected position will be the upper-left corner of the UI.
