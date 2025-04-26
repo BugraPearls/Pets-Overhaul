@@ -112,7 +112,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Parrot>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ParrotCracker")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ParrotCracker")
                 .Replace("<projChance>", parrot.projChance.ToString())
                 .Replace("<projDamage>", parrot.projDamage.ToString())
                 .Replace("<meleeChance>", parrot.meleeChance.ToString())

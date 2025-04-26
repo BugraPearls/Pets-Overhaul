@@ -279,16 +279,16 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public readonly string StatSummaryLine()
         {
-            return PetTextsColors.LightPetRarityColorConvert(isInt ? (Language.GetTextValue("Mods.PetsOverhaul.Misc.+") + CurrentStatInt.ToString()) : (Math.Round(CurrentStatFloat * 100, 2).ToString() + Language.GetTextValue("Mods.PetsOverhaul.Misc.%")), CurrentRoll, MaxRoll) + " " +
-                Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.Quality") + " " + PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
+            return PetTextsColors.LightPetRarityColorConvert(isInt ? (PetTextsColors.LocVal("Misc.+") + CurrentStatInt.ToString()) : (Math.Round(CurrentStatFloat * 100, 2).ToString() + PetTextsColors.LocVal("Misc.%")), CurrentRoll, MaxRoll) + " " +
+                PetTextsColors.LocVal("LightPetTooltips.Quality") + " " + PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
         /// <summary>
         /// Use this overload if Summary line is intended to show the current stat differently than what StatSummaryLine() does.
         /// </summary>
         public readonly string StatSummaryLine(string currentStat)
         {
-            return PetTextsColors.LightPetRarityColorConvert(currentStat, CurrentRoll, MaxRoll) + " " + Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.Quality") + " " +
-                PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
+            return PetTextsColors.LightPetRarityColorConvert(currentStat, CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.Quality") + " " +
+                PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
         /// <summary>
         /// Returns the stat's Base and Per Roll stats, alongside required spacings, multiplication and operators.
@@ -296,15 +296,15 @@ namespace PetsOverhaul.Systems
         public readonly string BaseAndPerQuality()
         {
             int mult = isInt ? 1 : 100;
-            return (BaseStat == 0 ? "" : (Math.Round(BaseStat * mult, 2).ToString() + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.+") + " ")) + Math.Round(StatPerRoll * mult, 2).ToString()
-                + (isInt ? "" : Language.GetTextValue("Mods.PetsOverhaul.Misc.%")) + " " + Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.Per");
+            return (BaseStat == 0 ? "" : (Math.Round(BaseStat * mult, 2).ToString() + " " + PetTextsColors.LocVal("Misc.+") + " ")) + Math.Round(StatPerRoll * mult, 2).ToString()
+                + (isInt ? "" : PetTextsColors.LocVal("Misc.%")) + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
         }
         /// <summary>
         /// Use this overload if displayed values are intended to be displayed in a different way than BaseAndPerQuality().
         /// </summary>
         public readonly string BaseAndPerQuality(string perRoll, string baseRoll = "")
         {
-            return (BaseStat == 0 ? "" : (baseRoll + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.+") + " ")) + perRoll + " " + Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.Per");
+            return (BaseStat == 0 ? "" : (baseRoll + " " + PetTextsColors.LocVal("Misc.+") + " ")) + perRoll + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
         }
     }
 }

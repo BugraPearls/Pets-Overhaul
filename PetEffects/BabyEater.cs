@@ -49,7 +49,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyEater>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.EatersBone")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EatersBone")
                 .Replace("<moveSpd>", Math.Round(babyEater.moveSpd * 100, 2).ToString())
                 .Replace("<jumpSpd>", Math.Round(babyEater.jumpSpd * 100, 2).ToString())
                 .Replace("<fallRes>", babyEater.fallDamageTile.ToString());

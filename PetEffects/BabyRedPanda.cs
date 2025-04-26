@@ -32,7 +32,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => alertCd;
         public override int PetStackCurrent => alertEnemies;
         public override int PetStackMax => alertEnemiesMax;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BambooLeafStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BambooLeafStack");
         public override void ExtraPreUpdate()
         {
             alertTimer--;
@@ -110,7 +110,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyRedPanda>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BambooLeaf")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BambooLeaf")
                 .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<alertAs>", Math.Round(babyRedPanda.alertAs * 100, 2).ToString())
                 .Replace("<alertMs>", Math.Round(babyRedPanda.alertMs * 100, 2).ToString())

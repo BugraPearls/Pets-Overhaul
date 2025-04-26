@@ -29,7 +29,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => shellHardenCd;
         public override int PetStackCurrent => currentStacks;
         public override int PetStackMax => shellHardenStacks;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SeaweedStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.SeaweedStack");
         public override void ExtraPreUpdate()
         {
             timer--;
@@ -104,7 +104,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip =>
-            Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.Seaweed")
+            PetTextsColors.LocVal("PetItemTooltips.Seaweed")
                 .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<hitCount>", turtle.shellHardenStacks.ToString())
                 .Replace("<shellDuration>", Math.Round(turtle.shellHardenDuration / 60f, 2).ToString())

@@ -196,7 +196,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BlueChicken>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlueEgg")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BlueEgg")
                 .Replace("<plantChance>", blueChicken.plantChance.ToString())
                 .Replace("<rarePlantChance>", blueChicken.rarePlantChance.ToString())
                 .Replace("<choppableChance>", blueChicken.treeChance.ToString())

@@ -46,7 +46,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<GlitteryButterfly>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BedazzledNectar")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BedazzledNectar")
                         .Replace("<flight>", Math.Round(glitteryButterfly.wingTime / 60f, 2).ToString())
                         .Replace("<percFlight>", Math.Round(glitteryButterfly.currentWingPercIncr * 100, 2).ToString())
                         .Replace("<healthNerf>", Math.Round(glitteryButterfly.healthPenalty * 100, 2).ToString());

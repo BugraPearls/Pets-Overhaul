@@ -36,7 +36,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<PlanteraSeedling>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.PlanteraPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.PlanteraPetItem")
                         .Replace("<maxAmount>", Math.Round(planteraSeedling.secondMultiplier * 100 + 100, 2).ToString());
     }
 }

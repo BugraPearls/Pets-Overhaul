@@ -89,7 +89,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SharkPup>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SharkBait")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SharkBait")
                         .Replace("<fishingPower>", sharkPup.fishingPow.ToString())
                         .Replace("<seaCreatureDmg>", sharkPup.seaCreatureDamage.ToString())
                         .Replace("<seaCreatureResist>", sharkPup.seaCreatureResist.ToString())

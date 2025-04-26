@@ -22,7 +22,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassPrimary => PetClasses.Melee;
         public override int PetStackCurrent => minotaurStack;
         public override int PetStackMax => maxStack;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.TartarSauceStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.TartarSauceStack");
         public override int PetAbilityCooldown => minotaurCd;
         public override void ExtraPreUpdate()
         {
@@ -94,7 +94,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<MiniMinotaur>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.TartarSauce")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.TartarSauce")
                         .Replace("<cooldown>", Math.Round(miniMinotaur.minotaurCd / 60f, 2).ToString())
                         .Replace("<maxStack>", miniMinotaur.maxStack.ToString())
                         .Replace("<oocTimer>", Math.Round(miniMinotaur.oocMaxDuration / 60f, 2).ToString())

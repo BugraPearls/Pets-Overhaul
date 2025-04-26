@@ -21,7 +21,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => burnDrain;
         public override int PetStackCurrent => EnemiesBurning;
         public override int PetStackMax => maxBurning;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BerniePetItemStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BerniePetItemStack");
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())
@@ -90,7 +90,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Bernie>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BerniePetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BerniePetItem")
                 .Replace("<burnRange>", Math.Round(bernie.bernieRange / 16f, 2).ToString())
                 .Replace("<burnDrainMana>", Math.Round(bernie.burnDrain * bernie.manaDrain * 0.005f, 2).ToString())
                 .Replace("<burnDrainHealth>", Math.Round(bernie.burnDrain * bernie.healthDrain * 0.005f, 2).ToString())

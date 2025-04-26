@@ -89,7 +89,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<EaterOfWorms>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.EaterOfWorldsPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EaterOfWorldsPetItem")
                        .Replace("<miningSpeed>", Math.Round(eaterOfWorms.nonOreSpeed * 100, 2).ToString())
                        .Replace("<multipleBreakChance>", eaterOfWorms.tileBreakSpreadChance.ToString())
                        .Replace("<width>", eaterOfWorms.tileBreakXSpread.ToString())

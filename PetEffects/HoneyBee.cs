@@ -97,7 +97,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<HoneyBee>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.QueenBeePetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.QueenBeePetItem")
                        .Replace("<extraHeal>", Math.Round(honeyBee.selfPotionIncrease * 100, 2).ToString())
                        .Replace("<range>", Math.Round(honeyBee.range / 16f, 2).ToString())
                        .Replace("<bottledHealth>", Math.Round(honeyBee.bottledHealth * 100, 2).ToString())

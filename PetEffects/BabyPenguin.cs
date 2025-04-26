@@ -69,7 +69,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyPenguin>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.Fish")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Fish")
                 .Replace("<fp>", babyPenguin.regularFish.ToString())
                 .Replace("<moreFp>", babyPenguin.snowAndOceanPower.ToString())
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())

@@ -65,7 +65,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyDinosaur>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.AmberMosquito")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.AmberMosquito")
                 .Replace("<oreChance>", Math.Round(babyDinosaur.chance / 10f, 2).ToString());
 
     }

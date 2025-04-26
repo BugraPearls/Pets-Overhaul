@@ -131,10 +131,10 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyTruffle>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.StrangeGlowingMushroom")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.StrangeGlowingMushroom")
                 .Replace("<buffRecover>", Math.Round(babyTruffle.buffIncrease / 60f, 2).ToString())
                 .Replace("<cooldown>", Math.Round(babyTruffle.shroomPotionCd / 60f, 2).ToString())
                 .Replace("<intIncr>", babyTruffle.increaseInt.ToString())
-                .Replace("<hiddenTip>", PetKeybinds.PetTooltipSwap.Current ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MushroomStats") : Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MushroomHiddenTooltip").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipSwap)));
+                .Replace("<hiddenTip>", PetKeybinds.PetTooltipSwap.Current ? PetTextsColors.LocVal("PetItemTooltips.MushroomStats") : PetTextsColors.LocVal("PetItemTooltips.MushroomHiddenTooltip").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipSwap)));
     }
 }

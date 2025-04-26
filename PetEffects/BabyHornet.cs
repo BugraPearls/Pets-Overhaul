@@ -95,7 +95,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyHornet>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.Nectar")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Nectar")
                 .Replace("<moveSpd>", Math.Round(babyHornet.moveSpdIncr * 100, 2).ToString())
                 .Replace("<def>", babyHornet.defReduction.ToString())
                 .Replace("<dmgCrit>", Math.Round(babyHornet.dmgReduction * 100, 2).ToString())

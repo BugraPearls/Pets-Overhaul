@@ -72,7 +72,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<AlienSkater>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MartianPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MartianPetItem")
                 .Replace("<wingTimeSave>", Math.Round(alienSkater.wingTimeStore * 100, 2).ToString())
                 .Replace("<acc>", Math.Round(alienSkater.accelerator * 100, 2).ToString())
                 .Replace("<speedMult>", alienSkater.speedMult.ToString())

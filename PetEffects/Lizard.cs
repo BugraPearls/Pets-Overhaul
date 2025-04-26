@@ -120,7 +120,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Lizard>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.LizardEgg")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.LizardEgg")
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
                     .Replace("<tailDmgTaken>", Math.Round(lizard.percentHpDmg * 100, 2).ToString())
                     .Replace("<tailAcc>", Math.Round(lizard.tailAcc * 100, 2).ToString())

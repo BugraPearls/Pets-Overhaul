@@ -65,7 +65,7 @@ namespace PetsOverhaul.PetEffects
 
         public override int PetStackCurrent => CurrentExpStack;
         public override int PetStackMax => CurrentExpRequiredStack;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ExpStack").Replace("<class>", PetTextsColors.PetClassLocalized(classThatGotExp));
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.ExpStack").Replace("<class>", PetTextsColors.PetClassLocalized(classThatGotExp));
 
         /// <summary>
         /// Default exp value used by all classes.
@@ -729,9 +729,9 @@ namespace PetsOverhaul.PetEffects
                 }
 
                 popupMessage.Color = PetTextsColors.HarvestingClass;
-                popupMessage.Text = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoLevel")
+                popupMessage.Text = PetTextsColors.LocVal("PetItemTooltips.JunimoLevel")
                     .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Harvesting"))
-                    .Replace("<upOrMax>", junimoHarvestingLevel >= maxLvls ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoMaxed") : Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoUp"));
+                    .Replace("<upOrMax>", junimoHarvestingLevel >= maxLvls ? PetTextsColors.LocVal("PetItemTooltips.JunimoMaxed") : PetTextsColors.LocVal("PetItemTooltips.JunimoUp"));
                 PopupText.NewText(popupMessage, Player.Center);
             }
             if (junimoMiningLevel < maxLvls && junimoMiningExp >= junimoMiningLevelsToXp[junimoMiningLevel])
@@ -747,9 +747,9 @@ namespace PetsOverhaul.PetEffects
                 }
 
                 popupMessage.Color = PetTextsColors.MiningClass;
-                popupMessage.Text = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoLevel")
+                popupMessage.Text = PetTextsColors.LocVal("PetItemTooltips.JunimoLevel")
                     .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Mining"))
-                    .Replace("<upOrMax>", junimoMiningLevel >= maxLvls ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoMaxed") : Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoUp"));
+                    .Replace("<upOrMax>", junimoMiningLevel >= maxLvls ? PetTextsColors.LocVal("PetItemTooltips.JunimoMaxed") : PetTextsColors.LocVal("PetItemTooltips.JunimoUp"));
                 PopupText.NewText(popupMessage, Player.Center);
             }
 
@@ -766,9 +766,9 @@ namespace PetsOverhaul.PetEffects
                 }
 
                 popupMessage.Color = PetTextsColors.FishingClass;
-                popupMessage.Text = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoLevel")
+                popupMessage.Text = PetTextsColors.LocVal("PetItemTooltips.JunimoLevel")
                     .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Fishing"))
-                    .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoMaxed") : Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoUp"));
+                    .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? PetTextsColors.LocVal("PetItemTooltips.JunimoMaxed") : PetTextsColors.LocVal("PetItemTooltips.JunimoUp"));
                 PopupText.NewText(popupMessage, Player.Center);
             }
         }
@@ -858,23 +858,23 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Junimo>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.JunimoPetItem")
                         .Replace("<maxLvl>", junimo.maxLvls.ToString())
                         .Replace("<moreBoss>", junimo.extraBosses)
                         .Replace("<harvestingProfit>", Math.Round(junimo.harvestingCoin * junimo.junimoHarvestingLevel, 2).ToString())
                         .Replace("<flatHealth>", Math.Round(junimo.junimoMiningLevel * junimo.miningHealthPerLevel, 1).ToString())
                         .Replace("<harvestLevel>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{junimo.junimoHarvestingLevel}]")
-                        .Replace("<harvestNext>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{(junimo.junimoHarvestingLevel >= junimo.maxLvls ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoHarvestingLevelsToXp[junimo.junimoHarvestingLevel] - junimo.junimoHarvestingExp).ToString())}]")
+                        .Replace("<harvestNext>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{(junimo.junimoHarvestingLevel >= junimo.maxLvls ? PetTextsColors.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoHarvestingLevelsToXp[junimo.junimoHarvestingLevel] - junimo.junimoHarvestingExp).ToString())}]")
                         .Replace("<harvestCurrent>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{junimo.junimoHarvestingExp}]")
                         .Replace("<miningProfit>", Math.Round(junimo.miningCoin * junimo.junimoMiningLevel, 2).ToString())
                         .Replace("<bonusMs>", Math.Round(junimo.junimoHarvestingLevel * junimo.harvestingMoveSpeedPerLevel * 100, 2).ToString())
                         .Replace("<miningLevel>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()}:{junimo.junimoMiningLevel}]")
-                        .Replace("<miningNext>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()}:{(junimo.junimoMiningLevel >= junimo.maxLvls ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoMiningLevelsToXp[junimo.junimoMiningLevel] - junimo.junimoMiningExp).ToString())}]")
+                        .Replace("<miningNext>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()}:{(junimo.junimoMiningLevel >= junimo.maxLvls ? PetTextsColors.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoMiningLevelsToXp[junimo.junimoMiningLevel] - junimo.junimoMiningExp).ToString())}]")
                         .Replace("<miningCurrent>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()}:{junimo.junimoMiningExp}]")
                         .Replace("<fishingProfit>", Math.Round(junimo.fishingCoin * junimo.junimoFishingLevel, 2).ToString())
                         .Replace("<bonusDamage>", Math.Round(junimo.junimoFishingLevel * junimo.fishingDamagePerLevel * 100, 2).ToString())
                         .Replace("<fishingLevel>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{junimo.junimoFishingLevel}]")
-                        .Replace("<fishingNext>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{(junimo.junimoFishingLevel >= junimo.maxLvls ? Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoFishingLevelsToXp[junimo.junimoFishingLevel] - junimo.junimoFishingExp).ToString())}]")
+                        .Replace("<fishingNext>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{(junimo.junimoFishingLevel >= junimo.maxLvls ? PetTextsColors.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoFishingLevelsToXp[junimo.junimoFishingLevel] - junimo.junimoFishingExp).ToString())}]")
                         .Replace("<fishingCurrent>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{junimo.junimoFishingExp}]")
                         .Replace("<harvesting>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{PetTextsColors.PetClassLocalized(PetClasses.Harvesting)}]")
                         .Replace("<mining>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()}:{PetTextsColors.PetClassLocalized(PetClasses.Mining)}]")

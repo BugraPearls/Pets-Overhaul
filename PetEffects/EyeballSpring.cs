@@ -66,7 +66,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<EyeballSpring>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.EyeSpring")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EyeSpring")
                         .Replace("<jumpBoost>", Math.Round(eyeballSpring.jumpBoost * 100, 2).ToString())
                         .Replace("<acceleration>", Math.Round(eyeballSpring.acceleration * 100, 2).ToString())
                         .Replace("<ascNerf>", eyeballSpring.ascentPenaltyMult.ToString());

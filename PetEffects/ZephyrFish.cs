@@ -95,7 +95,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<ZephyrFish>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ZephyrFish")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ZephyrFish")
                         .Replace("<windFish>", Math.Round(zephyrFish.speedMult / 8f, 2).ToString())
                         .Replace("<regularChance>", zephyrFish.baseChance.ToString())
                         .Replace("<windChance>", zephyrFish.windChance.ToString())

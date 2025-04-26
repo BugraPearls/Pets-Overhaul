@@ -35,7 +35,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SugarGlider>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.EucaluptusSap")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EucaluptusSap")
                 .Replace("<glide>", sugarGlider.glideSpeedMult.ToString());
     }
 }

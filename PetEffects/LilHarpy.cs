@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => harpyCd;
         public override int PetStackCurrent => harpyFlight;
         public override int PetStackMax => fuelMax;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BirdieRattleStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BirdieRattleStack");
         public override bool PetStackIsSeconds => true;
         public override void PostUpdateMiscEffects()
         {
@@ -69,7 +69,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<LilHarpy>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BirdieRattle")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BirdieRattle")
                         .Replace("<flightTime>", Math.Round(lilHarpy.fuelMax / 60f, 2).ToString())
                         .Replace("<cooldown>", Math.Round(lilHarpy.harpyCd / 60f, 2).ToString());
     }

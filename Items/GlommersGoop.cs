@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PetsOverhaul.Systems;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -60,7 +61,7 @@ namespace PetsOverhaul.Items
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            tooltips.Insert(2, new(Mod, "UseMana", Language.GetTextValue("Mods.PetsOverhaul.Items.GlommersGoop.Mana")));
+            tooltips.Insert(2, new(Mod, "UseMana", PetTextsColors.LocVal("Items.GlommersGoop.Mana")));
         }
     }
 }

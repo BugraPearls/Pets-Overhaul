@@ -79,7 +79,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => Luck.CurrentRoll;
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.JackOLantern")
+        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.JackOLantern")
 
                         .Replace("<atkSpd>", AttackSpeed.BaseAndPerQuality())
                         .Replace("<luck>", Luck.BaseAndPerQuality(Luck.StatPerRoll.ToString(), Luck.BaseStat.ToString()))

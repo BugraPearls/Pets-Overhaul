@@ -58,8 +58,8 @@ namespace PetsOverhaul.PetEffects
             if (squash.PetIsEquipped(false))
             {
                 int indx = tooltips.FindLastIndex(x => x.Name == "Defense"); //There is no safety net here for cases where Defense tooltip line doesn't exist, in that case these tooltips should just appear on top bc +1 & +2 on the index value
-                tooltips.Insert(indx + 1 , new(Mod, "PetTooltip0", Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SquashlingHealth").Replace("<hp>", squash.pumpkinArmorBonusHp.ToString())));
-                tooltips.Insert(indx + 2, new(Mod, "PetTooltip1", Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SquashlingFortune").Replace("<fortune>", squash.pumpkinArmorBonusHarvestingFortune.ToString())));
+                tooltips.Insert(indx + 1 , new(Mod, "PetTooltip0", PetTextsColors.LocVal("PetItemTooltips.SquashlingHealth").Replace("<hp>", squash.pumpkinArmorBonusHp.ToString())));
+                tooltips.Insert(indx + 2, new(Mod, "PetTooltip1", PetTextsColors.LocVal("PetItemTooltips.SquashlingFortune").Replace("<fortune>", squash.pumpkinArmorBonusHarvestingFortune.ToString())));
             }
         }
     }
@@ -76,7 +76,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Squashling>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MagicalPumpkinSeed")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MagicalPumpkinSeed")
                         .Replace("<plant>", squashling.squashlingCommonChance.ToString())
                         .Replace("<rarePlant>", squashling.squashlingRareChance.ToString())
                         .Replace("<health>", squashling.pumpkinArmorBonusHp.ToString())

@@ -75,7 +75,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Pigman>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.PigPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.PigPetItem")
                        .Replace("<foodChance>", pigman.foodChance.ToString())
                        .Replace("<potionChance>", pigman.potionChance.ToString())
                        .Replace("<shield1>", pigman.tier1Shield.ToString())

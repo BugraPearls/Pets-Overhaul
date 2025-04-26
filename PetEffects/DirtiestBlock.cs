@@ -55,7 +55,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<DirtiestBlock>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DirtiestBlock")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DirtiestBlock")
                         .Replace("<any>", Math.Round(dirtiestBlock.everythingCoin / 100f, 2).ToString())
                         .Replace("<soil>", Math.Round(dirtiestBlock.soilCoin / 100f, 2).ToString())
                         .Replace("<soilItems>", PetTextsColors.ItemsToTooltipImages(DirtiestBlock.CommonBlock, 12))

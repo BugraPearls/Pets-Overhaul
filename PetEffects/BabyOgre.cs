@@ -129,7 +129,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyOgre>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DD2OgrePetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2OgrePetItem")
                 .Replace("<moveSpdNerf>", babyOgre.movespdNerf.ToString())
                 .Replace("<atkSpdNerf>", babyOgre.atkSpdMult.ToString())
                 .Replace("<dmgNerf>", Math.Round(babyOgre.nonMeleedmg * 100, 2).ToString())

@@ -58,7 +58,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CavelingGardener>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.GlowTulip")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.GlowTulip")
                 .Replace("<harvestChance>", cavelingGardener.cavelingRegularPlantChance.ToString())
                 .Replace("<rarePlantChance>", cavelingGardener.cavelingRarePlantChance.ToString())
                 .Replace("<gemstoneTreeChance>", cavelingGardener.cavelingGemTreeChance.ToString())

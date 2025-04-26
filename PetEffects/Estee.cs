@@ -60,7 +60,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Estee>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.CelestialWand")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.CelestialWand")
                         .Replace("<maxMana>", Math.Round(estee.manaIncrease * 100, 2).ToString())
                         .Replace("<dmgPenalty>", Math.Round(estee.penaltyMult * 100, 2).ToString())
                         .Replace("<manaToDmg>", Math.Round(estee.manaMagicIncreasePer1 * 100, 2).ToString())

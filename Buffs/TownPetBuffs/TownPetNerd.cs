@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.TownPets;
+﻿using PetsOverhaul.Systems;
+using PetsOverhaul.TownPets;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -25,19 +26,19 @@ namespace PetsOverhaul.Buffs.TownPetBuffs
             }
             if (NPC.downedMoonlord)
             {
-                tip = Language.GetTextValue("Mods.PetsOverhaul.Buffs.TownPetNerd.PostMoonlordDescription")
+                tip = PetTextsColors.LocVal("Buffs.TownPetNerd.PostMoonlordDescription")
                     .Replace("<NerdPlacement>", nerdySlime.nerdBuildSpeed.ToString())
                     .Replace("<NerdShineScale>", nerdySlime.nerdLightScale.ToString());
             }
             else if (Main.hardMode)
             {
-                tip = Language.GetTextValue("Mods.PetsOverhaul.Buffs.TownPetNerd.PostHardmodeDescription")
+                tip = PetTextsColors.LocVal("Buffs.TownPetNerd.PostHardmodeDescription")
                     .Replace("<NerdPlacement>", nerdySlime.nerdBuildSpeed.ToString())
                     .Replace("<NerdShineScale>", nerdySlime.nerdLightScale.ToString());
             }
             else
             {
-                tip = Language.GetTextValue("Mods.PetsOverhaul.Buffs.TownPetNerd.Description")
+                tip = PetTextsColors.LocVal("Buffs.TownPetNerd.Description")
                     .Replace("<NerdPlacement>", nerdySlime.nerdBuildSpeed.ToString())
                     .Replace("<NerdShineScale>", nerdySlime.nerdLightScale.ToString());
             }

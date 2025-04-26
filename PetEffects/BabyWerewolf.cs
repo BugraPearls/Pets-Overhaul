@@ -80,7 +80,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyWerewolf>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.FullMoonSqueakyToy")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.FullMoonSqueakyToy")
                 .Replace("<critMult>", babyWerewolf.critChance.ToString())
                 .Replace("<crDmgReduction>", Math.Round(babyWerewolf.critDmgReduction * 100, 2).ToString())
                 .Replace("<maxStacks>", babyWerewolf.maxStacks.ToString())

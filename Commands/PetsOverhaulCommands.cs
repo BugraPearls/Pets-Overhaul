@@ -38,33 +38,33 @@ namespace PetsOverhaul.Commands
             switch (args.Length)
             {
                 case 0:
-                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);
+                    caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
                     break;
                 case 1:
                     switch (args[0].ToLower())
                     {
                         case "fortune" or "fortunestat" or "fortunestats":
                             GlobalPet Pet = caller.Player.GetModPlayer<GlobalPet>();
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.FortuneInfo"), Color.Gray);
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.FortuneCurrent").Replace("<global>", Pet.globalFortune.ToString())
+                            caller.Reply(PetTextsColors.LocVal("Commands.FortuneInfo"), Color.Gray);
+                            caller.Reply(PetTextsColors.LocVal("Commands.FortuneCurrent").Replace("<global>", Pet.globalFortune.ToString())
                                 .Replace("<mining>", Pet.miningFortune.ToString()).Replace("<fishing>", Pet.fishingFortune.ToString()).Replace("<harvesting>", Pet.harvestingFortune.ToString()));
                             break;
 
                         case "vanity" or "vanitypet":
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.VanityPet"));
+                            caller.Reply(PetTextsColors.LocVal("Commands.VanityPet"));
                             break;
 
                         case "junimo" or "junimoscoreboard" or "junimoleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 Junimo junimoLvls = caller.Player.GetModPlayer<Junimo>();
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3())
+                                caller.Reply(PetTextsColors.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3())
                                     .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)).Replace("<level>", junimoLvls.junimoMiningLevel.ToString()).Replace("<exp>", junimoLvls.junimoMiningExp.ToString()));
 
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3())
+                                caller.Reply(PetTextsColors.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3())
                                     .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", junimoLvls.junimoFishingLevel.ToString()).Replace("<exp>", junimoLvls.junimoFishingExp.ToString()));
 
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3())
+                                caller.Reply(PetTextsColors.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3())
                                     .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", junimoLvls.junimoHarvestingLevel.ToString()).Replace("<exp>", junimoLvls.junimoHarvestingExp.ToString()));
                             }
                             else
@@ -81,35 +81,35 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.LeaderboardList")
+                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
                                     .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)));
                                 for (int i = topMining.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topMining.Find(x => x.PlayerExp == topMining.Max(x => x.PlayerExp));
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
                                     topMining.Remove(topPlayer);
                                 }
 
                                 displayCounter = 0;
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.LeaderboardList")
+                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
                                     .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)));
                                 for (int i = topFishing.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topFishing.Find(x => x.PlayerExp == topFishing.Max(x => x.PlayerExp));
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
                                 }
 
                                 displayCounter = 0;
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.LeaderboardList")
+                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
                                     .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)));
                                 for (int i = topHarvesting.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerExp == topHarvesting.Max(x => x.PlayerExp));
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
                                     topHarvesting.Remove(topPlayer);
@@ -120,7 +120,7 @@ namespace PetsOverhaul.Commands
                         case "miningscoreboard" or "miningleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.UseInMultiplayer"));
+                                caller.Reply(PetTextsColors.LocVal("Commands.UseInMultiplayer"));
                             }
                             else
                             {
@@ -132,12 +132,12 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.LeaderboardList")
+                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
                                     .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)));
                                 for (int i = topMining.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topMining.Find(x => x.PlayerExp == topMining.Max(x => x.PlayerExp));
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
                                     topMining.Remove(topPlayer);
@@ -148,7 +148,7 @@ namespace PetsOverhaul.Commands
                         case "fishingscoreboard" or "fishingleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.UseInMultiplayer"));
+                                caller.Reply(PetTextsColors.LocVal("Commands.UseInMultiplayer"));
                             }
                             else
                             {
@@ -160,12 +160,12 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.LeaderboardList")
+                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
                                     .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)));
                                 for (int i = topFishing.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topFishing.Find(x => x.PlayerExp == topFishing.Max(x => x.PlayerExp));
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
                                     topFishing.Remove(topPlayer);
@@ -176,7 +176,7 @@ namespace PetsOverhaul.Commands
                         case "harvestingscoreboard" or "harvestingleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.UseInMultiplayer"));
+                                caller.Reply(PetTextsColors.LocVal("Commands.UseInMultiplayer"));
                             }
                             else
                             {
@@ -188,12 +188,12 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.LeaderboardList")
+                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
                                     .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)));
                                 for (int i = topHarvesting.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerExp == topHarvesting.Max(x => x.PlayerExp));
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
                                     topHarvesting.Remove(topPlayer);
@@ -202,11 +202,11 @@ namespace PetsOverhaul.Commands
                             break;
 
                         case "faq" or "question":
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.FAQ"));
+                            caller.Reply(PetTextsColors.LocVal("Commands.FAQ"));
                             break;
 
                         case "light" or "lightpet" or "lightpets":
-                            string reply = Language.GetTextValue("Mods.PetsOverhaul.Commands.LightPetList") + " ";
+                            string reply = PetTextsColors.LocVal("Commands.LightPetList") + " ";
                                 int counterToGoDown = 5;
                                 foreach (ModPlayer player in caller.Player.ModPlayers)
                                 {
@@ -224,8 +224,8 @@ namespace PetsOverhaul.Commands
                                 caller.Reply(reply);
                             break;
                         default:
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);
+                            caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);
+                            caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
                             break;
 
                     }
@@ -234,7 +234,7 @@ namespace PetsOverhaul.Commands
                     switch (args[0].ToLower())
                     {
                         case "class" or "pets":
-                            string reply = Language.GetTextValue("Mods.PetsOverhaul.Commands.PetList") + " ";
+                            string reply = PetTextsColors.LocVal("Commands.PetList") + " ";
 
                             void iterate(PetClasses petClass, bool abilityPets = false)
                             {
@@ -259,79 +259,79 @@ namespace PetsOverhaul.Commands
                                     }
                                 }
                                 if (found == false)
-                                    reply += Language.GetTextValue("Mods.PetsOverhaul.Commands.NoPets");
+                                    reply += PetTextsColors.LocVal("Commands.NoPets");
                                 caller.Reply(reply);
                             }
 
                             switch (args[1].ToLower())
                             {
                                 case "all":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Commands.All"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Commands.All"));
                                     iterate(PetClasses.None);
                                     break;
                                 case "melee":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Melee"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Melee"));
                                     iterate(PetClasses.Melee);
                                     break;
                                 case "ranged":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Ranged"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Ranged"));
                                     iterate(PetClasses.Ranged);
                                     break;
                                 case "magic":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Magic"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Magic"));
                                     iterate(PetClasses.Magic);
                                     break;
                                 case "summoner":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Summoner"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Summoner"));
                                     iterate(PetClasses.Summoner);
                                     break;
                                 case "utility":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Utility"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Utility"));
                                     iterate(PetClasses.Utility);
                                     break;
                                 case "mobility":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Mobility"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Mobility"));
                                     iterate(PetClasses.Mobility);
                                     break;
                                 case "harvesting":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Harvesting"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Harvesting"));
                                     iterate(PetClasses.Harvesting);
                                     break;
                                 case "mining":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Mining"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Mining"));
                                     iterate(PetClasses.Mining);
                                     break;
                                 case "fishing":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Fishing"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Fishing"));
                                     iterate(PetClasses.Fishing);
                                     break;
                                 case "offensive":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Offensive"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Offensive"));
                                     iterate(PetClasses.Offensive);
                                     break;
                                 case "defensive":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Defensive"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Defensive"));
                                     iterate(PetClasses.Defensive);
                                     break;
                                 case "supportive":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Supportive"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Supportive"));
                                     iterate(PetClasses.Supportive);
                                     break;
                                 case "rogue":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Classes.Rogue"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Rogue"));
                                     iterate(PetClasses.Rogue);
                                     break;
                                 case "ability" or "cooldown":
-                                    reply = reply.Replace("<class>", Language.GetTextValue("Mods.PetsOverhaul.Misc.Ability"));
+                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Misc.Ability"));
                                     iterate(PetClasses.None, true);
                                     break;
                                 default:
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ClassArgumentInvalid"), Color.Red);
+                                    caller.Reply(PetTextsColors.LocVal("Commands.ClassArgumentInvalid"), Color.Red);
                                     break;
                             }
                             break;
                         case "item" or "items":
-                            string itemReply = Language.GetTextValue("Mods.PetsOverhaul.Commands.Items");
+                            string itemReply = PetTextsColors.LocVal("Commands.Items");
                             switch (args[1].ToLower())
                             {
                                 case "harvesting":
@@ -360,20 +360,20 @@ namespace PetsOverhaul.Commands
                                     itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)) + "\n" + PetTextsColors.ItemsToTooltipImages(fish, 22, 0);
                                     break;
                                 default:
-                                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ClassArgumentInvalidItems"), Color.Red);
+                                    caller.Reply(PetTextsColors.LocVal("Commands.ClassArgumentInvalidItems"), Color.Red);
                                     break;
                             }
                             caller.Reply(itemReply);
                             break;
                         default:
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);
+                            caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);
+                            caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
                             break;
                     }
                     break;
                 default:
-                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.ArgumentInvalid"), Color.Red);
-                    caller.Reply(Language.GetTextValue("Mods.PetsOverhaul.Commands.Help"), Color.Gray);
+                    caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);
+                    caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
                     break;
             }
         }

@@ -78,7 +78,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TikiSpirit>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.TikiTotem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.TikiTotem")
                        .Replace("<atkSpdToDmg>", Math.Round(tikiSpirit.atkSpdToDmgConversion * 100, 2).ToString())
                        .Replace("<atkSpdToRange>", Math.Round(tikiSpirit.atkSpdToRangeConversion * 100, 2).ToString())
                        .Replace("<nonWhipCrit>", tikiSpirit.nonWhipCrit.ToString())

@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => shieldRecovery;
         public override int PetStackCurrent => howManyShieldsAvailable;
         public override int PetStackMax => 5;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronPrimePetItemStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.SkeletronPrimePetItemStack");
         public override void ExtraPreUpdate()
         {
             shieldedStatBoostActive = false;
@@ -115,7 +115,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<MiniPrime>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronPrimePetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SkeletronPrimePetItem")
                         .Replace("<shieldMaxHealthAmount>", Math.Round(miniPrime.shieldMult * 100, 2).ToString())
                         .Replace("<shieldCooldown>", Math.Round(miniPrime.shieldRecovery / 300f, 2).ToString())
                         .Replace("<dmg>", Math.Round(miniPrime.dmgIncrease * 100, 2).ToString())

@@ -72,7 +72,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TinyFishron>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DukeFishronPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DukeFishronPetItem")
                         .Replace("<baseMult>", tinyFishron.fishingPowerPenalty.ToString())
                         .Replace("<anglerFishingPower>", tinyFishron.fpPerQuest.ToString())
                         .Replace("<flatChance>", tinyFishron.stackChance.ToString())

@@ -61,7 +61,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CursedSapling>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.CursedSapling")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.CursedSapling")
                         .Replace("<minionSlot>", cursedSapling.maxMinion.ToString())
                         .Replace("<dmg>", Math.Round(cursedSapling.pumpkinWeaponDmg * 100, 2).ToString())
                         .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(CursedSapling.PumpkinMoonWeapons))

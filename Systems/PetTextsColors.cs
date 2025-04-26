@@ -14,6 +14,15 @@ namespace PetsOverhaul.Systems
     public class PetTextsColors
     {
         /// <summary>
+        /// Shortened and easier form of PetTextsColors.LocVal("<paramref name="localizationKeyValue"/>") to retrieve Pets Overhaul's localization values.
+        /// </summary>
+        /// <param name="localizationKeyValue">Remainder of localization text value to come after Mods.PetsOverhaul.</param>
+        /// <returns>Localization text value of "Mods.PetsOverhaul." + localizationKeyValue</returns>
+        public static string LocVal(string localizationKeyValue)
+        {
+            return Language.GetTextValue("Mods.PetsOverhaul." + localizationKeyValue);
+        }
+        /// <summary>
         /// Converts given text to be corresponding color of Light Pet quality values
         /// </summary>
         /// <param name="text">Text to be converted</param>
@@ -100,16 +109,16 @@ namespace PetsOverhaul.Systems
             {
                 {
                     Color color = Color.Lerp(ClassEnumToColor(Class1), ClassEnumToColor(Class2), 0.5f);
-                    return $"[c/{color.Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class1)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.And")} {Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class2)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Pet")}]";
+                    return $"[c/{color.Hex3()}:{PetTextsColors.LocVal("Classes." + Class1)} {PetTextsColors.LocVal("Misc.And")} {PetTextsColors.LocVal("Classes." + Class2)} {PetTextsColors.LocVal("Misc.Pet")}]";
                 }
             }
             else if (Class2 == PetClasses.None)
             {
-                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class1)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Pet")}]";
+                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{PetTextsColors.LocVal("Classes." + Class1)} {PetTextsColors.LocVal("Misc.Pet")}]";
             }
             else
             {
-                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Classes." + Class2)} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Pet")}]";
+                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{PetTextsColors.LocVal("Classes." + Class2)} {PetTextsColors.LocVal("Misc.Pet")}]";
             }
         }
         /// <summary>
@@ -119,15 +128,15 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static string KeybindText(ModKeybind keybind)
         {
-            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{Language.GetTextValue("Mods.PetsOverhaul.Misc.KeybindMissing")}]";
+            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{PetTextsColors.LocVal("Misc.KeybindMissing")}]";
         }
         public static string RollMissingText()
         {
-            return "[c/" + LowQuality.Hex3() + ":" + Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.NotRolled") + "]";
+            return "[c/" + LowQuality.Hex3() + ":" + PetTextsColors.LocVal("LightPetTooltips.NotRolled") + "]";
         }
         public static string PetClassLocalized(PetClasses petClass)
         {
-            return Language.GetTextValue("Mods.PetsOverhaul.Classes." + petClass.ToString());
+            return PetTextsColors.LocVal("Classes." + petClass.ToString());
         }
         /// <summary>
         /// Converts all integers in given list to be in [i:ItemID] format, which is shown in game as the item itself within the string. Goes down below when countToGoBelow is reached. countStart is where it upstarts the count to go one line below, since there can be a text beforehand. Will also return the text 'None' if there is no items in the list.

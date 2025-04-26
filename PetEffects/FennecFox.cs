@@ -97,7 +97,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<FennecFox>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ExoticEasternChewToy")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ExoticEasternChewToy")
                         .Replace("<meleeSpd>", Math.Round(fennecFox.meleeSpdIncrease * 100, 2).ToString())
                         .Replace("<moveSpd>", Math.Round(fennecFox.speedIncrease * 100, 2).ToString())
                         .Replace("<sizeNerf>", fennecFox.sizeDecrease.ToString())

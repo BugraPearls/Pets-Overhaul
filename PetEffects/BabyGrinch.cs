@@ -63,7 +63,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyGrinch>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BabyGrinchMischiefWhistle")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BabyGrinchMischiefWhistle")
                 .Replace("<slowAmount>", Math.Round(babyGrinch.grinchSlow * 100, 2).ToString())
                 .Replace("<slowRange>", Math.Round(babyGrinch.grinchRange / 16f, 2).ToString())
                 .Replace("<dmg>", Math.Round(babyGrinch.winterDmg * 100, 2).ToString())

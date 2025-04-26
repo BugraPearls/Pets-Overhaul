@@ -54,7 +54,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<PropellerGato>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DD2PetGato")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2PetGato")
                         .Replace("<crit>", propellerGato.bonusCritChance.ToString())
                         .Replace("<maxSentry>", propellerGato.turretIncrease.ToString());
     }

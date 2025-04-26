@@ -19,7 +19,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => cdToAddToPool;
         public override int PetStackCurrent => lifePool;
         public override int PetStackMax => (int)(Player.statLifeMax2 * lifePoolMaxPerc);
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BrainOfCthulhuPetItemStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BrainOfCthulhuPetItemStack");
         public override void ExtraPreUpdate()
         {
             if (PetIsEquipped(false))
@@ -76,7 +76,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SpiderBrain>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BrainOfCthulhuPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BrainOfCthulhuPetItem")
                         .Replace("<lifesteal>", Math.Round(spiderBrain.lifestealAmount * 100, 2).ToString())
                         .Replace("<maxPool>", Math.Round(spiderBrain.lifePoolMaxPerc * 100, 2).ToString())
                         .Replace("<healthRecovery>", Math.Round(spiderBrain.cdToAddToPool / 60f, 2).ToString())

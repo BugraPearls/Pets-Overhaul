@@ -89,7 +89,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => MagicDamage.CurrentRoll;
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.WispInABottle")
+        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.WispInABottle")
 
                         .Replace("<magic>", MagicDamage.BaseAndPerQuality())
                         .Replace("<ranged>", RangedDamage.BaseAndPerQuality())

@@ -71,7 +71,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => PercentHealth.CurrentRoll;
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.ToyGolem")
+        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.ToyGolem")
 
                         .Replace("<lifeRegen>", HealthRegen.BaseAndPerQuality())
                         .Replace("<healthPercent>", PercentHealth.BaseAndPerQuality())

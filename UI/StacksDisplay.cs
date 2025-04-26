@@ -19,7 +19,7 @@ namespace PetsOverhaul.UI
         static int MaxStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacksMax;
         static string TextStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackText;
         static bool ShouldBeSeconds => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackIsSeconds;
-        static readonly string Current = Language.GetTextValue("Mods.PetsOverhaul.Misc.Current");
+        static readonly string Current = PetTextsColors.LocVal("Misc.Current");
         public override void OnInitialize()
         {
             stacks = new("");
@@ -31,11 +31,11 @@ namespace PetsOverhaul.UI
             {
                 if (MaxStack == 0)
                 {
-                    stacks.SetText($"{Language.GetTextValue("Mods.PetsOverhaul.Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString() + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs")) : CurrentStack.ToString())}");
+                    stacks.SetText($"{PetTextsColors.LocVal("Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString() + " " + PetTextsColors.LocVal("Misc.Secs")) : CurrentStack.ToString())}");
                 }
                 else
                 {
-                    stacks.SetText($"{Language.GetTextValue("Mods.PetsOverhaul.Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString()) : CurrentStack.ToString())} {Language.GetTextValue("Mods.PetsOverhaul.LightPetTooltips.OutOf")} {(ShouldBeSeconds ? (Math.Round(MaxStack / 60f, 2).ToString() + " " + Language.GetTextValue("Mods.PetsOverhaul.Misc.Secs")) : MaxStack.ToString())}");
+                    stacks.SetText($"{PetTextsColors.LocVal("Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString()) : CurrentStack.ToString())} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {(ShouldBeSeconds ? (Math.Round(MaxStack / 60f, 2).ToString() + " " + PetTextsColors.LocVal("Misc.Secs")) : MaxStack.ToString())}");
                 }
                 stacks.Top.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.Y);
                 stacks.Left.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.X);

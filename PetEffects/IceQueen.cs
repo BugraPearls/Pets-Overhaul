@@ -133,7 +133,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<IceQueen>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.IceQueenPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.IceQueenPetItem")
                         .Replace("<frozenTombTime>", Math.Round(iceQueen.tombTime / 60f, 2).ToString())
                         .Replace("<range>", Math.Round(iceQueen.queenRange / 16f, 2).ToString())
                         .Replace("<slowAmount>", Math.Round(iceQueen.slowAmount * 100, 2).ToString())

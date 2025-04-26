@@ -50,7 +50,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<DynamiteKitten>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BallOfFuseWire")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BallOfFuseWire")
                         .Replace("<kb>", dynamiteKitten.kbMult.ToString())
                         .Replace("<dmg>", dynamiteKitten.damageMult.ToString())
                         .Replace("<armorPen>", dynamiteKitten.armorPen.ToString())

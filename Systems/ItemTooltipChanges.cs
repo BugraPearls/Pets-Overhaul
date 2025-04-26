@@ -17,7 +17,7 @@ namespace PetsOverhaul.Systems
         {
             if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && PetKeybinds.PetTooltipHide != null && !PetKeybinds.PetTooltipHide.Current)
             {
-                tooltips.Add(new(Mod, "Tooltip0", Language.GetTextValue("Mods.PetsOverhaul.Config.TooltipToggleInGame")
+                tooltips.Add(new(Mod, "Tooltip0", PetTextsColors.LocVal("Config.TooltipToggleInGame")
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipHide))));
             }
         }

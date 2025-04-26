@@ -84,7 +84,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Puppy>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DogWhistle")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DogWhistle")
                 .Replace("<critter>", puppy.catchChance.ToString())
                 .Replace("<rareCritter>", puppy.rareCatchChance.ToString())
                 .Replace("<rareCritterCoin>", Math.Round(puppy.rareCritterCoin / 100f, 2).ToString())

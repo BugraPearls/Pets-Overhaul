@@ -129,7 +129,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Spider>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SpiderEgg")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SpiderEgg")
                         .Replace("<poisonTime>", Math.Round(spider.poisonTime / 60f, 2).ToString())
                         .Replace("<poiPerc>", spider.poisonDmgMult.ToString())
                         .Replace("<poiFlat>", spider.poisonFlatDmg.ToString())

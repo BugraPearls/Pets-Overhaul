@@ -70,7 +70,7 @@ namespace PetsOverhaul.NPCs
         public override void GetChat(NPC npc, ref string chat)
         {
             if (PetObtainedCondition.petIsObtained == false && npc.type == NPCID.Guide && Main.rand.NextBool(10))
-                chat = Language.GetTextValue("Mods.PetsOverhaul.NPCs.PetTamer.GuideQuote");
+                chat = PetTextsColors.LocVal("NPCs.PetTamer.GuideQuote");
         }
         public static void OnKillInvokeDeathEffects(int playerWhoAmI, NPC npc)
         {

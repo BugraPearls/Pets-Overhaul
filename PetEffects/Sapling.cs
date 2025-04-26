@@ -67,7 +67,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Sapling>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.Seedling")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Seedling")
                 .Replace("<dmgPenalty>", sapling.damagePenalty.ToString())
                 .Replace("<lifesteal>", Math.Round(sapling.regularLifesteal * 100, 2).ToString())
                 .Replace("<planteraSteal>", Math.Round(sapling.planteraLifesteal * 100, 2).ToString())

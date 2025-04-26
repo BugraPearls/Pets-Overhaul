@@ -27,7 +27,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override int PetStackMax => 0;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronPetItemStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.SkeletronPetItemStack");
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override void ExtraPreUpdate()
         {
@@ -51,19 +51,19 @@ namespace PetsOverhaul.PetEffects
                     switch (Main.rand.Next(20))
                     {
                         case 0:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronDeath3");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath3");
                             break;
                         case 1:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronDeath4");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath4");
                             break;
                         default:
                             if (Main.rand.NextBool())
                             {
-                                reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronDeath1");
+                                reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath1");
                             }
                             else
                             {
-                                reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronDeath2");
+                                reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath2");
                             }
                             reason = reason.Replace("<name>", Player.name);
                             break;
@@ -171,7 +171,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SkeletronJr>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SkeletronPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SkeletronPetItem")
                         .Replace("<recievedMult>", skeletronJr.playerTakenMult.ToString())
                         .Replace("<recievedHowLong>", skeletronJr.playerDamageTakenSpeed.ToString())
                         .Replace("<dealtMult>", skeletronJr.enemyDamageIncrease.ToString());

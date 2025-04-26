@@ -331,7 +331,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SlimePrincess>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.QueenSlimePetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.QueenSlimePetItem")
             .Replace("<dmg>", Math.Round(slimePrincess.mountDmgIncr * 100, 2).ToString())
                         .Replace("<slowAmount>", Math.Round(slimePrincess.slow * 100, 2).ToString())
             .Replace("<slowDuration>", Math.Round(slimePrincess.slowDuration / 60f, 2).ToString())

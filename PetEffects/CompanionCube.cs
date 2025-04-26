@@ -80,7 +80,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CompanionCube>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.CompanionCube")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.CompanionCube")
                         .Replace("<manaToHealth>", Math.Round(companionCube.manaToHealth * 100, 2).ToString())
                         .Replace("<healthToMana>", Math.Round(companionCube.healthToMana * 100, 2).ToString())
                         .Replace("<manaPotionNerf>", Math.Round(companionCube.manaPotionNerf * 100, 2).ToString())

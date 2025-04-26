@@ -30,7 +30,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => cooldown;
         public override int PetStackCurrent => howManyIsAlive;
         public override int PetStackMax => 0;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.KingSlimePetItemStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.KingSlimePetItemStack");
         public override void ExtraPreUpdate()
         {
             howManyIsAlive = 0;
@@ -302,7 +302,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip =>
-                Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.ResplendentDessert")
+                PetTextsColors.LocVal("PetItemTooltips.ResplendentDessert")
             .Replace("<dmg>", Math.Round(dualSlime.mountDmgIncr * 100, 2).ToString())
                         .Replace("<shieldAmount>", dualSlime.shield.ToString())
                         .Replace("<shieldDuration>", Math.Round(dualSlime.shieldTime / 60f, 2).ToString())

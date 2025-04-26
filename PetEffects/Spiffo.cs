@@ -51,7 +51,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Spiffo>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SpiffoPlush")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SpiffoPlush")
                         .Replace("<ammoReserve>", spiffo.ammoReserveChance.ToString())
                         .Replace("<armorPen>", spiffo.zombieArmorPen.ToString())
                         .Replace("<penChance>", spiffo.penetrateChance.ToString());

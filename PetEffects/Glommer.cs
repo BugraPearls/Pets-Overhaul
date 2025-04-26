@@ -60,7 +60,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Glommer>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.GlommerPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.GlommerPetItem")
                         .Replace("<sanityRange>", Math.Round(glommer.glommerSanityRange / 16f, 2).ToString())
                         .Replace("<sanityAmount>", Math.Round(glommer.glommerSanityAura * 100, 2).ToString())
                         .Replace("<currentHaste>", Math.Round(glommer.Pet.abilityHaste * 100, 2).ToString())

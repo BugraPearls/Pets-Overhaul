@@ -53,7 +53,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<EverscreamSapling>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.EverscreamPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EverscreamPetItem")
                         .Replace("<magicCritNerf>", everscreamSapling.critMult.ToString())
                         .Replace("<maxMana>", everscreamSapling.manaIncrease.ToString())
                         .Replace("<missingMana>", Math.Round(everscreamSapling.missingManaPercent * 100, 2).ToString())

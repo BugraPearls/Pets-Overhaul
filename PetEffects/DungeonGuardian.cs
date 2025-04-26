@@ -64,7 +64,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<DungeonGuardian>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BoneKey")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BoneKey")
                         .Replace("<armorPen>", dungeonGuardian.armorPen.ToString())
                         .Replace("<dungRegen>", dungeonGuardian.lifeRegen.ToString());
     }

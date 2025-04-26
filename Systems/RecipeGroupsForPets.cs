@@ -81,13 +81,13 @@ namespace PetsOverhaul.Systems
             RecipeGroup.RegisterGroup(nameof(ItemID.DemoniteBar), DemoniteBar);
             Fairies = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("RandomWorldName_Noun.Fairies")}", [.. fairies]);
             RecipeGroup.RegisterGroup(nameof(ItemID.FairyCritterBlue), Fairies);
-            Herbs = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Herb")}", [.. herbs]);
+            Herbs = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {PetTextsColors.LocVal("Misc.Herb")}", [.. herbs]);
             RecipeGroup.RegisterGroup(nameof(ItemID.Daybloom), Herbs);
-            Seeds = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Herb")} {Language.GetTextValue("RandomWorldName_Noun.Seeds")}", [.. seeds]);
+            Seeds = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {PetTextsColors.LocVal("Misc.Herb")} {Language.GetTextValue("RandomWorldName_Noun.Seeds")}", [.. seeds]);
             RecipeGroup.RegisterGroup(nameof(ItemID.DaybloomSeeds), Seeds);
-            Animals = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Animal")}", [.. animals]);
+            Animals = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {PetTextsColors.LocVal("Misc.Animal")}", [.. animals]);
             RecipeGroup.RegisterGroup(nameof(ItemID.Bunny), Animals);
-            GoldenAnimals = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("RandomWorldName_Adjective.Golden")} {Language.GetTextValue("Mods.PetsOverhaul.Misc.Animal")}", [.. goldenAnimals]);
+            GoldenAnimals = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue("RandomWorldName_Adjective.Golden")} {PetTextsColors.LocVal("Misc.Animal")}", [.. goldenAnimals]);
             RecipeGroup.RegisterGroup(nameof(ItemID.GoldBunny), GoldenAnimals);
         }
     }

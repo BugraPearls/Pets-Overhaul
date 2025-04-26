@@ -84,22 +84,22 @@ namespace PetsOverhaul.PetEffects
                     switch (Main.rand.Next(5))
                     {
                         case 0:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlackCatDeath1");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1");
                             break;
                         case 1:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlackCatDeath2");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath2");
                             break;
                         case 2:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlackCatDeath3");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath3");
                             break;
                         case 3:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlackCatDeath4");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath4");
                             break;
                         case 4:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlackCatDeath5");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath5");
                             break;
                         default:
-                            reason = Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.BlackCatDeath1");
+                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1");
                             break;
                     }
                     Player.Hurt(PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)), moonlightRoll, 0, dodgeable: false, knockback: 0, scalingArmorPenetration: 1f);
@@ -126,7 +126,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BlackCat>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.UnluckyYarn")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.UnluckyYarn")
                 .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<moonlightMin>", blackCat.moonlightLowest.ToString())
                 .Replace("<moonlightMax>", blackCat.moonlightHighest.ToString())

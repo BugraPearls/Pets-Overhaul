@@ -848,12 +848,12 @@ namespace PetsOverhaul.Systems
             previousPetItem = Player.miscEquips[0].type;
             if (ModContent.GetInstance<PetPersonalization>().EnableNotice)
             {
-                Main.NewText(Language.GetTextValue("Mods.PetsOverhaul.Misc.Notice"));
+                Main.NewText(PetTextsColors.LocVal("Misc.Notice"));
             }
             if (ModContent.GetInstance<PetPersonalization>().EnableModNotice)
             {
                 if (ModLoader.TryGetMod("PetsOverhaulCalamityAddon", out _) == false && ModLoader.TryGetMod("CalamityMod", out _) == true)
-                    Main.NewText(Language.GetTextValue("Mods.PetsOverhaul.Misc.CalamityDetected"));
+                    Main.NewText(PetTextsColors.LocVal("Misc.CalamityDetected"));
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)

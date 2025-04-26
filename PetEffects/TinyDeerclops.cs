@@ -33,7 +33,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override int PetStackCurrent => CurrentTotalDmgStored;
         public override int PetStackMax => (int)(Player.statLifeMax2 * healthThreshold);
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DeerclopsPetItemStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.DeerclopsPetItemStack");
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override void OnHurt(Player.HurtInfo info)
         {
@@ -96,7 +96,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TinyDeerclops>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DeerclopsPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DeerclopsPetItem")
                             .Replace("<threshold>", Math.Round(tinyDeerclops.healthThreshold * 100, 2).ToString())
                             .Replace("<thresholdTime>", Math.Round(tinyDeerclops.damageStoreTime / 60f, 2).ToString())
                             .Replace("<immunityTime>", Math.Round(tinyDeerclops.immuneTime / 60f, 2).ToString())

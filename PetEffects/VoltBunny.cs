@@ -51,7 +51,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<VoltBunny>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.LightningCarrot")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.LightningCarrot")
                        .Replace("<flatSpd>", Math.Round(voltBunny.movespdFlat * 100, 2).ToString())
                        .Replace("<multSpd>", voltBunny.movespdMult.ToString())
                        .Replace("<spdToDmg>", Math.Round(voltBunny.movespdToDmg * 100, 2).ToString())

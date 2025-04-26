@@ -68,7 +68,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Plantero>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MudBud")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MudBud")
                         .Replace("<chance>", plantero.spawnChance.ToString())
                         .Replace("<dmg>", plantero.damageMult.ToString())
                         .Replace("<flatDmg>", plantero.flatDmg.ToString())

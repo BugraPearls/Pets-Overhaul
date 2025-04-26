@@ -97,7 +97,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Hoardagron>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.DD2PetDragon")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2PetDragon")
                         .Replace("<arrowVelo>", hoardagron.arrowSpd.ToString())
                         .Replace("<arrowPierce>", hoardagron.arrowPen.ToString())
                         .Replace("<bulletVelo>", hoardagron.bulletSpd.ToString())

@@ -20,7 +20,7 @@ namespace PetsOverhaul.PetEffects
         public float spdPerStk = 0.005f;
         public override int PetStackCurrent => bunnyStack;
         public override int PetStackMax => maxStack;
-        public override string PetStackText => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.CarrotStack");
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.CarrotStack");
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())
@@ -63,7 +63,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CarrotBunny>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.Carrot")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Carrot")
                 .Replace("<moveSpeed>", Math.Round(carrotBunny.spdPerStk * 100, 2).ToString())
                 .Replace("<jumpSpeed>", Math.Round(carrotBunny.jumpPerStk * 100, 2).ToString());
     }

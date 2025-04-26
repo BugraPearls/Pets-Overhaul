@@ -49,7 +49,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyImp>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.HellCake")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.HellCake")
                 .Replace("<immuneTime>", Math.Round(babyImp.lavaImmune / 60f, 2).ToString())
                 .Replace("<lavaDef>", babyImp.lavaDef.ToString())
                 .Replace("<lavaSpd>", Math.Round(babyImp.lavaSpd * 100, 2).ToString())

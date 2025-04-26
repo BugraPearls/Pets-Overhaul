@@ -986,7 +986,7 @@ Mods: {
 				- If your target is inside of <closeRange> tiles, reduce their defense permanently by <defReduce>
 				  and apply Cursed Flames debuff on them for <cursedTime> seconds.
 				- If your target is outside of <longRange> tiles, deal <hpDmg>% of targets health as bonus damage.
-				 * Maximum health damage is reduced to <bossHpDmg>% and is capped to <bossCap> for bosses.
+				 * Maximum health damage is reduced to <bossHpDmg>% and is capped to <bossCap> damage for bosses.
 				 * The %hp damage effects scales with your damage bonuses.
 				- Triggering either of effects has a <hpDmgCooldown> second cooldown.
 				'''

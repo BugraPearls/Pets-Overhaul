@@ -17,22 +17,22 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                List<string> tooltips = [Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MeleeTooltip")
+                List<string> tooltips = [PetTextsColors.LocVal("PetItemTooltips.MeleeTooltip")
                                             .Replace("<dr>", Math.Round(meleeDr * 100, 2).ToString())
                                             .Replace("<meleeSpd>", Math.Round(meleeSpd * 100, 2).ToString())
                                             .Replace("<meleeDmg>", Math.Round(meleeDmg * 100, 2).ToString())
                                             .Replace("<def>", defense.ToString()),
-                    Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.RangedTooltip")
+                    PetTextsColors.LocVal("PetItemTooltips.RangedTooltip")
                                             .Replace("<armorPen>", rangedPen.ToString())
                                             .Replace("<rangedCrit>", rangedCr.ToString())
                                             .Replace("<rangedCritDmg>", Math.Round(rangedCrDmg * 100, 2).ToString())
                                             .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString()),
-                    Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MagicTooltip")
+                    PetTextsColors.LocVal("PetItemTooltips.MagicTooltip")
                                             .Replace("<mana>", magicMana.ToString())
                                             .Replace("<manaCost>", Math.Round(magicManaCost * 100, 2).ToString())
                                             .Replace("<magicCrit>", magicCrit.ToString())
                                             .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString()),
-                    Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.SummonerTooltip")
+                    PetTextsColors.LocVal("PetItemTooltips.SummonerTooltip")
                                             .Replace("<sumRange>", Math.Round(sumWhipRng * 100, 2).ToString())
                                             .Replace("<sumSpd>", Math.Round(sumWhipSpd * 100, 2).ToString())
                                             .Replace("<sumMax>", sumMinion.ToString())
@@ -149,7 +149,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Moonling>();
             }
         }
-        public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.MoonLordPetItem")
+        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MoonLordPetItem")
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch))
                     .Replace("<tooltip>", moonling.Tooltips[moonling.currentClass]);
     }
