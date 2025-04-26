@@ -11,18 +11,18 @@ namespace PetsOverhaul.PetEffects
     public sealed class TheTwins : PetEffect
     {
         public override int PetItemID => ItemID.TwinsPetItem;
-        public int healthDmgCd = 48;
-        public int closeRange = 112;
+        public int cooldown = 48;
+        public int closeRange = 140;
         public int longRange = 560;
-        public float defLifestealDmgMult = 0.0001f;
         public float regularEnemyHpDmg = 0.01f;
-        public float bossHpDmg = 0.00075f; 
+        public float bossHpDmg = 0.0008f;
         public int infernoTime = 240;
-        public float defMult = 1.5f;
+        public int percDamageCap = 35;
+        public int defDrop = 2;
 
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
-        public override int PetAbilityCooldown => healthDmgCd;
+        public override int PetAbilityCooldown => cooldown;
         public override void ExtraPreUpdateNoCheck()
         {
             if (PetIsEquipped())
@@ -39,11 +39,11 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (target.boss == false || NpcPet.NonBossTrueBosses.Contains(target.type) == false)
                     {
-                        modifiers.FlatBonusDamage += (int)(target.lifeMax * regularEnemyHpDmg);
+                        modifiers.ScalingBonusDamage += target.lifeMax * regularEnemyHpDmg;
                     }
                     else
                     {
-                        modifiers.FlatBonusDamage += (int)(target.lifeMax * bossHpDmg);
+                        modifiers.ScalingBonusDamage += Math.Min(target.lifeMax * bossHpDmg,percDamageCap);
                     }
                     Pet.timer = Pet.timerMax;
                 }
@@ -53,14 +53,22 @@ namespace PetsOverhaul.PetEffects
         {
             if (Player.Distance(target.Center) < closeRange && GlobalPet.LifestealCheck(target) && PetIsEquipped())
             {
-                target.AddBuff(BuffID.CursedInferno, infernoTime);
-                if (Pet.timer <= 0)
+                if (Pet.timer <= 0 && target.TryGetGlobalNPC(out TwinsPermaDefDrop defDrop))
                 {
-                    Pet.PetRecovery(Player.statDefense * defMult * (Player.endurance + 1f), hit.Damage * defLifestealDmgMult);
+                    target.AddBuff(BuffID.CursedInferno, infernoTime);
+                    defDrop.currentTwinDrop += 2;
                     Pet.timer = Pet.timerMax;
                 }
-
             }
+        }
+    }
+    public sealed class TwinsPermaDefDrop : GlobalNPC
+    {
+        public override bool InstancePerEntity => true;
+        public int currentTwinDrop = 0;
+        public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
+        {
+            modifiers.Defense.Flat -= currentTwinDrop;
         }
     }
     public sealed class TwinsPetItem : PetTooltip
@@ -78,12 +86,12 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => Language.GetTextValue("Mods.PetsOverhaul.PetItemTooltips.TwinsPetItem")
                         .Replace("<closeRange>", Math.Round(theTwins.closeRange / 16f, 2).ToString())
+                        .Replace("<defReduce>",theTwins.defDrop.ToString())
                         .Replace("<cursedTime>", Math.Round(theTwins.infernoTime / 60f, 2).ToString())
-                        .Replace("<defLifesteal>", theTwins.defMult.ToString())
-                        .Replace("<dealtDmgLifesteal>", Math.Round(theTwins.defLifestealDmgMult * 10000, 2).ToString())
                         .Replace("<longRange>", Math.Round(theTwins.longRange / 16f, 2).ToString())
                         .Replace("<hpDmg>", Math.Round(theTwins.regularEnemyHpDmg * 100, 2).ToString())
                         .Replace("<bossHpDmg>", Math.Round(theTwins.bossHpDmg * 100, 2).ToString())
-                        .Replace("<hpDmgCooldown>", Math.Round(theTwins.healthDmgCd / 60f, 2).ToString());
+                        .Replace("<defReduce>", theTwins.percDamageCap.ToString())
+                        .Replace("<hpDmgCooldown>", Math.Round(theTwins.cooldown / 60f, 2).ToString());
     }
 }

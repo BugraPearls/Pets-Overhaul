@@ -25,7 +25,7 @@ Mods: {
 			KeybindMissing: Keybind Not Registered
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.4.3, latest changes: Added Pet Resource/Stack UI Text Display, improved & simplified Config options]
+				[c/90C2AA:Pets Overhaul 3.4.4, latest changes: Added Pet Resource/Stack UI Text Display, improved & simplified Config options]
 				[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 				'''
@@ -983,14 +983,12 @@ Mods: {
 				'''
 				<class>
 				- Gain benefits depending on if you're close or far away from your target.
-				- Your target being in a <closeRange> tile range causes the following:
-				 * Applies Cursed Flames on your target for <cursedTime> seconds.
-				 * Apply <dealtDmgLifesteal>% of the damage you dealt as lifesteal on 
-				   <defLifesteal>x of your defense multiplied by your damage reduction.
-				- Your target being outside of a <longRange> tile range adds <hpDmg>% health damage.
-				 * Maximum health damage is reduced to <bossHpDmg>% for bosses. 
-				- % health damage and lifesteal has a <hpDmgCooldown> second cooldown.
-				- Both benefits has NO EFFECT if enemy is inside/between the two radiuses.
+				- If your target is inside of <closeRange> tiles, reduce their defense permanently by <defReduce>
+				  and apply Cursed Flames debuff on them for <cursedTime> seconds.
+				- If your target is outside of <longRange> tiles, deal <hpDmg>% of targets health as bonus damage.
+				 * Maximum health damage is reduced to <bossHpDmg>% and is capped to <bossCap> for bosses.
+				 * The %hp damage effects scales with your damage bonuses.
+				- Triggering either of effects has a <hpDmgCooldown> second cooldown.
 				'''
 			EverscreamPetItem:
 				'''
