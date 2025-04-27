@@ -749,11 +749,13 @@ Mods: {
 			DogWhistle:
 				'''
 				<class>
-				- Grants permanent hunter effect.
 				- Increases caught critters by <critter>%.
 				 * Decreased to <rareCritter>% for rare critters. 
-				- Grants <rareCritterCoin> times the rarity value of caught critter as coins.
-				- Grants <rareEnemyCoin> times the rarity value of a killed enemy as coins.
+				- Grants <rareCritterCoin> silver coins for caught rare critters.
+				- Grants <rareEnemyCoin> silver coins for killed rare enemies.
+				 * Both is furthermore multiplied by enemies rarity value.
+				- Shows locations of Rare Critters & Friendly NPC's with a Yellow Shine.
+				- Shows locations of Rare Enemies with a Purple Shine.
 				'''
 			Seedling:
 				'''

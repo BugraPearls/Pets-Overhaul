@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Config;
+﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -17,21 +18,56 @@ namespace PetsOverhaul.PetEffects
         public int rareCatchChance = 15;
         public int rareCritterCoin = 25000;
         public int rareEnemyCoin = 70000;
-        public override void UpdateEquips()
-        {
-            if (PetIsEquipped(false))
-            {
-                Player.AddBuff(BuffID.Hunter, 1);
-            }
-        }
         public override void Load()
         {
             GlobalPet.OnEnemyDeath += OnEnemyKill;
+            On_NPC.GetNPCColorTintedByBuffs += On_NPC_GetNPCColorTintedByBuffs;
         }
         public override void Unload()
         {
             GlobalPet.OnEnemyDeath -= OnEnemyKill;
         }
+        private static Color On_NPC_GetNPCColorTintedByBuffs(On_NPC.orig_GetNPCColorTintedByBuffs orig, NPC self, Color npcColor)
+        {
+            Color tempColor = npcColor;
+            if (!self.canDisplayBuffs)
+            {
+                return tempColor;
+            }
+            tempColor = orig(self, npcColor);
+            if (self.rarity > 0 && Main.LocalPlayer.miscEquips[0].type == ItemID.DogWhistle && self.lifeMax > 1)
+            {
+                byte b;
+                byte b2;
+                byte b3;
+                if (self.friendly || self.catchItem > 0 || (self.damage == 0 && self.lifeMax == 5))
+                {
+                    b = byte.MaxValue;
+                    b2 = byte.MaxValue;
+                    b3 = 40;
+                }
+                else
+                {
+                    b = byte.MaxValue;
+                    b2 = 40;
+                    b3 = byte.MaxValue;
+                }
+                if (tempColor.R < b)
+                {
+                    tempColor.R = b;
+                }
+                if (tempColor.G < b2)
+                {
+                    tempColor.G = b2;
+                }
+                if (tempColor.B < b3)
+                {
+                    tempColor.B = b3;
+                }
+            }
+            return tempColor;
+        }
+
         public static void OnEnemyKill(NPC npc, Player player) //Remember, DO NOT use instanced stuff (Ex. Pet.PetInUse() is bad, use player.TryGetModPlayer() or player.GetModPlayer() to get the Pet class instances. EVERYTHING HAS TO BE from objects passed from the Event.
         {
             if (player.TryGetModPlayer(out Puppy pup) && pup.PetIsEquipped(false) && npc.rarity > 0 && npc.CountsAsACritter == false && npc.SpawnedFromStatue == false)
@@ -87,7 +123,7 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DogWhistle")
                 .Replace("<critter>", puppy.catchChance.ToString())
                 .Replace("<rareCritter>", puppy.rareCatchChance.ToString())
-                .Replace("<rareCritterCoin>", Math.Round(puppy.rareCritterCoin / 100f, 2).ToString())
-                .Replace("<rareEnemyCoin>", Math.Round(puppy.rareEnemyCoin / 100f, 2).ToString());
+                .Replace("<rareCritterCoin>", Math.Round(puppy.rareCritterCoin / 10000f, 2).ToString())
+                .Replace("<rareEnemyCoin>", Math.Round(puppy.rareEnemyCoin / 10000f, 2).ToString());
     }
 }
