@@ -335,11 +335,19 @@ namespace PetsOverhaul.Commands
                             {
                                 case "harvesting":
                                     List<int> harv = new();
+                                    List<int> rareHarv = new();
                                     foreach (var item in Junimo.HarvestingXpPerGathered)
                                     {
-                                        harv.AddRange(item.plantList);
+                                        if (item.expAmount >= 1000)
+                                        {
+                                            rareHarv.AddRange(item.plantList);
+                                        }
+                                        else
+                                        {
+                                            harv.AddRange(item.plantList);
+                                        }
                                     }
-                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetTextsColors.ItemsToTooltipImages(harv, 22, 0);
+                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetTextsColors.ItemsToTooltipImages(harv, 22, 0) + " " + PetTextsColors.LocVal("Misc.RarePlant") + ": " + PetTextsColors.ItemsToTooltipImages(rareHarv,22,10);
 
                                     break;
                                 case "mining":

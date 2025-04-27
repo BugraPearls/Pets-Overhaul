@@ -17,6 +17,7 @@ Mods: {
 			RequireHead: Consumindo uma Cabeça de Abóbora
 			// Herb: Herb
 			// Animal: Animal
+			// RarePlant: Rare Plants
 			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 			%: %
 			x: x
