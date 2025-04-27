@@ -152,6 +152,8 @@ namespace PetsOverhaul.Systems
         /// </summary>
         private static bool colorSwitched = false;
 
+        public static List<int> EnemiesForLifestealToIgnore = new();
+
         /// <summary>
         /// Is invoked at PetNpc, OnKill hook, refer to Puppy Pet's OnEnemyKill() & Load/Unload to figure how its used properly. Only called on Player that last hit the NPC, when NPC is dead.
         /// </summary>
@@ -291,9 +293,14 @@ namespace PetsOverhaul.Systems
             }    
             return Player.miscEquips[0].type == petItemID;
         }
+        /// <summary>
+        /// Checks if the given enemy should not be lifestealen from, this can be used for non-lifesteal applications as some effects may not want to occur on friendly/statue/immortal etc. enemies.
+        /// </summary>
+        /// <param name="npc"></param>
+        /// <returns></returns>
         public static bool LifestealCheck(NPC npc)
         {
-            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal;
+            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !EnemiesForLifestealToIgnore.Contains(npc.type);
         }
         /// <summary>
         /// Creates a Circle around the given Center with dust ID. dustAmount is usually recommended to be around radius / 10.
