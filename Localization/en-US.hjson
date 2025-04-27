@@ -26,8 +26,9 @@ Mods: {
 			KeybindMissing: Keybind Not Registered
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.4.4, latest changes: Added Pet Resource/Stack UI Text Display, improved & simplified Config options]
-				[c/b4bfc5:Join our discord server for feedback & bug reports! discord.gg/KubSpqvDGE]
+				[c/90C2AA:Pets Overhaul 3.4.5, latest changes: Added Pet Resource/Stack UI Text Display, improved & simplified Config options]
+				[c/90C2AA:Mini Rework on Twins and Puppy Pets, command improvements, few backend improvements and bug fixes]
+				[c/b4bfc5:Join our discord server for feedback, bug reports & questions! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 				'''
 			CalamityDetected:
