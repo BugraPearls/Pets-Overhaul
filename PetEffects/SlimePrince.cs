@@ -3,10 +3,8 @@ using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -40,14 +38,14 @@ namespace PetsOverhaul.PetEffects
                 {
                     howManyIsAlive++;
                 }
-            }    
+            }
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                SoundEngine.PlaySound(SoundID.Item44 with { PitchVariance = 1.6f,Volume = 0.6f },Player.Center);
-                NPC npc = NPC.NewNPCDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetNPC),(int)Player.position.X,(int)Player.position.Y,ModContent.NPCType<SlimeServant>());
+                SoundEngine.PlaySound(SoundID.Item44 with { PitchVariance = 1.6f, Volume = 0.6f }, Player.Center);
+                NPC npc = NPC.NewNPCDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)Player.position.X, (int)Player.position.Y, ModContent.NPCType<SlimeServant>());
                 npc.GetGlobalNPC<SlimeServantOwner>().Owner = Player.whoAmI;
                 npc.defense += Player.statDefense * defMult;
                 npc.lifeMax += (int)(Player.statLifeMax2 * hpMult);
@@ -70,10 +68,10 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.KingSlimePetItem")
-            .Replace("<keybind>",PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
-            .Replace("<defMult>", Math.Round(slimePrince.defMult*100,2).ToString())
+            .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+            .Replace("<defMult>", Math.Round(slimePrince.defMult * 100, 2).ToString())
             .Replace("<hpMult>", Math.Round(slimePrince.hpMult * 100, 2).ToString())
-            .Replace("<dmg>",slimePrince.baseDmg.ToString())
+            .Replace("<dmg>", slimePrince.baseDmg.ToString())
             .Replace("<slowAmount>", Math.Round(slimePrince.slowAmount * 100, 2).ToString())
             .Replace("<slowDuration>", Math.Round(slimePrince.slowDuration / 60f, 2).ToString())
             .Replace("<slimyDuration>", Math.Round(slimePrince.slimyDuration / 60f, 2).ToString())

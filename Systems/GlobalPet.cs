@@ -13,7 +13,6 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameInput;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -290,7 +289,7 @@ namespace PetsOverhaul.Systems
             if (makePetsBrokenByAllowingThemAllToBeUsedWhileInInventory)
             {
                 return Player.HasItemInAnyInventory(petItemID);
-            }    
+            }
             return Player.miscEquips[0].type == petItemID;
         }
         /// <summary>
@@ -887,7 +886,7 @@ namespace PetsOverhaul.Systems
 
                 previousPetItem = Player.miscEquips[0].type;
             }
-                Player.GetModPlayer<PetSounds>().PlayAmbientSoundFromItemId(Player.miscEquips[0].type);
+            Player.GetModPlayer<PetSounds>().PlayAmbientSoundFromItemId(Player.miscEquips[0].type);
         }
         public override void UpdateDead()
         {

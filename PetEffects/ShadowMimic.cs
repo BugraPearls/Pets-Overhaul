@@ -1,13 +1,9 @@
-﻿using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.Utilities.Terraria.Utilities;
 
 namespace PetsOverhaul.PetEffects
 {
@@ -27,7 +23,7 @@ namespace PetsOverhaul.PetEffects
         private static ItemDropAttemptResult ShadowMimicExtraDrop(On_ItemDropResolver.orig_ResolveRule orig, ItemDropResolver self, IItemDropRule rule, DropAttemptInfo info)
         {
             ItemDropAttemptResult tempResult = new();
-            if (rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped()) 
+            if (rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped())
             {
                 if ((float)Math.Max(drop.chanceNumerator, 1) / Math.Max(drop.chanceDenominator, 1) <= mimic.lowChanceThreshold)
                 {
@@ -38,7 +34,7 @@ namespace PetsOverhaul.PetEffects
                     drop.chanceDenominator /= mimic.denominatorMult;
                     return tempResult;
                 }
-                else if (Main.rand.NextBool(mimic.chanceToRollDoubleItem,100) && ContentSamples.ItemsByType[drop.itemId].maxStack != 1)
+                else if (Main.rand.NextBool(mimic.chanceToRollDoubleItem, 100) && ContentSamples.ItemsByType[drop.itemId].maxStack != 1)
                 {
                     drop.amountDroppedMaximum *= 2;
                     drop.amountDroppedMinimum *= 2;
@@ -68,8 +64,8 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.OrnateShadowKey")
-            .Replace("<threshold>",Math.Round(shadowMimic.lowChanceThreshold*100,2).ToString())
-            .Replace("<chanceIncrease>", (shadowMimic.numeratorMult-shadowMimic.denominatorMult).ToString())
+            .Replace("<threshold>", Math.Round(shadowMimic.lowChanceThreshold * 100, 2).ToString())
+            .Replace("<chanceIncrease>", (shadowMimic.numeratorMult - shadowMimic.denominatorMult).ToString())
             .Replace("<chanceToDouble>", shadowMimic.chanceToRollDoubleItem.ToString());
     }
 }

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Items
@@ -34,7 +33,7 @@ namespace PetsOverhaul.Items
                         case "Tooltip2":
                             double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
                             line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + PetTextsColors.LocVal("Misc.%"))
-                                .Replace("<hastePosiOrNega>",(currentHaste >= 0 ? PetTextsColors.LocVal("Misc.Faster") : PetTextsColors.LocVal("Misc.Slower")));
+                                .Replace("<hastePosiOrNega>", (currentHaste >= 0 ? PetTextsColors.LocVal("Misc.Faster") : PetTextsColors.LocVal("Misc.Slower")));
                             break;
                         case "Tooltip3":
                             line.Text = line.Text.Replace("<damage>", pet.petDirectDamageMultiplier.ToString());
@@ -90,7 +89,7 @@ namespace PetsOverhaul.Items
                                 items.Add(ModContent.ItemType<PrismaticOptic>());
                             if (GlobalPet.golemConsumed)
                                 items.Add(ModContent.ItemType<LihzahrdWrench>());
-                            if (GlobalPet.pumpkingConsumed) 
+                            if (GlobalPet.pumpkingConsumed)
                                 items.Add(ModContent.ItemType<PumpkingsHead>());
                             line.Text = line.Text.Replace("<items>", PetTextsColors.ItemsToTooltipImages(items));
                             break;

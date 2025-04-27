@@ -3,7 +3,6 @@ using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -43,7 +42,7 @@ namespace PetsOverhaul.PetEffects
                     }
                     else
                     {
-                        modifiers.ScalingBonusDamage += Math.Min(target.lifeMax * bossHpDmg,percDamageCap);
+                        modifiers.ScalingBonusDamage += Math.Min(target.lifeMax * bossHpDmg, percDamageCap);
                     }
                     Pet.timer = Pet.timerMax;
                 }
@@ -86,7 +85,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.TwinsPetItem")
                         .Replace("<closeRange>", Math.Round(theTwins.closeRange / 16f, 2).ToString())
-                        .Replace("<defReduce>",theTwins.defDrop.ToString())
+                        .Replace("<defReduce>", theTwins.defDrop.ToString())
                         .Replace("<cursedTime>", Math.Round(theTwins.infernoTime / 60f, 2).ToString())
                         .Replace("<longRange>", Math.Round(theTwins.longRange / 16f, 2).ToString())
                         .Replace("<hpDmg>", Math.Round(theTwins.regularEnemyHpDmg * 100, 2).ToString())

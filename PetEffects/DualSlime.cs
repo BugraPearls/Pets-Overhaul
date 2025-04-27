@@ -1,14 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Items;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameInput;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -135,7 +132,7 @@ namespace PetsOverhaul.PetEffects
                             }
                             if (self.whoAmI == Main.myPlayer)
                             {
-                                self.ApplyDamageToNPC(nPC2, dual.Pet.PetDamage(num3 * (dual.mountDmgIncr + 1),DamageClass.Summon), knockback2, num4);
+                                self.ApplyDamageToNPC(nPC2, dual.Pet.PetDamage(num3 * (dual.mountDmgIncr + 1), DamageClass.Summon), knockback2, num4);
                                 dual.OnMountHit(nPC2);
                             }
                             nPC2.immune[self.whoAmI] = 12;
@@ -262,7 +259,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         if (self.whoAmI == Main.myPlayer)
                         {
-                            self.ApplyDamageToNPC(nPC, dual.Pet.PetDamage(Damage * (dual.mountDmgIncr+1), damageType), Knockback, num2, crit: false, damageType);
+                            self.ApplyDamageToNPC(nPC, dual.Pet.PetDamage(Damage * (dual.mountDmgIncr + 1), damageType), Knockback, num2, crit: false, damageType);
                             dual.OnMountHit(nPC); //This is same code as whats called in original method (orig), except it will give Player shield, increase damage by the Mount and slow the npc on hit.
                         }
                         nPC.immune[self.whoAmI] = NPCImmuneTime;
@@ -313,5 +310,5 @@ namespace PetsOverhaul.PetEffects
             .Replace("<lifetime>", Math.Round(SlimePrince.lifetimeOfServant / 60f, 2).ToString());
     }
 }
-            
+
 

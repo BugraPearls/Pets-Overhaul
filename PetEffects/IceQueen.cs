@@ -6,7 +6,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -37,7 +36,7 @@ namespace PetsOverhaul.PetEffects
         public override void UpdateBadLifeRegen()
         {
             if (PetIsEquipped() && frozenTomb == true && Player.lifeRegen < 0) //This should be enough, and should be fine for consistency. With this, and the one below, dying to DoT's when in immunity shouldn't happen anymore.
-            { 
+            {
                 Player.lifeRegen = 0;
             }
         }

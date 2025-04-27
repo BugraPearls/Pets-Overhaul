@@ -1,18 +1,12 @@
-﻿using Humanizer;
-using Microsoft.Xna.Framework;
-using PetsOverhaul.Items;
+﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent.Achievements;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -73,7 +67,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassSecondary => PetClasses.Offensive;
         public void OnMountHit(NPC npc)
         {
-            NpcPet.AddSlow(new NpcPet.PetSlow(slow, slowDuration, PetSlowIDs.PrincessSlime),npc);
+            NpcPet.AddSlow(new NpcPet.PetSlow(slow, slowDuration, PetSlowIDs.PrincessSlime), npc);
             if (Pet.timer <= 0)
             {
                 Pet.timer = Pet.timerMax;
@@ -119,7 +113,7 @@ namespace PetsOverhaul.PetEffects
                             }
                             if (self.whoAmI == Main.myPlayer)
                             {
-                                self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage((princess.mountDmgIncr+1) * num, DamageClass.Summon), knockback, num2, crit: false, DamageClass.Summon);
+                                self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage((princess.mountDmgIncr + 1) * num, DamageClass.Summon), knockback, num2, crit: false, DamageClass.Summon);
                                 princess.OnMountHit(nPC);
 
                             }
@@ -159,7 +153,7 @@ namespace PetsOverhaul.PetEffects
                             }
                             if (self.whoAmI == Main.myPlayer)
                             {
-                                self.ApplyDamageToNPC(nPC2, princess.Pet.PetDamage(num3 * (princess.mountDmgIncr+1),DamageClass.Summon), knockback2, num4);
+                                self.ApplyDamageToNPC(nPC2, princess.Pet.PetDamage(num3 * (princess.mountDmgIncr + 1), DamageClass.Summon), knockback2, num4);
                                 princess.OnMountHit(nPC2);
                             }
                             nPC2.immune[self.whoAmI] = 12;
@@ -257,7 +251,7 @@ namespace PetsOverhaul.PetEffects
                 }
             }
             else
-                orig(self); 
+                orig(self);
         }
 
         private static int TryToCollideWithNPCs(On_Player.orig_CollideWithNPCs orig, Player self, Rectangle myRect, float Damage, float Knockback, int NPCImmuneTime, int PlayerImmuneTime, DamageClass damageType) //This is copy paste of Vanilla CollideWithNPCs Code.
@@ -286,7 +280,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         if (self.whoAmI == Main.myPlayer)
                         {
-                            self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage(Damage*(princess.mountDmgIncr+1), damageType), Knockback, num2, crit: false, damageType);
+                            self.ApplyDamageToNPC(nPC, princess.Pet.PetDamage(Damage * (princess.mountDmgIncr + 1), damageType), Knockback, num2, crit: false, damageType);
                             princess.OnMountHit(nPC); //This is same code as whats called in original method (orig), except it will give Player shield, increase damage by the Mount and slow the npc on hit.
                         }
                         nPC.immune[self.whoAmI] = NPCImmuneTime;
@@ -299,14 +293,14 @@ namespace PetsOverhaul.PetEffects
             }
             else
             {
-                return orig(self,myRect,Damage,Knockback,NPCImmuneTime,PlayerImmuneTime,damageType);
+                return orig(self, myRect, Damage, Knockback, NPCImmuneTime, PlayerImmuneTime, damageType);
             }
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
             if (PetIsEquipped() && proj.TryGetGlobalProjectile(out ProjectileSourceChecks check) && check.fromMount)
             {
-                modifiers.FinalDamage *= (1+mountDmgIncr) * Pet.petDirectDamageMultiplier;
+                modifiers.FinalDamage *= (1 + mountDmgIncr) * Pet.petDirectDamageMultiplier;
                 OnMountHit(target);
             }
         }

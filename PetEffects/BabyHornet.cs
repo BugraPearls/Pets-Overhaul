@@ -4,7 +4,6 @@ using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -68,13 +67,13 @@ namespace PetsOverhaul.PetEffects
             {
                 if (Player.strongBees == true && Main.rand.NextBool(1, 3))
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.GiantBee, Pet.PetDamage(beeDmg * 2,DamageClass.Summon), beeKb * 2, Player.whoAmI);
+                    Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.GiantBee, Pet.PetDamage(beeDmg * 2, DamageClass.Summon), beeKb * 2, Player.whoAmI);
                     petProjectile.DamageType = DamageClass.Summon;
                     petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Summon);
                 }
                 else
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.Bee, Pet.PetDamage(beeDmg,DamageClass.Summon), beeKb, Player.whoAmI);
+                    Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.Bee, Pet.PetDamage(beeDmg, DamageClass.Summon), beeKb, Player.whoAmI);
                     petProjectile.DamageType = DamageClass.Summon;
                     petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Summon);
                 }

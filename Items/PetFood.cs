@@ -2,8 +2,6 @@
 using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
 
 namespace PetsOverhaul.Items
 {

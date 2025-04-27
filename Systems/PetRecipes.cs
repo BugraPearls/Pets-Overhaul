@@ -2,8 +2,6 @@
 using PetsOverhaul.Tiles;
 using System;
 using Terraria;
-using Terraria.GameContent.Achievements;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace PetsOverhaul.Systems
@@ -58,7 +56,7 @@ namespace PetsOverhaul.Systems
             PetRecipe(Recipe.Create(ItemID.CursedSapling).AddIngredient(ItemID.SpookyWood, 2500), 2000);
             MasterModePetRecipe(Recipe.Create(ItemID.DestroyerPetItem).AddIngredient(ItemID.Wire, 10).AddRecipeGroup(RecipeGroupsForPets.Copper, 40).AddRecipeGroup(RecipeGroupID.IronBar, 15).AddRecipeGroup(RecipeGroupsForPets.Silver, 15).AddRecipeGroup(RecipeGroupsForPets.Gold, 15).AddIngredient(ItemID.HallowedBar, 4).AddIngredient(ItemID.SoulofMight, 10), 900);
             PetRecipe(Recipe.Create(ItemID.DirtiestBlock).AddIngredient(ItemID.DirtBlock, 25000));
-            MasterModePetRecipe(Recipe.Create(ItemID.ResplendentDessert).AddRecipeGroup(RecipeGroupsForPets.Crowns, 2).AddIngredient(ItemID.Gel, 850).AddIngredient(ItemID.PinkGel, 100).AddIngredient(ItemID.GelBalloon, 100).AddIngredient(ItemID.Bubble, 25), 250,2); //Is basically both Prince & Princess but slightly 'cheaper'
+            MasterModePetRecipe(Recipe.Create(ItemID.ResplendentDessert).AddRecipeGroup(RecipeGroupsForPets.Crowns, 2).AddIngredient(ItemID.Gel, 850).AddIngredient(ItemID.PinkGel, 100).AddIngredient(ItemID.GelBalloon, 100).AddIngredient(ItemID.Bubble, 25), 250, 2); //Is basically both Prince & Princess but slightly 'cheaper'
             PetRecipe(Recipe.Create(ItemID.BallOfFuseWire).AddIngredient(ItemID.Dynamite, 99).AddIngredient(ItemID.Wire, 99).AddCondition(Condition.BestiaryFilledPercent(70)), 300);
             MasterModePetRecipe(Recipe.Create(ItemID.EaterOfWorldsPetItem).AddIngredient(ItemID.MiningPotion).AddIngredient(ItemID.WormTooth, 20).AddIngredient(ItemID.WormFood).AddIngredient(ItemID.RottenChunk, 25), 100);
             PetRecipe(Recipe.Create(ItemID.CelestialWand).AddIngredient(ItemID.FallenStar, 99).AddRecipeGroup(RecipeGroupsForPets.Gold, 10), 1800);
@@ -86,30 +84,30 @@ namespace PetsOverhaul.Systems
             PetRecipe(Recipe.Create(ItemID.DogWhistle).AddIngredient(ItemID.Bone, 99).AddIngredient(ItemID.HunterPotion), 100);
             PetRecipe(Recipe.Create(ItemID.Seedling).AddIngredient(ItemID.ChlorophyteBar, 100).AddIngredient(ItemID.LifeFruit, 5).AddIngredient(ItemID.Acorn).AddCondition(Condition.DownedPlantera), 500);
             PetRecipe(Recipe.Create(ItemID.OrnateShadowKey).AddIngredient(ItemID.ShadowChest).AddIngredient(ItemID.ShadowKey).AddIngredient(ItemID.Obsidian, 50).AddIngredient(ItemID.GoldenKey).AddRecipeGroup(RecipeGroupsForPets.DemoniteBar, 12), 100);
-            PetRecipe(Recipe.Create(ItemID.SharkBait).AddIngredient(ItemID.SharkFin, 10).AddIngredient(ItemID.WaterBucket).AddIngredient(ItemID.Seashell, 5),10);
-            MasterModePetRecipe(Recipe.Create(ItemID.SkeletronPetItem).AddIngredient(ItemID.Bone,250).AddIngredient(ItemID.WaterCandle).AddIngredient(ItemID.MeteoriteBar,15).AddIngredient(ItemID.Hook,2),600);
+            PetRecipe(Recipe.Create(ItemID.SharkBait).AddIngredient(ItemID.SharkFin, 10).AddIngredient(ItemID.WaterBucket).AddIngredient(ItemID.Seashell, 5), 10);
+            MasterModePetRecipe(Recipe.Create(ItemID.SkeletronPetItem).AddIngredient(ItemID.Bone, 250).AddIngredient(ItemID.WaterCandle).AddIngredient(ItemID.MeteoriteBar, 15).AddIngredient(ItemID.Hook, 2), 600);
             MasterModePetRecipe(Recipe.Create(ItemID.KingSlimePetItem).AddRecipeGroup(RecipeGroupsForPets.Crowns).AddIngredient(ItemID.Gel, 550).AddIngredient(ItemID.SlimeBlock, 100), 50);
             MasterModePetRecipe(Recipe.Create(ItemID.QueenSlimePetItem).AddRecipeGroup(RecipeGroupsForPets.Crowns).AddIngredient(ItemID.Gel, 300).AddIngredient(ItemID.PinkGel, 115).AddIngredient(ItemID.GelBalloon, 100).AddIngredient(ItemID.Bubble, 25), 250);
             PetRecipe(Recipe.Create(ItemID.SpiderEgg).AddIngredient(ItemID.Cobweb, 400).AddIngredient(ItemID.SpiderFang, 20).AddIngredient(ItemID.VialofVenom, 20).AddCondition(Condition.DownedPumpking), 500);
             MasterModePetRecipe(Recipe.Create(ItemID.BrainOfCthulhuPetItem).AddIngredient(ItemID.RegenerationPotion).AddIngredient(ItemID.Glass, 30).AddIngredient(ItemID.LifeCrystal, 2).AddIngredient(ItemID.BloodySpine).AddIngredient(ItemID.Vertebrae, 25), 100);
             PetRecipe(Recipe.Create(ItemID.SpiffoPlush).AddIngredient(ItemID.ZombieArm).AddIngredient(ItemID.MusketBall, 25).AddIngredient(ItemID.AmmoReservationPotion).AddIngredient(ItemID.ZombieBanner).AddIngredient(ItemID.Shackle, 4), 400);
             PetRecipe(Recipe.Create(ItemID.MagicalPumpkinSeed).AddIngredient(ItemID.Pumpkin, 500).AddIngredient(ItemID.HerbBag), 300);
-            PetRecipe(Recipe.Create(ItemID.EucaluptusSap).AddIngredient(ItemID.Umbrella).AddRecipeGroup(RecipeGroupID.Wood, 500).AddRecipeGroup(RecipeGroupID.Fruit,3),300);
-            MasterModePetRecipe(Recipe.Create(ItemID.EyeOfCthulhuPetItem).AddIngredient(ItemID.Lens, 35).AddRecipeGroup(RecipeGroupsForPets.DemoniteBar, 15),140);
+            PetRecipe(Recipe.Create(ItemID.EucaluptusSap).AddIngredient(ItemID.Umbrella).AddRecipeGroup(RecipeGroupID.Wood, 500).AddRecipeGroup(RecipeGroupID.Fruit, 3), 300);
+            MasterModePetRecipe(Recipe.Create(ItemID.EyeOfCthulhuPetItem).AddIngredient(ItemID.Lens, 35).AddRecipeGroup(RecipeGroupsForPets.DemoniteBar, 15), 140);
             MasterModePetRecipe(Recipe.Create(ItemID.TwinsPetItem).AddIngredient(ItemID.Wire, 100).AddRecipeGroup(RecipeGroupsForPets.Copper, 10).AddRecipeGroup(RecipeGroupID.IronBar, 5).AddRecipeGroup(RecipeGroupsForPets.Silver, 10).AddRecipeGroup(RecipeGroupsForPets.Gold, 5).AddIngredient(ItemID.HallowedBar, 7).AddIngredient(ItemID.SoulofSight, 10), 900);
             PetRecipe(Recipe.Create(ItemID.TikiTotem).AddIngredient(ItemID.RichMahogany, 225).AddIngredient(ItemID.JungleSpores, 22).AddIngredient(ItemID.Vine, 3).AddIngredient(ItemID.SoulofLight, 12).AddIngredient(ItemID.SoulofNight, 12), 3000);
             MasterModePetRecipe(Recipe.Create(ItemID.DeerclopsPetItem).AddIngredient(ItemID.FlinxFur, 16).AddIngredient(ItemID.IceTorch, 99).AddIngredient(ItemID.SnowBlock, 250), 300);
             MasterModePetRecipe(Recipe.Create(ItemID.DukeFishronPetItem).AddIngredient(ItemID.Bacon, 6).AddIngredient(ItemID.TruffleWorm, 6).AddIngredient(ItemID.SharkFin, 6), 666);
-            PetRecipe(Recipe.Create(ItemID.Seaweed).AddIngredient(ItemID.FishingSeaweed).AddIngredient(ItemID.Seashell,10).AddIngredient(ItemID.ShellPileBlock,4).AddIngredient(ItemID.ThornsPotion).AddIngredient(ItemID.JungleSpores,12).AddRecipeGroup(RecipeGroupID.Sand,250),150);
+            PetRecipe(Recipe.Create(ItemID.Seaweed).AddIngredient(ItemID.FishingSeaweed).AddIngredient(ItemID.Seashell, 10).AddIngredient(ItemID.ShellPileBlock, 4).AddIngredient(ItemID.ThornsPotion).AddIngredient(ItemID.JungleSpores, 12).AddRecipeGroup(RecipeGroupID.Sand, 250), 150);
             PetRecipe(Recipe.Create(ItemID.LightningCarrot).AddIngredient(ItemID.Bunny).AddIngredient(ItemID.Wire, 25).AddIngredient(ItemID.FallenStar, 25).AddIngredient(ItemID.RainCloud, 25).AddCondition(Condition.BestiaryFilledPercent(50)), 700);
-            PetRecipe(Recipe.Create(ItemID.ZephyrFish).AddIngredient(ItemID.Cloud, 250).AddIngredient(ItemID.ApprenticeBait,25).AddRecipeGroup(RecipeGroupsForPets.AllBugs,5).AddCondition(Condition.AnglerQuestsFinishedOver(30)),500);
+            PetRecipe(Recipe.Create(ItemID.ZephyrFish).AddIngredient(ItemID.Cloud, 250).AddIngredient(ItemID.ApprenticeBait, 25).AddRecipeGroup(RecipeGroupsForPets.AllBugs, 5).AddCondition(Condition.AnglerQuestsFinishedOver(30)), 500);
 
             PetRecipe(Recipe.Create(ItemID.DD2PetGhost).AddIngredient(ItemID.DefenderMedal, 5).AddIngredient(ItemID.WaterCandle).AddIngredient(ItemID.SoulofNight, 4).AddIngredient(ItemID.SoulofLight, 4).AddIngredient(ItemID.Silk, 6), 70);
             PetRecipe(Recipe.Create(ItemID.CrimsonHeart).AddIngredient(ItemID.TissueSample, 4).AddIngredient(ItemID.CrimtaneBar, 3).AddIngredient(ItemID.ViciousMushroom, 2), 10);
             PetRecipe(Recipe.Create(ItemID.FairyBell).AddIngredient(ItemID.Bell).AddRecipeGroup(RecipeGroupsForPets.Fairies).AddIngredient(ItemID.SoulofSight, 5).AddIngredient(ItemID.PixieDust, 8), 80);
             PetRecipe(Recipe.Create(ItemID.PumpkingPetItem).AddIngredient(ItemID.SpookyCandle).AddIngredient(ItemID.SpookyWood, 50).AddIngredient(ItemID.Pumpkin, 30).AddCondition(PetCraftingConditions.ConsumedHead), 75);
             PetRecipe(Recipe.Create(ItemID.FairyQueenPetItem).AddIngredient(ItemID.SoulofFlight, 8).AddIngredient(ItemID.CrystalShard, 14).AddCondition(PetCraftingConditions.ConsumedOptic), 125);
-            PetRecipe(Recipe.Create(ItemID.MagicLantern).AddIngredient(ItemID.Glass, 10).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Torch,10).AddRecipeGroup(RecipeGroupsForPets.Copper, 2).AddRecipeGroup(RecipeGroupID.IronBar, 2).AddRecipeGroup(RecipeGroupsForPets.Silver, 2).AddRecipeGroup(RecipeGroupsForPets.Gold,2).AddCondition(Condition.MoonPhaseFull).AddCondition(Condition.TimeNight), 175);
+            PetRecipe(Recipe.Create(ItemID.MagicLantern).AddIngredient(ItemID.Glass, 10).AddIngredient(ItemID.Blinkroot).AddIngredient(ItemID.Torch, 10).AddRecipeGroup(RecipeGroupsForPets.Copper, 2).AddRecipeGroup(RecipeGroupID.IronBar, 2).AddRecipeGroup(RecipeGroupsForPets.Silver, 2).AddRecipeGroup(RecipeGroupsForPets.Gold, 2).AddCondition(Condition.MoonPhaseFull).AddCondition(Condition.TimeNight), 175);
             PetRecipe(Recipe.Create(ItemID.ShadowOrb).AddIngredient(ItemID.ShadowScale, 4).AddIngredient(ItemID.DemoniteBar, 3).AddIngredient(ItemID.VileMushroom, 2), 10);
             PetRecipe(Recipe.Create(ItemID.SuspiciousLookingTentacle).AddIngredient(ItemID.FragmentNebula, 6).AddIngredient(ItemID.FragmentSolar, 6).AddIngredient(ItemID.FragmentStardust, 6).AddIngredient(ItemID.FragmentVortex, 6).AddIngredient(ItemID.SoulofFright, 3).AddIngredient(ItemID.SoulofMight, 3).AddIngredient(ItemID.SoulofSight, 3).AddCondition(Condition.DownedMoonLord), 400);
             PetRecipe(Recipe.Create(ItemID.GolemPetItem).AddIngredient(ItemID.LihzahrdBrick, 15).AddIngredient(ItemID.LunarTabletFragment).AddIngredient(ItemID.BeetleHusk, 3).AddIngredient(ItemID.Wire, 25).AddCondition(PetCraftingConditions.ConsumedWrench), 125);
@@ -117,22 +115,22 @@ namespace PetsOverhaul.Systems
 
             MasterModePetRecipe(Recipe.Create(ModContent.ItemType<LihzahrdWrench>()).AddIngredient(ItemID.LihzahrdPowerCell).AddIngredient(ItemID.SoulofFright, 5).AddIngredient(ItemID.SoulofMight, 5).AddIngredient(ItemID.SoulofSight, 5).AddIngredient(ItemID.LihzahrdFurnace).AddCondition(Condition.DownedGolem), 50);
             MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PrismaticOptic>()).AddIngredient(ItemID.Lens, 5).AddIngredient(ItemID.QueenSlimeCrystal).AddIngredient(ItemID.CrystalShard, 20).AddIngredient(ItemID.EmpressButterfly).AddIngredient(ItemID.PearlstoneBlock, 65).AddCondition(Condition.DownedEmpressOfLight), 50);
-            MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PumpkingsHead>()).AddIngredient(ItemID.SpookyWood, 50).AddIngredient(ItemID.Pumpkin, 50).AddIngredient(ItemID.PumpkingTrophy).AddIngredient(ItemID.Ectoplasm, 15).AddCondition(Condition.DownedPumpking),50);
+            MasterModePetRecipe(Recipe.Create(ModContent.ItemType<PumpkingsHead>()).AddIngredient(ItemID.SpookyWood, 50).AddIngredient(ItemID.Pumpkin, 50).AddIngredient(ItemID.PumpkingTrophy).AddIngredient(ItemID.Ectoplasm, 15).AddCondition(Condition.DownedPumpking), 50);
 
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 40).AddIngredient(ItemID.LifeFruit));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Seeds,16));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.Hay,75));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.BambooBlock,30));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Herbs,7).AddIngredient(ItemID.Mushroom,3));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.Bone,15));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Herbs).AddRecipeGroup(RecipeGroupsForPets.Seeds).AddIngredient(ItemID.GlowingMushroom,10));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Seeds, 16));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.Hay, 75));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.BambooBlock, 30));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Herbs, 7).AddIngredient(ItemID.Mushroom, 3));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddIngredient(ItemID.Bone, 15));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>()).AddRecipeGroup(RecipeGroupsForPets.Herbs).AddRecipeGroup(RecipeGroupsForPets.Seeds).AddIngredient(ItemID.GlowingMushroom, 10));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 300).AddRecipeGroup(RecipeGroupsForPets.GoldenAnimals));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 250).AddIngredient(ItemID.TruffleWorm));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddRecipeGroup(RecipeGroupsForPets.Animals));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddRecipeGroup(RecipeGroupID.Fruit));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.CookedFish,4));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.CookedFish, 4));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 4).AddIngredient(ItemID.CookedShrimp));
-            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 10).AddIngredient(ItemID.Sashimi,7));
+            PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 10).AddIngredient(ItemID.Sashimi, 7));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.SeafoodDinner));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.LobsterTail));
             PetFoodRecipe(Recipe.Create(ModContent.ItemType<PetFood>(), 5).AddIngredient(ItemID.ShuckedOyster));

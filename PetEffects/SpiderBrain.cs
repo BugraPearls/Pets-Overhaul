@@ -2,7 +2,6 @@
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -44,8 +43,8 @@ namespace PetsOverhaul.PetEffects
             {
                 int decreaseFromPool = Pet.PetRecovery(damageDone, lifestealAmount, doHeal: false);
                 int maxCanBeHealed = Player.statLifeMax2 - Player.statLife;
-                if (decreaseFromPool > maxCanBeHealed) 
-                { 
+                if (decreaseFromPool > maxCanBeHealed)
+                {
                     decreaseFromPool = maxCanBeHealed;
                 }
                 if (decreaseFromPool <= 0)

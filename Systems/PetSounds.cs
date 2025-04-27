@@ -1,6 +1,6 @@
 ﻿using PetsOverhaul.Config;
-using System.Collections.Generic;
 using ReLogic.Utilities;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

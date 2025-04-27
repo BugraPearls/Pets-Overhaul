@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -74,6 +73,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<moreFp>", babyPenguin.snowAndOceanPower.ToString())
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())
                 .Replace("<items>", PetTextsColors.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
-                .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier*100,2).ToString());
+                .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier * 100, 2).ToString());
     }
 }

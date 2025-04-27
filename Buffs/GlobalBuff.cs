@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using PetsOverhaul.NPCs;
 using PetsOverhaul.PetEffects;
-using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;

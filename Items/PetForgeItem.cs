@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
-using Terraria.ModLoader;
+﻿using PetsOverhaul.Tiles;
 using Terraria;
-using PetsOverhaul.Tiles;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PetsOverhaul.Items
 {

@@ -7,7 +7,6 @@ using Terraria.Audio;
 using Terraria.GameContent.UI;
 using Terraria.GameInput;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects

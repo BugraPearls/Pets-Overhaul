@@ -11,7 +11,7 @@ namespace PetsOverhaul.Tiles
     {
         public override void SetStaticDefaults()
         {
-            
+
             // Properties
             Main.tileNoAttach[Type] = true;
             Main.tileFrameImportant[Type] = true;

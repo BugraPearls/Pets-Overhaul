@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -58,7 +57,7 @@ namespace PetsOverhaul.PetEffects
             if (squash.PetIsEquipped(false))
             {
                 int indx = tooltips.FindLastIndex(x => x.Name == "Defense"); //There is no safety net here for cases where Defense tooltip line doesn't exist, in that case these tooltips should just appear on top bc +1 & +2 on the index value
-                tooltips.Insert(indx + 1 , new(Mod, "PetTooltip0", PetTextsColors.LocVal("PetItemTooltips.SquashlingHealth").Replace("<hp>", squash.pumpkinArmorBonusHp.ToString())));
+                tooltips.Insert(indx + 1, new(Mod, "PetTooltip0", PetTextsColors.LocVal("PetItemTooltips.SquashlingHealth").Replace("<hp>", squash.pumpkinArmorBonusHp.ToString())));
                 tooltips.Insert(indx + 2, new(Mod, "PetTooltip1", PetTextsColors.LocVal("PetItemTooltips.SquashlingFortune").Replace("<fortune>", squash.pumpkinArmorBonusHarvestingFortune.ToString())));
             }
         }

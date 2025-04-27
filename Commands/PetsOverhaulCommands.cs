@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Commands
@@ -207,21 +206,21 @@ namespace PetsOverhaul.Commands
 
                         case "light" or "lightpet" or "lightpets":
                             string reply = PetTextsColors.LocVal("Commands.LightPetList") + " ";
-                                int counterToGoDown = 5;
-                                foreach (ModPlayer player in caller.Player.ModPlayers)
+                            int counterToGoDown = 5;
+                            foreach (ModPlayer player in caller.Player.ModPlayers)
+                            {
+                                if (player is LightPetEffect light)
                                 {
-                                    if (player is LightPetEffect light)
+                                    counterToGoDown++;
+                                    reply += "[i:" + light.LightPetItemID + "] ";
+                                    if (counterToGoDown >= 20)
                                     {
-                                        counterToGoDown++;
-                                        reply += "[i:" + light.LightPetItemID + "] ";
-                                        if (counterToGoDown >= 20)
-                                        {
-                                            reply += "\n";
-                                            counterToGoDown = 0;
-                                        }
+                                        reply += "\n";
+                                        counterToGoDown = 0;
                                     }
                                 }
-                                caller.Reply(reply);
+                            }
+                            caller.Reply(reply);
                             break;
                         default:
                             caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);

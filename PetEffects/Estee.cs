@@ -2,7 +2,6 @@
 using System;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -66,7 +65,7 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<manaToDmg>", Math.Round(estee.manaMagicIncreasePer1 * 100, 2).ToString())
                         .Replace("<mana>", estee.Player.statManaMax.ToString())
                         .Replace("<bonusMana>", (estee.Player.statManaMax2 - estee.Player.statManaMax).ToString())
-                        .Replace("<reducedDmg>",Math.Round(estee.CurrentPenalty * 100,2).ToString())
+                        .Replace("<reducedDmg>", Math.Round(estee.CurrentPenalty * 100, 2).ToString())
                         .Replace("<increasedDmg>", Math.Round(estee.manaMult * estee.manaMagicIncreasePer1 * 100, 2).ToString());
 
     }

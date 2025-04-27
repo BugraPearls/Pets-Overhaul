@@ -4,7 +4,6 @@ using System;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -51,7 +50,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
 
-        public override void UpdateHorizontalSpeeds(Player player) 
+        public override void UpdateHorizontalSpeeds(Player player)
         {
             player.runAcceleration *= 2.5f;
             player.maxRunSpeed *= 1.5f;

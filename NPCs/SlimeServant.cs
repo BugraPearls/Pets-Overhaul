@@ -1,20 +1,12 @@
-﻿using Terraria.Utilities;
-using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent.Bestiary;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using System;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
-using Newtonsoft.Json.Linq;
-using System.CommandLine.Invocation;
-using Microsoft.Xna.Framework;
-using System.IO;
-using System.Drawing;
+﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace PetsOverhaul.NPCs
 {

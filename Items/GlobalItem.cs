@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.NPCs;
-using PetsOverhaul.PetEffects;
+﻿using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
 using System;
 using System.IO;
@@ -123,7 +122,7 @@ namespace PetsOverhaul.Items
         #region Netcode for checks
         public override void NetSend(Item item, BinaryWriter writer)
         {
-            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost,  globalDrop, harvestingDrop, miningDrop, fishingDrop);
+            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost, globalDrop, harvestingDrop, miningDrop, fishingDrop);
             BitsByte sources2 = new(fortuneHarvestingDrop, fortuneMiningDrop, fortuneFishingDrop);
             writer.Write(sources1);
             writer.Write(sources2);
@@ -131,7 +130,7 @@ namespace PetsOverhaul.Items
         public override void NetReceive(Item item, BinaryReader reader)
         {
             BitsByte sources1 = reader.ReadByte();
-            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost,  ref globalDrop, ref harvestingDrop, ref miningDrop, ref fishingDrop);
+            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost, ref globalDrop, ref harvestingDrop, ref miningDrop, ref fishingDrop);
             BitsByte sources2 = reader.ReadByte();
             sources2.Retrieve(ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
         }

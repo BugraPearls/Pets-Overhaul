@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 namespace PetsOverhaul.UI
@@ -36,8 +35,8 @@ namespace PetsOverhaul.UI
                     theText += PetTextsColors.LocVal("Misc.ReadyCd");
                 }
                 displayInfo.SetText(theText);
-                displayInfo.Top.Set(0,ModContent.GetInstance<PetPersonalization>().AbilityDisplayPos.Y);
-                displayInfo.Left.Set(0,ModContent.GetInstance<PetPersonalization>().AbilityDisplayPos.X);
+                displayInfo.Top.Set(0, ModContent.GetInstance<PetPersonalization>().AbilityDisplayPos.Y);
+                displayInfo.Left.Set(0, ModContent.GetInstance<PetPersonalization>().AbilityDisplayPos.X);
                 base.Draw(spriteBatch);
             }
         }

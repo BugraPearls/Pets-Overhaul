@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using static Terraria.Player;
 
@@ -20,8 +19,9 @@ namespace PetsOverhaul.PetEffects
         public float playerTakenMult = 1.00f;
         public override int PetStackCurrent
         {
-            get {
-            int val = 0;
+            get
+            {
+                int val = 0;
                 skeletronTakenDamage.ForEach(x => val += x.Item1);
                 return val;
             }

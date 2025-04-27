@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -71,6 +70,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<dmgPenalty>", sapling.damagePenalty.ToString())
                 .Replace("<lifesteal>", Math.Round(sapling.regularLifesteal * 100, 2).ToString())
                 .Replace("<planteraSteal>", Math.Round(sapling.planteraLifesteal * 100, 2).ToString())
-            .Replace("<weapons>",PetTextsColors.ItemsToTooltipImages(Sapling.PlanteraWeapon));
+            .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(Sapling.PlanteraWeapon));
     }
 }

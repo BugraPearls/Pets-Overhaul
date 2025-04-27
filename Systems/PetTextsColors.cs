@@ -152,7 +152,7 @@ namespace PetsOverhaul.Systems
             {
                 result += "[i:" + item.ToString() + "] ";
                 count++;
-                if (count >= countToGoBelow) 
+                if (count >= countToGoBelow)
                 {
                     count = 0;
                     result += "\n";

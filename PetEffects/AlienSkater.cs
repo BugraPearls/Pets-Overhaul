@@ -3,7 +3,6 @@ using System;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
@@ -36,7 +35,7 @@ namespace PetsOverhaul.PetEffects
             {
                 float total = Math.Abs(Player.velocity.Y) + Math.Abs(Player.velocity.X);
                 float xRemain = Math.Abs(Player.velocity.X) / total;
-                if (xRemain is float.NaN) 
+                if (xRemain is float.NaN)
                 {
                     xRemain = 0;
                 }

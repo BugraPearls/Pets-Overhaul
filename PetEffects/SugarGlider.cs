@@ -1,9 +1,7 @@
 ﻿using PetsOverhaul.Systems;
-using System;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.PetEffects
