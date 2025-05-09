@@ -873,12 +873,14 @@ namespace PetsOverhaul.Systems
             if (Player.miscEquips[0].type == ItemID.None)
             {
                 timerMax = 0;
+                currentPetStacksMax = -1;
                 return;
             }
 
             if (previousPetItem != Player.miscEquips[0].type)
             {
                 timerMax = 0;
+                currentPetStacksMax = -1;
                 if (ModContent.GetInstance<PetPersonalization>().SwapCooldown)
                 {
                     Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldown);

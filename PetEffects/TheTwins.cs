@@ -38,11 +38,11 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (target.boss == false || NpcPet.NonBossTrueBosses.Contains(target.type) == false)
                     {
-                        modifiers.ScalingBonusDamage += target.lifeMax * regularEnemyHpDmg;
+                        modifiers.SourceDamage += target.lifeMax * regularEnemyHpDmg;
                     }
                     else
                     {
-                        modifiers.ScalingBonusDamage += Math.Min(target.lifeMax * bossHpDmg, percDamageCap);
+                        modifiers.SourceDamage += Math.Min(target.lifeMax * bossHpDmg, percDamageCap); //modifiers.SourceDamage is the actual damage, so that has to be increased for scaling bonus damages.
                     }
                     Pet.timer = Pet.timerMax;
                 }
