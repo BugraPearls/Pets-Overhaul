@@ -36,14 +36,17 @@ namespace PetsOverhaul.PetEffects
             {
                 if (Player.Distance(target.Center) > longRange && Pet.timer <= 0 && target.immortal == false)
                 {
+                    
+                    float bonus;
                     if (target.boss == false || NpcPet.NonBossTrueBosses.Contains(target.type) == false)
                     {
-                        modifiers.SourceDamage += target.lifeMax * regularEnemyHpDmg;
+                        bonus = target.lifeMax * regularEnemyHpDmg;
                     }
                     else
                     {
-                        modifiers.SourceDamage += Math.Min(target.lifeMax * bossHpDmg, percDamageCap); //modifiers.SourceDamage is the actual damage, so that has to be increased for scaling bonus damages.
+                        bonus = Math.Min(target.lifeMax * bossHpDmg, percDamageCap); //modifiers.SourceDamage is the actual damage, so that has to be increased for scaling bonus damages.
                     }
+                    modifiers.FlatBonusDamage += Player.GetTotalDamage(modifiers.DamageType).ApplyTo(bonus);
                     Pet.timer = Pet.timerMax;
                 }
             }
@@ -59,6 +62,7 @@ namespace PetsOverhaul.PetEffects
                     Pet.timer = Pet.timerMax;
                 }
             }
+            Main.NewText("Dealt Dmg: " + damageDone);
         }
     }
     public sealed class TwinsPermaDefDrop : GlobalNPC
