@@ -251,8 +251,9 @@ namespace PetsOverhaul.PetEffects
                             .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
                             .Replace("<shieldMult>", Math.Round(tinyDeerclops.shieldMult * 100, 2).ToString())
                             .Replace("<shieldDuration>", Math.Round(tinyDeerclops.shieldDuration / 60f, 2).ToString())
-                            .Replace("<dmgReduce>", Math.Round(tinyDeerclops.reductionRaise * 100, 2).ToString())
-                            .Replace("<maxDmgReduce>", Math.Round(tinyDeerclops.reductionCap * 100, 2).ToString())
+                            .Replace("<abilityRadius>", Math.Round(tinyDeerclops.abilityRadius / 16f, 2).ToString())
+                            .Replace("<dmgReduceStrike>", Math.Round(tinyDeerclops.reductionRaise * 100, 2).ToString())
+                            .Replace("<maxDmgReduceStrike>", Math.Round(tinyDeerclops.reductionCap * 100, 2).ToString())
                             .Replace("<slow>", Math.Round(tinyDeerclops.slowAmount * 100, 2).ToString())
                             .Replace("<slowDuration>", Math.Round(tinyDeerclops.slowDuration / 60f, 2).ToString())
                             .Replace("<cooldown>", Math.Round(tinyDeerclops.cooldown / 60f, 2).ToString());

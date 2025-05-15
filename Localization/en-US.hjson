@@ -936,10 +936,10 @@ Mods: {
 				- Store damage you take for <storeDuration> seconds.
 				- Press Pet Ability Keybind (<keybind>) to consume all stored damage.
 				 * Gain a shield equal to <shieldMult>% of stored damage for <shieldDuration> seconds.
-				 * After a short delay, strike all enemies in a cone, aimed towards your mouse,
+				 * After a short delay, strike all enemies in a <abilityRadius> blocks long cone, aimed towards your mouse,
 				 dealing stored damage + your defense. Increased by your Melee Damage bonuses and Damage Reduction.
 				 Enemies struck in middle of the cone will have all of their defense ignored for the hit.
-				 * Strike's damage goes down every hit by <dmgReduce>% up to <maxDmgReduce>%
+				 * Strike's damage goes down every hit by <dmgReduceStrike>% up to <maxDmgReduceStrike>%
 				 * All striked enemies are slowed by <slow>% for <slowDuration> seconds.
 				 * Consumed damage value is capped at <maxStore>% of your Max Health.
 				 * Has a <cooldown> seconds cooldown. 
