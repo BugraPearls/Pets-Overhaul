@@ -81,7 +81,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     foreach (var npc in Main.ActiveNPCs)
                     {
-                        if (NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && Player.Distance(npc.Center) < queenRange && GlobalPet.LifestealCheck(npc))
+                        if (npc.dontTakeDamage == false && npc.friendly == false && Player.Distance(npc.Center) < queenRange)
                         {
                             npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage, DamageClass.Generic), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck);
                         }

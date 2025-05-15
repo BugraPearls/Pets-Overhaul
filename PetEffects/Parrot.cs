@@ -20,7 +20,7 @@ namespace PetsOverhaul.PetEffects
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped())
+            if (PetIsEquipped() && target.active && target.dontTakeDamage == false)
             {
                 for (int i = 0; i < GlobalPet.Randomizer(meleeChance); i++)
                 {
@@ -32,7 +32,7 @@ namespace PetsOverhaul.PetEffects
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && (proj.minion || proj.sentry || proj.usesOwnerMeleeHitCD || proj.ownerHitCheck || proj.type == ProjectileID.TrueNightsEdge))
+            if (PetIsEquipped() && target.active && target.dontTakeDamage == false && (proj.minion || proj.sentry || proj.usesOwnerMeleeHitCD || proj.ownerHitCheck || proj.type == ProjectileID.TrueNightsEdge))
             {
                 for (int i = 0; i < GlobalPet.Randomizer(meleeChance); i++)
                 {

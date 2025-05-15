@@ -403,6 +403,11 @@ namespace PetsOverhaul.Systems
             }
             return -1;
         }
+        /// <summary>
+        /// Use this to properly scale Pet sourced damage values with the given damage class, Pet damage multiplier and a check to prevent this being lower than 1.
+        /// </summary>
+        /// <param name="damage">Base damage value</param>
+        /// <param name="damageClass">Class that this damage should get damage bonuses from</param>
         public int PetDamage(float damage, DamageClass damageClass)
         {
             damage = Player.GetTotalDamage(damageClass).ApplyTo(damage);

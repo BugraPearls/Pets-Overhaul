@@ -791,12 +791,12 @@ Mods: {
 			SharkBait:
 				'''
 				<class>
-				- Gain <fishingPower> fishing power.
+				- Gain <breath> seconds more of underwater breathing duration.
 				- Deal <seaCreatureDmg>x damage to fished-up enemies and
 				  receive <seaCreatureResist>x damage from all attacks of fished-up enemies.
 				 * Fished-up enemies include enemies that spawn upon catching with your rod.
 				 * This includes Duke Fishron and alike.
-				- Gives <shield> shield for <shieldTime> seconds upon succesfully catching anything.
+				- Gives <shield> shield for <shieldTime> seconds upon succesfully fishing up anything.
 				'''
 			SpiffoPlush:
 				'''
@@ -932,11 +932,17 @@ Mods: {
 			DeerclopsPetItem:
 				'''
 				<class>
-				- Store damage you take for <thresholdTime> seconds.
-				 * Every damage is stored separately, a stored damage may expire separately from others.
-				- If damage stored reaches more than <threshold>% of your health do following:
-				 * Gain <immunityTime> seconds of immunity to all types.
-				 * Apply a <slowAmount>% slow, confusion and frostfire on enemies in a <range>-tile radius for <debuffTime> seconds.
+				- Take <dmgReduce>% less damage from enemies that are at least <reduceRadius> blocks away from you.
+				- Store damage you take for <storeDuration> seconds.
+				- Press Pet Ability Keybind (<keybind>) to consume all stored damage.
+				 * Gain a shield equal to <shieldMult>% of stored damage for <shieldDuration> seconds.
+				 * After a one second delay, strike all enemies in a cone, aimed towards your mouse,
+				 dealing stored damage + your defense. Increased by your Melee Damage bonuses and Damage Reduction.
+				 Enemies struck in middle of the cone will have all of their defense ignored for the hit.
+				 * Strike's damage goes down every hit by <dmgReduce>% up to <maxDmgReduce>%
+				 * All striked enemies are slowed by <slow>% for <slowDuration> seconds.
+				 * Consumed damage value is capped at <maxStore>% of your Max Health.
+				 * Has a <cooldown> seconds cooldown. 
 				'''
 			DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:

@@ -241,8 +241,9 @@ namespace PetsOverhaul.NPCs
             {
                 foreach (NPC npc in Main.ActiveNPCs)
                 {
-                    if (npc.friendly || npc.CountsAsACritter || npc.whoAmI == NPC.whoAmI || npc.immortal || npc.immune[Owner] > 0)
+                    if (npc.friendly || npc.CountsAsACritter || npc.whoAmI == NPC.whoAmI || npc.immortal || npc.immune[Owner] > 0 || npc.dontTakeDamage)
                         continue;
+
                     if (NPC.getRect().Intersects(npc.getRect()))
                     {
                         int damage = NPC.damage;
