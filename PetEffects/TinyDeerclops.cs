@@ -71,12 +71,47 @@ namespace PetsOverhaul.PetEffects
         }
         public override void PostUpdateMiscEffects()
         {
+            void PlayChargeSound(float pitch)
+            {
+                if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
+                {
+                    SoundEngine.PlaySound(SoundID.DeerclopsStep with { Pitch = pitch, Volume = 0.5f, PitchVariance = 0f, MaxInstances = 0}, Player.Center);
+                }
+            }
+            switch (initiateStrike)
+            {
+                case 88:
+                    PlayChargeSound(-0.2f);
+                    break;
+                case 60:
+                    PlayChargeSound(0f);
+                    break;
+                case 40:
+                    PlayChargeSound(0.3f);
+                    break;
+                case 30:
+                    PlayChargeSound(0.5f);
+                    break;
+                case 20:
+                    PlayChargeSound(0.8f);
+                    break;
+                case 10:
+                    PlayChargeSound(1f);
+                    break;
+                default:
+                    break;
+            }
             if (initiateStrike > 0)
             {
                 initiateStrike--;
             }
             if (initiateStrike == 1)
             {
+                if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
+                {
+                    SoundEngine.PlaySound(SoundID.DeerclopsRubbleAttack with { Pitch = 0.75f, PitchVariance = 0.3f, Volume = 0.8f }, Player.Center);
+                }
+
                 float SmallerArc = MathHelper.Pi / 25;
                 float BiggerArc = MathHelper.Pi / 5;
 
@@ -172,7 +207,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                initiateStrike = 60;
+                initiateStrike = 90;
                 Pet.timer = Pet.timerMax;
                 int damageVal = Math.Min(CurrentTotalDmgStored, (int)(Player.statLifeMax2 * maxHealthPerc));
                 consumedDamage = damageVal;
