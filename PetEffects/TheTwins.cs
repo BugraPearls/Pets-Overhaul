@@ -62,7 +62,6 @@ namespace PetsOverhaul.PetEffects
                     Pet.timer = Pet.timerMax;
                 }
             }
-            Main.NewText("Dealt Dmg: " + damageDone);
         }
     }
     public sealed class TwinsPermaDefDrop : GlobalNPC
