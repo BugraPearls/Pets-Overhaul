@@ -10,9 +10,9 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.EatersBone;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
-        public float moveSpd = 0.10f;
-        public float jumpSpd = 0.5f;
-        public int fallDamageTile = 20;
+        public float moveSpd = 0.11f;
+        public float jumpSpd = 0.65f;
+        public int fallDamageTile = 30;
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())
