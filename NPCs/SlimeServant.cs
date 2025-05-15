@@ -70,7 +70,7 @@ namespace PetsOverhaul.NPCs
         {
             void RunTargeting()
             {
-                NPCUtils.TargetSearchResults targeting = NPCUtils.SearchForTarget(NPC, NPCUtils.TargetSearchFlag.NPCs, npcFilter: new NPCUtils.SearchFilter<NPC>(x => x.friendly == false && x.CountsAsACritter == false));
+                NPCUtils.TargetSearchResults targeting = NPCUtils.SearchForTarget(NPC, NPCUtils.TargetSearchFlag.NPCs, npcFilter: new NPCUtils.SearchFilter<NPC>(x => x.friendly == false && x.CountsAsACritter == false && x.dontTakeDamage == false));
                 if (targeting.FoundNPC && targeting.NearestNPCDistance < 800) //Targets nearest NPC if they are within 800 pixels and if they aren't friendly & is a critter.
                 {
                     NPC.target = 300 + targeting.NearestNPCIndex;

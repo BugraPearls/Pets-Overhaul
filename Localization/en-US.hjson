@@ -26,8 +26,8 @@ Mods: {
 			KeybindMissing: Keybind Not Registered
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.4.5, latest changes: Added Pet Resource/Stack UI Text Display, improved & simplified Config options]
-				[c/90C2AA:Mini Rework on Twins and Puppy Pets, command improvements, few backend improvements and bug fixes]
+				[c/90C2AA:Pets Overhaul 3.4.6, latest changes: New Melee Pet: Tiny Deerclops Pet Rework]
+				[c/90C2AA:Balance changes, Bug Fixes, reduced Pet Forge buy cost, logic improvements]
 				[c/b4bfc5:Join our discord server for feedback, bug reports & questions! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 				'''
@@ -936,7 +936,7 @@ Mods: {
 				- Store damage you take for <storeDuration> seconds.
 				- Press Pet Ability Keybind (<keybind>) to consume all stored damage.
 				 * Gain a shield equal to <shieldMult>% of stored damage for <shieldDuration> seconds.
-				 * After a one second delay, strike all enemies in a cone, aimed towards your mouse,
+				 * After a short delay, strike all enemies in a cone, aimed towards your mouse,
 				 dealing stored damage + your defense. Increased by your Melee Damage bonuses and Damage Reduction.
 				 Enemies struck in middle of the cone will have all of their defense ignored for the hit.
 				 * Strike's damage goes down every hit by <dmgReduce>% up to <maxDmgReduce>%
