@@ -12,7 +12,7 @@ namespace PetsOverhaul.Items
             Item.DefaultToPlaceableTile(ModContent.TileType<PetForge>());
             Item.width = 28; // The item texture's width
             Item.height = 14; // The item texture's height
-            Item.value = Item.buyPrice(gold: 50);
+            Item.value = Item.buyPrice(gold: 20);
             Item.rare = ItemRarityID.LightRed;
         }
         public override void ModifyResearchSorting(ref ContentSamples.CreativeHelper.ItemGroup itemGroup)
