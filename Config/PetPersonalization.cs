@@ -55,12 +55,6 @@ namespace PetsOverhaul.Config
         [BackgroundColor(35, 120, 54, 190)]
         public bool EnableModNotice { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.TooltipToggleLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.TooltipToggleTooltip")]
-        [DefaultValue(false)]
-        [BackgroundColor(35, 120, 54, 190)]
-        public bool EnableTooltipToggle { get; set; }
-
         [DefaultValue(ShieldPosition.HealthBarRight)]
         [LabelKey("$Mods.PetsOverhaul.Config.ShieldLocationLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.ShieldLocationTooltip")]

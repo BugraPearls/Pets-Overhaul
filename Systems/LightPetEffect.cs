@@ -168,9 +168,6 @@ namespace PetsOverhaul.Systems
 
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
-                return;
-
             string tip = "\n" + PetsTooltip;
 
             if (GetRoll() <= 0)

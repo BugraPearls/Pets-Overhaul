@@ -133,7 +133,6 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.StrangeGlowingMushroom")
                 .Replace("<buffRecover>", Math.Round(babyTruffle.buffIncrease / 60f, 2).ToString())
                 .Replace("<cooldown>", Math.Round(babyTruffle.shroomPotionCd / 60f, 2).ToString())
-                .Replace("<intIncr>", babyTruffle.increaseInt.ToString())
-                .Replace("<hiddenTip>", PetKeybinds.PetTooltipSwap.Current ? PetTextsColors.LocVal("PetItemTooltips.MushroomStats") : PetTextsColors.LocVal("PetItemTooltips.MushroomHiddenTooltip").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetTooltipSwap)));
+                .Replace("<intIncr>", babyTruffle.increaseInt.ToString());
     }
 }
