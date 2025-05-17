@@ -107,13 +107,13 @@ namespace PetsOverhaul.Systems
         /// Whole String of the Pet's Tooltip. No need to Replace the <class>, since its global for all Pets to run it, its already being handled in ModifyTooltips. Use ExtraModifyTooltips if further modification is required past the default actions done in ModifyTooltips.
         /// </summary>
         public abstract string PetsTooltip { get; }
+        /// <summary>
+        /// If the Pet has SimpleTooltip value assigned in their code, that will be displayed instead by default; and will show a text below the tooltip to tell the Player they can switch the tooltip with a keybind.
+        /// </summary>
+        public virtual string SimpleTooltip => null;
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (PreModifyPetTooltips(item, tooltips) == false)
-            {
-                return;
-            }
-            if (ModContent.GetInstance<PetPersonalization>().EnableTooltipToggle && !PetKeybinds.PetTooltipHide.Current)
             {
                 return;
             }
@@ -126,7 +126,19 @@ namespace PetsOverhaul.Systems
 
             index++; //Both safety net for it to not be -1 somehow, and we want it after the given FindLastIndexes.
 
-            tooltips.Insert(index, new(Mod, "PetTooltip0", PetsTooltip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary))));
+            string Tip;
+            if (SimpleTooltip is not null)
+            {
+                if (GlobalPet.CurrentTooltipsIsSimple)
+                    Tip = SimpleTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                else
+                    Tip = PetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+            }
+            else
+            {
+                Tip = PetsTooltip;
+            }
+            tooltips.Insert(index, new(Mod, "PetTooltip0", Tip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary))));
         }
         /// <summary>
         /// Defaults to true. Return false to stop default Pet Tooltip code from running, or override and return true to simply do further stuff in ModifyTooltips past the default things a pet does within in its tooltip.

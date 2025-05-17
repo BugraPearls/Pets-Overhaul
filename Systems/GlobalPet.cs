@@ -151,6 +151,8 @@ namespace PetsOverhaul.Systems
         /// </summary>
         private static bool colorSwitched = false;
 
+        public static bool CurrentTooltipsIsSimple = true;
+
         public static List<int> EnemiesForLifestealToIgnore = new();
 
         /// <summary>
@@ -913,6 +915,11 @@ namespace PetsOverhaul.Systems
             if (triggersSet.Inventory)
             {
                 PetTamer.openLightCombineMenu = false;
+            }
+
+            if (PetKeybinds.ShowDetailedTip.JustPressed) 
+            {
+                CurrentTooltipsIsSimple = !CurrentTooltipsIsSimple;
             }
         }
         #endregion
