@@ -1,6 +1,8 @@
 Mods: {
 	PetsOverhaul: {
 		Misc: {
+			// CurrentSimple: "[c/b4bfc5:Press] <switchKey> [c/b4bfc5:to switch to detailed tooltip]"
+			// CurrentDetailed: "[c/b4bfc5:Press] <switchKey> [c/b4bfc5:to switch to simple tooltip]"
 			BaseCd: Temporizador Base de Habilidade de PET:
 			NoCd: O PET Atual não tem um Temporizador de Habilidade!
 			RemainingCd: Temporizador de Habilidade do PET Restante:
@@ -161,14 +163,6 @@ Mods: {
 				Habilitar mensagens enviadas ao entrar no mundo quando;
 				Um addon oficial (Conteúdo entre mods) do Pets Overhaul de outro Mod existe, mas não foi ativado.
 				'''
-			TooltipToggleLabel: Habilitar dicas de ferramentas de Pet/Item como alternáveis
-			TooltipToggleTooltip:
-				'''
-				Habilitar um sistema onde as dicas sobre os efeitos em Pets do Pet Overhaul
-				apenas fiquem visíveis quando uma tecla registrada por você seja pressionada.
-				(Você precisa manualmente registrar uma tecla de atalho)
-				'''
-			TooltipToggleInGame: Pressione e segure a tecla <keybind> para ver as dicas sobre o Pet
 			ShieldLocationLabel: Localização do Escudo de Pet
 			ShieldLocationTooltip:
 				'''
@@ -372,7 +366,6 @@ Mods: {
 		PetItemTooltips: {
 			AmberMosquito:
 				'''
-				<class>
 				- Cavar um minério, joia, ou extraível tem <oreChance>% de chance
 				de dar ao jogador um minério ou joia aleatória normalmente dropada
 				de blocos de limo e semelhantes.
@@ -380,7 +373,6 @@ Mods: {
 				'''
 			EatersBone:
 				'''
-				<class>
 				- Concede <moveSpd>% de velocidade de movimento e <jumpSpd>% de velocidade de pulo.
 				- Permite que você pule automaticamente.
 				- Aumenta a resistência ao dano de queda em <fallRes> blocos se:
@@ -388,7 +380,6 @@ Mods: {
 				'''
 			BoneRattle:
 				'''
-				<class>
 				- A cada segundo que você não recebeu dano, o timer do Pet aumenta.
 				- Quando o timer atinge <stage1Time> segundos, aumenta a regeneração de vida em <stage1Regen>.
 				- Quando o timer atinge <stage2Time> segundos, a regeneração é aumentada para <stage2Regen>.
@@ -399,7 +390,6 @@ Mods: {
 			// BoneRattleStack: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
-				<class>
 				- Diminui a velocidade de todos os inimigos que não são chefes em um raio de <slowRange> blocos em <slowAmount>%.
 				- Concede um efeito de calor permanente, reduzindo dano proveniente do frio.
 				- Todas as armas da Lua de Gelo ganham <dmg>% de dano e <crit>% de chance crítica.
@@ -407,7 +397,6 @@ Mods: {
 				'''
 			Nectar:
 				'''
-				<class>
 				- Concede imunidade a debuffs de Veneno e Envenenado.
 				- Diminui a defesa em <def>, dano e chance crítica em <dmgCrit>%.
 				- Aumenta o número máximo de lacaios em <maxMinion> e a velocidade de movimento em <moveSpd>%.
@@ -418,7 +407,6 @@ Mods: {
 				'''
 			HellCake:
 				'''
-				<class>
 				- Concede imunidade à lava por <immuneTime> segundos.
 				- Enquanto estiver na lava, ganhe o seguinte:
 				 * Efeito Flipper [i:187].
@@ -428,7 +416,6 @@ Mods: {
 				'''
 			Fish:
 				'''
-				<class>
 				- Concede <fp> de poder de pesca. Isso aumenta dependendo do bioma atual:
 				 * Enquanto estiver no bioma do Oceano, aumenta para <oceanFp>.
 				 * Enquanto estiver no bioma da Neve, aumenta para <snowFp>.
@@ -438,7 +425,6 @@ Mods: {
 				'''
 			BambooLeaf:
 				'''
-				<class>
 				- Pressione a tecla de Atalho da Habilidade do Pet (<keybind>) para entrar em modo de Alerta.
 				 * Aumenta sua velocidade de ataque em <alertAs>%, velocidade de movimento em <alertMs>%.
 				 * Diminui seu valor de aggro em <alertAggro>.
@@ -452,7 +438,6 @@ Mods: {
 			// BambooLeafStack: enemies you're on alert for
 			BoneKey:
 				'''
-				<class>
 				- Imunidade completa a toda a Masmorra pré-hardmode.
 				 * Incluindo a imunidade a Espinhos especificamente enquanto estiver na Masmorra.
 				- Ganhe <armorPen> de penetração de armadura fixa.
@@ -460,7 +445,6 @@ Mods: {
 				'''
 			ToySled:
 				'''
-				<class>
 				- Aplica Frostburn melhorado de <frostburnTime> segundos ao atingir.
 				 * Adiciona efeitos visuais de Frostburn a todas as suas armas e projéteis.  
 				- Aplica uma lentidão de <slowAmount>% por <slowTime> segundos ao atingir.
@@ -468,17 +452,11 @@ Mods: {
 				'''
 			StrangeGlowingMushroom:
 				'''
-				<class>  
 				- Acertos recuperam o tempo restante dos buffs em <buffRecover> segundos.  
 				 * Possui um tempo de recarga de <cooldown> segundos e só funciona com Buffs.  
 				- Sempre aplica o efeito Confuso em você.  
 				- Concede permanentemente o buff de Visão Noturna.  
 				- Aumenta TODOS os atributos do Jogador em <intIncr> ou <intIncr>%.  
-				<hiddenTip>  
-				'''
-			MushroomHiddenTooltip: Segure o Atalho de Mudança de Dica (<keybind>) para ver estatísticas.
-			MushroomStats:
-				'''
 				 * Dano, resistência de recuo, chance crítica, sorte,
 				mana, dano crítico, vida, recuo, velocida de ataque,
 				defesa, pen. de armadura, poder de pesca, redução de dano,
@@ -495,7 +473,6 @@ Mods: {
 				'''
 			FullMoonSqueakyToy:
 				'''
-				<class>
 				- Multiplica sua chance de crítico por <critMult>x.
 				- Reduz seu dano crítico em <crDmgReduction>%.
 				- Acertos críticos aplicam o debuff Esfaqueado.
@@ -506,7 +483,6 @@ Mods: {
 				'''
 			BerniePetItem:
 				'''
-				<class>
 				- Imunidade a todos os debuffs do tipo queimadura do vanilla.
 				- Inimigos dentro do raio de <burnRange> blocos terão seus debuffs do tipo queimadura afetados.
 				- Os debuffs de queimadura deles diminuem 100% mais devagar. (1 segundo do debuff é removido em 2 segundos)
@@ -516,7 +492,6 @@ Mods: {
 			// BerniePetItemStack: burning enemies in radius
 			UnluckyYarn:
 				'''
-				<class>
 				- Pressione a tecla de atalho da Habilidade de Pet (<keybind>) para absorver Luz da Lua.
 				 * Cure-se ou receba dano entre <moonlightMin> e <moonlightMax> aleatoriamente.
 				 * A sorte negativa reduz os valores, enquanto a sorte positiva os aumenta.
@@ -535,7 +510,6 @@ Mods: {
 			BlackCatDeath5: O Gato Preto de <name> trouxe má sorte, afinal.
 			BlueEgg:
 				'''
-				<class>
 				- A colheita lhe dá um item aleatório de sua tabela ponderada.
 				 * Plantas têm uma chance de <plantChance>%.
 				 * Plantas raras têm uma chance de <rarePlantChance>%.
@@ -546,7 +520,6 @@ Mods: {
 				'''
 			GlowTulip:
 				'''
-				<class>
 				- Dobra TODO o feno coletado. (Incluindo com as Botas de Flor, etc.)  
 				- Dá a você <harvestChance>% mais plantas enquanto estiver abaixo da Superfície.
 				 * Reduzido para <rarePlantChance>% para plantas raras.
@@ -555,14 +528,12 @@ Mods: {
 				'''
 			ChesterPetItem:
 				'''
-				<class>
 				- Aumenta seu alcance de coleta de itens em <pickupRange>.
 				- Aumenta seu alcance de colocação de itens em <placementRange> blocos.
 				- Concede <chestDef> defesa enquanto qualquer recipiente estiver aberto.
 				'''
 			CompanionCube:
 				'''
-				<class>
 				- Recupera vida equivalente a <manaToHealth>% do seu uso de mana.
 				- Recupera mana equivalente a <healthToMana>% do dano que você recebe.
 				- Se a doença de mana estiver ativa, reduz a eficácia de suas poções de mana em <manaPotionNerf>%
@@ -572,7 +543,6 @@ Mods: {
 				'''
 			CursedSapling:
 				'''
-				<class>
 				- Aumenta os slots máximos de lacaios em <minionSlot>.
 				- Armas da Lua de Abóbora ganham <dmg>% de dano.
 				 * Isso aumenta para <ravenDmg>% para o Cajado do Corvo. [i:1802]
@@ -583,16 +553,14 @@ Mods: {
 				'''
 			DirtiestBlock:
 				'''
-				<class>
 				- Minerar qualquer coisa [i:12] dá <any> moedas de cobre.
-						 * Isso inclui tudo, exceto os itens abaixo.  
+				 * Isso inclui tudo, exceto os itens abaixo.  
 				- Minerar blocos comuns [i:3] dá <soil> moedas de cobre.
-						 * Itens afetados: <soilItems>  
+				 * Itens afetados: <soilItems>  
 				- Minerar terra [i:2] dá <dirt> moedas de cobre.
 				'''
 			BallOfFuseWire:
 				'''
-				<class>
 				- Ataques criam uma explosão de área de efeito.
 				 * O ataque tem <kb>x do seu recuo inicial.
 				 * O ataque tem dano base de <dmg>x do dano causado.
@@ -602,28 +570,25 @@ Mods: {
 				'''
 			CelestialWand:
 				'''
-				<class>
 				- Aumenta sua mana máxima em <maxMana>%.
 				- Reduz seus bônuses de dano mágico em <dmgPenalty>%.
 				- Aumenta o dano mágico em <manaToDmg>% para cada 1 de Bônus de Mana que você tem.
 				 * Isso não é reduzido pela redução de bõnus de dano mágico.
 				- Reduz o dano mágico em 15% ao usar o conjunto Espectro com o Capuz Espectral. [i:1503]
 				- Reduz o dano mágico pela quantidade que o Enjoo de Mana está atualmente reduzindo, dividida por 4.
-						 * Essa penalidade é aditiva e não substitui o Enjoo de Mana.  
-						- Mana Base Atual: <mana> Bônus de Mana Atual: <bonusMana>  
-						  Redução Atual de Dano Mágico: <reducedDmg>% Aumento Atual de Dano Mágico: <increasedDmg>%  
+				 * Essa penalidade é aditiva e não substitui o Enjoo de Mana.  
+				- Mana Base Atual: <mana> Bônus de Mana Atual: <bonusMana>  
+				  Redução Atual de Dano Mágico: <reducedDmg>% Aumento Atual de Dano Mágico: <increasedDmg>%  
 						
 				'''
 			EyeSpring:
 				'''
-				<class>
 				- Aumenta a velocidade de pulo em <jumpBoost>%.
 				- Aumenta a aceleração de movimento em <acceleration>%.
 				- Multiplica a velocidade de subida das asas em <ascNerf>x.
 				'''
 			ExoticEasternChewToy:
 				'''
-				<class>  
 				- Concede um bônus de salto decente.  
 				- Aumenta a velocidade de movimento em <moveSpd>%.  
 				- Modifica suas propriedades de Corpo a Corpo da seguinte forma:  
@@ -633,7 +598,6 @@ Mods: {
 				'''
 			BedazzledNectar:
 				'''
-				<class>
 				- Se você não tiver uma Asa, concede o seguinte:
 				 * Agora você pode voar com Asas de Borboleta por <flight> segundos.
 				 * Ganha imunidade a dano de queda.
@@ -643,7 +607,6 @@ Mods: {
 				'''
 			GlommerPetItem:
 				'''
-				<class>
 				- Concede o buff Aura de Sanidade para todos os Jogadores em um raio de <sanityRange> blocos.
 				 * O buff concede <sanityAmount>% de Aceleração de Habilidade de Mascote.
 				- Aumenta sua Mana Máxima em <currentHaste>%. (Igual à sua aceleração de habilidade de mascote atual)
@@ -654,7 +617,6 @@ Mods: {
 				'''
 			DD2PetDragon:
 				'''
-				<class>
 				- Multiplica a velocidade das flechas por <arrowVelo>x.
 				- Aumenta a penetração das flechas em <arrowPierce>.
 				- Multiplica a velocidade das suas balas por <bulletVelo>x.
@@ -668,7 +630,6 @@ Mods: {
 			JunimoLevel: A <class> de Junimo está no level <upOrMax>!
 			JunimoPetItem:
 				'''
-				<class>
 				- Permite que você ganhe EXP para cada classe respectiva, melhorando ainda mais os bônus deste Pet.
 				 * Coletar qualquer item de Colheita, Mineração e Pesca lhe dá dinheiro dependendo do
 				valor de exp do item, e os níveis são maximizados no nível <maxLvl>. O limite pode ser aumentado matando os seguintes Chefes únicos;
@@ -683,7 +644,6 @@ Mods: {
 			// ExpStack: <class> exp until next level
 			BirdieRattle:
 				'''
-				<class>
 				- Concede imunidade a dano de queda.
 				- Te dá uma Asa de Harpia com <flightTime> segundos de tempo de voo.
 				 * Pousar não reinicia seu tempo de asa.
@@ -694,7 +654,6 @@ Mods: {
 			// BirdieRattleStack: remaining wing time
 			LizardEgg:
 				'''
-				<class>
 				- Pressione a Tecla de Habilidade do Pet (<keybind>) para escapar de um perigo soltando uma Cauda de Isca.
 				 * Ao usar, perca <tailDmgTaken>% da sua saúde máxima. Esse dano não pode ser letal.
 				 * Ganhe quadros de invisibilidade, <tailAcc>% de aceleração, <tailSpd>% de velocidade de movimento e -<tailAggro> de aggro por <buffDuration> segundos.
@@ -708,7 +667,6 @@ Mods: {
 				'''
 			TartarSauce:
 				'''
-				<class>
 				- Danificar um inimigo com ataques corpo a corpo concede stacks.
 				 * 2 para ataques corpo a corpo verdadeiros, 1 para ataques de projétil corpo a corpo.
 				 * Ganhar stacks tem um tempo de recarga de <cooldown> segundos.
@@ -722,7 +680,6 @@ Mods: {
 			// TartarSauceStack: minotaur stacks
 			ParrotCracker:
 				'''
-				<class>
 				- Todos os projéteis lançados por você ou seus Lacaios/Sentinelas têm uma chance de <projChance>% 
 				de serem re-disparados como um novo projétil pelo seu Papagaio.
 				 * As propriedades do projétil são as mesmas, exceto com <projDamage>x do dano. 
@@ -731,7 +688,6 @@ Mods: {
 				'''
 			PigPetItem:
 				'''
-				<class>
 				- Comer um alimento tem uma chance de <foodChance>% de não ser consumido.
 				 * Reduzido para <potionChance>% para poções.
 				- Comer alimentos lhe dá um escudo que escala com o estágio de Bem Alimentado.
@@ -741,7 +697,6 @@ Mods: {
 				'''
 			MudBud:
 				'''
-				<class>
 				- Danificar inimigos tem uma chance de <chance>% de fazer grandes esporos danificadores aparecerem.
 				 * A localização dos esporos é aleatoriamente próxima ao inimigo e eles se movem levemente.
 				 * Os esporos causam <dmg>x do dano inicial que os gerou + <flatDmg>.
@@ -749,7 +704,6 @@ Mods: {
 				'''
 			DD2PetGato:
 				'''
-				<class>
 				- Permite que os ataques de sentinelas possam criticar.
 				 * Aumenta a chance de crítico da Sentinela em <crit>%.
 				 * Isso usa seus bônus de crítico gerais.
@@ -757,7 +711,6 @@ Mods: {
 				'''
 			DogWhistle:
 				'''
-				<class>
 				- Concede o efeito de caçador permanente.
 				- Aumenta o número de criaturas capturadas em <critter>%.
 				 * Reduzido para <rareCritter>% para criaturas raras. 
@@ -766,7 +719,6 @@ Mods: {
 				'''
 			Seedling:
 				'''
-				<class>
 				- Multiplica o dano que você causa por <dmgPenalty>x.
 				- Ganhe <lifesteal>% de roubo de vida. 
 				 * Aumentado para <planteraSteal>% para as armas de Plantera.
@@ -774,7 +726,6 @@ Mods: {
 				'''
 			SpiderEgg:
 				'''
-				<class>
 				- Danificar inimigos aplica Envenenado por <poisonTime> segundos.
 				- Ao danificar um inimigo, remova a imunidade a Envenenado se:
 				 * O alvo não tiver imunidade ao debuff Veneno.
@@ -785,7 +736,6 @@ Mods: {
 				'''
 			OrnateShadowKey:
 				'''
-				<class>
 				- Aumenta os drops de moedas de loot de inimigos regulares em <npcCoin>% e os drops de itens em <npcItem>%.
 				- Aumenta os drops de moedas de loot de chefes em <bossCoin>% e os drops de itens em <bossItem>%.
 				 * As bolsas de chefes não são afetadas pelo aumento de drops de itens.
@@ -794,7 +744,6 @@ Mods: {
 				'''
 			SharkBait:
 				'''
-				<class>
 				- Ganhe <fishingPower> de poder de pesca.
 				- Causa <seaCreatureDmg>x de dano a inimigos pescados e
 				receba <seaCreatureResist>x de dano de todos os ataques de inimigos pescados.
@@ -804,14 +753,12 @@ Mods: {
 				'''
 			SpiffoPlush:
 				'''
-				<class>
 				- Concede uma chance de <ammoReserve>% de não consumir munição.
 				- Projéteis de longo alcance ganham <armorPen> de penetração de armadura contra inimigos do tipo Zumbi.
 				- Matar qualquer inimigo tem <penChance>% de chance de aumentar sua penetração em 1.
 				'''
 			MagicalPumpkinSeed:
 				'''
-				<class>
 				- Aumenta todas as plantas e similares que você coleta em <plant>%.
 				 * Reduzido para <rarePlant>% para plantas raras.
 				- Concede <health> de saúde máxima e <harvFort> de Fortuna de Colheita
@@ -821,7 +768,6 @@ Mods: {
 			// SquashlingFortune: Harvesting fortune by <fortune>
 			EucaluptusSap:
 				'''
-				<class>
 				- Permite que você plane enquanto mantém pressionada a tecla de pulo.
 				 * Isso é alcançado multiplicando sua velocidade máxima em Y que você pode atingir por <glide>x.
 				 * Não concede imunidade a dano de queda, mas planar reinicia seu dano de queda.
@@ -829,7 +775,6 @@ Mods: {
 				'''
 			TikiTotem:
 				'''
-				<class>
 				- Permite acertos críticos para todo o dano de invocação. 
 				 * Tem -<nonWhipCrit>% de chance para dano de invocação que não seja de chicote.
 				 * Tem +<whipCrit>% de chance para dano de invocação de chicote.
@@ -839,7 +784,6 @@ Mods: {
 				'''
 			Seaweed:
 				'''
-				<class>
 				- Pressione a tecla de habilidade do Pet <keybind> para endurecer o Casco da sua Tartaruga.
 				 * Os próximos <hitCount> hits recebidos dentro de <shellDuration> segundos são modificados.
 				 * Os hits causam <reducedDmg>% a menos de dano e não causam recuo.
@@ -852,14 +796,12 @@ Mods: {
 			// SeaweedStack: hits to tank
 			LightningCarrot:
 				'''
-				<class>
 				- Aumenta a velocidade de movimento em <flatSpd>%, além de multiplicar a velocidade de movimento por <multSpd>x.
 				- Aumenta seu dano igual a <spdToDmg>% do quanto bônus de velocidade de movimento você possui.
 				- Inimigos que entram em contato com você são desacelerados em <staticAmount>% por <staticTime> segundos.
 				'''
 			ZephyrFish:
 				'''
-				<class>
 				- Aumenta seu poder de pesca dependendo da força do vento atual, 1 por <windFish> mph.
 				- Concede uma chance de <regularChance>% de ganhar +1 stack em cada peixe que você capturou, aumentada para <windChance>% se: 
 				 * Você estiver no nível da Superfície.
@@ -870,7 +812,6 @@ Mods: {
 				'''
 			EyeOfCthulhuPetItem:
 				'''
-				<class>
 				- Pressione a tecla de habilidade do Pet (<keybind>) para entrar no 'estado de fúria' antecipadamente.
 				 * Ganhe <forcedEnrageMult>% da saúde usada para ficar abaixo de 50% como um escudo extra por <shieldDuration> segundos.
 				- No momento em que você estiver abaixo de 50% de saúde e em combate por pelo menos <outOfCombat> segundos,
@@ -890,7 +831,6 @@ Mods: {
 			// EyeOfCthulhuPetItemStack: rage points
 			BrainOfCthulhuPetItem:
 				'''
-				<class>
 				- Concede a você <lifesteal>% de roubo de vida, mas o quanto você pode roubar de vida
 				depende de um Pool de Saúde, o roubo de vida é reduzido do pool, 
 				e quando o pool está vazio, [c/f8baba:você não pode roubar vida] até que ele tenha saúde novamente.
@@ -901,14 +841,12 @@ Mods: {
 			// BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
-				<class>
 				- Ganhe <miningSpeed>% de velocidade de mineração para blocos que não são minérios/gemas.
 				- Tenha uma chance de <multipleBreakChance>% de minerar em um raio de <width>x<length> blocos.
 				 * Apenas minera minérios/gemas que sejam do mesmo tipo.
 				'''
 			KingSlimePetItem:
 				'''
-				<class>
 				- Pressione a tecla de habilidade do PET (<keybind>) para invocar um Servo de Slime.
 				 * O Servo de Slime age da mesma forma que um Slime Azul, mas é mais agressivo,
 				   ataca o inimigo mais próximo dentro de 50 blocos; se não houver, segue seu invocador.
@@ -922,7 +860,6 @@ Mods: {
 			// KingSlimePetItemStack: alive Slime Servants
 			QueenBeePetItem:
 				'''
-				<class>
 				- Cure <extraHeal>% a mais de todas as poções de cura.
 				- Ao consumir Mel Engarrafado [i:1134] ou Barbatanas de Mel [i:2314], ajuda os Jogadores em um alcance de <range> blocos.
 				 * Recupera <bottledHealth>% da saúde máxima do jogador, ou <honeyfinHealth>% respectivamente.
@@ -935,7 +872,6 @@ Mods: {
 				'''
 			DeerclopsPetItem:
 				'''
-				<class>
 				- Armazena o dano que você recebe por <thresholdTime> segundos.
 				 * Cada dano é armazenado separadamente, um dano armazenado pode expirar separadamente dos outros.
 				- Se o dano armazenado atingir mais de <threshold>% da sua saúde, ocorre o seguinte:
@@ -945,7 +881,6 @@ Mods: {
 			// DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:
 				'''
-				<class>
 				- Todo dano que você recebe e inflige será causado ao longo do tempo.
 				- Você recebe <recievedMult>x dano e armazena o dano para ser causado ao longo do tempo.
 				 * Recebe 1/<recievedHowLong> do dano armazenado a cada segundo.
@@ -961,7 +896,6 @@ Mods: {
 			SkeletronDeath4: parece que você teve um tempo ruim ;)
 			QueenSlimePetItem:
 				'''
-				<class>
 				- Ganhe um bônus de Salto muito forte enquanto estiver em um Montaria, exceto para Montarias de voo infinito.
 				- Aumenta o dano das suas Montarias contra inimigos de várias maneiras.
 				 * Aumenta o dano da Montaria em <dmg>% e agora conta como dano de PET.
@@ -970,7 +904,6 @@ Mods: {
 				'''
 			SkeletronPrimePetItem:
 				'''
-				<class>
 				- Ganha <dmg>% de dano, <crit>% de chance de crítico e <def>x de defesa enquanto tiver algum escudo ativo.
 				- Concede 5 escudos.
 				 * Escudos estão disponíveis apenas quando você está com 100%, 75%, 50% e 25% de vida, respectivamente.
@@ -981,7 +914,6 @@ Mods: {
 			// SkeletronPrimePetItemStack: shields available
 			DestroyerPetItem:
 				'''
-				<class>
 				- Concede <defMultIncrease>% mais defesa.
 				- Se você tiver o efeito de Pele de Ferro [i:292], ganhe <ironskinDef> de defesa e <miningFortune> de Fortuna na Mineração.
 				- Aumenta a quantidade de minérios, gemas ou qualquer coisa relacionada à mineração coletada.
@@ -989,7 +921,6 @@ Mods: {
 				'''
 			TwinsPetItem:
 				'''
-				<class>
 				- Ganhe benefícios dependendo se você está perto ou longe do seu alvo.
 				- Seu alvo estando dentro de um alcance de <closeRange> blocos causa o seguinte:
 				 * Aplica Chamas Amaldiçoadas no seu alvo por <cursedTime> segundos.
@@ -1002,7 +933,6 @@ Mods: {
 				'''
 			EverscreamPetItem:
 				'''
-				<class>
 				- Multiplica sua chance de crítico mágico por <magicCritNerf>x.
 				- Aumenta sua mana máxima em <maxMana>.
 				- Ataques mágicos críticos recuperam <missingMana>% do seu mana faltante + <flatMana>.
@@ -1012,7 +942,6 @@ Mods: {
 				'''
 			MartianPetItem:
 				'''
-				<class>
 				- Voar horizontalmente economiza até <wingTimeSave>% do tempo de asa.
 				 * Por exemplo, voar em um caminho cruzado economizará metade desse tempo.
 				   Voar completamente na vertical acabará economizando 0 tempo de asa.
@@ -1022,7 +951,6 @@ Mods: {
 				'''
 			DD2OgrePetItem:
 				'''
-				<class>
 				- Transforma você em um tanque imóvel e robusto. 
 				 * Todos os efeitos são desativados se qualquer montaria estiver em uso.
 				- Nerfando você por:
@@ -1036,7 +964,6 @@ Mods: {
 				'''
 			DukeFishronPetItem:
 				'''
-				<class>
 				- Multiplica seu poder de pesca por <baseMult>x + <anglerFishingPower> por missão do Pescador, máximo de 1x.
 				 * Missões do Pescador concluídas: <anglerQuests>, Multiplicador atual de Poder de Pesca: <currentAnglerWithBaseMult>x
 				- Ganha <flatChance>% + <fishingPowerChance>% do seu poder de pesca como chance de drop duplo.
@@ -1044,7 +971,6 @@ Mods: {
 				'''
 			LunaticCultistPetItem:
 				'''
-				<class>
 				- Pressione sua Tecla de Troca de Habilidade (<switchKeybind>) para alternar entre feitiços.
 				- Pressione sua Tecla de Habilidade do Pet (<keybind>) para usar seu feitiço atual.
 				 * Todas as habilidades têm o mesmo tempo de recarga de <cooldown> segundos.
@@ -1079,7 +1005,6 @@ Mods: {
 				'''
 			DD2BetsyPetItem:
 				'''
-				<class>
 				- Atingir inimigos com ataques à distância aplica o debuff Maldição de Betsy.
 				 * O debuff é aplicado por <debuffTime> segundos.
 				 * O debuff acumula até <maxStack> stacks.
@@ -1090,7 +1015,6 @@ Mods: {
 				'''
 			IceQueenPetItem:
 				'''
-				<class>
 				- Em vez de sofrer dano fatal, entre em um estado de congelamento por <frozenTombTime> segundos.
 				 * Durante o congelamento, desacelere todos os inimigos em um raio de <range> blocos em <slowAmount>%.
 				 * Enquanto congelado, seja imune a todos os tipos de dano.
@@ -1101,7 +1025,6 @@ Mods: {
 				'''
 			PlanteraPetItem:
 				'''
-				<class>
 				- Acertos à distância em inimigos causarão dano bônus dependendo
 				percentagem de saúde que eles perderam.
 				 * O dano que aumenta pode chegar até <maxAmount>%.
@@ -1110,7 +1033,6 @@ Mods: {
 				'''
 			MoonLordPetItem:
 				'''
-				<class>
 				- Pressione a tecla de alternância de Habilidade do PET (<keybind>) para alternar os efeitos deste Pet.
 				<tooltip>
 				'''
@@ -1148,7 +1070,6 @@ Mods: {
 				'''
 			ResplendentDessert:
 				'''
-				<class>
 				- Aumenta o dano das suas Montarias contra inimigos de várias maneiras.
 				 * Aumenta o dano da Montaria em <dmg>% e agora conta como dano de PET.
 				 * Com um tempo de recarga de <cooldown> segundos, os ataques da sua Montaria invocarão um Servo de Slime em
@@ -1162,7 +1083,6 @@ Mods: {
 				'''
 			Carrot:
 				'''
-				<class>
 				- Cada pulo que for mais da metade concede 1 stack.
 				 * Concede <moveSpeed>% de velocidade de movimento por stack.
 				 * Concede <jumpSpeed>% de velocidade de pulo por stack.
@@ -1170,6 +1090,22 @@ Mods: {
 				 * Redefine para 0 stacks se não ganhar um stack em 4 segundos.
 				'''
 			// CarrotStack: bunny hop stacks
+		}
+
+		SimpleTooltips: {
+			/* AmberMosquito:
+				'''
+
+				- Mining ores, gems etc. has a chance to drop a random valuable.
+				''' */
+			/* DD2OgrePetItem:
+				'''
+
+				- Heavily reduces down movement speed and mobility
+				- Heavily slows down true melee attack speed
+				- Heavily increases true melee damage, crit and knockback
+				- Increases your maximum health, defense, damage reduction and gives KB Immunity
+				''' */
 		}
 
 		Buffs: {

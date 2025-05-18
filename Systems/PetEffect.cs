@@ -133,12 +133,22 @@ namespace PetsOverhaul.Systems
                     Tip = SimpleTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
                 else
                     Tip = PetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+
             }
             else
             {
                 Tip = PetsTooltip;
             }
-            tooltips.Insert(index, new(Mod, "PetTooltip0", Tip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary))));
+
+            if (Tip.Contains("<class>"))
+            {
+                Tip = Tip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary)); //Legacy way of 'class text' on Pet tooltips, so old ones on addons etc. doesn't break.
+            }
+            else
+            {
+                Tip = PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary) + "\n" + Tip;
+            }
+            tooltips.Insert(index, new(Mod, "PetTooltip0", Tip));
         }
         /// <summary>
         /// Defaults to true. Return false to stop default Pet Tooltip code from running, or override and return true to simply do further stuff in ModifyTooltips past the default things a pet does within in its tooltip.

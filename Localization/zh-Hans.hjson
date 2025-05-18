@@ -1,6 +1,8 @@
 Mods: {
 	PetsOverhaul: {
 		Misc: {
+			// CurrentSimple: "[c/b4bfc5:Press] <switchKey> [c/b4bfc5:to switch to detailed tooltip]"
+			// CurrentDetailed: "[c/b4bfc5:Press] <switchKey> [c/b4bfc5:to switch to simple tooltip]"
 			BaseCd: 基础宠物技能冷却：
 			NoCd: 当前宠物没有技能冷却！
 			RemainingCd: 剩余宠物技能冷却
@@ -155,9 +157,6 @@ Mods: {
 				在启用灾厄模组但没有启用对应的联动附属模组时
 				启用进入世界时的提示
 				'''
-			TooltipToggleLabel: 可开关宠物/物品提示
-			TooltipToggleTooltip: 使宠物大修的额外宠物工具提示在按住按键时才显示（需要在控件中分配按键）
-			TooltipToggleInGame: 按住<keybind>键以显示宠物提示
 			ShieldLocationLabel: 宠物护盾位置
 			ShieldLocationTooltip:
 				'''
@@ -365,20 +364,17 @@ Mods: {
 		PetItemTooltips: {
 			AmberMosquito:
 				'''
-				<class>
 				挖掘矿石，宝石或可提炼物有<oreChance>%几率获得随机矿石或宝石（来自提炼机掉落池）
 				更可能获得价值更低的矿石或宝石
 				'''
 			EatersBone:
 				'''
-				<class>
 				移动速度提高<moveSpd>%,跳跃速度提高<jumpSpd>%
 				允许自动跳跃
 				如果你处于邪恶生物群落，可以免疫<fallRes>格掉落伤害
 				'''
 			BoneRattle:
 				'''
-				<class>
 				脱战<stage1Time>秒后，生命再生速度提高<stage1Regen>点
 				脱战<stage2Time>秒后，生命再生速度提高<stage2Regen>点，并获得生命上限<shieldAmount>%的护盾
 				不受伤，不受持续伤害且没有击中敌人即视为脱战
@@ -387,7 +383,6 @@ Mods: {
 			// BoneRattleStack: regen bonus
 			BabyGrinchMischiefWhistle:
 				'''
-				<class>
 				<slowRange>方块范围内的非Boss敌人降低<slowAmount>%移动速度
 				永久获得温暖增益，降低冷系伤害
 				霜月事件掉落的所有武器伤害增加<dmg>%，暴击率增加<crit>%
@@ -395,7 +390,6 @@ Mods: {
 				'''
 			Nectar:
 				'''
-				<class>
 				免疫中毒和酸性毒液
 				防御降低<def>，伤害和暴击率降低<dmgCrit>%
 				增加<maxMinion>个召唤栏位，移动速度增加<moveSpd>%
@@ -405,7 +399,6 @@ Mods: {
 				'''
 			HellCake:
 				'''
-				<class>
 				<immuneTime>秒内对熔岩免疫，可与熔岩护身符效果叠加
 				在岩浆中获得以下效果：
 				 - 脚蹼[i:187]效果
@@ -415,7 +408,6 @@ Mods: {
 				'''
 			Fish:
 				'''
-				<class>
 				在雪原和海洋中提高<moreFp>点渔力并获得脚蹼[i:187]效果
 				 - 否则提高<fp>点渔力
 				钓上的雪原专属渔获有<catchChance>%几率增加
@@ -424,7 +416,6 @@ Mods: {
 				'''
 			BambooLeaf:
 				'''
-				<class>
 				按下宠物技能键（<keybind>）以进入警戒模式：
 				 - 攻击速度增加<alertAs>%，移动速度增加<alertMs>%
 				 - 仇恨值降低<alertAggro>
@@ -438,7 +429,6 @@ Mods: {
 			// BambooLeafStack: enemies you're on alert for
 			BoneKey:
 				'''
-				<class>
 				完全免疫困难模式之前地牢中的伤害
 				 - 在地牢中会免疫尖刺伤害
 				护甲穿透提高<armorPen>点
@@ -446,7 +436,6 @@ Mods: {
 				'''
 			ToySled:
 				'''
-				<class>
 				你的攻击能对敌人造成<frostburnTime>秒的强化版霜冻减益
 				 - 武器和弹幕具有霜冻视觉效果
 				你的攻击能使敌人降低<slowAmount>%移动速度<slowTime>秒
@@ -454,27 +443,13 @@ Mods: {
 				'''
 			StrangeGlowingMushroom:
 				'''
-				<class>
 				命中敌人增加<buffRecover>秒所有增益的剩余时间（<cooldown>秒冷却）
 				获得永久困惑减益和夜视效果
 				提高所有属性<intIncr>点或<intIncr>%（取决于属性类型）
 				<hiddenTip>
 				'''
-			MushroomHiddenTooltip: 按住额外工具提示键（<keybind>）以查看属性
-			MushroomStats:
-				'''
-				 - 伤害，击退抗性，暴击率，运气，魔力，暴击伤害，
-				 生命值，击退，攻速，防御，护甲穿透，渔力，伤害减免，
-				 魔力再生，跳跃速度，飞行时间，宠物能力急速，通用时运，
-				 挖掘时运，采集时运，钓鱼时运，仇恨值，安全掉落高度，
-				 呼吸时间，挖矿速度，熔岩免疫时间，物块和墙壁放置速度，
-				 运气，武器大小，生命再生，弹药不消耗几率
-				 - 宠物属性：伤害，技能急速，钓鱼时运，采集时运，挖掘时运，
-				 通用时运，护盾量，治疗量
-				'''
 			FullMoonSqueakyToy:
 				'''
-				<class>
 				暴击率乘以<critMult>倍，暴击伤害降低<crDmgReduction>%
 				暴击对敌人造成一层重创减益，最多叠加<maxStacks>层
 				每层重创使敌人受到的所有伤害提高<stackDmg>%
@@ -482,7 +457,6 @@ Mods: {
 				'''
 			BerniePetItem:
 				'''
-				<class>
 				在<burnRange>格范围内的敌人：
 				 - 受到的燃烧减益的持续时间流逝速度降低100%,
 				 - 范围中每存在一名燃烧的敌人，每秒恢复<burnDrainMana>点魔力值和<burnDrainHealth>点生命值
@@ -492,7 +466,6 @@ Mods: {
 			// BerniePetItemStack: burning enemies in radius
 			UnluckyYarn:
 				'''
-				<class>
 				按下宠物技能键（<keybind>）以吸收月光
 				 - 随机恢复或受到 <moonlightMin> ~ <moonlightMax>点伤害
 				 - 负数运气会降低该数值，正数运气会提高该数值
@@ -509,7 +482,6 @@ Mods: {
 			BlackCatDeath5: <name>的黑猫终究带来了噩运。
 			BlueEgg:
 				'''
-				<class>
 				收获以下东西能额外获得随机物品(种子,水果等)
 				 - 植物与草药有<plantChance>%几率
 				 - 稀有植物有<rarePlantChance>%几率
@@ -519,7 +491,6 @@ Mods: {
 				'''
 			GlowTulip:
 				'''
-				<class>
 				翻倍所有采集的干草（包括花靴生成的）
 				采集在地表以下的植物与树木时有<harvestChance>%几率翻倍
 				 - 稀有植物则是<rarePlantChance>%几率
@@ -528,14 +499,12 @@ Mods: {
 				'''
 			ChesterPetItem:
 				'''
-				<class>
 				物品拾取距离提高<pickupRange>
 				物块放置范围提高<placementRange>格
 				在打开任何收纳物品时提高<chestDef>点防御
 				'''
 			CompanionCube:
 				'''
-				<class>
 				恢复消耗魔力值<manaToHealth>%的生命值
 				恢复受到伤害<healthToMana>%的魔力值
 				拥有耐魔性减益时，魔力药水效果降低<manaPotionNerf>%
@@ -544,7 +513,6 @@ Mods: {
 				'''
 			CursedSapling:
 				'''
-				<class>
 				增加<minionSlot>个召唤栏位
 				南瓜月事件掉落的所有武器伤害提高<dmg>%
 				 - 乌鸦法杖[i:1802]伤害额外提高<ravenDmg>%
@@ -555,7 +523,6 @@ Mods: {
 				'''
 			DirtiestBlock:
 				'''
-				<class>
 				挖掘任何方块[i:12]时获得<any>枚铜币
 				 - 包括下列物品以外的所有物品
 				挖掘环境方块[i:3]时获得<soil>枚铜币
@@ -564,7 +531,6 @@ Mods: {
 				'''
 			BallOfFuseWire:
 				'''
-				<class>
 				攻击附带一次爆炸,能够造成范围伤害
 				 - 击退为攻击击退的<kb>倍，基础伤害为造成伤害的<dmg>倍
 				 - 爆炸有<armorPen>点盔甲穿透力
@@ -573,7 +539,6 @@ Mods: {
 				'''
 			CelestialWand:
 				'''
-				<class>
 				最大魔力值增加<maxMana>%
 				魔法伤害加成减少<dmgPenalty>%
 				最大魔力高于200时，每多出一点，魔法伤害增加<manaToDmg>%，不会被前者减少
@@ -585,14 +550,12 @@ Mods: {
 				'''
 			EyeSpring:
 				'''
-				<class>
 				跳跃速度提高<jumpBoost>%
 				跳跃加速度提高<acceleration>%
 				翅膀垂直飞行速度变为<ascNerf>倍
 				'''
 			ExoticEasternChewToy:
 				'''
-				<class>
 				获得一次额外的二段跳
 				移动速度提高<moveSpd>%
 				近战属性提高：
@@ -602,7 +565,6 @@ Mods: {
 				'''
 			BedazzledNectar:
 				'''
-				<class>
 				如果没有装备翅膀：
 				 - 你现在能够飞行<flight>秒
 				 - 免疫掉落伤害
@@ -612,7 +574,6 @@ Mods: {
 				'''
 			GlommerPetItem:
 				'''
-				<class>
 				<sanityRange>格范围内所有玩家宠物技能急速提高<sanityAmount>%
 				最大魔力增加<currentHaste>%（等同于你当前的宠物技能急速值）
 				每<manaRecoverCd>秒恢复<manaRecover>点魔力值
@@ -622,7 +583,6 @@ Mods: {
 				'''
 			DD2PetDragon:
 				'''
-				<class>
 				箭的速度乘以<arrowVelo>倍
 				箭的穿透数增加<arrowPierce>
 				子弹的速度乘以<bulletVelo>倍
@@ -635,7 +595,6 @@ Mods: {
 			JunimoLevel: 祝尼魔 <class> 等级<upOrMax>！
 			JunimoPetItem:
 				'''
-				<class>
 				允许你获得每个职业的经验值以提高这个宠物的额外奖励
 				 - 获得采集，挖掘和钓鱼物品时会给你钱币，取决于物品的经验值
 				 - 当前等级上限为<maxLvl>级，击败以下Boss可提高等级上限：
@@ -650,7 +609,6 @@ Mods: {
 			// ExpStack: <class> exp until next level
 			BirdieRattle:
 				'''
-				<class>
 				未装备翅膀时：
 				 - 免疫掉落伤害
 				 - 获得拥有<flightTime>秒飞行时间的翅膀，飞行时间不会在着陆后重置
@@ -661,7 +619,6 @@ Mods: {
 			// BirdieRattleStack: remaining wing time
 			LizardEgg:
 				'''
-				<class>
 				按下宠物技能键（<keybind>）会断尾以脱离危险
 				 - 使用时，受到最大生命值<tailDmgTaken>%的伤害。此伤害不会致命
 				 - 获得短暂无敌帧，在<buffDuration>秒内增加<tailAcc>%加速度，<tailSpd>%移动速度并降低<tailAggro>点仇恨值
@@ -675,7 +632,6 @@ Mods: {
 				'''
 			TartarSauce:
 				'''
-				<class>
 				近战攻击命中敌人能够叠加层数
 				 - 真近战命中叠加2层,近战弹幕命中叠加1层
 				 - 层数叠加有<cooldown>秒冷却
@@ -688,7 +644,6 @@ Mods: {
 			// TartarSauceStack: minotaur stacks
 			ParrotCracker:
 				'''
-				<class>
 				鹦鹉有<projChance>%的几率复制由你或你的仆从/哨兵发射的弹幕
 				 - 造成<projDamage>倍伤害
 				真近战攻击和仆从/哨兵攻击命中敌人有<meleeChance>%的几率再造成一次伤害
@@ -696,7 +651,6 @@ Mods: {
 				'''
 			PigPetItem:
 				'''
-				<class>
 				食用食物有<foodChance>%的几率不消耗
 				 - 食用药水有<potionChance>%的几率不消耗
 				食用食物会给予你护盾，数值取决于它的饱食等级
@@ -706,14 +660,12 @@ Mods: {
 				'''
 			MudBud:
 				'''
-				<class>
 				攻击敌人有<chance>%几率在其附近释放孢子毒气
 				 - 孢子毒气能够造成攻击伤害<dmg>倍的伤害 + <flatDmg>点伤害
 				 - 孢子的击退力为<kb>，孢子在消失前能造成<pen>次伤害
 				'''
 			DD2PetGato:
 				'''
-				<class>
 				你的哨兵可以造成暴击
 				 - 哨兵暴击率增加<crit>%
 				 - 哨兵可以受通用暴击加成
@@ -721,7 +673,6 @@ Mods: {
 				'''
 			DogWhistle:
 				'''
-				<class>
 				获得永久的猎人增益
 				捕捉小动物有<critter>%几率翻倍
 				 - 稀有小动物翻倍几率降至<rareCritter>%
@@ -730,7 +681,6 @@ Mods: {
 				'''
 			Seedling:
 				'''
-				<class>
 				造成的伤害乘以<dmgPenalty>
 				获得<lifesteal>%吸血效果
 				 - 世纪之花掉落的武器吸血效果提高至<planteraSteal>%
@@ -738,7 +688,6 @@ Mods: {
 				'''
 			SpiderEgg:
 				'''
-				<class>
 				攻击会造成<poisonTime>秒中毒
 				如果目标不免疫酸性毒液，则移除目标的中毒免疫
 				对中毒目标造成<poiPerc>倍 + 固定<poiFlat>点伤害
@@ -748,7 +697,6 @@ Mods: {
 				'''
 			OrnateShadowKey:
 				'''
-				<class>
 				提高来自敌人和所有摸彩袋的掉落
 				 - 不影响摸彩袋本身的掉落，而是其中的内容
 				掉落几率低于<threshold>%的战利品会增加<chanceIncrease>%掉落几率
@@ -758,7 +706,6 @@ Mods: {
 				'''
 			SharkBait:
 				'''
-				<class>
 				渔力提高<fishingPower>点
 				对钓上来的敌人造成<seaCreatureDmg>倍伤害
 				钓上来的敌人对你造成<seaCreatureResist>倍伤害
@@ -767,14 +714,12 @@ Mods: {
 				'''
 			SpiffoPlush:
 				'''
-				<class>
 				<ammoReserve>%的几率不消耗弹药
 				远程攻击对僵尸类敌人的护甲穿透提高<armorPen>点
 				远程弹幕杀死敌人时有<penChance>%几率增加1最大穿透数
 				'''
 			MagicalPumpkinSeed:
 				'''
-				<class>
 				采集植物有<plant>%几率翻倍
 				 - 稀有植物有<rarePlant>%几率翻倍
 				每装备一件南瓜盔甲部件，最大生命值增加<health>，采集时运增加<harvFort>
@@ -784,7 +729,6 @@ Mods: {
 			// SquashlingFortune: Harvesting fortune by <fortune>
 			EucaluptusSap:
 				'''
-				<class>
 				按住跳跃键时可以滑翔
 				 - 原理为将最大下落速度乘以<glide>倍
 				 - 不会提供摔落伤害免疫，但滑翔会重置摔落伤害计算距离
@@ -792,7 +736,6 @@ Mods: {
 				'''
 			TikiTotem:
 				'''
-				<class>
 				你造成的所有召唤伤害都可以暴击
 				 - 非鞭子武器降低<nonWhipCrit>%暴击率
 				 - 鞭子武器增加<whipCrit>%暴击率
@@ -802,7 +745,6 @@ Mods: {
 				'''
 			Seaweed:
 				'''
-				<class>
 				按下宠物技能键<keybind>以硬化你的海龟壳
 				 - 在<shellDuration>秒内受到的下<hitCount>次伤害会减少<reducedDmg>%且不造成击退
 				 - 对攻击者造成原伤害的<reflect>%
@@ -814,14 +756,12 @@ Mods: {
 			// SeaweedStack: hits to tank
 			LightningCarrot:
 				'''
-				<class>
 				移动速度提高<flatSpd>%，再将你的移动速度乘以<multSpd>
 				伤害增加，数值等同于移动速度加成高于100%的部分乘以<spdToDmg>%
 				对接触你的敌人造成<staticAmount>%减速<staticTime>秒
 				'''
 			ZephyrFish:
 				'''
-				<class>
 				根据当前风力提高你的渔力，每<windFish>mph提高1点渔力
 				每次钓上鱼有<regularChance>%几率额外获得一个，如果满足以下条件，几率改为<windChance>%：
 				 - 在地表层
@@ -832,7 +772,6 @@ Mods: {
 				'''
 			EyeOfCthulhuPetItem:
 				'''
-				<class>
 				按下宠物技能键（<keybind>）以进入“暴怒状态”
 				 - 将生命值降至50%，获得降低的生命值<forcedEnrageMult>%的护盾<shieldDuration>秒
 				生命值低于50%时，进入暴怒状态，将所有防御和伤害减免转化为暴怒值
@@ -849,7 +788,6 @@ Mods: {
 			// EyeOfCthulhuPetItemStack: rage points
 			BrainOfCthulhuPetItem:
 				'''
-				<class>
 				获得<lifesteal>%吸血效果，但拥有吸血池
 				每次吸血都会减少吸血池中的血量，其中血量为空时[c/f8baba:无法吸血]
 				 - 吸血池的血量上限等同于你最大生命值的<maxPool>%
@@ -859,13 +797,11 @@ Mods: {
 			// BrainOfCthulhuPetItemStack: stacks in health pool
 			EaterOfWorldsPetItem:
 				'''
-				<class>
 				挖掘非矿石/宝石方块挖掘速度提高<miningSpeed>%
 				挖掘矿石/宝石时有<multipleBreakChance>%几率在<width>x<length>方块范围内连锁挖掘
 				'''
 			KingSlimePetItem:
 				'''
-				<class>
 				按下宠物技能键（<keybind>）召唤一个史莱姆仆从
 				 - 史莱姆仆从运动方式和蓝史莱姆相同，但更具攻击性
 				   攻击50格内最近的敌人，否则跟随主人
@@ -876,7 +812,6 @@ Mods: {
 			// KingSlimePetItemStack: alive Slime Servants
 			QueenBeePetItem:
 				'''
-				<class>
 				治疗药水恢复效果提高<extraHeal>%
 				食用蜂蜜瓶[i:1134]或蜂蜜鱼[i:2314]后
 				 - 为<range>格内的其他玩家恢复其最大生命值的[i:1134]<bottledHealth>%或[i:2314]<honeyfinHealth>%
@@ -888,7 +823,6 @@ Mods: {
 				'''
 			DeerclopsPetItem:
 				'''
-				<class>
 				存储受到的伤害<thresholdTime>秒
 				如果存储的伤害总量超过最大生命值的<threshold>%：
 				 - 获得<immunityTime>秒无敌帧
@@ -898,7 +832,6 @@ Mods: {
 			// DeerclopsPetItemStack: stored damage
 			SkeletronPetItem:
 				'''
-				<class>
 				你造成和受到的伤害不会立刻生效，会随时间缓慢生效
 				你会受到<recievedMult>倍伤害，并将其分散在数秒内缓慢生效
 				 - 每秒受到伤害总量的1/<recievedHowLong>
@@ -912,7 +845,6 @@ Mods: {
 			SkeletronDeath4: 看起来你过得生不如死 :)
 			QueenSlimePetItem:
 				'''
-				<class>
 				骑乘坐骑时获得一个强力跳跃，无限飞行宠物除外
 				坐骑会通过各种方式提高对敌人的伤害
 				 - 增加<dmg>%坐骑伤害，坐骑伤害现在视为宠物伤害
@@ -921,7 +853,6 @@ Mods: {
 				'''
 			SkeletronPrimePetItem:
 				'''
-				<class>
 				拥有护盾时增加<dmg>%伤害，<crit>%暴击率，防御变为<def>倍
 				分别在100%生命值,低于100%/75%/50%/25%生命值时获得一个护盾
 				护盾大小为最大生命值的<shieldMaxHealthAmount>%
@@ -931,7 +862,6 @@ Mods: {
 			// SkeletronPrimePetItemStack: shields available
 			DestroyerPetItem:
 				'''
-				<class>
 				增加<defMultIncrease>%防御
 				拥有铁皮[i:292]效果时，增加<ironskinDef>防御和<miningFortune>挖掘时运
 				挖掘矿石，宝石或可提炼物有几率获得额外数量
@@ -939,7 +869,6 @@ Mods: {
 				'''
 			TwinsPetItem:
 				'''
-				<class>
 				攻击<closeRange>格范围内的敌人时：
 				 - 造成<cursedTime>秒诅咒狱火减益
 				 - 具有吸血效果，具体数值为：<defLifesteal>倍防御x（伤害减免+1）x造成的伤害x0.0001
@@ -951,7 +880,6 @@ Mods: {
 				'''
 			EverscreamPetItem:
 				'''
-				<class>
 				魔法武器暴击率变为<magicCritNerf>倍
 				增加<maxMana>点最大魔力值
 				魔法攻击暴击恢复<missingMana>%已损失的魔力值+<flatMana>点魔力值
@@ -961,7 +889,6 @@ Mods: {
 				'''
 			MartianPetItem:
 				'''
-				<class>
 				水平飞行最多会节省<wingTimeSave>%飞行时间
 				 - 例如，斜向飞行会节省至多一半飞行时间
 				 - 完全垂直飞行不会节省飞行时间
@@ -972,7 +899,6 @@ Mods: {
 				'''
 			DD2OgrePetItem:
 				'''
-				<class>
 				所有效果在使用坐骑时不生效
 				负面效果：
 				 - 移动速度变为<moveSpdNerf>倍，真近战武器攻击速度变为<atkSpdNerf>倍
@@ -986,7 +912,6 @@ Mods: {
 				'''
 			DukeFishronPetItem:
 				'''
-				<class>
 				渔力提高<baseMult>倍，每完成一次钓鱼任务倍率增加<anglerFishingPower>，最大1倍
 				 - 完成的钓鱼任务：<anglerQuests>，当前渔力倍数：<currentAnglerWithBaseMult>
 				钓鱼有<flatChance>% + 渔力的<fishingPowerChance>%几率获得双倍掉落
@@ -994,7 +919,6 @@ Mods: {
 				'''
 			LunaticCultistPetItem:
 				'''
-				<class>
 				按下切换宠物技能键（<switchKeybind>）切换法术
 				按下宠物技能键（<keybind>）使用当前法术
 				 - 所有法术都有<cooldown>秒冷却时间
@@ -1024,7 +948,6 @@ Mods: {
 				'''
 			DD2BetsyPetItem:
 				'''
-				<class>
 				远程攻击会造成<debuffTime>秒女王的诅咒减益
 				 - 可以叠加至<maxStack>层
 				 - 每层会降低目标<defDecrease>%的防御
@@ -1033,7 +956,6 @@ Mods: {
 				'''
 			IceQueenPetItem:
 				'''
-				<class>
 				受到致命伤害改为冰冻自身<frozenTombTime>秒
 				 - 期间免疫所有伤害
 				 - 恢复<healthRecovery>点生命值并获得<shieldDuration>秒的<shield>点护盾
@@ -1043,14 +965,12 @@ Mods: {
 				'''
 			PlanteraPetItem:
 				'''
-				<class>
 				远程武器命中敌人会基于其已损生命值造成额外伤害
 				 - 伤害加成最高+<maxAmount>%
 				 - 伤害加成非线性上升，生命值越低，伤害加成越高
 				'''
 			MoonLordPetItem:
 				'''
-				<class>
 				按下宠物技能切换键（<keybind>）切换此宠物的效果
 				<tooltip>
 				'''
@@ -1088,7 +1008,6 @@ Mods: {
 				'''
 			ResplendentDessert:
 				'''
-				<class>
 				增强你的坐骑，它们会以多种方式伤害敌人
 				 - 增加<dmg>%坐骑伤害，坐骑伤害还会受宠物伤害加成
 				 - 你的坐骑命中会召唤一个史莱姆仆从并获得持续<shieldDuration>秒的<shieldAmount>点护盾，此效果有<cooldown>秒冷却时间
@@ -1100,13 +1019,26 @@ Mods: {
 				'''
 			Carrot:
 				'''
-				<class>
 				每次跳跃超过最大跳跃高度的一半能够叠加层数
 				 - 每层提高<moveSpeed>%移动速度和<jumpSpeed>%跳跃速度
 				 - 最多叠加10层
 				 - 4秒不跳跃后重置
 				'''
 			// CarrotStack: bunny hop stacks
+		}
+
+		SimpleTooltips: {
+			/* AmberMosquito:
+				'''
+				- Mining ores, gems etc. has a chance to drop a random valuable.
+				''' */
+			/* DD2OgrePetItem:
+				'''
+				- Heavily reduces down movement speed and mobility
+				- Heavily slows down true melee attack speed
+				- Heavily increases true melee damage, crit and knockback
+				- Increases your maximum health, defense, damage reduction and gives KB Immunity
+				''' */
 		}
 
 		Buffs: {
