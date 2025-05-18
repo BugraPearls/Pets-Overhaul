@@ -139,5 +139,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<healthIncrease>", Math.Round(babyOgre.healthIncrease * 100, 2).ToString())
                 .Replace("<defMult>", babyOgre.defMult.ToString())
                 .Replace("<damageReduction>", Math.Round(babyOgre.dr * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2OgrePetItem");
     }
 }
