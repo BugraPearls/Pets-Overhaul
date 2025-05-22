@@ -82,5 +82,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<shield3>", pigman.tier3Shield.ToString())
                        .Replace("<shieldTime>", Math.Round(pigman.shieldTime / 60f, 2).ToString())
                        .Replace("<cooldown>", Math.Round(pigman.shieldCooldown / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.PigPetItem");
     }
 }

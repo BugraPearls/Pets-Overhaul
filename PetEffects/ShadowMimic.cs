@@ -67,5 +67,6 @@ namespace PetsOverhaul.PetEffects
             .Replace("<threshold>", Math.Round(shadowMimic.lowChanceThreshold * 100, 2).ToString())
             .Replace("<chanceIncrease>", (shadowMimic.numeratorMult - shadowMimic.denominatorMult).ToString())
             .Replace("<chanceToDouble>", shadowMimic.chanceToRollDoubleItem.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.OrnateShadowKey");
     }
 }

@@ -121,5 +121,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<crit>", miniPrime.critIncrease.ToString())
                         .Replace("<def>", miniPrime.defIncrease.ToString())
                         .Replace("<shieldLifetime>", Math.Round(miniPrime.shieldTime / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SkeletronPrimePetItem");
     }
 }

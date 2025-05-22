@@ -54,5 +54,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<lavaSpd>", Math.Round(babyImp.lavaSpd * 100, 2).ToString())
                 .Replace("<obbyDef>", babyImp.obbyDef.ToString())
                 .Replace("<obbySpd>", Math.Round(babyImp.obbySpd * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.HellCake");
     }
 }

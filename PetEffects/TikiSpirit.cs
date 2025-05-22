@@ -82,5 +82,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<atkSpdToRange>", Math.Round(tikiSpirit.atkSpdToRangeConversion * 100, 2).ToString())
                        .Replace("<nonWhipCrit>", tikiSpirit.nonWhipCrit.ToString())
                        .Replace("<whipCrit>", tikiSpirit.whipCritBonus.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.TikiTotem");
     }
 }

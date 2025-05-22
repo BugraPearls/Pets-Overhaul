@@ -66,5 +66,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<manaRecover>", glommer.glommerSanityRecover.ToString())
                         .Replace("<manaRecoverCd>", Math.Round(glommer.glommerSanityTime / 60f, 2).ToString())
                         .Replace("<goop>", ModContent.ItemType<GlommersGoop>().ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.GlommerPetItem");
     }
 }

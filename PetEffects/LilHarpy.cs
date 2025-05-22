@@ -71,5 +71,6 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BirdieRattle")
                         .Replace("<flightTime>", Math.Round(lilHarpy.fuelMax / 60f, 2).ToString())
                         .Replace("<cooldown>", Math.Round(lilHarpy.harpyCd / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BirdieRattle");
     }
 }

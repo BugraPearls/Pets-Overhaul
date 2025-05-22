@@ -116,5 +116,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<projDamage>", parrot.projDamage.ToString())
                 .Replace("<meleeChance>", parrot.meleeChance.ToString())
                 .Replace("<meleeDamage>", parrot.meleeDamage.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ParrotCracker");
     }
 }

@@ -68,5 +68,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<whipRange>", Math.Round(cursedSapling.whipRange * 100, 2).ToString())
                         .Replace("<whipSpeed>", Math.Round(cursedSapling.whipSpeed * 100, 2).ToString())
                         .Replace("<darkHarvestMult>", cursedSapling.darkHarvestMult.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.CursedSapling");
     }
 }

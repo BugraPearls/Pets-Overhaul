@@ -31,36 +31,18 @@ namespace PetsOverhaul.PetEffects
                 currentMoonLuck = 0;
                 if (Main.dayTime == false)
                 {
-                    switch (Main.moonPhase)
+                    currentMoonLuck = Main.moonPhase switch
                     {
-                        case 0:
-                            currentMoonLuck = luckMoonLowest;
-                            break;
-                        case 1:
-                            currentMoonLuck = luckMoonLow;
-                            break;
-                        case 2:
-                            currentMoonLuck = luckMoonMid;
-                            break;
-                        case 3:
-                            currentMoonLuck = luckMoonHigh;
-                            break;
-                        case 4:
-                            currentMoonLuck = luckMoonHighest;
-                            break;
-                        case 5:
-                            currentMoonLuck = luckMoonHigh;
-                            break;
-                        case 6:
-                            currentMoonLuck = luckMoonMid;
-                            break;
-                        case 7:
-                            currentMoonLuck = luckMoonLow;
-                            break;
-                        default:
-                            currentMoonLuck = 0;
-                            break;
-                    }
+                        0 => luckMoonLowest,
+                        1 => luckMoonLow,
+                        2 => luckMoonMid,
+                        3 => luckMoonHigh,
+                        4 => luckMoonHighest,
+                        5 => luckMoonHigh,
+                        6 => luckMoonMid,
+                        7 => luckMoonLow,
+                        _ => 0,
+                    };
                 }
                 luck += currentMoonLuck + luckFlat;
             }
@@ -135,5 +117,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<maximumMoon>", blackCat.luckMoonHighest.ToString())
                 .Replace("<moonLuck>", Math.Round(blackCat.currentMoonLuck, 2).ToString())
                 .Replace("<playerLuck>", Math.Round(blackCat.Player.luck, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.UnluckyYarn");
     }
 }

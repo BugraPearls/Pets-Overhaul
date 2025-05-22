@@ -101,5 +101,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<moveSpd>", Math.Round(fennecFox.speedIncrease * 100, 2).ToString())
                         .Replace("<sizeNerf>", fennecFox.sizeDecrease.ToString())
                         .Replace("<dmg>", Math.Round(fennecFox.meleeDmg * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ExoticEasternChewToy");
     }
 }

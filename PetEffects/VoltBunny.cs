@@ -56,5 +56,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<spdToDmg>", Math.Round(voltBunny.movespdToDmg * 100, 2).ToString())
                        .Replace("<staticAmount>", Math.Round(voltBunny.staticParalysis * 100, 2).ToString())
                        .Replace("<staticTime>", Math.Round(voltBunny.staticLength / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LightningCarrot");
     }
 }

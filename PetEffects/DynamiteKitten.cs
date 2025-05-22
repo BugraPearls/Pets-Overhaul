@@ -54,5 +54,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<dmg>", dynamiteKitten.damageMult.ToString())
                         .Replace("<armorPen>", dynamiteKitten.armorPen.ToString())
                         .Replace("<size>", dynamiteKitten.explosionSize.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BallOfFuseWire");
     }
 }

@@ -461,5 +461,6 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<tooltip>", currentAbilityTooltip);
             }
         }
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LunaticCultistPetItem");
     }
 }

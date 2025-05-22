@@ -102,5 +102,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<maxAnglerPower>", Math.Round(zephyrFish.maxQuestPower * 100, 2).ToString())
                         .Replace("<anglerQuests>", Main.LocalPlayer.anglerQuestsFinished.ToString())
                         .Replace("<currentAnglerPower>", Math.Round(zephyrFish.powerPerQuest * Main.LocalPlayer.anglerQuestsFinished * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ZephyrFish");
     }
 }

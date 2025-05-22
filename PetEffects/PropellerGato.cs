@@ -56,5 +56,6 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2PetGato")
                         .Replace("<crit>", propellerGato.bonusCritChance.ToString())
                         .Replace("<maxSentry>", propellerGato.turretIncrease.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2PetGato");
     }
 }

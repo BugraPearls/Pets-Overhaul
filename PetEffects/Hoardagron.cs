@@ -102,5 +102,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<bulletVelo>", hoardagron.bulletSpd.ToString())
                         .Replace("<threshold>", Math.Round(hoardagron.specialThreshold * 100, 2).ToString())
                         .Replace("<bossThreshold>", Math.Round(hoardagron.specialBossThreshold * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2PetDragon");
     }
 }

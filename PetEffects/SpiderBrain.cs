@@ -80,5 +80,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<maxPool>", Math.Round(spiderBrain.lifePoolMaxPerc * 100, 2).ToString())
                         .Replace("<healthRecovery>", Math.Round(spiderBrain.cdToAddToPool / 60f, 2).ToString())
                         .Replace("<pool>", spiderBrain.lifePool.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BrainOfCthulhuPetItem");
     }
 }

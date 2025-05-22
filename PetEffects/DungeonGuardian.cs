@@ -66,5 +66,6 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BoneKey")
                         .Replace("<armorPen>", dungeonGuardian.armorPen.ToString())
                         .Replace("<dungRegen>", dungeonGuardian.lifeRegen.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BoneKey");
     }
 }

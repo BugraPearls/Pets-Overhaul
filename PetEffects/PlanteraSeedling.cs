@@ -37,5 +37,6 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.PlanteraPetItem")
                         .Replace("<maxAmount>", Math.Round(planteraSeedling.secondMultiplier * 100 + 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.PlanteraPetItem");
     }
 }

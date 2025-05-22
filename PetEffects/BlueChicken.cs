@@ -201,5 +201,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<choppableChance>", blueChicken.treeChance.ToString())
                 .Replace("<eggMinute>", (blueChicken.blueEggTimer / 3600).ToString())
                 .Replace("<egg>", ModContent.ItemType<Egg>().ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BlueEgg");
     }
 }

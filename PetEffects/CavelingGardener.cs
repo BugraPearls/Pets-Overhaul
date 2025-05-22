@@ -62,6 +62,7 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<rarePlantChance>", cavelingGardener.cavelingRarePlantChance.ToString())
                 .Replace("<gemstoneTreeChance>", cavelingGardener.cavelingGemTreeChance.ToString())
                 .Replace("<shineMult>", cavelingGardener.shineMult.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.GlowTulip");
     }
 }
 

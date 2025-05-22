@@ -175,5 +175,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<recievedMult>", skeletronJr.playerTakenMult.ToString())
                         .Replace("<recievedHowLong>", skeletronJr.playerDamageTakenSpeed.ToString())
                         .Replace("<dealtMult>", skeletronJr.enemyDamageIncrease.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SkeletronPetItem");
     }
 }

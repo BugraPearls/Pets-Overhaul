@@ -95,5 +95,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<bossHpDmg>", Math.Round(theTwins.bossHpDmg * 100, 2).ToString())
                         .Replace("<bossCap>", theTwins.percDamageCap.ToString())
                         .Replace("<hpDmgCooldown>", Math.Round(theTwins.cooldown / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.TwinsPetItem");
     }
 }

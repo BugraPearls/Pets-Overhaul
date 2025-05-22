@@ -104,5 +104,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<beeDmg>", babyHornet.beeDmg.ToString())
                 .Replace("<beeKb>", babyHornet.beeKb.ToString())
                 .Replace("<beeCd>", Math.Round(babyHornet.beeCooldown / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Nectar");
     }
 }

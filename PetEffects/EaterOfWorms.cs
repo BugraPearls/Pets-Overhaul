@@ -93,5 +93,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<multipleBreakChance>", eaterOfWorms.tileBreakSpreadChance.ToString())
                        .Replace("<width>", eaterOfWorms.tileBreakXSpread.ToString())
                        .Replace("<length>", eaterOfWorms.tileBreakYSpread.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EaterOfWorldsPetItem");
     }
 }

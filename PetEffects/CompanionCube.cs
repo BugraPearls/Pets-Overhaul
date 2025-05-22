@@ -85,5 +85,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<manaPotionNerf>", Math.Round(companionCube.manaPotionNerf * 100, 2).ToString())
                         .Replace("<manaToHealthNerf>", Math.Round(companionCube.manaToHealthNerf * 100, 2).ToString())
                         .Replace("<halfOfSickness>", Math.Round(Player.manaSickLessDmg * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.CompanionCube");
     }
 }

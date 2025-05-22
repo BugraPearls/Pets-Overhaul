@@ -74,5 +74,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())
                 .Replace("<items>", PetTextsColors.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
                 .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Fish");
     }
 }

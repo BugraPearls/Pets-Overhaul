@@ -59,5 +59,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<soil>", Math.Round(dirtiestBlock.soilCoin / 100f, 2).ToString())
                         .Replace("<soilItems>", PetTextsColors.ItemsToTooltipImages(DirtiestBlock.CommonBlock, 12))
                         .Replace("<dirt>", Math.Round(dirtiestBlock.dirtCoin / 100f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DirtiestBlock");
     }
 }

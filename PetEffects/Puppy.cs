@@ -124,5 +124,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<rareCritter>", puppy.rareCatchChance.ToString())
                 .Replace("<rareCritterCoin>", Math.Round(puppy.rareCritterCoin / 10000f, 2).ToString())
                 .Replace("<rareEnemyCoin>", Math.Round(puppy.rareEnemyCoin / 10000f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DogWhistle");
     }
 }

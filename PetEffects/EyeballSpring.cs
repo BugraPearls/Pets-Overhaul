@@ -69,5 +69,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<jumpBoost>", Math.Round(eyeballSpring.jumpBoost * 100, 2).ToString())
                         .Replace("<acceleration>", Math.Round(eyeballSpring.acceleration * 100, 2).ToString())
                         .Replace("<ascNerf>", eyeballSpring.ascentPenaltyMult.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EyeSpring");
     }
 }

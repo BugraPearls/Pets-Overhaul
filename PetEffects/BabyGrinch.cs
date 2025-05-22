@@ -68,6 +68,7 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<dmg>", Math.Round(babyGrinch.winterDmg * 100, 2).ToString())
                 .Replace("<crit>", babyGrinch.winterCrit.ToString())
             .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(BabyGrinch.FrostMoonWeapons));
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BabyGrinchMischiefWhistle");
     }
 }
 

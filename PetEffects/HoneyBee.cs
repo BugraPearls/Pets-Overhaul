@@ -104,5 +104,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<bottledHoneyTime>", Math.Round(honeyBee.bottledHoneyBuff / 60f, 2).ToString())
                        .Replace("<honeyfinHoneyTime>", Math.Round(honeyBee.honeyfinHoneyBuff / 60f, 2).ToString())
                        .Replace("<abilityHaste>", Math.Round(honeyBee.abilityHaste * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.QueenBeePetItem");
     }
 }

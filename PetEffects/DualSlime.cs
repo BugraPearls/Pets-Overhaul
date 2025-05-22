@@ -308,6 +308,7 @@ namespace PetsOverhaul.PetEffects
             .Replace("<hpMult>", Math.Round(dualSlime.hpMult * 100, 2).ToString())
             .Replace("<baseDmg>", dualSlime.baseDmg.ToString())
             .Replace("<lifetime>", Math.Round(SlimePrince.lifetimeOfServant / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ResplendentDessert");
     }
 }
 

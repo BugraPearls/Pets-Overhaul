@@ -93,5 +93,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<seaCreatureResist>", sharkPup.seaCreatureResist.ToString())
                         .Replace("<shield>", sharkPup.shieldOnCatch.ToString())
                         .Replace("<shieldTime>", Math.Round(sharkPup.shieldTime / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SharkBait");
     }
 }

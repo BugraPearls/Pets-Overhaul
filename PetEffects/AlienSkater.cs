@@ -77,5 +77,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<speedMult>", alienSkater.speedMult.ToString())
                 .Replace("<accMult>", alienSkater.accMult.ToString())
                 .Replace("<flatSpdAcc>", Math.Round(alienSkater.speedAccIncr * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MartianPetItem");
     }
 }

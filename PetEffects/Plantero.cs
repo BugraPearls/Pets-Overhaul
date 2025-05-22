@@ -73,5 +73,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<flatDmg>", plantero.flatDmg.ToString())
                         .Replace("<kb>", plantero.knockBack.ToString())
                         .Replace("<pen>", plantero.pen.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MudBud");
     }
 }

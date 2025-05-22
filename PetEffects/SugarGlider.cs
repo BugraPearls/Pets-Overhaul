@@ -8,7 +8,7 @@ namespace PetsOverhaul.PetEffects
 {
     public sealed class SugarGlider : PetEffect
     {
-        public override int PetItemID => ItemID.EucaluptusSap;
+        public override int PetItemID => ItemID.EucaluptusSap; //Eucalyptus Sap is EucaluptusSap???
         public float glideSpeedMult = 0.3f;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -35,5 +35,6 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EucaluptusSap")
                 .Replace("<glide>", sugarGlider.glideSpeedMult.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EucaluptusSap");
     }
 }

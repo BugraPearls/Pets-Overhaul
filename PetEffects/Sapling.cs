@@ -71,5 +71,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<lifesteal>", Math.Round(sapling.regularLifesteal * 100, 2).ToString())
                 .Replace("<planteraSteal>", Math.Round(sapling.planteraLifesteal * 100, 2).ToString())
             .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(Sapling.PlanteraWeapon));
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Seedling");
     }
 }

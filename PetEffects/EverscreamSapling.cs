@@ -60,5 +60,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<manaRecoveryCd>", (everscreamSapling.cooldown / 60f).ToString())
                         .Replace("<dmg>", Math.Round(everscreamSapling.dmgIncr * 100, 2).ToString())
                         .Replace("<crit>", everscreamSapling.howMuchCrit.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EverscreamPetItem");
     }
 }

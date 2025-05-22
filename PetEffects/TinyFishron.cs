@@ -79,5 +79,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<bobberChance>", tinyFishron.bobberChance.ToString())
                         .Replace("<anglerQuests>", Main.LocalPlayer.anglerQuestsFinished.ToString())
                         .Replace("<currentAnglerWithBaseMult>", Math.Round(Main.LocalPlayer.anglerQuestsFinished * tinyFishron.fpPerQuest + tinyFishron.fishingPowerPenalty, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DukeFishronPetItem");
     }
 }

@@ -257,5 +257,6 @@ namespace PetsOverhaul.PetEffects
                             .Replace("<slow>", Math.Round(tinyDeerclops.slowAmount * 100, 2).ToString())
                             .Replace("<slowDuration>", Math.Round(tinyDeerclops.slowDuration / 60f, 2).ToString())
                             .Replace("<cooldown>", Math.Round(tinyDeerclops.cooldown / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DeerclopsPetItem");
     }
 }

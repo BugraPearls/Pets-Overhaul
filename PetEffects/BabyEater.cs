@@ -52,6 +52,7 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<moveSpd>", Math.Round(babyEater.moveSpd * 100, 2).ToString())
                 .Replace("<jumpSpd>", Math.Round(babyEater.jumpSpd * 100, 2).ToString())
                 .Replace("<fallRes>", babyEater.fallDamageTile.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EatersBone");
 
     }
 }

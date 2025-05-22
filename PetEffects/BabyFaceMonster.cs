@@ -107,5 +107,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<stage1Regen>", babyFaceMonster.stage1regen.ToString())
                 .Replace("<stage2Regen>", babyFaceMonster.stage2regen.ToString())
                 .Replace("<shieldAmount>", Math.Round(babyFaceMonster.stage2ShieldMult * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BoneRattle");
     }
 }

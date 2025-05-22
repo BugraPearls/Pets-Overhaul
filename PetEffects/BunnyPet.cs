@@ -65,5 +65,6 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Carrot")
                 .Replace("<moveSpeed>", Math.Round(carrotBunny.spdPerStk * 100, 2).ToString())
                 .Replace("<jumpSpeed>", Math.Round(carrotBunny.jumpPerStk * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Carrot");
     }
 }

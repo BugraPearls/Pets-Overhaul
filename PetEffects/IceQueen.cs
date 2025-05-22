@@ -142,5 +142,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<baseDmg>", iceQueen.freezeDamage.ToString())
                         .Replace("<postTombImmunity>", Math.Round(iceQueen.immuneTime / 60f, 2).ToString())
                         .Replace("<tombCooldown>", Math.Round(iceQueen.cooldown / 3600f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.IceQueenPetItem");
     }
 }

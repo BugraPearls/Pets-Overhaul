@@ -105,5 +105,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<moveSpd>", Math.Round(miniMinotaur.moveSpd * 100, 3).ToString())
                         .Replace("<dmg>", Math.Round(miniMinotaur.meleeDmg * 100, 3).ToString())
                         .Replace("<def>", Math.Round(miniMinotaur.defMult * 100, 3).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.TartarSauce");
     }
 }

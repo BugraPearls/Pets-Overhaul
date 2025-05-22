@@ -78,5 +78,6 @@ namespace PetsOverhaul.PetEffects
             .Replace("<radius>", Math.Round(slimePrince.radius / 16f, 2).ToString())
             .Replace("<cooldown>", Math.Round(slimePrince.cooldown / 60f, 2).ToString())
             .Replace("<lifetime>", Math.Round(SlimePrince.lifetimeOfServant / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.KingSlimePetItem");
     }
 }

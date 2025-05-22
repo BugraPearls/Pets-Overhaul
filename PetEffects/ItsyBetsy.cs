@@ -78,5 +78,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<maxStack>", itsyBetsy.maxStacks.ToString())
                         .Replace("<missingHpSteal>", Math.Round(itsyBetsy.missingHpRecover * 100, 2).ToString())
                         .Replace("<maxStackIncr>", Math.Round(itsyBetsy.maxStackBonusRecover * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2BetsyPetItem");
     }
 }

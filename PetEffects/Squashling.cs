@@ -80,6 +80,7 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<rarePlant>", squashling.squashlingRareChance.ToString())
                         .Replace("<health>", squashling.pumpkinArmorBonusHp.ToString())
                         .Replace("<harvFort>", squashling.pumpkinArmorBonusHarvestingFortune.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MagicalPumpkinSeed");
     }
 }
 

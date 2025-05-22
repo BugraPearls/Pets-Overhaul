@@ -879,5 +879,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<harvesting>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{PetTextsColors.PetClassLocalized(PetClasses.Harvesting)}]")
                         .Replace("<mining>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()}:{PetTextsColors.PetClassLocalized(PetClasses.Mining)}]")
                         .Replace("<fishing>", $"[c/{PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{PetTextsColors.PetClassLocalized(PetClasses.Fishing)}]");
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.JunimoPetItem");
     }
 }

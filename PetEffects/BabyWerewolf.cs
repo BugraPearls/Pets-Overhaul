@@ -85,5 +85,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<maxStacks>", babyWerewolf.maxStacks.ToString())
                 .Replace("<stackDmg>", Math.Round(babyWerewolf.damageMultPerStack * 100, 2).ToString())
                 .Replace("<stackCritDmg>", Math.Round(babyWerewolf.maulCritDmgIncrease * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.FullMoonSqueakyToy");
     }
 }

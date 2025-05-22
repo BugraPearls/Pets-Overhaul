@@ -52,5 +52,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<pickupRange>", Math.Round(chester.suckingUpRange / 16f, 2).ToString())
                 .Replace("<placementRange>", chester.placementRange.ToString())
                 .Replace("<chestDef>", chester.chestOpenDef.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ChesterPetItem");
     }
 }

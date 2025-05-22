@@ -94,5 +94,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<burnDrainMana>", Math.Round(bernie.burnDrain * bernie.manaDrain * 0.005f, 2).ToString())
                 .Replace("<burnDrainHealth>", Math.Round(bernie.burnDrain * bernie.healthDrain * 0.005f, 2).ToString())
                 .Replace("<maxDrain>", bernie.maxBurning.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BerniePetItem");
     }
 }

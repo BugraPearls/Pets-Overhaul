@@ -121,5 +121,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<atkSpd>", Math.Round(babyRedPanda.regularAtkSpd * 100, 2).ToString())
                 .Replace("<jungleAtkSpd>", Math.Round(babyRedPanda.jungleBonusSpd * 100, 2).ToString())
                 .Replace("<bambooChance>", babyRedPanda.bambooChance.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BambooLeaf");
     }
 }

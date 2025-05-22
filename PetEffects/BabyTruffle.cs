@@ -134,5 +134,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<buffRecover>", Math.Round(babyTruffle.buffIncrease / 60f, 2).ToString())
                 .Replace("<cooldown>", Math.Round(babyTruffle.shroomPotionCd / 60f, 2).ToString())
                 .Replace("<intIncr>", babyTruffle.increaseInt.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.StrangeGlowingMushroom");
     }
 }

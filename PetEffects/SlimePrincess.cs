@@ -332,5 +332,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<shieldAmount>", slimePrincess.shield.ToString())
                         .Replace("<shieldDuration>", Math.Round(slimePrincess.shieldTime / 60f, 2).ToString())
             .Replace("<cooldown>", Math.Round(slimePrincess.cooldown / 60f, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.QueenSlimePetItem");
     }
 }

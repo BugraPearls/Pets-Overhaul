@@ -54,5 +54,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<ammoReserve>", spiffo.ammoReserveChance.ToString())
                         .Replace("<armorPen>", spiffo.zombieArmorPen.ToString())
                         .Replace("<penChance>", spiffo.penetrateChance.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SpiffoPlush");
     }
 }

@@ -49,5 +49,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<flight>", Math.Round(glitteryButterfly.wingTime / 60f, 2).ToString())
                         .Replace("<percFlight>", Math.Round(glitteryButterfly.currentWingPercIncr * 100, 2).ToString())
                         .Replace("<healthNerf>", Math.Round(glitteryButterfly.healthPenalty * 100, 2).ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BedazzledNectar");
     }
 }

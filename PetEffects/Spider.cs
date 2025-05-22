@@ -138,5 +138,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<venomFlat>", spider.venomFlatDmg.ToString())
                         .Replace("<venomKb>", spider.kbIncreaseVenom.ToString())
                         .Replace("<venomCrit>", spider.venomCrit.ToString());
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SpiderEgg");
     }
 }
