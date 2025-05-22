@@ -16,9 +16,8 @@ namespace PetsOverhaul.PetEffects
         public int shieldOnCatch = 10;
         public int shieldTime = 900;
         public int breath = 43;
-
         public override PetClasses PetClassPrimary => PetClasses.Fishing;
-        public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override PetClasses PetClassSecondary => PetClasses.Utility;
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
             if (PetIsEquipped() && npc.GetGlobalNPC<NpcPet>().seaCreature)
