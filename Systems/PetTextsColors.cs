@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Config;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Localization;
@@ -163,6 +164,13 @@ namespace PetsOverhaul.Systems
                 result = PetClassLocalized(PetClasses.None);
             }
             return result;
+        }
+        /// <summary>
+        /// Returns: "first param" out of "second param" Seconds. Ex: 1 out of 3 Seconds.
+        /// </summary>
+        public static string SecondsOutOfText(int firstValInFrames, int secondValInFrames) 
+        {
+            return $"{Math.Round(firstValInFrames / 60f, 2)} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {PetTextsColors.LocVal("Misc.Secs")}";
         }
     }
 }
