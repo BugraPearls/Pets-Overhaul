@@ -37,42 +37,15 @@ namespace PetsOverhaul.PetEffects
         public int fireVolleyFrames = 90;
         public int fireBurnTime = 180;
         public float fireKnockback = 3.8f;
-        public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        public string CurrentSpellName => currentAbility switch
         {
-            if (PetIsEquipped(false))
-            {
-                if (Main.rand.NextBool(15))
-                {
-                    switch (currentAbility)
-                    {
-                        case 0: //Ice
-                            Dust.NewDust(Player.position, Player.width, Player.height, DustID.SnowflakeIce, Alpha: 220, Scale: 0.7f);
-                            break;
-                        case 1: //Lightning
-                            Dust.NewDust(Player.position, Player.width, Player.height, DustID.Electric, Alpha: 220, Scale: 0.9f);
-                            break;
-                        case 2: //Fire
-                            Vector2 pos = Player.position;
-                            int width = Player.width;
-                            int height = Player.height;
-                            if (ModContent.GetInstance<PetPersonalization>().PhantasmalDragonVolleyFromMouth)
-                                foreach (var projectile in Main.ActiveProjectiles)
-                                {
-                                    if (projectile is Projectile proj && proj.owner == Player.whoAmI && proj.type == ProjectileID.LunaticCultistPet)
-                                    {
-                                        pos = proj.Center;
-                                        width = proj.width;
-                                        height = proj.height;
-                                    }
-                                }
-                            Dust.NewDust(pos, width, height, DustID.Torch, Alpha: 220);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-        }
+            0 => PetTextsColors.LocVal("PetItemTooltips.DragonIceName"),
+            1 => PetTextsColors.LocVal("PetItemTooltips.DragonLightningName"),
+            2 => PetTextsColors.LocVal("PetItemTooltips.DragonFireName"),
+            _ => "Invalid Ability.",
+        };
+        public override string PetStackSpecial => CurrentSpellName;
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.LunaticCultistPetItemStack");
         public override int PetAbilityCooldown => phantasmDragonCooldown;
         public override void ExtraPreUpdate()
         {
@@ -97,7 +70,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (PetIsEquipped(false) && PetKeybinds.PetAbilitySwitch.JustPressed)
+            if (PetKeybinds.PetAbilitySwitch.JustPressed)
             {
                 currentAbility++;
                 if (currentAbility > 2)
@@ -458,7 +431,7 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<switchKeybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch))
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
                     .Replace("<cooldown>", Math.Round(phantasmalDragon.phantasmDragonCooldown / 60f, 2).ToString())
-                    .Replace("<tooltip>", currentAbilityTooltip);
+                    .Replace("<tooltip>", phantasmalDragon.CurrentSpellName + "\n" + currentAbilityTooltip);
             }
         }
         public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LunaticCultistPetItem");

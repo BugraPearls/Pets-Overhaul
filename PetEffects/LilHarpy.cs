@@ -15,10 +15,8 @@ namespace PetsOverhaul.PetEffects
         private bool cooldownStarted;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
         public override int PetAbilityCooldown => harpyCd;
-        public override int PetStackCurrent => harpyFlight;
-        public override int PetStackMax => fuelMax;
         public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BirdieRattleStack");
-        public override bool PetStackIsSeconds => true;
+        public override string PetStackSpecial => $"{Math.Round(harpyFlight / 60f,2)} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {Math.Round(fuelMax / 60f, 2)} {PetTextsColors.LocVal("Misc.Secs")}"; //Instead of Max & current, we write it out ourselves here as this is somewhat of a special case.
         public override void PostUpdateMiscEffects()
         {
             if (Pet.timer <= 0)

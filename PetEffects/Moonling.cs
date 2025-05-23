@@ -11,30 +11,30 @@ namespace PetsOverhaul.PetEffects
 {
     public sealed class Moonling : PetEffect
     {
-        public List<string> Tooltips
+        public List<(string Name, string Tooltip)> Tooltips //Not using Dictionary, because index is required.
         {
             get
             {
-                List<string> tooltips = [PetTextsColors.LocVal("PetItemTooltips.MeleeTooltip")
+                List<(string,string)> tooltips = [(PetTextsColors.PetClassLocalized(PetClasses.Melee),PetTextsColors.LocVal("PetItemTooltips.MeleeTooltip")
                                             .Replace("<dr>", Math.Round(meleeDr * 100, 2).ToString())
                                             .Replace("<meleeSpd>", Math.Round(meleeSpd * 100, 2).ToString())
                                             .Replace("<meleeDmg>", Math.Round(meleeDmg * 100, 2).ToString())
-                                            .Replace("<def>", defense.ToString()),
-                    PetTextsColors.LocVal("PetItemTooltips.RangedTooltip")
+                                            .Replace("<def>", defense.ToString())),
+                    (PetTextsColors.PetClassLocalized(PetClasses.Ranged),PetTextsColors.LocVal("PetItemTooltips.RangedTooltip")
                                             .Replace("<armorPen>", rangedPen.ToString())
                                             .Replace("<rangedCrit>", rangedCr.ToString())
                                             .Replace("<rangedCritDmg>", Math.Round(rangedCrDmg * 100, 2).ToString())
-                                            .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString()),
-                    PetTextsColors.LocVal("PetItemTooltips.MagicTooltip")
+                                            .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString())),
+                    (PetTextsColors.PetClassLocalized(PetClasses.Magic),PetTextsColors.LocVal("PetItemTooltips.MagicTooltip")
                                             .Replace("<mana>", magicMana.ToString())
                                             .Replace("<manaCost>", Math.Round(magicManaCost * 100, 2).ToString())
                                             .Replace("<magicCrit>", magicCrit.ToString())
-                                            .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString()),
-                    PetTextsColors.LocVal("PetItemTooltips.SummonerTooltip")
+                                            .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString())),
+                    (PetTextsColors.PetClassLocalized(PetClasses.Summoner),PetTextsColors.LocVal("PetItemTooltips.SummonerTooltip")
                                             .Replace("<sumRange>", Math.Round(sumWhipRng * 100, 2).ToString())
                                             .Replace("<sumSpd>", Math.Round(sumWhipSpd * 100, 2).ToString())
                                             .Replace("<sumMax>", sumMinion.ToString())
-                                            .Replace("<sumMaxSentry>", sumSentry.ToString())];
+                                            .Replace("<sumMaxSentry>", sumSentry.ToString()))];
                 if (ExternalTooltips.Count != 0)
                     tooltips.AddRange(ExternalTooltips);
                 return tooltips;
@@ -43,7 +43,7 @@ namespace PetsOverhaul.PetEffects
         /// <summary>
         /// Remember to .Add to this List the tooltip of your class somewhere after ResetEffects() and before Pet Effects are ran.
         /// </summary>
-        public List<string> ExternalTooltips = new();
+        public List<(string Name, string Tooltip)> ExternalTooltips = new();
         public override int PetItemID => ItemID.MoonLordPetItem;
         public int defense = 10;
         public float meleeDr = 0.1f;
@@ -67,6 +67,8 @@ namespace PetsOverhaul.PetEffects
 
         public int currentClass = 0; //0=Melee 1=Ranged 2=Magic 3=Summoner more is also added as if their tooltip is in Tooltips property
 
+        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.MoonLordPetItemStack");
+        public override string PetStackSpecial => Tooltips[currentClass].Name;
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override void ResetEffects()
         {
@@ -149,7 +151,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MoonLordPetItem")
                     .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch))
-                    .Replace("<tooltip>", moonling.Tooltips[moonling.currentClass]);
+                    .Replace("<tooltip>", moonling.Tooltips[moonling.currentClass].Tooltip);
         public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MoonLordPetItem");
     }
 }

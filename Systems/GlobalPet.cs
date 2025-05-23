@@ -122,9 +122,9 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public string currentPetStackText = string.Empty;
         /// <summary>
-        /// Modified in PetEffect code, used by UI to write the stack as seconds & add seconds at the end.
+        /// Modified in PetEffect code, used by UI to write at the end, replacing the 'current stack' if the current value to display needs to display anything except an integer.
         /// </summary>
-        public bool currentPetStackIsSeconds = false;
+        public string currentPetStackSpecialText = string.Empty;
         /// <summary>
         /// Used to not play the 'refresh sound' upon Pet Ability timer going below 0 more than once.
         /// </summary>
@@ -881,6 +881,7 @@ namespace PetsOverhaul.Systems
             {
                 timerMax = 0;
                 currentPetStacksMax = -1;
+                currentPetStackSpecialText = string.Empty;
                 return;
             }
 
@@ -888,6 +889,7 @@ namespace PetsOverhaul.Systems
             {
                 timerMax = 0;
                 currentPetStacksMax = -1;
+                currentPetStackSpecialText = string.Empty;
                 if (ModContent.GetInstance<PetPersonalization>().SwapCooldown)
                 {
                     Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldown);

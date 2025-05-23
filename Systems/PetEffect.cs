@@ -25,7 +25,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Set this to true if you want stacks to be converted to seconds and have it write seconds at the end
         /// </summary>
-        public virtual bool PetStackIsSeconds => false;
+        public virtual string PetStackSpecial => string.Empty;
         /// <summary>
         /// Sets the Pet Ability Cooldown
         /// </summary>
@@ -66,7 +66,7 @@ namespace PetsOverhaul.Systems
                 Pet.currentPetStacks = PetStackCurrent;
                 Pet.currentPetStacksMax = PetStackMax;
                 Pet.currentPetStackText = PetStackText;
-                Pet.currentPetStackIsSeconds = PetStackIsSeconds;
+                Pet.currentPetStackSpecialText = PetStackSpecial;
                 ExtraPreUpdate();
             }
             ExtraPreUpdateNoCheck();

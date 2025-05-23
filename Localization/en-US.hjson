@@ -977,25 +977,26 @@ Mods: {
 				 * All abilities has the same <cooldown> seconds cooldown.
 				<tooltip>
 				'''
+			LunaticCultistPetItemStack: spell
+			DragonIceName: Icicle Mist
 			DragonIce:
 				'''
-				- Icicle Mist
 				 * Spawns an Ice Mist on your cursor, it travels in a random direction,
 				   spawning Icicle Shards along the way it travels, traveling through blocks.
 				 * Ball and Shards both deal <damage> base damage to enemies hit.
 				 * Enemies hit by them gets slowed by <slowAmount>% for <slowTime> seconds.
 				'''
+			DragonLightningName: Lightning Orb
 			DragonLightning:
 				'''
-				- Lightning Orb
 				 * Spawns a Lightning Orb on your cursor, which gradually sends out Lightning Strikes
 				   towards where your cursor is, both continuously striking enemies that contact them.
 				 * Orb deals <orbDmg> base damage with <orbPen> armor pen, also applying a <orbSlow>% slow briefly.
 				 * Strikes deal <strikeDmg> base damage with <strikePen> armor pen, also applying a <strikeSlow>% slow briefly.
 				'''
+			DragonFireName: Fireball Volley
 			DragonFire:
 				'''
-				- Fireball Volley
 				 * Starts shooting Fireballs towards your cursor <fireballAmount> times within <fireballDuration> seconds.
 				 * Fireballs explode upon impact with anything, dealing <fireDmg> base damage and <kb> knockback.
 				 * Hit enemies get applied with Daybreak debuff for <burnSeconds> seconds.
@@ -1034,6 +1035,7 @@ Mods: {
 				- Press Pet Ability Switch Keybind (<keybind>) to switch effects of this Pet.
 				<tooltip>
 				'''
+			MoonLordPetItemStack: class bonus
 			MeleeTooltip:
 				'''
 				- Melee Bonuses:

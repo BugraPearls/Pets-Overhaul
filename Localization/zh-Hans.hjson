@@ -924,6 +924,8 @@ Mods: {
 				 - 所有法术都有<cooldown>秒冷却时间
 				当前法术：<tooltip>
 				'''
+			// LunaticCultistPetItemStack: spell
+			// DragonIceName: Icicle Mist
 			DragonIce:
 				'''
 				- 冰雪雾
@@ -931,6 +933,7 @@ Mods: {
 				 - 冰雪雾和碎块拥有<damage>点基础伤害
 				 - 对命中的敌人造成<slowAmount>%减速<slowTime>秒
 				'''
+			// DragonLightningName: Lightning Orb
 			DragonLightning:
 				'''
 				- 闪电珠
@@ -938,6 +941,7 @@ Mods: {
 				 - 闪电珠拥有<orbDmg>点基础伤害和<orbPen>点护甲穿透，并造成短暂的<orbSlow>%减速
 				 - 闪电拥有<strikeDmg>点基础伤害和<strikePen>点护甲穿透，并造成短暂的<strikeSlow>%减速
 				'''
+			// DragonFireName: Fireball Volley
 			DragonFire:
 				'''
 				- 火球连珠
@@ -974,6 +978,7 @@ Mods: {
 				按下宠物技能切换键（<keybind>）切换此宠物的效果
 				<tooltip>
 				'''
+			// MoonLordPetItemStack: class bonus
 			MeleeTooltip:
 				'''
 				- 近战加成：

@@ -976,6 +976,8 @@ Mods: {
 				 * Todas as habilidades têm o mesmo tempo de recarga de <cooldown> segundos.
 				<tooltip>
 				'''
+			// LunaticCultistPetItemStack: spell
+			// DragonIceName: Icicle Mist
 			DragonIce:
 				'''
 				- Névoa de Gelo
@@ -984,6 +986,7 @@ Mods: {
 				 * Tanto a Bola quanto os Fragmentos causam <damage> de dano geral aos inimigos atingidos.
 				 *  Inimigos atingidos por eles são desacelerados em <slowAmount>% por <slowTime> segundos.
 				'''
+			// DragonLightningName: Lightning Orb
 			DragonLightning:
 				'''
 				- Orbe de Ravio
@@ -994,6 +997,7 @@ Mods: {
 				 * Os Raios causam <strikeDmg> de dano geral com <strikePen> de penetração de armadura,
 				 aplicando também uma desaceleração de <strikeSlow>% brevemente.
 				'''
+			// DragonFireName: Fireball Volley
 			DragonFire:
 				'''
 				- Rajada de Bolas de Fogo
@@ -1036,6 +1040,7 @@ Mods: {
 				- Pressione a tecla de alternância de Habilidade do PET (<keybind>) para alternar os efeitos deste Pet.
 				<tooltip>
 				'''
+			// MoonLordPetItemStack: class bonus
 			MeleeTooltip:
 				'''
 				- Bonus de Dano Físico:

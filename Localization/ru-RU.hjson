@@ -960,6 +960,8 @@ Mods: {
 				  * Все способности имеют одинаковое время перезарядки: <cooldown> секунд.
 				<tooltip>
 				'''
+			// LunaticCultistPetItemStack: spell
+			// DragonIceName: Icicle Mist
 			DragonIce:
 				'''
 				- Ледяной туман
@@ -968,6 +970,7 @@ Mods: {
 				  * Туман и осколки наносят <damage> урон врагам, которых касаются.
 				  * Враги, попавшие под воздействие, замедляются на <slowAmount>% на <slowTime> секунд.
 				'''
+			// DragonLightningName: Lightning Orb
 			DragonLightning:
 				'''
 				- Шар молний
@@ -976,6 +979,7 @@ Mods: {
 				  * Шар наносит <orbDmg> общий урон с пробитием брони <orbPen>, а также кратковременно замедляет на <orbSlow>%.
 				  * Удары молний наносят <strikeDmg> урон с пробитием брони <strikePen>, также кратковременно замедляют на <strikeSlow>%.
 				'''
+			// DragonFireName: Fireball Volley
 			DragonFire:
 				'''
 				- Залп огненных шаров
@@ -1017,6 +1021,7 @@ Mods: {
 				- Нажмите <keybind>, чтобы переключить текущее описание.
 				<tooltip>
 				'''
+			// MoonLordPetItemStack: class bonus
 			MeleeTooltip:
 				'''
 				- Бонусы ближнего боя:

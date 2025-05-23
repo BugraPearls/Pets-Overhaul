@@ -16,7 +16,7 @@ namespace PetsOverhaul.UI
         static int CurrentStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacks;
         static int MaxStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacksMax;
         static string TextStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackText;
-        static bool ShouldBeSeconds => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackIsSeconds;
+        static string StackSpecial => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackSpecialText;
         static readonly string Current = PetTextsColors.LocVal("Misc.Current");
         public override void OnInitialize()
         {
@@ -25,15 +25,20 @@ namespace PetsOverhaul.UI
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
-            if (ModContent.GetInstance<PetPersonalization>().ShowResourceDisplay && Main.playerInventory == false && MaxStack >= 0)
+            if (ModContent.GetInstance<PetPersonalization>().ShowResourceDisplay && Main.playerInventory == false && (MaxStack >= 0 || StackSpecial != string.Empty))
             {
-                if (MaxStack == 0)
+                string currTxt = $"{PetTextsColors.LocVal("Misc.Current")} {TextStack}:";
+                if (StackSpecial != string.Empty) 
                 {
-                    stacks.SetText($"{PetTextsColors.LocVal("Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString() + " " + PetTextsColors.LocVal("Misc.Secs")) : CurrentStack.ToString())}");
+                    stacks.SetText($"{currTxt} {StackSpecial}");
+                }
+                else if (MaxStack == 0)
+                {
+                    stacks.SetText($"{currTxt} {CurrentStack}");
                 }
                 else
                 {
-                    stacks.SetText($"{PetTextsColors.LocVal("Misc.Current")} {TextStack}: {(ShouldBeSeconds ? (Math.Round(CurrentStack / 60f, 1).ToString()) : CurrentStack.ToString())} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {(ShouldBeSeconds ? (Math.Round(MaxStack / 60f, 2).ToString() + " " + PetTextsColors.LocVal("Misc.Secs")) : MaxStack.ToString())}");
+                    stacks.SetText($"{currTxt} {CurrentStack} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {MaxStack}");
                 }
                 stacks.Top.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.Y);
                 stacks.Left.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.X);
