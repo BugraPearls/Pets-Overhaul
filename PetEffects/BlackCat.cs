@@ -117,6 +117,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<maximumMoon>", blackCat.luckMoonHighest.ToString())
                 .Replace("<moonLuck>", Math.Round(blackCat.currentMoonLuck, 2).ToString())
                 .Replace("<playerLuck>", Math.Round(blackCat.Player.luck, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.UnluckyYarn");
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.UnluckyYarn").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

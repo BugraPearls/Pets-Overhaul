@@ -135,6 +135,6 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<def>", lizard.defense.ToString())
                     .Replace("<moveSpd>", Math.Round(lizard.moveSpd * 100, 2).ToString())
                     .Replace("<jumpPenalty>", Math.Round(lizard.jumpMult * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LizardEgg");
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LizardEgg").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

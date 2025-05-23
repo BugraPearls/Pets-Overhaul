@@ -161,6 +161,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<defToCrit>", Math.Round(suspiciousEye.critMult * 100, 2).ToString())
                 .Replace("<enrageLength>", Math.Round(suspiciousEye.phaseTime / 60f, 2).ToString())
                 .Replace("<enrageCd>", Math.Round(suspiciousEye.phaseCd / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EyeOfCthulhuPetItem");
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EyeOfCthulhuPetItem").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

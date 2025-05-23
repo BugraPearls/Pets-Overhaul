@@ -161,13 +161,6 @@ namespace PetsOverhaul.Systems
         public static Action<NPC, Player> OnEnemyDeath;
 
         #region GlobalPet Methods
-        /// <summary>
-        /// Used to use Pet Ability Haste to properly apply the cooldown, but currently it only sets timerMax. May have different uses later so is being keeped.
-        /// </summary>
-        public void SetPetAbilityTimer(int cooldown)
-        {
-            timerMax = cooldown;
-        }
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
             return new EntitySource_Pet

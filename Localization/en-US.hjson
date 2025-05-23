@@ -1353,7 +1353,7 @@ Mods: {
 				'''
 			Seaweed:
 				'''
-				- Press Pet Ability Keybind <keybind> to endure incoming hits.
+				- Press Pet Ability Keybind (<keybind>) to endure incoming hits.
 				 * You will take less damage and no knockback.
 				 * You will also reflect damage taken.
 				- Increases your defense and knockback resistance.
@@ -1493,7 +1493,7 @@ Mods: {
 				'''
 			MoonLordPetItem:
 				'''
-				- Press Pet Ability Switch Keybind (<keybind>) to switch effects.
+				- Press Pet Ability Switch Keybind (<switchKeybind>) to switch effects.
 				- Melee increases damage reduction, melee Speed, melee damage and defense.
 				- Ranged increases ranged armor pen, crit chance, crit damage and damage.
 				- Magic increases max mana, magic crit, damage, and reduces mana costs.

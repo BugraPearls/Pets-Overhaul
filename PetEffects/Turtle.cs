@@ -113,6 +113,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<def>", Math.Round(turtle.def * 100, 2).ToString())
                 .Replace("<kbResist>", Math.Round(turtle.kbResist * 100, 2).ToString())
                 .Replace("<moveSpd>", Math.Round(turtle.moveSpd * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Seaweed");
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Seaweed").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

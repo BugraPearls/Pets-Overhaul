@@ -434,6 +434,7 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<tooltip>", phantasmalDragon.CurrentSpellName + "\n" + currentAbilityTooltip);
             }
         }
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LunaticCultistPetItem");
+        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LunaticCultistPetItem")
+            .Replace("<switchKeybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch)).Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
     }
 }
