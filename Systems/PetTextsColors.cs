@@ -166,10 +166,18 @@ namespace PetsOverhaul.Systems
             return result;
         }
         /// <summary>
-        /// Returns: "first param" out of "second param" Seconds. Ex: 1 out of 3 Seconds.
+        /// Returns: "first param" out of "second param" Seconds. Ex: 1 out of 3 Seconds. If secondVal is 0, it w
         /// </summary>
         public static string SecondsOutOfText(int firstValInFrames, int secondValInFrames)
         {
+            if (firstValInFrames < 0)
+            {
+                firstValInFrames = 0;
+            }
+            if (secondValInFrames <= 0)
+            {
+                return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
+            }
             return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
         }
     }
