@@ -5,6 +5,12 @@
     <AssemblyName>PetsOverhaul</AssemblyName>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn />
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Buffs\ChillingFear.png" />
     <None Remove="Buffs\HardenedShell.png" />

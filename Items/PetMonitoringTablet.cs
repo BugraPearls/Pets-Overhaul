@@ -84,7 +84,7 @@ namespace PetsOverhaul.Items
                                 .Replace("<fishingTooltipIncr>", pet.fishingFortune.ToString());
                             break;
                         case "Tooltip18":
-                            List<int> items = new();
+                            List<int> items = [];
                             if (GlobalPet.eolConsumed)
                                 items.Add(ModContent.ItemType<PrismaticOptic>());
                             if (GlobalPet.golemConsumed)

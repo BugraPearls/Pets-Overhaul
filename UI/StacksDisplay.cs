@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
-using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
@@ -17,7 +16,6 @@ namespace PetsOverhaul.UI
         static int MaxStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacksMax;
         static string TextStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackText;
         static string StackSpecial => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackSpecialText;
-        static readonly string Current = PetTextsColors.LocVal("Misc.Current");
         public override void OnInitialize()
         {
             stacks = new("");
@@ -28,7 +26,7 @@ namespace PetsOverhaul.UI
             if (ModContent.GetInstance<PetPersonalization>().ShowResourceDisplay && Main.playerInventory == false && (MaxStack >= 0 || StackSpecial != string.Empty))
             {
                 string currTxt = $"{PetTextsColors.LocVal("Misc.Current")} {TextStack}:";
-                if (StackSpecial != string.Empty) 
+                if (StackSpecial != string.Empty)
                 {
                     stacks.SetText($"{currTxt} {StackSpecial}");
                 }

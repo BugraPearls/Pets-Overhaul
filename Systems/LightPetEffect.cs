@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Config;
-using PetsOverhaul.NPCs;
+﻿using PetsOverhaul.NPCs;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

@@ -20,7 +20,7 @@ namespace PetsOverhaul.PetEffects
         /// <summary>
         /// Pet is obtainable Pre-Hm in some seeds iirc.
         /// </summary>
-        public int FrostBurnId => Main.hardMode ? BuffID.Frostburn2 : BuffID.Frostburn;
+        public static int FrostBurnId => Main.hardMode ? BuffID.Frostburn2 : BuffID.Frostburn;
 
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
@@ -42,7 +42,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         return;
                     }
-                    int num19 = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, Player.velocity.X * 0.2f + (float)(Player.direction * 3), Player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
+                    int num19 = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IceTorch, Player.velocity.X * 0.2f + Player.direction * 3, Player.velocity.Y * 0.2f, 100, default, 2.5f);
                     Main.dust[num19].noGravity = true;
                     Main.dust[num19].velocity *= 0.7f;
                     Main.dust[num19].velocity.Y -= 0.5f;
@@ -61,7 +61,7 @@ namespace PetsOverhaul.PetEffects
                     }
                     if (projectile.friendly && !projectile.hostile && Main.rand.NextBool(2 * (1 + projectile.extraUpdates)) && projectile.damage > 0)
                     {
-                        int num = Dust.NewDust(boxPosition, boxWidth, boxHeight, DustID.IceTorch, projectile.velocity.X * 0.2f + (float)(projectile.direction * 3), projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                        int num = Dust.NewDust(boxPosition, boxWidth, boxHeight, DustID.IceTorch, projectile.velocity.X * 0.2f + projectile.direction * 3, projectile.velocity.Y * 0.2f, 100, default, 2f);
                         Main.dust[num].noGravity = true;
                         Main.dust[num].velocity *= 0.7f;
                         Main.dust[num].velocity.Y -= 0.5f;

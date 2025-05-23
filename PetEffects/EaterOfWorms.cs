@@ -16,7 +16,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.EaterOfWorldsPetItem;
         public override PetClasses PetClassPrimary => PetClasses.Mining;
 
-        private readonly List<(int X, int Y)> tilesToRandomize = new();
+        private readonly List<(int X, int Y)> tilesToRandomize = [];
         public int tileBreakXSpread = 3;
         public int tileBreakYSpread = 3;
         public int tileBreakSpreadChance = 125;

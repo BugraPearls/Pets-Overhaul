@@ -16,7 +16,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
         public override int PetAbilityCooldown => harpyCd;
         public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BirdieRattleStack");
-        public override string PetStackSpecial => PetTextsColors.SecondsOutOfText(harpyFlight,fuelMax); //Instead of Max & current, we write it out ourselves here as this is somewhat of a special case.
+        public override string PetStackSpecial => PetTextsColors.SecondsOutOfText(harpyFlight, fuelMax); //Instead of Max & current, we write it out ourselves here as this is somewhat of a special case.
         public override void PostUpdateMiscEffects()
         {
             if (Pet.timer <= 0)

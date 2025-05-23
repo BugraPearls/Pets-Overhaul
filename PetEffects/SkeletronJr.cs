@@ -12,7 +12,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class SkeletronJr : PetEffect
     {
         public override int PetItemID => ItemID.SkeletronPetItem;
-        public List<(int, int)> skeletronTakenDamage = new();
+        public List<(int, int)> skeletronTakenDamage = [];
         private int timer = 0;
         public float enemyDamageIncrease = 1.2f;
         public float playerDamageTakenSpeed = 4f;
@@ -110,7 +110,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class SkeletronJrEnemy : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        public List<(int, int)> skeletronDealtDamage = new();
+        public List<(int, int)> skeletronDealtDamage = [];
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (skeletronDealtDamage.Count > 0)

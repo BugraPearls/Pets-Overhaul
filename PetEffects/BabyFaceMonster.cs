@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     for (int i = 0; i < 0.05f * (Player.lifeRegen + regen); i++)
                     {
-                        int num9 = Dust.NewDust(Player.position, Player.width, Player.height, 5, 0f, 0f, 175, default, 1.75f);
+                        int num9 = Dust.NewDust(Player.position, Player.width, Player.height, DustID.Blood, 0f, 0f, 175, default, 1.75f);
                         Main.dust[num9].noGravity = true;
                         Main.dust[num9].velocity *= 0.75f;
                         int num10 = Main.rand.Next(-40, 41);

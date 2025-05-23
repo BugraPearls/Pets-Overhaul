@@ -23,7 +23,6 @@ namespace PetsOverhaul.NPCs
         public static bool openLightCombineMenu = false;
         //private static int ShimmerHeadIndex;
         private static Profiles.StackedNPCProfile NPCProfile;
-
         //public override void Load()
         //{
         //    // Adds our Shimmer Head to the NPCHeadLoader.
@@ -51,7 +50,7 @@ namespace PetsOverhaul.NPCs
             //NPCID.Sets.FaceEmote[Type] = ModContent.EmoteBubbleType<ExamplePersonEmote>();
 
             // Influences how the NPC looks in the Bestiary
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
             {
                 Velocity = 1f, // Draws the NPC in the bestiary as if its walking +1 tiles in the x direction
                 Direction = 1 // -1 is left and 1 is right. NPCs are drawn facing the left by default but ExamplePerson will be drawn facing the right
@@ -172,7 +171,7 @@ namespace PetsOverhaul.NPCs
 
         public override string GetChat()
         {
-            WeightedRandom<string> chat = new WeightedRandom<string>();
+            WeightedRandom<string> chat = new();
 
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common1"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common2"), 10);

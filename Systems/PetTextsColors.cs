@@ -110,16 +110,16 @@ namespace PetsOverhaul.Systems
             {
                 {
                     Color color = Color.Lerp(ClassEnumToColor(Class1), ClassEnumToColor(Class2), 0.5f);
-                    return $"[c/{color.Hex3()}:{PetTextsColors.LocVal("Classes." + Class1)} {PetTextsColors.LocVal("Misc.And")} {PetTextsColors.LocVal("Classes." + Class2)} {PetTextsColors.LocVal("Misc.Pet")}]";
+                    return $"[c/{color.Hex3()}:{LocVal("Classes." + Class1)} {LocVal("Misc.And")} {LocVal("Classes." + Class2)} {LocVal("Misc.Pet")}]";
                 }
             }
             else if (Class2 == PetClasses.None)
             {
-                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{PetTextsColors.LocVal("Classes." + Class1)} {PetTextsColors.LocVal("Misc.Pet")}]";
+                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{LocVal("Classes." + Class1)} {LocVal("Misc.Pet")}]";
             }
             else
             {
-                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{PetTextsColors.LocVal("Classes." + Class2)} {PetTextsColors.LocVal("Misc.Pet")}]";
+                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{LocVal("Classes." + Class2)} {LocVal("Misc.Pet")}]";
             }
         }
         /// <summary>
@@ -129,15 +129,15 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static string KeybindText(ModKeybind keybind)
         {
-            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{PetTextsColors.LocVal("Misc.KeybindMissing")}]";
+            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{LocVal("Misc.KeybindMissing")}]";
         }
         public static string RollMissingText()
         {
-            return "[c/" + LowQuality.Hex3() + ":" + PetTextsColors.LocVal("LightPetTooltips.NotRolled") + "]";
+            return "[c/" + LowQuality.Hex3() + ":" + LocVal("LightPetTooltips.NotRolled") + "]";
         }
         public static string PetClassLocalized(PetClasses petClass)
         {
-            return PetTextsColors.LocVal("Classes." + petClass.ToString());
+            return LocVal("Classes." + petClass.ToString());
         }
         /// <summary>
         /// Converts all integers in given list to be in [i:ItemID] format, which is shown in game as the item itself within the string. Goes down below when countToGoBelow is reached. countStart is where it upstarts the count to go one line below, since there can be a text beforehand. Will also return the text 'None' if there is no items in the list.
@@ -168,9 +168,9 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Returns: "first param" out of "second param" Seconds. Ex: 1 out of 3 Seconds.
         /// </summary>
-        public static string SecondsOutOfText(int firstValInFrames, int secondValInFrames) 
+        public static string SecondsOutOfText(int firstValInFrames, int secondValInFrames)
         {
-            return $"{Math.Round(firstValInFrames / 60f, 2)} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {PetTextsColors.LocVal("Misc.Secs")}";
+            return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
         }
     }
 }

@@ -68,9 +68,9 @@ namespace PetsOverhaul.Commands
                             }
                             else
                             {
-                                List<TopPlayer> topMining = new();
-                                List<TopPlayer> topFishing = new();
-                                List<TopPlayer> topHarvesting = new();
+                                List<TopPlayer> topMining = [];
+                                List<TopPlayer> topFishing = [];
+                                List<TopPlayer> topHarvesting = [];
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
@@ -123,7 +123,7 @@ namespace PetsOverhaul.Commands
                             }
                             else
                             {
-                                List<TopPlayer> topMining = new();
+                                List<TopPlayer> topMining = [];
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
@@ -151,7 +151,7 @@ namespace PetsOverhaul.Commands
                             }
                             else
                             {
-                                List<TopPlayer> topFishing = new();
+                                List<TopPlayer> topFishing = [];
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
@@ -179,7 +179,7 @@ namespace PetsOverhaul.Commands
                             }
                             else
                             {
-                                List<TopPlayer> topHarvesting = new();
+                                List<TopPlayer> topHarvesting = [];
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
@@ -334,35 +334,35 @@ namespace PetsOverhaul.Commands
                             switch (args[1].ToLower())
                             {
                                 case "harvesting":
-                                    List<int> harv = new();
-                                    List<int> rareHarv = new();
-                                    foreach (var item in Junimo.HarvestingXpPerGathered)
+                                    List<int> harv = [];
+                                    List<int> rareHarv = [];
+                                    foreach (var (expAmount, plantList) in Junimo.HarvestingXpPerGathered)
                                     {
-                                        if (item.expAmount >= 1000)
+                                        if (expAmount >= 1000)
                                         {
-                                            rareHarv.AddRange(item.plantList);
+                                            rareHarv.AddRange(plantList);
                                         }
                                         else
                                         {
-                                            harv.AddRange(item.plantList);
+                                            harv.AddRange(plantList);
                                         }
                                     }
-                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetTextsColors.ItemsToTooltipImages(harv, 22, 0) + " " + PetTextsColors.LocVal("Misc.RarePlant") + ": " + PetTextsColors.ItemsToTooltipImages(rareHarv,22,10);
+                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetTextsColors.ItemsToTooltipImages(harv, 22, 0) + " " + PetTextsColors.LocVal("Misc.RarePlant") + ": " + PetTextsColors.ItemsToTooltipImages(rareHarv, 22, 10);
 
                                     break;
                                 case "mining":
-                                    List<int> mining = new();
-                                    foreach (var item in Junimo.MiningXpPerBlock)
+                                    List<int> mining = [];
+                                    foreach (var (expAmount, oreList) in Junimo.MiningXpPerBlock)
                                     {
-                                        mining.AddRange(item.oreList);
+                                        mining.AddRange(oreList);
                                     }
                                     itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)) + "\n" + PetTextsColors.ItemsToTooltipImages(mining, 22, 0);
                                     break;
                                 case "fishing":
-                                    List<int> fish = new();
-                                    foreach (var item in Junimo.FishingXpPerCaught)
+                                    List<int> fish = [];
+                                    foreach (var (expAmount, fishList) in Junimo.FishingXpPerCaught)
                                     {
-                                        fish.AddRange(item.fishList);
+                                        fish.AddRange(fishList);
                                     }
                                     itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)) + "\n" + PetTextsColors.ItemsToTooltipImages(fish, 22, 0);
                                     break;

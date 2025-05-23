@@ -262,7 +262,7 @@ namespace PetsOverhaul.PetEffects
                         {
                             num818 = 0.5f;
                         }
-                        Vector2 spinningpoint58 = new Vector2(-projectile.width * 0.6f * projectile.scale, 0f);
+                        Vector2 spinningpoint58 = new(-projectile.width * 0.6f * projectile.scale, 0f);
                         double radians45 = num818 * ((float)Math.PI * 2f);
                         val4 = default;
                         Vector2 spinningpoint59 = Utils.RotatedBy(spinningpoint58, radians45, val4);
@@ -314,9 +314,9 @@ namespace PetsOverhaul.PetEffects
                             if (Main.rand.NextBool(5))
                             {
                                 Vector2 spinningpoint60 = projectile.velocity;
-                                val4 = default(Vector2);
-                                Vector2 vector168 = spinningpoint60.RotatedBy(1.5707963705062866, val4) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
-                                int num826 = Dust.NewDust(projectile.Center + vector168 - Vector2.One * 4f, 8, 8, DustID.Smoke, 0f, 0f, 100, default(Color), 1.5f);
+                                val4 = default;
+                                Vector2 vector168 = spinningpoint60.RotatedBy(1.5707963705062866, val4) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
+                                int num826 = Dust.NewDust(projectile.Center + vector168 - Vector2.One * 4f, 8, 8, DustID.Smoke, 0f, 0f, 100, default, 1.5f);
                                 Dust dust137 = Main.dust[num826];
                                 Dust dust212 = dust137;
                                 dust212.velocity *= 0.5f;
@@ -332,7 +332,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         projectile.frameCounter = 0;
                         float num827 = projectile.velocity.Length();
-                        UnifiedRandom unifiedRandom = new UnifiedRandom((int)projectile.ai[1]);
+                        UnifiedRandom unifiedRandom = new((int)projectile.ai[1]);
                         int num828 = 0;
                         Vector2 spinningpoint7 = -Vector2.UnitY;
                         while (true)
@@ -340,7 +340,7 @@ namespace PetsOverhaul.PetEffects
                             int num829 = unifiedRandom.Next();
                             projectile.ai[1] = num829;
                             num829 %= 100;
-                            float f = (float)num829 / 100f * ((float)Math.PI * 2f);
+                            float f = num829 / 100f * ((float)Math.PI * 2f);
                             Vector2 vector169 = f.ToRotationVector2();
                             if (vector169.Y > 0f)
                             {
@@ -351,11 +351,11 @@ namespace PetsOverhaul.PetEffects
                             {
                                 flag30 = true;
                             }
-                            if (vector169.X * (float)(projectile.extraUpdates + 1) * 2f * num827 + projectile.localAI[0] > 40f)
+                            if (vector169.X * (projectile.extraUpdates + 1) * 2f * num827 + projectile.localAI[0] > 40f)
                             {
                                 flag30 = true;
                             }
-                            if (vector169.X * (float)(projectile.extraUpdates + 1) * 2f * num827 + projectile.localAI[0] < -40f)
+                            if (vector169.X * (projectile.extraUpdates + 1) * 2f * num827 + projectile.localAI[0] < -40f)
                             {
                                 flag30 = true;
                             }
@@ -374,7 +374,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         if (projectile.velocity != Vector2.Zero)
                         {
-                            projectile.localAI[0] += spinningpoint7.X * (float)(projectile.extraUpdates + 1) * 2f * num827;
+                            projectile.localAI[0] += spinningpoint7.X * (projectile.extraUpdates + 1) * 2f * num827;
                             Vector2 spinningpoint61 = spinningpoint7;
                             double radians47 = projectile.ai[0] + (float)Math.PI / 2f;
                             val4 = default;

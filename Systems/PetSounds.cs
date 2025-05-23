@@ -345,10 +345,10 @@ namespace PetsOverhaul.Systems
                 itemsHurtSound = PetItemIdToHurtSound[itemId][Player.Male == true ? 0 : 1];
             }
 
-            return itemsHurtSound == SoundID.MenuClose ? ReLogic.Utilities.SlotId.Invalid : SoundEngine.PlaySound(itemsHurtSound with { Type = SoundType.Sound }, Player.Center);
+            return itemsHurtSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(itemsHurtSound with { Type = SoundType.Sound }, Player.Center);
         }
 
-        public ReLogic.Utilities.SlotId PlayAmbientSoundFromItemId(int itemId)
+        public SlotId PlayAmbientSoundFromItemId(int itemId)
         {
             int chance;
             switch (ModContent.GetInstance<PetPersonalization>().PassiveSoundFrequency)
@@ -377,13 +377,13 @@ namespace PetsOverhaul.Systems
                     petAmbientSound = value[Main.rand.Next(value.Length)];
                 }
 
-                return petAmbientSound == SoundID.MenuClose ? ReLogic.Utilities.SlotId.Invalid : SoundEngine.PlaySound(petAmbientSound with { Type = SoundType.Ambient, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew }, Player.Center);
+                return petAmbientSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(petAmbientSound with { Type = SoundType.Ambient, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew }, Player.Center);
             }
             return SlotId.Invalid;
 
         }
 
-        public ReLogic.Utilities.SlotId PlayKillSoundFromItemId(int itemId)
+        public SlotId PlayKillSoundFromItemId(int itemId)
         {
             if (ModContent.GetInstance<PetPersonalization>().DeathSoundEnabled == false)
                 return SlotId.Invalid;
@@ -401,7 +401,7 @@ namespace PetsOverhaul.Systems
                     : (SoundID.NPCDeath59 with { PitchVariance = 0.5f });
             }
 
-            return petKillSound == SoundID.MenuClose ? ReLogic.Utilities.SlotId.Invalid : SoundEngine.PlaySound(petKillSound with { Type = SoundType.Sound }, Player.Center);
+            return petKillSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(petKillSound with { Type = SoundType.Sound }, Player.Center);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                List<(string,string)> tooltips = [(PetTextsColors.PetClassLocalized(PetClasses.Melee),PetTextsColors.LocVal("PetItemTooltips.MeleeTooltip")
+                List<(string, string)> tooltips = [(PetTextsColors.PetClassLocalized(PetClasses.Melee),PetTextsColors.LocVal("PetItemTooltips.MeleeTooltip")
                                             .Replace("<dr>", Math.Round(meleeDr * 100, 2).ToString())
                                             .Replace("<meleeSpd>", Math.Round(meleeSpd * 100, 2).ToString())
                                             .Replace("<meleeDmg>", Math.Round(meleeDmg * 100, 2).ToString())
@@ -43,7 +43,7 @@ namespace PetsOverhaul.PetEffects
         /// <summary>
         /// Remember to .Add to this List the tooltip of your class somewhere after ResetEffects() and before Pet Effects are ran.
         /// </summary>
-        public List<(string Name, string Tooltip)> ExternalTooltips = new();
+        public List<(string Name, string Tooltip)> ExternalTooltips = [];
         public override int PetItemID => ItemID.MoonLordPetItem;
         public int defense = 10;
         public float meleeDr = 0.1f;

@@ -33,7 +33,7 @@ namespace PetsOverhaul.NPCs
             public int SlowTime = slowTime;
             public int SlowId = slowId;
         }
-        public List<PetSlow> SlowList = new();
+        public List<PetSlow> SlowList = [];
         /// <summary>
         /// If you need to find out how much current cumulative slow amount is, use this.
         /// </summary>

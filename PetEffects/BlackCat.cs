@@ -61,28 +61,15 @@ namespace PetsOverhaul.PetEffects
                 if (moonlightRoll < 0)
                 {
                     moonlightRoll *= -1;
-                    string reason;
-                    switch (Main.rand.Next(5))
+                    string reason = Main.rand.Next(5) switch
                     {
-                        case 0:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1");
-                            break;
-                        case 1:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath2");
-                            break;
-                        case 2:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath3");
-                            break;
-                        case 3:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath4");
-                            break;
-                        case 4:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath5");
-                            break;
-                        default:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1");
-                            break;
-                    }
+                        0 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1"),
+                        1 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath2"),
+                        2 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath3"),
+                        3 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath4"),
+                        4 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath5"),
+                        _ => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1"),
+                    };
                     Player.Hurt(PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)), moonlightRoll, 0, dodgeable: false, knockback: 0, scalingArmorPenetration: 1f);
                 }
                 else

@@ -18,15 +18,15 @@ namespace PetsOverhaul.PetEffects
         public override void OnStarted(Player player, ref bool playSound) //Same code as Unicorn Mount's double jump
         {
             Vector2 center = player.Center;
-            Vector2 vector2 = new Vector2(50f, 20f);
+            Vector2 vector2 = new(50f, 20f);
             float num10 = (float)Math.PI * 2f * Main.rand.NextFloat();
             for (int m = 0; m < 5; m++)
             {
                 for (float num11 = 0f; num11 < 14f; num11 += 1f)
                 {
-                    Dust obj = Main.dust[Dust.NewDust(center, 0, 0, Utils.SelectRandom<int>(Main.rand, 176, 177, 179))];
+                    Dust obj = Main.dust[Dust.NewDust(center, 0, 0, Utils.SelectRandom(Main.rand, 176, 177, 179))];
                     Vector2 vector3 = Vector2.UnitY.RotatedBy(num11 * ((float)Math.PI * 2f) / 14f + num10);
-                    vector3 *= 0.2f * (float)m;
+                    vector3 *= 0.2f * m;
                     obj.position = center + vector3 * vector2;
                     obj.velocity = vector3 + new Vector2(0f, player.gravDir * 4f);
                     obj.noGravity = true;

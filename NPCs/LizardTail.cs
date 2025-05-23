@@ -20,7 +20,7 @@ namespace PetsOverhaul.NPCs
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[Type] = amountOfFrames;
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
             {
                 Velocity = 1f,
                 Direction = 1

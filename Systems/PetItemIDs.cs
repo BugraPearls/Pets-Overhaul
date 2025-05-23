@@ -8,7 +8,7 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public class PetItemIDs
     {
-        public static Dictionary<string, int> LightPetNamesAndItems = new Dictionary<string, int>
+        public static Dictionary<string, int> LightPetNamesAndItems = new()
         {
             {"Flickerwick",ItemID.DD2PetGhost },
             {"Crimson Heart",ItemID.CrimsonHeart },
@@ -22,7 +22,7 @@ namespace PetsOverhaul.Systems
             {"Wisp",ItemID.WispinaBottle },
         };
 
-        public static Dictionary<string, int> PetNamesAndItems = new Dictionary<string, int>
+        public static Dictionary<string, int> PetNamesAndItems = new()
         {
             {"Turtle", ItemID.Seaweed},
             {"Baby Dinosaur", ItemID.AmberMosquito},

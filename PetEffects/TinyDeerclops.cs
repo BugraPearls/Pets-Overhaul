@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.Projectiles;
@@ -11,21 +10,20 @@ using Terraria.Audio;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Utilities.Terraria.Utilities;
 
 namespace PetsOverhaul.PetEffects
 {
     public sealed class TinyDeerclops : PetEffect
     {
         public override int PetItemID => ItemID.DeerclopsPetItem;
-        public List<(int storedDamage, int timer)> deerclopsTakenDamage = new();
+        public List<(int storedDamage, int timer)> deerclopsTakenDamage = [];
         public float damageReduction = 0.1f;
         public int radius = 320;
         public int abilityRadius = 450;
         public int shieldDuration = 300;
         public int storeDuration = 240;
         public float maxHealthPerc = 0.5f;
-        public int cooldown = 1500;
+        public int cooldown = 150;
         public float shieldMult = 0.2f;
         public float slowAmount = 0.15f;
         public int slowDuration = 120;
@@ -75,7 +73,7 @@ namespace PetsOverhaul.PetEffects
             {
                 if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                 {
-                    SoundEngine.PlaySound(SoundID.DeerclopsStep with { Pitch = pitch, Volume = 0.5f, PitchVariance = 0f, MaxInstances = 0}, Player.Center);
+                    SoundEngine.PlaySound(SoundID.DeerclopsStep with { Pitch = pitch, Volume = 0.5f, PitchVariance = 0f, MaxInstances = 0 }, Player.Center);
                 }
             }
             switch (initiateStrike)
@@ -142,6 +140,7 @@ namespace PetsOverhaul.PetEffects
                 void DoTheStrike(NPC npc)
                 {
                     NpcPet.AddSlow(new NpcPet.PetSlow(slowAmount, slowDuration, PetSlowIDs.Deerclops), npc);
+                    Main.NewText(Pet.PetDamage((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationReduction), DamageClass.Melee));
                     npc.SimpleStrikeNPC(Pet.PetDamage((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationReduction), DamageClass.Melee), Player.direction, false, 0, DamageClass.Melee, true, Player.luck);
                     penetrationReduction += reductionRaise;
                     if (penetrationReduction > reductionCap)

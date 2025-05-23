@@ -16,7 +16,7 @@ namespace PetsOverhaul.PetEffects
             if (Player.velocity.Y > 0 && PetIsEquipped() && triggersSet.Jump && Player.dead == false)
             {
                 Player.maxFallSpeed *= glideSpeedMult;
-                Player.fallStart = (int)((double)Player.position.Y / 16.0);
+                Player.fallStart = (int)(Player.position.Y / 16.0);
             }
         }
     }

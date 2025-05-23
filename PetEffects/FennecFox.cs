@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public override void OnStarted(Player player, ref bool playSound)
         {
             Vector2 center = player.Center;
-            Vector2 vector2 = new Vector2(50f, 20f);
+            Vector2 vector2 = new(50f, 20f);
             float num10 = (float)Math.PI * 2f * Main.rand.NextFloat();
             for (int m = 0; m < 5; m++)
             {
@@ -23,7 +23,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     Dust obj = Main.dust[Dust.NewDust(center, 0, 0, DustID.Cloud)];
                     Vector2 vector3 = Vector2.UnitY.RotatedBy(num11 * ((float)Math.PI * 2f) / 14f + num10);
-                    vector3 *= 0.2f * (float)m;
+                    vector3 *= 0.2f * m;
                     obj.position = center + vector3 * vector2;
                     obj.velocity = vector3 + new Vector2(0f, player.gravDir * 4f);
                     obj.noGravity = true;
@@ -40,10 +40,10 @@ namespace PetsOverhaul.PetEffects
             if (player.gravDir == -1f)
                 num3 = -6;
 
-            float num4 = ((float)player.jump / 75f + 1f) / 2f;
+            float num4 = (player.jump / 75f + 1f) / 2f;
             for (int i = 0; i < 3; i++)
             {
-                int num5 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + (float)(num3 / 2)), player.width, 32, DustID.Cloud, player.velocity.X * 0.3f, player.velocity.Y * 0.3f, 150, default, 1f * num4);
+                int num5 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + num3 / 2), player.width, 32, DustID.Cloud, player.velocity.X * 0.3f, player.velocity.Y * 0.3f, 150, default, 1f * num4);
                 Main.dust[num5].velocity *= 0.5f * num4;
                 Main.dust[num5].fadeIn = 1.5f * num4;
                 Main.dust[num5].shader = GameShaders.Armor.GetSecondaryShader(player.cPet, player);

@@ -11,9 +11,9 @@ namespace PetsOverhaul.UI
 {
     class MenuCanvas : UIState
     {
-        int CurrentShieldVal => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentShield;
-        public UIText currentShield;
-        ShieldPosition ShieldSetting => ModContent.GetInstance<PetPersonalization>().ShieldLocation;
+        public static int CurrentShieldVal => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentShield;
+        public static UIText currentShield;
+        public static ShieldPosition ShieldSetting => ModContent.GetInstance<PetPersonalization>().ShieldLocation;
         public override void OnInitialize()
         {
             currentShield = new("");

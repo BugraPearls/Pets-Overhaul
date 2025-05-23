@@ -80,22 +80,22 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Is cleared at the end of PostUpdate hook. Main use is for Weighted Lists with usage of ItemWeight() Method. Retrieve a value using Main.rand.Next() for its index for Weighted list usage.
         /// </summary>
-        public static List<int> ItemPool = new();
+        public static List<int> ItemPool = [];
 
         /// <summary>
         /// Ran and is reset at end of PostUpdate().
         /// </summary>
-        public static List<Point16> CoordsToRemove = new();
+        public static List<Point16> CoordsToRemove = [];
 
         /// <summary>
         /// Ran and is reset at end of PostUpdate().
         /// </summary>
-        public static List<Point16> updateReplacedTile = new();
+        public static List<Point16> updateReplacedTile = [];
 
         /// <summary>
         /// shieldTimer is reduced in PostUpdate(), so if you want to do a '1 frame passive shield', make the timer 2 instead of 1.
         /// </summary>
-        public List<(int shieldAmount, int shieldTimer)> petShield = new();
+        public List<(int shieldAmount, int shieldTimer)> petShield = [];
         public int currentShield = 0;
         public int shieldToBeReduced = 0;
         public bool jumpRegistered = false;
@@ -153,7 +153,7 @@ namespace PetsOverhaul.Systems
 
         public static bool CurrentTooltipsIsSimple = true;
 
-        public static List<int> EnemiesForLifestealToIgnore = new();
+        public static List<int> EnemiesForLifestealToIgnore = [];
 
         /// <summary>
         /// Is invoked at PetNpc, OnKill hook, refer to Puppy Pet's OnEnemyKill() & Load/Unload to figure how its used properly. Only called on Player that last hit the NPC, when NPC is dead.
@@ -221,7 +221,7 @@ namespace PetsOverhaul.Systems
             {
                 if (fortune.globalDrop)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer(PickerPet.globalFortune * item.stack); i++)
+                    for (int i = 0; i < Randomizer(PickerPet.globalFortune * item.stack); i++)
                     {
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), item.type, 1);
                     }
@@ -229,7 +229,7 @@ namespace PetsOverhaul.Systems
 
                 if (fortune.harvestingDrop)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
                     {
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
                     }
@@ -237,7 +237,7 @@ namespace PetsOverhaul.Systems
 
                 if (fortune.miningDrop)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
                     {
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
                     }
@@ -245,7 +245,7 @@ namespace PetsOverhaul.Systems
 
                 if (fortune.fishingDrop)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
                     {
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), item.type, 1);
                     }
@@ -253,7 +253,7 @@ namespace PetsOverhaul.Systems
 
                 if (fortune.herbBoost)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
                     {
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
                     }
@@ -261,7 +261,7 @@ namespace PetsOverhaul.Systems
 
                 if (fortune.oreBoost)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
                     {
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
                     }
@@ -900,7 +900,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyCaughtFish(Item fish)
         {
-            for (int i = 0; i < GlobalPet.Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000); i++)
+            for (int i = 0; i < Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000); i++)
             {
                 Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), fish.type, 1);
             }
@@ -912,7 +912,7 @@ namespace PetsOverhaul.Systems
                 PetTamer.openLightCombineMenu = false;
             }
 
-            if (PetKeybinds.ShowDetailedTip.JustPressed) 
+            if (PetKeybinds.ShowDetailedTip.JustPressed)
             {
                 CurrentTooltipsIsSimple = !CurrentTooltipsIsSimple;
             }

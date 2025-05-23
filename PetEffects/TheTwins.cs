@@ -36,7 +36,7 @@ namespace PetsOverhaul.PetEffects
             {
                 if (Player.Distance(target.Center) > longRange && Pet.timer <= 0 && target.immortal == false)
                 {
-                    
+
                     float bonus;
                     if (target.boss == false || NpcPet.NonBossTrueBosses.Contains(target.type) == false)
                     {

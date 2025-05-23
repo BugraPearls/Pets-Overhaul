@@ -212,7 +212,7 @@ namespace PetsOverhaul.UI
     }
     public class StashSystem : ModPlayer
     {
-        public static List<Item> Stash = new();
+        public static List<Item> Stash = [];
         public override void OnEnterWorld()
         {
             if (Stash.Count > 0)

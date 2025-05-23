@@ -9,7 +9,7 @@ namespace PetsOverhaul.Systems
 {
     public class PlayerPlacedBlockList : ModSystem
     {
-        public static List<Point16> placedBlocksByPlayer = new();
+        public static List<Point16> placedBlocksByPlayer = [];
         public override void SaveWorldData(TagCompound tag)
         {
             tag.Add("placedBlocksByPlayer", placedBlocksByPlayer);

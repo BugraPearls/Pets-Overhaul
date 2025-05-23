@@ -25,7 +25,7 @@ namespace PetsOverhaul
         private delegate bool hook_NPCLoaderPreAI(orig_NPCLoaderPreAI orig, NPC npc);
         private static readonly MethodInfo PreAIInfo = typeof(NPCLoader).GetMethod("PreAI");
 
-        private readonly List<Hook> hooks = new();
+        private readonly List<Hook> hooks = [];
         public override void Load()
         {
             hooks.Add(new(OnPickupInfo, ItemLoaderOnPickupDetour));
