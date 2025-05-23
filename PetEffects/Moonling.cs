@@ -150,7 +150,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MoonLordPetItem")
-                    .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch))
+                    .Replace("<switchKeybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch))
                     .Replace("<tooltip>", moonling.Tooltips[moonling.currentClass].Tooltip);
         public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MoonLordPetItem").Replace("<switchKeybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch));
     }

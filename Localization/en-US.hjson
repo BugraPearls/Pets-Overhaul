@@ -782,7 +782,7 @@ Mods: {
 				'''
 			Seaweed:
 				'''
-				- Press Pet Ability Keybind <keybind> to Harden your Turtle's shell.
+				- Press Pet Ability Keybind (<keybind>) to Harden your Turtle's shell.
 				 * Next <hitCount> hits taken within <shellDuration> seconds are modified.
 				 * Hits deal <reducedDmg>% less damage and deal no knockback.
 				 * <reflect>% of pre-mitigation damage taken is reflected to the attacker.
@@ -1032,7 +1032,7 @@ Mods: {
 				'''
 			MoonLordPetItem:
 				'''
-				- Press Pet Ability Switch Keybind (<keybind>) to switch effects of this Pet.
+				- Press Pet Ability Switch Keybind (<switchKeybind>) to switch effects of this Pet.
 				<tooltip>
 				'''
 			MoonLordPetItemStack: class bonus
