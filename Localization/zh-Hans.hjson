@@ -925,7 +925,7 @@ Mods: {
 				当前法术：<tooltip>
 				'''
 			// LunaticCultistPetItemStack: spell
-			// DragonIceName: Icicle Mist
+			// DragonIceName: "[c/baf2ef:Icicle Mist]"
 			DragonIce:
 				'''
 				- 冰雪雾
@@ -933,7 +933,7 @@ Mods: {
 				 - 冰雪雾和碎块拥有<damage>点基础伤害
 				 - 对命中的敌人造成<slowAmount>%减速<slowTime>秒
 				'''
-			// DragonLightningName: Lightning Orb
+			// DragonLightningName: "[c/00ffd1:Lightning Orb]"
 			DragonLightning:
 				'''
 				- 闪电珠
@@ -941,7 +941,7 @@ Mods: {
 				 - 闪电珠拥有<orbDmg>点基础伤害和<orbPen>点护甲穿透，并造成短暂的<orbSlow>%减速
 				 - 闪电拥有<strikeDmg>点基础伤害和<strikePen>点护甲穿透，并造成短暂的<strikeSlow>%减速
 				'''
-			// DragonFireName: Fireball Volley
+			// DragonFireName: "[c/ff9a00:Fireball Volley]"
 			DragonFire:
 				'''
 				- 火球连珠

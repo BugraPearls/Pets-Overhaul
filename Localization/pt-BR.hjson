@@ -977,7 +977,7 @@ Mods: {
 				<tooltip>
 				'''
 			// LunaticCultistPetItemStack: spell
-			// DragonIceName: Icicle Mist
+			// DragonIceName: "[c/baf2ef:Icicle Mist]"
 			DragonIce:
 				'''
 				- Névoa de Gelo
@@ -986,7 +986,7 @@ Mods: {
 				 * Tanto a Bola quanto os Fragmentos causam <damage> de dano geral aos inimigos atingidos.
 				 *  Inimigos atingidos por eles são desacelerados em <slowAmount>% por <slowTime> segundos.
 				'''
-			// DragonLightningName: Lightning Orb
+			// DragonLightningName: "[c/00ffd1:Lightning Orb]"
 			DragonLightning:
 				'''
 				- Orbe de Ravio
@@ -997,7 +997,7 @@ Mods: {
 				 * Os Raios causam <strikeDmg> de dano geral com <strikePen> de penetração de armadura,
 				 aplicando também uma desaceleração de <strikeSlow>% brevemente.
 				'''
-			// DragonFireName: Fireball Volley
+			// DragonFireName: "[c/ff9a00:Fireball Volley]"
 			DragonFire:
 				'''
 				- Rajada de Bolas de Fogo

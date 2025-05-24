@@ -978,7 +978,7 @@ Mods: {
 				<tooltip>
 				'''
 			LunaticCultistPetItemStack: spell
-			DragonIceName: Icicle Mist
+			DragonIceName: "[c/baf2ef:Icicle Mist]"
 			DragonIce:
 				'''
 				 * Spawns an Ice Mist on your cursor, it travels in a random direction,
@@ -986,7 +986,7 @@ Mods: {
 				 * Ball and Shards both deal <damage> base damage to enemies hit.
 				 * Enemies hit by them gets slowed by <slowAmount>% for <slowTime> seconds.
 				'''
-			DragonLightningName: Lightning Orb
+			DragonLightningName: "[c/00ffd1:Lightning Orb]"
 			DragonLightning:
 				'''
 				 * Spawns a Lightning Orb on your cursor, which gradually sends out Lightning Strikes
@@ -994,7 +994,7 @@ Mods: {
 				 * Orb deals <orbDmg> base damage with <orbPen> armor pen, also applying a <orbSlow>% slow briefly.
 				 * Strikes deal <strikeDmg> base damage with <strikePen> armor pen, also applying a <strikeSlow>% slow briefly.
 				'''
-			DragonFireName: Fireball Volley
+			DragonFireName: "[c/ff9a00:Fireball Volley]"
 			DragonFire:
 				'''
 				 * Starts shooting Fireballs towards your cursor <fireballAmount> times within <fireballDuration> seconds.

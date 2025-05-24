@@ -961,7 +961,7 @@ Mods: {
 				<tooltip>
 				'''
 			// LunaticCultistPetItemStack: spell
-			// DragonIceName: Icicle Mist
+			// DragonIceName: "[c/baf2ef:Icicle Mist]"
 			DragonIce:
 				'''
 				- Ледяной туман
@@ -970,7 +970,7 @@ Mods: {
 				  * Туман и осколки наносят <damage> урон врагам, которых касаются.
 				  * Враги, попавшие под воздействие, замедляются на <slowAmount>% на <slowTime> секунд.
 				'''
-			// DragonLightningName: Lightning Orb
+			// DragonLightningName: "[c/00ffd1:Lightning Orb]"
 			DragonLightning:
 				'''
 				- Шар молний
@@ -979,7 +979,7 @@ Mods: {
 				  * Шар наносит <orbDmg> общий урон с пробитием брони <orbPen>, а также кратковременно замедляет на <orbSlow>%.
 				  * Удары молний наносят <strikeDmg> урон с пробитием брони <strikePen>, также кратковременно замедляют на <strikeSlow>%.
 				'''
-			// DragonFireName: Fireball Volley
+			// DragonFireName: "[c/ff9a00:Fireball Volley]"
 			DragonFire:
 				'''
 				- Залп огненных шаров
