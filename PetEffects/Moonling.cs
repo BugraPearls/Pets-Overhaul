@@ -13,8 +13,8 @@ namespace PetsOverhaul.PetEffects
     {
         public struct ClassAndItsTooltip(PetClasses petClass, string tooltip)
         {
-            public readonly PetClasses Class => petClass;
-            public readonly string TooltipOfClass => tooltip;
+            public PetClasses Class = petClass;
+            public string TooltipOfClass = tooltip;
         }
         public List<ClassAndItsTooltip> Tooltips //Not using Dictionary, because index is required.
         {
