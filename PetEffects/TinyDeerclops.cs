@@ -23,7 +23,7 @@ namespace PetsOverhaul.PetEffects
         public int shieldDuration = 300;
         public int storeDuration = 240;
         public float maxHealthPerc = 0.5f;
-        public int cooldown = 150;
+        public int cooldown = 1500;
         public float shieldMult = 0.2f;
         public float slowAmount = 0.15f;
         public int slowDuration = 120;
