@@ -111,9 +111,12 @@ namespace PetsOverhaul.Items
 
                 herbBoost = Junimo.HarvestingXpPerGathered.Exists(x => x.plantList.Contains(item.type));
 
-                if (TileID.Sets.CountsAsGemTree[tileType] == false && gemstoneTreeItem[item.type] || treeTile[tileType] == false && treeItem[item.type] || blockNotByPlayer == false && seaPlantItem[item.type] || blockNotByPlayer == false && plantsWithNoSeeds[item.type]) //Excluding other plants if their certain condition is not met
+                if (herbBoost)
                 {
-                    herbBoost = false;
+                    if (TileID.Sets.CountsAsGemTree[tileType] == false && gemstoneTreeItem[item.type] || treeTile[tileType] == false && treeItem[item.type] || blockNotByPlayer == false && seaPlantItem[item.type] || blockNotByPlayer == false && plantsWithNoSeeds[item.type]) //Excluding other plants if their certain condition is not met
+                    {
+                        herbBoost = false;
+                    }
                 }
             }
         }
