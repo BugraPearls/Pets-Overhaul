@@ -40,6 +40,8 @@ Mods: {
 				Adding even more unique pets & Calamity compatibility for the vanilla Pet effects!
 				'''
 			Current: Current
+			Enabled: Enabled
+			Disabled: Disabled
 		}
 
 		Classes: {

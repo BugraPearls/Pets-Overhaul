@@ -43,6 +43,8 @@ Mods: {
 				此扩展添加了很多独特的宠物和原版宠物效果的灾厄适配
 				'''
 			// Current: Current
+			// Enabled: Enabled
+			// Disabled: Disabled
 		}
 
 		Classes: {

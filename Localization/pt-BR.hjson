@@ -41,6 +41,8 @@ Mods: {
 				Adicionando ainda mais pets únicos e compatibilidade com Calamity para efeitos novos nos pets!
 				'''
 			// Current: Current
+			// Enabled: Enabled
+			// Disabled: Disabled
 		}
 
 		Classes: {

@@ -424,7 +424,7 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<fireDmg>", phantasmalDragon.fireBase.ToString())
                     .Replace("<kb>", phantasmalDragon.fireKnockback.ToString())
                     .Replace("<burnSeconds>", Math.Round(phantasmalDragon.fireBurnTime / 60f, 2).ToString())
-                    .Replace("<enabled>", ModContent.GetInstance<PetPersonalization>().PhantasmalDragonVolleyFromMouth ? "Enabled" : "Disabled"),
+                    .Replace("<enabled>", ModContent.GetInstance<PetPersonalization>().PhantasmalDragonVolleyFromMouth ? PetTextsColors.LocVal("Misc.Enabled") : PetTextsColors.LocVal("Misc.Disabled")),
                     _ => "Cannot Find current ability.",
                 };
                 return PetTextsColors.LocVal("PetItemTooltips.LunaticCultistPetItem")

@@ -40,6 +40,8 @@ Mods: {
 				Оно добавляет ещё больше уникальных питомцев и совместимость Calamity с эффектами питомцев из оригинальной игры!
 				'''
 			Current: Текущий
+			// Enabled: Enabled
+			// Disabled: Disabled
 		}
 
 		Classes: {
