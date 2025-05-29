@@ -1088,425 +1088,423 @@ Mods: {
 		}
 
 		SimpleTooltips: {
-			// AmberMosquito: - Mining ores, gems etc. has a chance to drop a random valuable.
-			/* EatersBone:
-				'''
-				- Increases move speed and jump speed.
-				- Increases fall damage resistance when in an evil biome.
-				- Enables auto-jump.
-				''' */
-			/* BoneRattle:
-				'''
-				- Increases regen acceleration.
-				- When out of combat, gain life regen.
-				 * When out for a long time, regen increases and gain a shield.
-				 * You do not lose all of regen when dealing damage.
-				''' */
-			/* BabyGrinchMischiefWhistle:
-				'''
-				- Slows enemies in a radius.
-				- Grants permanent warmth effect.
-				- Frost Moon based weapons gain bonus damage and crit.
-				''' */
-			/* Nectar:
-				'''
-				- Grants Poison and Venom immunity.
-				- Reduces defense, damage and crit slightly.
-				- Increases max minions, and move speed.
-				- Hits on enemies can rarely spawn bees.
-				''' */
-			/* HellCake:
-				'''
-				- Grants lava immunity, and while in lava gain;
-				 * Defense, movement speed and flipper effect.
-				- While Obsidian Skin is active, gain defense but reduces move speed.
-				''' */
-			/* Fish:
-				'''
-				- Gain fishing power.
-				 * When in Ocean or Snow biome, gain more and have flipper effect.
-				- Reduces chilled debuff duration.
-				- Increases Ice biome based fishing catches.
-				''' */
-			/* BambooLeaf:
-				'''
-				- Gain attack speed.
-				- Press Pet Ability Keybind (<keybind>) to go into alert mode.
-				 * Per enemy alerted, gain attack speed, move speed, reduce aggro.
-				 * Gain hunter effect.
-				- Gain more bamboo.
-				''' */
-			/* BoneKey:
-				'''
-				- Gain immunity to pre-hardmode Dungeon threats.
-				- Gain armor pen.
-				- Gain life regen while in Dungeon.
-				''' */
-			/* ToySled:
-				'''
-				- On-Hit, apply Frostburn and Slow.
-				 * Amplify effects when full Frost Armor is worn.
-				''' */
-			/* StrangeGlowingMushroom:
-				'''
-				- On-hit, increase your remaining buff durations.
-				- Always be confused & have night vision.
-				- Increase all stats.
-				''' */
-			/* FullMoonSqueakyToy:
-				'''
-				- Increases crit chance but reduces crit damage.
-				- Crit hits apply Mauled debuff.
-				 * Enemies with the debuff takes more damage.
-				- You gain bonus crit damage vs. mauled enemies.
-				''' */
-			/* BerniePetItem:
-				'''
-				- Immunity to all vanilla burn-type debuffs.
-				- Steal mana and health from nearby burning enemies,
-				  while also making their burns last longer.
-				''' */
-			/* UnluckyYarn:
-				'''
-				- Press Pet Ability Keybind (<keybind>) to heal or damage yourself randomly.
-				- Grants luck.
-				- Increases or reduces Luck based on current Moon cycle.
-				''' */
-			/* BlueEgg:
-				'''
-				- Gathering plant type items has a chance to drop a bonus item.
-				- Tables differ with plants, rare plants and tree alikes.
-				''' */
-			/* GlowTulip:
-				'''
-				- Increases hay drops.
-				- Gain more harvesting drops when below surface.
-				- Gain more Gemstone Tree drops
-				- Gives you a blue shine.
-				''' */
-			/* ChesterPetItem:
-				'''
-				- Increases your Item pickup and placement range.
-				- Increases defense when a container is currently open.
-				''' */
-			/* CompanionCube:
-				'''
-				- Portion of used mana will heal you.
-				- Portion of taken damage will recover your mana.
-				- Mana Sickness debuff is more effective.
-				''' */
-			/* CursedSapling:
-				'''
-				- Increases maximum minion slots.
-				- Pumpkin Moon weapons gain bonus damage.
-				- Whip range and speed scales with your minion slot amount.
-				''' */
-			/* DirtiestBlock:
-				'''
-				- Mining anything gives you coins.
-				 * Highest being dirt, second being soil blocks,
-				   while anything else gives the lowest amount.
-				''' */
-			/* BallOfFuseWire:
-				'''
-				- On-hit create explosions.
-				 * This attack scales with the hit that triggers it.
-				''' */
-			/* CelestialWand:
-				'''
-				- Increases maximum mana.
-				- Reduces magic damage bonuses.
-				- Bonus mana (Mana sourced from equipment etc.) you have will increase your magic damage.
-				''' */
-			/* EyeSpring:
-				'''
-				- Increases your jump speed drastically.
-				 * Jump speed is less for flight purposes.
-				- Increases acceleration.
-				''' */
-			/* ExoticEasternChewToy:
-				'''
-				- Grants you a bonus jump.
-				- Increases movement speed.
-				- Slightly reduces melee size.
-				- Increases melee damage and melee speed.
-				''' */
-			/* BedazzledNectar:
-				'''
-				- If you don't have wings:
-				 * You get weakened Butterfly Wings, but lose some max health.
-				- If you have wings:
-				 * You gain extra wing time.
-				''' */
-			/* GlommerPetItem:
-				'''
-				- Give nearby players Pet ability haste.
-				- Increase your maximum mana depending on your Pet ability haste stat.
-				- Gradually recovers mana, which acts different from natural mana recovery.
-				- Have a chance to get Glommer's Goop occasionally.
-				''' */
-			/* DD2PetDragon:
-				'''
-				- Reduces arrow speed but increases arrow pierce.
-				- Heavily increases bullet speed.
-				- Specialist weapons will always crit low health enemies.
-				''' */
-			/* JunimoPetItem:
-				'''
-				- Enables level-up system for Mining, Fishing and Harvesting.
-				- Depending on your current level, gain stat boosts and money for items gathered.
-				''' */
-			/* BirdieRattle:
-				'''
-				- Gain fall damage immunity.
-				- Gain wings that works with fueling system.
-				 * Once your 'wing time' runs out, you cannot fly or glide until cooldown refreshes.
-				''' */
-			/* LizardEgg:
-				'''
-				- Press Pet Ability Keybind (<keybind>) to drop a Decoy Tail.
-				 * You will take a small amount of damage.
-				 * You will move extremely fast and gain invisibility frames for a while.
-				 * You can later pick up the tail to recover some health and refund cooldown.
-				- Gain knockback resistance all the time, and turn into a Lihzahrd when below 55% health.
-				''' */
-			/* TartarSauce:
-				'''
-				- On-hit with melee hits, you gain stacks.
-				 * Per stack, you will gain melee stats, but will be slowed down slightly.
-				 * Gradually lose stacks when out of combat.
-				''' */
-			/* ParrotCracker:
-				'''
-				- All projectiles by you, or by your summon has a chance to shoot a new projectile.
-				- Non-Projectile Melee hits and direct strikes by your summons can strike twice.
-				''' */
-			/* PigPetItem:
-				'''
-				- Consuming foods & potions has a chance to not get consumed.
-				- Eating food items grants you a shield depending on Well Fed stage.
-				''' */
-			/* MudBud:
-				'''
-				- On-Hit have a chance to summon a damaging spore.
-				 * The spore scales with the hit that triggers it.
-				''' */
-			/* DD2PetGato:
-				'''
-				- Allows sentry attacks to be able to crit.
-				- Increases maximum sentry count.
-				''' */
-			/* DogWhistle:
-				'''
-				- Increases critters caught.
-				- Gain money for killing or catching a rare enemy or critter respectively.
-				- Allows you to spot all Rare NPC's anywhere on your screen.
-				''' */
-			/* Seedling:
-				'''
-				- Reduces all damage you deal.
-				- Grants lifesteal on all damage you deal.
-				''' */
-			/* SpiderEgg:
-				'''
-				- On-hit, applies Poisoned debuff and removes their Poisoned immunity.
-				- Have your hits amplified on enemies depending on the debuff they have on them.
-				 * More amplification if they have the Venom debuff, less if they have the Poisoned debuff.
-				''' */
-			/* OrnateShadowKey:
-				'''
-				- Increases item drops from NPC's and loot bags.
-				- If the item is below a certain chance, it has its drop chance increased.
-				- If not, it has a chance to have its stack doubled.
-				''' */
-			/* SharkBait:
-				'''
-				- Increases breath time underwater.
-				- Deal more damage to and take less damage from fished-up enemies.
-				- Gain a shield upon successfully catching anything with your rod.
-				''' */
-			/* SpiffoPlush:
-				'''
-				- Reduces ammo consumption.
-				- Ranged projectiles gain bonus armor pen vs. Zombie-type enemies.
-				- Your projectiles can keep piercing through an enemy upon killing them.
-				''' */
-			/* MagicalPumpkinSeed:
-				'''
-				- Increases gathered Harvesting items. (plants etc.)
-				- Pumpkin armor pieces grant bonus health and Harvesting fortune.
-				''' */
-			/* EucaluptusSap:
-				'''
-				- While holding jump key, allows you to glide.
-				 * Does not grant fall damage immunity, but resets fall damage.
-				''' */
-			/* TikiTotem:
-				'''
-				- Allows critical hits for all summon damage. 
-				- Gain bonus summon damage and whip range based on current whip attack speed.
-				''' */
-			/* Seaweed:
-				'''
-				- Press Pet Ability Keybind (<keybind>) to endure incoming hits.
-				 * You will take less damage and no knockback.
-				 * You will also reflect damage taken.
-				- Increases your defense and knockback resistance.
-				- Reduces movement speed.
-				''' */
-			/* LightningCarrot:
-				'''
-				- Increases your movement speed.
-				- Gain more damage the more movement speed you have.
-				- Enemies that make direct contact with you will get heavily slowed.
-				''' */
-			/* ZephyrFish:
-				'''
-				- Increases your fishing power depending on the current Wind strength.
-				- Increases caught fish amount, which increases even more when;
-				 * You're above the surface, wind is above 10mph and the bobber is not facing the wind.
-				- Increases fishing power depending on how many angler quests you've completed.
-				''' */
-			/* EyeOfCthulhuPetItem:
-				'''
-				- Going below 50% health will put you into Enraged mode. While enraged:
-				 * You cannot go above 50% health, and lose all Defense & Damage reduction.
-				 * All Defense & Damage reduction is converted into a one time shield and
-				   Damage, Crit and move speed boosts for the duration of enraged.
-				 * Your Shield of Cthulhu dash is buffed during this.
-				- Press Pet Ability Keybind (<keybind>) to go 'Enraged' early.
-				''' */
-			/* BrainOfCthulhuPetItem:
-				'''
-				- Gain lifesteal, however, how much to be healed is limited by a life pool.
-				- Life pool gradually recovers over time, but if its empty, you cannot lifesteal.
-				''' */
-			/* EaterOfWorldsPetItem:
-				'''
-				- Mining non-ore or non-gem blocks is faster.
-				- Mining ore & gem blocks mines other nearby blocks of the same type.
-				''' */
-			/* KingSlimePetItem:
-				'''
-				- Press Pet Ability Keybind (<keybind>) to summon a Slime Servant.
-				 * Slime Servant is an enhanced Blue Slime that will attack nearby enemies.
-				 * It mostly scales with your stats.
-				 * Upon dying, slows and applies slimy debuff to all enemies nearby.
-				''' */
-			/* QueenBeePetItem:
-				'''
-				- You will heal more from healing potions.
-				- Consuming Bottled Honey or Honeyfin heals and applies honey buff to nearby players.
-				- They also get afflicted with Honey Overdose debuff, which raises Pet Ability Haste,
-				  but also means they are unable to benefit from this ability for its duration.
-				''' */
-			/* DeerclopsPetItem:
-				'''
-				- Take less damage from enemies far away from you.
-				- Taken damage is stored, press Pet Ability Keybind (<keybind>) to consume stored damage.
-				 * Gain shield based on damage consumed.
-				 * Strike enemies in a cone towards your mouse, and slow them.
-				 * Enemies in the middle of the cone have their defense ignored.
-				''' */
-			/* SkeletronPetItem:
-				'''
-				- Damage you receive is dealt to you over time.
-				- Damage you deal is increased and dealt over time.
-				 * If the damage can kill, it will immediately kill.
-				''' */
-			/* QueenSlimePetItem:
-				'''
-				- Gain a strong bonus jump if you're riding a mount.
-				- Dealing damage with mounts increases the damage, slows the enemy, and gives you a shield.
-				''' */
-			/* SkeletronPrimePetItem:
-				'''
-				- If you have a shield active, increases damage, crit chance and defense.
-				- Gives you 5 shields that will get gradually activated as your health goes down.
-				''' */
-			/* DestroyerPetItem:
-				'''
-				- Increases defense.
-				- Gain more defense and Mining Fortune if you have Ironskin active.
-				- Increases all mining related items obtained depending on how much defense you have.
-				''' */
-			/* TwinsPetItem:
-				'''
-				- On-hit, if target is close to you, reduce their defense and apply Cursed Flames.
-				- On-hit, if target is far away from you, deal bonus %hp damage to them.
-				''' */
-			/* EverscreamPetItem:
-				'''
-				- Reduces your magic crit chance.
-				- Increases maximum mana.
-				- Crit hits with magic attacks recover your missing mana.
-				- Depending on current mana amount, gain magic damage and magic crit chance.
-				''' */
-			/* MartianPetItem:
-				'''
-				- Flying horizontally saves up wing time.
-				- Increases acceleration.
-				- Increases horizontal flight speed and acceleration.
-				''' */
-			/* DD2OgrePetItem:
-				'''
-				- Heavily reduces down movement speed and mobility
-				- Heavily slows down true melee attack speed
-				- Heavily increases true melee damage, size, crit and knockback
-				- Increases your maximum health, defense, damage reduction and gives KB Immunity
-				''' */
-			/* DukeFishronPetItem:
-				'''
-				- Reduces fishing power, which is counteracted with how many angler quests you've completed.
-				- Gain more fishing drops depending on current fishing power.
-				- Have a chance to cast multiple bobbers.
-				''' */
-			/* LunaticCultistPetItem:
-				'''
-				- Press Ability Switch Keybind (<switchKeybind>) to switch spells.
-				- Press Pet Ability Keybind (<keybind>) to use current spell.
-				- Icicle Mist travels through blocks and greatly slows enemies on hit.
-				- Lightning Orb has high armor pen, low damage and slows very heavily for short.
-				- Fireball Volley has high damage and applies Daybreak on hit.
-				''' */
-			/* DD2BetsyPetItem:
-				'''
-				- Ranged attacks On-hit applies Queen's Damnation debuff.
-				 * This reduces target's defense by a % and can stack.
-				 * When an enemy with the debuff dies, killer is healed for their missing health.
-				''' */
-			/* IceQueenPetItem:
-				'''
-				- Instead of taking fatal damage, go in a frozen state.
-				 * You will take no damage, be healed, and gain a shield at the end.
-				 * Meanwhile, slow all enemies nearby, and damage them at the end.
-				''' */
-			/* PlanteraPetItem:
-				'''
-				- Ranged hits will deal bonus damage depending on how low the target's current health is.
-				 * The lower the health, the higher the damage bonus will be.
-				''' */
-			/* MoonLordPetItem:
-				'''
-				- Press Pet Ability Switch Keybind (<switchKeybind>) to switch effects.
-				- Melee increases damage reduction, melee Speed, melee damage and defense.
-				- Ranged increases ranged armor pen, crit chance, crit damage and damage.
-				- Magic increases max mana, magic crit, damage, and reduces mana costs.
-				- Summoner increases whip range, speed, max minions and sentries.
-				''' */
-			/* ResplendentDessert:
-				'''
-				- Dealing damage with mounts greatly increases damage,
-				  summons a Slime Servant on top of them, and grants shield.
-				- Slime Servants are stronger & modified Blue Slimes, that attacks nearby enemies.
-				 * They scale with your stats and are weaker than Prince Slime's Slime Servants.
-				''' */
-			/* Carrot:
-				'''
-				- Upon jumping, gain a stack.
-				 * For every stack, gain movement speed and jump speed.
-				 * Lose stacks if you haven't gained them in a while.
-				''' */
+			AmberMosquito: - При добыче руды, драгоценных камней и т.п. есть шанс получить случайную ценную вещь.
+			EatersBone:
+				'''
+				- Увеличивает скорость передвижения и прыжка.
+				- Увеличивает сопротивление урону от падения в злой биоме.
+				- Включает автопрыжок.
+				'''
+			BoneRattle:
+				'''
+				- Увеличивает ускорение регенерации.
+				- Вне боя восстанавливает здоровье.
+				 * При длительном отсутствии боя регенерация увеличивается и появляется щит.
+				 * При нанесении урона регенерация не теряется полностью.
+				'''
+			BabyGrinchMischiefWhistle:
+				'''
+				- Замедляет врагов в радиусе.
+				- Даёт постоянный эффект тепла.
+				- Оружие на основе Луны Мороза получает бонус к урону и криту.
+				'''
+			Nectar:
+				'''
+				- Даёт иммунитет к яду и ядовитым эффектам.
+				- Немного снижает защиту, урон и крит.
+				- Увеличивает максимум прислужников и скорость передвижения.
+				- Редко при попадании по врагам может появляться пчёлы.
+				'''
+			HellCake:
+				'''
+				- Даёт иммунитет к лаве, и в лаве увеличивает:
+				 * Защиту, скорость передвижения и эффект плавников.
+				- Пока активен эффект Обсидиановой Кожи, даёт защиту, но снижает скорость передвижения.
+				'''
+			Fish:
+				'''
+				- Увеличивает силу рыбалки.
+				 * В океане или снежном биоме увеличивает ещё больше и даёт эффект плавников.
+				- Уменьшает длительность дебаффа "Озноб".
+				- Увеличивает количество рыбы, пойманной в ледяном биоме.
+				'''
+			BambooLeaf:
+				'''
+				- Увеличивает скорость атаки.
+				- Нажмите клавишу способности питомца (<keybind>), чтобы войти в режим тревоги.
+				 * За каждого врага, обнаруженного в этом режиме, увеличивается скорость атаки, скорость передвижения и уменьшается агро.
+				 * Даёт эффект охотника.
+				- Увеличивает количество бамбука.
+				'''
+			BoneKey:
+				'''
+				- Даёт иммунитет к угрозам в подземелье до тяжелого режима.
+				- Увеличивает пробивание брони.
+				- Восстанавливает здоровье при нахождении в подземелье.
+				'''
+			ToySled:
+				'''
+				- При попадании накладывает Морозный ожог и замедление.
+				 * Усиливается при ношении полного набора Морозной брони.
+				'''
+			StrangeGlowingMushroom:
+				'''
+				- При попадании увеличивает оставшееся время баффов.
+				- Всегда находится в состоянии замешательства и имеет ночное зрение.
+				- Увеличивает все характеристики.
+				'''
+			FullMoonSqueakyToy:
+				'''
+				- Увеличивает шанс критического удара, но снижает критический урон.
+				- Критические удары накладывают дебафф "Ранен".
+				 * Враги с этим дебаффом получают больше урона.
+				- Получаете бонус к критическому урону против раненых врагов.
+				'''
+			BerniePetItem:
+				'''
+				- Иммунитет ко всем ванильным горящим дебаффам.
+				- Крадёт ману и здоровье у горящих врагов поблизости,
+				  при этом увеличивая длительность их горения.
+				'''
+			UnluckyYarn:
+				'''
+				- Нажмите клавишу способности питомца (<keybind>), чтобы случайным образом исцелить или нанести урон себе.
+				- Даёт удачу.
+				- Увеличивает или уменьшает удачу в зависимости от текущей фазы луны.
+				'''
+			BlueEgg:
+				'''
+				- При сборе растительных предметов есть шанс получить бонусный предмет.
+				- Таблицы различаются для обычных растений, редких растений и деревьев.
+				'''
+			GlowTulip:
+				'''
+				- Увеличивает количество сена.
+				- Даёт больше добычи при сборе под поверхностью.
+				- Даёт больше добычи с Драгоценных каменных деревьев.
+				- Даёт голубое сияние.
+				'''
+			ChesterPetItem:
+				'''
+				- Увеличивает радиус подбора и размещения предметов.
+				- Увеличивает защиту, если контейнер открыт.
+				'''
+			CompanionCube:
+				'''
+				- Часть потраченной маны восстанавливает здоровье.
+				- Часть полученного урона восстанавливает ману.
+				- Дебафф "Мановая болезнь" становится более сильным.
+				'''
+			CursedSapling:
+				'''
+				- Увеличивает максимальное количество прислужников.
+				- Оружие с Лунной тыквы получает бонус к урону.
+				- Дальность и скорость хлыста зависят от количества прислужников.
+				'''
+			DirtiestBlock:
+				'''
+				- При добыче чего-либо получаете монеты.
+				 * Больше всего даёт грязь, затем грунтовые блоки,
+				   остальные — наименьшее количество.
+				'''
+			BallOfFuseWire:
+				'''
+				- При попадании создаёт взрывы.
+				 * Урон взрыва зависит от удара, вызвавшего его.
+				'''
+			CelestialWand:
+				'''
+				- Увеличивает максимальную ману.
+				- Снижает бонусы к магическому урону.
+				- Бонусная мана (полученная от экипировки и т.п.) увеличивает магический урон.
+				'''
+			EyeSpring:
+				'''
+				- Значительно увеличивает скорость прыжка.
+				 * Скорость прыжка для полёта меньше.
+				- Увеличивает ускорение.
+				'''
+			ExoticEasternChewToy:
+				'''
+				- Даёт дополнительный прыжок.
+				- Увеличивает скорость передвижения.
+				- Немного уменьшает размер ближнего боя.
+				- Увеличивает урон и скорость ближнего боя.
+				'''
+			BedazzledNectar:
+				'''
+				- Если у вас нет крыльев:
+				 * Получаете ослабленные крылья бабочки, но теряете часть здоровья.
+				- Если крылья есть:
+				 * Получаете дополнительное время полёта.
+				'''
+			GlommerPetItem:
+				'''
+				- Даёт игрокам поблизости ускорение способностей питомцев.
+				- Увеличивает максимальную ману в зависимости от этого ускорения.
+				- Постепенно восстанавливает ману, иначе чем естественное восстановление.
+				- Иногда даёт слизь Гломмера.
+				'''
+			DD2PetDragon:
+				'''
+				- Уменьшает скорость стрел, но увеличивает их пробивание.
+				- Значительно увеличивает скорость пуль.
+				- Специализированное оружие всегда наносит крит по врагам с низким здоровьем.
+				'''
+			JunimoPetItem:
+				'''
+				- Включает систему уровней для добычи, рыбалки и сбора.
+				- В зависимости от уровня увеличивает характеристики и даёт деньги за собранные предметы.
+				'''
+			BirdieRattle:
+				'''
+				- Даёт иммунитет к урону от падения.
+				- Даёт крылья с системой топлива.
+				 * Когда время полёта заканчивается, нельзя летать или планировать до обновления кулдауна.
+				'''
+			LizardEgg:
+				'''
+				- Нажмите клавишу способности питомца (<keybind>), чтобы сбросить обманный хвост.
+				 * Вы получите немного урона.
+				 * Будете очень быстро двигаться и некоторое время невидимы.
+				 * Позже можно подобрать хвост, чтобы восстановить здоровье и уменьшить кулдаун.
+				- Всегда получаете сопротивление отбрасыванию и превращаетесь в Лихзарда при здоровье ниже 55%.
+				'''
+			TartarSauce:
+				'''
+				- При попадании в ближнем бою накапливаются стаки.
+				 * За каждый стак повышаются характеристики ближнего боя, но вы немного замедляетесь.
+				 * Стаки постепенно теряются вне боя.
+				'''
+			ParrotCracker:
+				'''
+				- Все ваши и ваших прислужников снаряды имеют шанс выстрелить дополнительный снаряд.
+				- Не-снарядные удары в ближнем бою и прямые удары ваших прислужников могут нанести удар дважды.
+				'''
+			PigPetItem:
+				'''
+				- При употреблении еды и зелий есть шанс, что предмет не будет потрачен.
+				- При поедании еды даётся щит в зависимости от стадии сытости.
+				'''
+			MudBud:
+				'''
+				- При попадании есть шанс призвать повреждающий спор.
+				 * Спор масштабируется с ударом, вызвавшим его.
+				'''
+			DD2PetGato:
+				'''
+				- Позволяет турелям критовать.
+				- Увеличивает максимальное количество турелей.
+				'''
+			DogWhistle:
+				'''
+				- Увеличивает количество пойманных животных.
+				- Даёт деньги за убийство или поимку редкого врага или животного.
+				- Позволяет видеть всех редких NPC на экране.
+				'''
+			Seedling:
+				'''
+				- Уменьшает весь наносимый урон.
+				- Даёт кражу жизни от всего наносимого урона.
+				'''
+			SpiderEgg:
+				'''
+				- При попадании накладывает дебафф "Отравление" и снимает иммунитет к нему.
+				- Ваш урон увеличивается в зависимости от дебаффов на врагах.
+				 * Больше урона, если есть яд, меньше если только отравление.
+				'''
+			OrnateShadowKey:
+				'''
+				- Увеличивает количество дропа с НПС и лутбэгов.
+				- Если шанс дропа низкий, он увеличивается.
+				- Иначе шанс удвоения стека.
+				'''
+			SharkBait:
+				'''
+				- Увеличивает время дыхания под водой.
+				- Наносит больше урона и получает меньше урона от пойманных врагов.
+				- Даёт щит при успешной ловле рыбы.
+				'''
+			SpiffoPlush:
+				'''
+				- Уменьшает расход патронов.
+				- Снаряды дальнего боя пробивают броню зомби.
+				- Ваши снаряды могут проходить через врага после его убийства.
+				'''
+			MagicalPumpkinSeed:
+				'''
+				- Увеличивает количество собранных предметов при сборе урожая (растения и т.д.).
+				- Части тыквенной брони дают бонус к здоровью и удаче при сборе урожая.
+				'''
+			EucaluptusSap:
+				'''
+				- При удержании клавиши прыжка позволяет планировать.
+				 * Не даёт иммунитет к урону от падения, но сбрасывает его.
+				'''
+			TikiTotem:
+				'''
+				- Позволяет критические удары для всего урона призывных существ.
+				- Даёт бонус к урону призывных и дальности кнута, зависящий от текущей скорости атаки кнутом.
+				'''
+			Seaweed:
+				'''
+				- Нажмите клавишу способности питомца (<keybind>), чтобы выдерживать получаемые удары.
+				 * Вы будете получать меньше урона и не получать отбрасывания.
+				 * Также отражаете полученный урон.
+				- Увеличивает вашу защиту и сопротивление отбрасыванию.
+				- Уменьшает скорость передвижения.
+				'''
+			LightningCarrot:
+				'''
+				- Увеличивает вашу скорость передвижения.
+				- Увеличивает урон в зависимости от вашей скорости движения.
+				- Враги, которые контактируют с вами напрямую, сильно замедляются.
+				'''
+			ZephyrFish:
+				'''
+				- Увеличивает вашу рыболовную силу в зависимости от текущей силы ветра.
+				- Увеличивает количество пойманной рыбы, которое дополнительно растёт, когда:
+				 * Вы над поверхностью, ветер сильнее 10 миль в час, и поплавок не направлен против ветра.
+				- Увеличивает рыболовную силу в зависимости от количества выполненных заданий рыбака.
+				'''
+			EyeOfCthulhuPetItem:
+				'''
+				- При снижении здоровья ниже 50% вы входите в режим ярости. Во время ярости:
+				 * Нельзя подняться выше 50% здоровья, и теряется вся защита и снижение урона.
+				 * Вся защита и снижение урона преобразуются в одноразовый щит, а также даются бонусы к урону, криту и скорости передвижения на время ярости.
+				 * Ваш рывок с Щитом Ктулху усиливается.
+				- Нажмите клавишу способности питомца (<keybind>), чтобы войти в режим ярости заранее.
+				'''
+			BrainOfCthulhuPetItem:
+				'''
+				- Получаете вампиризм, однако количество исцеления ограничено пулом жизни.
+				- Пул жизни постепенно восстанавливается, но если он пуст, вампиризм не работает.
+				'''
+			EaterOfWorldsPetItem:
+				'''
+				- Добыча блоков, не являющихся рудой или драгоценными камнями, происходит быстрее.
+				- Добыча руд и драгоценных камней добывает также соседние блоки того же типа.
+				'''
+			KingSlimePetItem:
+				'''
+				- Нажмите клавишу способности питомца (<keybind>), чтобы призвать слузевого слугу.
+				 * Слуга — усиленный Голубой слизень, который атакует ближайших врагов.
+				 * В основном зависит от ваших характеристик.
+				 * При смерти замедляет и накладывает слизистое дебафф на всех nearby врагов.
+				'''
+			QueenBeePetItem:
+				'''
+				- Вы получаете больше исцеления от лечебных зелий.
+				- При употреблении бутылочного мёда или Медовой Рыбки исцеляет и накладывает бафф мёда на nearby игроков.
+				- Они также получают дебафф передозировки мёда, который увеличивает скорость способности питомца, но при этом делает их неспособными использовать эту способность на время дебаффа.
+				'''
+			DeerclopsPetItem:
+				'''
+				- Получаете меньше урона от врагов, находящихся далеко.
+				- Нанесённый урон накапливается, нажмите клавишу способности питомца (<keybind>), чтобы потребить накопленный урон.
+				 * Получаете щит, зависящий от потреблённого урона.
+				 * Ударяете врагов конусом в сторону курсора мыши и замедляете их.
+				 * Враги в центре конуса игнорируют защиту.
+				'''
+			SkeletronPetItem:
+				'''
+				- Полученный урон распределяется во времени.
+				- Ваш урон увеличивается и наносится постепенно.
+				 * Если урон может убить, он убивает мгновенно.
+				'''
+			QueenSlimePetItem:
+				'''
+				- Получаете сильный бонус к прыжку, если находитесь на верховом животном.
+				- Урон от верховых животных увеличивается, замедляет врага и даёт вам щит.
+				'''
+			SkeletronPrimePetItem:
+				'''
+				- Если у вас активен щит, увеличивает урон, шанс крита и защиту.
+				- Даёт 5 щитов, которые постепенно активируются при снижении вашего здоровья.
+				'''
+			DestroyerPetItem:
+				'''
+				- Увеличивает защиту.
+				- Больше защиты и удачи при добыче руды при активном эффекте Железной Кожи.
+				- Увеличивает количество добываемых предметов, связанных с добычей, в зависимости от вашей защиты.
+				'''
+			TwinsPetItem:
+				'''
+				- При попадании, если цель близко, снижает её защиту и накладывает Проклятые Пламя.
+				- При попадании, если цель далеко, наносит дополнительный урон в процентах от здоровья.
+				'''
+			EverscreamPetItem:
+				'''
+				- Уменьшает шанс критического удара магией.
+				- Увеличивает максимальную ману.
+				- Криты магическими атаками восстанавливают потерянную ману.
+				- В зависимости от текущего количества маны, увеличивает магический урон и шанс крита магией.
+				'''
+			MartianPetItem:
+				'''
+				- Горизонтальный полёт экономит время крыльев.
+				- Увеличивает ускорение.
+				- Увеличивает горизонтальную скорость и ускорение полёта.
+				'''
+			DD2OgrePetItem:
+				'''
+				- Сильно снижает скорость и мобильность при движении вниз.
+				- Значительно замедляет скорость настоящих атак в ближнем бою.
+				- Значительно увеличивает урон, размер, крит и отбрасывание настоящих атак в ближнем бою.
+				- Увеличивает максимальное здоровье, защиту, снижение урона и даёт иммунитет к отбрасыванию.
+				'''
+			DukeFishronPetItem:
+				'''
+				- Снижает рыболовную силу, что компенсируется количеством выполненных заданий рыбака.
+				- Увеличивает количество рыболовных дропов в зависимости от текущей рыболовной силы.
+				- Имеется шанс закинуть несколько поплавков.
+				'''
+			LunaticCultistPetItem:
+				'''
+				- Нажмите клавишу переключения способности (<switchKeybind>), чтобы менять заклинания.
+				- Нажмите клавишу способности питомца (<keybind>), чтобы использовать текущее заклинание.
+				- Ледяной туман проходит сквозь блоки и сильно замедляет врагов при попадании.
+				- Молниеносная сфера имеет высокий бронепробой, низкий урон и сильно замедляет врагов на короткое время.
+				- Залп огненных шаров наносит высокий урон и накладывает эффект Рассвета при попадании.
+				'''
+			DD2BetsyPetItem:
+				'''
+				- Дальнобойные атаки при попадании накладывают дебафф Проклятие Королевы.
+				 * Он снижает защиту цели на %, может накапливаться.
+				 * При смерти врага с этим дебаффом убийца восстанавливает потерянное здоровье.
+				'''
+			IceQueenPetItem:
+				'''
+				- Вместо смертельного урона входите в замороженное состояние.
+				 * Вы не получаете урона, исцеляетесь и получаете щит в конце.
+				 * При этом замедляете всех nearby врагов и наносите им урон в конце.
+				'''
+			PlanteraPetItem:
+				'''
+				- Дальнобойные удары наносят бонусный урон в зависимости от текущего здоровья цели.
+				 * Чем ниже здоровье, тем выше бонусный урон.
+				'''
+			MoonLordPetItem:
+				'''
+				- Нажмите клавишу переключения способности питомца (<switchKeybind>), чтобы менять эффекты.
+				- Ближний бой увеличивает снижение урона, скорость, урон и защиту.
+				- Дальний бой увеличивает бронепробой, шанс крита, крит урон и урон.
+				- Магия увеличивает максимальную ману, шанс крит. удара, урон и снижает затраты маны.
+				- Призыватель увеличивает дальность и скорость кнута, максимум миньонов и турелей.
+				'''
+			ResplendentDessert:
+				'''
+				- Нанесение урона верховыми животными значительно увеличивает урон,
+				  призывает Слизевого Слугу сверху и даёт щит.
+				- Слизевые Слуги — более сильные и модифицированные Голубые Слизни, атакующие nearby врагов.
+				 * Они масштабируются с вашими характеристиками и слабее слуг Принца Слизня.
+				'''
+			Carrot:
+				'''
+				- При прыжке получаете стек.
+				 * За каждый стек увеличивается скорость передвижения и прыжка.
+				 * Стек теряется, если вы долго не получаете новые.
+				'''
 		}
 
 		Buffs: {
