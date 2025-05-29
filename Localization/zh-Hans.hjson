@@ -1,8 +1,8 @@
 Mods: {
 	PetsOverhaul: {
 		Misc: {
-			// CurrentSimple: "[c/b4bfc5:Press] <switchKey> [c/b4bfc5:to switch to detailed tooltip]"
-			// CurrentDetailed: "[c/b4bfc5:Press] <switchKey> [c/b4bfc5:to switch to simple tooltip]"
+			CurrentSimple: "[c/b4bfc5:按] <switchKey> [c/b4bfc5:切換到詳細的工具提示]"
+			CurrentDetailed: "[c/b4bfc5:按] <switchKey> [c/b4bfc5:切換到簡單的工具提示]"
 			BaseCd: 基础宠物技能冷却：
 			NoCd: 当前宠物没有技能冷却！
 			RemainingCd: 剩余宠物技能冷却
@@ -17,9 +17,9 @@ Mods: {
 			RequireOptic: 消耗一个棱晶镜头
 			RequireWrench: 消耗一个丛林蜥蜴扳手
 			RequireHead: 消耗一个南瓜头
-			// Herb: Herb
-			// Animal: Animal
-			// RarePlant: Rare Plants
+			Herb: 草本植物
+			Animal: 動物
+			RarePlant: 珍稀植物
 			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 			%: %
 			x: x
@@ -28,11 +28,8 @@ Mods: {
 			KeybindMissing: 未绑定键位
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul（宠物大修）3.3最新更新：宠物重做，修复宠物伤害和月亮乌贼不受玩家职业伤害加成的bug，新命令]
-				[c/90C2AA:完全重做皇家怡口，皇家美食，华美甜点和暗影宝箱怪宠物，小幅重做了宇宙滑板和奇异咀嚼玩具]
-				[c/90C2AA:添加/pet item {arg} 命令以显示会受给定职业效果影响的物品，以及/pet light命令以显示照明宠物]
-				[c/90C2AA:--（arg参数可选项：harvesting->采集，mining->挖掘，fishing->钓鱼）]
-				[c/90C2AA:完整的中文、俄文和葡萄牙语本地化，作者分别为：ROH, Teokai和Erstarisk]
+				[c/90C2AA：Pets Overhaul (寵物大修) 3.5.1，最新變更：新增簡化的工具提示，修復在地化問題]
+[c/90C2AA：多項後端改進和錯誤修復。為簡化操作，刪除了許多不必要的內容]
 				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
 				'''
@@ -42,9 +39,9 @@ Mods: {
 				你可以在创意工坊搜索“Pets Overhaul: Calamity Addon”来订阅宠物大修：灾厄扩展
 				此扩展添加了很多独特的宠物和原版宠物效果的灾厄适配
 				'''
-			// Current: Current
-			// Enabled: Enabled
-			// Disabled: Disabled
+			Current: 目前的
+			Enabled: 已啟用
+			Disabled: 已停用
 		}
 
 		Classes: {
@@ -111,7 +108,7 @@ Mods: {
 				第2步：点击宠物栏右上角的小眼睛禁用当前宠物的可见性
 				第3步：从背包中使用你想要其可见的宠物物品，完成！
 				'''
-			// LightPetList: List of all Light Pets:
+			LightPetList: 所有照明寵物清單：
 			PetList: <class>宠物列表：
 			All: 所有
 			NoPets: 没有此职业的宠物。（你没装宠物大修-灾厄附属？）
@@ -175,24 +172,23 @@ Mods: {
 				启用宠物技能冷却显示
 				关闭此选项会完全禁用技能冷却显示
 				'''
-			// CooldownDisplayLocationLabel: Pet Ability Cooldown UI Position
-			/* CooldownDisplayLocationTooltip:
+			CooldownDisplayLocationLabel: 寵物技能冷卻時間UI位置
+			CooldownDisplayLocationTooltip:
 				'''
-				Determines where on your screen your Pet Ability Cooldown UI will be at.
-				The selected position will be the upper-left corner of the UI.
-				''' */
-			// ResourceDisplayLabel: Pet Resource UI
-			/* ResourceDisplayTooltip:
+				決定寵物技能冷卻時間介面在螢幕上的位置。
+選定的位置將是介面的左上角。
 				'''
-				Enables visibility of UI Text where it shows your current active Pet's resources or
-				stacks of some sort. Not visible by default if current Pet does not have stacks etc.
-				''' */
-			// ResourceDisplayLocationLabel: Pet Resource UI Position
-			/* ResourceDisplayLocationTooltip:
+			ResourceDisplayLabel: 寵物資源UI
+			ResourceDisplayTooltip:
 				'''
-				Determines where on your screen your Pet Resource UI will be at.
-				The selected position will be the upper-left corner of the UI.
-				''' */
+啟用 UI 文字的可見性，顯示目前活躍寵物的資源或某種堆疊。如果目前寵物沒有堆疊等，則預設不可見。
+				'''
+			ResourceDisplayLocationLabel: 寵物資源UI位置
+			ResourceDisplayLocationTooltip:
+				'''
+決定寵物資源 UI 在螢幕上的位置。
+選定的位置將是 UI 的左上角。
+				'''
 			DustAmountTooltip:
 				'''
 				修改显示宠物的效果范围的粒子数量
@@ -377,12 +373,13 @@ Mods: {
 				'''
 			BoneRattle:
 				'''
+				每秒增加您的健康再生累積計時器 <extraRegenTime> 秒。
 				脱战<stage1Time>秒后，生命再生速度提高<stage1Regen>点
 				脱战<stage2Time>秒后，生命再生速度提高<stage2Regen>点，并获得生命上限<shieldAmount>%的护盾
 				不受伤，不受持续伤害且没有击中敌人即视为脱战
 				你在拥有第一层效果的情况下击中敌人时，计时器重置到<stage1Time>秒
 				'''
-			// BoneRattleStack: regen bonus
+			BoneRattleStack: 再生獎勵
 			BabyGrinchMischiefWhistle:
 				'''
 				<slowRange>方块范围内的非Boss敌人降低<slowAmount>%移动速度
@@ -428,7 +425,7 @@ Mods: {
 				 - 在丛林中攻击速度额外提高<jungleAtkSpd>%
 				砍伐竹子[i:4564]有<bambooChance>%几率掉落额外的竹子
 				'''
-			// BambooLeafStack: enemies you're on alert for
+			BambooLeafStack: 你警戒的敵人
 			BoneKey:
 				'''
 				完全免疫困难模式之前地牢中的伤害
@@ -465,7 +462,7 @@ Mods: {
 				 -- 最多可叠加<maxDrain>个敌人
 				免疫所有原版燃烧减益
 				'''
-			// BerniePetItemStack: burning enemies in radius
+			BerniePetItemStack: 燃燒半徑內的敵人
 			UnluckyYarn:
 				'''
 				按下宠物技能键（<keybind>）以吸收月光
@@ -608,7 +605,7 @@ Mods: {
 				<fishing> 当前等级: <fishingLevel> 下一级所需的经验: <fishingNext> 当前总经验: <fishingCurrent>
 				 - 钓上渔获时会给你<fishingProfit>倍经验数量的铜币，伤害增加<bonusDamage>%
 				'''
-			// ExpStack: <class> exp until next level
+			ExpStack: <class> 經驗值達到下一級
 			BirdieRattle:
 				'''
 				未装备翅膀时：
@@ -618,7 +615,7 @@ Mods: {
 				 - 无法滑翔
 				 - 从开始飞行时计算飞行冷却
 				'''
-			// BirdieRattleStack: remaining wing time
+			BirdieRattleStack: 剩餘飛行時間
 			LizardEgg:
 				'''
 				按下宠物技能键（<keybind>）会断尾以脱离危险
@@ -643,7 +640,7 @@ Mods: {
 				 - 近战伤害增加<dmg>%/层，最高 <maxDmg>%
 				 - 防御增加<def>%/层，最高 <maxDef>%
 				'''
-			// TartarSauceStack: minotaur stacks
+			TartarSauceStack: 牛頭怪堆疊
 			ParrotCracker:
 				'''
 				鹦鹉有<projChance>%的几率复制由你或你的仆从/哨兵发射的弹幕
@@ -725,10 +722,9 @@ Mods: {
 				采集植物有<plant>%几率翻倍
 				 - 稀有植物有<rarePlant>%几率翻倍
 				每装备一件南瓜盔甲部件，最大生命值增加<health>，采集时运增加<harvFort>
-				当前装备部件数量：<pumpkinPieceAmount>
 				'''
-			// SquashlingHealth: Increases maximum health by <hp>
-			// SquashlingFortune: Harvesting fortune by <fortune>
+			SquashlingHealth: 最大生命值增加 <hp>
+			SquashlingFortune: 透過<fortune>收穫財富
 			EucaluptusSap:
 				'''
 				按住跳跃键时可以滑翔
@@ -755,7 +751,7 @@ Mods: {
 				击退抗性提高<kbResist>%
 				移动速度降低<moveSpd>%
 				'''
-			// SeaweedStack: hits to tank
+			SeaweedStack: 擊中坦克
 			LightningCarrot:
 				'''
 				移动速度提高<flatSpd>%，再将你的移动速度乘以<multSpd>
@@ -787,7 +783,7 @@ Mods: {
 				'''
 			EocEnrage: 怒了！
 			EocCalm: 冷静下来了
-			// EyeOfCthulhuPetItemStack: rage points
+			EyeOfCthulhuPetItemStack: 憤怒點數
 			BrainOfCthulhuPetItem:
 				'''
 				获得<lifesteal>%吸血效果，但拥有吸血池
@@ -796,7 +792,7 @@ Mods: {
 				 - 每<healthRecovery>秒恢复血池中1血量
 				当前吸血池血量：<pool>
 				'''
-			// BrainOfCthulhuPetItemStack: stacks in health pool
+			BrainOfCthulhuPetItemStack: 生命值池中的堆疊
 			EaterOfWorldsPetItem:
 				'''
 				挖掘非矿石/宝石方块挖掘速度提高<miningSpeed>%
@@ -811,7 +807,7 @@ Mods: {
 				   玩家生命值<hpMult>%的额外生命值，造成额外<dmg>伤害，可以暴击且受玩家通用职业加成
 				 - 死亡后，对半径<radius>格内的所有敌人造成<slowAmount>%减速<slowDuration>秒和史莱姆减益<slimyDuration>秒
 				'''
-			// KingSlimePetItemStack: alive Slime Servants
+			KingSlimePetItemStack: 活著的史萊姆從者
 			QueenBeePetItem:
 				'''
 				治疗药水恢复效果提高<extraHeal>%
@@ -825,13 +821,19 @@ Mods: {
 				'''
 			DeerclopsPetItem:
 				'''
-				存储受到的伤害<thresholdTime>秒
-				如果存储的伤害总量超过最大生命值的<threshold>%：
-				 - 获得<immunityTime>秒无敌帧
-				 - 对<range>格范围内的敌人造成<debuffTime>秒的<slowAmount>%减速，困惑和霜冻
-				 - 此效果有30秒冷却时间
+受到距離您至少 <reduceRadius> 格的敵人造成的傷害減少 <dmgReduce>%。
+儲存您所受的傷害，持續 <storeDuration> 秒。
+按下寵物技能鍵 (<keybind>) 可消耗所有儲存的傷害。
+ - 獲得一個相當於儲存傷害 <shieldMult>% 的護盾，持續 <shieldDuration> 秒。
+ - 短暫延遲後，攻擊 <abilityRadius> 格錐形區域內所有敵人，瞄準您的滑鼠，
+造成儲存傷害 + 您的防禦力。此傷害值會隨著您的近戰傷害加成和傷害減免而增加。
+被擊中錐形區域中心的敵人將無視所有防禦力。
+ - 每次攻擊都會降低 <dmgReduceStrike>% 的傷害，最高可達 <maxDmgReduceStrike>%
+ - 所有被攻擊的敵人減速 <slow>%，持續 <slowDuration> 秒。
+ - 消耗的傷害值上限為你最大生命值的 <maxStore>%。
+ - 冷卻時間為 <cooldown> 秒。
 				'''
-			// DeerclopsPetItemStack: stored damage
+			DeerclopsPetItemStack: 儲存損壞
 			SkeletronPetItem:
 				'''
 				你造成和受到的伤害不会立刻生效，会随时间缓慢生效
@@ -840,7 +842,7 @@ Mods: {
 				 - 受击视为闪避，所以不受击退
 				敌怪会受到<dealtMult>倍伤害，并将其分散在4秒内缓慢生效
 				'''
-			// SkeletronPetItemStack: damage to be taken over time
+			SkeletronPetItemStack: 隨著時間的推移而受到的損害
 			SkeletronDeath1: <name>无法承受骷髅王的诅咒
 			SkeletronDeath2: <name>经历了痛苦而缓慢的死亡。
 			SkeletronDeath3: 扣扣扣扣扣扣篮成功！！！
@@ -861,7 +863,7 @@ Mods: {
 				每<shieldCooldown>秒恢复一个护盾
 				护盾在受到伤害后<shieldLifetime>秒消失
 				'''
-			// SkeletronPrimePetItemStack: shields available
+			SkeletronPrimePetItemStack: 可用的盾牌
 			DestroyerPetItem:
 				'''
 				增加<defMultIncrease>%防御
@@ -926,16 +928,15 @@ Mods: {
 				 - 所有法术都有<cooldown>秒冷却时间
 				当前法术：<tooltip>
 				'''
-			// LunaticCultistPetItemStack: spell
-			// DragonIceName: "[c/baf2ef:Icicle Mist]"
+			LunaticCultistPetItemStack: 咒语
+			DragonIceName: "[c/baf2ef:冰雪雾]"
 			DragonIce:
 				'''
-				- 冰雪雾
 				 - 在光标处生成一个冰雪雾，它会向随机方向移动并持续发射冰雪碎块
 				 - 冰雪雾和碎块拥有<damage>点基础伤害
 				 - 对命中的敌人造成<slowAmount>%减速<slowTime>秒
 				'''
-			// DragonLightningName: "[c/00ffd1:Lightning Orb]"
+			DragonLightningName: "[c/00ffd1:闪电珠]"
 			DragonLightning:
 				'''
 				- 闪电珠
@@ -943,10 +944,9 @@ Mods: {
 				 - 闪电珠拥有<orbDmg>点基础伤害和<orbPen>点护甲穿透，并造成短暂的<orbSlow>%减速
 				 - 闪电拥有<strikeDmg>点基础伤害和<strikePen>点护甲穿透，并造成短暂的<strikeSlow>%减速
 				'''
-			// DragonFireName: "[c/ff9a00:Fireball Volley]"
+			DragonFireName: "[c/ff9a00:火球连珠]"
 			DragonFire:
 				'''
-				- 火球连珠
 				 - 在<fireballDuration>秒内持续朝光标位置发射<fireballAmount>次火球
 				 - 火球在命中时爆炸，造成<fireDmg>点基础伤害和<kb>击退
 				 - 击中敌人会造成破晓减益<burnSeconds>秒
@@ -980,7 +980,7 @@ Mods: {
 				按下宠物技能切换键（<keybind>）切换此宠物的效果
 				<tooltip>
 				'''
-			// MoonLordPetItemStack: class bonus
+			MoonLordPetItemStack: 班級獎金
 			MeleeTooltip:
 				'''
 				- 近战加成：
@@ -1031,7 +1031,7 @@ Mods: {
 				 - 最多叠加10层
 				 - 4秒不跳跃后重置
 				'''
-			// CarrotStack: bunny hop stacks
+			CarrotStack: 兔子跳堆疊
 		}
 
 		SimpleTooltips: {
