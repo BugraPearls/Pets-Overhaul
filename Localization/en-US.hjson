@@ -456,17 +456,16 @@ Mods: {
 				- Always applies Confused debuff to you.
 				- Grants permanent Night Vision buff.
 				- Increases ALL Player stats by <intIncr> or <intIncr>%.
-				 * Damage, knockback resistance, crit chance, luck,
-				   mana, crit damage, health, knockback, attack speed,
-				   defense, armor pen, fishing power, damage reduction,
-				   mana regen, jump speed, wing time, pet ability haste,
-				   global fortune, mining fortune, harvesting fortune,
-				   fishing fortune, aggro, fall damage resistance, 
-				   your Pets; damage, heal and shield effectiveness,
-				   life regen, natural life regen acceleration, move speed,
-				   % armor penetration, breath duration, mining speed,
-				   tile placement speed, wall placement speed, weapon size,
-				   lava resistance duration and ammo reservation chance.
+				 * Damage, attack speed, crit chance, crit damage
+				 * Armor pen, % armor penetration, knockback
+				 * Mana, mana regen, weapon size, ammo reservation chance
+				 * Health, defence, damage reduction, knockback resistance
+				 * Life regen, natural life regen accleration, arrgo
+				 * Move speed, jump speed, wing time, fall damage resistance
+				 * Fishing power, luck, breath duration, lava resistance duration
+				 * Mining speed, tile placement speed, wall placement speed
+				 * Global & mining & harvesting & fishing fortune
+				 * Pet ability haste and pets damage, heal and shield effectiveness
 				'''
 			FullMoonSqueakyToy:
 				'''

@@ -442,7 +442,16 @@ Mods: {
 				命中敌人增加<buffRecover>秒所有增益的剩余时间（<cooldown>秒冷却）
 				获得永久困惑减益和夜视效果
 				提高所有属性<intIncr>点或<intIncr>%（取决于属性类型）
-				<hiddenTip>
+				 - 伤害、攻击速度、暴击率、暴击伤害
+				 - 护甲穿透、护甲穿透（百分比）、击退
+				 - 最大魔力、魔力再生、武器大小、弹药节约率
+				 - 最大生命、防御、伤害减免、击退抗性
+				 - 生命再生、生命再生加速度、仇恨值
+				 - 移动速度、跳跃速度、飞行时间、掉落伤害抗性
+				 - 渔力、幸运、水下呼吸时间、岩浆抵抗时间
+				 - 挖掘速度、放置速度、墙壁放置速度
+				 - 通用时运、挖掘时运、采集时运、钓鱼时运
+				 - 宠物：技能急速、护盾、治疗和伤害加成
 				'''
 			FullMoonSqueakyToy:
 				'''
@@ -821,15 +830,15 @@ Mods: {
 				'''
 			DeerclopsPetItem:
 				'''
-				被距离你至少<raduceRadius>格的敌人攻击时，所受伤害降低
+				被距离你至少<reduceRadius>格的敌人攻击时，所受伤害降低<dmgReduce>%
 				存储受到的伤害<storeDuration>秒
 				按下宠物技能键（<keybind>）消耗所有存储的伤害：
-				 - 获得存储伤害量<sheildMult>%的护盾，持续<shieldDuration>秒
-				 - 片刻之后，打击鼠标方向上<abilityRadius>格范围内的所有敌人
+				 - 获得存储伤害量<shieldMult>%的护盾，持续<shieldDuration>秒
+				 - 片刻之后，对鼠标方向上<abilityRadius>格范围内的所有敌人造成伤害
 				  - 造成伤害等同于存储伤害量+玩家防御力，受你的近战伤害和伤害减免加成
-				  - 对打击范围中间的敌人会忽略它们的防御力
-				 - 每次打击衰减<dmgReduceStrike>%伤害，至多<maxDmgReduceStrike>%
-				 - 打击会对敌人造成<slowAmount>%减速<slowTime>秒
+				  - 对扇形范围中间的敌人会忽略它们的防御力
+				 - 每次命中衰减<dmgReduceStrike>%伤害，至多<maxDmgReduceStrike>%
+				 - 对敌人造成<slow>%减速<slowDuration>秒
 				 - 消耗存储伤害量上限为你的最大生命值的<maxStore>%
 				 - 此效果有<cooldown>秒冷却时间
 				'''
@@ -927,7 +936,7 @@ Mods: {
 				 - 所有法术都有<cooldown>秒冷却时间
 				当前法术：<tooltip>
 				'''
-			LunaticCultistPetItemStack: 咒语
+			LunaticCultistPetItemStack: 法术
 			DragonIceName: "[c/baf2ef:冰雪雾]"
 			DragonIce:
 				'''
@@ -976,7 +985,7 @@ Mods: {
 				'''
 			MoonLordPetItem:
 				'''
-				按下宠物技能切换键（<keybind>）切换此宠物的效果
+				按下宠物技能切换键（<switchKeybind>）切换此宠物的效果
 				<tooltip>
 				'''
 			MoonLordPetItemStack: 职业加成
@@ -1162,7 +1171,7 @@ Mods: {
 				降低魔法伤害加成
 				最大魔力加成（装备提供的最大魔力等）会提高你的魔法伤害
 				'''
-			/EyeSpring:
+			EyeSpring:
 				'''
 				大幅提高你的跳跃速度
 				 - 用于飞行时跳跃速度加成降低
@@ -1349,7 +1358,7 @@ Mods: {
 				远处的敌人对你造成的伤害减少
 				存储受到的伤害，按下宠物技能键（<keybind>）以消耗所有存储的伤害：
 				 - 根据存储伤害量获得护盾
-				 - 打击鼠标方向上锥形范围的敌人，并减速它们
+				 - 对光标方向上一个扇形范围内的敌人造成伤害，并减速它们
 				 - 无视处于锥形中央的敌人的防御
 				'''
 			SkeletronPetItem:
@@ -1717,7 +1726,7 @@ Mods: {
 
 			PetForgeItem: {
 				DisplayName: 宠物熔炉
-				Tooltip: 
+				Tooltip:
 					'''
 					允许你制作所有宠物
 					由伟大的宠物驯养师精心设计
