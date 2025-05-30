@@ -460,12 +460,12 @@ Mods: {
 				 * Armor pen, % armor penetration, knockback
 				 * Mana, mana regen, weapon size, ammo reservation chance
 				 * Health, defence, damage reduction, knockback resistance
-				 * Life regen, natural life regen accleration, arrgo
+				 * Life regen, natural life regen accleration, aggro
 				 * Move speed, jump speed, wing time, fall damage resistance
 				 * Fishing power, luck, breath duration, lava resistance duration
 				 * Mining speed, tile placement speed, wall placement speed
 				 * Global & mining & harvesting & fishing fortune
-				 * Pet ability haste and pets damage, heal and shield effectiveness
+				 * Pet ability haste, pets damage, pet heal and shield effectiveness
 				'''
 			FullMoonSqueakyToy:
 				'''
