@@ -14,7 +14,7 @@ using Terraria.ModLoader;
 
 namespace PetsOverhaul.TownPets
 {
-    public sealed class TownPetModPlayer : ModPlayer
+    public sealed class TownPetModPlayer : ModPlayer //This honestly doesn't even need to be a modplayer, as its just 1 detour.
     {
         public override void Load()
         {
