@@ -151,6 +151,14 @@ namespace PetsOverhaul.Systems
         /// </summary>
         private static bool colorSwitched = false;
 
+        /// <summary>
+        /// Name of last Town Pet you've received buffs from.
+        /// </summary>
+        public static string LastTownPet = string.Empty;
+
+        /// <summary>
+        /// Whether or not current switched tooltip is simplified or not.
+        /// </summary>
         public static bool CurrentTooltipsIsSimple = true;
 
         public static List<int> EnemiesForLifestealToIgnore = [];
@@ -623,6 +631,8 @@ namespace PetsOverhaul.Systems
 
         public override void SaveData(TagCompound tag)
         {
+            tag.Add("CurrentTooltip", CurrentTooltipsIsSimple);
+            tag.Add("LastTownPet", LastTownPet);
             tag.Add("SkinColor", skin);
             tag.Add("SkinColorChanged", skinColorChanged);
             tag.Add("eolConsume", eolConsumed);
@@ -631,6 +641,16 @@ namespace PetsOverhaul.Systems
         }
         public override void LoadData(TagCompound tag)
         {
+            if (tag.TryGet("CurrentTooltip", out bool stateOfTooltip))
+            {
+                CurrentTooltipsIsSimple = stateOfTooltip;
+            }
+
+            if (tag.TryGet("LastTownPet", out string townPetName))
+            {
+                LastTownPet = townPetName;
+            }
+
             if (tag.TryGet("SkinColor", out Color skinColor))
             {
                 skin = skinColor;
