@@ -11,8 +11,8 @@ namespace PetsOverhaul.Systems
     [ReinitializeDuringResizeArrays]
     public static class PetItemIDs
     {
-        public static bool[] TownPetBuffIDs = NPCID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
-            .RegisterBoolSet(false, ModContent.BuffType<TownPetBunny>(), ModContent.BuffType<TownPetCat>(), ModContent.BuffType<TownPetClumsy>(), ModContent.BuffType<TownPetCool>(), ModContent.BuffType<TownPetDiva>(), ModContent.BuffType<TownPetDog>(), ModContent.BuffType<TownPetMystic>(), ModContent.BuffType<TownPetNerd>(), ModContent.BuffType<TownPetOld>(), ModContent.BuffType<TownPetSquire>(), ModContent.BuffType<TownPetSurly>());
+        public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
+            .RegisterBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.
 
         public static Dictionary<string, int> LightPetNamesAndItems = new()
         {
