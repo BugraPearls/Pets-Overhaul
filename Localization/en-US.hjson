@@ -42,6 +42,7 @@ Mods: {
 			Current: Current
 			Enabled: Enabled
 			Disabled: Disabled
+			TownPetBuffTip: Only one Town Pet buff can be active at a time.
 		}
 
 		Classes: {
@@ -1587,110 +1588,69 @@ Mods: {
 			}
 
 			TownPetBunny: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases your Jump speed by <BunnyJump>% and
-					Harvesting Fortune by <BunnyHarvesting>.
-					'''
+				DisplayName: <Name> the Bunny's Buff
+				Description: Increases Harvesting Fortune by <harv>.
 			}
 
 			TownPetCat: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Multiplies movement speed by <CatMovespd>x and
-					Fishing Fortune by <CatFish>.
-					'''
+				DisplayName: <Name> the Cat's Buff
+				Description: Increases Fishing Fortune by <fish>.
 			}
 
 			TownPetDog: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases Fishing Power by <DogFish> and
-					Fishing Fortune by <DogFishExp>.
-					'''
+				DisplayName: <Name> the Dog's Buff
+				Description: Increases Mining Fortune by <mining>.
 			}
 
 			TownPetClumsy: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases luck by <ClumsyLuck> and
-					Global Fortune by <ClumsyGlobal>.
-					'''
+				DisplayName: <Name> the Clumsy Slime's Buff
+				Description: Increases Global Fortune by <fort>.
 			}
 
 			TownPetCool: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases Crit Chance by <CoolCrit>% and
-					Mining Fortune by <CoolMining>.
-					'''
+				DisplayName: <Name> the Cool Slime's Buff
+				Description: Increases Pet Sourced Damage by <dmg>%.
 			}
 
 			TownPetDiva: {
-				DisplayName: <Name>'s Aura
-				Description: Grants a <DivaDisc>% base price refund after buying an item.
+				DisplayName: <Name> the Diva Slime's Buff
+				Description:
+					'''
+					Increases Pet Sourced Healing by <heal>%.
+					Increases Pet Ability Haste by <haste>%.
+					'''
 			}
 
 			TownPetMystic: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases Pet Ability Haste by <MysticHaste>%
-					and Global Fortune by <MysticAllExp>.
-					'''
+				DisplayName: <Name> the Mystic Slime's Buff
+				Description: Increases Pet Sourced Healing by <heal>%.
 			}
 
 			TownPetNerd: {
-				DisplayName: <Name>'s Aura
+				DisplayName: <Name> the Nerd Slime's Buff
 				Description:
 					'''
-					Multiplies your placement speed by <NerdPlacement>x
-					Grants a white shine with a scale of <NerdShineScale>x
-					'''
-				PostHardmodeDescription:
-					'''
-					Grants Dangersense and Night vision
-					Multiplies your placement speed by <NerdPlacement>x
-					Grants a white shine with a scale of <NerdShineScale>x
-					'''
-				PostMoonlordDescription:
-					'''
-					Grants Dangersense, Night, and Wire vision
-					Multiplies your placement speed by <NerdPlacement>x
-					Grants a white shine with a scale of <NerdShineScale>x
+					Increases Pet Sourced Shields by <shield>%.
+					Increases Pet Ability Haste by <haste>%.
 					'''
 			}
 
 			TownPetOld: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases Defense by <OldDef>,
-					knockback resist by <OldKb>% and
-					Harvesting Fortune by <OldHarvesting>.
-					'''
+				DisplayName: <Name> the Old Slime's Buff
+				Description: Increases Pet Ability Haste by <haste>%.
 			}
 
 			TownPetSquire: {
-				DisplayName: <Name>'s Aura
-				Description:
-					'''
-					Increases Damage by <SquireDmg>% and
-					Mining Fortune by <SquireMining>.
-					'''
+				DisplayName: <Name> the Squire Slime's Buff
+				Description: Increases Pet Sourced Shields by <shield>%.
 			}
 
 			TownPetSurly: {
-				DisplayName: <Name>'s Aura
+				DisplayName: <Name> the Surly Slime's Buff
 				Description:
 					'''
-					Increases enemy spawn rate by <SurlySpawn>%
-					And grants shadow candle effect.
+					Increases Pet Sourced Damage by <dmg>%.
+					Increases Pet Ability Haste by <haste>%.
 					'''
 			}
 		}

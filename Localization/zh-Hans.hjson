@@ -42,6 +42,7 @@ Mods: {
 			Current: 当前
 			Enabled: 已启用
 			Disabled: 已禁用
+			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
 		}
 
 		Classes: {
@@ -1598,18 +1599,6 @@ Mods: {
 					'''
 					放置速度变为<NerdPlacement>倍
 					获得<NerdShineScale>倍亮度的白色光环
-					'''
-				PostHardmodeDescription:
-					'''
-					获得危险感与夜视增益
-					放置速度变为<NerdPlacement>倍
-					提供<NerdShineScale>倍亮度的白色光环
-					'''
-				PostMoonlordDescription:
-					'''
-					获得危险感和夜视增益并显示电线
-					放置速度变为<NerdPlacement>倍
-					提供<NerdShineScale>倍亮度的白色光环
 					'''
 			}
 

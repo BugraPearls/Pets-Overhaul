@@ -42,6 +42,7 @@ Mods: {
 			Current: Atual
 			Enabled: Habilitar
 			Disabled: Desabilitar
+			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
 		}
 
 		Classes: {
@@ -1664,18 +1665,6 @@ Mods: {
 				DisplayName: Aura de <Name>
 				Description:
 					'''
-					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
-					Concede um brilho branco com uma escala de <NerdShineScale>x
-					'''
-				PostHardmodeDescription:
-					'''
-					Concede Percepção de Perigo e Visão Noturna
-					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
-					Concede um brilho branco com uma escala de <NerdShineScale>x
-					'''
-				PostMoonlordDescription:
-					'''
-					Concede Percepção de Perigo, Visão Noturna e Visão de Fios
 					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
 					Concede um brilho branco com uma escala de <NerdShineScale>x
 					'''

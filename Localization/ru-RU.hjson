@@ -42,6 +42,7 @@ Mods: {
 			Current: Текущий
 			Enabled: Включено
 			Disabled: Неполноценный
+			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
 		}
 
 		Classes: {
@@ -1651,18 +1652,6 @@ Mods: {
 				DisplayName: Аура <Name>
 				Description:
 					'''
-					Умножает скорость размещения предметов на <NerdPlacement>x.
-					Даёт белое сияние с масштабом <NerdShineScale>x.
-					'''
-				PostHardmodeDescription:
-					'''
-					Даёт эффекты Предчувствия опасности и Ночного зрения.
-					Умножает скорость размещения предметов на <NerdPlacement>x.
-					Даёт белое сияние с масштабом <NerdShineScale>x.
-					'''
-				PostMoonlordDescription:
-					'''
-					Даёт эффекты Предчувствия опасности, Ночного зрения и Зрение проводов.
 					Умножает скорость размещения предметов на <NerdPlacement>x.
 					Даёт белое сияние с масштабом <NerdShineScale>x.
 					'''
