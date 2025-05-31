@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using PetsOverhaul.TownPets.TownPetBuffs;
+using System.Collections.Generic;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace PetsOverhaul.Systems
 {
     /// <summary>
     /// Class used by Pets Overhaul to do something to all Pet Items with ease.
     /// </summary>
-    public class PetItemIDs
+    [ReinitializeDuringResizeArrays]
+    public static class PetItemIDs
     {
+        public static bool[] TownPetBuffIDs = NPCID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
+            .RegisterBoolSet(false, ModContent.BuffType<TownPetBunny>(), ModContent.BuffType<TownPetCat>(), ModContent.BuffType<TownPetClumsy>(), ModContent.BuffType<TownPetCool>(), ModContent.BuffType<TownPetDiva>(), ModContent.BuffType<TownPetDog>(), ModContent.BuffType<TownPetMystic>(), ModContent.BuffType<TownPetNerd>(), ModContent.BuffType<TownPetOld>(), ModContent.BuffType<TownPetSquire>(), ModContent.BuffType<TownPetSurly>());
+
         public static Dictionary<string, int> LightPetNamesAndItems = new()
         {
             {"Flickerwick",ItemID.DD2PetGhost },
