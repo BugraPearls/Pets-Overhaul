@@ -13,6 +13,6 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
         {
             pet.abilityHaste += val;
         }
-        public override string BuffTooltip => base.BuffTooltip.Replace("<val>", Math.Round(val * 100, 2).ToString());
+        public override string BuffTooltip => base.BuffTooltip.Replace("<haste>", Math.Round(val * 100, 2).ToString());
     }
 }
