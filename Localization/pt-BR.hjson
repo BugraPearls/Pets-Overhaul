@@ -1604,98 +1604,69 @@ Mods: {
 			}
 
 			TownPetBunny: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Aumenta sua velocidade de salto em <BunnyJump>% e
-					a Sorte de Colheita em <BunnyHarvesting>.
-					'''
+				DisplayName: <Name> o Buff do Coelhinho
+				Description: Aumenta a Fortuna de Colheita em <harv>.
 			}
 
 			TownPetCat: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Multiplica a velocidade de movimento em <CatMovespd>x e
-					a Sorte de Pesca em <CatFish>.
-					'''
+				DisplayName: <Name> o Buff do Gato
+				Description: Aumenta a Fortuna da pesca em <fish>.
 			}
 
 			TownPetDog: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Aumenta o Poder de Pesca em <DogFish> e
-					a Sorte de Pesca em <DogFishExp>.
-					'''
+				DisplayName: <Name> o Buff do Cão
+				Description: Aumenta a Fortuna de Mineração em <mining>.
 			}
 
 			TownPetClumsy: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Aumenta a Sorte em <ClumsyLuck> e
-					a Sorte Global em <ClumsyGlobal>.
-					'''
+				DisplayName: <Name> o Buff do Geleia Desajeitada
+				Description: Aumenta a Fortuna Global em <fort>.
 			}
 
 			TownPetCool: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Aumenta a Chance Crítica em <CoolCrit>% e
-					a Sorte de Mineração em <CoolMining>.
-					'''
+				DisplayName: <Name> o Buff do Geleia Legal
+				Description: Aumenta o dano proveniente do PET em <dmg>%.
 			}
 
 			TownPetDiva: {
-				DisplayName: Aura De <Name>
-				Description: Lhe devolve <DivaDisc>% do preço base de um item que comprar como reembolso
+				DisplayName: <Name> o Buff do Geleia Diva
+				Description:
+					'''
+					Aumenta a cura proveniente do PET em <heal>%.
+					Aumenta a aceleração da habilidade do PET em <haste>%.
+					'''
 			}
 
 			TownPetMystic: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Aumenta a Velocidade da Habilidade do PET em <MysticHaste>%
-					e a Sorte Global em <MysticAllExp>.
-					'''
+				DisplayName: <Name> o Buff do Geleia Mistica
+				Description: Aumenta a cura proveniente do PET em <heal>%.
 			}
 
 			TownPetNerd: {
-				DisplayName: Aura de <Name>
+				DisplayName: <Name> o Buff do Geleia Nerdy
 				Description:
 					'''
-					Multiplica sua velocidade de colocação de blocos em <NerdPlacement>x
-					Concede um brilho branco com uma escala de <NerdShineScale>x
+					Aumenta os escudos obtidos do PET em <shield>%.
+					Aumenta a aceleração da habilidade do PET em <haste>%.
 					'''
 			}
 
 			TownPetOld: {
-				DisplayName: Aura De <Name>
-				Description:
-					'''
-					Aumenta defesa em <OldDef>,
-					Resistência de Recuos de <OldKb>% e
-					Sorte de Colheita em <OldHarvesting>.
-					'''
+				DisplayName: <Name> o Buff do Geleia Antiga
+				Description: Aumenta a aceleração da habilidade do PET em <haste>%.
 			}
 
 			TownPetSquire: {
-				DisplayName: Aura de <Name>
-				Description:
-					'''
-					Aumenta o Dano em <SquireDmg>% e
-					a Sorte de Mineração em <SquireMining>.
-					'''
+				DisplayName: <Name> o Buff do Geleia Escuderia
+				Description: Aumenta os escudos obtidos do PET em <shield>%.
 			}
 
 			TownPetSurly: {
-				DisplayName: Aura De <Name>
+				DisplayName: <Name> o Buff do Geleia Rude
 				Description:
 					'''
-					Aumenta o Surgimento de inimigos em <SurlySpawn>%
-					e dá o efeito da Vela Sombria
+					Aumenta o dano proveniente do PET em <dmg>%.
+					Aumenta a aceleração da habilidade do PET em <haste>%.
 					'''
 			}
 		}
@@ -1796,11 +1767,11 @@ Mods: {
 			}
 
 			PetFood: {
-				DisplayName: Ração para animais de estimação
+				DisplayName: Ração para Pet
 				Tooltip:
 					'''
-Não há nenhum Pet que não se encante com esta ração multissabores!
-Usada na criação de receitas para cada Pet.
+					Não há nenhum Pet que não se encante com esta ração multissabores!
+					Usada na criação de receitas para cada Pet.
 					'''
 			}
 		}
