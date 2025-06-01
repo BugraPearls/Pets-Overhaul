@@ -43,6 +43,7 @@ Mods: {
 			Enabled: Habilitar
 			Disabled: Desabilitar
 			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
+			// TownPetPetMe: " (Pet me!)"
 		}
 
 		Classes: {
@@ -1843,6 +1844,7 @@ Mods: {
 					Common4: Uma vez, deixei cair minha bolsa inteira naquele líquido roxo brilhante no subterrâneo. Fiquei tão preocupado porque minha bolsa tinha meu Fantasma na Garrafa! Estranhamente, enquanto via tudo se transformar em outra coisa, meu Fantasma na Garrafa permaneceu lá, impassível! Me pergunto o que era aquele líquido.
 					Common5: Ah, sim. Alguém me deu a receita para transformar um Coração Carmesim em um Orbe Sombrio. Eu o fabriquei. E adivinha? Ele se recusou a ficar mais forte que seu predecessor!
 					Common6: Sim! Com a Forja de PET's, você pode conseguir qualquer PET que quiser. Embora possa ser um pouco difícil e trabalhoso.
+					// Common7: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
 					Rare1: Para que é esse chicote? Para aqueles que tentar machucar meus PET's, é claro! O que mais você pensou hein?
 					WizardQuote: É coisa de louco! Quando <name> me disse que eu estava com muita sorte naquele dia, todos os PET's de Luz que treinei pareciam ter um potencial maior.
 				}

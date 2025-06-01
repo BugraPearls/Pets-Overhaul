@@ -43,6 +43,7 @@ Mods: {
 			Enabled: 已启用
 			Disabled: 已禁用
 			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
+			// TownPetPetMe: " (Pet me!)"
 		}
 
 		Classes: {
@@ -1771,6 +1772,7 @@ Mods: {
 					Common4: 有一次，我把我的整个包都丢进了地下那闪闪发光的粉色液体里。我很担心，因为包里有妖灵瓶！奇怪的是，当我看到所有东西都变成了别的东西，我的妖灵瓶还在那里，毫发无损！我想知道那是什么液体。
 					Common5: 哦。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它不愿比它的前身更强！
 					Common6: 是的！通过宠物熔炉，你可以制作任何你想要的宠物。不过可能需要付出一点精力。
+					// Common7: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
 					Rare1: 这条鞭子是干什么用的？当然是为了教训那些试图伤害我宠物的人！你以为干什么？
 					WizardQuote: 这太疯狂了，当<name>那天告诉我我非常幸运时，我那天训练的所有照明宠物似乎都超常发挥了。
 				}
