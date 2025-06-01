@@ -28,8 +28,9 @@ Mods: {
 			KeybindMissing: Atalho de Teclado não Registrado
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.5.1 últimas mudanças: Dicas de ferramentas simplificadas adicionadas, Correções de localização.]
-				[c/90C2AA:Diversas melhorias no backend e correções de bugs. Remoção de muitos itens desnecessários para simplificar.]
+				[c/90C2AA:Pets Overhaul 3.6, últimas mudanças: Reformulação dos Pets da Cidade, Dicas de Ferramentas Simplificadas]
+				[c/90C2AA:Os bônus dos Pets da Cidade agora são limitados a apenas 1 e podem ser adquiridos "acariciando" o Pet da Cidade.]
+				[c/90C2AA:Melhorias importantes na tradução para chinês. Realizadas por: ROH, Correções para todas as localizações]
 				[c/b4bfc5:Entre no nosso discord para feedback e reportar problemas! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:para ver mais comandos do Pets Overhaul, lhe dando mais informações!]
 				'''
