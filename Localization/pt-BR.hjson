@@ -42,8 +42,8 @@ Mods: {
 			Current: Atual
 			Enabled: Habilitar
 			Disabled: Desabilitar
-			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
-			// TownPetPetMe: " (Pet me!)"
+			TownPetBuffTip: Apenas um bônus de mascote da cidade pode estar ativo por vez.
+			TownPetPetMe: " (Me faça carinho!)"
 		}
 
 		Classes: {
@@ -1796,12 +1796,12 @@ Mods: {
 			}
 
 			PetFood: {
-				// DisplayName: Pet Food
-				/* Tooltip:
+				DisplayName: Ração para animais de estimação
+				Tooltip:
 					'''
-					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
-					Used in crafting recipes of every single Pet.
-					''' */
+Não há nenhum Pet que não se encante com esta ração multissabores!
+Usada na criação de receitas para cada Pet.
+					'''
 			}
 		}
 
@@ -1835,7 +1835,7 @@ Mods: {
 				Combine: Combinar PET's de Luz
 				BestiaryFlavorText: O grande Domador de PET's, sabe mais sobre PET's do que qualquer outra pessoa. Conhecido por suas habilidades em ajudar PET's de Luz a alcançarem seu maior potencial.
 				GuideQuote: Hmm. Vejo que você ainda não cuidou de um PET. Ouvi dizer que se encontrar um e começar a mantê-lo por perto, um Domador de PET's pode se estabelecer!
-				// Census.SpawnCondition: Requires a Pet to be equipped at least once in either normal or Light Pet inventory slots.
+				Census.SpawnCondition: Requer que um Pet seja equipado pelo menos uma vez nos espaços de inventário de Pet normal ou Leve.
 
 				Quotes: {
 					Common1: Como estão seus PET's? Sempre os alimente direitinho viu?.
@@ -1844,7 +1844,7 @@ Mods: {
 					Common4: Uma vez, deixei cair minha bolsa inteira naquele líquido roxo brilhante no subterrâneo. Fiquei tão preocupado porque minha bolsa tinha meu Fantasma na Garrafa! Estranhamente, enquanto via tudo se transformar em outra coisa, meu Fantasma na Garrafa permaneceu lá, impassível! Me pergunto o que era aquele líquido.
 					Common5: Ah, sim. Alguém me deu a receita para transformar um Coração Carmesim em um Orbe Sombrio. Eu o fabriquei. E adivinha? Ele se recusou a ficar mais forte que seu predecessor!
 					Common6: Sim! Com a Forja de PET's, você pode conseguir qualquer PET que quiser. Embora possa ser um pouco difícil e trabalhoso.
-					// Common7: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
+					Common7: Lembre-se sempre de dar um pouco de carinho aos Pets e Slimes da Cidade. Eles podem até te dar alguns bônus!
 					Rare1: Para que é esse chicote? Para aqueles que tentar machucar meus PET's, é claro! O que mais você pensou hein?
 					WizardQuote: É coisa de louco! Quando <name> me disse que eu estava com muita sorte naquele dia, todos os PET's de Luz que treinei pareciam ter um potencial maior.
 				}
@@ -1873,7 +1873,7 @@ Mods: {
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
-			// PassivePetSoundFrequency.Tooltip: ""
+			PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }

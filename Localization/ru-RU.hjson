@@ -42,8 +42,8 @@ Mods: {
 			Current: Текущий
 			Enabled: Включено
 			Disabled: Неполноценный
-			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
-			// TownPetPetMe: " (Pet me!)"
+			TownPetBuffTip: Одновременно может быть активен только один бафф «Городской питомец».
+			TownPetPetMe: " (Погладь меня!)"
 		}
 
 		Classes: {
@@ -1798,7 +1798,7 @@ Mods: {
 
 		Projectiles: {
 			PetExplosion: Взрыв, вызванный питомцем
-			// BonemerangProj.DisplayName: Bonemerang
+			BonemerangProj.DisplayName: Бонемеранг
 		}
 
 		Keybinds: {
@@ -1826,7 +1826,7 @@ Mods: {
 				Combine: Объединить светящихся питомцев
 				BestiaryFlavorText: Великий укротитель питомцев, знает о них больше, чем кто-либо другой. Он известен своими способностями помогать светящимся питомцам достичь их высшего потенциала.
 				GuideQuote: Хм. Вижу, ты еще не заботился о питомце. Я слышал, что если ты найдешь одного и начнешь держать его рядом, укротитель питомцев может поселиться у тебя!
-				// Census.SpawnCondition: Requires a Pet to be equipped at least once in either normal or Light Pet inventory slots.
+				Census.SpawnCondition: Требуется, чтобы питомец был экипирован хотя бы один раз в слоты обычного или легкого инвентаря питомца.
 
 				Quotes: {
 					Common1: Как там твои питомцы? Всегда следи, чтобы они были накормлены, приятель.
@@ -1835,7 +1835,7 @@ Mods: {
 					Common4: Однажды я уронил свою сумку в ту блестящую фиолетовую жидкость в подземелье. Я так волновался, ведь там был мой светлячок в бутылке! Но, как ни странно, когда я увидел, как все превращается во что-то другое, мой светлячок просто стоял там, невозмутимый! Интересно, что это была за жидкость?
 					Common5: О да. Кто-то дал мне рецепт, как сделать Багровое Сердце из Теневого Шара. Я его создал. И угадай что, приятель? Оно отказалось становиться сильнее своего предшественника!
 					Common6: Да! В кузнице питомцев можно получить любого питомца. Хотя это может быть немного сложно и требовать усилий.
-					// Common7: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
+					Common7: Не забывайте всегда дарить немного любви вашим питомцам и слизням. Они даже могут благословить вас некоторыми усилениями!
 					Rare1: Этот кнут? Для тех, кто пытается навредить моим питомцам, конечно! А ты что подумал?
 					WizardQuote: Это безумие, когда <name> сказал мне, что у меня сегодня невероятная удача, все светящиеся питомцы, которых я тренировал в тот день, показали больший потенциал.
 				}
@@ -1858,13 +1858,13 @@ Mods: {
 				}
 			}
 
-			// SlimeServant.DisplayName: Slime Servant
+			SlimeServant.DisplayName: Слизистый слуга
 		}
 
 		Configs: {
 			ShieldPosition.Tooltip: ""
 			ParticleAmount.Tooltip: ""
-			// PassivePetSoundFrequency.Tooltip: ""
+			PassivePetSoundFrequency.Tooltip: ""
 		}
 	}
 }
