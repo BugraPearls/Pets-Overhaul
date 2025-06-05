@@ -605,7 +605,7 @@ Mods: {
 				允许你获得每个职业的经验值以提高这个宠物的额外奖励
 				 - 获得采集，挖掘和钓鱼物品时会给你钱币，取决于物品的经验值
 				 - 当前等级上限为<maxLvl>级，击败以下Boss可提高等级上限：
-				 - 世界吞噬怪/克苏鲁之脑，血肉墙，任何机械Boss，世纪之花，拜月教邪教徒，<moreboss>
+				 - 世界吞噬怪/克苏鲁之脑，血肉墙，任何机械Boss，世纪之花，拜月教邪教徒<moreBoss>
 				<harvesting> 当前等级: <harvestLevel> 下一级所需的经验: <harvestNext> 当前总经验: <harvestCurrent>
 				 - 获取任何植物，可砍伐物都会给你<harvestingProfit>倍经验数量的铜币，最大生命增加<flatHealth>点
 				<mining> 当前等级: <miningLevel> 下一级所需的经验: <miningNext> 当前总经验: <miningCurrent>
