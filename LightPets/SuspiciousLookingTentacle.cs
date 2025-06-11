@@ -9,7 +9,7 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class SuspiciousLookingTentacleEffect : LightPetEffect
     {
-        public override int LightPetItemID => ItemID.MoonLordPetItem;
+        public override int LightPetItemID => ItemID.SuspiciousLookingTentacle;
         public override void PostUpdateEquips()
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out SuspiciousLookingTentacle moonlord))
