@@ -1682,18 +1682,12 @@ Mods: {
 
 			LihzahrdWrench: {
 				DisplayName: Ключ Ящщера
-				Tooltip:
-					'''
-					Потребляйте это, чтобы навсегда разблокировать рецепт крафта для Toy Golem Light Pet.
-					'''
+				Tooltip: Потребляйте это, чтобы навсегда разблокировать рецепт крафта для Toy Golem Light Pet.
 			}
 
 			PrismaticOptic: {
 				DisplayName: Призматическая оптика
-				Tooltip:
-					'''
-					Потребляйте это, чтобы навсегда разблокировать рецепт крафта для Fairy Princess Light Pet.
-					'''
+				Tooltip: Потребляйте это, чтобы навсегда разблокировать рецепт крафта для Fairy Princess Light Pet.
 			}
 
 			PumpkingsHead: {

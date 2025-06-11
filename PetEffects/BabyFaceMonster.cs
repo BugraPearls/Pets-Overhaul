@@ -77,6 +77,10 @@ namespace PetsOverhaul.PetEffects
                     Player.lifeRegen += GlobalPet.Randomizer((int)(stage1regen * 100 * Pet.petHealMultiplier));
                     currentRegen = stage1regen;
                 }
+                else
+                {
+                    currentRegen = 0;
+                }
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) //Works after GlobalPet's ModifyHitNPC()'s inCombatTimer = inCombatTimerMax to override it if needed.
