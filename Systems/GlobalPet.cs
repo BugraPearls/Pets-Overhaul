@@ -726,6 +726,8 @@ namespace PetsOverhaul.Systems
         {
             if (currentShield > 0 && info.Damage <= currentShield - shieldToBeReduced)
             {
+                PlayerLoader.OnHurt(Player, info);
+                PlayerLoader.PostHurt(Player, info);
                 info.SoundDisabled = true;
                 ShieldFullBlockEffect(info.Damage);
                 return true;
