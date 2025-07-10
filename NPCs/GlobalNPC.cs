@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
 using PetsOverhaul.Buffs;
 using PetsOverhaul.Items;
 using PetsOverhaul.Systems;
@@ -167,51 +169,126 @@ namespace PetsOverhaul.NPCs
                 seaCreature = false;
             }
         }
-        public override void Load()
+        /// <summary>
+        /// This is un-balanced slow value just added by all various sources. It is properly calculated in RetrieveActualSlow().
+        /// </summary>
+        public float currentTotalSlow = 0f;
+        public static Vector2 RetrievePetSlowedVelocity(NPC npc)
         {
-            PetsOverhaul.BeforeNPCPreAI += UpdateSlows;
-        }
-        public static void UpdateSlows(NPC npc)
-        {
-            if (npc.active && npc.TryGetGlobalNPC(out NpcPet npcPet))
+            if (npc.TryGetGlobalNPC(out NpcPet pet))
             {
-                if (npcPet.VeloChangedGround == true)
+                float slow = pet.currentTotalSlow;
+                if (slow < -0.9f)
                 {
-                    npc.velocity.X = npcPet.GroundVelo;
-
-                    npcPet.VeloChangedGround2 = true;
+                    slow = -0.9f;
+                }
+                if (npc.noGravity == false)
+                {
+                    return npc.velocity with { X = npc.velocity.X * 1 / (1 + slow) };
                 }
                 else
                 {
-                    npcPet.VeloChangedGround2 = false;
-                }
-
-                if (npcPet.VeloChangedGround2 == false)
-                {
-                    npcPet.GroundVelo = npc.velocity.X;
-                }
-
-                if (npcPet.VeloChangedFlying == true)
-                {
-                    npc.velocity = npcPet.FlyingVelo;
-
-                    npcPet.VeloChangedFlying2 = true;
-                }
-                else
-                {
-                    npcPet.VeloChangedFlying2 = false;
-                }
-
-                if (npcPet.VeloChangedFlying2 == false)
-                {
-                    npcPet.FlyingVelo = npc.velocity;
+                    return npc.velocity * 1 / (1 + slow);
                 }
             }
+            else
+                return npc.velocity;
         }
+        public override void Load()
+        {
+            IL_NPC.UpdateNPC_Inner += SlowILEditForUpdate;
+            IL_NPC.Collision_MoveWhileDry += SlowILEditForDry;
+            IL_NPC.Collision_MoveWhileWet += SlowILEditForWet;
+        }
+        private static void SlowILEditForUpdate(ILContext il)
+        {
+            try
+            {
+                var c = new ILCursor(il);
+                if (c.TryGotoNext(
+                      i => i.MatchLdarg(0), //the this instance parameter
+                      i => i.MatchLdfld<Terraria.Entity>("position"), //we find where first field is position
+                      i => i.MatchLdarg(0),
+                      i => i.MatchLdfld<Terraria.Entity>("velocity") //we find where second field is velocity
+                  ))
+                {
+                    c.GotoNext(i => i.MatchLdfld<Terraria.Entity>("velocity")); //Cursor now sits at where velocity field is
+
+                    c.Remove(); //velocity field spesifically is removed. I tried using EmitPop(), but that causes issues & does not work.
+
+                    c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
+                    //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
+                }
+            }
+            catch (Exception e)
+            {
+                MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
+            }
+        }
+        private static void SlowILEditForDry(ILContext il)
+        {
+            try
+            {
+                var c = new ILCursor(il);
+                if (c.TryGotoNext(
+                    i => i.MatchLdarg(0),
+                      i => i.MatchLdarg(0), //the this instance parameter
+                      i => i.MatchLdfld<Terraria.Entity>("position"), //we find where first field is position
+                      i => i.MatchLdarg(0),
+                      i => i.MatchLdfld<Terraria.Entity>("velocity") //we find where second field is velocity
+                  ))
+                {
+                    c.GotoNext(i => i.MatchLdfld<Terraria.Entity>("velocity")); //Cursor now sits at where velocity field is
+
+                    c.Remove(); //velocity field spesifically is removed. I tried using EmitPop(), but that causes issues & does not work.
+
+                    c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
+                    //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
+                }
+            }
+            catch (Exception e)
+            {
+                MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
+            }
+        }
+        private static void SlowILEditForWet(ILContext il)
+        {
+            try
+            {
+                var c = new ILCursor(il);
+                if (c.TryGotoNext(
+                      i => i.MatchLdarg(0), //this instance param
+                      i => i.MatchLdflda<Terraria.Entity>("velocity"), //The 'a' at the end apparently means address.
+                      i => i.MatchLdcR4(out _) //ldc.r4 = Float value
+                  ))
+                {
+                    //same as above on Update & Dry, we just replace the velocity
+                    c.GotoNext(i => i.MatchLdfld<Terraria.Entity>("velocity"));
+
+                    c.Remove();
+
+                    c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity"));
+                }
+            }
+            catch (Exception e)
+            {
+                MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
+            }
+        }
+        public bool testSlow = false;
         public override void PostAI(NPC npc)
         {
             if (npc.active)
             {
+                if (testSlow)
+                {
+                    currentTotalSlow = 0.5f;
+                }
+                else
+                {
+                    currentTotalSlow = 0;
+                }
+
                 electricSlow = false;
                 coldSlow = false;
                 sickSlow = false;
