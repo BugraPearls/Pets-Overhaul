@@ -20,16 +20,10 @@ namespace PetsOverhaul
         private delegate bool hook_ItemLoaderOnPickup(orig_ItemLoaderOnPickup orig, Item item, Player player);
         private static readonly MethodInfo OnPickupInfo = typeof(ItemLoader).GetMethod("OnPickup");
 
-        public static Action<NPC> BeforeNPCPreAI;
-        private delegate bool orig_NPCLoaderPreAI(NPC npc);
-        private delegate bool hook_NPCLoaderPreAI(orig_NPCLoaderPreAI orig, NPC npc);
-        private static readonly MethodInfo PreAIInfo = typeof(NPCLoader).GetMethod("PreAI");
-
         private readonly List<Hook> hooks = [];
         public override void Load()
         {
             hooks.Add(new(OnPickupInfo, ItemLoaderOnPickupDetour));
-            hooks.Add(new(PreAIInfo, NPCLoaderPreAIDetour));
             foreach (Hook hook in hooks)
             {
                 hook.Apply();
@@ -41,12 +35,6 @@ namespace PetsOverhaul
             OnPickupActions?.Invoke(item, player);
 
             return orig(item, player);
-        }
-        private static bool NPCLoaderPreAIDetour(orig_NPCLoaderPreAI orig, NPC npc)
-        {
-            BeforeNPCPreAI?.Invoke(npc);
-
-            return orig(npc);
         }
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
