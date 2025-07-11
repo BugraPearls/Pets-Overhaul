@@ -35,11 +35,42 @@ namespace PetsOverhaul.NPCs
             public int SlowTime = slowTime;
             public int SlowId = slowId;
         }
-        public List<PetSlow> SlowList = [];
+
         /// <summary>
-        /// If you need to find out how much current cumulative slow amount is, use this.
+        /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
         /// </summary>
-        public float CurrentSlowAmount { get; internal set; }
+        internal float currentTotalSlow = 0f;
+        /// <summary>
+        /// Returns the correct velocity of the NPC with total slow value. This is used by IL edits to replace npc.velocity values.
+        /// </summary>
+        /// <param name="npc"></param>
+        /// <returns></returns>
+        public static Vector2 RetrievePetSlowedVelocity(NPC npc)
+        {
+            if (npc.TryGetGlobalNPC(out NpcPet pet))
+            {
+                float slow = pet.currentTotalSlow;
+                if (slow < -0.9f)
+                {
+                    slow = -0.9f;
+                }
+                if (npc.noGravity == false)
+                {
+                    return npc.velocity with { X = npc.velocity.X * 1 / (1 + slow) };
+                }
+                else
+                {
+                    return npc.velocity * 1 / (1 + slow);
+                }
+            }
+            else
+                return npc.velocity;
+        }
+        /// <summary>
+        /// All slows on this NPC.
+        /// </summary>
+        public List<PetSlow> SlowList = [];
+
         public bool electricSlow;
         public bool coldSlow;
         public bool sickSlow;
@@ -52,14 +83,10 @@ namespace PetsOverhaul.NPCs
         /// Contains all Vanilla bosses that does not return npc.boss = true
         /// </summary>
         public static List<int> NonBossTrueBosses = [NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.EaterofWorldsHead, NPCID.LunarTowerSolar, NPCID.LunarTowerNebula, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.TorchGod, NPCID.Retinazer, NPCID.Spazmatism];
-        public Vector2 FlyingVelo { get; internal set; }
-        public float GroundVelo { get; internal set; }
-        public bool VeloChangedFlying { get; internal set; }
-        public bool VeloChangedFlying2 { get; internal set; }
-        public bool VeloChangedGround { get; internal set; }
-        public bool VeloChangedGround2 { get; internal set; }
 
         public override bool InstancePerEntity => true;
+
+        #region Pet Tamer stuff
         public override void SetStaticDefaults()
         {
             NPCHappiness.Get(NPCID.BestiaryGirl).SetNPCAffection<PetTamer>(AffectionLevel.Like);
@@ -73,6 +100,9 @@ namespace PetsOverhaul.NPCs
             if (PetObtainedCondition.petIsObtained == false && npc.type == NPCID.Guide && Main.rand.NextBool(10))
                 chat = PetTextsColors.LocVal("NPCs.PetTamer.GuideQuote");
         }
+        #endregion
+
+        #region On Kill & Loot Related stuff
         public static void OnKillInvokeDeathEffects(int playerWhoAmI, NPC npc)
         {
             Player player = Main.player[playerWhoAmI];
@@ -152,6 +182,9 @@ namespace PetsOverhaul.NPCs
             globalLoot.Add(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsABoss(), ModContent.ItemType<MasteryShard>(), 100)); //1% for bosses (Most bosses that isn't boss = true does become boss = true at some point. EoW is fine without it as 0.02% is triggered multiple times
             globalLoot.Add(ItemDropRule.ByCondition(new NotABossCondition(), ModContent.ItemType<MasteryShard>(), 5000)); // 0.02% for non-bosses
         }
+        #endregion
+
+        #region Sea Creature check
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
             if (source is EntitySource_FishedOut fisherman && fisherman.Fisher is Player player)
@@ -169,31 +202,9 @@ namespace PetsOverhaul.NPCs
                 seaCreature = false;
             }
         }
-        /// <summary>
-        /// This is un-balanced slow value just added by all various sources. It is properly calculated in RetrieveActualSlow().
-        /// </summary>
-        public float currentTotalSlow = 0f;
-        public static Vector2 RetrievePetSlowedVelocity(NPC npc)
-        {
-            if (npc.TryGetGlobalNPC(out NpcPet pet))
-            {
-                float slow = pet.currentTotalSlow;
-                if (slow < -0.9f)
-                {
-                    slow = -0.9f;
-                }
-                if (npc.noGravity == false)
-                {
-                    return npc.velocity with { X = npc.velocity.X * 1 / (1 + slow) };
-                }
-                else
-                {
-                    return npc.velocity * 1 / (1 + slow);
-                }
-            }
-            else
-                return npc.velocity;
-        }
+        #endregion
+
+        #region All the slow IL Edits
         public override void Load()
         {
             IL_NPC.UpdateNPC_Inner += SlowILEditForUpdate;
@@ -275,30 +286,23 @@ namespace PetsOverhaul.NPCs
                 MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
             }
         }
-        public bool testSlow = false;
+        #endregion
+
+        #region Slow Stuff mostly on maintaining the Slow List & particles
         public override void PostAI(NPC npc)
         {
             if (npc.active)
             {
-                if (testSlow)
-                {
-                    currentTotalSlow = 0.5f;
-                }
-                else
-                {
-                    currentTotalSlow = 0;
-                }
-
                 electricSlow = false;
                 coldSlow = false;
                 sickSlow = false;
-                CurrentSlowAmount = 0;
+                currentTotalSlow = 0;
 
                 if (SlowList.Count > 0)
                 {
                     foreach (var slow in SlowList)
                     {
-                        CurrentSlowAmount += slow.SlowAmount;
+                        currentTotalSlow += slow.SlowAmount;
 
                         if (PetSlowIDs.ElectricBasedSlows.Exists(x => x == slow.SlowId))
                         {
@@ -322,45 +326,8 @@ namespace PetsOverhaul.NPCs
 
                     SlowList.RemoveAll(x => x.SlowTime <= 0);
                 }
-                if (CurrentSlowAmount > 0)
-                {
-                    Slow(npc, CurrentSlowAmount);
-                }
             }
         }
-        /// <summary>
-        /// Does not slow an npc's vertical speed if they are affected by gravity, but does so if they arent. Due to the formula, you may use a positive number for slowAmount freely and as much as you want, it almost will never completely stop an enemy. Negative values however, easily can get out of hand and cause unwanted effects. Due to that, a cap of -0.9f exists for negative values, which 10x's the speed.
-        /// </summary>
-        internal void Slow(NPC npc, float slow)
-        {
-            if (slow < -0.9f)
-            {
-                slow = -0.9f;
-            }
-
-            FlyingVelo = npc.velocity;
-            GroundVelo = npc.velocity.X;
-            if (npc.noGravity == false)
-            {
-                npc.velocity.X *= 1 / (1 + slow);
-                VeloChangedGround = true;
-            }
-            else
-            {
-                VeloChangedGround = false;
-            }
-
-            if (npc.noGravity)
-            {
-                npc.velocity *= 1 / (1 + slow);
-                VeloChangedFlying = true;
-            }
-            else
-            {
-                VeloChangedFlying = false;
-            }
-        }
-
         /// <summary>
         /// Use this to add Slow to an NPC. It will send proper messages to the Server, and Server will sync all Clients to match their Slow Lists for consistent slow mechanics.
         /// </summary>
@@ -385,12 +352,16 @@ namespace PetsOverhaul.NPCs
         }
 
         /// <summary>
-        /// Actually adds to the Slow List of an NPC to slow them. Does the proper boss/friendly checks and replaces weak Slows existing in the List. This DOES NOT Sync with server & other clients, always use AddSlow() rather than this, unless you know what you're doing.
+        /// Actually adds to the Slow List of an NPC to slow them. Does the proper checks and replaces weak Slows existing in the List. This DOES NOT Sync with server & other clients, AddSlow() & PetsOverhaul (where packets are handled) is where its done.
         /// </summary>
         internal static void AddToSlowList(PetSlow slowToBeAdded, NPC npc)
         {
-            if (npc.active && (npc.townNPC == false || npc.isLikeATownNPC == false || npc.friendly == false) && npc.boss == false && NonBossTrueBosses.Contains(npc.type) == false && npc.TryGetGlobalNPC(out NpcPet npcPet))
+            if (npc.active && (npc.townNPC == false || npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NpcPet npcPet))
             {
+                if (npc.boss && NonBossTrueBosses.Contains(npc.type))
+                {
+                    slowToBeAdded.SlowAmount *= 0.2f;
+                }
                 if (slowToBeAdded.SlowId <= -1)
                 {
                     npcPet.SlowList.Add(slowToBeAdded);
@@ -413,11 +384,14 @@ namespace PetsOverhaul.NPCs
                 }
             }
         }
+        #endregion
+
+        #region Draw Effects Particles
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
-            if (CurrentSlowAmount > 0)
+            if (currentTotalSlow > 0)
             {
-                int dustChance = GlobalPet.Randomizer((int)(1000 / CurrentSlowAmount));
+                int dustChance = GlobalPet.Randomizer((int)(1000 / currentTotalSlow));
                 if (dustChance <= 0)
                     dustChance = 1;
                 bool spawnDust = Main.rand.NextBool(dustChance); //We use random chance to spawn a dust, the chance for gets narrowed down the more slow there is.
@@ -467,6 +441,7 @@ namespace PetsOverhaul.NPCs
                 }
             }
         }
+        #endregion
     }
     /// <summary>
     /// Class that contains PetSlowID's, where same slow ID does not overlap with itself, and a slow with greater slow & better remaining time will override the obsolete one.
