@@ -1817,6 +1817,7 @@ Mods: {
 					Common5: Ah, sim. Alguém me deu a receita para transformar um Coração Carmesim em um Orbe Sombrio. Eu o fabriquei. E adivinha? Ele se recusou a ficar mais forte que seu predecessor!
 					Common6: Sim! Com a Forja de PET's, você pode conseguir qualquer PET que quiser. Embora possa ser um pouco difícil e trabalhoso.
 					Common7: Lembre-se sempre de dar um pouco de carinho aos Pets e Slimes da Cidade. Eles podem até te dar alguns bônus!
+					// Common8: Have you noticed your Pets slowdown effects are less effective against bosses?
 					Rare1: Para que é esse chicote? Para aqueles que tentar machucar meus PET's, é claro! O que mais você pensou hein?
 					WizardQuote: É coisa de louco! Quando <name> me disse que eu estava com muita sorte naquele dia, todos os PET's de Luz que treinei pareciam ter um potencial maior.
 				}

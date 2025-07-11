@@ -180,6 +180,7 @@ namespace PetsOverhaul.NPCs
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common5"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common6"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common7"), 10);
+            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common8"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Rare1"), 1);
 
             int wiz = NPC.FindFirstNPC(NPCID.Wizard);
