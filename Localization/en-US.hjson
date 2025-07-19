@@ -745,7 +745,7 @@ Mods: {
 				'''
 			SharkBait:
 				'''
-				- Gain <breath> seconds more of underwater breathing duration.
+				- Gain <breath>% more of underwater breathing duration.
 				- Deal <seaCreatureDmg>x damage to fished-up enemies and
 				  receive <seaCreatureResist>x damage from all attacks of fished-up enemies.
 				 * Fished-up enemies include enemies that spawn upon catching with your rod.

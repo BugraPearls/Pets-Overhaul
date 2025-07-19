@@ -41,7 +41,7 @@ namespace PetsOverhaul.PetEffects
                 Player.fishingSkill += increaseInt;
                 Player.aggro += increaseInt;
                 Player.extraFall += increaseInt;
-                Player.breathMax += 4; // equal to +28 frames, around 0.47 second
+                Player.breathEffectiveness += increaseFloat;
                 Player.pickSpeed -= Player.pickSpeed * increaseFloat;
                 Player.lavaMax += 24; //0.4 second (Also, this being set low causes issues, game attempts to draw the lava immunity bar, but crashes (freeze) if it cannot divide the value properly to frames.
                 Player.tileSpeed += increaseFloat;

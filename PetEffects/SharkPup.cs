@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public float seaCreatureDamage = 1.1f;
         public int shieldOnCatch = 10;
         public int shieldTime = 900;
-        public int breath = 43;
+        public float breathBoost = 0.2f;
         public override PetClasses PetClassPrimary => PetClasses.Fishing;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
@@ -36,7 +36,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false))
             {
-                Player.breathMax += breath;
+                Player.breathEffectiveness += breathBoost;
             }
         }
         public override void ModifyCaughtFish(Item fish)
@@ -88,7 +88,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SharkBait")
-                        .Replace("<breath>", Math.Round((float)sharkPup.breath * 7 / 60, 2).ToString())
+                        .Replace("<breath>", Math.Round(sharkPup.breathBoost * 100, 2).ToString())
                         .Replace("<seaCreatureDmg>", sharkPup.seaCreatureDamage.ToString())
                         .Replace("<seaCreatureResist>", sharkPup.seaCreatureResist.ToString())
                         .Replace("<shield>", sharkPup.shieldOnCatch.ToString())
