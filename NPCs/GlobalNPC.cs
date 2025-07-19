@@ -356,7 +356,7 @@ namespace PetsOverhaul.NPCs
         /// </summary>
         internal static void AddToSlowList(PetSlow slowToBeAdded, NPC npc)
         {
-            if (npc.active && (npc.townNPC == false || npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NpcPet npcPet))
+            if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NpcPet npcPet))
             {
                 if (npc.boss && NonBossTrueBosses.Contains(npc.type))
                 {
