@@ -1063,6 +1063,7 @@ Mods: {
 				 * Aumenta velocidade de ataque físico em <meleeSpd>%.
 				 * Aumenta dano físico em <meleeDmg>%.
 				 * Aumenta defesa em <def>.
+				 * Reduz a velocidade de movimento em <ms>%.
 				'''
 			RangedTooltip:
 				'''
@@ -1071,6 +1072,7 @@ Mods: {
 				 * Aumenta chance crítica de armas a distância em <rangedCrit>%.
 				 * Aumenta dano crítico de armas a distância em <rangedCritDmg>%.
 				 * Aumenta dano de armas a distância em <rangedDmg>%.
+				 * Reduz a saúde máxima em <hp>%.
 				'''
 			MagicTooltip:
 				'''
@@ -1079,6 +1081,7 @@ Mods: {
 				 * Diminui o uso de mana em <manaCost>%.
 				 * Aumenta a chance crítica de dano mágico em <magicCrit>%.
 				 * Aumenta dano mágico em <magicDmg>%.
+				 * Reduz a saúde máxima em <hp>%.
 				'''
 			SummonerTooltip:
 				'''
@@ -1087,6 +1090,7 @@ Mods: {
 				 * Aumenta velocidade de ataque de chicotes em <sumSpd>%.
 				 * Aumenta o número máximo de lacaios em <sumMax>.
 				 * Aumenta o número máximo de torres em <sumMaxSentry>.
+				 * Reduz a saúde máxima em <hp>%.
 				'''
 			ResplendentDessert:
 				'''
@@ -1517,6 +1521,7 @@ Mods: {
 				- Distância aumenta penetração de armadura à distância, chance de crítico, dano crítico e dano.
 				- Mágica aumenta mana máxima, crítico mágico, dano mágico e reduz custo de mana.
 				- Invocador aumenta alcance, velocidade, máximo de servos e sentinelas.
+				- O combate corpo a corpo também reduz a velocidade de movimento, enquanto outros reduzem a saúde máxima.
 				'''
 			ResplendentDessert:
 				'''

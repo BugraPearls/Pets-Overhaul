@@ -24,22 +24,26 @@ namespace PetsOverhaul.PetEffects
                                             .Replace("<dr>", Math.Round(meleeDr * 100, 2).ToString())
                                             .Replace("<meleeSpd>", Math.Round(meleeSpd * 100, 2).ToString())
                                             .Replace("<meleeDmg>", Math.Round(meleeDmg * 100, 2).ToString())
-                                            .Replace("<def>", defense.ToString())),
+                                            .Replace("<def>", defense.ToString())
+                                            .Replace("<ms>", Math.Round(msReduce * 100, 2).ToString())),
                     new ClassAndItsTooltip(PetClasses.Ranged,PetTextsColors.LocVal("PetItemTooltips.RangedTooltip")
                                             .Replace("<armorPen>", rangedPen.ToString())
                                             .Replace("<rangedCrit>", rangedCr.ToString())
                                             .Replace("<rangedCritDmg>", Math.Round(rangedCrDmg * 100, 2).ToString())
-                                            .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString())),
+                                            .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString())
+                                            .Replace("<hp>", Math.Round(hpReduce * 100, 2).ToString())),
                     new ClassAndItsTooltip(PetClasses.Magic,PetTextsColors.LocVal("PetItemTooltips.MagicTooltip")
                                             .Replace("<mana>", magicMana.ToString())
                                             .Replace("<manaCost>", Math.Round(magicManaCost * 100, 2).ToString())
                                             .Replace("<magicCrit>", magicCrit.ToString())
-                                            .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString())),
+                                            .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString())
+                                            .Replace("<hp>", Math.Round(hpReduce * 100, 2).ToString())),
                     new ClassAndItsTooltip(PetClasses.Summoner,PetTextsColors.LocVal("PetItemTooltips.SummonerTooltip")
                                             .Replace("<sumRange>", Math.Round(sumWhipRng * 100, 2).ToString())
                                             .Replace("<sumSpd>", Math.Round(sumWhipSpd * 100, 2).ToString())
                                             .Replace("<sumMax>", sumMinion.ToString())
-                                            .Replace("<sumMaxSentry>", sumSentry.ToString()))];
+                                            .Replace("<sumMaxSentry>", sumSentry.ToString())
+                                            .Replace("<hp>", Math.Round(hpReduce * 100, 2).ToString()))];
                 if (ExternalTooltips.Count != 0)
                     tooltips.AddRange(ExternalTooltips);
                 return tooltips;
@@ -50,23 +54,26 @@ namespace PetsOverhaul.PetEffects
         /// </summary>
         public List<ClassAndItsTooltip> ExternalTooltips = [];
         public override int PetItemID => ItemID.MoonLordPetItem;
+        public float msReduce = 0.15f;
+        public float hpReduce = 0.12f;
+
         public int defense = 10;
         public float meleeDr = 0.1f;
         public float meleeSpd = 0.15f;
-        public float meleeDmg = 0.2f;
+        public float meleeDmg = 0.15f;
 
         public int rangedPen = 15;
         public float rangedDmg = 0.1f;
         public int rangedCr = 10;
-        public float rangedCrDmg = 0.1f;
+        public float rangedCrDmg = 0.05f;
 
-        public int magicMana = 150;
+        public int magicMana = 80;
         public float magicDmg = 0.15f;
         public int magicCrit = 10;
         public float magicManaCost = 0.1f;
 
-        public float sumWhipRng = 0.45f;
-        public float sumWhipSpd = 0.3f;
+        public float sumWhipRng = 0.25f;
+        public float sumWhipSpd = 0.05f;
         public int sumMinion = 2;
         public int sumSentry = 2;
 
@@ -90,23 +97,27 @@ namespace PetsOverhaul.PetEffects
                         Player.GetAttackSpeed<MeleeDamageClass>() += meleeSpd;
                         Player.GetDamage<MeleeDamageClass>() += meleeDmg;
                         Player.statDefense += defense;
+                        Player.moveSpeed -= msReduce;
                         break;
                     case 1:
                         Player.GetArmorPenetration<RangedDamageClass>() += rangedPen;
                         Player.GetDamage<RangedDamageClass>() += rangedDmg;
                         Player.GetCritChance<RangedDamageClass>() += rangedCr;
+                        Player.statLifeMax2 -= (int)(Player.statLifeMax2 * hpReduce);
                         break;
                     case 2:
                         Player.statManaMax2 += magicMana;
                         Player.GetDamage<MagicDamageClass>() += magicDmg;
                         Player.GetCritChance<MagicDamageClass>() += magicCrit;
                         Player.manaCost -= magicManaCost;
+                        Player.statLifeMax2 -= (int)(Player.statLifeMax2 * hpReduce);
                         break;
                     case 3:
                         Player.whipRangeMultiplier += sumWhipRng;
                         Player.GetAttackSpeed<SummonMeleeSpeedDamageClass>() += sumWhipSpd;
                         Player.maxMinions += sumMinion;
                         Player.maxTurrets += sumSentry;
+                        Player.statLifeMax2 -= (int)(Player.statLifeMax2 * hpReduce);
                         break;
                     default:
                         break;

@@ -1047,6 +1047,7 @@ Mods: {
 				 * Increases melee speed by <meleeSpd>%.
 				 * Increases melee damage by <meleeDmg>%.
 				 * Increases defense by <def>.
+				 * Reduces movement speed by <ms>%.
 				'''
 			RangedTooltip:
 				'''
@@ -1055,6 +1056,7 @@ Mods: {
 				 * Increases ranged crit chance by <rangedCrit>%.
 				 * Increases ranged crit damage by <rangedCritDmg>%.
 				 * Increases ranged damage by <rangedDmg>%.
+				 * Reduces maximum health by <hp>%.
 				'''
 			MagicTooltip:
 				'''
@@ -1063,6 +1065,7 @@ Mods: {
 				 * Decreases mana costs by <manaCost>%.
 				 * Increases magic crit chance by <magicCrit>%.
 				 * Increases magic damage by <magicDmg>%.
+				 * Reduces maximum health by <hp>%.
 				'''
 			SummonerTooltip:
 				'''
@@ -1071,6 +1074,7 @@ Mods: {
 				 * Increases whip speed by <sumSpd>%.
 				 * Increases maximum minions by <sumMax>.
 				 * Increases maximum sentries by <sumMaxSentry>.
+				 * Reduces maximum health by <hp>%.
 				'''
 			ResplendentDessert:
 				'''
@@ -1502,6 +1506,7 @@ Mods: {
 				- Ranged increases ranged armor pen, crit chance, crit damage and damage.
 				- Magic increases max mana, magic crit, damage, and reduces mana costs.
 				- Summoner increases whip range, speed, max minions and sentries.
+				- Melee also reduces movement speed, while others reduce maximum health. 
 				'''
 			ResplendentDessert:
 				'''
