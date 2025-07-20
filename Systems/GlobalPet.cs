@@ -168,7 +168,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static Action<NPC, Player> OnEnemyDeath;
 
-        #region GlobalPet Methods
+        #region GlobalPet Methods, mostly Util stuff
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
             return new EntitySource_Pet
@@ -177,6 +177,7 @@ namespace PetsOverhaul.Systems
                 Context = context
             };
         }
+
         /// <summary>
         /// Add an id to pool List with how many times it should be added as the weight.
         /// </summary>

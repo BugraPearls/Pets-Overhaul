@@ -418,6 +418,7 @@ Mods: {
 				'''
 			Fish:
 				'''
+				- Increases Breath effectiveness by <breath>%.
 				- While in a Snow or Ocean biome, gain 
 				  <moreFp> fishing power and grants Flipper [i:187] effect.
 				 * While you aren't, gain <fp> fishing power instead.
@@ -465,7 +466,7 @@ Mods: {
 				 * Health, defence, damage reduction, knockback resistance
 				 * Life regen, natural life regen accleration, aggro
 				 * Move speed, jump speed, wing time, fall damage resistance
-				 * Fishing power, luck, breath duration, lava resistance duration
+				 * Fishing power, luck, breath effectiveness, lava resistance duration
 				 * Mining speed, tile placement speed, wall placement speed
 				 * Global & mining & harvesting & fishing fortune
 				 * Pet ability haste, pets damage, pet heal and shield effectiveness
@@ -1136,6 +1137,7 @@ Mods: {
 				'''
 			Fish:
 				'''
+				- Increases breathing effectiveness.
 				- Gain fishing power.
 				 * When in Ocean or Snow biome, gain more and have flipper effect.
 				- Reduces chilled debuff duration.

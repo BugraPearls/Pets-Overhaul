@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public float seaCreatureDamage = 1.1f;
         public int shieldOnCatch = 10;
         public int shieldTime = 900;
-        public float breathBoost = 0.2f;
+        public float breathBoost = 0.25f;
         public override PetClasses PetClassPrimary => PetClasses.Fishing;
         public override PetClasses PetClassSecondary => PetClasses.Utility;
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)

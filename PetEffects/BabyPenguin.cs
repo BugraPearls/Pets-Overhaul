@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,6 +18,8 @@ namespace PetsOverhaul.PetEffects
         public int regularFish = 20;
         public float chillingMultiplier = 0.8f;
         public int snowFishChance = 60;
+        public float breathEffectivenessBoost = 0.15f;
+
         public static List<int> IceFishingDrops = [ItemID.FrostMinnow, ItemID.AtlanticCod, ItemID.FrostDaggerfish, ItemID.FrozenCrate, ItemID.FrozenCrateHard];
         public override void PostUpdateMiscEffects()
         {
@@ -33,16 +36,18 @@ namespace PetsOverhaul.PetEffects
                 }
             }
 
-            if (PetIsEquipped() && Player.HasBuff(BuffID.Chilled))
+            if (PetIsEquipped())
             {
-                if (Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)] > penguinOldChilledTime)
+                if (Player.HasBuff(BuffID.Chilled))
                 {
-                    Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)] -= (int)(Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)] * chillingMultiplier);
+                    if (Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)] > penguinOldChilledTime)
+                    {
+                        Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)] -= (int)(Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)] * chillingMultiplier);
+                    }
+                    penguinOldChilledTime = Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)];
                 }
-                penguinOldChilledTime = Player.buffTime[Player.FindBuffIndex(BuffID.Chilled)];
+                Player.breathEffectiveness *= 1f + breathEffectivenessBoost;
             }
-
-
         }
         public override void ModifyCaughtFish(Item fish)
         {
@@ -73,7 +78,8 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<moreFp>", babyPenguin.snowAndOceanPower.ToString())
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())
                 .Replace("<items>", PetTextsColors.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
-                .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier * 100, 2).ToString());
+                .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier * 100, 2).ToString())
+                .Replace("<breath>", Math.Round(babyPenguin.breathEffectivenessBoost * 100, 2).ToString());
         public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Fish");
     }
 }

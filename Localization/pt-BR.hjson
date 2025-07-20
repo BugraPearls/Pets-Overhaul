@@ -426,6 +426,7 @@ Mods: {
 				'''
 			Fish:
 				'''
+				- Aumenta a eficácia da Respiração em <breath>%.
 				- Concede <fp> de poder de pesca. Isso aumenta dependendo do bioma atual:
 				 * Enquanto estiver no bioma do Oceano, aumenta para <oceanFp>.
 				 * Enquanto estiver no bioma da Neve, aumenta para <snowFp>.
@@ -1152,6 +1153,7 @@ Mods: {
 				'''
 			Fish:
 				'''
+				- Aumenta a eficácia da respiração.
 				- Ganha poder de pesca.
 				  * No Oceano ou bioma de Neve, ganha mais poder e efeito nadadeira.
 				- Reduz duração do debuff de frio.
