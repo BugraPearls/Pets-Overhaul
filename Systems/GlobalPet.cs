@@ -919,11 +919,15 @@ namespace PetsOverhaul.Systems
             petShield.Clear();
             inCombatTimer = 0;
         }
-        public override void ModifyCaughtFish(Item fish)
+        public override void ModifyCaughtFish(Item fish) //this is where fish is actually caught/reeled out.
         {
             for (int i = 0; i < Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000); i++)
             {
                 Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), fish.type, 1);
+            }
+            if (Main.rand.NextBool(5)) 
+            {
+                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1,3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
             }
         }
         public override void ProcessTriggers(TriggersSet triggersSet)
@@ -936,6 +940,13 @@ namespace PetsOverhaul.Systems
             if (PetKeybinds.ShowDetailedTip.JustPressed)
             {
                 CurrentTooltipsIsSimple = !CurrentTooltipsIsSimple;
+            }
+        }
+        public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
+        {
+            if (Main.rand.NextBool(3))
+            {
+                rewardItems.Add(new Item(ModContent.ItemType<PetFood>(), Main.rand.Next(5, 11))); //11 since we want 10 to be possible
             }
         }
         #endregion

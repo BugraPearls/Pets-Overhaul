@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using PetsOverhaul.Items;
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,6 +7,21 @@ namespace PetsOverhaul.Systems
 {
     public class TilePlacement : GlobalTile
     {
+        #region Pet Food related
+        public override void Drop(int i, int j, int type)
+        {
+            if (ItemPet.treeTile[type] && Main.rand.NextBool(50))
+            {
+                Item.NewItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+            }
+            else if (Main.rand.NextBool(3) && (type == TileID.MatureHerbs || type == TileID.BloomingHerbs)) 
+            {
+                Item.NewItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+            }
+        }
+
+        #endregion
+
         public static void RemoveFromList(int i, int j)
         {
             if (Main.netMode == NetmodeID.MultiplayerClient)

@@ -33,6 +33,7 @@ namespace PetsOverhaul.Items
         /// Includes tiles that counts as trees.
         /// </summary>
         public static bool[] treeTile = TileID.Sets.Factory.CreateBoolSet(false, TileID.TreeAmber, TileID.TreeAmethyst, TileID.TreeAsh, TileID.TreeDiamond, TileID.TreeEmerald, TileID.TreeRuby, TileID.Trees, TileID.TreeSapphire, TileID.TreeTopaz, TileID.MushroomTrees, TileID.PalmTree, TileID.VanityTreeSakura, TileID.VanityTreeYellowWillow, TileID.Bamboo, TileID.Cactus);
+
         /// <summary>
         /// Contains items dropped by gemstone trees. Current only use is Caveling Gardener and checking for the Gemstone Tree
         /// </summary>
@@ -138,5 +139,22 @@ namespace PetsOverhaul.Items
             sources2.Retrieve(ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
         }
         #endregion
+
+        public override void ExtractinatorUse(int extractType, int extractinatorBlockType, ref int resultType, ref int resultStack)
+        {
+            if (resultType == ItemID.CopperCoin) //Only replacing Copper Coin drops
+            {
+                if (extractinatorBlockType == TileID.ChlorophyteExtractinator && Main.rand.NextBool(10)) //10% chance to replace if Chlorophyte
+                {
+                    resultType = ModContent.ItemType<PetFood>(); //This way its IN the loot table, but actually replaces through the Copper Coin.
+                    resultStack = 1;
+                }
+                else if (Main.rand.NextBool(20)) //5% chance to replace if not
+                {
+                    resultType = ModContent.ItemType<PetFood>();
+                    resultStack = 1;
+                }
+            }
+        }
     }
 }
