@@ -28,6 +28,8 @@ namespace PetsOverhaul.Systems
         public static bool eolConsumed = false;
         public static bool golemConsumed = false;
         public static bool pumpkingConsumed = false;
+
+        public bool petObtained = false;
         /// <summary>
         /// Modify this value if you want to reduce or increase lifesteal & healing by Pets for any reason, such as a Mod applying an effect that reduces healings. Basically a modifier on heals from Pets. Used in PetRecovery().
         /// </summary>
@@ -639,6 +641,7 @@ namespace PetsOverhaul.Systems
             tag.Add("eolConsume", eolConsumed);
             tag.Add("golemConsume", golemConsumed);
             tag.Add("pumpkingConsume", pumpkingConsumed);
+            tag.Add("hasPet", petObtained);
         }
         public override void LoadData(TagCompound tag)
         {
@@ -676,6 +679,11 @@ namespace PetsOverhaul.Systems
             {
                 pumpkingConsumed = pumpking;
             }
+
+            if (tag.TryGet("hasPet", out bool pet))
+            {
+                petObtained = pet;
+            }
         }
         public override void NaturalLifeRegen(ref float regen)
         {
@@ -686,7 +694,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && PetObtainedCondition.petIsObtained)
+            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && petObtained)
             {
                 modifiers.FinalDamage *= 1f - ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
@@ -694,7 +702,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && PetObtainedCondition.petIsObtained)
+            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && petObtained)
             {
                 modifiers.FinalDamage *= 1f + ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
@@ -817,9 +825,9 @@ namespace PetsOverhaul.Systems
         }
         public override void PostUpdate()
         {
-            if (PetObtainedCondition.petIsObtained == false && (Player.miscEquips[0].type != ItemID.None || Player.miscEquips[1].type != ItemID.None))
+            if (petObtained == false && (Player.miscEquips[0].type != ItemID.None || Player.miscEquips[1].type != ItemID.None))
             {
-                PetObtainedCondition.petIsObtained = true;
+                petObtained = true;
             }
 
             if (petShield.Count > 0)

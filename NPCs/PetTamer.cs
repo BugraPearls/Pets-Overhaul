@@ -148,7 +148,12 @@ namespace PetsOverhaul.NPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
-            return PetObtainedCondition.petIsObtained;
+            foreach (var item in Main.ActivePlayers)
+            {
+                if (item.GetModPlayer<GlobalPet>().petObtained)
+                    return true;
+            }
+            return false;
         }
 
         public override ITownNPCProfile TownNPCProfile()
@@ -180,6 +185,7 @@ namespace PetsOverhaul.NPCs
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common5"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common6"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common7"), 10);
+            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common8"), 10);
             chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Rare1"), 1);
 
             int wiz = NPC.FindFirstNPC(NPCID.Wizard);
