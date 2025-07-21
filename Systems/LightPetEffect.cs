@@ -14,7 +14,6 @@ namespace PetsOverhaul.Systems
         public static double multOnLightPetCombine = 1;
         public override void Load()
         {
-            On_Item.CanShimmer += On_Item_CanShimmer;
             On_ShopHelper.GetShoppingSettings += On_ShopHelper_GetShoppingSettings;
         }
 
@@ -26,13 +25,6 @@ namespace PetsOverhaul.Systems
                 multOnLightPetCombine = settings.PriceAdjustment; //This triggers upon talking to the NPC. (Opening the menu) Currently, this seems to be my greatest bet in implementing the Happiness Multiplier.
             }
             return settings;
-        }
-
-        private static bool On_Item_CanShimmer(On_Item.orig_CanShimmer orig, Item self)
-        {
-            if (PetItemIDs.LightPetNamesAndItems.ContainsValue(self.type))
-                return false;
-            return orig(self);
         }
     }
     public abstract class LightPetEffect : ModPlayer
@@ -148,7 +140,8 @@ namespace PetsOverhaul.Systems
                                 continue;
                             }
                             LightPetStat newPetRoll = (LightPetStat)lightPetRolls[i].GetValue(globalOfNewPet);
-                            newPetRoll.SetRoll(Main.LocalPlayer.luck, cap); //This sets roll of 'newPetRoll'
+                            newPetRoll.SetRoll(Main.LocalPlayer.luck, cap * 1.5f); //This sets roll of 'newPetRoll'
+                            //The "* 1.5f" makes it so this is somewhat buffed, as otherwise, almost guaranteed you would hit bottom rolls when constantly crafted into another Pet, this way, if the rolls on material Light Pet is high, result Light Pet shouldn't be too low, but in the long term should always result in rolls decreasing.
                             lightPetRolls[i].SetValue(globalOfNewPet, newPetRoll); //This actually changes the said roll to be changed on the GlobalItem.
                         }
                     }
@@ -239,13 +232,13 @@ namespace PetsOverhaul.Systems
             }
         }
         /// <summary>
-        /// Sets the Roll with upper limit of given percentage amount of MaxRoll. Doesn't check whether or not quality has been rolled before or not.
+        /// Sets the Roll with upper limit of given percentage amount of MaxRoll. Doesn't check whether or not quality has been rolled before or not, good to force the rolls to be done with a cap in mind.
         /// </summary>
-        /// <param name="maxRollPercent"></param>
         public void SetRoll(float luck, float maxRollPercent)
         {
             int tempMax = (int)Math.Round(Math.Clamp(maxRollPercent, 0, 1f) * MaxRoll);
             CurrentRoll = Main.rand.Next(tempMax) + 1;
+
             int timesToRoll = GlobalPet.Randomizer((int)(luck * 100));
             if (timesToRoll > 0)
             {

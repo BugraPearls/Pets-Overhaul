@@ -1780,6 +1780,7 @@ Mods: {
 					'''
 					Não há nenhum Pet que não se encante com esta ração multissabores!
 					Usada na criação de receitas para cada Pet.
+					Obtido por diversos meios, vendido pela Pet Tamer. Brilhante Pets resultará apenas em Pet Food.
 					'''
 			}
 		}
@@ -1820,11 +1821,10 @@ Mods: {
 					Common1: Como estão seus PET's? Sempre os alimente direitinho viu?.
 					Common2: Se por acaso você tiver vários PET's de Luz do mesmo tipo, posso combinar suas melhores qualidades em um único PET de Luz!... Por um preço, é claro.
 					Common3: Hm? Você quer saber mais sobre a força dos seus PET's? Por coincidência, tenho um Tablet de Monitoramento de PET's que posso vender para você.
-					Common4: Uma vez, deixei cair minha bolsa inteira naquele líquido roxo brilhante no subterrâneo. Fiquei tão preocupado porque minha bolsa tinha meu Fantasma na Garrafa! Estranhamente, enquanto via tudo se transformar em outra coisa, meu Fantasma na Garrafa permaneceu lá, impassível! Me pergunto o que era aquele líquido.
-					Common5: Ah, sim. Alguém me deu a receita para transformar um Coração Carmesim em um Orbe Sombrio. Eu o fabriquei. E adivinha? Ele se recusou a ficar mais forte que seu predecessor!
-					Common6: Sim! Com a Forja de PET's, você pode conseguir qualquer PET que quiser. Embora possa ser um pouco difícil e trabalhoso.
-					Common7: Lembre-se sempre de dar um pouco de carinho aos Pets e Slimes da Cidade. Eles podem até te dar alguns bônus!
-					// Common8: Have you noticed your Pets slowdown effects are less effective against bosses?
+					Common4: Ah, sim. Alguém me deu a receita para transformar um Coração Carmesim em um Orbe Sombrio. Eu o fabriquei. E adivinha? Ele se recusou a ficar mais forte que seu predecessor!
+					Common5: Sim! Com a Forja de PET's, você pode conseguir qualquer PET que quiser. Embora possa ser um pouco difícil e trabalhoso.
+					Common6: Lembre-se sempre de dar um pouco de carinho aos Pets e Slimes da Cidade. Eles podem até te dar alguns bônus!
+					Common7: Você notou que os efeitos de desaceleração dos seus animais de estimação são menos eficazes contra chefes?
 					Rare1: Para que é esse chicote? Para aqueles que tentar machucar meus PET's, é claro! O que mais você pensou hein?
 					WizardQuote: É coisa de louco! Quando <name> me disse que eu estava com muita sorte naquele dia, todos os PET's de Luz que treinei pareciam ter um potencial maior.
 				}

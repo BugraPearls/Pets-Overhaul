@@ -1760,6 +1760,7 @@ Mods: {
 					'''
 					There isn't any Pet that this Multi-flavoured Pet food won't appeal for!
 					Used in crafting recipes of every single Pet.
+					Obtained by various means, sold by Pet Tamer. Deshimmering Pets will only result in Pet Food. 
 					'''
 			}
 		}
@@ -1800,11 +1801,10 @@ Mods: {
 					Common1: How is your Pets coming along? Always keep them fed kid, just right.
 					Common2: If you do happen to have multiple Light Pets of the same type, I can combine their best Qualities into one Light Pet!.. For a price of course.
 					Common3: Hm? You'd like to know more regarding your Pets strength? I do happen to have Pet Monitoring Tablet I can sell to you. How convenient.
-					Common4: One time I've dropped my whole bag into that shiny looking purple liquid in the underground. I was so worried because had my Wisp in a Bottle in the bag! Weirdly enough, as I saw everything turn into something else, my Wisp just stood there, unfazed! I wonder what that liquid was.
-					Common5: Oh yeah. Someone gave me the recipe to make a Crimson Heart out of a Shadow Orb. I've crafted it. Guess what kid? It refused to be any stronger than its predecessor!
-					Common6: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
-					Common7: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
-					Common8: Have you noticed your Pets slowdown effects are less effective against bosses?
+					Common4: Oh yeah. Someone gave me the recipe to make a Crimson Heart out of a Shadow Orb. I've crafted it. Guess what kid? Its qualities tends to be worse!
+					Common5: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
+					Common6: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
+					Common7: Have you noticed your Pets slowdown effects are less effective against bosses?
 					Rare1: Whats this whip for? For the ones that tries to hurt my Pets of course! What else did ya think?
 					WizardQuote: Its crazy, when <name> told me im extremely lucky that day, all Light Pets I've been training during that day seemed to have higher potential.
 				}

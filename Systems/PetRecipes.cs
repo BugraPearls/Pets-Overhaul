@@ -16,7 +16,7 @@ namespace PetsOverhaul.Systems
         {
             recipe.AddIngredient(ModContent.ItemType<PetFood>(), Math.Max(petFoodAmount, 1))
                 .AddTile(ModContent.TileType<PetForge>())
-                .DisableDecraft() //This may get looked into later. But for now, de-crafting with Shimmer will be disabled for Pet Recipes.
+                .AddCustomShimmerResult(ModContent.ItemType<PetFood>(), petFoodAmount) //This makes it so the Shimmering ALWAYS results in how much Pet Food used in the recipes. 
                 .Register();
         }
         /// <summary>
@@ -27,7 +27,7 @@ namespace PetsOverhaul.Systems
         public static void PetFoodRecipe(Recipe recipe)
         {
             recipe.AddTile(ModContent.TileType<PetForge>())
-                .DisableDecraft()
+                .DisableDecraft() //De-shimmer here would mean you can get so many materials you shouldn't get so we disable
                 .Register();
         }
 
@@ -35,8 +35,8 @@ namespace PetsOverhaul.Systems
         {
             MasterModePetRecipe(Recipe.Create(ItemID.MartianPetItem).AddIngredient(ItemID.MartianConduitPlating, 750).AddIngredient(ItemID.Hoverboard), 2500); //Example: This is 750 Martian Conduit Plating, 1 Hoverboard, 1.25~ Platinum Coins (2500 Pet Food) and 1 Mastery Shard.
             PetRecipe(Recipe.Create(ItemID.AmberMosquito).AddRecipeGroup(RecipeGroupsForPets.Silts, 500).AddIngredient(ItemID.DesertFossil, 200).AddIngredient(ItemID.FossilOre, 25).AddIngredient(ItemID.Amber, 15).AddIngredient(ItemID.Amethyst, 3).AddIngredient(ItemID.Topaz, 3).AddIngredient(ItemID.Sapphire, 3).AddIngredient(ItemID.Emerald, 3).AddIngredient(ItemID.Ruby, 3).AddIngredient(ItemID.Diamond, 3));
-            PetRecipe(Recipe.Create(ItemID.EatersBone).AddRecipeGroup(RecipeGroupsForPets.ShadowHelmet).AddRecipeGroup(RecipeGroupsForPets.ShadowScalemail).AddRecipeGroup(RecipeGroupsForPets.ShadowGreaves).AddIngredient(ItemID.EbonstoneBlock, 40).AddIngredient(ItemID.VileMushroom, 12), 25);
-            PetRecipe(Recipe.Create(ItemID.BoneRattle).AddIngredient(ItemID.CrimsonHelmet).AddIngredient(ItemID.CrimsonScalemail).AddIngredient(ItemID.CrimsonGreaves).AddIngredient(ItemID.CrimstoneBlock, 40).AddIngredient(ItemID.ViciousMushroom, 12), 25);
+            PetRecipe(Recipe.Create(ItemID.EatersBone).AddRecipeGroup(RecipeGroupsForPets.ShadowHelmet).AddRecipeGroup(RecipeGroupsForPets.ShadowScalemail).AddRecipeGroup(RecipeGroupsForPets.ShadowGreaves).AddIngredient(ItemID.EbonstoneBlock, 40).AddIngredient(ItemID.VileMushroom, 12), 75);
+            PetRecipe(Recipe.Create(ItemID.BoneRattle).AddIngredient(ItemID.CrimsonHelmet).AddIngredient(ItemID.CrimsonScalemail).AddIngredient(ItemID.CrimsonGreaves).AddIngredient(ItemID.CrimstoneBlock, 40).AddIngredient(ItemID.ViciousMushroom, 12), 75);
             PetRecipe(Recipe.Create(ItemID.BabyGrinchMischiefWhistle).AddRecipeGroup(RecipeGroupsForPets.IceBlocks, 1000).AddIngredient(ItemID.Snowball, 1000).AddIngredient(ItemID.Shiverthorn, 500).AddIngredient(ItemID.FlinxFur, 20).AddCondition(Condition.DownedIceQueen), 2000);
             PetRecipe(Recipe.Create(ItemID.Nectar).AddIngredient(ItemID.BeeWax, 100).AddIngredient(ItemID.Stinger, 8).AddIngredient(ItemID.Hive, 40), 30);
             PetRecipe(Recipe.Create(ItemID.HellCake).AddIngredient(ItemID.Obsidian, 25).AddIngredient(ItemID.AshBlock, 300).AddIngredient(ItemID.LavaBucket).AddIngredient(ItemID.Fireblossom, 30), 8);
