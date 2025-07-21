@@ -28,9 +28,8 @@ Mods: {
 			KeybindMissing: Atalho de Teclado não Registrado
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.6, últimas mudanças: Reformulação dos Pets da Cidade, Dicas de Ferramentas Simplificadas]
-				[c/90C2AA:Os bônus dos Pets da Cidade agora são limitados a apenas 1 e podem ser adquiridos "acariciando" o Pet da Cidade.]
-				[c/90C2AA:Melhorias importantes na tradução para chinês. Realizadas por: ROH, Correções para todas as localizações]
+				[c/90C2AA:Pets Overhaul 3.6.2, últimas mudanças: Correções lentas, melhorias na obtenção de alimentos para animais de estimação]
+				[c/90C2AA:Agora os animais de estimação podem ser Brilhantes SOMENTE em comida para animais de estimação, melhorias nos efeitos de respiração, mudanças de equilíbrio]
 				[c/b4bfc5:Entre no nosso discord para feedback e reportar problemas! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:para ver mais comandos do Pets Overhaul, lhe dando mais informações!]
 				'''

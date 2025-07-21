@@ -28,9 +28,8 @@ Mods: {
 			KeybindMissing: Keybind Not Registered
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.6, latest changes: Town Pets Rework, Simplified Tooltips]
-				[c/90C2AA:Town Pet buffs are now limited to only 1, and can be acquired by 'petting' the Town Pet.]
-				[c/90C2AA:Major Chinese Translation improvements. Done by: ROH, Fixes for all localizations]
+				[c/90C2AA:Pets Overhaul 3.6.2, latest changes: Pet Slow Fixes, Pet Food obtainability improvements]
+				[c/90C2AA:Pets Now can be deshimmered into ONLY Pet Food, Breath effects improvements, Balance changes]
 				[c/b4bfc5:Join our discord server for feedback, bug reports & questions! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
 				'''
