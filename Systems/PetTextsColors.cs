@@ -166,7 +166,7 @@ namespace PetsOverhaul.Systems
             return result;
         }
         /// <summary>
-        /// Returns: "first param" out of "second param" Seconds. Ex: 1 out of 3 Seconds. If secondVal is 0, it w
+        /// Returns: "first param" out of "second param" Seconds. Ex: 1 out of 3 Seconds. If secondVal is 0, it will just return Seconds of the firstValInFrames.
         /// </summary>
         public static string SecondsOutOfText(int firstValInFrames, int secondValInFrames)
         {

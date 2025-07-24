@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.Systems
 {
@@ -22,7 +25,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public virtual string PetStackText => string.Empty;
         /// <summary>
-        /// Set this to true if you want stacks to be converted to seconds and have it write seconds at the end
+        /// If this contains a value, then default setting is changed to be: "Current " + PetStackText + this.
         /// </summary>
         public virtual string PetStackSpecial => string.Empty;
         /// <summary>
@@ -46,20 +49,56 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public abstract int PetItemID { get; }
         /// <summary>
-        /// Checks for given PetItemID is currently in the MiscSlot[0].
+        /// Mostly used for Tooltip. Pets that has a custom effect thats made for Developers/Contributers have this set to true.
+        /// </summary>
+        public virtual bool CustomEffectIsContributor => false;
+        /// <summary>
+        /// Set to true if a Donor from Patreon has bought a custom effect for this Pet. This will show
+        /// </summary>
+        public virtual bool HasCustomEffect => false;
+        /// <summary>
+        /// This won't change if HasDonorEffect is false. Suggested to use this in a else if, where the prior if is PetIsEquipped. PetIsEquipped checks if HasDonorEffect & DonorEffectActive to return false.
+        /// </summary>
+        public virtual bool CustomEffectActive { get; set; }
+        /// <summary>
+        /// Custom Pet Effect's class to appear when its switched to.
+        /// </summary>
+        public virtual PetClasses CustomPrimaryClass => PetClasses.None;
+        public virtual PetClasses CustomSecondaryClass => PetClasses.None;
+        /// <summary>
+        /// Checks for given PetItemID is currently in the MiscSlot[0]. Returns false if HasCustomEffect and CustomEffectActive is both true.
         /// </summary>
         /// <param name="checkOblivious">Determines if Oblivious Pet debuff should be considered regarding the result.</param>
         /// <returns>Returns if given ID is currently in use</returns>
         public bool PetIsEquipped(bool checkOblivious = true)
         {
+            if (HasCustomEffect && CustomEffectActive)
+                return false;
             if (checkOblivious)
                 return Pet.PetInUseWithSwapCd(PetItemID);
             else
                 return Pet.PetInUse(PetItemID);
         }
+        /// <summary>
+        /// Same as PetIsEquipped, just for Custom effects.
+        /// </summary>
+        /// <param name="checkOblivious"></param>
+        /// <returns></returns>
+        public bool PetIsEquippedForCustom(bool checkOblivious = true)
+        {
+            if (HasCustomEffect && CustomEffectActive)
+            {
+                if (checkOblivious)
+                    return Pet.PetInUseWithSwapCd(PetItemID);
+                else
+                    return Pet.PetInUse(PetItemID);
+            }
+            else 
+                return false;
+        }
         public sealed override void PreUpdate()
         {
-            if (PetIsEquipped(false))
+            if (Pet.PetInUse(PetItemID))
             {
                 Pet.timerMax = PetAbilityCooldown;
                 Pet.currentPetStacks = PetStackCurrent;
@@ -78,6 +117,25 @@ namespace PetsOverhaul.Systems
         /// Same as ExtraPreUpdate() but doesn't check for Pet being equipped. Ran after ExtraPreUpdate().
         /// </summary>
         public virtual void ExtraPreUpdateNoCheck() { }
+        /// <summary>
+        /// Runs before Custom effect switch.
+        /// </summary>
+        public virtual void ExtraProcessTriggers(TriggersSet triggersSet) { }
+        public sealed override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            ExtraProcessTriggers(triggersSet);
+            if (Main.HoverItem.type == PetItemID)
+            {
+                if (HasCustomEffect && PetKeybinds.PetCustomSwitch.JustPressed)
+                {
+                    CustomEffectActive = !CustomEffectActive;
+                }
+                if (PetKeybinds.ShowDetailedTip.JustPressed)
+                {
+                    GlobalPet.CurrentTooltipIsSimple = !GlobalPet.CurrentTooltipIsSimple;
+                }
+            }
+        }
     }
     public abstract class PetTooltip : GlobalItem
     {
@@ -110,6 +168,9 @@ namespace PetsOverhaul.Systems
         /// If the Pet has SimpleTooltip value assigned in their code, that will be displayed instead by default; and will show a text below the tooltip to tell the Player they can switch the tooltip with a keybind.
         /// </summary>
         public virtual string SimpleTooltip => null;
+
+        public virtual string CustomTooltip => null;
+        public virtual string CustomSimpleTooltip => null;
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (PreModifyPetTooltips(item, tooltips) == false)
@@ -126,9 +187,27 @@ namespace PetsOverhaul.Systems
             index++; //Both safety net for it to not be -1 somehow, and we want it after the given FindLastIndexes.
 
             string Tip;
-            if (SimpleTooltip is not null)
+            if (PetsEffect.HasCustomEffect && PetsEffect.CustomEffectActive)
             {
-                if (GlobalPet.CurrentTooltipsIsSimple)
+                if (CustomSimpleTooltip is not null)
+                {
+                    if (GlobalPet.CurrentTooltipIsSimple)
+                        Tip = CustomSimpleTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                    else
+                        Tip = CustomTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                }
+                else if (CustomTooltip is not null)
+                {
+                    Tip = CustomTooltip;
+                }
+                else
+                { 
+                    Tip = PetsTooltip; 
+                }
+            }
+            else if (SimpleTooltip is not null)
+            {
+                if (GlobalPet.CurrentTooltipIsSimple)
                     Tip = SimpleTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
                 else
                     Tip = PetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
@@ -138,14 +217,43 @@ namespace PetsOverhaul.Systems
             {
                 Tip = PetsTooltip;
             }
-
-            if (Tip.Contains("<class>"))
+            PetClasses petClass1;
+            PetClasses petClass2;
+            if (PetsEffect.HasCustomEffect && PetsEffect.CustomEffectActive)
             {
-                Tip = Tip.Replace("<class>", PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary)); //Legacy way of 'class text' on Pet tooltips, so old ones on addons etc. doesn't break.
+                petClass1 = PetsEffect.CustomPrimaryClass;
+                petClass2 = PetsEffect.CustomSecondaryClass;
             }
             else
             {
-                Tip = PetTextsColors.ClassText(PetsEffect.PetClassPrimary, PetsEffect.PetClassSecondary) + "\n" + Tip;
+                petClass1 = PetsEffect.PetClassPrimary;
+                petClass2 = PetsEffect.PetClassSecondary;
+            }
+            if (Tip.Contains("<class>"))
+            {
+                Tip = Tip.Replace("<class>", PetTextsColors.ClassText(petClass1, petClass2)); //Legacy way of 'class text' on Pet tooltips, so old ones on addons etc. doesn't break.
+            }
+            else
+            {
+                Tip = PetTextsColors.ClassText(petClass1, petClass2) + "\n" + Tip;
+            }
+            
+            if (PetsEffect.HasCustomEffect)
+            {
+                Tip += "\n";
+                if (PetsEffect.CustomEffectActive)
+                    Tip += PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                else
+                {
+                    if (PetsEffect.CustomEffectIsContributor) 
+                    {
+                        Tip += PetTextsColors.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                    }
+                    else
+                    {
+                        Tip += PetTextsColors.LocVal("Misc.NonCustomLineDonator").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                    }
+                }
             }
             tooltips.Insert(index, new(Mod, "PetTooltip0", Tip));
         }

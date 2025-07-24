@@ -161,7 +161,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Whether or not current switched tooltip is simplified or not.
         /// </summary>
-        public static bool CurrentTooltipsIsSimple = true;
+        public static bool CurrentTooltipIsSimple = true;
 
         public static List<int> EnemiesForLifestealToIgnore = [];
 
@@ -634,7 +634,7 @@ namespace PetsOverhaul.Systems
 
         public override void SaveData(TagCompound tag)
         {
-            tag.Add("CurrentTooltip", CurrentTooltipsIsSimple);
+            tag.Add("CurrentTooltip", CurrentTooltipIsSimple);
             tag.Add("LastTownPet", LastTownPet);
             tag.Add("SkinColor", skin);
             tag.Add("SkinColorChanged", skinColorChanged);
@@ -647,7 +647,7 @@ namespace PetsOverhaul.Systems
         {
             if (tag.TryGet("CurrentTooltip", out bool stateOfTooltip))
             {
-                CurrentTooltipsIsSimple = stateOfTooltip;
+                CurrentTooltipIsSimple = stateOfTooltip;
             }
 
             if (tag.TryGet("LastTownPet", out string townPetName))
@@ -945,9 +945,9 @@ namespace PetsOverhaul.Systems
                 PetTamer.openLightCombineMenu = false;
             }
 
-            if (PetKeybinds.ShowDetailedTip.JustPressed)
+            if (PetItemIDs.PetNamesAndItems.ContainsValue(Main.HoverItem.type) && PetKeybinds.ShowDetailedTip.JustPressed)
             {
-                CurrentTooltipsIsSimple = !CurrentTooltipsIsSimple;
+                CurrentTooltipIsSimple = !CurrentTooltipIsSimple;
             }
         }
         public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
