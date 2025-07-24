@@ -29,7 +29,7 @@ namespace PetsOverhaul.PetEffects
                 }
             }
         }
-        public override void ProcessTriggers(TriggersSet triggersSet)
+        public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
             if (Player.wingTime > 0 && PetIsEquipped() && triggersSet.Jump && Player.dead == false && Player.equippedWings is not null)
             {

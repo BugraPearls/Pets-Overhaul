@@ -68,7 +68,7 @@ namespace PetsOverhaul.PetEffects
             if (fireVolley < 0)
                 fireVolley = 0;
         }
-        public override void ProcessTriggers(TriggersSet triggersSet)
+        public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
             if (PetKeybinds.PetAbilitySwitch.JustPressed)
             {

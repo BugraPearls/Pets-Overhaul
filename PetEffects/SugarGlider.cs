@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.EucaluptusSap; //Eucalyptus Sap is EucaluptusSap???
         public float glideSpeedMult = 0.3f;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
-        public override void ProcessTriggers(TriggersSet triggersSet)
+        public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
             if (Player.velocity.Y > 0 && PetIsEquipped() && triggersSet.Jump && Player.dead == false)
             {

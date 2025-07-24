@@ -55,7 +55,7 @@ namespace PetsOverhaul.PetEffects
                 }
             }
         }
-        public override void ProcessTriggers(TriggersSet triggersSet)
+        public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
