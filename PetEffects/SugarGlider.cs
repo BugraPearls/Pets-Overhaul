@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.EucaluptusSap; //Eucalyptus Sap is EucaluptusSap???
         public float glideSpeedMult = 0.3f;
         public float customGlideWeak = 0.5f;
-        public int shuricornCooldown = 150;
+        public int shuricornCooldown = 1200;
         public int shuricornDamage = 20;
         public const int shuricornDuration = 300;
         public float shuricornKb = 7f;
@@ -44,7 +44,7 @@ namespace PetsOverhaul.PetEffects
             }
             if (PetIsEquippedForCustom() && Pet.AbilityPressCheck())
             {
-                Projectile.NewProjectile(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(25 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
+                Projectile.NewProjectile(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
                 Player.velocity.X = 10 * Player.direction * -1; 
                 Pet.timer = Pet.timerMax;
             }
@@ -54,7 +54,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (npc.TryGetGlobalNPC(out NpcPet enemy) && enemy.shuricornMark > 0 && WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
                     {
-                        Player.SetImmuneTimeForAllTypes(30);
+                        Player.SetImmuneTimeForAllTypes(15);
                         Player.Center = npc.Center;
                         npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3);
                         enemy.shuricornMark = 0;
