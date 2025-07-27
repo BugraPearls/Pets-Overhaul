@@ -1,8 +1,15 @@
-﻿using PetsOverhaul.Systems;
+﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.NPCs;
+using PetsOverhaul.Projectiles;
+using PetsOverhaul.Systems;
+using System;
 using Terraria;
+using Terraria.GameContent.UI.BigProgressBar;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
+using Terraria.Utilities.Terraria.Utilities;
 
 namespace PetsOverhaul.PetEffects
 {
@@ -10,13 +17,61 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.EucaluptusSap; //Eucalyptus Sap is EucaluptusSap???
         public float glideSpeedMult = 0.3f;
+        public float customGlideWeak = 0.5f;
+        public int shuricornCooldown = 150;
+        public int shuricornDamage = 20;
+        public const int shuricornDuration = 300;
+        public float shuricornKb = 7f;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override bool HasCustomEffect => true; //Dedicated to sskToji
+        public override PetClasses CustomPrimaryClass => PetClasses.Mobility;
+        public override bool CustomEffectIsContributor => true;
+        public override int PetAbilityCooldown => CustomEffectActive ? shuricornCooldown : base.PetAbilityCooldown;
         public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
-            if (Player.velocity.Y > 0 && PetIsEquipped() && triggersSet.Jump && Player.dead == false)
+            if (Player.velocity.Y > 0 && triggersSet.Jump && Player.dead == false)
             {
-                Player.maxFallSpeed *= glideSpeedMult;
-                Player.fallStart = (int)(Player.position.Y / 16.0);
+                if (PetIsEquipped())
+                {
+                    Player.maxFallSpeed *= glideSpeedMult;
+                    Player.fallStart = (int)(Player.position.Y / 16.0);
+                }
+                else if (PetIsEquippedForCustom())
+                {
+                    Player.maxFallSpeed *= customGlideWeak;
+                    Player.fallStart = (int)(Player.position.Y / 16.0);
+                }
+            }
+            if (PetIsEquippedForCustom() && Pet.AbilityPressCheck())
+            {
+                Projectile.NewProjectile(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(25 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
+                Player.velocity.X = 10 * Player.direction * -1; 
+                Pet.timer = Pet.timerMax;
+            }
+            if (PetIsEquippedForCustom() && Player.dead == false && PetKeybinds.UsePetAbility.JustPressed)
+            {
+                foreach (var npc in Main.ActiveNPCs)
+                {
+                    if (npc.TryGetGlobalNPC(out NpcPet enemy) && enemy.shuricornMark > 0 && WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
+                    {
+                        Player.SetImmuneTimeForAllTypes(30);
+                        Player.Center = npc.Center;
+                        npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3);
+                        enemy.shuricornMark = 0;
+                        break;
+                    }
+                }
+            }
+        }
+        public override void SaveData(TagCompound tag)
+        {
+            tag.Add("CustomActive", CustomEffectActive);
+        }
+        public override void LoadData(TagCompound tag)
+        {
+            if (tag.TryGet("CustomActive", out bool custom))
+            {
+                CustomEffectActive = custom;
             }
         }
     }
@@ -36,5 +91,13 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EucaluptusSap")
                 .Replace("<glide>", sugarGlider.glideSpeedMult.ToString());
         public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EucaluptusSap");
+        public override string CustomTooltip => PetTextsColors.LocVal("CustomPetEffects.EucaluptusSap")
+            .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+            .Replace("<glide>", sugarGlider.customGlideWeak.ToString())
+            .Replace("<dmg>", sugarGlider.shuricornDamage.ToString())
+            .Replace("<kb>", sugarGlider.shuricornKb.ToString())
+            .Replace("<cooldown>", Math.Round(sugarGlider.shuricornCooldown/60f,2).ToString())
+            .Replace("<mark>", Math.Round(SugarGlider.shuricornDuration/60f,2).ToString());
+        public override string CustomSimpleTooltip => PetTextsColors.LocVal("CustomSimplePetEffects.EucaluptusSap");
     }
 }

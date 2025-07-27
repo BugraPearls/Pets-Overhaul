@@ -1560,9 +1560,21 @@ Mods: {
 				 * Gain <manaRegen> Mana Regen.
 				 * You cannot life regen.
 				The cat of Kinga the Witch.
-				Dedicated to Kinga for supporting the mod through Patreon.
 				''' */
 			// UnluckyYarnStack: remaining Lunar Veil duration
+			/* EucaluptusSap:
+				'''
+				- Allows you to glide by multiplying the maximum Y speed by <glide>x.
+				 * This can be done by holding the spacebar & works even better with wings.
+				- Press Pet Ability Keybind <keybind> to throw an 'acorn'.
+				 * Acorn is shot towards where you face in a straight line.
+				 * You also will dash behind slightly.
+				 * Acorn deals <dmg> damage and <kb> knockback, while marking the enemy hit.
+				 * Press keybind again to teleport to enemy & strike them again.
+				 * With the second strike, damage and knockback is tripled.
+				 * Has a <cooldown> seconds cooldown, and the mark stays on enemy for <mark> seconds.
+				WOOOO YEAHHH GET DUNG ONNN
+				''' */
 		}
 
 		SimpleCustomPetEffects: {
@@ -1578,6 +1590,14 @@ Mods: {
 				 * Afterwards, gain movement speed, mana regen, and life regen is disabled.
 				 * Only usable at Night.
 				The cat of Kinga the Witch.
+				''' */
+			/* EucaluptusSap:
+				'''
+				- Allows you to glide.
+				- Press Pet Ability Keybind <keybind> to throw an 'acorn'
+				towards where you face and dash behind a little, marking the enemy hit.
+				 * Press keybind again to teleport to enemy & strike them again.
+				WOOOO YEAHHH GET DUNG ONNN
 				''' */
 		}
 
@@ -1829,6 +1849,7 @@ Mods: {
 		Projectiles: {
 			PetExplosion: Explosão por um PET
 			BonemerangProj.DisplayName: Ossomerang
+			// Shuricorn.DisplayName: Shuricorn
 		}
 
 		Keybinds: {

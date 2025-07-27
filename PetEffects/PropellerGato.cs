@@ -17,10 +17,8 @@ namespace PetsOverhaul.PetEffects
 
         public override PetClasses PetClassPrimary => PetClasses.Summoner;
         public override bool CustomEffectIsContributor => true;
-        public override bool HasCustomEffect => true;
+        public override bool HasCustomEffect => true; //Dedicated to Furqi
         public override PetClasses CustomPrimaryClass => PetClasses.Mobility;
-
-        //Custom effect field
         public int wingTime = 90;
         public override void SaveData(TagCompound tag)
         {

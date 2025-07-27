@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using PetsOverhaul.Buffs;
@@ -79,6 +80,7 @@ namespace PetsOverhaul.NPCs
         public int playerThatFishedUp;
         public int maulCounter;
         public int curseCounter;
+        public int shuricornMark = 0;
         /// <summary>
         /// Contains all Vanilla bosses that does not return npc.boss = true
         /// </summary>
@@ -298,6 +300,11 @@ namespace PetsOverhaul.NPCs
                 sickSlow = false;
                 currentTotalSlow = 0;
 
+                if (shuricornMark > 0)
+                {
+                    shuricornMark--;
+                }
+
                 if (SlowList.Count > 0)
                 {
                     foreach (var slow in SlowList)
@@ -439,6 +446,13 @@ namespace PetsOverhaul.NPCs
                     Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Pixie, Main.rand.NextFloat(0f, 0.6f), Main.rand.NextFloat(-1f, 2f), 150, default, Main.rand.NextFloat(0.5f, 0.7f));
                     dust.velocity *= 0.2f;
                 }
+            }
+        }
+        public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if (shuricornMark > 0)
+            {
+                spriteBatch.Draw((Texture2D)ModContent.Request<Texture2D>("PetsOverhaul/Projectiles/Shuricorn"), npc.position with { Y = npc.position.Y - 30f } - screenPos, Main.MouseTextColorReal);
             }
         }
         #endregion
