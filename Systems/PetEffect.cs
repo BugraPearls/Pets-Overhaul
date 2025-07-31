@@ -130,10 +130,6 @@ namespace PetsOverhaul.Systems
                 {
                     CustomEffectActive = !CustomEffectActive;
                 }
-                if (PetKeybinds.ShowDetailedTip.JustPressed)
-                {
-                    GlobalPet.CurrentTooltipIsSimple = !GlobalPet.CurrentTooltipIsSimple;
-                }
             }
         }
     }
