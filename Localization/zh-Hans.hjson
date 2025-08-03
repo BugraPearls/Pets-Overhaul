@@ -1502,9 +1502,9 @@ Mods: {
 				''' */
 			/* WispInABottle:
 				'''
-				Striking an enemy has a <chance>% chance for wisp to strike aswell.
-				Damage is <base> + <perc>% of initially dealt damage. <cooldown> seconds cooldown.
-				Ability does not work if Wisp Pet is not visible.
+				- Striking an enemy has a <chance>% chance for wisp to strike aswell.
+				 * Damage is <base> + <perc>% of initially dealt damage. <cooldown> seconds cooldown.
+				 * Ability does not work if Wisp Pet is not visible.
 				Trigger Chance Quality: <chanceLine>
 				Flat Damage Quality: <baseLine>
 				Percent Damage Quality: <percLine>
