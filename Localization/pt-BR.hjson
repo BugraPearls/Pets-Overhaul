@@ -1575,6 +1575,17 @@ Mods: {
 				 * Has a <cooldown> seconds cooldown, and the mark stays on enemy for <mark> seconds.
 				WOOOO YEAHHH GET DUNG ONNN
 				''' */
+			/* WispInABottle:
+				'''
+				Striking an enemy has a <chance>% chance for wisp to strike aswell.
+				Damage is <base> + <perc>% of initially dealt damage. <cooldown> seconds cooldown.
+				Ability does not work if Wisp Pet is not visible.
+				Trigger Chance Quality: <chanceLine>
+				Flat Damage Quality: <baseLine>
+				Percent Damage Quality: <percLine>
+				Cooldown Quality: <cooldownLine>
+				"We shall always remember the night."
+				''' */
 		}
 
 		SimpleCustomPetEffects: {

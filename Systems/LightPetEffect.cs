@@ -5,6 +5,7 @@ using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameInput;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Systems
@@ -34,13 +35,29 @@ namespace PetsOverhaul.Systems
         /// This field is to make this Light Pet appear on /pet light|lightpet|lightpets command(s).
         /// </summary>
         public abstract int LightPetItemID { get; }
+        public virtual bool HasCustomEffect => false;
+        public virtual bool CustomEffectActive { get; set; }
+        public virtual void ExtraProcessTriggers(TriggersSet triggersSet) { }
+        public sealed override void ProcessTriggers(TriggersSet triggersSet)
+        {
+            ExtraProcessTriggers(triggersSet);
+            if (Main.HoverItem.type == LightPetItemID)
+            {
+                if (HasCustomEffect && PetKeybinds.PetCustomSwitch.JustPressed)
+                {
+                    CustomEffectActive = !CustomEffectActive;
+                }
+            }
+        }
     }
     public abstract class LightPetItem : GlobalItem
     {
         public abstract int LightPetItemID { get; }
         public sealed override bool InstancePerEntity => true;
         public abstract string PetsTooltip { get; }
-
+        public virtual string CustomPetsTooltip => string.Empty;
+        public virtual bool HasCustomEffect => false;
+        public virtual bool CustomEffectActive { get; set; }
         public sealed override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
             return ExtraAppliesToEntity(entity, lateInstantiation) && entity.type == LightPetItemID;
@@ -161,6 +178,15 @@ namespace PetsOverhaul.Systems
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             string tip = "\n" + PetsTooltip;
+            if (HasCustomEffect)
+            { 
+                if (CustomEffectActive)
+                tip = "\n" + CustomPetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                else
+                {
+                    tip += "\n" + PetTextsColors.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                }
+            }
 
             if (GetRoll() <= 0)
                 tip = string.Concat(tip, "\n" + PetTextsColors.RollMissingText());
@@ -291,6 +317,10 @@ namespace PetsOverhaul.Systems
         public readonly string BaseAndPerQuality(string perRoll, string baseRoll = "")
         {
             return (BaseStat == 0 ? "" : (baseRoll + " " + PetTextsColors.LocVal("Misc.+") + " ")) + perRoll + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
+        }
+        public readonly string QualityLine()
+        {
+            return PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString() + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + MaxRoll.ToString(),CurrentRoll,MaxRoll);
         }
     }
 }
