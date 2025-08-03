@@ -8,7 +8,7 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
 {
     public class TownPetSquire : TownPetBuff
     {
-        public readonly float val = 0.2f;
+        public readonly float val = 0.22f;
         public override void UpdateEffects(Player player, GlobalPet pet, ref int buffIndex)
         {
             pet.petShieldMultiplier += val;
