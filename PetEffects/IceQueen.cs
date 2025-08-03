@@ -109,6 +109,11 @@ namespace PetsOverhaul.PetEffects
                 }
 
                 frozenTomb = true;
+                
+                if (Player.lifeRegen < 0)
+                {
+                    Player.lifeRegen = 0;
+                }
                 Player.statLife = 1;
                 Pet.timer = Pet.timerMax;
                 return false;
