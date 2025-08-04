@@ -1,8 +1,8 @@
 Mods: {
 	PetsOverhaul: {
 		Misc: {
-			CurrentSimple: "[c/b4bfc5:按下] <switchKey> [c/b4bfc5:以切换为详细描述]"
-			CurrentDetailed: "[c/b4bfc5:按下] <switchKey> [c/b4bfc5:以切换为简洁描述]"
+			CurrentSimple: "[c/42a8ff:按下] <switchKey> [c/42a8ff:以切换为详细描述]"
+			CurrentDetailed: "[c/42a8ff:按下] <switchKey> [c/42a8ff:以切换为简洁描述]"
 			BaseCd: 基础宠物技能冷却：
 			NoCd: 当前宠物没有技能冷却！
 			RemainingCd: 剩余宠物技能冷却
@@ -26,13 +26,13 @@ Mods: {
 			+: +
 			-: -
 			KeybindMissing: 未绑定键位
-			// NonCustomLineContributor: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Contributor effect of this Pet.]"
-			// NonCustomLineDonator: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Donator effect of this Pet.]"
-			// CustomLine: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to go back to base effect of this Pet.]"
+			NonCustomLineContributor: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物的贡献者专属效果]"
+			NonCustomLineDonator: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物的捐赠者专属效果]"
+			CustomLine: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物原本效果]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul（宠物大修）3.5.1更新：添加简洁物品描述，本地化修复]
-				[c/90C2AA:大量后端改进和缺陷修复。移除一些不必要的文本以保持简洁]
+				[c/90C2AA:Pets Overhaul（宠物大修）3.6.2更新：宠物减速修复，宠物食物获取优化]
+				[c/90C2AA:宠物现在可以被微光分解为宠物食物，水下呼吸效果优化以及平衡改动]
 				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
 				'''
@@ -409,6 +409,7 @@ Mods: {
 				'''
 			Fish:
 				'''
+				延长<breath>%水下呼吸时间
 				在雪原和海洋中提高<moreFp>点渔力并获得脚蹼[i:187]效果
 				 - 否则提高<fp>点渔力
 				钓上的雪原专属渔获有<catchChance>%几率增加
@@ -718,7 +719,7 @@ Mods: {
 				'''
 			SharkBait:
 				'''
-				水下呼吸时间延长<breath>秒
+				水下呼吸时间延长<breath>%
 				对钓上来的敌人造成<seaCreatureDmg>倍伤害
 				 - 钓上来的敌人对你造成<seaCreatureResist>倍伤害
 				 - 包括猪龙鱼公爵等
@@ -1001,6 +1002,7 @@ Mods: {
 				 - 增加<meleeSpd>%近战攻速
 				 - 增加<meleeDmg>%近战伤害
 				 - 增加<def>防御
+				 - 降低<ms>%移动速度
 				'''
 			RangedTooltip:
 				'''
@@ -1009,6 +1011,7 @@ Mods: {
 				 - 增加<rangedCrit>%远程暴击率
 				 - 增加<rangedCritDmg>%远程暴击伤害
 				 - 增加<rangedDmg>%远程伤害
+				 - 降低<hp>%最大生命值
 				'''
 			MagicTooltip:
 				'''
@@ -1017,6 +1020,7 @@ Mods: {
 				 - 减少<manaCost>%魔法消耗
 				 - 增加<magicCrit>%魔法暴击率
 				 - 增加<magicDmg>%魔法伤害
+				 - 降低<hp>%最大生命值
 				'''
 			SummonerTooltip:
 				'''
@@ -1025,6 +1029,7 @@ Mods: {
 				 - 增加<sumSpd>%鞭子攻速
 				 - 增加<sumMax>个召唤栏位
 				 - 增加<sumMaxSentry>个哨兵栏位
+				 - 降低<hp>%最大生命值
 				'''
 			ResplendentDessert:
 				'''
@@ -1083,6 +1088,7 @@ Mods: {
 				'''
 			Fish:
 				'''
+				延长水下呼吸时间
 				提高渔力
 				 - 在海洋或雪原中时，进一步提高渔力并获得脚蹼效果
 				减少冷冻减益持续时间
@@ -1451,6 +1457,7 @@ Mods: {
 				远程模式会提高远程护甲穿透、暴击率、暴击伤害和伤害
 				魔法模式会提高最大魔力、魔法暴击、魔法伤害并降低魔法消耗
 				召唤模式会提高鞭子范围、鞭子攻速、最大召唤和哨兵栏位
+				近战模式还会降低移动速度，其他模式会降低最大生命值
 				'''
 			ResplendentDessert:
 				'''
@@ -1468,49 +1475,49 @@ Mods: {
 		}
 
 		CustomPetEffects: {
-			/* DD2PetGato:
+			DD2PetGato:
 				'''
-				- Increases flight time when you have wings by <wingTime> seconds.
-				car.
-				Dedicated to Furqi for their contribution to the Mod.
-				''' */
-			/* UnluckyYarn:
+				装备翅膀时增加<wingTime>秒飞行时间
+				车
+				专属于Furqi，感谢他为此Mod做出的贡献
 				'''
-				- Press Pet Ability Keybind <keybind> to activate Lunar Veil for <seconds> seconds.
-				 * This cannot be triggered unless its night.
-				 * While under Lunar Veil, you will survive a fatal hit and survive with 1 hp.
-				 * Has <cooldown> seconds cooldown.
-				- If Lunar Veil successfully protects you, for <postDuration> seconds you will:
-				 * Gain <ms>% Movement Speed.
-				 * Gain <manaRegen> Mana Regen.
-				 * You cannot life regen.
-				The cat of Kinga the Witch.
-				''' */
-			// UnluckyYarnStack: remaining Lunar Veil duration
-			/* EucaluptusSap:
+			UnluckyYarn:
 				'''
-				- Allows you to glide by multiplying the maximum Y speed by <glide>x.
-				 * This can be done by holding the spacebar & works even better with wings.
-				- Press Pet Ability Keybind <keybind> to throw an 'acorn'.
-				 * Acorn is shot towards where you face in a straight line.
-				 * You also will dash behind slightly.
-				 * Acorn deals <dmg> damage and <kb> knockback, while marking the enemy hit.
-				 * Press keybind again to teleport to enemy & strike them again.
-				 * With the second strike, damage and knockback is tripled.
-				 * Has a <cooldown> seconds cooldown, and the mark stays on enemy for <mark> seconds.
-				WOOOO YEAHHH GET DUNG ONNN
-				''' */
-			/* WispInABottle:
+				按下宠物技能键<keybind>以激活月亮面纱<seconds>秒
+				 - 只能在夜晚激活
+				 - 在月亮面纱的庇护下，你在受到致命伤害时会保留1点生命值
+				 - 有<cooldown>秒冷却时间
+				如果月亮面纱成功保护了你，在<postDuration>秒内你会：
+				 - 增加<ms>%移动速度
+				 - 增加<manaRegen>点魔力再生
+				 - 你无法再生生命
+				女巫金加的猫
 				'''
-				- Striking an enemy has a <chance>% chance for wisp to strike aswell.
-				 * Damage is <base> + <perc>% of initially dealt damage. <cooldown> seconds cooldown.
-				 * Ability does not work if Wisp Pet is not visible.
-				Trigger Chance Quality: <chanceLine>
-				Flat Damage Quality: <baseLine>
-				Percent Damage Quality: <percLine>
-				Cooldown Quality: <cooldownLine>
-				"We shall always remember the night."
-				''' */
+			UnluckyYarnStack: 剩余月亮面纱增益时长
+			EucaluptusSap:
+				'''
+				允许你通过将最大竖直速度乘以x倍来滑行
+				 - 这可以通过按住空格键来完成，使用翅膀效果更好
+				按下宠物技能键<keybind>以投掷“橡子”
+				 - 橡子以一条直线射向你面对的地方
+				 - 你也会稍稍后退
+				 - 橡子造成<dmg>伤害和<kb>击退，同时标记敌人命中
+				 - 再次按下按键传送到敌人并再次攻击他们
+				 - 第二次打击的伤害和击退翻3倍
+				 - 有<cooldown>秒的冷却时间，标记停留在敌人身上<mark>秒
+				哇哦耶，我要大便了
+				'''
+			WispInABottle:
+				'''
+				攻击敌人时鬼火也有<chance>%的几率攻击敌人
+				 - 伤害为初始伤害的<base> + <perc>%。<cooldown>秒冷却时间
+				 - 如果鬼火宠物不可见，该技能不起作用
+				触发几率:<chanceline>
+				基础伤害:<base>
+				百分比伤害:<percLine>
+				冷却时间:<cooldownLine>
+				“我们将永远铭记那个夜晚。”
+				'''
 		}
 
 		SimpleCustomPetEffects: {
@@ -1802,6 +1809,7 @@ Mods: {
 					'''
 					没有宠物能拒绝这种多味宠物食品！
 					用于制作所有宠物
+					通过各种方式获得，宠物驯养师出售。微光分解此物品只会产生宠物食物。
 					'''
 			}
 		}
@@ -1844,11 +1852,11 @@ Mods: {
 					Common1: 你的宠物怎么样了？好好照顾它们。
 					Common2: 如果你刚好有多只同种的照明宠物，我可以把它们最好的品质融合成一只照明宠物！当然是要收费的。
 					Common3: 嗯？你想知道更多关于你的宠物的能力？我正好有宠物监测平板可以卖给你。多方便啊。
-					Common4: 有一次，我把我的整个包都丢进了地下那闪闪发光的粉色液体里。我很担心，因为包里有妖灵瓶！奇怪的是，当我看到所有东西都变成了别的东西，我的妖灵瓶还在那里，毫发无损！我想知道那是什么液体。
-					Common5: 哦。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它不愿比它的前身更强！
-					Common6: 是的！通过宠物熔炉，你可以制作任何你想要的宠物。不过可能需要付出一点精力。
-					// Common7: Have you noticed your Pets slowdown effects are less effective against bosses?
-					// Common8: My Pets have been given food by [c/90C2AA:Kinga and ivanborquez] this month. Great people.
+					Common4: 是的。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它的品级往往更差！
+					Common5: 是的！通过宠物熔炉，你可以制作任何你想要的宠物。不过可能需要付出一点精力。
+					Common6: 你应该永远记得给城镇的宠物和史莱姆一些爱。他们甚至可能会用一些增益来祝福你！
+					Common7: 你有注意过你的宠物减速效果对Boss效果减弱了吗？
+					Common8: 这个月[c/90C2AA:Kinga和ivanborquez]给我的宠物喂食了。伟大的人啊。
 					Rare1: 这条鞭子是干什么用的？当然是为了教训那些试图伤害我宠物的人！你以为干什么？
 					WizardQuote: 这太疯狂了，当<name>那天告诉我我非常幸运时，我那天训练的所有照明宠物似乎都超常发挥了。
 				}
