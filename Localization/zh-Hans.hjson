@@ -31,7 +31,7 @@ Mods: {
 			CustomLine: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物原本效果]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul（宠物大修）3.6.2更新：宠物减速修复，宠物食物获取优化]
+				[c/90C2AA:Pets Overhaul（宠物大修）3.6.3更新：专属宠物效果，宠物减速/宠物食物优化]
 				[c/90C2AA:宠物现在可以被微光分解为宠物食物，水下呼吸效果优化以及平衡改动]
 				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
@@ -45,8 +45,8 @@ Mods: {
 			Current: 当前
 			Enabled: 已启用
 			Disabled: 已禁用
-			// TownPetBuffTip: Only one Town Pet buff can be active at a time.
-			// TownPetPetMe: " (Pet me!)"
+			TownPetBuffTip: 同一时间只能激活一个城镇宠物增益
+			TownPetPetMe: “（抚摸我！）”
 		}
 
 		Classes: {
@@ -1478,7 +1478,7 @@ Mods: {
 			DD2PetGato:
 				'''
 				装备翅膀时增加<wingTime>秒飞行时间
-				车
+				“car.”
 				专属于Furqi，感谢他为此Mod做出的贡献
 				'''
 			UnluckyYarn:
@@ -1491,7 +1491,7 @@ Mods: {
 				 - 增加<ms>%移动速度
 				 - 增加<manaRegen>点魔力再生
 				 - 你无法再生生命
-				女巫金加的猫
+				“女巫金加的猫”
 				'''
 			UnluckyYarnStack: 剩余月亮面纱增益时长
 			EucaluptusSap:
@@ -1505,7 +1505,7 @@ Mods: {
 				 - 再次按下按键传送到敌人并再次攻击他们
 				 - 第二次打击的伤害和击退翻3倍
 				 - 有<cooldown>秒的冷却时间，标记停留在敌人身上<mark>秒
-				哇哦耶，我要大便了
+				“哇哦耶，我要大便了”
 				'''
 			WispInABottle:
 				'''
@@ -1521,27 +1521,27 @@ Mods: {
 		}
 
 		SimpleCustomPetEffects: {
-			/* DD2PetGato:
+			DD2PetGato:
 				'''
-				- Increases flight time.
-				car.
-				''' */
-			/* UnluckyYarn:
+				增加飞行时间
+				“car.”
 				'''
-				- Press Pet Ability Keybind <keybind> to activate Lunar Veil.
-				 * While under Lunar Veil you will survive a fatal hit.
-				 * Afterwards, gain movement speed, mana regen, and life regen is disabled.
-				 * Only usable at Night.
-				The cat of Kinga the Witch.
-				''' */
-			/* EucaluptusSap:
+			UnluckyYarn:
 				'''
-				- Allows you to glide.
-				- Press Pet Ability Keybind <keybind> to throw an 'acorn'
-				towards where you face and dash behind a little, marking the enemy hit.
-				 * Press keybind again to teleport to enemy & strike them again.
-				WOOOO YEAHHH GET DUNG ONNN
-				''' */
+				按下宠物技能键<keybind>以激活月亮面纱
+				 - 在月亮面纱的庇护下，你可以承受一次致命伤害
+				 - 成功承受后，获得移速、魔力再生加成，但无法再生生命
+				 - 只能在夜晚激活
+				“女巫金加的猫”
+				'''
+			EucaluptusSap:
+				'''
+				允许你滑翔
+				按下宠物技能键<keybind>以投掷“橡子”
+				 - 射向你面对的方向，且你会稍稍后退，并标记敌怪
+				 - 再次按下按键传送到敌人处并再次攻击他们
+				“哇哦耶，我要大便了”
+				'''
 		}
 
 		Buffs: {
@@ -1616,98 +1616,69 @@ Mods: {
 			}
 
 			TownPetBunny: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					跳跃速度提高<BunnyJump>%
-					采集时运提高<BunnyHarvesting>
-					'''
+				DisplayName: <Name>兔兔的光环
+				Description: 采集时运提高<harv>
 			}
 
 			TownPetCat: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					移动速度变为<CatMovespd>倍
-					钓鱼时运提高<CatFish>
-					'''
+				DisplayName: <Name>猫咪的光环
+				Description: 钓鱼时运提高<fish>
 			}
 
 			TownPetDog: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					渔力提高<DogFish>点
-					钓鱼时运提高<DogFishExp>
-					'''
+				DisplayName: <Name>狗狗的光环
+				Description: 挖掘时运提高<mining>
 			}
 
 			TownPetClumsy: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					运气提高<ClumsyLuck>点
-					通用时运提高<ClumsyGlobal>
-					'''
+				DisplayName: <Name>笨拙史莱姆的光环
+				Description: 通用时运提高<fort>
 			}
 
 			TownPetCool: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					暴击率提高<CoolCrit>%
-					挖掘时运提高<CoolMining>
-					'''
+				DisplayName: <Name>酷酷史莱姆的光环
+				Description: 宠物来源伤害提高<dmg>%
 			}
 
 			TownPetDiva: {
-				DisplayName: <Name>的光环
-				Description: 购买物品后可返还基础价格<DivaDisc>%的钱币
+				DisplayName: <Name>天后史莱姆的光环
+				Description: 
+					'''
+					宠物来源治疗提高<heal>%
+					宠物技能急速提高<haste>%
+					'''
 			}
 
 			TownPetMystic: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					宠物技能急速增加<MysticHaste>%，急速会降低宠物技能的冷却时间
-					通用时运提高<MysticAllExp>
-					'''
+				DisplayName: <Name>神秘史莱姆的光环
+				Description: 宠物来源治疗提高<heal>%
 			}
 
 			TownPetNerd: {
-				DisplayName: <Name>的光环
+				DisplayName: <Name>书呆子史莱姆的光环
 				Description:
 					'''
-					放置速度变为<NerdPlacement>倍
-					获得<NerdShineScale>倍亮度的白色光环
+					宠物来源护盾提高<shield>%
+					宠物技能急速提高<haste>%
 					'''
 			}
 
 			TownPetOld: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					增加<OldDef>点防御
-					增加<OldKb>%击退抗性
-					采集时运提高<OldHarvesting>
-					'''
+				DisplayName: <Name>长者史莱姆的光环
+				Description: 宠物技能急速提高<haste>%
 			}
 
 			TownPetSquire: {
-				DisplayName: <Name>的光环
-				Description:
-					'''
-					伤害增加<SquireDmg>%
-					挖掘经验提高<SquireMining>%
-					'''
+				DisplayName: <Name>侍卫史莱姆的光环
+				Description: 宠物来源护盾提高<shield>%
 			}
 
 			TownPetSurly: {
-				DisplayName: <Name>的光环
-				Description:
+				DisplayName: <Name>暴躁史莱姆的光环
+				Description: 
 					'''
-					敌怪的生成速度提高<SurlySpawn>%
-					获得影烛效果
+					宠物来源伤害提高<dmg>%
+					宠物技能急速提高<haste>%
 					'''
 			}
 		}
@@ -1817,7 +1788,7 @@ Mods: {
 		Projectiles: {
 			PetExplosion: 宠物爆炸
 			BonemerangProj.DisplayName: 骨头回旋镖
-			// Shuricorn.DisplayName: Shuricorn
+			Shuricorn.DisplayName: 橡果手里剑
 		}
 
 		Keybinds: {
@@ -1825,7 +1796,7 @@ Mods: {
 			PetTooltipHide.DisplayName: 开关（显示）宠物技能提示
 			PetTooltipSwap.DisplayName: 切换宠物技能提示
 			PetAbilitySwitch.DisplayName: 切换宠物技能
-			// PetCustomEffectSwitch.DisplayName: Switch to Donor/Contributor Effect
+			PetCustomEffectSwitch.DisplayName: 切换为捐赠者/贡献者效果
 		}
 
 		NPCs: {
