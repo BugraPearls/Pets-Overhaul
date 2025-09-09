@@ -23,7 +23,8 @@ namespace PetsOverhaul.PetEffects
         private static ItemDropAttemptResult ShadowMimicExtraDrop(On_ItemDropResolver.orig_ResolveRule orig, ItemDropResolver self, IItemDropRule rule, DropAttemptInfo info)
         {
             ItemDropAttemptResult tempResult;
-            if (rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped())
+            if (rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && ItemID.Sets.BossBag[drop.itemId] == false && 
+                ItemID.Sets.PreHardmodeLikeBossBag[drop.itemId] == false && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped())
             {
                 if ((float)Math.Max(drop.chanceNumerator, 1) / Math.Max(drop.chanceDenominator, 1) <= mimic.lowChanceThreshold)
                 {
