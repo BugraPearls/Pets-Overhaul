@@ -16,6 +16,8 @@ namespace PetsOverhaul.PetEffects
         public float lavaSpd = 0.15f;
         public int obbyDef = 8;
         public float obbySpd = 0.08f;
+        public static bool[] ObsidianSkinEffects = BuffID.Sets.Factory.CreateNamedSet("ObsidianSkinBuffs").Description("Buffs that triggers Baby Imp's effects that triggers when Obsidian Skin buff is active. Intended for crossmod compatibility.")
+            .RegisterBoolSet(false, BuffID.ObsidianSkin);
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())
@@ -27,10 +29,14 @@ namespace PetsOverhaul.PetEffects
                     Player.statDefense += lavaDef;
                     Player.moveSpeed += lavaSpd;
                 }
-                if (Player.HasBuff(BuffID.ObsidianSkin))
+                foreach (var effect in Player.buffType)
                 {
-                    Player.statDefense += obbyDef;
-                    Player.moveSpeed -= obbySpd;
+                    if (ObsidianSkinEffects[effect]) 
+                    {
+                        Player.statDefense += obbyDef;
+                        Player.moveSpeed -= obbySpd;
+                        break;
+                    }
                 }
             }
         }

@@ -1642,7 +1642,7 @@ Mods: {
 
 			TownPetDiva: {
 				DisplayName: <Name>天后史莱姆的光环
-				Description: 
+				Description:
 					'''
 					宠物来源治疗提高<heal>%
 					宠物技能急速提高<haste>%
@@ -1675,7 +1675,7 @@ Mods: {
 
 			TownPetSurly: {
 				DisplayName: <Name>暴躁史莱姆的光环
-				Description: 
+				Description:
 					'''
 					宠物来源伤害提高<dmg>%
 					宠物技能急速提高<haste>%

@@ -17,14 +17,20 @@ namespace PetsOverhaul.PetEffects
         public float defItemMult = 0.35f;
         public int flatAmount = 8;
         public int miningFort = 8;
+        public static bool[] IronskinEffects = BuffID.Sets.Factory.CreateNamedSet("IronskinBuffs").Description("Buffs that triggers Destroyer's effects that triggers when Ironskin buff is active. Intended for crossmod compatibility.")
+        .RegisterBoolSet(false, BuffID.Ironskin);
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())
             {
-                if (Player.HasBuff(BuffID.Ironskin))
+                foreach (var effect in Player.buffType)
                 {
-                    Player.statDefense += ironskinBonusDef;
-                    Pet.miningFortune += miningFort;
+                    if (IronskinEffects[effect])
+                    {
+                        Player.statDefense += ironskinBonusDef;
+                        Pet.miningFortune += miningFort;
+                        break;
+                    }
                 }
                 Player.statDefense *= 1f + flatDefMult;
             }

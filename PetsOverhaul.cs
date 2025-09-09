@@ -28,7 +28,6 @@ namespace PetsOverhaul
             {
                 hook.Apply();
             }
-
         }
         private static bool ItemLoaderOnPickupDetour(orig_ItemLoaderOnPickup orig, Item item, Player player)
         {
@@ -108,6 +107,27 @@ namespace PetsOverhaul
             if (ModLoader.TryGetMod("Census", out Mod censusMod))
             {
                 censusMod.Call("TownNPCCondition", ModContent.NPCType<PetTamer>(), ModContent.GetInstance<PetTamer>().GetLocalization("Census.SpawnCondition"));
+            }
+            if (ModLoader.TryGetMod("AlchemistNPCLite", out Mod alchemistNPCLite))
+            {
+                if (alchemistNPCLite.TryFind("VanTankComb", out ModBuff vanTank))
+                {
+                    BabyImp.ObsidianSkinEffects[vanTank.Type] = true;
+                    Destroyer.IronskinEffects[vanTank.Type] = true;
+                }
+                if (alchemistNPCLite.TryFind("TankComb", out ModBuff tank))
+                {
+                    BabyImp.ObsidianSkinEffects[tank.Type] = true;
+                    Destroyer.IronskinEffects[tank.Type] = true;
+                }
+                if (alchemistNPCLite.TryFind("BattleComb", out ModBuff battle))
+                {
+                    Destroyer.IronskinEffects[battle.Type] = true;
+                }
+                if (alchemistNPCLite.TryFind("FishingComb", out ModBuff fish))
+                {
+                    Destroyer.IronskinEffects[fish.Type] = true;
+                }
             }
         }
     }
