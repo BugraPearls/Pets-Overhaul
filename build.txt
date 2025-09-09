@@ -2,4 +2,4 @@ displayName = Pets Overhaul
 author = Pearlie
 buildIgnore = icon_workshop.png
 version = 3.6.5
-homepage = https://discord.gg/KubSpqvDGE
+homepage = https://terrariamods.wiki.gg/wiki/Pets_Overhaul
