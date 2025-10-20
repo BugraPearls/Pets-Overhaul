@@ -1,6 +1,7 @@
 ﻿using PetsOverhaul.Items;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace PetsOverhaul.Systems
@@ -14,12 +15,19 @@ namespace PetsOverhaul.Systems
             {
                 Item.NewItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
             }
-            else if (Main.rand.NextBool(3) && (type == TileID.MatureHerbs || type == TileID.BloomingHerbs)) 
+            else if (Main.rand.NextBool(3) && (type == TileID.MatureHerbs || type == TileID.BloomingHerbs))
             {
                 Item.NewItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
             }
         }
-
+        public override bool ShakeTree(int x, int y, TreeTypes treeType)
+        {
+            if (Main.rand.NextBool(10))
+            {
+                Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), x * 16, y * 16, 16, 16, ModContent.ItemType<PetFood>(), Main.rand.NextBool() ? 1 : 2);
+            }
+            return false;
+        }
         #endregion
 
         public static void RemoveFromList(int i, int j)
