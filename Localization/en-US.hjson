@@ -1709,7 +1709,7 @@ Mods: {
 			}
 
 			TownPetNerd: {
-				DisplayName: <Name> the Nerd Slime's Buff
+				DisplayName: <Name> the Nerdy Slime's Buff
 				Description:
 					'''
 					Increases Pet Sourced Shields by <shield>%.
@@ -1718,7 +1718,7 @@ Mods: {
 			}
 
 			TownPetOld: {
-				DisplayName: <Name> the Old Slime's Buff
+				DisplayName: <Name> the Elder Slime's Buff
 				Description: Increases Pet Ability Haste by <haste>%.
 			}
 
