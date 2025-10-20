@@ -1542,74 +1542,75 @@ Mods: {
 				'''
 		}
 
-CustomPetEffects: {
-	DD2PetGato: '''
-	- Aumenta o tempo de voo quando você possui asas em <wingTime> segundos.
-	Carro.
-	Dedicado a Furqi por sua contribuição ao Mod.
-	'''
+		CustomPetEffects: {
+			DD2PetGato:
+				'''
+				- Aumenta o tempo de voo quando você possui asas em <wingTime> segundos.
+				Carro.
+				Dedicado a Furqi por sua contribuição ao Mod.
+				'''
+			UnluckyYarn:
+				'''
+				- Pressione a tecla de habilidade do mascote <keybind> para ativar o Véu Lunar por <seconds> segundos.
+				* Isso só pode ser ativado durante a noite.
+				* Enquanto estiver sob o Véu Lunar, você sobreviverá a um golpe fatal com 1 de vida.
+				* Possui um tempo de recarga de <cooldown> segundos.
+				- Se o Véu Lunar proteger você com sucesso, por <postDuration> segundos você irá:
+				* Ganhar <ms>% de Velocidade de Movimento.
+				* Ganhar <manaRegen> de Regeneração de Mana.
+				* Não poderá regenerar vida.
+				O gato de Kinga, a Bruxa.
+				'''
+			UnluckyYarnStack: restante da duração do Véu Lunar
+			EucaluptusSap:
+				'''
+				- Permite planar, multiplicando a velocidade máxima de queda em <glide>x.
+				* Isso pode ser feito segurando a barra de espaço e funciona ainda melhor com asas.
+				- Pressione a tecla de habilidade do mascote <keybind> para lançar uma “bolota”.
+				* A bolota é lançada em linha reta na direção que você estiver virado.
+				* Você também dará um pequeno impulso para trás.
+				* A bolota causa <dmg> de dano e <kb> de recuo, além de marcar o inimigo atingido.
+				* Pressione a tecla novamente para se teletransportar até o inimigo e atacá-lo novamente.
+				* No segundo ataque, o dano e o recuo são triplicados.
+				* Possui um tempo de recarga de <cooldown> segundos, e a marca permanece no inimigo por <mark> segundos.
+				WOOOO YEAHHH LEVE ESSA, SEU DUNGO!!!
+				'''
+			WispInABottle:
+				'''
+				- Atacar um inimigo tem <chance>% de chance de o Fogo-Fátuo atacar também.
+				* O dano é <base> + <perc>% do dano inicial causado. <cooldown> segundos de recarga.
+				* A habilidade não funciona se o mascote Fogo-Fátuo não estiver visível.
+				Qualidade da Chance de Acionamento: <chanceLine>
+				Qualidade do Dano Base: <baseLine>
+				Qualidade do Dano Percentual: <percLine>
+				Qualidade do Tempo de Recarga: <cooldownLine>
+				"Sempre lembraremos daquela noite."
+				'''
+		}
 
-	UnluckyYarn: '''
-	- Pressione a tecla de habilidade do mascote <keybind> para ativar o Véu Lunar por <seconds> segundos.
-	  * Isso só pode ser ativado durante a noite.
-	  * Enquanto estiver sob o Véu Lunar, você sobreviverá a um golpe fatal com 1 de vida.
-	  * Possui um tempo de recarga de <cooldown> segundos.
-	- Se o Véu Lunar proteger você com sucesso, por <postDuration> segundos você irá:
-	  * Ganhar <ms>% de Velocidade de Movimento.
-	  * Ganhar <manaRegen> de Regeneração de Mana.
-	  * Não poderá regenerar vida.
-	O gato de Kinga, a Bruxa.
-	'''
-
-	UnluckyYarnStack: restante da duração do Véu Lunar
-
-	EucaluptusSap: '''
-	- Permite planar, multiplicando a velocidade máxima de queda em <glide>x.
-	  * Isso pode ser feito segurando a barra de espaço e funciona ainda melhor com asas.
-	- Pressione a tecla de habilidade do mascote <keybind> para lançar uma “bolota”.
-	  * A bolota é lançada em linha reta na direção que você estiver virado.
-	  * Você também dará um pequeno impulso para trás.
-	  * A bolota causa <dmg> de dano e <kb> de recuo, além de marcar o inimigo atingido.
-	  * Pressione a tecla novamente para se teletransportar até o inimigo e atacá-lo novamente.
-	  * No segundo ataque, o dano e o recuo são triplicados.
-	  * Possui um tempo de recarga de <cooldown> segundos, e a marca permanece no inimigo por <mark> segundos.
-	WOOOO YEAHHH LEVE ESSA, SEU DUNGO!!!
-	'''
-
-	WispInABottle: '''
-	- Atacar um inimigo tem <chance>% de chance de o Fogo-Fátuo atacar também.
-	  * O dano é <base> + <perc>% do dano inicial causado. <cooldown> segundos de recarga.
-	  * A habilidade não funciona se o mascote Fogo-Fátuo não estiver visível.
-	Qualidade da Chance de Acionamento: <chanceLine>
-	Qualidade do Dano Base: <baseLine>
-	Qualidade do Dano Percentual: <percLine>
-	Qualidade do Tempo de Recarga: <cooldownLine>
-	"Sempre lembraremos daquela noite."
-	'''
-}
-
-SimpleCustomPetEffects: {
-	DD2PetGato: '''
-	- Aumenta o tempo de voo.
-	Carro.
-	'''
-
-	UnluckyYarn: '''
-	- Pressione a tecla de habilidade do mascote <keybind> para ativar o Véu Lunar.
-	  * Enquanto estiver sob o Véu Lunar, você sobreviverá a um golpe fatal.
-	  * Depois disso, ganha velocidade de movimento e regeneração de mana, mas a regeneração de vida é desativada.
-	  * Só pode ser usado à noite.
-	O gato de Kinga, a Bruxa.
-	'''
-
-	EucaluptusSap: '''
-	- Permite planar.
-	- Pressione a tecla de habilidade do mascote <keybind> para lançar uma “bolota”
-	na direção que você estiver virado e dar um pequeno impulso para trás, marcando o inimigo atingido.
-	  * Pressione a tecla novamente para se teletransportar até o inimigo e atacá-lo novamente.
-	WOOOO YEAHHH LEVE ESSA, SEU DUNGO!!!
-	'''
-}
+		SimpleCustomPetEffects: {
+			DD2PetGato:
+				'''
+				- Aumenta o tempo de voo.
+				Carro.
+				'''
+			UnluckyYarn:
+				'''
+				- Pressione a tecla de habilidade do mascote <keybind> para ativar o Véu Lunar.
+				* Enquanto estiver sob o Véu Lunar, você sobreviverá a um golpe fatal.
+				* Depois disso, ganha velocidade de movimento e regeneração de mana, mas a regeneração de vida é desativada.
+				* Só pode ser usado à noite.
+				O gato de Kinga, a Bruxa.
+				'''
+			EucaluptusSap:
+				'''
+				- Permite planar.
+				- Pressione a tecla de habilidade do mascote <keybind> para lançar uma “bolota”
+				na direção que você estiver virado e dar um pequeno impulso para trás, marcando o inimigo atingido.
+				* Pressione a tecla novamente para se teletransportar até o inimigo e atacá-lo novamente.
+				WOOOO YEAHHH LEVE ESSA, SEU DUNGO!!!
+				'''
+		}
 
 		Buffs: {
 			SanityAura: {
