@@ -31,11 +31,11 @@ Mods: {
 			CustomLine: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to go back to base effect of this Pet.]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.6.5, latest changes: Alchemist NPC Lite Compatibility for select Pets]
-				[c/90C2AA:Chinese Localization improvements (By ROH), Wiki Improvements (By Th3Moo5e)]
+				[c/90C2AA:Pets Overhaul 3.6.6, latest changes: Major Wiki improvements (Wiki credits: Pearlie, Th3Moo5e)]
+				[c/90C2AA:Chinese Localization improvements (By ROH), Alchemist NPC Lite Compatibility for select Pets]
 				[c/b4bfc5:Join our discord server for feedback, bug reports & questions! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Check out our Wiki: terrariamods.wiki.gg/wiki/Pets_Overhaul]
-				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul, providing you more info!]
+				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul!]
 				'''
 			CalamityDetected:
 				'''
@@ -1880,7 +1880,7 @@ Mods: {
 					Common5: Yeah! From Pet Forge, you can get any Pet you want. Although, may be a bit difficult & effortful.
 					Common6: You should always remember to give some love to Town's fellow Pets & Slimes. They may even bless you with some buffs!
 					Common7: Have you noticed your Pets slowdown effects are less effective against bosses?
-					Common8: My Pets have been given food by [c/90C2AA:Kinga and ivanborquez] this month. Great people.
+					Common8: My Pets have been given food by [c/90C2AA:Kinga and ivanborquez]. Great people.
 					Rare1: Whats this whip for? For the ones that tries to hurt my Pets of course! What else did ya think?
 					WizardQuote: Its crazy, when <name> told me im extremely lucky that day, all Light Pets I've been training during that day seemed to have higher potential.
 				}
