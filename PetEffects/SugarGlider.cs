@@ -4,12 +4,10 @@ using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
-using Terraria.GameContent.UI.BigProgressBar;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.Utilities.Terraria.Utilities;
 
 namespace PetsOverhaul.PetEffects
 {
@@ -45,7 +43,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquippedForCustom() && Pet.AbilityPressCheck())
             {
                 Projectile.NewProjectile(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
-                Player.velocity.X = 10 * Player.direction * -1; 
+                Player.velocity.X = 10 * Player.direction * -1;
                 Pet.timer = Pet.timerMax;
             }
             if (PetIsEquippedForCustom() && Player.dead == false && PetKeybinds.UsePetAbility.JustPressed)
@@ -96,8 +94,8 @@ namespace PetsOverhaul.PetEffects
             .Replace("<glide>", sugarGlider.customGlideWeak.ToString())
             .Replace("<dmg>", sugarGlider.shuricornDamage.ToString())
             .Replace("<kb>", sugarGlider.shuricornKb.ToString())
-            .Replace("<cooldown>", Math.Round(sugarGlider.shuricornCooldown/60f,2).ToString())
-            .Replace("<mark>", Math.Round(SugarGlider.shuricornDuration/60f,2).ToString());
+            .Replace("<cooldown>", Math.Round(sugarGlider.shuricornCooldown / 60f, 2).ToString())
+            .Replace("<mark>", Math.Round(SugarGlider.shuricornDuration / 60f, 2).ToString());
         public override string CustomSimpleTooltip => PetTextsColors.LocVal("CustomSimplePetEffects.EucaluptusSap");
     }
 }

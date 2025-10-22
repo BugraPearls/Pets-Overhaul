@@ -233,7 +233,7 @@ namespace PetsOverhaul.NPCs
                     //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
             }
@@ -259,7 +259,7 @@ namespace PetsOverhaul.NPCs
                     //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
             }
@@ -283,7 +283,7 @@ namespace PetsOverhaul.NPCs
                     c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity"));
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
             }

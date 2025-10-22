@@ -179,9 +179,9 @@ namespace PetsOverhaul.Systems
         {
             string tip = "\n" + PetsTooltip;
             if (HasCustomEffect)
-            { 
+            {
                 if (CustomEffectActive)
-                tip = "\n" + CustomPetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                    tip = "\n" + CustomPetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
                 else
                 {
                     tip += "\n" + PetTextsColors.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
@@ -320,7 +320,7 @@ namespace PetsOverhaul.Systems
         }
         public readonly string QualityLine()
         {
-            return PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString() + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + MaxRoll.ToString(),CurrentRoll,MaxRoll);
+            return PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString() + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
     }
 }

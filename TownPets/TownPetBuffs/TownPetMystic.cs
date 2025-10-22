@@ -1,9 +1,6 @@
 ﻿using PetsOverhaul.Systems;
-using PetsOverhaul.TownPets;
 using System;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 namespace PetsOverhaul.TownPets.TownPetBuffs
 {
     public class TownPetMystic : TownPetBuff
@@ -13,6 +10,6 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
         {
             pet.petHealMultiplier += val;
         }
-        public override string BuffTooltip => base.BuffTooltip.Replace("<heal>", Math.Round(val*100,2).ToString());
+        public override string BuffTooltip => base.BuffTooltip.Replace("<heal>", Math.Round(val * 100, 2).ToString());
     }
 }

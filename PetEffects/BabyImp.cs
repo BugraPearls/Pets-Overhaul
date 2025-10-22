@@ -31,7 +31,7 @@ namespace PetsOverhaul.PetEffects
                 }
                 foreach (var effect in Player.buffType)
                 {
-                    if (ObsidianSkinEffects[effect]) 
+                    if (ObsidianSkinEffects[effect])
                     {
                         Player.statDefense += obbyDef;
                         Player.moveSpeed -= obbySpd;

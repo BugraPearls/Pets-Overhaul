@@ -1,9 +1,5 @@
 ﻿using PetsOverhaul.Systems;
-using PetsOverhaul.TownPets;
-using System;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace PetsOverhaul.TownPets.TownPetBuffs
 {
@@ -14,6 +10,6 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
         {
             pet.harvestingFortune += val;
         }
-        public override string BuffTooltip => base.BuffTooltip.Replace("<harv>",val.ToString());
+        public override string BuffTooltip => base.BuffTooltip.Replace("<harv>", val.ToString());
     }
 }

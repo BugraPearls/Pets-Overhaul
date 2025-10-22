@@ -1,9 +1,6 @@
 ﻿using PetsOverhaul.Systems;
-using PetsOverhaul.TownPets;
 using System;
 using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace PetsOverhaul.TownPets.TownPetBuffs
 {
@@ -16,6 +13,6 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
             pet.petShieldMultiplier += val;
             pet.abilityHaste += val2;
         }
-        public override string BuffTooltip => base.BuffTooltip.Replace("<shield>", Math.Round(val*100,2).ToString()).Replace("<haste>", Math.Round(val2 * 100, 2).ToString());
+        public override string BuffTooltip => base.BuffTooltip.Replace("<shield>", Math.Round(val * 100, 2).ToString()).Replace("<haste>", Math.Round(val2 * 100, 2).ToString());
     }
 }

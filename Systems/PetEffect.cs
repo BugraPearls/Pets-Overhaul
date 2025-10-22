@@ -1,9 +1,7 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.Systems
 {
@@ -93,7 +91,7 @@ namespace PetsOverhaul.Systems
                 else
                     return Pet.PetInUse(PetItemID);
             }
-            else 
+            else
                 return false;
         }
         public sealed override void PreUpdate()
@@ -197,8 +195,8 @@ namespace PetsOverhaul.Systems
                     Tip = CustomTooltip;
                 }
                 else
-                { 
-                    Tip = PetsTooltip; 
+                {
+                    Tip = PetsTooltip;
                 }
             }
             else if (SimpleTooltip is not null)
@@ -233,7 +231,7 @@ namespace PetsOverhaul.Systems
             {
                 Tip = PetTextsColors.ClassText(petClass1, petClass2) + "\n" + Tip;
             }
-            
+
             if (PetsEffect.HasCustomEffect)
             {
                 Tip += "\n";
@@ -241,7 +239,7 @@ namespace PetsOverhaul.Systems
                     Tip += PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
                 else
                 {
-                    if (PetsEffect.CustomEffectIsContributor) 
+                    if (PetsEffect.CustomEffectIsContributor)
                     {
                         Tip += PetTextsColors.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
                     }

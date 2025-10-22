@@ -933,9 +933,9 @@ namespace PetsOverhaul.Systems
             {
                 Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), fish.type, 1);
             }
-            if (Main.rand.NextBool(5)) 
+            if (Main.rand.NextBool(5))
             {
-                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1,3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
+                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1, 3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
             }
         }
         public override void ProcessTriggers(TriggersSet triggersSet)

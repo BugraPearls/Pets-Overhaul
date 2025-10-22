@@ -109,7 +109,7 @@ namespace PetsOverhaul.PetEffects
                 }
 
                 frozenTomb = true;
-                
+
                 if (Player.lifeRegen < 0)
                 {
                     Player.lifeRegen = 0;

@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => CustomEffectActive ? lunarVeilCooldown : moonlightCd;
         public override int PetStackCurrent => lunarVeilDuration > 0 ? lunarVeilDuration : lunarVeilPostDuration;
         public override string PetStackText => PetTextsColors.LocVal("CustomPetEffects.UnluckyYarnStack");
-        public override string PetStackSpecial => CustomEffectActive ? PetTextsColors.SecondsOutOfText(PetStackCurrent,0) : string.Empty;
+        public override string PetStackSpecial => CustomEffectActive ? PetTextsColors.SecondsOutOfText(PetStackCurrent, 0) : string.Empty;
         public override bool CustomEffectIsContributor => false;
         public override bool HasCustomEffect => true;  //Dedicated to Kinga
         public override PetClasses CustomPrimaryClass => PetClasses.Defensive;

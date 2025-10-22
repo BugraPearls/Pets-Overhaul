@@ -1,15 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Buffs;
-using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using PetsOverhaul.TownPets.TownPetBuffs;
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -28,13 +20,13 @@ namespace PetsOverhaul.TownPets
             {
                 if (PetItemIDs.TownPetBuffIDs[Main.LocalPlayer.buffType[i]])
                 {
-                    found = true; 
+                    found = true;
                     break; //No need to continue the for if found
                 }
             }
-            if (found == false) 
-            { 
-                chat += PetTextsColors.LocVal("Misc.TownPetPetMe"); 
+            if (found == false)
+            {
+                chat += PetTextsColors.LocVal("Misc.TownPetPetMe");
             }
         }
         public override void Load()
@@ -74,11 +66,11 @@ namespace PetsOverhaul.TownPets
                 self.AddBuff(buffToAdd, 1);
                 if (prevId == -1 || prevId != buffToAdd)
                 {
-                    SoundEngine.PlaySound(SoundID.Item44 with { Pitch = 0.15f, PitchVariance = 0.6f, Volume = 0.7f});
+                    SoundEngine.PlaySound(SoundID.Item44 with { Pitch = 0.15f, PitchVariance = 0.6f, Volume = 0.7f });
                 }
             }
             GlobalPet.LastTownPet = townPet.GivenName;
-            orig(self,animalNpcIndex);
+            orig(self, animalNpcIndex);
         }
     }
 }

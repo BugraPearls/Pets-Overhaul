@@ -2,7 +2,6 @@
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;

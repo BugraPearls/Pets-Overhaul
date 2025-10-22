@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using System.IO;
@@ -25,7 +24,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void PreUpdate()
         {
-            if (timer > 0) 
+            if (timer > 0)
             {
                 timer--;
             }
@@ -54,16 +53,16 @@ namespace PetsOverhaul.LightPets
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (CustomEffectActive && Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && Main.rand.NextBool(wispInABottle.CustomChance,100) && timer <= 0)
+            if (CustomEffectActive && Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && Main.rand.NextBool(wispInABottle.CustomChance, 100) && timer <= 0)
             {
                 Projectile theWisp = null;
-                    foreach (var projectile in Main.ActiveProjectiles)
+                foreach (var projectile in Main.ActiveProjectiles)
+                {
+                    if (projectile is Projectile proj && proj.owner == Player.whoAmI && proj.type == ProjectileID.Wisp)
                     {
-                        if (projectile is Projectile proj && proj.owner == Player.whoAmI && proj.type == ProjectileID.Wisp)
-                        {
-                            theWisp = projectile;
-                        }
+                        theWisp = projectile;
                     }
+                }
                 if (theWisp != null)
                 {
                     SpawnGhostHurt(theWisp, wispInABottle.CustomFlat + (int)(wispInABottle.CustomScaling * damageDone), target);
@@ -194,11 +193,11 @@ namespace PetsOverhaul.LightPets
                         .Replace("<velocityLine>", ProjectileVelocity.StatSummaryLine())
                         .Replace("<petDmgLine>", PetDamage.StatSummaryLine());
         public override string CustomPetsTooltip => PetTextsColors.LocVal("CustomPetEffects.WispInABottle")
-                        
+
                         .Replace("<chance>", CustomChance.ToString())
                         .Replace("<base>", CustomFlat.ToString())
-                        .Replace("<perc>", Math.Round(CustomScaling * 100,2).ToString())
-                        .Replace("<cooldown>", Math.Round(CustomCooldown / 60f,2).ToString())
+                        .Replace("<perc>", Math.Round(CustomScaling * 100, 2).ToString())
+                        .Replace("<cooldown>", Math.Round(CustomCooldown / 60f, 2).ToString())
 
                         .Replace("<chanceLine>", PetDamage.QualityLine())
                         .Replace("<baseLine>", MagicDamage.QualityLine())
