@@ -98,6 +98,7 @@ namespace PetsOverhaul.Systems
         {
             if (Pet.PetInUse(PetItemID))
             {
+                Pet.currentActivePet = this;
                 Pet.timerMax = PetAbilityCooldown;
                 Pet.currentPetStacks = PetStackCurrent;
                 Pet.currentPetStacksMax = PetStackMax;

@@ -166,6 +166,11 @@ namespace PetsOverhaul.Systems
         public static List<int> EnemiesForLifestealToIgnore = [];
 
         /// <summary>
+        /// This is instance of current active Pet effect, lots of data can be accessed here.
+        /// </summary>
+        public PetEffect currentActivePet = null;
+
+        /// <summary>
         /// Is invoked at PetNpc, OnKill hook, refer to Puppy Pet's OnEnemyKill() & Load/Unload to figure how its used properly. Only called on Player that last hit the NPC, when NPC is dead.
         /// </summary>
         public static Action<NPC, Player> OnEnemyDeath;
@@ -763,6 +768,11 @@ namespace PetsOverhaul.Systems
         }
         public override void PreUpdate()
         {
+            if (Player.miscEquips[0].type == ItemID.None)
+            {
+                currentActivePet = null;
+            }
+
             if (Main.mouseItem.TryGetGlobalItem(out ItemPet item) && item.pickedUpBefore == false) //Player's hand slot is not being reckognized as 'inventory' in UpdateInventory() of GlobalItem, so manually updating the Hand slot
             {
                 item.pickedUpBefore = true;
