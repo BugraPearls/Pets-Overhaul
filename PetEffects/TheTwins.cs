@@ -46,7 +46,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         bonus = Math.Min(target.lifeMax * bossHpDmg, percDamageCap); //modifiers.SourceDamage is the actual damage, so that has to be increased for scaling bonus damages.
                     }
-                    modifiers.FlatBonusDamage += Player.GetTotalDamage(modifiers.DamageType).ApplyTo(bonus);
+                    modifiers.FlatBonusDamage += Pet.PetDamage(bonus,modifiers.DamageType);
                     Pet.timer = Pet.timerMax;
                 }
             }
