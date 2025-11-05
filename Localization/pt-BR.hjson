@@ -26,9 +26,9 @@ Mods: {
 			+: +
 			-: -
 			KeybindMissing: Atalho de Teclado não Registrado
-			// NonCustomLineContributor: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Contributor effect of this Pet.]"
-			// NonCustomLineDonator: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Donator effect of this Pet.]"
-			// CustomLine: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to go back to base effect of this Pet.]"
+			NonCustomLineContributor: "[c/a3bdf8:Pressione] <switchKey> [c/a3bdf8:para alternar para o efeito Personalizado de Contribuidor deste mascote.]"
+			NonCustomLineDonator: "[c/a3bdf8:Pressione] <switchKey> [c/a3bdf8:para alternar para o efeito Personalizado de Doador deste mascote.]"
+			CustomLine: "[c/a3bdf8:Pressione] <switchKey> [c/a3bdf8:para voltar ao efeito padrão deste mascote.]"
 			Notice:
 				'''
 				[c/90C2AA:Pets Overhaul 3.6.2, últimas mudanças: Correções lentas, melhorias na obtenção de alimentos para animais de estimação]
@@ -1848,7 +1848,7 @@ Mods: {
 		Projectiles: {
 			PetExplosion: Explosão por um PET
 			BonemerangProj.DisplayName: Ossomerang
-			// Shuricorn.DisplayName: Shuricorn
+			Shuricorn.DisplayName: Shuriken de Bolota
 		}
 
 		Keybinds: {
@@ -1856,7 +1856,7 @@ Mods: {
 			PetTooltipHide.DisplayName: Alternar (Mostrar) Dicas do Pet
 			PetTooltipSwap.DisplayName: Trocar Dica do Pet
 			PetAbilitySwitch.DisplayName: Alternar Habilidade do Pet
-			// PetCustomEffectSwitch.DisplayName: Switch to Donor/Contributor Effect
+			PetCustomEffectSwitch.DisplayName: Alternar para Efeito de Doador/Contribuidor
 		}
 
 		NPCs: {
@@ -1924,7 +1924,7 @@ Mods: {
 
 				PlayerRight: {
 					Tooltip: ""
-					Label: No Jogador, Ícone na Direita 
+					Label: No Jogador, Ícone na Direita
 				}
 
 				HealthBarLeft: {
@@ -1964,10 +1964,7 @@ Mods: {
 
 			PassivePetSoundFrequency: {
 				Tooltip: ""
-							PassiveSoundNever: Nunca joguei
-			PassiveSoundRarely: Raro (a cada 5m~)
-			PassiveSoundNormal: Normal (a cada 2m~)
-			PassiveSoundCommon: Comum (a cada 1m~)
+
 				None: {
 					Tooltip: ""
 					Label: Nunca joguei

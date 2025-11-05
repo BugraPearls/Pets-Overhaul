@@ -1846,23 +1846,23 @@ Mods: {
 				Tooltip: ""
 
 				PlayerLeft: {
-					 Tooltip: ""
-					 Label: 玩家头顶，图标在左边
+					Tooltip: ""
+					Label: 玩家头顶，图标在左边
 				}
 
 				PlayerRight: {
-					 Tooltip: ""
-					 Label: 玩家头顶，图标在右边
+					Tooltip: ""
+					Label: 玩家头顶，图标在右边
 				}
 
 				HealthBarLeft: {
-					 Tooltip: ""
-					 Label: 生命值旁，图标在左边
+					Tooltip: ""
+					Label: 生命值旁，图标在左边
 				}
 
 				HealthBarRight: {
-					 Tooltip: ""
-					 Label: 生命值旁，图标在右边
+					Tooltip: ""
+					Label: 生命值旁，图标在右边
 				}
 			}
 
@@ -1870,23 +1870,23 @@ Mods: {
 				Tooltip: ""
 
 				None: {
-					 Tooltip: ""
-					 Label: 无
+					Tooltip: ""
+					Label: 无
 				}
 
 				Lowered: {
-					 Tooltip: ""
-					 Label: 较少
+					Tooltip: ""
+					Label: 较少
 				}
 
 				Normal: {
-					 Tooltip: ""
-					 Label: 正常
+					Tooltip: ""
+					Label: 正常
 				}
 
 				Increased: {
-					 Tooltip: ""
-					 Label: 较多
+					Tooltip: ""
+					Label: 较多
 				}
 			}
 
@@ -1894,23 +1894,23 @@ Mods: {
 				Tooltip: ""
 
 				None: {
-					 Tooltip: ""
-					 Label: 从不
+					Tooltip: ""
+					Label: 从不
 				}
 
 				Lowered: {
-					 Tooltip: ""
-					 Label: 低（约5分钟一次）
+					Tooltip: ""
+					Label: 低（约5分钟一次）
 				}
 
 				Normal: {
-					 Tooltip: ""
-					 Label: 正常（约2分钟一次）
+					Tooltip: ""
+					Label: 正常（约2分钟一次）
 				}
 
 				Increased: {
-					 Tooltip: ""
-					 Label: 高（约1分钟一次）
+					Tooltip: ""
+					Label: 高（约1分钟一次）
 				}
 			}
 		}

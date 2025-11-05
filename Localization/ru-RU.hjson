@@ -20,14 +20,15 @@ Mods: {
 			Herb: Трава
 			Animal: Животное
 			RarePlant: Редкие растения
+			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 			%: %
 			x: x
 			+: +
 			-: -
 			KeybindMissing: Кнопка не зарегистрирована
-			// NonCustomLineContributor: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Contributor effect of this Pet.]"
-			// NonCustomLineDonator: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Donator effect of this Pet.]"
-			// CustomLine: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to go back to base effect of this Pet.]"
+			NonCustomLineContributor: "[c/a3bdf8:Нажмите] <switchKey> [c/a3bdf8:чтобы переключиться на эффект Пользовательского Контрибьютора для этого питомца.]"
+			NonCustomLineDonator: "[c/a3bdf8:Нажмите] <switchKey> [c/a3bdf8:чтобы переключиться на эффект Пользовательского Донатора для этого питомца.]"
+			CustomLine: "[c/a3bdf8:Нажмите] <switchKey> [c/a3bdf8:чтобы вернуться к обычному эффекту этого питомца.]"
 			Notice:
 				'''
 				[c/90C2AA:Pets Overhaul 3.6.2, последние изменения: Исправления ошибок при поиске питомцев, улучшения в доступности корма для животных]
@@ -1816,7 +1817,7 @@ Mods: {
 		Projectiles: {
 			PetExplosion: Взрыв, вызванный питомцем
 			BonemerangProj.DisplayName: Бонемеранг
-			// Shuricorn.DisplayName: Shuricorn
+			Shuricorn.DisplayName: Шурикено-жёлудь
 		}
 
 		Keybinds: {
@@ -1824,7 +1825,7 @@ Mods: {
 			PetTooltipHide.DisplayName: Переключить отображение описаний питомцев
 			PetTooltipSwap.DisplayName: Переключить описание питомца
 			PetAbilitySwitch.DisplayName: Переключение способности питомца
-			// PetCustomEffectSwitch.DisplayName: Switch to Donor/Contributor Effect
+			PetCustomEffectSwitch.DisplayName: Переключить на эффект Донатора/Контрибьютора
 		}
 
 		NPCs: {
@@ -1891,18 +1892,18 @@ Mods: {
 				}
 
 				PlayerRight: {
-					 Tooltip: ""
-					 Label: Возле игрока, иконка справа
+					Tooltip: ""
+					Label: Возле игрока, иконка справа
 				}
 
 				HealthBarLeft: {
-					 Tooltip: ""
-					 Label: Возле  здоровья, иконка слева
+					Tooltip: ""
+					Label: Возле  здоровья, иконка слева
 				}
 
 				HealthBarRight: {
-					 Tooltip: ""
-					 Label: Возле здоровья, иконка справа
+					Tooltip: ""
+					Label: Возле здоровья, иконка справа
 				}
 			}
 
@@ -1910,23 +1911,23 @@ Mods: {
 				Tooltip: ""
 
 				None: {
-					 Tooltip: ""
-					 Label: Нет
+					Tooltip: ""
+					Label: Нет
 				}
 
 				Lowered: {
-					 Tooltip: ""
-					 Label: Мало
+					Tooltip: ""
+					Label: Мало
 				}
 
 				Normal: {
-					 Tooltip: ""
-					 Label: Умеренно
+					Tooltip: ""
+					Label: Умеренно
 				}
 
 				Increased: {
-					 Tooltip: ""
-					 Label: Много
+					Tooltip: ""
+					Label: Много
 				}
 			}
 
@@ -1934,23 +1935,23 @@ Mods: {
 				Tooltip: ""
 
 				None: {
-					 Tooltip: ""
-					 Label: Никогда
+					Tooltip: ""
+					Label: Никогда
 				}
 
 				Lowered: {
-					 Tooltip: ""
-					 Label: Редко (каждые 5 м~)
+					Tooltip: ""
+					Label: Редко (каждые 5 м~)
 				}
 
 				Normal: {
-					 Tooltip: ""
-					 Label: Нормально (каждые 2 м~)
+					Tooltip: ""
+					Label: Нормально (каждые 2 м~)
 				}
 
 				Increased: {
-					 Tooltip: ""
-					 Label: Обычный (каждый 1 м~)
+					Tooltip: ""
+					Label: Обычный (каждый 1 м~)
 				}
 			}
 		}
