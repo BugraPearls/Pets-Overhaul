@@ -170,10 +170,6 @@ Mods: {
 				Changes where Pet Shield should be displayed when a Shield has been provided by your Pet.
 				Healthbar options work best with 1920x1080 Resolutions.
 				'''
-			PlayerLeft: On the Player, Icon on the left
-			PlayerRight: On the Player, Icon on the right
-			HealthBarLeft: Next to the Healthbar, Icon on the left
-			HealthBarRight: Next to the Healthbar, Icon on the right
 			CooldownDisplayLabel: Pet Ability Cooldown UI
 			CooldownDisplayTooltip:
 				'''
@@ -199,15 +195,7 @@ Mods: {
 				Determines where on your screen your Pet Resource UI will be at.
 				The selected position will be the upper-left corner of the UI.
 				'''
-			DustAmountTooltip:
-				'''
-				Modifies how much Dust will be created for Display of your Pets that has a radius with their effect.
-				Set it to None to disable it entirely.
-				'''
-			ParticleNone: None
-			ParticleLowered: Lowered
-			ParticleNormal: Normal
-			ParticleIncreased: Increased
+			DustAmountTooltip: Modifies how much Dust will be created for Display of your Pets that has a radius with their effect.
 			DustAmountLabel: Pet Circle Dust Amount
 			DustInsideBlocksLabel: Pet Circle Dust Inside Blocks
 			DustInsideBlocksTooltip:
@@ -230,10 +218,6 @@ Mods: {
 				'Never' option will disable passive sound effects by Pets entirely.
 				Its similar to Ambient sound effects in Vanilla. This is fully clientside.
 				'''
-			PassiveSoundNever: Never Played
-			PassiveSoundRarely: Rare (Every 5m~)
-			PassiveSoundNormal: Normal (Every 2m~)
-			PassiveSoundCommon: Common (Every 1m~)
 			AbilitySoundLabel: Pet ability sounds
 			AbilitySoundTooltip:
 				'''
@@ -1907,9 +1891,77 @@ Mods: {
 		}
 
 		Configs: {
-			ShieldPosition.Tooltip: ""
-			ParticleAmount.Tooltip: ""
-			PassivePetSoundFrequency.Tooltip: ""
+			ShieldPosition: {
+				Tooltip: ""
+
+				PlayerLeft: {
+					Tooltip: On the Player, Icon on the left
+					Label: Player Left
+				}
+
+				PlayerRight: {
+					Tooltip: On the Player, Icon on the right
+					Label: Player Right
+				}
+
+				HealthBarLeft: {
+					Tooltip: Next to the Healthbar, Icon on the left
+					Label: Health Bar Left
+				}
+
+				HealthBarRight: {
+					Tooltip: Next to the Healthbar, Icon on the right
+					Label: Health Bar Right
+				}
+			}
+
+			ParticleAmount: {
+				Tooltip: ""
+
+				None: {
+					Tooltip: Completely disables Circular dust effects of Pets.
+					Label: None
+				}
+
+				Lowered: {
+					Tooltip: Dusts are spawned 0.5x the normal amount.
+					Label: Lowered
+				}
+
+				Normal: {
+					Tooltip: Default, 1x spawn rate for dusts.
+					Label: Normal
+				}
+
+				Increased: {
+					Tooltip: Dusts are spawned 2x the normal amount.
+					Label: Increased
+				}
+			}
+
+			PassivePetSoundFrequency: {
+				Tooltip: ""
+
+				None: {
+					Tooltip: Completely disables passive ambient sound effects sourcing from your Pets.
+					Label: Never
+				}
+
+				Lowered: {
+					Tooltip: Passive ambient sounds of Pets will play in approximately every 5~ minute.
+					Label: Rare
+				}
+
+				Normal: {
+					Tooltip: Passive ambient sounds of Pets will play in approximately every 2~ minute.
+					Label: Normal
+				}
+
+				Increased: {
+					Tooltip: Passive ambient sounds of Pets will play in approximately every 1~ minute.
+					Label: Common
+				}
+			}
 		}
 	}
 }

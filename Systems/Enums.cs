@@ -45,35 +45,23 @@ namespace PetsOverhaul.Systems
     }
     public enum ShieldPosition
     {
-        [LabelKey("$Mods.PetsOverhaul.Config.PlayerLeft")]
         PlayerLeft,
-        [LabelKey("$Mods.PetsOverhaul.Config.PlayerRight")]
         PlayerRight,
-        [LabelKey("$Mods.PetsOverhaul.Config.HealthBarLeft")]
         HealthBarLeft,
-        [LabelKey("$Mods.PetsOverhaul.Config.HealthBarRight")]
         HealthBarRight,
     }
     public enum ParticleAmount
     {
-        [LabelKey("$Mods.PetsOverhaul.Config.ParticleNone")]
         None,
-        [LabelKey("$Mods.PetsOverhaul.Config.ParticleLowered")]
         Lowered,
-        [LabelKey("$Mods.PetsOverhaul.Config.ParticleNormal")]
         Normal,
-        [LabelKey("$Mods.PetsOverhaul.Config.ParticleIncreased")]
         Increased,
     }
     public enum PassivePetSoundFrequency
     {
-        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundNever")]
         None,
-        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundRarely")]
         Lowered,
-        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundNormal")]
         Normal,
-        [LabelKey("$Mods.PetsOverhaul.Config.PassiveSoundCommon")]
         Increased,
 
     }

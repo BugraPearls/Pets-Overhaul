@@ -20,7 +20,6 @@ Mods: {
 			Herb: Трава
 			Animal: Животное
 			RarePlant: Редкие растения
-			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
 			%: %
 			x: x
 			+: +
@@ -174,10 +173,6 @@ Mods: {
 				Изменяет местоположение отображения щита питомца, когда ваш питомец предоставляет щит.
 				Лучший вариант для разрешений 1920x1080 - рядом с полосой здоровья.
 				'''
-			PlayerLeft: Возле игрока, иконка слева
-			PlayerRight: Возле игрока, иконка справа
-			HealthBarLeft: Возле  здоровья, иконка слева
-			HealthBarRight: Возле здоровья, иконка справа
 			CooldownDisplayLabel: Отображение перезарядки способностей
 			CooldownDisplayTooltip:
 				'''
@@ -208,10 +203,6 @@ Mods: {
 				Изменяет количество создаваемых частиц для отображения радиуса действия способностей питомцев с эффектами ауры. 
 				Установите значение "Нет", чтобы полностью отключить отображение. Изменение этого значения сторонними методами может вызвать ошибки.
 				'''
-			ParticleNone: Нет
-			ParticleLowered: Мало
-			ParticleNormal: Умеренно
-			ParticleIncreased: Много
 			DustAmountLabel: Количество частиц у ауры питомцев
 			DustInsideBlocksLabel: Отоброжать ауру питомцев внутри блоков
 			DustInsideBlocksTooltip:
@@ -234,10 +225,6 @@ Mods: {
 				Опция «Никогда» полностью отключит пассивные звуковые эффекты от питомцев.
 				Это похоже на звуковые эффекты окружающей среды в Vanilla. Это полностью клиентская часть.
 				'''
-			PassiveSoundNever: Никогда
-			PassiveSoundRarely: Редко (каждые 5 м~)
-			PassiveSoundNormal: Нормально (каждые 2 м~)
-			PassiveSoundCommon: Обычный (каждый 1 м~)
 			AbilitySoundLabel: Звуки способностей
 			AbilitySoundTooltip:
 				'''
@@ -1895,9 +1882,77 @@ Mods: {
 		}
 
 		Configs: {
-			ShieldPosition.Tooltip: ""
-			ParticleAmount.Tooltip: ""
-			PassivePetSoundFrequency.Tooltip: ""
+			ShieldPosition: {
+				Tooltip: ""
+
+				PlayerLeft: {
+					Tooltip: ""
+					Label: Возле игрока, иконка слева
+				}
+
+				PlayerRight: {
+					 Tooltip: ""
+					 Label: Возле игрока, иконка справа
+				}
+
+				HealthBarLeft: {
+					 Tooltip: ""
+					 Label: Возле  здоровья, иконка слева
+				}
+
+				HealthBarRight: {
+					 Tooltip: ""
+					 Label: Возле здоровья, иконка справа
+				}
+			}
+
+			ParticleAmount: {
+				Tooltip: ""
+
+				None: {
+					 Tooltip: ""
+					 Label: Нет
+				}
+
+				Lowered: {
+					 Tooltip: ""
+					 Label: Мало
+				}
+
+				Normal: {
+					 Tooltip: ""
+					 Label: Умеренно
+				}
+
+				Increased: {
+					 Tooltip: ""
+					 Label: Много
+				}
+			}
+
+			PassivePetSoundFrequency: {
+				Tooltip: ""
+
+				None: {
+					 Tooltip: ""
+					 Label: Никогда
+				}
+
+				Lowered: {
+					 Tooltip: ""
+					 Label: Редко (каждые 5 м~)
+				}
+
+				Normal: {
+					 Tooltip: ""
+					 Label: Нормально (каждые 2 м~)
+				}
+
+				Increased: {
+					 Tooltip: ""
+					 Label: Обычный (каждый 1 м~)
+				}
+			}
 		}
 	}
 }

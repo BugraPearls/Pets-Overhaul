@@ -163,10 +163,6 @@ Mods: {
 				如果你的宠物具有护盾效果，改变宠物护盾显示的位置
 				生命值选项在游戏分辨率1920x1080时为宜。
 				'''
-			PlayerLeft: 玩家头顶，图标在左边
-			PlayerRight: 玩家头顶，图标在右边
-			HealthBarLeft: 生命值旁，图标在左边
-			HealthBarRight: 生命值旁，图标在右边
 			CooldownDisplayLabel: 显示宠物技能冷却
 			CooldownDisplayTooltip:
 				'''
@@ -196,10 +192,6 @@ Mods: {
 				修改显示宠物的效果范围的粒子数量
 				设为无可以完全禁用
 				'''
-			ParticleNone: 无
-			ParticleLowered: 较少
-			ParticleNormal: 正常
-			ParticleIncreased: 较多
 			DustAmountLabel: 宠物范围显示粒子数量
 			DustInsideBlocksLabel: 宠物范围显示粒子可以在方块里生成
 			DustInsideBlocksTooltip:
@@ -221,10 +213,6 @@ Mods: {
 				启用被动播放的宠物音效
 				类似于原版游戏的的环境音效
 				'''
-			PassiveSoundNever: 从不
-			PassiveSoundRarely: 低（约5分钟一次）
-			PassiveSoundNormal: 正常（约2分钟一次）
-			PassiveSoundCommon: 高（约1分钟一次）
 			AbilitySoundLabel: 宠物技能音效
 			AbilitySoundTooltip:
 				'''
@@ -1854,9 +1842,77 @@ Mods: {
 		}
 
 		Configs: {
-			ShieldPosition.Tooltip: ""
-			ParticleAmount.Tooltip: ""
-			PassivePetSoundFrequency.Tooltip: ""
+			ShieldPosition: {
+				Tooltip: ""
+
+				PlayerLeft: {
+					 Tooltip: ""
+					 Label: 玩家头顶，图标在左边
+				}
+
+				PlayerRight: {
+					 Tooltip: ""
+					 Label: 玩家头顶，图标在右边
+				}
+
+				HealthBarLeft: {
+					 Tooltip: ""
+					 Label: 生命值旁，图标在左边
+				}
+
+				HealthBarRight: {
+					 Tooltip: ""
+					 Label: 生命值旁，图标在右边
+				}
+			}
+
+			ParticleAmount: {
+				Tooltip: ""
+
+				None: {
+					 Tooltip: ""
+					 Label: 无
+				}
+
+				Lowered: {
+					 Tooltip: ""
+					 Label: 较少
+				}
+
+				Normal: {
+					 Tooltip: ""
+					 Label: 正常
+				}
+
+				Increased: {
+					 Tooltip: ""
+					 Label: 较多
+				}
+			}
+
+			PassivePetSoundFrequency: {
+				Tooltip: ""
+
+				None: {
+					 Tooltip: ""
+					 Label: 从不
+				}
+
+				Lowered: {
+					 Tooltip: ""
+					 Label: 低（约5分钟一次）
+				}
+
+				Normal: {
+					 Tooltip: ""
+					 Label: 正常（约2分钟一次）
+				}
+
+				Increased: {
+					 Tooltip: ""
+					 Label: 高（约1分钟一次）
+				}
+			}
 		}
 	}
 }

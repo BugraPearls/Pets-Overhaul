@@ -176,10 +176,6 @@ Mods: {
 				Opções da Barra de Vida funcionam melhor em monitores com resolução Full HD (1920x1080).
 				Mudar esse valor por meios externos pode causar problemas e erros.
 				'''
-			PlayerLeft: No Jogador, Ícone na Esquerda
-			PlayerRight: No Jogador, Ícone na Direita
-			HealthBarLeft: Perto da Barra de Vida, Ícone na Esquerda
-			HealthBarRight: Perto da Barra de Vida, Ícone na Direita
 			CooldownDisplayLabel: Ativar Exibição do Tempo de Recarga da Habilidade
 			CooldownDisplayTooltip:
 				'''
@@ -209,10 +205,6 @@ Mods: {
 				Modifica a quantidade de poeira que vai ser criada para a exibição de efeitos em area circular causados por PET's
 				Coloque em Nenhuma para desabilitar por completo. Editar esse valor por meios externos pode causar erros.
 				'''
-			ParticleNone: Nenhuma
-			ParticleLowered: Mínima
-			ParticleNormal: Normal
-			ParticleIncreased: Aumentada
 			DustAmountLabel: Quantidade de Poeira do Raio de Exibição Circular do PET
 			DustInsideBlocksLabel: Habilitar o Raio de Poeira Circular de PET Dentro de Blocos
 			DustInsideBlocksTooltip:
@@ -235,10 +227,6 @@ Mods: {
 				A opção "Nunca" desabilitará completamente os efeitos sonoros passivos dos Pets.
 				É semelhante aos efeitos sonoros de ambiente do Vanilla. Funciona totalmente no lado do cliente.
 				'''
-			PassiveSoundNever: Nunca joguei
-			PassiveSoundRarely: Raro (a cada 5m~)
-			PassiveSoundNormal: Normal (a cada 2m~)
-			PassiveSoundCommon: Comum (a cada 1m~)
 			AbilitySoundLabel: Habilita sons de habilidades
 			AbilitySoundTooltip:
 				'''
@@ -1926,9 +1914,80 @@ Mods: {
 		}
 
 		Configs: {
-			ShieldPosition.Tooltip: ""
-			ParticleAmount.Tooltip: ""
-			PassivePetSoundFrequency.Tooltip: ""
+			ShieldPosition: {
+				Tooltip: ""
+
+				PlayerLeft: {
+					Tooltip: ""
+					Label: No Jogador, Ícone na Esquerda
+				}
+
+				PlayerRight: {
+					Tooltip: ""
+					Label: No Jogador, Ícone na Direita 
+				}
+
+				HealthBarLeft: {
+					Tooltip: ""
+					Label: Perto da Barra de Vida, Ícone na Esquerda
+				}
+
+				HealthBarRight: {
+					Tooltip: ""
+					Label: Perto da Barra de Vida, Ícone na Direita
+				}
+			}
+
+			ParticleAmount: {
+				Tooltip: ""
+
+				None: {
+					Tooltip: ""
+					Label: Nenhuma
+				}
+
+				Lowered: {
+					Tooltip: ""
+					Label: Mínima
+				}
+
+				Normal: {
+					Tooltip: ""
+					Label: Normal
+				}
+
+				Increased: {
+					Tooltip: ""
+					Label: Aumentada
+				}
+			}
+
+			PassivePetSoundFrequency: {
+				Tooltip: ""
+							PassiveSoundNever: Nunca joguei
+			PassiveSoundRarely: Raro (a cada 5m~)
+			PassiveSoundNormal: Normal (a cada 2m~)
+			PassiveSoundCommon: Comum (a cada 1m~)
+				None: {
+					Tooltip: ""
+					Label: Nunca joguei
+				}
+
+				Lowered: {
+					Tooltip: ""
+					Label: Raro (a cada 5m~)
+				}
+
+				Normal: {
+					Tooltip: ""
+					Label: Normal (a cada 2m~)
+				}
+
+				Increased: {
+					Tooltip: ""
+					Label: Comum (a cada 1m~)
+				}
+			}
 		}
 	}
 }
