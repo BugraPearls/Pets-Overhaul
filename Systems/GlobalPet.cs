@@ -23,7 +23,6 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public sealed class GlobalPet : ModPlayer
     {
-        public static bool makePetsBrokenByAllowingThemAllToBeUsedWhileInInventory = false;
         public static InputMode PlayerInputMode => PlayerInput.CurrentProfile.InputModes.ContainsKey(InputMode.Keyboard) ? InputMode.Keyboard : InputMode.XBoxGamepad;
         public static bool eolConsumed = false;
         public static bool golemConsumed = false;
@@ -214,10 +213,6 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public bool PetInUse(int petItemID)
         {
-            if (makePetsBrokenByAllowingThemAllToBeUsedWhileInInventory)
-            {
-                return Player.HasItemInAnyInventory(petItemID);
-            }
             return Player.miscEquips[0].type == petItemID;
         }
 
@@ -226,25 +221,6 @@ namespace PetsOverhaul.Systems
             return Player.dead == false && timer <= 0 && PetKeybinds.UsePetAbility.JustPressed;
         }
 
-        /// <summary>
-        /// Sets active of oldest Main.combatText to false.
-        /// </summary>
-        /// <returns>Index of removed combatText.</returns>
-        public static int RemoveOldestCombatText()
-        {
-            int textLife = 6000;
-            int textToRemove = 100;
-            for (int i = 0; i < Main.maxCombatText; i++)
-            {
-                if (Main.combatText[i].lifeTime < textLife)
-                {
-                    textLife = Main.combatText[i].lifeTime;
-                    textToRemove = i;
-                }
-            }
-            Main.combatText[textToRemove].active = false;
-            return textToRemove;
-        }
         /// <summary>
         /// Adds to petShield list and applies petShieldMultiplier. Does not allow for values lower than 1 to be added.
         /// </summary>

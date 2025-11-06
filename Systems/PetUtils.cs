@@ -23,6 +23,7 @@ namespace PetsOverhaul.Systems
                 Context = context
             };
         }
+
         public static void PreOnPickup(Item item, Player player)
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
@@ -75,9 +76,9 @@ namespace PetsOverhaul.Systems
                         player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
                     }
                 }
-                // Fish is below at ModifyCaughtFish()
             }
         }
+
         /// <summary>
         /// Checks if the given enemy should not be lifestealen from, this can be used for non-lifesteal applications as some effects may not want to occur on friendly/statue/immortal etc. enemies.
         /// </summary>
@@ -121,6 +122,27 @@ namespace PetsOverhaul.Systems
                 }
             }
         }
+
+        /// <summary>
+        /// Sets active of oldest Main.combatText to false.
+        /// </summary>
+        /// <returns>Index of removed combatText.</returns>
+        public static int RemoveOldestCombatText()
+        {
+            int textLife = 6000;
+            int textToRemove = 100;
+            for (int i = 0; i < Main.maxCombatText; i++)
+            {
+                if (Main.combatText[i].lifeTime < textLife)
+                {
+                    textLife = Main.combatText[i].lifeTime;
+                    textToRemove = i;
+                }
+            }
+            Main.combatText[textToRemove].active = false;
+            return textToRemove;
+        }
+
         /// <summary>
         /// Randomizes the given number. numToBeRandomized / randomizeTo returns how many times its 100% chance and rolls if the leftover, non-100% amount is true. Randomizer(225) returns +2 and +1 more with 25% chance.
         /// randomizeTo is converted to positive if its negative for proper usage of Method. Negative values can be applied on numToBeRandomized to get the Method working the exact way, but to reduce. Ex: Randomizer(-225) returns -2 and -1 more with 25% chance.
