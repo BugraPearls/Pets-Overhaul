@@ -123,7 +123,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
-            if (player.GetModPlayer<GlobalPet>().PetInUseWithSwapCd(ItemID.SkeletronPetItem))
+            if (player.GetModPlayer<PetModPlayer>().PetInUseWithSwapCd(ItemID.SkeletronPetItem))
             {
                 npc.life += damageDone;
                 skeletronDealtDamage.Add(((int)(damageDone * player.GetModPlayer<SkeletronJr>().enemyDamageIncrease), 240));
@@ -131,7 +131,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
-            if (Main.player[projectile.owner].GetModPlayer<GlobalPet>().PetInUseWithSwapCd(ItemID.SkeletronPetItem))
+            if (Main.player[projectile.owner].GetModPlayer<PetModPlayer>().PetInUseWithSwapCd(ItemID.SkeletronPetItem))
             {
                 npc.life += damageDone;
                 skeletronDealtDamage.Add(((int)(damageDone * Main.player[projectile.owner].GetModPlayer<SkeletronJr>().enemyDamageIncrease), 240));

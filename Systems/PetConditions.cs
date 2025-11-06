@@ -5,9 +5,9 @@ namespace PetsOverhaul.Systems
 {
     public static class PetConditions
     {
-        public static Condition ConsumedHead = new("Mods.PetsOverhaul.Misc.RequireHead", () => GlobalPet.pumpkingConsumed);
-        public static Condition ConsumedOptic = new("Mods.PetsOverhaul.Misc.RequireOptic", () => GlobalPet.eolConsumed);
-        public static Condition ConsumedWrench = new("Mods.PetsOverhaul.Misc.RequireWrench", () => GlobalPet.golemConsumed);
+        public static Condition ConsumedHead = new("Mods.PetsOverhaul.Misc.RequireHead", () => PetModPlayer.pumpkingConsumed);
+        public static Condition ConsumedOptic = new("Mods.PetsOverhaul.Misc.RequireOptic", () => PetModPlayer.eolConsumed);
+        public static Condition ConsumedWrench = new("Mods.PetsOverhaul.Misc.RequireWrench", () => PetModPlayer.golemConsumed);
     }
     public class NotABossCondition : IItemDropRuleCondition, IProvideItemConditionDescription
     {

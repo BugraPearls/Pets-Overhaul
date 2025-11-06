@@ -46,7 +46,7 @@ namespace PetsOverhaul.Systems
             }
             else
             {
-                GlobalPet.CoordsToRemove.Add(new Point16(i, j));
+                PetModPlayer.CoordsToRemove.Add(new Point16(i, j));
             }
         }
         public static void AddToList(int i, int j)
@@ -81,7 +81,7 @@ namespace PetsOverhaul.Systems
             }
             else
             {
-                GlobalPet.updateReplacedTile.Add(new Point16(i, j));
+                PetModPlayer.updateReplacedTile.Add(new Point16(i, j));
             }
         }
         public override void PlaceInWorld(int i, int j, int type, Item item)

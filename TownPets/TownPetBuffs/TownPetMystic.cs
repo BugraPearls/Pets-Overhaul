@@ -6,7 +6,7 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
     public class TownPetMystic : TownPetBuff
     {
         public readonly float val = 0.22f;
-        public override void UpdateEffects(Player player, GlobalPet pet, ref int buffIndex)
+        public override void UpdateEffects(Player player, PetModPlayer pet, ref int buffIndex)
         {
             pet.petHealMultiplier += val;
         }

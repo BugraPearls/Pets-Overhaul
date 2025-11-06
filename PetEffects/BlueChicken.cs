@@ -49,88 +49,88 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PoolPlant()
         {
-            GlobalPet.ItemWeight(ItemID.GrassSeeds, 300);
-            GlobalPet.ItemWeight(ItemID.JungleGrassSeeds, 275);
-            GlobalPet.ItemWeight(ItemID.AshGrassSeeds, 250);
-            GlobalPet.ItemWeight(ItemID.CorruptSeeds, 225);
-            GlobalPet.ItemWeight(ItemID.CrimsonSeeds, 225);
-            GlobalPet.ItemWeight(ItemID.MushroomGrassSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.BlinkrootSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.DaybloomSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.DeathweedSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.FireblossomSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.MoonglowSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.ShiverthornSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.WaterleafSeeds, 125);
-            GlobalPet.ItemWeight(ItemID.PumpkinSeed, 75);
-            GlobalPet.ItemWeight(ItemID.SpicyPepper, 20);
-            GlobalPet.ItemWeight(ItemID.Pomegranate, 20);
-            GlobalPet.ItemWeight(ItemID.Elderberry, 20);
-            GlobalPet.ItemWeight(ItemID.BlackCurrant, 20);
-            GlobalPet.ItemWeight(ItemID.Rambutan, 20);
-            GlobalPet.ItemWeight(ItemID.MagicalPumpkinSeed, 2);
+            PetModPlayer.ItemWeight(ItemID.GrassSeeds, 300);
+            PetModPlayer.ItemWeight(ItemID.JungleGrassSeeds, 275);
+            PetModPlayer.ItemWeight(ItemID.AshGrassSeeds, 250);
+            PetModPlayer.ItemWeight(ItemID.CorruptSeeds, 225);
+            PetModPlayer.ItemWeight(ItemID.CrimsonSeeds, 225);
+            PetModPlayer.ItemWeight(ItemID.MushroomGrassSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.BlinkrootSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.DaybloomSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.DeathweedSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.FireblossomSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.MoonglowSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.ShiverthornSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.WaterleafSeeds, 125);
+            PetModPlayer.ItemWeight(ItemID.PumpkinSeed, 75);
+            PetModPlayer.ItemWeight(ItemID.SpicyPepper, 20);
+            PetModPlayer.ItemWeight(ItemID.Pomegranate, 20);
+            PetModPlayer.ItemWeight(ItemID.Elderberry, 20);
+            PetModPlayer.ItemWeight(ItemID.BlackCurrant, 20);
+            PetModPlayer.ItemWeight(ItemID.Rambutan, 20);
+            PetModPlayer.ItemWeight(ItemID.MagicalPumpkinSeed, 2);
             if (Main.hardMode)
             {
-                GlobalPet.ItemWeight(ItemID.Grapes, 3);
+                PetModPlayer.ItemWeight(ItemID.Grapes, 3);
             }
         }
         public static void PoolRarePlant()
         {
-            GlobalPet.ItemWeight(ItemID.JungleSpores, 60);
-            GlobalPet.ItemWeight(ItemID.SpicyPepper, 24);
-            GlobalPet.ItemWeight(ItemID.Pomegranate, 24);
-            GlobalPet.ItemWeight(ItemID.Elderberry, 24);
-            GlobalPet.ItemWeight(ItemID.BlackCurrant, 24);
-            GlobalPet.ItemWeight(ItemID.Rambutan, 24);
-            GlobalPet.ItemWeight(ItemID.StrangePlant1, 4);
-            GlobalPet.ItemWeight(ItemID.StrangePlant2, 4);
-            GlobalPet.ItemWeight(ItemID.StrangePlant3, 4);
-            GlobalPet.ItemWeight(ItemID.StrangePlant4, 4);
-            GlobalPet.ItemWeight(ItemID.MagicalPumpkinSeed, 1);
+            PetModPlayer.ItemWeight(ItemID.JungleSpores, 60);
+            PetModPlayer.ItemWeight(ItemID.SpicyPepper, 24);
+            PetModPlayer.ItemWeight(ItemID.Pomegranate, 24);
+            PetModPlayer.ItemWeight(ItemID.Elderberry, 24);
+            PetModPlayer.ItemWeight(ItemID.BlackCurrant, 24);
+            PetModPlayer.ItemWeight(ItemID.Rambutan, 24);
+            PetModPlayer.ItemWeight(ItemID.StrangePlant1, 4);
+            PetModPlayer.ItemWeight(ItemID.StrangePlant2, 4);
+            PetModPlayer.ItemWeight(ItemID.StrangePlant3, 4);
+            PetModPlayer.ItemWeight(ItemID.StrangePlant4, 4);
+            PetModPlayer.ItemWeight(ItemID.MagicalPumpkinSeed, 1);
             if (Main.hardMode)
             {
-                GlobalPet.ItemWeight(ItemID.Grapes, 3);
+                PetModPlayer.ItemWeight(ItemID.Grapes, 3);
             }
         }
         public static void PoolTree()
         {
-            GlobalPet.ItemWeight(ItemID.Acorn, 300);
-            GlobalPet.ItemWeight(ItemID.Wood, 300);
-            GlobalPet.ItemWeight(ItemID.BorealWood, 250);
-            GlobalPet.ItemWeight(ItemID.RichMahogany, 250);
-            GlobalPet.ItemWeight(ItemID.Ebonwood, 250);
-            GlobalPet.ItemWeight(ItemID.Shadewood, 250);
-            GlobalPet.ItemWeight(ItemID.PalmWood, 250);
-            GlobalPet.ItemWeight(ItemID.AshWood, 150);
-            GlobalPet.ItemWeight(ItemID.Apple, 15);
-            GlobalPet.ItemWeight(ItemID.Apricot, 15);
-            GlobalPet.ItemWeight(ItemID.Banana, 15);
-            GlobalPet.ItemWeight(ItemID.BloodOrange, 15);
-            GlobalPet.ItemWeight(ItemID.Cherry, 15);
-            GlobalPet.ItemWeight(ItemID.Coconut, 15);
-            GlobalPet.ItemWeight(ItemID.Grapefruit, 15);
-            GlobalPet.ItemWeight(ItemID.Lemon, 15);
-            GlobalPet.ItemWeight(ItemID.Mango, 15);
-            GlobalPet.ItemWeight(ItemID.Peach, 15);
-            GlobalPet.ItemWeight(ItemID.Pineapple, 15);
-            GlobalPet.ItemWeight(ItemID.Plum, 15);
-            GlobalPet.ItemWeight(ItemID.GemTreeAmethystSeed, 15);
-            GlobalPet.ItemWeight(ItemID.GemTreeTopazSeed, 14);
-            GlobalPet.ItemWeight(ItemID.GemTreeSapphireSeed, 13);
-            GlobalPet.ItemWeight(ItemID.GemTreeEmeraldSeed, 12);
-            GlobalPet.ItemWeight(ItemID.GemTreeRubySeed, 11);
-            GlobalPet.ItemWeight(ItemID.GemTreeAmberSeed, 11);
-            GlobalPet.ItemWeight(ItemID.GemTreeDiamondSeed, 10);
-            GlobalPet.ItemWeight(ItemID.EucaluptusSap, 1);
+            PetModPlayer.ItemWeight(ItemID.Acorn, 300);
+            PetModPlayer.ItemWeight(ItemID.Wood, 300);
+            PetModPlayer.ItemWeight(ItemID.BorealWood, 250);
+            PetModPlayer.ItemWeight(ItemID.RichMahogany, 250);
+            PetModPlayer.ItemWeight(ItemID.Ebonwood, 250);
+            PetModPlayer.ItemWeight(ItemID.Shadewood, 250);
+            PetModPlayer.ItemWeight(ItemID.PalmWood, 250);
+            PetModPlayer.ItemWeight(ItemID.AshWood, 150);
+            PetModPlayer.ItemWeight(ItemID.Apple, 15);
+            PetModPlayer.ItemWeight(ItemID.Apricot, 15);
+            PetModPlayer.ItemWeight(ItemID.Banana, 15);
+            PetModPlayer.ItemWeight(ItemID.BloodOrange, 15);
+            PetModPlayer.ItemWeight(ItemID.Cherry, 15);
+            PetModPlayer.ItemWeight(ItemID.Coconut, 15);
+            PetModPlayer.ItemWeight(ItemID.Grapefruit, 15);
+            PetModPlayer.ItemWeight(ItemID.Lemon, 15);
+            PetModPlayer.ItemWeight(ItemID.Mango, 15);
+            PetModPlayer.ItemWeight(ItemID.Peach, 15);
+            PetModPlayer.ItemWeight(ItemID.Pineapple, 15);
+            PetModPlayer.ItemWeight(ItemID.Plum, 15);
+            PetModPlayer.ItemWeight(ItemID.GemTreeAmethystSeed, 15);
+            PetModPlayer.ItemWeight(ItemID.GemTreeTopazSeed, 14);
+            PetModPlayer.ItemWeight(ItemID.GemTreeSapphireSeed, 13);
+            PetModPlayer.ItemWeight(ItemID.GemTreeEmeraldSeed, 12);
+            PetModPlayer.ItemWeight(ItemID.GemTreeRubySeed, 11);
+            PetModPlayer.ItemWeight(ItemID.GemTreeAmberSeed, 11);
+            PetModPlayer.ItemWeight(ItemID.GemTreeDiamondSeed, 10);
+            PetModPlayer.ItemWeight(ItemID.EucaluptusSap, 1);
             if (Main.hardMode)
             {
-                GlobalPet.ItemWeight(ItemID.Pearlwood, 250);
-                GlobalPet.ItemWeight(ItemID.Dragonfruit, 3);
-                GlobalPet.ItemWeight(ItemID.Starfruit, 3);
+                PetModPlayer.ItemWeight(ItemID.Pearlwood, 250);
+                PetModPlayer.ItemWeight(ItemID.Dragonfruit, 3);
+                PetModPlayer.ItemWeight(ItemID.Starfruit, 3);
             }
             if (NPC.downedPlantBoss)
             {
-                GlobalPet.ItemWeight(ItemID.SpookyWood, 30);
+                PetModPlayer.ItemWeight(ItemID.SpookyWood, 30);
             }
         }
         public override void Load()
@@ -139,7 +139,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
+            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
             BlueChicken chick = player.GetModPlayer<BlueChicken>();
             if (PickerPet.PickupChecks(item, chick.PetItemID, out PetGlobalItem itemChck))
             {
@@ -148,33 +148,33 @@ namespace PetsOverhaul.PetEffects
                     if (PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
                     {
                         PoolRarePlant();
-                        if (GlobalPet.ItemPool.Count > 0)
+                        if (PetModPlayer.ItemPool.Count > 0)
                         {
                             for (int i = 0; i < PetUtils.Randomizer(chick.rarePlantChance * item.stack); i++)
                             {
-                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
+                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), PetModPlayer.ItemPool[Main.rand.Next(PetModPlayer.ItemPool.Count)], 1);
                             }
                         }
                     }
                     else if (PetGlobalItem.treeItem[item.type])
                     {
                         PoolTree();
-                        if (GlobalPet.ItemPool.Count > 0)
+                        if (PetModPlayer.ItemPool.Count > 0)
                         {
                             for (int i = 0; i < PetUtils.Randomizer(chick.treeChance * item.stack); i++)
                             {
-                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
+                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), PetModPlayer.ItemPool[Main.rand.Next(PetModPlayer.ItemPool.Count)], 1);
                             }
                         }
                     }
                     else
                     {
                         PoolPlant();
-                        if (GlobalPet.ItemPool.Count > 0)
+                        if (PetModPlayer.ItemPool.Count > 0)
                         {
                             for (int i = 0; i < PetUtils.Randomizer(chick.plantChance * item.stack); i++)
                             {
-                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
+                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), PetModPlayer.ItemPool[Main.rand.Next(PetModPlayer.ItemPool.Count)], 1);
                             }
                         }
                     }

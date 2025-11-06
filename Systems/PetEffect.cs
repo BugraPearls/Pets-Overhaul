@@ -33,7 +33,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Accesses the GlobalPet class, which has useful methods and fields for Pet implementation.
         /// </summary>
-        public GlobalPet Pet => Player.GetModPlayer<GlobalPet>();
+        public PetModPlayer Pet => Player.GetModPlayer<PetModPlayer>();
         /// <summary>
         /// Primary Class of Pet that will appear on its tooltip with its color.
         /// </summary>
@@ -186,7 +186,7 @@ namespace PetsOverhaul.Systems
             {
                 if (CustomSimpleTooltip is not null)
                 {
-                    if (GlobalPet.CurrentTooltipIsSimple)
+                    if (PetModPlayer.CurrentTooltipIsSimple)
                         Tip = CustomSimpleTooltip + "\n" + PetUtils.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
                     else
                         Tip = CustomTooltip + "\n" + PetUtils.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
@@ -202,7 +202,7 @@ namespace PetsOverhaul.Systems
             }
             else if (SimpleTooltip is not null)
             {
-                if (GlobalPet.CurrentTooltipIsSimple)
+                if (PetModPlayer.CurrentTooltipIsSimple)
                     Tip = SimpleTooltip + "\n" + PetUtils.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
                 else
                     Tip = PetsTooltip + "\n" + PetUtils.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));

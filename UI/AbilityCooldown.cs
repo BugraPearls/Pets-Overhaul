@@ -13,8 +13,8 @@ namespace PetsOverhaul.UI
     class CooldownCanvas : UIState
     {
         public UIText displayInfo;
-        static int BaseCooldown => Main.LocalPlayer.GetModPlayer<GlobalPet>().timerMax;
-        static int RemainingCooldown => Main.LocalPlayer.GetModPlayer<GlobalPet>().timer;
+        static int BaseCooldown => Main.LocalPlayer.GetModPlayer<PetModPlayer>().timerMax;
+        static int RemainingCooldown => Main.LocalPlayer.GetModPlayer<PetModPlayer>().timer;
         public override void OnInitialize()
         {
             displayInfo = new("");

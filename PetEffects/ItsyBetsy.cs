@@ -36,11 +36,11 @@ namespace PetsOverhaul.PetEffects
         }
         public override void Load()
         {
-            GlobalPet.OnEnemyDeath += OnEnemyKill;
+            PetModPlayer.OnEnemyDeath += OnEnemyKill;
         }
         public override void Unload()
         {
-            GlobalPet.OnEnemyDeath -= OnEnemyKill;
+            PetModPlayer.OnEnemyDeath -= OnEnemyKill;
         }
         public static void OnEnemyKill(NPC npc, Player player)
         {

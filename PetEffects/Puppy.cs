@@ -19,12 +19,12 @@ namespace PetsOverhaul.PetEffects
         public int rareEnemyCoin = 70000;
         public override void Load()
         {
-            GlobalPet.OnEnemyDeath += OnEnemyKill;
+            PetModPlayer.OnEnemyDeath += OnEnemyKill;
             On_NPC.GetNPCColorTintedByBuffs += On_NPC_GetNPCColorTintedByBuffs;
         }
         public override void Unload()
         {
-            GlobalPet.OnEnemyDeath -= OnEnemyKill;
+            PetModPlayer.OnEnemyDeath -= OnEnemyKill;
         }
         private static Color On_NPC_GetNPCColorTintedByBuffs(On_NPC.orig_GetNPCColorTintedByBuffs orig, NPC self, Color npcColor)
         {

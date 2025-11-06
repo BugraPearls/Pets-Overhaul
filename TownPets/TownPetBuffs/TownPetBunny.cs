@@ -6,7 +6,7 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
     public class TownPetBunny : TownPetBuff
     {
         public readonly int val = 25;
-        public override void UpdateEffects(Player player, GlobalPet pet, ref int buffIndex)
+        public override void UpdateEffects(Player player, PetModPlayer pet, ref int buffIndex)
         {
             pet.harvestingFortune += val;
         }

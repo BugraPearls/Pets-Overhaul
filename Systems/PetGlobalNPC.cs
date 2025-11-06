@@ -91,7 +91,7 @@ namespace PetsOverhaul.Systems
         }
         public override void GetChat(NPC npc, ref string chat)
         {
-            if (Main.LocalPlayer.GetModPlayer<GlobalPet>().petObtained && npc.type == NPCID.Guide && Main.rand.NextBool(10))
+            if (Main.LocalPlayer.GetModPlayer<PetModPlayer>().petObtained && npc.type == NPCID.Guide && Main.rand.NextBool(10))
                 chat = PetUtils.LocVal("NPCs.PetTamer.GuideQuote");
         }
         #endregion
@@ -102,7 +102,7 @@ namespace PetsOverhaul.Systems
             Player player = Main.player[playerWhoAmI];
             if (player != null && player.active && player.dead == false && playerWhoAmI == Main.myPlayer)
             {
-                GlobalPet.OnEnemyDeath?.Invoke(npc, player);
+                PetModPlayer.OnEnemyDeath?.Invoke(npc, player);
             }
         }
         public override void OnKill(NPC npc)

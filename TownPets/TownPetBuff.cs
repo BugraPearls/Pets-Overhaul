@@ -19,7 +19,7 @@ namespace PetsOverhaul.TownPets
         /// <param name="player">Player instance</param>
         /// <param name="pet">Global Pet instance</param>
         /// <param name="buffIndex">buff's index</param>
-        public virtual void UpdateEffects(Player player, GlobalPet pet, ref int buffIndex)
+        public virtual void UpdateEffects(Player player, PetModPlayer pet, ref int buffIndex)
         { }
         /// <summary>
         /// Return false to stop normal code from running.
@@ -36,7 +36,7 @@ namespace PetsOverhaul.TownPets
         public virtual string BuffTooltip => Description.Value;
         public sealed override void Update(Player player, ref int buffIndex)
         {
-            UpdateEffects(player, player.GetModPlayer<GlobalPet>(), ref buffIndex);
+            UpdateEffects(player, player.GetModPlayer<PetModPlayer>(), ref buffIndex);
         }
         public sealed override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
@@ -44,7 +44,7 @@ namespace PetsOverhaul.TownPets
             {
                 return;
             }
-            buffName = DisplayName.Value.Replace("<Name>", GlobalPet.LastTownPet);
+            buffName = DisplayName.Value.Replace("<Name>", PetModPlayer.LastTownPet);
             tip = BuffTooltip + "\n" + PetUtils.LocVal("Misc.TownPetBuffTip");
             rare = 0;
         }

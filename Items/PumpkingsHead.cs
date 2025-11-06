@@ -25,9 +25,9 @@ namespace PetsOverhaul.Items
         }
         public override bool? UseItem(Player player)
         {
-            if (player.whoAmI == Main.myPlayer && GlobalPet.pumpkingConsumed == false)
+            if (player.whoAmI == Main.myPlayer && PetModPlayer.pumpkingConsumed == false)
             {
-                GlobalPet.pumpkingConsumed = true;
+                PetModPlayer.pumpkingConsumed = true;
                 return true;
             }
             return false;

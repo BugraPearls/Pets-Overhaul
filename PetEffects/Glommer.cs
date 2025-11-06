@@ -33,7 +33,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (Player.Distance(player.Center) < glommerSanityRange)
                     {
-                        player.GetModPlayer<GlobalPet>().abilityHaste += glommerSanityAura;
+                        player.GetModPlayer<PetModPlayer>().abilityHaste += glommerSanityAura;
                         player.AddBuff(ModContent.BuffType<SanityAura>(), 1);
                     }
                 }

@@ -21,7 +21,7 @@ namespace PetsOverhaul.Items
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            if (Main.LocalPlayer.TryGetModPlayer(out GlobalPet pet))
+            if (Main.LocalPlayer.TryGetModPlayer(out PetModPlayer pet))
             {
                 foreach (TooltipLine line in tooltips)
                 {
@@ -85,11 +85,11 @@ namespace PetsOverhaul.Items
                             break;
                         case "Tooltip18":
                             List<int> items = [];
-                            if (GlobalPet.eolConsumed)
+                            if (PetModPlayer.eolConsumed)
                                 items.Add(ModContent.ItemType<PrismaticOptic>());
-                            if (GlobalPet.golemConsumed)
+                            if (PetModPlayer.golemConsumed)
                                 items.Add(ModContent.ItemType<LihzahrdWrench>());
-                            if (GlobalPet.pumpkingConsumed)
+                            if (PetModPlayer.pumpkingConsumed)
                                 items.Add(ModContent.ItemType<PumpkingsHead>());
                             line.Text = line.Text.Replace("<items>", PetUtils.ItemsToTooltipImages(items));
                             break;

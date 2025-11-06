@@ -12,10 +12,10 @@ namespace PetsOverhaul.UI
     class StackCanvas : UIState
     {
         public UIText stacks;
-        static int CurrentStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacks;
-        static int MaxStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStacksMax;
-        static string TextStack => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackText;
-        static string StackSpecial => Main.LocalPlayer.GetModPlayer<GlobalPet>().currentPetStackSpecialText;
+        static int CurrentStack => Main.LocalPlayer.GetModPlayer<PetModPlayer>().currentPetStacks;
+        static int MaxStack => Main.LocalPlayer.GetModPlayer<PetModPlayer>().currentPetStacksMax;
+        static string TextStack => Main.LocalPlayer.GetModPlayer<PetModPlayer>().currentPetStackText;
+        static string StackSpecial => Main.LocalPlayer.GetModPlayer<PetModPlayer>().currentPetStackSpecialText;
         public override void OnInitialize()
         {
             stacks = new("");

@@ -22,7 +22,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player) //ALSO Directly increases ALL Hay gathered inside GlobalPet
         {
-            GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
+            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
             CavelingGardener caveling = player.GetModPlayer<CavelingGardener>();
             if (PickerPet.PickupChecks(item, caveling.PetItemID, out PetGlobalItem itemChck))
             {

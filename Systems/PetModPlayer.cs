@@ -21,7 +21,7 @@ namespace PetsOverhaul.Systems
     /// <summary>
     /// ModPlayer class that contains many useful Methods and fields for Pet implementation, this is the central class of Pets Overhaul.
     /// </summary>
-    public sealed class GlobalPet : ModPlayer
+    public sealed class PetModPlayer : ModPlayer
     {
         public static InputMode PlayerInputMode => PlayerInput.CurrentProfile.InputModes.ContainsKey(InputMode.Keyboard) ? InputMode.Keyboard : InputMode.XBoxGamepad;
         public static bool eolConsumed = false;
@@ -339,7 +339,7 @@ namespace PetsOverhaul.Systems
                 player = whoAmI;
             }
 
-            Main.player[player].GetModPlayer<GlobalPet>().ShieldFullBlockEffect(damageAmount);
+            Main.player[player].GetModPlayer<PetModPlayer>().ShieldFullBlockEffect(damageAmount);
 
             if (Main.netMode == NetmodeID.Server)
             {

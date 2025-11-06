@@ -8,7 +8,7 @@ namespace PetsOverhaul.TownPets.TownPetBuffs
     {
         public readonly float val = 0.12f;
         public readonly float val2 = 0.18f;
-        public override void UpdateEffects(Player player, GlobalPet pet, ref int buffIndex)
+        public override void UpdateEffects(Player player, PetModPlayer pet, ref int buffIndex)
         {
             pet.petHealMultiplier += val;
             pet.abilityHaste += val2;

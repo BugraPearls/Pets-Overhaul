@@ -69,7 +69,7 @@ namespace PetsOverhaul.TownPets
                     SoundEngine.PlaySound(SoundID.Item44 with { Pitch = 0.15f, PitchVariance = 0.6f, Volume = 0.7f });
                 }
             }
-            GlobalPet.LastTownPet = townPet.GivenName;
+            PetModPlayer.LastTownPet = townPet.GivenName;
             orig(self, animalNpcIndex);
         }
     }

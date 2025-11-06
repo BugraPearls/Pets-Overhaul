@@ -25,7 +25,7 @@ namespace PetsOverhaul.Systems
 
         public static void PreOnPickup(Item item, Player player)
         {
-            GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
+            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
             if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
             {
                 if (fortune.globalDrop)
@@ -179,7 +179,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Alternates between (165, 249, 255) and (255, 207, 249) every frame.
         /// </summary>
-        public static Color MaxQuality => Color.Lerp(ModContent.GetInstance<PetPersonalization>().MaxQualityColor1, ModContent.GetInstance<PetPersonalization>().MaxQualityColor2, GlobalPet.ColorVal);
+        public static Color MaxQuality => Color.Lerp(ModContent.GetInstance<PetPersonalization>().MaxQualityColor1, ModContent.GetInstance<PetPersonalization>().MaxQualityColor2, PetModPlayer.ColorVal);
         public static Color MaxQualityColor1 => new(165, 249, 255);
         public static Color MaxQualityColor2 => new(255, 207, 249);
         public static Color MeleeClass => new(230, 145, 56);
@@ -291,7 +291,7 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static string KeybindText(ModKeybind keybind)
         {
-            return keybind.GetAssignedKeys(GlobalPet.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(GlobalPet.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{LocVal("Misc.KeybindMissing")}]";
+            return keybind.GetAssignedKeys(PetModPlayer.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(PetModPlayer.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{LocVal("Misc.KeybindMissing")}]";
         }
         public static string RollMissingText()
         {

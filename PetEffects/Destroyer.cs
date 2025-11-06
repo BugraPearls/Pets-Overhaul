@@ -40,7 +40,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
+            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
             Destroyer dest = player.GetModPlayer<Destroyer>();
             if (PickerPet.PickupChecks(item, dest.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
             {
