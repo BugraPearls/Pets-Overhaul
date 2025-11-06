@@ -8,7 +8,7 @@ namespace PetsOverhaul.Systems
     /// Class used by Pets Overhaul to do something to all Pet Items with ease.
     /// </summary>
     [ReinitializeDuringResizeArrays]
-    public static class PetItemIDs
+    public static class PetIDs
     {
         public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
             .RegisterBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.

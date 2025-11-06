@@ -18,7 +18,7 @@ namespace PetsOverhaul.TownPets
             bool found = false;
             for (int i = 0; i < Main.LocalPlayer.buffType.Length; i++)
             {
-                if (PetItemIDs.TownPetBuffIDs[Main.LocalPlayer.buffType[i]])
+                if (PetIDs.TownPetBuffIDs[Main.LocalPlayer.buffType[i]])
                 {
                     found = true;
                     break; //No need to continue the for if found
@@ -40,7 +40,7 @@ namespace PetsOverhaul.TownPets
             int prevId = -1;
             foreach (int type in self.buffType)
             {
-                if (PetItemIDs.TownPetBuffIDs[type])
+                if (PetIDs.TownPetBuffIDs[type])
                 {
                     prevId = type;
                     self.ClearBuff(type);

@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.NPCs;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -43,7 +42,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (Player.Distance(npc.Center) < grinchRange)
                     {
-                        NpcPet.AddSlow(new NpcPet.PetSlow(grinchSlow, 1, PetSlowIDs.Grinch), npc);
+                        NPCGlobalPet.AddSlow(new PetSlow(grinchSlow, 1, PetSlowIDs.Grinch), npc);
                     }
                 }
             }

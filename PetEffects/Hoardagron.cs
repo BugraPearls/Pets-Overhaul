@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -47,7 +46,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && proj.GetGlobalProjectile<HoardagronProj>().special)
             {
-                if ((target.boss == true || NpcPet.NonBossTrueBosses.Contains(target.type)) && target.life < (int)(target.lifeMax * specialBossThreshold))
+                if ((target.boss == true || NPCGlobalPet.NonBossTrueBosses.Contains(target.type)) && target.life < (int)(target.lifeMax * specialBossThreshold))
                 {
                     modifiers.SetCrit();
                 }

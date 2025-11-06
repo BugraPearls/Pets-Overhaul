@@ -81,9 +81,9 @@ namespace PetsOverhaul
                     float slowAmount = reader.ReadSingle();
                     int slowTime = reader.ReadInt32();
                     sbyte slowId = reader.ReadSByte();
-                    NpcPet.PetSlow slow = new(slowAmount, slowTime, slowId);
+                    PetSlow slow = new(slowAmount, slowTime, slowId);
                     if (npc.active)
-                        NpcPet.AddToSlowList(slow, npc);
+                        NPCGlobalPet.AddToSlowList(slow, npc);
                     if (Main.netMode == NetmodeID.Server)
                     {
                         ModPacket packet = GetPacket();
@@ -97,7 +97,7 @@ namespace PetsOverhaul
                     break;
                 case MessageType.NPCOnDeathEffect: //Only sent to Multiplayer clients currently, in NpcPet GlobalNPC class, inside OnKill hook.
                     int playerWho = reader.ReadByte();
-                    NpcPet.OnKillInvokeDeathEffects(playerWho, Main.npc[reader.ReadByte()]);
+                    NPCGlobalPet.OnKillInvokeDeathEffects(playerWho, Main.npc[reader.ReadByte()]);
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }

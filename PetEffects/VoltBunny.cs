@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.NPCs;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -33,7 +32,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && info.DamageSource.TryGetCausingEntity(out Entity entity) && entity is NPC npc)
             {
-                NpcPet.AddSlow(new NpcPet.PetSlow(staticParalysis, staticLength, PetSlowIDs.VoltBunny), npc);
+                NPCGlobalPet.AddSlow(new PetSlow(staticParalysis, staticLength, PetSlowIDs.VoltBunny), npc);
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Projectiles;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -28,7 +27,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
             {
-                if (proj.GetGlobalProjectile<ProjectileSourceChecks>().isPlanteraProjectile)
+                if (proj.GetGlobalProjectile<PetGlobalProjectile>().isPlanteraProjectile)
                 {
                     Pet.PetRecovery(damageDone, planteraLifesteal);
                 }

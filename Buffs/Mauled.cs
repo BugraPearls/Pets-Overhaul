@@ -1,4 +1,4 @@
-﻿using PetsOverhaul.NPCs;
+﻿using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -19,7 +19,7 @@ namespace PetsOverhaul.Buffs
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if (npc.TryGetGlobalNPC(out NpcPet npcAffected))
+            if (npc.TryGetGlobalNPC(out NPCGlobalPet npcAffected))
             {
                 stacks = npcAffected.maulCounter;
             }

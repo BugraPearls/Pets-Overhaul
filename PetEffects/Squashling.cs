@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -24,11 +23,11 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             Squashling squash = player.GetModPlayer<Squashling>();
-            if (PickerPet.PickupChecks(item, squash.PetItemID, out ItemPet itemChck))
+            if (PickerPet.PickupChecks(item, squash.PetItemID, out PetGlobalItem itemChck))
             {
                 if (itemChck.herbBoost == true)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer(Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= ItemPet.MinimumExpForRarePlant ? squash.squashlingRareChance : squash.squashlingCommonChance) * item.stack; i++)
+                    for (int i = 0; i < GlobalPet.Randomizer(Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ? squash.squashlingRareChance : squash.squashlingCommonChance) * item.stack; i++)
                     {
                         player.QuickSpawnItemDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), item.type, 1);
                     }

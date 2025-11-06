@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
-using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
@@ -561,7 +560,7 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             Junimo juni = player.GetModPlayer<Junimo>();
-            if (PickerPet.PickupChecks(item, juni.PetItemID, out ItemPet itemChck))
+            if (PickerPet.PickupChecks(item, juni.PetItemID, out PetGlobalItem itemChck))
             {
                 if (itemChck.harvestingDrop || itemChck.fortuneHarvestingDrop || itemChck.herbBoost)
                 {
@@ -826,7 +825,7 @@ namespace PetsOverhaul.PetEffects
         public override bool InstancePerEntity => true;
         public override void OnKill(NPC npc)
         {
-            if (npc.TryGetGlobalNPC(out NpcPet npcPet) && npcPet.seaCreature && npc.friendly == false)
+            if (npc.TryGetGlobalNPC(out NPCGlobalPet npcPet) && npcPet.seaCreature && npc.friendly == false)
             {
                 int playerId = npcPet.playerThatFishedUp;
                 if (Main.netMode != NetmodeID.SinglePlayer)

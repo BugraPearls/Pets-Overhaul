@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Projectiles;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -44,7 +43,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (PetIsEquipped() && proj.GetGlobalProjectile<ProjectileSourceChecks>().isFromSentry)
+            if (PetIsEquipped() && proj.GetGlobalProjectile<PetGlobalProjectile>().isFromSentry)
             {
                 int playersCrit = (int)Player.GetTotalCritChance<GenericDamageClass>();
                 if (playersCrit + bonusCritChance >= 100)

@@ -1,5 +1,4 @@
 ﻿using PetsOverhaul.Buffs;
-using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -66,7 +65,7 @@ namespace PetsOverhaul.PetEffects
                 if (info.DamageSource.TryGetCausingEntity(out Entity entity))
                 {
                     int damageTaken = Math.Min(info.SourceDamage, Player.statLife);
-                    if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out ProjectileSourceChecks proj) && Main.npc[proj.sourceNpcId].active && Main.npc[proj.sourceNpcId].dontTakeDamage == false)
+                    if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out PetGlobalProjectile proj) && Main.npc[proj.sourceNpcId].active && Main.npc[proj.sourceNpcId].dontTakeDamage == false)
                     {
                         Main.npc[proj.sourceNpcId].SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflectProjectile, DamageClass.Generic), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
                     }

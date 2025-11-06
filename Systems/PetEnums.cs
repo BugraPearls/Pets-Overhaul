@@ -1,7 +1,6 @@
-﻿using Terraria.ModLoader.Config;
-
-namespace PetsOverhaul.Systems
+﻿namespace PetsOverhaul.Systems
 {
+
     public enum MessageType : byte
     {
         ShieldFullAbsorb,

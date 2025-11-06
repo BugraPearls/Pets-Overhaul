@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.NPCs;
-using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -277,7 +276,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (PetIsEquipped() && proj.TryGetGlobalProjectile(out ProjectileSourceChecks check) && check.fromMount)
+            if (PetIsEquipped() && proj.TryGetGlobalProjectile(out PetGlobalProjectile check) && check.fromMount)
             {
                 modifiers.FinalDamage *= (1 + mountDmgIncr) * Pet.petDirectDamageMultiplier;
                 OnMountHit(target);

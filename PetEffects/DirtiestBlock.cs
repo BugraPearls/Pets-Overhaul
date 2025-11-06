@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -23,7 +22,7 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             DirtiestBlock dirt = player.GetModPlayer<DirtiestBlock>();
-            if (PickerPet.PickupChecks(item, dirt.PetItemID, out ItemPet itemChck) && itemChck.blockNotByPlayer == true)
+            if (PickerPet.PickupChecks(item, dirt.PetItemID, out PetGlobalItem itemChck) && itemChck.blockNotByPlayer == true)
             {
                 if (item.type == ItemID.DirtBlock)
                 {

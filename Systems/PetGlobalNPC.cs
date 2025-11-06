@@ -4,7 +4,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using PetsOverhaul.Buffs;
 using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+using PetsOverhaul.NPCs;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -14,28 +14,23 @@ using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PetsOverhaul.NPCs
+namespace PetsOverhaul.Systems
 {
-    public class NotABossCondition : IItemDropRuleCondition, IProvideItemConditionDescription
+    /// <summary>
+    /// Slow thats applied to an NPC, by a Pet.
+    /// </summary>
+    /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
+    /// <param name="slowTime">Time for slow to be applied in frames.</param>
+    /// <param name="slowId">Slows with the ID of -1 (or lower) are independent. If another slow with ID higher than 0 meets itself, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once.</param>
+    public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowIDs.IndependentSlow)
     {
-        public bool CanDrop(DropAttemptInfo info) => !info.npc.boss;
-        public bool CanShowItemDropInUI() => true;
-        public string GetConditionDescription() => null;
+        public float SlowAmount = slowAmount;
+        public int SlowTime = slowTime;
+        public int SlowId = slowId;
     }
-    public sealed class NpcPet : GlobalNPC
+
+    public sealed class NPCGlobalPet : GlobalNPC
     {
-        /// <summary>
-        /// Slow thats applied to an NPC.
-        /// </summary>
-        /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
-        /// <param name="slowTime">Time for slow to be applied in frames.</param>
-        /// <param name="slowId">Slows with the ID of -1 (or lower) are independent. If another slow with ID higher than 0 meets itself, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once.</param>
-        public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowIDs.IndependentSlow)
-        {
-            public float SlowAmount = slowAmount;
-            public int SlowTime = slowTime;
-            public int SlowId = slowId;
-        }
 
         /// <summary>
         /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
@@ -48,7 +43,7 @@ namespace PetsOverhaul.NPCs
         /// <returns></returns>
         public static Vector2 RetrievePetSlowedVelocity(NPC npc)
         {
-            if (npc.TryGetGlobalNPC(out NpcPet pet))
+            if (npc.TryGetGlobalNPC(out NPCGlobalPet pet))
             {
                 float slow = pet.currentTotalSlow;
                 if (slow < -0.9f)
@@ -220,16 +215,16 @@ namespace PetsOverhaul.NPCs
                 var c = new ILCursor(il);
                 if (c.TryGotoNext(
                       i => i.MatchLdarg(0), //the this instance parameter
-                      i => i.MatchLdfld<Terraria.Entity>("position"), //we find where first field is position
+                      i => i.MatchLdfld<Entity>("position"), //we find where first field is position
                       i => i.MatchLdarg(0),
-                      i => i.MatchLdfld<Terraria.Entity>("velocity") //we find where second field is velocity
+                      i => i.MatchLdfld<Entity>("velocity") //we find where second field is velocity
                   ))
                 {
-                    c.GotoNext(i => i.MatchLdfld<Terraria.Entity>("velocity")); //Cursor now sits at where velocity field is
+                    c.GotoNext(i => i.MatchLdfld<Entity>("velocity")); //Cursor now sits at where velocity field is
 
                     c.Remove(); //velocity field spesifically is removed. I tried using EmitPop(), but that causes issues & does not work.
 
-                    c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
+                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
                     //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
                 }
             }
@@ -246,16 +241,16 @@ namespace PetsOverhaul.NPCs
                 if (c.TryGotoNext(
                     i => i.MatchLdarg(0),
                       i => i.MatchLdarg(0), //the this instance parameter
-                      i => i.MatchLdfld<Terraria.Entity>("position"), //we find where first field is position
+                      i => i.MatchLdfld<Entity>("position"), //we find where first field is position
                       i => i.MatchLdarg(0),
-                      i => i.MatchLdfld<Terraria.Entity>("velocity") //we find where second field is velocity
+                      i => i.MatchLdfld<Entity>("velocity") //we find where second field is velocity
                   ))
                 {
-                    c.GotoNext(i => i.MatchLdfld<Terraria.Entity>("velocity")); //Cursor now sits at where velocity field is
+                    c.GotoNext(i => i.MatchLdfld<Entity>("velocity")); //Cursor now sits at where velocity field is
 
                     c.Remove(); //velocity field spesifically is removed. I tried using EmitPop(), but that causes issues & does not work.
 
-                    c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
+                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
                     //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
                 }
             }
@@ -271,16 +266,16 @@ namespace PetsOverhaul.NPCs
                 var c = new ILCursor(il);
                 if (c.TryGotoNext(
                       i => i.MatchLdarg(0), //this instance param
-                      i => i.MatchLdflda<Terraria.Entity>("velocity"), //The 'a' at the end apparently means address.
+                      i => i.MatchLdflda<Entity>("velocity"), //The 'a' at the end apparently means address.
                       i => i.MatchLdcR4(out _) //ldc.r4 = Float value
                   ))
                 {
                     //same as above on Update & Dry, we just replace the velocity
-                    c.GotoNext(i => i.MatchLdfld<Terraria.Entity>("velocity"));
+                    c.GotoNext(i => i.MatchLdfld<Entity>("velocity"));
 
                     c.Remove();
 
-                    c.Emit(OpCodes.Call, typeof(NpcPet).GetMethod("RetrievePetSlowedVelocity"));
+                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity"));
                 }
             }
             catch (Exception)
@@ -363,7 +358,7 @@ namespace PetsOverhaul.NPCs
         /// </summary>
         internal static void AddToSlowList(PetSlow slowToBeAdded, NPC npc)
         {
-            if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NpcPet npcPet))
+            if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet))
             {
                 if (npc.boss && NonBossTrueBosses.Contains(npc.type))
                 {

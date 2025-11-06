@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -38,7 +37,7 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet Pet = player.GetModPlayer<GlobalPet>();
             BabyDinosaur dino = player.GetModPlayer<BabyDinosaur>();
-            if (Pet.PickupChecks(item, dino.PetItemID, out ItemPet itemChck) && itemChck.oreBoost)
+            if (Pet.PickupChecks(item, dino.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
             {
                 AddItemsToPool();
                 if (GlobalPet.ItemPool.Count > 0)

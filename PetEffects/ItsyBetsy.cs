@@ -1,5 +1,4 @@
 ﻿using PetsOverhaul.Buffs;
-using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -21,18 +20,18 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassSecondary => PetClasses.Supportive;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (target.GetGlobalNPC<NpcPet>().curseCounter > maxStacks)
+            if (target.GetGlobalNPC<NPCGlobalPet>().curseCounter > maxStacks)
             {
-                target.GetGlobalNPC<NpcPet>().curseCounter = maxStacks;
+                target.GetGlobalNPC<NPCGlobalPet>().curseCounter = maxStacks;
             }
 
             if (target.HasBuff(ModContent.BuffType<QueensDamnation>()))
             {
-                modifiers.Defense *= 1f - defReduction * target.GetGlobalNPC<NpcPet>().curseCounter;
+                modifiers.Defense *= 1f - defReduction * target.GetGlobalNPC<NPCGlobalPet>().curseCounter;
             }
             else
             {
-                target.GetGlobalNPC<NpcPet>().curseCounter = 0;
+                target.GetGlobalNPC<NPCGlobalPet>().curseCounter = 0;
             }
         }
         public override void Load()
@@ -45,7 +44,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void OnEnemyKill(NPC npc, Player player)
         {
-            if (GlobalPet.LifestealCheck(npc) && npc.TryGetGlobalNPC(out NpcPet npcPet) && npcPet.curseCounter > 0 && player.TryGetModPlayer(out ItsyBetsy betsy))
+            if (GlobalPet.LifestealCheck(npc) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet) && npcPet.curseCounter > 0 && player.TryGetModPlayer(out ItsyBetsy betsy))
             {
                 betsy.Pet.PetRecovery(player.statLifeMax2 - player.statLife, betsy.missingHpRecover * npcPet.curseCounter * (1f + (npcPet.curseCounter >= betsy.maxStacks ? betsy.maxStackBonusRecover : 0)));
             }
@@ -55,7 +54,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && hit.DamageType == DamageClass.Ranged)
             {
                 target.AddBuff(ModContent.BuffType<QueensDamnation>(), debuffTime);
-                target.GetGlobalNPC<NpcPet>().curseCounter++;
+                target.GetGlobalNPC<NPCGlobalPet>().curseCounter++;
             }
         }
     }

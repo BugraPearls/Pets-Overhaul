@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.NPCs;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.DataStructures;
@@ -20,14 +19,14 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassSecondary => PetClasses.Utility;
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            if (PetIsEquipped() && npc.GetGlobalNPC<NpcPet>().seaCreature)
+            if (PetIsEquipped() && npc.GetGlobalNPC<NPCGlobalPet>().seaCreature)
             {
                 modifiers.FinalDamage *= seaCreatureResist;
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (PetIsEquipped() && target.GetGlobalNPC<NpcPet>().seaCreature)
+            if (PetIsEquipped() && target.GetGlobalNPC<NPCGlobalPet>().seaCreature)
             {
                 modifiers.FinalDamage *= seaCreatureDamage;
             }
@@ -53,7 +52,7 @@ namespace PetsOverhaul.PetEffects
         public bool seaCreatureProj = false;
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.GetGlobalNPC<NpcPet>().seaCreature)
+            if (source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.GetGlobalNPC<NPCGlobalPet>().seaCreature)
             {
                 seaCreatureProj = true;
             }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Config;
-using PetsOverhaul.NPCs;
-using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
@@ -50,7 +48,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && modifiers.DamageSource.TryGetCausingEntity(out Entity entity))
             {
-                if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out ProjectileSourceChecks proj) && Main.npc[proj.sourceNpcId].active && Main.npc[proj.sourceNpcId].Distance(Player.Center) > radius)
+                if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out PetGlobalProjectile proj) && Main.npc[proj.sourceNpcId].active && Main.npc[proj.sourceNpcId].Distance(Player.Center) > radius)
                 {
                     modifiers.FinalDamage *= 1f - damageReduction;
                 }
@@ -139,7 +137,7 @@ namespace PetsOverhaul.PetEffects
 
                 void DoTheStrike(NPC npc)
                 {
-                    NpcPet.AddSlow(new NpcPet.PetSlow(slowAmount, slowDuration, PetSlowIDs.Deerclops), npc);
+                    NPCGlobalPet.AddSlow(new PetSlow(slowAmount, slowDuration, PetSlowIDs.Deerclops), npc);
                     npc.SimpleStrikeNPC(Pet.PetDamage((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationReduction), DamageClass.Melee), Player.direction, false, 0, DamageClass.Melee, true, Player.luck);
                     penetrationReduction += reductionRaise;
                     if (penetrationReduction > reductionCap)

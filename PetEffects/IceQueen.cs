@@ -1,5 +1,4 @@
 ﻿using PetsOverhaul.Config;
-using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -55,7 +54,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (Player.Distance(npc.Center) < queenRange)
                     {
-                        NpcPet.AddSlow(new NpcPet.PetSlow(slowAmount, 1, PetSlowIDs.IceQueen), npc);
+                        NPCGlobalPet.AddSlow(new PetSlow(slowAmount, 1, PetSlowIDs.IceQueen), npc);
                     }
                 }
                 if (iceQueenFrame % 30 == 0 && ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)

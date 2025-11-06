@@ -1,15 +1,14 @@
 ﻿using PetsOverhaul.PetEffects;
-using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 
-namespace PetsOverhaul.Projectiles
+namespace PetsOverhaul.Systems
 {
     /// <summary>
     /// This Class contains checks for Projectiles to help identify where Projectile is from.
     /// </summary>
-    public sealed class ProjectileSourceChecks : GlobalProjectile
+    public sealed class PetGlobalProjectile : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
         public bool isPlanteraProjectile = false;
@@ -48,7 +47,7 @@ namespace PetsOverhaul.Projectiles
             {
                 itemProjIsFrom = item2.Item;
             }
-            else if (source is EntitySource_Parent parent4 && parent4.Entity is Projectile proj3 && proj3.TryGetGlobalProjectile(out ProjectileSourceChecks sourceChecks) && sourceChecks.itemProjIsFrom is not null)
+            else if (source is EntitySource_Parent parent4 && parent4.Entity is Projectile proj3 && proj3.TryGetGlobalProjectile(out PetGlobalProjectile sourceChecks) && sourceChecks.itemProjIsFrom is not null)
             {
                 itemProjIsFrom = sourceChecks.itemProjIsFrom;
             }

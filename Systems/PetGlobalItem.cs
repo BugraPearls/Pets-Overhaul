@@ -1,5 +1,5 @@
-﻿using PetsOverhaul.PetEffects;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Items;
+using PetsOverhaul.PetEffects;
 using System;
 using System.IO;
 using System.Linq;
@@ -8,12 +8,12 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PetsOverhaul.Items
+namespace PetsOverhaul.Systems
 {
     /// <summary>
     /// GlobalItem class that contains many useful booleans for mainly gathering purposes. This class is bread & butter of all Gathering Pets.
     /// </summary>
-    public sealed class ItemPet : GlobalItem
+    public sealed class PetGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
         /// <summary>
@@ -108,7 +108,7 @@ namespace PetsOverhaul.Items
                     blockNotByPlayer = true;
                 }
 
-                TilePlacement.RemoveFromList(brokenTile.TileCoords.X, brokenTile.TileCoords.Y);
+                PetTilePlacement.RemoveFromList(brokenTile.TileCoords.X, brokenTile.TileCoords.Y);
 
                 herbBoost = Junimo.HarvestingXpPerGathered.Exists(x => x.plantList.Contains(item.type));
 

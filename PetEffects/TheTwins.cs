@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.NPCs;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -38,7 +37,7 @@ namespace PetsOverhaul.PetEffects
                 {
 
                     float bonus;
-                    if (target.boss == false || NpcPet.NonBossTrueBosses.Contains(target.type) == false)
+                    if (target.boss == false || NPCGlobalPet.NonBossTrueBosses.Contains(target.type) == false)
                     {
                         bonus = target.lifeMax * regularEnemyHpDmg;
                     }

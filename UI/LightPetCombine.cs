@@ -185,8 +185,8 @@ namespace PetsOverhaul.UI
                 price.SetText("Cost: N/A");
                 if (slot1.Item is not null && slot1.Item.IsAir == false && slot2.Item is not null && slot2.Item.IsAir == false)
                 {
-                    bool flag1 = PetItemIDs.LightPetNamesAndItems.ContainsValue(slot1.Item.type);
-                    bool flag2 = PetItemIDs.LightPetNamesAndItems.ContainsValue(slot2.Item.type);
+                    bool flag1 = PetIDs.LightPetNamesAndItems.ContainsValue(slot1.Item.type);
+                    bool flag2 = PetIDs.LightPetNamesAndItems.ContainsValue(slot2.Item.type);
                     if (!flag1 && !flag2)
                     {
                         infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State4"));

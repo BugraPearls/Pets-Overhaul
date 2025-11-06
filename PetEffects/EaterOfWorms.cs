@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Config;
-using PetsOverhaul.Items;
 using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
@@ -33,11 +32,11 @@ namespace PetsOverhaul.PetEffects
                 tilesToRandomize.Clear();
                 Tile tile = Main.SmartCursorShowing ? Main.tile[Main.SmartCursorX, Main.SmartCursorY] : Main.tile[Player.tileTargetX, Player.tileTargetY];
 
-                if (TileID.Sets.Ore[tile.TileType] == false && ItemPet.gemTile[tile.TileType] == false && Player.controlUseItem)
+                if (TileID.Sets.Ore[tile.TileType] == false && PetGlobalItem.gemTile[tile.TileType] == false && Player.controlUseItem)
                 {
                     Player.pickSpeed -= Player.pickSpeed * nonOreSpeed;
                 }
-                if (Player.controlUseItem && Player.HeldItem.pick > 0 && Main.tile[prevX, prevY].TileType == 0 && oldTileType != 0 && (TileID.Sets.Ore[oldTileType] || ItemPet.gemTile[oldTileType]))
+                if (Player.controlUseItem && Player.HeldItem.pick > 0 && Main.tile[prevX, prevY].TileType == 0 && oldTileType != 0 && (TileID.Sets.Ore[oldTileType] || PetGlobalItem.gemTile[oldTileType]))
                 {
                     for (mineX = -tileBreakXSpread; mineX <= tileBreakXSpread; mineX++)
                     {

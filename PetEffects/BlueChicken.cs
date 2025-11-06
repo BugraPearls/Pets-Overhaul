@@ -141,11 +141,11 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             BlueChicken chick = player.GetModPlayer<BlueChicken>();
-            if (PickerPet.PickupChecks(item, chick.PetItemID, out ItemPet itemChck))
+            if (PickerPet.PickupChecks(item, chick.PetItemID, out PetGlobalItem itemChck))
             {
                 if (itemChck.herbBoost)
                 {
-                    if (Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= ItemPet.MinimumExpForRarePlant)
+                    if (Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
                     {
                         PoolRarePlant();
                         if (GlobalPet.ItemPool.Count > 0)
@@ -156,7 +156,7 @@ namespace PetsOverhaul.PetEffects
                             }
                         }
                     }
-                    else if (ItemPet.treeItem[item.type])
+                    else if (PetGlobalItem.treeItem[item.type])
                     {
                         PoolTree();
                         if (GlobalPet.ItemPool.Count > 0)

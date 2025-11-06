@@ -1,5 +1,4 @@
-﻿using PetsOverhaul.Items;
-using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -43,7 +42,7 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             Destroyer dest = player.GetModPlayer<Destroyer>();
-            if (PickerPet.PickupChecks(item, dest.PetItemID, out ItemPet itemChck) && itemChck.oreBoost)
+            if (PickerPet.PickupChecks(item, dest.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
             {
                 for (int i = 0; i < GlobalPet.Randomizer((player.statDefense * dest.defItemMult + dest.flatAmount) * item.stack); i++)
                 {

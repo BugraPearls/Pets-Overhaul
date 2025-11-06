@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Config;
-using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -148,15 +147,15 @@ namespace PetsOverhaul.PetEffects
                 PhantasmalDragon dragon = Main.player[projectile.owner].GetModPlayer<PhantasmalDragon>();
                 if (projectile.type == ProjectileID.CultistBossIceMist)
                 {
-                    NpcPet.AddSlow(new NpcPet.PetSlow(dragon.iceSlow, dragon.iceSlowDuration, PetSlowIDs.PhantasmalIce), target);
+                    NPCGlobalPet.AddSlow(new PetSlow(dragon.iceSlow, dragon.iceSlowDuration, PetSlowIDs.PhantasmalIce), target);
                 }
                 else if (projectile.type == ProjectileID.CultistBossLightningOrb)
                 {
-                    NpcPet.AddSlow(new NpcPet.PetSlow(dragon.lightningSlow, dragon.lightningSlowDuration, PetSlowIDs.PhantasmalLightning), target);
+                    NPCGlobalPet.AddSlow(new PetSlow(dragon.lightningSlow, dragon.lightningSlowDuration, PetSlowIDs.PhantasmalLightning), target);
                 }
                 else if (projectile.type == ProjectileID.CultistBossLightningOrbArc)
                 {
-                    NpcPet.AddSlow(new NpcPet.PetSlow(dragon.lightningSlow / dragon.lightningStrikeDivide, dragon.lightningSlowDuration, PetSlowIDs.PhantasmalLightning), target);
+                    NPCGlobalPet.AddSlow(new PetSlow(dragon.lightningSlow / dragon.lightningStrikeDivide, dragon.lightningSlowDuration, PetSlowIDs.PhantasmalLightning), target);
                 }
                 else if (projectile.type == ProjectileID.CultistBossFireBall)
                 {

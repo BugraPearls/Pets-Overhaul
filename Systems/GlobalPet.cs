@@ -198,9 +198,9 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Runs all of the standart OnPickup's checks for the Pet to work with no problems.
         /// </summary>
-        public bool PickupChecks(Item item, int petitemid, out ItemPet itemPet)
+        public bool PickupChecks(Item item, int petitemid, out PetGlobalItem itemPet)
         {
-            if (PetInUse(petitemid) && Player.CanPullItem(item, Player.ItemSpace(item)) && item.TryGetGlobalItem(out ItemPet petItemCheck) && petItemCheck.pickedUpBefore == false)
+            if (PetInUse(petitemid) && Player.CanPullItem(item, Player.ItemSpace(item)) && item.TryGetGlobalItem(out PetGlobalItem petItemCheck) && petItemCheck.pickedUpBefore == false)
             {
                 itemPet = petItemCheck;
                 return true;
@@ -233,7 +233,7 @@ namespace PetsOverhaul.Systems
         public static void PreOnPickup(Item item, Player player)
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
-            if (item.TryGetGlobalItem(out ItemPet fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
+            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
             {
                 if (fortune.globalDrop)
                 {
@@ -607,7 +607,7 @@ namespace PetsOverhaul.Systems
                                 {
                                     NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number, 1f);
                                 }
-                                TilePlacement.RemoveFromList(i, j);
+                                PetTilePlacement.RemoveFromList(i, j);
                             }
                         }
                         if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -622,7 +622,7 @@ namespace PetsOverhaul.Systems
                         {
                             NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
                         }
-                        TilePlacement.RemoveFromList(i, j);
+                        PetTilePlacement.RemoveFromList(i, j);
                     }
                 }
             }
@@ -632,7 +632,7 @@ namespace PetsOverhaul.Systems
             bool PlacedFlower = orig(self, X, Y);
             if (PlacedFlower)
             {
-                TilePlacement.AddToList(X, Y);
+                PetTilePlacement.AddToList(X, Y);
             }
             return PlacedFlower;
         }
@@ -773,12 +773,12 @@ namespace PetsOverhaul.Systems
                 currentActivePet = null;
             }
 
-            if (Main.mouseItem.TryGetGlobalItem(out ItemPet item) && item.pickedUpBefore == false) //Player's hand slot is not being reckognized as 'inventory' in UpdateInventory() of GlobalItem, so manually updating the Hand slot
+            if (Main.mouseItem.TryGetGlobalItem(out PetGlobalItem item) && item.pickedUpBefore == false) //Player's hand slot is not being reckognized as 'inventory' in UpdateInventory() of GlobalItem, so manually updating the Hand slot
             {
                 item.pickedUpBefore = true;
             }
 
-            if (Player.trashItem.TryGetGlobalItem(out ItemPet trash) && trash.pickedUpBefore == false) //same thing as mouseItem above, this one is extremely situational and I doubt its possible to put an item into Trash Slot without picking it up with mouse, but I suppose some mods could make it happen?
+            if (Player.trashItem.TryGetGlobalItem(out PetGlobalItem trash) && trash.pickedUpBefore == false) //same thing as mouseItem above, this one is extremely situational and I doubt its possible to put an item into Trash Slot without picking it up with mouse, but I suppose some mods could make it happen?
             {
                 trash.pickedUpBefore = true;
             }
@@ -955,7 +955,7 @@ namespace PetsOverhaul.Systems
                 PetTamer.openLightCombineMenu = false;
             }
 
-            if (PetItemIDs.PetNamesAndItems.ContainsValue(Main.HoverItem.type) && PetKeybinds.ShowDetailedTip.JustPressed)
+            if (PetIDs.PetNamesAndItems.ContainsValue(Main.HoverItem.type) && PetKeybinds.ShowDetailedTip.JustPressed)
             {
                 CurrentTooltipIsSimple = !CurrentTooltipIsSimple;
             }

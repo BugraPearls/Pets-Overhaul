@@ -11,7 +11,7 @@ namespace PetsOverhaul.TownPets
         {
             Main.buffNoTimeDisplay[Type] = true;
             BuffID.Sets.TimeLeftDoesNotDecrease[Type] = true;
-            PetItemIDs.TownPetBuffIDs[Type] = true;
+            PetIDs.TownPetBuffIDs[Type] = true;
         }
         /// <summary>
         /// Update (player) with GlobalPet also added as a parameter.

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;
@@ -44,7 +43,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (proj.GetGlobalProjectile<ProjectileSourceChecks>().petProj == false)
+            if (proj.GetGlobalProjectile<PetGlobalProjectile>().petProj == false)
             {
                 SpawnGasCloud(target, hit.SourceDamage, hit.DamageType);
             }

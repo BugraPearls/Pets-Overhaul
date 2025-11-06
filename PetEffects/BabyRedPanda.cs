@@ -1,5 +1,4 @@
 ﻿using PetsOverhaul.Config;
-using PetsOverhaul.Items;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -87,7 +86,7 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             BabyRedPanda panda = player.GetModPlayer<BabyRedPanda>();
-            if (PickerPet.PickupChecks(item, panda.PetItemID, out ItemPet _) && item.type == ItemID.BambooBlock)
+            if (PickerPet.PickupChecks(item, panda.PetItemID, out PetGlobalItem _) && item.type == ItemID.BambooBlock)
             {
                 for (int i = 0; i < GlobalPet.Randomizer(panda.bambooChance * item.stack); i++)
                 {

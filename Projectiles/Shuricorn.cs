@@ -1,5 +1,5 @@
-﻿using PetsOverhaul.NPCs;
-using PetsOverhaul.PetEffects;
+﻿using PetsOverhaul.PetEffects;
+using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -15,7 +15,7 @@ namespace PetsOverhaul.Projectiles
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (target.TryGetGlobalNPC(out NpcPet pet))
+            if (target.TryGetGlobalNPC(out NPCGlobalPet pet))
             {
                 pet.shuricornMark = SugarGlider.shuricornDuration;
             }

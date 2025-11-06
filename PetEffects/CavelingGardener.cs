@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Items;
 using PetsOverhaul.Systems;
 using System.Linq;
 using Terraria;
@@ -25,11 +24,11 @@ namespace PetsOverhaul.PetEffects
         {
             GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
             CavelingGardener caveling = player.GetModPlayer<CavelingGardener>();
-            if (PickerPet.PickupChecks(item, caveling.PetItemID, out ItemPet itemChck))
+            if (PickerPet.PickupChecks(item, caveling.PetItemID, out PetGlobalItem itemChck))
             {
                 if (itemChck.herbBoost && (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight))
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer((Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= ItemPet.MinimumExpForRarePlant ? caveling.cavelingRarePlantChance : caveling.cavelingRegularPlantChance + (ItemPet.gemstoneTreeItem[item.type] ? caveling.cavelingGemTreeChance : 0)) * item.stack); i++)
+                    for (int i = 0; i < GlobalPet.Randomizer((Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ? caveling.cavelingRarePlantChance : caveling.cavelingRegularPlantChance + (PetGlobalItem.gemstoneTreeItem[item.type] ? caveling.cavelingGemTreeChance : 0)) * item.stack); i++)
                     {
                         player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), item.type, 1);
                     }

@@ -123,9 +123,9 @@ namespace PetsOverhaul.Systems
         }
         public override void OnCreated(Item item, ItemCreationContext context)
         {
-            if (context is RecipeItemCreationContext recipeResult && recipeResult.ConsumedItems.Exists(x => PetItemIDs.LightPetNamesAndItems.ContainsValue(x.type)))
+            if (context is RecipeItemCreationContext recipeResult && recipeResult.ConsumedItems.Exists(x => PetIDs.LightPetNamesAndItems.ContainsValue(x.type)))
             {
-                Item oldLightPet = recipeResult.ConsumedItems.Find(x => PetItemIDs.LightPetNamesAndItems.ContainsValue(x.type));
+                Item oldLightPet = recipeResult.ConsumedItems.Find(x => PetIDs.LightPetNamesAndItems.ContainsValue(x.type));
                 float cap = 0;
                 foreach (var oldGlobal in oldLightPet.Globals)
                 {

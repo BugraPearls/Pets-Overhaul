@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -51,7 +50,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Pet.timer <= 0 && PetIsEquipped() && proj.GetGlobalProjectile<ProjectileSourceChecks>().petProj == false)
+            if (Pet.timer <= 0 && PetIsEquipped() && proj.GetGlobalProjectile<PetGlobalProjectile>().petProj == false)
             {
                 SpawnBees(hit.DamageType, target.Center);
             }
