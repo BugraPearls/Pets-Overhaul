@@ -58,7 +58,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                GlobalPet.CircularDustEffect(Player.Center, 170, alertRadius, 80);
+                PetUtils.CircularDustEffect(Player.Center, 170, alertRadius, 80);
                 if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                     SoundEngine.PlaySound(SoundID.Item37 with { Pitch = 1f }, Player.Center);
                 EmoteBubble.MakePlayerEmote(Player, EmoteID.EmotionAlert);
@@ -88,9 +88,9 @@ namespace PetsOverhaul.PetEffects
             BabyRedPanda panda = player.GetModPlayer<BabyRedPanda>();
             if (PickerPet.PickupChecks(item, panda.PetItemID, out PetGlobalItem _) && item.type == ItemID.BambooBlock)
             {
-                for (int i = 0; i < GlobalPet.Randomizer(panda.bambooChance * item.stack); i++)
+                for (int i = 0; i < PetUtils.Randomizer(panda.bambooChance * item.stack); i++)
                 {
-                    player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), item.type, 1);
+                    player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), item.type, 1);
                 }
             }
         }

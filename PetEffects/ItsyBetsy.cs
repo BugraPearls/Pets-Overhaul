@@ -44,7 +44,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void OnEnemyKill(NPC npc, Player player)
         {
-            if (GlobalPet.LifestealCheck(npc) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet) && npcPet.curseCounter > 0 && player.TryGetModPlayer(out ItsyBetsy betsy))
+            if (PetUtils.LifestealCheck(npc) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet) && npcPet.curseCounter > 0 && player.TryGetModPlayer(out ItsyBetsy betsy))
             {
                 betsy.Pet.PetRecovery(player.statLifeMax2 - player.statLife, betsy.missingHpRecover * npcPet.curseCounter * (1f + (npcPet.curseCounter >= betsy.maxStacks ? betsy.maxStackBonusRecover : 0)));
             }

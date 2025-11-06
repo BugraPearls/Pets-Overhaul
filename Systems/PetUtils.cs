@@ -2,53 +2,151 @@
 using PetsOverhaul.Config;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Systems
 {
-
     /// <summary>
     /// <see langword="class"/> that contains many useful utilizable methods and fields that will assist with Pet effects development.
     /// </summary>
-    public class PetUtils
+    public static class PetUtils
     {
-        /// <summary>
-        /// Shortened and easier form of PetTextsColors.LocVal("<paramref name="localizationKeyValue"/>") to retrieve Pets Overhaul's localization values.
-        /// </summary>
-        /// <param name="localizationKeyValue">Remainder of localization text value to come after Mods.PetsOverhaul.</param>
-        /// <returns>Localization text value of "Mods.PetsOverhaul." + localizationKeyValue</returns>
-        public static string LocVal(string localizationKeyValue)
+        public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
-            return Language.GetTextValue("Mods.PetsOverhaul." + localizationKeyValue);
+            return new EntitySource_Pet
+            {
+                ContextType = typeId,
+                Context = context
+            };
+        }
+        public static void PreOnPickup(Item item, Player player)
+        {
+            GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
+            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
+            {
+                if (fortune.globalDrop)
+                {
+                    for (int i = 0; i < Randomizer(PickerPet.globalFortune * item.stack); i++)
+                    {
+                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), item.type, 1);
+                    }
+                }
+
+                if (fortune.harvestingDrop)
+                {
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
+                    {
+                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
+                    }
+                }
+
+                if (fortune.miningDrop)
+                {
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
+                    }
+                }
+
+                if (fortune.fishingDrop)
+                {
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), item.type, 1);
+                    }
+                }
+
+                if (fortune.herbBoost)
+                {
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
+                    }
+                }
+
+                if (fortune.oreBoost)
+                {
+                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
+                    }
+                }
+                // Fish is below at ModifyCaughtFish()
+            }
         }
         /// <summary>
-        /// Converts given text to be corresponding color of Light Pet quality values
+        /// Checks if the given enemy should not be lifestealen from, this can be used for non-lifesteal applications as some effects may not want to occur on friendly/statue/immortal etc. enemies.
         /// </summary>
-        /// <param name="text">Text to be converted</param>
-        /// <param name="currentRoll">Current roll of the stat</param>
-        /// <param name="maxRoll">Maximum roll of the stat</param>
-        /// <returns>Text with its color changed depending on quality amount</returns>
-        public static string LightPetRarityColorConvert(string text, int currentRoll, int maxRoll)
+        /// <param name="npc"></param>
+        /// <returns></returns>
+        public static bool LifestealCheck(NPC npc)
         {
-            if (currentRoll == maxRoll)
+            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type);
+        }
+        /// <summary>
+        /// Creates a Circle around the given Center with dust ID. dustAmount is usually recommended to be around radius / 10.
+        /// </summary>
+        public static void CircularDustEffect(Vector2 Center, int dustID, int radius, int dustAmount, float scale = 1f)
+        {
+            float actDustAmount = dustAmount;
+            actDustAmount *= ModContent.GetInstance<PetPersonalization>().CircularDustAmount switch
             {
-                return $"[c/{MaxQuality.Hex3()}:{text}]";
-            }
-            else if (currentRoll > maxRoll * 0.66f)
+                ParticleAmount.None => 0,
+                ParticleAmount.Lowered => 0.5f,
+                ParticleAmount.Increased => 2f,
+                _ => 1f,
+            };
+            if (actDustAmount > 0)
             {
-                return $"[c/{HighQuality.Hex3()}:{text}]";
-            }
-            else if (currentRoll > maxRoll * 0.33f)
-            {
-                return $"[c/{MidQuality.Hex3()}:{text}]";
-            }
-            else
-            {
-                return $"[c/{LowQuality.Hex3()}:{text}]";
+                for (int i = 0; i < actDustAmount; i++)
+                {
+                    Vector2 pos = Center + Main.rand.NextVector2CircularEdge(radius, radius);
+                    Point16 posCoord = Utils.ToTileCoordinates16(pos);
+                    if (WorldGen.InWorld(posCoord.X, posCoord.Y))
+                    {
+                        if (ModContent.GetInstance<PetPersonalization>().CircularDustInsideBlocks == false && WorldGen.SolidTile(posCoord.X, posCoord.Y, true))
+                        {
+                            continue;
+                        }
+
+                        Dust dust = Dust.NewDustPerfect(pos, dustID, Scale: scale);
+                        dust.noGravity = true;
+                        dust.noLight = true;
+                        dust.noLightEmittence = true;
+                    }
+                }
             }
         }
+        /// <summary>
+        /// Randomizes the given number. numToBeRandomized / randomizeTo returns how many times its 100% chance and rolls if the leftover, non-100% amount is true. Randomizer(225) returns +2 and +1 more with 25% chance.
+        /// randomizeTo is converted to positive if its negative for proper usage of Method. Negative values can be applied on numToBeRandomized to get the Method working the exact way, but to reduce. Ex: Randomizer(-225) returns -2 and -1 more with 25% chance.
+        /// </summary>
+        public static int Randomizer(int numToBeRandomized, int randomizeTo = 100)
+        {
+            if (randomizeTo < 0)
+                randomizeTo *= -1;
+            if (randomizeTo == 0)
+                randomizeTo = 1;
+
+            int amount = numToBeRandomized / randomizeTo;
+            numToBeRandomized %= randomizeTo;
+
+            if (numToBeRandomized < 0 && Main.rand.NextBool(numToBeRandomized * -1, randomizeTo))
+            {
+                amount--;
+            }
+            else if (Main.rand.NextBool(numToBeRandomized, randomizeTo))
+            {
+                amount++;
+            }
+            return amount;
+        }
+
+        #region Colors
         public static Color LowQuality => new(130, 130, 130);
         public static Color MidQuality => new(77, 117, 154);
         public static Color HighQuality => new(252, 194, 0);
@@ -92,6 +190,44 @@ namespace PetsOverhaul.Systems
                 _ => new(0, 0, 0),
             };
         }
+        #endregion
+
+        #region Text & Tooltip related utils
+        /// <summary>
+        /// Shortened and easier way of retrieving Pets Overhaul's localization values.
+        /// </summary>
+        /// <param name="localizationKeyValue">Remainder of localization text value to come after Mods.PetsOverhaul.</param>
+        /// <returns>Localization text value of "Mods.PetsOverhaul." + localizationKeyValue</returns>
+        public static string LocVal(string localizationKeyValue)
+        {
+            return Language.GetTextValue("Mods.PetsOverhaul." + localizationKeyValue);
+        }
+        /// <summary>
+        /// Converts given text to be corresponding color of Light Pet quality values
+        /// </summary>
+        /// <param name="text">Text to be converted</param>
+        /// <param name="currentRoll">Current roll of the stat</param>
+        /// <param name="maxRoll">Maximum roll of the stat</param>
+        /// <returns>Text with its color changed depending on quality amount</returns>
+        public static string LightPetRarityColorConvert(string text, int currentRoll, int maxRoll)
+        {
+            if (currentRoll == maxRoll)
+            {
+                return $"[c/{MaxQuality.Hex3()}:{text}]";
+            }
+            else if (currentRoll > maxRoll * 0.66f)
+            {
+                return $"[c/{HighQuality.Hex3()}:{text}]";
+            }
+            else if (currentRoll > maxRoll * 0.33f)
+            {
+                return $"[c/{MidQuality.Hex3()}:{text}]";
+            }
+            else
+            {
+                return $"[c/{LowQuality.Hex3()}:{text}]";
+            }
+        }
         /// <summary>
         /// Writes out Pet's Classes and their color mix. Works fine if only one class is given.
         /// </summary>
@@ -133,7 +269,7 @@ namespace PetsOverhaul.Systems
         }
         public static string RollMissingText()
         {
-            return "[c/" + LowQuality.Hex3() + ":" + LocVal("LightPetTooltips.NotRolled") + "]";
+            return $"[c/{LowQuality.Hex3()}:{LocVal("LightPetTooltips.NotRolled")}]";
         }
         public static string PetClassLocalized(PetClasses petClass)
         {
@@ -180,5 +316,6 @@ namespace PetsOverhaul.Systems
             }
             return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
         }
+        #endregion
     }
 }

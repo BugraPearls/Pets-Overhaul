@@ -35,7 +35,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                GlobalPet.CircularDustEffect(Player.Center, DustID.Snow, grinchRange, 20);
+                PetUtils.CircularDustEffect(Player.Center, DustID.Snow, grinchRange, 20);
                 Player.resistCold = true;
 
                 foreach (var npc in Main.ActiveNPCs)

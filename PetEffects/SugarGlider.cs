@@ -41,7 +41,7 @@ namespace PetsOverhaul.PetEffects
             }
             if (PetIsEquippedForCustom() && Pet.AbilityPressCheck())
             {
-                Projectile.NewProjectile(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
+                Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
                 Player.velocity.X = 10 * Player.direction * -1;
                 Pet.timer = Pet.timerMax;
             }

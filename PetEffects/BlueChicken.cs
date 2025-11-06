@@ -28,16 +28,16 @@ namespace PetsOverhaul.PetEffects
                     {
                         if (Main.rand.NextBool(4, 100))
                         {
-                            Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ItemID.BlueEgg);
+                            Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ItemID.BlueEgg);
                         }
                         else
                         {
-                            Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ItemID.RottenEgg);
+                            Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ItemID.RottenEgg);
                         }
                     }
                     else
                     {
-                        Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ModContent.ItemType<Egg>());
+                        Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ModContent.ItemType<Egg>());
                     }
 
                     if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
@@ -145,14 +145,14 @@ namespace PetsOverhaul.PetEffects
             {
                 if (itemChck.herbBoost)
                 {
-                    if (Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
+                    if (PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
                     {
                         PoolRarePlant();
                         if (GlobalPet.ItemPool.Count > 0)
                         {
-                            for (int i = 0; i < GlobalPet.Randomizer(chick.rarePlantChance * item.stack); i++)
+                            for (int i = 0; i < PetUtils.Randomizer(chick.rarePlantChance * item.stack); i++)
                             {
-                                player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
+                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
                             }
                         }
                     }
@@ -161,9 +161,9 @@ namespace PetsOverhaul.PetEffects
                         PoolTree();
                         if (GlobalPet.ItemPool.Count > 0)
                         {
-                            for (int i = 0; i < GlobalPet.Randomizer(chick.treeChance * item.stack); i++)
+                            for (int i = 0; i < PetUtils.Randomizer(chick.treeChance * item.stack); i++)
                             {
-                                player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
+                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
                             }
                         }
                     }
@@ -172,9 +172,9 @@ namespace PetsOverhaul.PetEffects
                         PoolPlant();
                         if (GlobalPet.ItemPool.Count > 0)
                         {
-                            for (int i = 0; i < GlobalPet.Randomizer(chick.plantChance * item.stack); i++)
+                            for (int i = 0; i < PetUtils.Randomizer(chick.plantChance * item.stack); i++)
                             {
-                                player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
+                                player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), GlobalPet.ItemPool[Main.rand.Next(GlobalPet.ItemPool.Count)], 1);
                             }
                         }
                     }

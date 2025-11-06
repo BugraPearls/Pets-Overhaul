@@ -149,7 +149,7 @@ namespace PetsOverhaul.UI
         {
             if (NewItem is not null && Main.LocalPlayer.BuyItem(cost))
             {
-                Item item = Main.LocalPlayer.QuickSpawnItemDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine"), NewItem);
+                Item item = Main.LocalPlayer.QuickSpawnItemDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine"), NewItem);
                 item.value = slot1.Item.value;
                 slot1.Item.TurnToAir();
                 slot2.Item.TurnToAir();
@@ -162,12 +162,12 @@ namespace PetsOverhaul.UI
             {
                 if (slot1.Item is not null && slot1.Item.IsAir == false)
                 {
-                    Main.LocalPlayer.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine Close"), slot1.Item);
+                    Main.LocalPlayer.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine Close"), slot1.Item);
                     slot1.Item.TurnToAir();
                 }
                 if (slot2.Item is not null && slot2.Item.IsAir == false)
                 {
-                    Main.LocalPlayer.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine Close"), slot2.Item);
+                    Main.LocalPlayer.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine Close"), slot2.Item);
                     slot2.Item.TurnToAir();
                 }
                 return;
@@ -219,7 +219,7 @@ namespace PetsOverhaul.UI
             {
                 for (int i = 0; i < Stash.Count; i++)
                 {
-                    Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Stash"), Stash[i]);
+                    Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Stash"), Stash[i]);
                 }
                 Stash.Clear();
             }

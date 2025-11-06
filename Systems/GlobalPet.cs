@@ -58,25 +58,6 @@ namespace PetsOverhaul.Systems
         /// Influences the chance to increase stack of the item that your Fishing Pet gave.
         /// </summary>
         public int fishingFortune = 0;
-        /// <summary>
-        /// Contains list of debuffs that are related to burning.
-        /// </summary>
-        public static List<int> BurnDebuffs = [BuffID.Burning, BuffID.OnFire, BuffID.OnFire3, BuffID.Frostburn, BuffID.CursedInferno, BuffID.ShadowFlame, BuffID.Frostburn2];
-        /// <summary>
-        /// Contains list of enemies that are associated with Corruption biome.
-        /// </summary>
-        public static List<int> CorruptEnemies = [NPCID.EaterofSouls, NPCID.LittleEater, NPCID.BigEater, NPCID.DevourerHead, NPCID.DevourerBody, NPCID.DevourerTail, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimeling, NPCID.Slimer, NPCID.Slimer2, NPCID.SeekerHead, NPCID.SeekerBody, NPCID.SeekerTail, NPCID.DarkMummy, NPCID.CursedHammer, NPCID.Clinger, NPCID.BigMimicCorruption, NPCID.DesertGhoulCorruption, NPCID.SandsharkCorrupt, NPCID.PigronCorruption, NPCID.CorruptGoldfish, NPCID.CorruptBunny, NPCID.CorruptPenguin, NPCID.DesertDjinn];
-
-        /// <summary>
-        /// Contains list of enemies that are associated with Crimson biome.
-        /// </summary>
-        public static List<int> CrimsonEnemies = [NPCID.BloodCrawler, NPCID.BloodCrawlerWall, NPCID.FaceMonster, NPCID.Crimera, NPCID.LittleCrimera, NPCID.BigCrimera, NPCID.BrainofCthulhu, NPCID.Creeper, NPCID.Herpling, NPCID.Crimslime, NPCID.BigCrimslime, NPCID.LittleCrimslime, NPCID.BloodJelly, NPCID.BloodFeeder, NPCID.BloodMummy, NPCID.CrimsonAxe, NPCID.IchorSticker, NPCID.FloatyGross, NPCID.BigMimicCrimson, NPCID.DesertGhoulCrimson, NPCID.SandsharkCrimson, NPCID.PigronCrimson, NPCID.CrimsonGoldfish, NPCID.CrimsonBunny, NPCID.CrimsonPenguin, NPCID.DesertDjinn];
-
-        /// <summary>
-        /// Contains list of enemies that are associated with Hallow biome. 
-        /// </summary>
-        public static List<int> HallowEnemies = [NPCID.Pixie, NPCID.Unicorn, NPCID.RainbowSlime, NPCID.Gastropod, NPCID.LightMummy, NPCID.QueenSlimeBoss, NPCID.QueenSlimeMinionBlue, NPCID.QueenSlimeMinionPink, NPCID.QueenSlimeMinionPurple, NPCID.HallowBoss, NPCID.IlluminantSlime, NPCID.IlluminantBat, NPCID.ChaosElemental, NPCID.EnchantedSword, NPCID.BigMimicHallow, NPCID.DesertGhoulHallow, NPCID.PigronHallow, NPCID.SandsharkHallow];
-
         public Color skin;
         public bool skinColorChanged = false;
         /// <summary>
@@ -163,8 +144,6 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static bool CurrentTooltipIsSimple = true;
 
-        public static List<int> EnemiesForLifestealToIgnore = [];
-
         /// <summary>
         /// This is instance of current active Pet effect, lots of data can be accessed here.
         /// </summary>
@@ -175,15 +154,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static Action<NPC, Player> OnEnemyDeath;
 
-        #region GlobalPet Methods, mostly Util stuff
-        public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
-        {
-            return new EntitySource_Pet
-            {
-                ContextType = typeId,
-                Context = context
-            };
-        }
+        #region Utility related methods, that directly uses Player fields. For static methods, see PetUtils.cs.
 
         /// <summary>
         /// Add an id to pool List with how many times it should be added as the weight.
@@ -215,76 +186,22 @@ namespace PetsOverhaul.Systems
         {
             if (coinAmount > 1000000)
             {
-                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.PlatinumCoin, coinAmount / 1000000);
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.PlatinumCoin, coinAmount / 1000000);
                 coinAmount %= 1000000;
             }
             if (coinAmount > 10000)
             {
-                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.GoldCoin, coinAmount / 10000);
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.GoldCoin, coinAmount / 10000);
                 coinAmount %= 10000;
             }
             if (coinAmount > 100)
             {
-                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.SilverCoin, coinAmount / 100);
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.SilverCoin, coinAmount / 100);
                 coinAmount %= 100;
             }
-            Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.CopperCoin, coinAmount);
+            Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.CopperCoin, coinAmount);
         }
-        public static void PreOnPickup(Item item, Player player)
-        {
-            GlobalPet PickerPet = player.GetModPlayer<GlobalPet>();
-            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
-            {
-                if (fortune.globalDrop)
-                {
-                    for (int i = 0; i < Randomizer(PickerPet.globalFortune * item.stack); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), item.type, 1);
-                    }
-                }
 
-                if (fortune.harvestingDrop)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.miningDrop)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.fishingDrop)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.herbBoost)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.oreBoost)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
-                    }
-                }
-                // Fish is below at ModifyCaughtFish()
-            }
-        }
         /// <summary>
         /// Checks if the given Pet Item is in use and checks if pet has been lately swapped or not.
         /// </summary>
@@ -303,77 +220,12 @@ namespace PetsOverhaul.Systems
             }
             return Player.miscEquips[0].type == petItemID;
         }
-        /// <summary>
-        /// Checks if the given enemy should not be lifestealen from, this can be used for non-lifesteal applications as some effects may not want to occur on friendly/statue/immortal etc. enemies.
-        /// </summary>
-        /// <param name="npc"></param>
-        /// <returns></returns>
-        public static bool LifestealCheck(NPC npc)
-        {
-            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !EnemiesForLifestealToIgnore.Contains(npc.type);
-        }
-        /// <summary>
-        /// Creates a Circle around the given Center with dust ID. dustAmount is usually recommended to be around radius / 10.
-        /// </summary>
-        public static void CircularDustEffect(Vector2 Center, int dustID, int radius, int dustAmount, float scale = 1f)
-        {
-            float actDustAmount = dustAmount;
-            actDustAmount *= ModContent.GetInstance<PetPersonalization>().CircularDustAmount switch
-            {
-                ParticleAmount.None => 0,
-                ParticleAmount.Lowered => 0.5f,
-                ParticleAmount.Increased => 2f,
-                _ => 1f,
-            };
-            if (actDustAmount > 0)
-            {
-                for (int i = 0; i < actDustAmount; i++)
-                {
-                    Vector2 pos = Center + Main.rand.NextVector2CircularEdge(radius, radius);
-                    Point16 posCoord = Utils.ToTileCoordinates16(pos);
-                    if (WorldGen.InWorld(posCoord.X, posCoord.Y))
-                    {
-                        if (ModContent.GetInstance<PetPersonalization>().CircularDustInsideBlocks == false && WorldGen.SolidTile(posCoord.X, posCoord.Y, true))
-                        {
-                            continue;
-                        }
 
-                        Dust dust = Dust.NewDustPerfect(pos, dustID, Scale: scale);
-                        dust.noGravity = true;
-                        dust.noLight = true;
-                        dust.noLightEmittence = true;
-                    }
-                }
-            }
-        }
         public bool AbilityPressCheck()
         {
             return Player.dead == false && timer <= 0 && PetKeybinds.UsePetAbility.JustPressed;
         }
-        /// <summary>
-        /// Randomizes the given number. numToBeRandomized / randomizeTo returns how many times its 100% chance and rolls if the leftover, non-100% amount is true. Randomizer(225) returns +2 and +1 more with 25% chance.
-        /// randomizeTo is converted to positive if its negative for proper usage of Method. Negative values can be applied on numToBeRandomized to get the Method working the exact way, but to reduce. Ex: Randomizer(-225) returns -2 and -1 more with 25% chance.
-        /// </summary>
-        public static int Randomizer(int numToBeRandomized, int randomizeTo = 100)
-        {
-            if (randomizeTo < 0)
-                randomizeTo *= -1;
-            if (randomizeTo == 0)
-                randomizeTo = 1;
 
-            int amount = numToBeRandomized / randomizeTo;
-            numToBeRandomized %= randomizeTo;
-
-            if (numToBeRandomized < 0 && Main.rand.NextBool(numToBeRandomized * -1, randomizeTo))
-            {
-                amount--;
-            }
-            else if (Main.rand.NextBool(numToBeRandomized, randomizeTo))
-            {
-                amount++;
-            }
-            return amount;
-        }
         /// <summary>
         /// Sets active of oldest Main.combatText to false.
         /// </summary>
@@ -430,11 +282,11 @@ namespace PetsOverhaul.Systems
         /// Used for Healing and Mana recovery purposes. Non converted amount can still grant +1, depending on a roll. Example: PetRecovery(215, 0.05f) will heal you for 10 health and 75% chance to heal +1 more, resulting in 11 health recovery.
         /// </summary>
         /// <param name="baseAmount">Base amount of value to be recovered</param>
-        /// <param name="percentageAmount">% of baseAmount to be converted to recovery.</param>
-        /// <param name="flatIncrease">Amount to be included that will not go through any calculations & complications.</param>
+        /// <param name="percentageAmount">Percentage of baseAmount to be converted to recovery.</param>
+        /// <param name="flatIncrease">Amount to be included that will not go through any calculations and complications.</param>
         /// <param name="manaSteal">Whether or not if it will recover health or mana. petHealMultiplier and Moon Leech debuff will be disabled if set to True.</param>
         /// <param name="isLifesteal">Should be set to false if this is not a Life Steal, it won't use vanilla Life steal cap, won't be affected by Moon Leech debuff and won't modify player.lifeSteal if set to false.</param>
-        /// <param name="doHeal">Should be set to false if intended to simply return a value but not do anything at all.</param>
+        /// <param name="doHeal">Should be set to false if intended to simply return a value but not do anything at all. Such as if its intended to check how much this method will be healing.</param>
         /// <returns>Returns amount calculated, irrelevant to Player's health cap, or the lifeSteal cap etc.</returns>
         public int PetRecovery(double baseAmount, float percentageAmount, int flatIncrease = 0, bool manaSteal = false, bool isLifesteal = true, bool doHeal = true)
         {
@@ -555,12 +407,12 @@ namespace PetsOverhaul.Systems
         #region ModPlayer Overrides
         public override void Load()
         {
-            PetsOverhaul.OnPickupActions += PreOnPickup;
+            PetsOverhaul.OnPickupActions += PetUtils.PreOnPickup;
             On_Player.DoBootsEffect_PlaceFlowersOnTile += GrassIsPlacedByPlayer;
             On_Player.ItemCheck_CutTiles += CutGrassIsRemovedFromList;
         }
 
-        private static void CutGrassIsRemovedFromList(On_Player.orig_ItemCheck_CutTiles orig, Player self, Item sItem, Rectangle itemRectangle, bool[] shouldIgnore)
+        private static void CutGrassIsRemovedFromList(On_Player.orig_ItemCheck_CutTiles orig, Player self, Item sItem, Rectangle itemRectangle, bool[] shouldIgnore) //This is bugged for multiplayer idk cant fix
         {
             int minX = itemRectangle.X / 16;
             int maxX = (itemRectangle.X + itemRectangle.Width) / 16 + 1;
@@ -816,7 +668,7 @@ namespace PetsOverhaul.Systems
                 {
                     mult += -1 + -1 * (1 / (-1 + abilityHaste));
                 }
-                timer -= Randomizer((int)(1000 * mult), 1000);
+                timer -= PetUtils.Randomizer((int)(1000 * mult), 1000);
                 AbilityCdSoundPlayed = false;
             }
             if (timer < -1)
@@ -939,13 +791,13 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyCaughtFish(Item fish) //this is where fish is actually caught/reeled out.
         {
-            for (int i = 0; i < Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000); i++)
+            for (int i = 0; i < PetUtils.Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000); i++)
             {
-                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), fish.type, 1);
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), fish.type, 1);
             }
             if (Main.rand.NextBool(5))
             {
-                Player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1, 3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1, 3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
             }
         }
         public override void ProcessTriggers(TriggersSet triggersSet)

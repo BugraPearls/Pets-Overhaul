@@ -43,7 +43,7 @@ namespace PetsOverhaul.PetEffects
             if (Pet.timer <= 0)
             {
                 SoundEngine.PlaySound(SoundID.Item44 with { PitchVariance = 1.6f, Volume = 0.6f }, Player.Center);
-                NPC npC = NPC.NewNPCDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<SlimeServant>());
+                NPC npC = NPC.NewNPCDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<SlimeServant>());
                 npC.GetGlobalNPC<SlimeServantOwner>().Owner = Player.whoAmI;
                 npC.defense += Player.statDefense * defMult;
                 npC.lifeMax += (int)(Player.statLifeMax2 * hpMult);

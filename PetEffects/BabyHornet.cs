@@ -62,17 +62,17 @@ namespace PetsOverhaul.PetEffects
             {
                 summonMult = 2;
             }
-            for (int i = 0; i < GlobalPet.Randomizer(beeChance * summonMult); i++)
+            for (int i = 0; i < PetUtils.Randomizer(beeChance * summonMult); i++)
             {
                 if (Player.strongBees == true && Main.rand.NextBool(1, 3))
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.GiantBee, Pet.PetDamage(beeDmg * 2, DamageClass.Summon), beeKb * 2, Player.whoAmI);
+                    Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.GiantBee, Pet.PetDamage(beeDmg * 2, DamageClass.Summon), beeKb * 2, Player.whoAmI);
                     petProjectile.DamageType = DamageClass.Summon;
                     petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Summon);
                 }
                 else
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.Bee, Pet.PetDamage(beeDmg, DamageClass.Summon), beeKb, Player.whoAmI);
+                    Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.Bee, Pet.PetDamage(beeDmg, DamageClass.Summon), beeKb, Player.whoAmI);
                     petProjectile.DamageType = DamageClass.Summon;
                     petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Summon);
                 }

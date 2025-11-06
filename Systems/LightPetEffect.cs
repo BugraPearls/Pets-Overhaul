@@ -236,7 +236,7 @@ namespace PetsOverhaul.Systems
             if (CurrentRoll <= 0)
             {
                 CurrentRoll = Main.rand.Next(MaxRoll) + 1;
-                int timesToRoll = GlobalPet.Randomizer((int)(luck * 100));
+                int timesToRoll = PetUtils.Randomizer((int)(luck * 100));
                 if (timesToRoll > 0)
                 {
                     for (int i = 0; i < timesToRoll; i++)
@@ -266,7 +266,7 @@ namespace PetsOverhaul.Systems
             int tempMax = (int)Math.Round(Math.Clamp(maxRollPercent, 0, 1f) * MaxRoll);
             CurrentRoll = Main.rand.Next(tempMax) + 1;
 
-            int timesToRoll = GlobalPet.Randomizer((int)(luck * 100));
+            int timesToRoll = PetUtils.Randomizer((int)(luck * 100));
             if (timesToRoll > 0)
             {
                 for (int i = 0; i < timesToRoll; i++)

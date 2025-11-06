@@ -24,7 +24,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && target.active == false && proj.CountsAsClass<RangedDamageClass>() && proj.penetrate >= 0)
             {
-                proj.penetrate += GlobalPet.Randomizer(penetrateChance);
+                proj.penetrate += PetUtils.Randomizer(penetrateChance);
                 if (proj.usesLocalNPCImmunity == false)
                 {
                     proj.usesLocalNPCImmunity = true;

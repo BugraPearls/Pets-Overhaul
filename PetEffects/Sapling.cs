@@ -18,14 +18,14 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target))
             {
                 modifiers.FinalDamage *= damagePenalty;
             }
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target))
             {
                 if (proj.GetGlobalProjectile<PetGlobalProjectile>().isPlanteraProjectile)
                 {
@@ -39,7 +39,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target))
             {
                 if (PlanteraWeapon.Contains(item.type))
                 {

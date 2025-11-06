@@ -326,7 +326,7 @@ namespace PetsOverhaul.Commands
                                 case "harvesting":
                                     List<int> harv = [];
                                     List<int> rareHarv = [];
-                                    foreach (var (expAmount, plantList) in Junimo.HarvestingXpPerGathered)
+                                    foreach (var (expAmount, plantList) in PetIDs.HarvestingXpPerGathered)
                                     {
                                         if (expAmount >= 1000)
                                         {
@@ -342,7 +342,7 @@ namespace PetsOverhaul.Commands
                                     break;
                                 case "mining":
                                     List<int> mining = [];
-                                    foreach (var (expAmount, oreList) in Junimo.MiningXpPerBlock)
+                                    foreach (var (expAmount, oreList) in PetIDs.MiningXpPerBlock)
                                     {
                                         mining.AddRange(oreList);
                                     }
@@ -350,7 +350,7 @@ namespace PetsOverhaul.Commands
                                     break;
                                 case "fishing":
                                     List<int> fish = [];
-                                    foreach (var (expAmount, fishList) in Junimo.FishingXpPerCaught)
+                                    foreach (var (expAmount, fishList) in PetIDs.FishingXpPerCaught)
                                     {
                                         fish.AddRange(fishList);
                                     }

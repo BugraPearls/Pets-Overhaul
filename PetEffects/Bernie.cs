@@ -25,7 +25,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                GlobalPet.CircularDustEffect(Player.Center, DustID.Torch, bernieRange, 100);
+                PetUtils.CircularDustEffect(Player.Center, DustID.Torch, bernieRange, 100);
                 Player.buffImmune[BuffID.Burning] = true;
                 Player.buffImmune[BuffID.OnFire] = true;
                 Player.buffImmune[BuffID.OnFire3] = true;
@@ -42,7 +42,7 @@ namespace PetsOverhaul.PetEffects
                         {
                             for (int a = 0; a < NPC.maxBuffs; a++)
                             {
-                                if (GlobalPet.BurnDebuffs.Contains(npc.buffType[a]))
+                                if (PetIDs.BurnDebuffs.Contains(npc.buffType[a]))
                                 {
                                     npc.buffTime[a]++;
                                 }
@@ -50,7 +50,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         for (int a = 0; a < NPC.maxBuffs; a++)
                         {
-                            if (GlobalPet.BurnDebuffs.Contains(npc.buffType[a]))
+                            if (PetIDs.BurnDebuffs.Contains(npc.buffType[a]))
                             {
                                 EnemiesBurning++;
                                 break;

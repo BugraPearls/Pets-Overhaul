@@ -39,9 +39,9 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false) && fish.maxStack != 1)
             {
-                for (int i = 0; i < GlobalPet.Randomizer(stackChance + (int)(Player.GetFishingConditions().FinalFishingLevel * multiplier) * fish.stack); i++)
+                for (int i = 0; i < PetUtils.Randomizer(stackChance + (int)(Player.GetFishingConditions().FinalFishingLevel * multiplier) * fish.stack); i++)
                 {
-                    Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.FishingItem), fish.type, 1);
+                    Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingItem), fish.type, 1);
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false) && item.fishingPole > 0)
             {
-                for (int i = 0; i < GlobalPet.Randomizer(bobberChance); i++)
+                for (int i = 0; i < PetUtils.Randomizer(bobberChance); i++)
                 {
                     Vector2 bobberSpeed = velocity + new Vector2(Main.rand.NextFloat(-50f, 50f) * 0.05f, Main.rand.NextFloat(-50f, 50f) * 0.05f);
                     Projectile petProjectile = Projectile.NewProjectileDirect(source, position, bobberSpeed, ProjectileID.FishingBobber, 0, 0f, Player.whoAmI);

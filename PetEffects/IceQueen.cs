@@ -29,7 +29,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && frozenTomb == true)
             {
-                GlobalPet.CircularDustEffect(Player.Center, DustID.SnowflakeIce, queenRange, 50);
+                PetUtils.CircularDustEffect(Player.Center, DustID.SnowflakeIce, queenRange, 50);
             }
         }
         public override void UpdateBadLifeRegen()

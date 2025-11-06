@@ -32,7 +32,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target) && hit.Crit && Pet.timer <= 0)
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target) && hit.Crit && Pet.timer <= 0)
             {
                 Pet.PetRecovery(Player.statManaMax2 - Player.statMana, missingManaPercent, flatRecovery, true, false);
                 Pet.timer = Pet.timerMax;

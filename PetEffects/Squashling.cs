@@ -27,9 +27,9 @@ namespace PetsOverhaul.PetEffects
             {
                 if (itemChck.herbBoost == true)
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer(Junimo.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ? squash.squashlingRareChance : squash.squashlingCommonChance) * item.stack; i++)
+                    for (int i = 0; i < PetUtils.Randomizer(PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ? squash.squashlingRareChance : squash.squashlingCommonChance) * item.stack; i++)
                     {
-                        player.QuickSpawnItemDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), item.type, 1);
+                        player.QuickSpawnItemDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), item.type, 1);
                     }
                 }
             }

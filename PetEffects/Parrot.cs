@@ -22,7 +22,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && target.active && target.dontTakeDamage == false)
             {
-                for (int i = 0; i < GlobalPet.Randomizer(meleeChance); i++)
+                for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
                     target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * meleeDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck);
                     PlayParrotSound();
@@ -34,7 +34,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && target.active && target.dontTakeDamage == false && (proj.minion || proj.sentry || proj.usesOwnerMeleeHitCD || proj.ownerHitCheck || proj.type == ProjectileID.TrueNightsEdge))
             {
-                for (int i = 0; i < GlobalPet.Randomizer(meleeChance); i++)
+                for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
                     target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * projDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck);
                     PlayParrotSound();
@@ -87,9 +87,9 @@ namespace PetsOverhaul.PetEffects
 
                 if (source is EntitySource_ItemUse || source is EntitySource_Parent { Entity: Projectile entity } && (entity.minion || entity.sentry))
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer(parrot.projChance); i++)
+                    for (int i = 0; i < PetUtils.Randomizer(parrot.projChance); i++)
                     {
-                        Projectile petProjectile = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, parrot.Pet.PetDamage(projectile.damage * parrot.projDamage, damageType), projectile.knockBack, projectile.owner);
+                        Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, parrot.Pet.PetDamage(projectile.damage * parrot.projDamage, damageType), projectile.knockBack, projectile.owner);
                         petProjectile.DamageType = damageType;
                         petProjectile.CritChance = (int)parrot.Player.GetTotalCritChance(damageType);
                         parrot.PlayParrotSound();

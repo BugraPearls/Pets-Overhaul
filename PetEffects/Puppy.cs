@@ -71,7 +71,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (player.TryGetModPlayer(out Puppy pup) && pup.PetIsEquipped(false) && npc.rarity > 0 && npc.CountsAsACritter == false && npc.SpawnedFromStatue == false)
             {
-                pup.Pet.GiveCoins(GlobalPet.Randomizer(pup.rareEnemyCoin * npc.rarity));
+                pup.Pet.GiveCoins(PetUtils.Randomizer(pup.rareEnemyCoin * npc.rarity));
             }
         }
         public override void OnCatchNPC(NPC npc, Item item, bool failed)
@@ -80,10 +80,10 @@ namespace PetsOverhaul.PetEffects
             {
                 if (npc.rarity > 0)
                 {
-                    Pet.GiveCoins(GlobalPet.Randomizer(rareCritterCoin * npc.rarity));
-                    for (int i = 0; i < GlobalPet.Randomizer(rareCatchChance); i++)
+                    Pet.GiveCoins(PetUtils.Randomizer(rareCritterCoin * npc.rarity));
+                    for (int i = 0; i < PetUtils.Randomizer(rareCatchChance); i++)
                     {
-                        Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), npc.catchItem, 1);
+                        Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), npc.catchItem, 1);
                         if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                         {
                             SoundEngine.PlaySound(SoundID.Item65 with { PitchVariance = 0.3f, MaxInstances = 5, Volume = 0.5f }, Player.Center);
@@ -93,9 +93,9 @@ namespace PetsOverhaul.PetEffects
                 }
                 else
                 {
-                    for (int i = 0; i < GlobalPet.Randomizer(catchChance); i++)
+                    for (int i = 0; i < PetUtils.Randomizer(catchChance); i++)
                     {
-                        Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), npc.catchItem, 1);
+                        Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), npc.catchItem, 1);
                         if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                         {
                             SoundEngine.PlaySound(SoundID.Item65 with { PitchVariance = 0.3f, MaxInstances = 1, Volume = 0.5f }, Player.Center);

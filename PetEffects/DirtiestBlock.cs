@@ -26,15 +26,15 @@ namespace PetsOverhaul.PetEffects
             {
                 if (item.type == ItemID.DirtBlock)
                 {
-                    PickerPet.GiveCoins(GlobalPet.Randomizer(item.stack * dirt.dirtCoin));
+                    PickerPet.GiveCoins(PetUtils.Randomizer(item.stack * dirt.dirtCoin));
                 }
                 else if (CommonBlock.Contains(item.type))
                 {
-                    PickerPet.GiveCoins(GlobalPet.Randomizer(item.stack * dirt.soilCoin));
+                    PickerPet.GiveCoins(PetUtils.Randomizer(item.stack * dirt.soilCoin));
                 }
                 else
                 {
-                    PickerPet.GiveCoins(GlobalPet.Randomizer(item.stack * dirt.everythingCoin));
+                    PickerPet.GiveCoins(PetUtils.Randomizer(item.stack * dirt.everythingCoin));
                 }
             }
 

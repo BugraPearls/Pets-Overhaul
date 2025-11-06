@@ -69,12 +69,12 @@ namespace PetsOverhaul.PetEffects
                 if (Pet.inCombatTimer <= 0)
                 {
                     Pet.AddShield((int)(Player.statLifeMax2 * stage2ShieldMult), 1);
-                    Player.lifeRegen += GlobalPet.Randomizer((int)(stage2regen * 100 * Pet.petHealMultiplier));
+                    Player.lifeRegen += PetUtils.Randomizer((int)(stage2regen * 100 * Pet.petHealMultiplier));
                     currentRegen = stage2regen;
                 }
                 else if (Pet.inCombatTimer <= Pet.inCombatTimerMax - (int)(stage1time * (1 / (1 + Pet.abilityHaste))))
                 {
-                    Player.lifeRegen += GlobalPet.Randomizer((int)(stage1regen * 100 * Pet.petHealMultiplier));
+                    Player.lifeRegen += PetUtils.Randomizer((int)(stage1regen * 100 * Pet.petHealMultiplier));
                     currentRegen = stage1regen;
                 }
                 else

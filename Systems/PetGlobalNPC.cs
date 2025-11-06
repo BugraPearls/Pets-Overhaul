@@ -393,7 +393,7 @@ namespace PetsOverhaul.Systems
         {
             if (currentTotalSlow > 0)
             {
-                int dustChance = GlobalPet.Randomizer((int)(1000 / currentTotalSlow));
+                int dustChance = PetUtils.Randomizer((int)(1000 / currentTotalSlow));
                 if (dustChance <= 0)
                     dustChance = 1;
                 bool spawnDust = Main.rand.NextBool(dustChance); //We use random chance to spawn a dust, the chance for gets narrowed down the more slow there is.

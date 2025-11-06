@@ -186,7 +186,7 @@ namespace PetsOverhaul.PetEffects
             }
             if (PetIsEquipped())
             {
-                GlobalPet.CircularDustEffect(Player.Center, DustID.PurpleTorch, radius, 12);
+                PetUtils.CircularDustEffect(Player.Center, DustID.PurpleTorch, radius, 12);
                 if (deerclopsTakenDamage.Count > 0)
                 {
                     for (int i = 0; i < deerclopsTakenDamage.Count; i++)

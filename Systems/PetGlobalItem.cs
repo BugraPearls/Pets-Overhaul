@@ -1,5 +1,4 @@
 ﻿using PetsOverhaul.Items;
-using PetsOverhaul.PetEffects;
 using System;
 using System.IO;
 using System.Linq;
@@ -104,13 +103,13 @@ namespace PetsOverhaul.Systems
 
                 if (PlayerPlacedBlockList.placedBlocksByPlayer.Contains(new Point16(brokenTile.TileCoords.X, brokenTile.TileCoords.Y)) == false)
                 {
-                    oreBoost = TileID.Sets.Ore[tileType] || gemTile[tileType] || extractableAndOthers[tileType] || Junimo.MiningXpPerBlock.Exists(x => x.oreList.Contains(item.type));
+                    oreBoost = TileID.Sets.Ore[tileType] || gemTile[tileType] || extractableAndOthers[tileType] || PetsOverhaul.Systems.PetIDs.MiningXpPerBlock.Exists(x => x.oreList.Contains(item.type));
                     blockNotByPlayer = true;
                 }
 
                 PetTilePlacement.RemoveFromList(brokenTile.TileCoords.X, brokenTile.TileCoords.Y);
 
-                herbBoost = Junimo.HarvestingXpPerGathered.Exists(x => x.plantList.Contains(item.type));
+                herbBoost = PetsOverhaul.Systems.PetIDs.HarvestingXpPerGathered.Exists(x => x.plantList.Contains(item.type));
 
                 if (herbBoost)
                 {

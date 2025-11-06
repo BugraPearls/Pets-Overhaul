@@ -47,7 +47,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target) && Pet.timer <= 0 && item.CountsAsClass<MeleeDamageClass>())
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target) && Pet.timer <= 0 && item.CountsAsClass<MeleeDamageClass>())
             {
                 if (minotaurStack < 80)
                 {
@@ -62,7 +62,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target) && Pet.timer <= 0 && proj.CountsAsClass<MeleeDamageClass>())
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target) && Pet.timer <= 0 && proj.CountsAsClass<MeleeDamageClass>())
             {
                 if (minotaurStack < 80)
                 {

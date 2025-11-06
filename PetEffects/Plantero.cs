@@ -20,7 +20,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                for (int i = 0; i < GlobalPet.Randomizer(spawnChance + (int)(spawnChance * Pet.abilityHaste)); i++)
+                for (int i = 0; i < PetUtils.Randomizer(spawnChance + (int)(spawnChance * Pet.abilityHaste)); i++)
                 {
                     Vector2 location = new(target.Center.X + Main.rand.NextFloat(-2f, 2f), target.Center.Y + Main.rand.NextFloat(-2f, 2f));
                     Vector2 velocity = new(Main.rand.NextFloat(-1.5f, 1.5f), Main.rand.NextFloat(-1.5f, 1.5f));
@@ -32,7 +32,7 @@ namespace PetsOverhaul.PetEffects
                         _ => ProjectileID.SporeGas,
                     };
                     ;
-                    Projectile gas = Projectile.NewProjectileDirect(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetProjectile), location, velocity, projId, Pet.PetDamage(damage * damageMult + flatDmg, dmgType), knockBack, Main.myPlayer);
+                    Projectile gas = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), location, velocity, projId, Pet.PetDamage(damage * damageMult + flatDmg, dmgType), knockBack, Main.myPlayer);
                     gas.Resize(gas.width * 2, gas.height * 2);
                     gas.scale *= 2;
                     gas.penetrate = pen;

@@ -23,12 +23,12 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false) && Main.rand.NextBool(18000))
             {
-                Player.QuickSpawnItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<GlommersGoop>());
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<GlommersGoop>());
             }
 
             if (PetIsEquipped())
             {
-                GlobalPet.CircularDustEffect(Player.Center, DustID.ShimmerTorch, glommerSanityRange, 100);
+                PetUtils.CircularDustEffect(Player.Center, DustID.ShimmerTorch, glommerSanityRange, 100);
                 foreach (var player in Main.ActivePlayers)
                 {
                     if (Player.Distance(player.Center) < glommerSanityRange)

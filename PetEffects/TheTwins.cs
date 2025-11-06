@@ -25,8 +25,8 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                GlobalPet.CircularDustEffect(Player.Center, DustID.CursedTorch, closeRange, 6);
-                GlobalPet.CircularDustEffect(Player.Center, DustID.RedTorch, longRange, 30);
+                PetUtils.CircularDustEffect(Player.Center, DustID.CursedTorch, closeRange, 6);
+                PetUtils.CircularDustEffect(Player.Center, DustID.RedTorch, longRange, 30);
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -52,7 +52,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Player.Distance(target.Center) < closeRange && GlobalPet.LifestealCheck(target) && PetIsEquipped())
+            if (Player.Distance(target.Center) < closeRange && PetUtils.LifestealCheck(target) && PetIsEquipped())
             {
                 if (Pet.timer <= 0 && target.TryGetGlobalNPC(out TwinsPermaDefDrop defDrop))
                 {

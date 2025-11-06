@@ -55,7 +55,7 @@ namespace PetsOverhaul.NPCs
             {
                 return;
             }
-            GlobalPet.CircularDustEffect(NPC.Center, DustID.BlueMoss, radius, 10, 1);
+            PetUtils.CircularDustEffect(NPC.Center, DustID.BlueMoss, radius, 10, 1);
             foreach (NPC npc in Main.ActiveNPCs)
             {
                 if (NPC.Distance(npc.Center) < radius && npc.friendly == false)

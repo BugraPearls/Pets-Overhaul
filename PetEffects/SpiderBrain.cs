@@ -39,7 +39,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && GlobalPet.LifestealCheck(target))
+            if (PetIsEquipped() && PetUtils.LifestealCheck(target))
             {
                 int decreaseFromPool = Pet.PetRecovery(damageDone, lifestealAmount, doHeal: false);
                 int maxCanBeHealed = Player.statLifeMax2 - Player.statLife;

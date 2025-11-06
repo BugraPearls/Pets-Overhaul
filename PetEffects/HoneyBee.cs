@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
         public static void HealByHoneyBee(bool isBottledHoney, int healersWhoAmI, bool selfHeal)
         {
             HoneyBee healer = Main.player[healersWhoAmI].GetModPlayer<HoneyBee>();
-            GlobalPet.CircularDustEffect(healer.Player.Center, DustID.Honey, healer.range, 130);
+            PetUtils.CircularDustEffect(healer.Player.Center, DustID.Honey, healer.range, 130);
             if (selfHeal)
             {
                 Player player = healer.Player;

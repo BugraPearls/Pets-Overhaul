@@ -16,11 +16,11 @@ namespace PetsOverhaul.Systems
         {
             if (PetGlobalItem.treeTile[type] && Main.rand.NextBool(50))
             {
-                Item.NewItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+                Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
             }
             else if (Main.rand.NextBool(3) && (type == TileID.MatureHerbs || type == TileID.BloomingHerbs))
             {
-                Item.NewItem(GlobalPet.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+                Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
             }
         }
         public override bool ShakeTree(int x, int y, TreeTypes treeType)

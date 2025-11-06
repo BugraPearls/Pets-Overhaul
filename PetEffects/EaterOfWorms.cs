@@ -52,7 +52,7 @@ namespace PetsOverhaul.PetEffects
                             tilesToRandomize.Add((prevX + mineX, prevY + mineY));
                         }
                     }
-                    for (int i = 0; i < GlobalPet.Randomizer(tileBreakSpreadChance); i++)
+                    for (int i = 0; i < PetUtils.Randomizer(tileBreakSpreadChance); i++)
                     {
                         if (tilesToRandomize.Count > 0)
                         {
