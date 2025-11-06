@@ -46,7 +46,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && proj.GetGlobalProjectile<HoardagronProj>().special)
             {
-                if ((target.boss == true || NPCGlobalPet.NonBossTrueBosses.Contains(target.type)) && target.life < (int)(target.lifeMax * specialBossThreshold))
+                if ((target.boss == true || PetIDs.NonBossTrueBosses.Contains(target.type)) && target.life < (int)(target.lifeMax * specialBossThreshold))
                 {
                     modifiers.SetCrit();
                 }

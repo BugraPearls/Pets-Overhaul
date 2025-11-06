@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 namespace PetsOverhaul.Systems
 {
     /// <summary>
-    /// Slow thats applied to an NPC, by a Pet.
+    /// Slow thats applied to an NPC, by a Pet. Use <see cref="NPCGlobalPet.AddSlow(PetSlow, NPC)"/> to add Slow to a NPC.
     /// </summary>
     /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
     /// <param name="slowTime">Time for slow to be applied in frames.</param>
@@ -28,10 +28,11 @@ namespace PetsOverhaul.Systems
         public int SlowTime = slowTime;
         public int SlowId = slowId;
     }
-
+    /// <summary>
+    /// GlobalNPC class that carries out Slow Mechanics of Pets. <see cref="AddSlow(PetSlow, NPC)"/> can be used to add PetSlow to passed NPC instance.
+    /// </summary>
     public sealed class NPCGlobalPet : GlobalNPC
     {
-
         /// <summary>
         /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
         /// </summary>
@@ -63,7 +64,7 @@ namespace PetsOverhaul.Systems
                 return npc.velocity;
         }
         /// <summary>
-        /// All slows on this NPC.
+        /// All slows applied by Pets currently active on this NPC.
         /// </summary>
         public List<PetSlow> SlowList = [];
 
@@ -76,10 +77,6 @@ namespace PetsOverhaul.Systems
         public int maulCounter;
         public int curseCounter;
         public int shuricornMark = 0;
-        /// <summary>
-        /// Contains all Vanilla bosses that does not return npc.boss = true
-        /// </summary>
-        public static List<int> NonBossTrueBosses = [NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.EaterofWorldsHead, NPCID.LunarTowerSolar, NPCID.LunarTowerNebula, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.TorchGod, NPCID.Retinazer, NPCID.Spazmatism];
 
         public override bool InstancePerEntity => true;
 
@@ -233,25 +230,24 @@ namespace PetsOverhaul.Systems
                 MonoModHooks.DumpIL(ModContent.GetInstance<PetsOverhaul>(), il);
             }
         }
-        private static void SlowILEditForDry(ILContext il)
+        private static void SlowILEditForDry(ILContext il) //same as above for this
         {
             try
             {
                 var c = new ILCursor(il);
                 if (c.TryGotoNext(
                     i => i.MatchLdarg(0),
-                      i => i.MatchLdarg(0), //the this instance parameter
-                      i => i.MatchLdfld<Entity>("position"), //we find where first field is position
                       i => i.MatchLdarg(0),
-                      i => i.MatchLdfld<Entity>("velocity") //we find where second field is velocity
+                      i => i.MatchLdfld<Entity>("position"),
+                      i => i.MatchLdarg(0),
+                      i => i.MatchLdfld<Entity>("velocity")
                   ))
                 {
-                    c.GotoNext(i => i.MatchLdfld<Entity>("velocity")); //Cursor now sits at where velocity field is
+                    c.GotoNext(i => i.MatchLdfld<Entity>("velocity"));
 
-                    c.Remove(); //velocity field spesifically is removed. I tried using EmitPop(), but that causes issues & does not work.
+                    c.Remove();
 
-                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
-                    //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
+                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity"));
                 }
             }
             catch (Exception)
@@ -360,7 +356,7 @@ namespace PetsOverhaul.Systems
         {
             if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet))
             {
-                if (npc.boss && NonBossTrueBosses.Contains(npc.type))
+                if (npc.boss && PetIDs.NonBossTrueBosses.Contains(npc.type))
                 {
                     slowToBeAdded.SlowAmount *= 0.2f;
                 }
@@ -388,7 +384,7 @@ namespace PetsOverhaul.Systems
         }
         #endregion
 
-        #region Draw Effects Particles
+        #region Draw Effects and Particles (dust)
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             if (currentTotalSlow > 0)
@@ -451,36 +447,5 @@ namespace PetsOverhaul.Systems
             }
         }
         #endregion
-    }
-    /// <summary>
-    /// Class that contains PetSlowID's, where same slow ID does not overlap with itself, and a slow with greater slow & better remaining time will override the obsolete one.
-    /// </summary>
-    public class PetSlowIDs
-    {
-        /// <summary>
-        /// This type of slows creates Electricity dusts on enemy.
-        /// </summary>
-        public static List<int> ElectricBasedSlows = [VoltBunny, PhantasmalLightning];
-        /// <summary>
-        /// This type of slows creates ice water dusts on enemy.
-        /// </summary>
-        public static List<int> ColdBasedSlows = [Grinch, Snowman, Deerclops, IceQueen, PhantasmalIce];
-        /// <summary>
-        /// This type of slows creates 'poisoned' dusts on enemy.
-        /// </summary>
-        public static List<int> SicknessBasedSlows = [PrincessSlime, PrinceSlime];
-        /// <summary>
-        /// Slows with ID lower than 0 won't be overriden by itself by any means and can have multiples of the same ID this way. This value defaults to be PetSlowIDs.ColdBasedSlows[Type] == true.
-        /// </summary>
-        public const int IndependentSlow = -1;
-        public const int Grinch = 0;
-        public const int Snowman = 1;
-        public const int PrincessSlime = 2;
-        public const int Deerclops = 3;
-        public const int IceQueen = 4;
-        public const int VoltBunny = 5;
-        public const int PhantasmalIce = 6;
-        public const int PhantasmalLightning = 7;
-        public const int PrinceSlime = 8;
     }
 }

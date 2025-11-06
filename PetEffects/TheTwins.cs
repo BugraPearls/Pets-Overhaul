@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
                 {
 
                     float bonus;
-                    if (target.boss == false || NPCGlobalPet.NonBossTrueBosses.Contains(target.type) == false)
+                    if (target.boss == false || PetIDs.NonBossTrueBosses.Contains(target.type) == false)
                     {
                         bonus = target.lifeMax * regularEnemyHpDmg;
                     }

@@ -1,5 +1,17 @@
-﻿using PetsOverhaul.Items;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using PetsOverhaul.Buffs;
+using PetsOverhaul.Items;
+using PetsOverhaul.NPCs;
+using PetsOverhaul.Systems;
+using System;
 using System.Collections.Generic;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,7 +26,6 @@ namespace PetsOverhaul.Systems
         #region Sets
         public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
             .RegisterBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.
-
         /// <summary>
         /// List of enemies that should not get health recovered off of.
         /// </summary>
@@ -23,6 +34,10 @@ namespace PetsOverhaul.Systems
         /// Contains list of debuffs that are related to burning.
         /// </summary>
         public static List<int> BurnDebuffs = [BuffID.Burning, BuffID.OnFire, BuffID.OnFire3, BuffID.Frostburn, BuffID.CursedInferno, BuffID.ShadowFlame, BuffID.Frostburn2];
+        /// <summary>
+        /// Contains all Vanilla bosses that does not return npc.boss = true
+        /// </summary>
+        public static List<int> NonBossTrueBosses = [NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.EaterofWorldsHead, NPCID.LunarTowerSolar, NPCID.LunarTowerNebula, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.TorchGod, NPCID.Retinazer, NPCID.Spazmatism];
         /// <summary>
         /// Contains list of enemies that are associated with Corruption biome.
         /// </summary>
@@ -211,5 +226,36 @@ namespace PetsOverhaul.Systems
             {"Slime Royals", ItemID.ResplendentDessert},
         };
         #endregion
+    }
+    /// <summary>
+    /// Class that contains PetSlowID's, where same slow ID does not overlap with itself, and a slow with greater slow & better remaining time will override the obsolete one.
+    /// </summary>
+    public static class PetSlowIDs
+    {
+        /// <summary>
+        /// This type of slows creates Electricity dusts on enemy.
+        /// </summary>
+        public static List<int> ElectricBasedSlows = [VoltBunny, PhantasmalLightning];
+        /// <summary>
+        /// This type of slows creates ice water dusts on enemy.
+        /// </summary>
+        public static List<int> ColdBasedSlows = [Grinch, Snowman, Deerclops, IceQueen, PhantasmalIce];
+        /// <summary>
+        /// This type of slows creates 'poisoned' dusts on enemy.
+        /// </summary>
+        public static List<int> SicknessBasedSlows = [PrincessSlime, PrinceSlime];
+        /// <summary>
+        /// Slows with ID lower than 0 won't be overriden by itself by any means and can have multiples of the same ID this way. This value defaults to be PetSlowIDs.ColdBasedSlows[Type] == true.
+        /// </summary>
+        public const int IndependentSlow = -1;
+        public const int Grinch = 0;
+        public const int Snowman = 1;
+        public const int PrincessSlime = 2;
+        public const int Deerclops = 3;
+        public const int IceQueen = 4;
+        public const int VoltBunny = 5;
+        public const int PhantasmalIce = 6;
+        public const int PhantasmalLightning = 7;
+        public const int PrinceSlime = 8;
     }
 }
