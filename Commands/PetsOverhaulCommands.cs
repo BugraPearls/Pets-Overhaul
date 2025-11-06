@@ -9,16 +9,6 @@ using Terraria.ModLoader;
 
 namespace PetsOverhaul.Commands
 {
-    public class PlayerPlacedBlockListCommand : ModCommand
-    {
-        public override string Command => "PlayerPlacedBlockAmount";
-        public override CommandType Type => CommandType.World;
-        public override string Description => "(DEBUG COMMAND)Displays current amount of blocks that are placed by Player(s).";
-        public override void Action(CommandCaller caller, string input, string[] args)
-        {
-            caller.Reply(PlayerPlacedBlockList.placedBlocksByPlayer.Count.ToString());
-        }
-    }
     public class PetsOverhaulCommands : ModCommand
     {
         public struct TopPlayer
