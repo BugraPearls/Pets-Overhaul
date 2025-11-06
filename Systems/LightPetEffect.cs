@@ -78,30 +78,31 @@ namespace PetsOverhaul.Systems
             if (item1.type == item2.type)
             {
                 Item newPet = item1.Clone();
-                foreach (var globalOfNewPet in newPet.Globals)
+                foreach (var globalOfNewPet in newPet.Globals) //this is 'Item 1, as the new item actually copies the Item 1 entirely with Item newPet = item1.Clone()'
                 {
                     if (globalOfNewPet.GetType().IsSubclassOf(typeof(LightPetItem)))
                     {
-                        foreach (var light in item2.Globals)
+                        foreach (var light in item2.Globals) //this is 'Item 2'
                         {
                             if (light.GetType().IsSubclassOf(typeof(LightPetItem)))
                             {
-                                FieldInfo[] lightPetRolls = light.GetType().GetFields();
+                                FieldInfo[] lightPetRolls = light.GetType().GetFields(); //all fields of Item 2's field informations (metadata) in its LightPetItem class is here
                                 int changedCounter = 0;
                                 float priceCounter = 0;
                                 int equalCounter = 0;
                                 for (int i = 0; i < lightPetRolls.Length; i++)
                                 {
-                                    if (lightPetRolls[i].FieldType != typeof(LightPetStat))
+                                    if (lightPetRolls[i].FieldType != typeof(LightPetStat)) //fields that are not LightPetStat is skipped
                                     {
                                         continue;
                                     }
-                                    LightPetStat newPetRoll = (LightPetStat)lightPetRolls[i].GetValue(globalOfNewPet);
-                                    LightPetStat secondPetRoll = (LightPetStat)lightPetRolls[i].GetValue(light);
+                                    LightPetStat newPetRoll = (LightPetStat)lightPetRolls[i].GetValue(globalOfNewPet); //Values of all same fields we've gotten above at light.GetType().GetFields() is from Item 1 
+                                    LightPetStat secondPetRoll = (LightPetStat)lightPetRolls[i].GetValue(light); //Same is done for Item 2 now
                                     priceCounter += Math.Abs(secondPetRoll.MaxRoll * (secondPetRoll.CurrentRoll - ((newPetRoll.CurrentRoll + secondPetRoll.CurrentRoll) / 2f)) * 0.01f);
                                     if (newPetRoll.CurrentRoll < secondPetRoll.CurrentRoll)
                                     {
-                                        lightPetRolls[i].SetValue(globalOfNewPet, secondPetRoll);
+                                        lightPetRolls[i].SetValue(globalOfNewPet, secondPetRoll); //We set the same given field inside the object (globalOfNewPet, 1st parameter) to be the secondPetRoll (2nd parameter) here. 
+                                        //For example here, it finds exact same field as the lightPetRolls[i].GetValue(light) inside the globalOfNewPet. Then sets it to be 'secondPetRoll'.
                                         changedCounter++;
                                     }
                                     if (newPetRoll.CurrentRoll == secondPetRoll.CurrentRoll)
