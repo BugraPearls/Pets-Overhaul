@@ -6,44 +6,44 @@ namespace PetsOverhaul.Systems
 {
     public class MasteryShardCheck : ModSystem
     {
-        public static bool masteryShardObtained1 = false;
-        public static bool masteryShardObtained2 = false;
-        public static bool masteryShardObtained3 = false;
-        public static bool masteryShardObtained4 = false;
-        public static bool masteryShardObtained5 = false;
+        public static bool masteryShardObtainedEoC = false;
+        public static bool masteryShardObtainedWoF = false;
+        public static bool masteryShardObtainedGolem = false;
+        public static bool masteryShardObtainedSkeletron = false;
+        public static bool masteryShardObtainedML = false;
         public override void SaveWorldData(TagCompound tag)
         {
-            tag.Add("masteryshard1", masteryShardObtained1);
-            tag.Add("masteryshard2", masteryShardObtained2);
-            tag.Add("masteryshard3", masteryShardObtained3);
-            tag.Add("masteryshard4", masteryShardObtained4);
-            tag.Add("masteryshard5", masteryShardObtained5);
+            tag.Add("masteryshard1", masteryShardObtainedEoC);
+            tag.Add("masteryshard2", masteryShardObtainedWoF);
+            tag.Add("masteryshard3", masteryShardObtainedGolem);
+            tag.Add("masteryshard4", masteryShardObtainedSkeletron);
+            tag.Add("masteryshard5", masteryShardObtainedML);
         }
         public override void LoadWorldData(TagCompound tag)
         {
             if (tag.TryGet("masteryshard1", out bool shard1))
             {
-                masteryShardObtained1 = shard1;
+                masteryShardObtainedEoC = shard1;
             }
 
             if (tag.TryGet("masteryshard2", out bool shard2))
             {
-                masteryShardObtained2 = shard2;
+                masteryShardObtainedWoF = shard2;
             }
 
             if (tag.TryGet("masteryshard3", out bool shard3))
             {
-                masteryShardObtained3 = shard3;
+                masteryShardObtainedGolem = shard3;
             }
 
             if (tag.TryGet("masteryshard4", out bool shard4))
             {
-                masteryShardObtained4 = shard4;
+                masteryShardObtainedSkeletron = shard4;
             }
 
             if (tag.TryGet("masteryshard5", out bool shard5))
             {
-                masteryShardObtained5 = shard5;
+                masteryShardObtainedML = shard5;
             }
         }
     }
@@ -51,7 +51,7 @@ namespace PetsOverhaul.Systems
     {
         public bool CanDrop(DropAttemptInfo info)
         {
-            return !MasteryShardCheck.masteryShardObtained1;
+            return !MasteryShardCheck.masteryShardObtainedEoC;
         }
 
         public bool CanShowItemDropInUI()
@@ -68,7 +68,7 @@ namespace PetsOverhaul.Systems
     {
         public bool CanDrop(DropAttemptInfo info)
         {
-            return !MasteryShardCheck.masteryShardObtained2;
+            return !MasteryShardCheck.masteryShardObtainedWoF;
         }
 
         public bool CanShowItemDropInUI()
@@ -85,7 +85,7 @@ namespace PetsOverhaul.Systems
     {
         public bool CanDrop(DropAttemptInfo info)
         {
-            return !MasteryShardCheck.masteryShardObtained3;
+            return !MasteryShardCheck.masteryShardObtainedGolem;
         }
 
         public bool CanShowItemDropInUI()
@@ -102,7 +102,7 @@ namespace PetsOverhaul.Systems
     {
         public bool CanDrop(DropAttemptInfo info)
         {
-            return !MasteryShardCheck.masteryShardObtained4;
+            return !MasteryShardCheck.masteryShardObtainedSkeletron;
         }
 
         public bool CanShowItemDropInUI()
@@ -119,7 +119,7 @@ namespace PetsOverhaul.Systems
     {
         public bool CanDrop(DropAttemptInfo info)
         {
-            return !MasteryShardCheck.masteryShardObtained5;
+            return !MasteryShardCheck.masteryShardObtainedML;
         }
 
         public bool CanShowItemDropInUI()

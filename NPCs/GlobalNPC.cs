@@ -132,23 +132,23 @@ namespace PetsOverhaul.NPCs
             }
             if (npc.type == NPCID.EyeofCthulhu)
             {
-                MasteryShardCheck.masteryShardObtained1 = true;
+                MasteryShardCheck.masteryShardObtainedEoC = true;
             }
             if (npc.type == NPCID.WallofFlesh)
             {
-                MasteryShardCheck.masteryShardObtained2 = true;
+                MasteryShardCheck.masteryShardObtainedWoF = true;
             }
             if (npc.type == NPCID.Golem)
             {
-                MasteryShardCheck.masteryShardObtained3 = true;
+                MasteryShardCheck.masteryShardObtainedGolem = true;
             }
             if (npc.type == NPCID.SkeletronHead)
             {
-                MasteryShardCheck.masteryShardObtained4 = true;
+                MasteryShardCheck.masteryShardObtainedSkeletron = true;
             }
             if (npc.type == NPCID.MoonLordCore)
             {
-                MasteryShardCheck.masteryShardObtained5 = true;
+                MasteryShardCheck.masteryShardObtainedML = true;
             }
         }
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)

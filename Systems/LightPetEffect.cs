@@ -102,7 +102,7 @@ namespace PetsOverhaul.Systems
                                     if (newPetRoll.CurrentRoll < secondPetRoll.CurrentRoll)
                                     {
                                         lightPetRolls[i].SetValue(globalOfNewPet, secondPetRoll); //We set the same given field inside the object (globalOfNewPet, 1st parameter) to be the secondPetRoll (2nd parameter) here. 
-                                        //For example here, it finds exact same field as the lightPetRolls[i].GetValue(light) inside the globalOfNewPet. Then sets it to be 'secondPetRoll'.
+                                        //For example here, it finds exact same field as the lightPetRolls[i].GetValue(light) inside the globalOfNewPet. Then sets it to have values of 'secondPetRoll'.
                                         changedCounter++;
                                     }
                                     if (newPetRoll.CurrentRoll == secondPetRoll.CurrentRoll)
