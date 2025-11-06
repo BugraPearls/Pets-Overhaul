@@ -1,17 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Mono.Cecil.Cil;
-using MonoMod.Cil;
-using PetsOverhaul.Buffs;
-using PetsOverhaul.Items;
-using PetsOverhaul.NPCs;
-using PetsOverhaul.Systems;
-using System;
+﻿using PetsOverhaul.Items;
 using System.Collections.Generic;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
-using Terraria.GameContent.Personalities;
 using Terraria.ID;
 using Terraria.ModLoader;
 
