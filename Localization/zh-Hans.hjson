@@ -20,11 +20,6 @@ Mods: {
 			Herb: 草药
 			Animal: 小动物
 			RarePlant: 稀有植物
-			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
-			%: %
-			x: x
-			+: +
-			-: -
 			KeybindMissing: 未绑定键位
 			NonCustomLineContributor: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物的贡献者专属效果]"
 			NonCustomLineDonator: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物的捐赠者专属效果]"

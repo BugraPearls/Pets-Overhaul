@@ -20,11 +20,6 @@ Mods: {
 			Herb: Herb
 			Animal: Animal
 			RarePlant: Rare Plants
-			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
-			%: %
-			x: x
-			+: +
-			-: -
 			KeybindMissing: Keybind Not Registered
 			NonCustomLineContributor: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Contributor effect of this Pet.]"
 			NonCustomLineDonator: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to switch to Custom Donator effect of this Pet.]"

@@ -291,7 +291,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public readonly string StatSummaryLine()
         {
-            return PetTextsColors.LightPetRarityColorConvert(isInt ? (PetTextsColors.LocVal("Misc.+") + CurrentStatInt.ToString()) : (Math.Round(CurrentStatFloat * 100, 2).ToString() + PetTextsColors.LocVal("Misc.%")), CurrentRoll, MaxRoll) + " " +
+            return PetTextsColors.LightPetRarityColorConvert(isInt ? ("+" + CurrentStatInt.ToString()) : (Math.Round(CurrentStatFloat * 100, 2).ToString() + "%"), CurrentRoll, MaxRoll) + " " +
                 PetTextsColors.LocVal("LightPetTooltips.Quality") + " " + PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
         /// <summary>
@@ -308,15 +308,15 @@ namespace PetsOverhaul.Systems
         public readonly string BaseAndPerQuality()
         {
             int mult = isInt ? 1 : 100;
-            return (BaseStat == 0 ? "" : (Math.Round(BaseStat * mult, 2).ToString() + " " + PetTextsColors.LocVal("Misc.+") + " ")) + Math.Round(StatPerRoll * mult, 2).ToString()
-                + (isInt ? "" : PetTextsColors.LocVal("Misc.%")) + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
+            return (BaseStat == 0 ? "" : (Math.Round(BaseStat * mult, 2).ToString() + " + ")) + Math.Round(StatPerRoll * mult, 2).ToString()
+                + (isInt ? " " : "% ") + PetTextsColors.LocVal("LightPetTooltips.Per");
         }
-        /// <summary>
+        /// <summary> 
         /// Use this overload if displayed values are intended to be displayed in a different way than BaseAndPerQuality().
         /// </summary>
         public readonly string BaseAndPerQuality(string perRoll, string baseRoll = "")
         {
-            return (BaseStat == 0 ? "" : (baseRoll + " " + PetTextsColors.LocVal("Misc.+") + " ")) + perRoll + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
+            return (BaseStat == 0 ? "" : (baseRoll + " + ")) + perRoll + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
         }
         public readonly string QualityLine()
         {

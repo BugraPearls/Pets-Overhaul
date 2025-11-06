@@ -32,7 +32,7 @@ namespace PetsOverhaul.Items
                             break;
                         case "Tooltip2":
                             double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
-                            line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + PetTextsColors.LocVal("Misc.%"))
+                            line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + "%")
                                 .Replace("<hastePosiOrNega>", (currentHaste >= 0 ? PetTextsColors.LocVal("Misc.Faster") : PetTextsColors.LocVal("Misc.Slower")));
                             break;
                         case "Tooltip3":

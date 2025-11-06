@@ -20,11 +20,6 @@ Mods: {
 			Herb: Трава
 			Animal: Животное
 			RarePlant: Редкие растения
-			// Operators are for cases where a Language does not use them when specifying a bonus but solely uses words. Put "" instead if you need them to be empty.
-			%: %
-			x: x
-			+: +
-			-: -
 			KeybindMissing: Кнопка не зарегистрирована
 			NonCustomLineContributor: "[c/a3bdf8:Нажмите] <switchKey> [c/a3bdf8:чтобы переключиться на эффект Пользовательского Контрибьютора для этого питомца.]"
 			NonCustomLineDonator: "[c/a3bdf8:Нажмите] <switchKey> [c/a3bdf8:чтобы переключиться на эффект Пользовательского Донатора для этого питомца.]"
