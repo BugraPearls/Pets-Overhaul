@@ -325,13 +325,13 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SlimePrincess>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.QueenSlimePetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.QueenSlimePetItem")
             .Replace("<dmg>", Math.Round(slimePrincess.mountDmgIncr * 100, 2).ToString())
                         .Replace("<slowAmount>", Math.Round(slimePrincess.slow * 100, 2).ToString())
             .Replace("<slowDuration>", Math.Round(slimePrincess.slowDuration / 60f, 2).ToString())
                         .Replace("<shieldAmount>", slimePrincess.shield.ToString())
                         .Replace("<shieldDuration>", Math.Round(slimePrincess.shieldTime / 60f, 2).ToString())
             .Replace("<cooldown>", Math.Round(slimePrincess.cooldown / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.QueenSlimePetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.QueenSlimePetItem");
     }
 }

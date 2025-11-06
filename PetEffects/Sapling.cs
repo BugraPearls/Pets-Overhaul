@@ -66,11 +66,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Sapling>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Seedling")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.Seedling")
                 .Replace("<dmgPenalty>", sapling.damagePenalty.ToString())
                 .Replace("<lifesteal>", Math.Round(sapling.regularLifesteal * 100, 2).ToString())
                 .Replace("<planteraSteal>", Math.Round(sapling.planteraLifesteal * 100, 2).ToString())
-            .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(Sapling.PlanteraWeapon));
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Seedling");
+            .Replace("<weapons>", PetUtils.ItemsToTooltipImages(Sapling.PlanteraWeapon));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.Seedling");
     }
 }

@@ -20,25 +20,25 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                List<ClassAndItsTooltip> tooltips = [new ClassAndItsTooltip(PetClasses.Melee,PetTextsColors.LocVal("PetItemTooltips.MeleeTooltip")
+                List<ClassAndItsTooltip> tooltips = [new ClassAndItsTooltip(PetClasses.Melee,PetUtils.LocVal("PetItemTooltips.MeleeTooltip")
                                             .Replace("<dr>", Math.Round(meleeDr * 100, 2).ToString())
                                             .Replace("<meleeSpd>", Math.Round(meleeSpd * 100, 2).ToString())
                                             .Replace("<meleeDmg>", Math.Round(meleeDmg * 100, 2).ToString())
                                             .Replace("<def>", defense.ToString())
                                             .Replace("<ms>", Math.Round(msReduce * 100, 2).ToString())),
-                    new ClassAndItsTooltip(PetClasses.Ranged,PetTextsColors.LocVal("PetItemTooltips.RangedTooltip")
+                    new ClassAndItsTooltip(PetClasses.Ranged,PetUtils.LocVal("PetItemTooltips.RangedTooltip")
                                             .Replace("<armorPen>", rangedPen.ToString())
                                             .Replace("<rangedCrit>", rangedCr.ToString())
                                             .Replace("<rangedCritDmg>", Math.Round(rangedCrDmg * 100, 2).ToString())
                                             .Replace("<rangedDmg>", Math.Round(rangedDmg * 100, 2).ToString())
                                             .Replace("<hp>", Math.Round(hpReduce * 100, 2).ToString())),
-                    new ClassAndItsTooltip(PetClasses.Magic,PetTextsColors.LocVal("PetItemTooltips.MagicTooltip")
+                    new ClassAndItsTooltip(PetClasses.Magic,PetUtils.LocVal("PetItemTooltips.MagicTooltip")
                                             .Replace("<mana>", magicMana.ToString())
                                             .Replace("<manaCost>", Math.Round(magicManaCost * 100, 2).ToString())
                                             .Replace("<magicCrit>", magicCrit.ToString())
                                             .Replace("<magicDmg>", Math.Round(magicDmg * 100, 2).ToString())
                                             .Replace("<hp>", Math.Round(hpReduce * 100, 2).ToString())),
-                    new ClassAndItsTooltip(PetClasses.Summoner,PetTextsColors.LocVal("PetItemTooltips.SummonerTooltip")
+                    new ClassAndItsTooltip(PetClasses.Summoner,PetUtils.LocVal("PetItemTooltips.SummonerTooltip")
                                             .Replace("<sumRange>", Math.Round(sumWhipRng * 100, 2).ToString())
                                             .Replace("<sumSpd>", Math.Round(sumWhipSpd * 100, 2).ToString())
                                             .Replace("<sumMax>", sumMinion.ToString())
@@ -79,8 +79,8 @@ namespace PetsOverhaul.PetEffects
 
         public int currentClass = 0; //0=Melee 1=Ranged 2=Magic 3=Summoner more is also added as if their tooltip is in Tooltips property
 
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.MoonLordPetItemStack");
-        public override string PetStackSpecial => $"[c/{PetTextsColors.ClassEnumToColor(Tooltips[currentClass].Class).Hex3()}:{PetTextsColors.PetClassLocalized(Tooltips[currentClass].Class)}]";
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.MoonLordPetItemStack");
+        public override string PetStackSpecial => $"[c/{PetUtils.ClassEnumToColor(Tooltips[currentClass].Class).Hex3()}:{PetUtils.PetClassLocalized(Tooltips[currentClass].Class)}]";
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override void ResetEffects()
         {
@@ -165,9 +165,9 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Moonling>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MoonLordPetItem")
-                    .Replace("<switchKeybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch))
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.MoonLordPetItem")
+                    .Replace("<switchKeybind>", PetUtils.KeybindText(PetKeybinds.PetAbilitySwitch))
                     .Replace("<tooltip>", moonling.Tooltips[moonling.currentClass].TooltipOfClass);
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MoonLordPetItem").Replace("<switchKeybind>", PetTextsColors.KeybindText(PetKeybinds.PetAbilitySwitch));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.MoonLordPetItem").Replace("<switchKeybind>", PetUtils.KeybindText(PetKeybinds.PetAbilitySwitch));
     }
 }

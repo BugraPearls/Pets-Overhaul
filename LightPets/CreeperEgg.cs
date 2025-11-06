@@ -68,7 +68,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => AttackSpeed.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.CreeperEgg")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.CreeperEgg")
 
                         .Replace("<sum>", SummonDamage.BaseAndPerQuality())
                         .Replace("<melee>", MeleeDamage.BaseAndPerQuality())

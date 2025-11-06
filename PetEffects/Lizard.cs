@@ -119,8 +119,8 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Lizard>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.LizardEgg")
-                    .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.LizardEgg")
+                    .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
                     .Replace("<tailDmgTaken>", Math.Round(lizard.percentHpDmg * 100, 2).ToString())
                     .Replace("<tailAcc>", Math.Round(lizard.tailAcc * 100, 2).ToString())
                     .Replace("<tailSpd>", Math.Round(lizard.tailSpd * 100, 2).ToString())
@@ -135,6 +135,6 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<def>", lizard.defense.ToString())
                     .Replace("<moveSpd>", Math.Round(lizard.moveSpd * 100, 2).ToString())
                     .Replace("<jumpPenalty>", Math.Round(lizard.jumpMult * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LizardEgg").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.LizardEgg").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

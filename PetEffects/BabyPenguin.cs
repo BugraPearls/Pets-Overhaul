@@ -72,13 +72,13 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyPenguin>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Fish")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.Fish")
                 .Replace("<fp>", babyPenguin.regularFish.ToString())
                 .Replace("<moreFp>", babyPenguin.snowAndOceanPower.ToString())
                 .Replace("<catchChance>", babyPenguin.snowFishChance.ToString())
-                .Replace("<items>", PetTextsColors.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
+                .Replace("<items>", PetUtils.ItemsToTooltipImages(BabyPenguin.IceFishingDrops))
                 .Replace("<chilledReduce>", Math.Round(babyPenguin.chillingMultiplier * 100, 2).ToString())
                 .Replace("<breath>", Math.Round(babyPenguin.breathEffectivenessBoost * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Fish");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.Fish");
     }
 }

@@ -96,11 +96,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<FennecFox>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ExoticEasternChewToy")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.ExoticEasternChewToy")
                         .Replace("<meleeSpd>", Math.Round(fennecFox.meleeSpdIncrease * 100, 2).ToString())
                         .Replace("<moveSpd>", Math.Round(fennecFox.speedIncrease * 100, 2).ToString())
                         .Replace("<sizeNerf>", fennecFox.sizeDecrease.ToString())
                         .Replace("<dmg>", Math.Round(fennecFox.meleeDmg * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ExoticEasternChewToy");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ExoticEasternChewToy");
     }
 }

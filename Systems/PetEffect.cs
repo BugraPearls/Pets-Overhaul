@@ -187,9 +187,9 @@ namespace PetsOverhaul.Systems
                 if (CustomSimpleTooltip is not null)
                 {
                     if (GlobalPet.CurrentTooltipIsSimple)
-                        Tip = CustomSimpleTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                        Tip = CustomSimpleTooltip + "\n" + PetUtils.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
                     else
-                        Tip = CustomTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                        Tip = CustomTooltip + "\n" + PetUtils.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
                 }
                 else if (CustomTooltip is not null)
                 {
@@ -203,9 +203,9 @@ namespace PetsOverhaul.Systems
             else if (SimpleTooltip is not null)
             {
                 if (GlobalPet.CurrentTooltipIsSimple)
-                    Tip = SimpleTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                    Tip = SimpleTooltip + "\n" + PetUtils.LocVal("Misc.CurrentSimple").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
                 else
-                    Tip = PetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.ShowDetailedTip));
+                    Tip = PetsTooltip + "\n" + PetUtils.LocVal("Misc.CurrentDetailed").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.ShowDetailedTip));
 
             }
             else
@@ -226,27 +226,27 @@ namespace PetsOverhaul.Systems
             }
             if (Tip.Contains("<class>"))
             {
-                Tip = Tip.Replace("<class>", PetTextsColors.ClassText(petClass1, petClass2)); //Legacy way of 'class text' on Pet tooltips, so old ones on addons etc. doesn't break.
+                Tip = Tip.Replace("<class>", PetUtils.ClassText(petClass1, petClass2)); //Legacy way of 'class text' on Pet tooltips, so old ones on addons etc. doesn't break.
             }
             else
             {
-                Tip = PetTextsColors.ClassText(petClass1, petClass2) + "\n" + Tip;
+                Tip = PetUtils.ClassText(petClass1, petClass2) + "\n" + Tip;
             }
 
             if (PetsEffect.HasCustomEffect)
             {
                 Tip += "\n";
                 if (PetsEffect.CustomEffectActive)
-                    Tip += PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                    Tip += PetUtils.LocVal("Misc.CustomLine").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
                 else
                 {
                     if (PetsEffect.CustomEffectIsContributor)
                     {
-                        Tip += PetTextsColors.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                        Tip += PetUtils.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
                     }
                     else
                     {
-                        Tip += PetTextsColors.LocVal("Misc.NonCustomLineDonator").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                        Tip += PetUtils.LocVal("Misc.NonCustomLineDonator").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
                     }
                 }
             }

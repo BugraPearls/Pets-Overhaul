@@ -65,12 +65,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Destroyer>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DestroyerPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DestroyerPetItem")
                         .Replace("<defMultChance>", Math.Round(destroyer.defItemMult * 100, 2).ToString())
                         .Replace("<flatAmount>", destroyer.flatAmount.ToString())
                         .Replace("<defMultIncrease>", Math.Round(destroyer.flatDefMult * 100, 2).ToString())
                         .Replace("<ironskinDef>", destroyer.ironskinBonusDef.ToString())
                         .Replace("<miningFortune>", destroyer.miningFort.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DestroyerPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DestroyerPetItem");
     }
 }

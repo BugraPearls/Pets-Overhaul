@@ -27,7 +27,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => cooldown;
         public override int PetStackCurrent => howManyIsAlive;
         public override int PetStackMax => 0;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.KingSlimePetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.KingSlimePetItemStack");
         public override void ExtraPreUpdate()
         {
             howManyIsAlive = 0;
@@ -299,7 +299,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip =>
-                PetTextsColors.LocVal("PetItemTooltips.ResplendentDessert")
+                PetUtils.LocVal("PetItemTooltips.ResplendentDessert")
             .Replace("<dmg>", Math.Round(dualSlime.mountDmgIncr * 100, 2).ToString())
                         .Replace("<shieldAmount>", dualSlime.shield.ToString())
                         .Replace("<shieldDuration>", Math.Round(dualSlime.shieldTime / 60f, 2).ToString())
@@ -308,7 +308,7 @@ namespace PetsOverhaul.PetEffects
             .Replace("<hpMult>", Math.Round(dualSlime.hpMult * 100, 2).ToString())
             .Replace("<baseDmg>", dualSlime.baseDmg.ToString())
             .Replace("<lifetime>", Math.Round(SlimePrince.lifetimeOfServant / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ResplendentDessert");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ResplendentDessert");
     }
 }
 

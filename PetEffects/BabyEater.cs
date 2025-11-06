@@ -48,11 +48,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyEater>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EatersBone")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.EatersBone")
                 .Replace("<moveSpd>", Math.Round(babyEater.moveSpd * 100, 2).ToString())
                 .Replace("<jumpSpd>", Math.Round(babyEater.jumpSpd * 100, 2).ToString())
                 .Replace("<fallRes>", babyEater.fallDamageTile.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EatersBone");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.EatersBone");
 
     }
 }

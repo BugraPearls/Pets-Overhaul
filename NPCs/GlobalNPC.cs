@@ -100,7 +100,7 @@ namespace PetsOverhaul.NPCs
         public override void GetChat(NPC npc, ref string chat)
         {
             if (Main.LocalPlayer.GetModPlayer<GlobalPet>().petObtained && npc.type == NPCID.Guide && Main.rand.NextBool(10))
-                chat = PetTextsColors.LocVal("NPCs.PetTamer.GuideQuote");
+                chat = PetUtils.LocVal("NPCs.PetTamer.GuideQuote");
         }
         #endregion
 

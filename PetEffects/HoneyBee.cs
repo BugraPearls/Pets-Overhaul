@@ -96,7 +96,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<HoneyBee>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.QueenBeePetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.QueenBeePetItem")
                        .Replace("<extraHeal>", Math.Round(honeyBee.selfPotionIncrease * 100, 2).ToString())
                        .Replace("<range>", Math.Round(honeyBee.range / 16f, 2).ToString())
                        .Replace("<bottledHealth>", Math.Round(honeyBee.bottledHealth * 100, 2).ToString())
@@ -104,6 +104,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<bottledHoneyTime>", Math.Round(honeyBee.bottledHoneyBuff / 60f, 2).ToString())
                        .Replace("<honeyfinHoneyTime>", Math.Round(honeyBee.honeyfinHoneyBuff / 60f, 2).ToString())
                        .Replace("<abilityHaste>", Math.Round(honeyBee.abilityHaste * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.QueenBeePetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.QueenBeePetItem");
     }
 }

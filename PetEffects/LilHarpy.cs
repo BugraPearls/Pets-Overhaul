@@ -15,8 +15,8 @@ namespace PetsOverhaul.PetEffects
         private bool cooldownStarted;
         public override PetClasses PetClassPrimary => PetClasses.Mobility;
         public override int PetAbilityCooldown => harpyCd;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BirdieRattleStack");
-        public override string PetStackSpecial => PetTextsColors.SecondsOutOfText(harpyFlight, fuelMax); //Instead of Max & current, we write it out ourselves here as this is somewhat of a special case.
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.BirdieRattleStack");
+        public override string PetStackSpecial => PetUtils.SecondsOutOfText(harpyFlight, fuelMax); //Instead of Max & current, we write it out ourselves here as this is somewhat of a special case.
         public override void PostUpdateMiscEffects()
         {
             if (Pet.timer <= 0)
@@ -66,9 +66,9 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<LilHarpy>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BirdieRattle")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BirdieRattle")
                         .Replace("<flightTime>", Math.Round(lilHarpy.fuelMax / 60f, 2).ToString())
                         .Replace("<cooldown>", Math.Round(lilHarpy.harpyCd / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BirdieRattle");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BirdieRattle");
     }
 }

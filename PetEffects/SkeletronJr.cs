@@ -27,7 +27,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override int PetStackMax => 0;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.SkeletronPetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.SkeletronPetItemStack");
         public override PetClasses PetClassPrimary => PetClasses.Offensive;
         public override void ExtraPreUpdate()
         {
@@ -51,19 +51,19 @@ namespace PetsOverhaul.PetEffects
                     switch (Main.rand.Next(20))
                     {
                         case 0:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath3");
+                            reason = PetUtils.LocVal("PetItemTooltips.SkeletronDeath3");
                             break;
                         case 1:
-                            reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath4");
+                            reason = PetUtils.LocVal("PetItemTooltips.SkeletronDeath4");
                             break;
                         default:
                             if (Main.rand.NextBool())
                             {
-                                reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath1");
+                                reason = PetUtils.LocVal("PetItemTooltips.SkeletronDeath1");
                             }
                             else
                             {
-                                reason = PetTextsColors.LocVal("PetItemTooltips.SkeletronDeath2");
+                                reason = PetUtils.LocVal("PetItemTooltips.SkeletronDeath2");
                             }
                             reason = reason.Replace("<name>", Player.name);
                             break;
@@ -171,10 +171,10 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SkeletronJr>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SkeletronPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.SkeletronPetItem")
                         .Replace("<recievedMult>", skeletronJr.playerTakenMult.ToString())
                         .Replace("<recievedHowLong>", skeletronJr.playerDamageTakenSpeed.ToString())
                         .Replace("<dealtMult>", skeletronJr.enemyDamageIncrease.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SkeletronPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.SkeletronPetItem");
     }
 }

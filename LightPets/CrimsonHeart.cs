@@ -67,7 +67,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => HealingPower.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.CrimsonHeart")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.CrimsonHeart")
 
                         .Replace("<hp>", Health.BaseAndPerQuality())
                         .Replace("<heal>", HealingPower.BaseAndPerQuality())

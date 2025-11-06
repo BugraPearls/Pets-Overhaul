@@ -24,15 +24,15 @@ namespace PetsOverhaul.UI
         {
             if (ModContent.GetInstance<PetPersonalization>().ShowAbilityDisplay && Main.playerInventory == false && BaseCooldown > 0)
             {
-                string theText = PetTextsColors.LocVal("Misc.BaseCd") + "\n" + (BaseCooldown == 0 ? PetTextsColors.LocVal("Misc.NoCd") : Math.Round((float)BaseCooldown / 60, 1).ToString() + " " +
-                    (BaseCooldown > 60 ? PetTextsColors.LocVal("Misc.Secs") : PetTextsColors.LocVal("Misc.Sec"))) + "\n" + PetTextsColors.LocVal("Misc.RemainingCd") + "\n";
+                string theText = PetUtils.LocVal("Misc.BaseCd") + "\n" + (BaseCooldown == 0 ? PetUtils.LocVal("Misc.NoCd") : Math.Round((float)BaseCooldown / 60, 1).ToString() + " " +
+                    (BaseCooldown > 60 ? PetUtils.LocVal("Misc.Secs") : PetUtils.LocVal("Misc.Sec"))) + "\n" + PetUtils.LocVal("Misc.RemainingCd") + "\n";
                 if (RemainingCooldown > 0)
                 {
-                    theText += Math.Round((float)RemainingCooldown / 60, 1).ToString() + " " + (RemainingCooldown > 60 ? PetTextsColors.LocVal("Misc.Secs") : PetTextsColors.LocVal("Misc.Sec"));
+                    theText += Math.Round((float)RemainingCooldown / 60, 1).ToString() + " " + (RemainingCooldown > 60 ? PetUtils.LocVal("Misc.Secs") : PetUtils.LocVal("Misc.Sec"));
                 }
                 else
                 {
-                    theText += PetTextsColors.LocVal("Misc.ReadyCd");
+                    theText += PetUtils.LocVal("Misc.ReadyCd");
                 }
                 displayInfo.SetText(theText);
                 displayInfo.Top.Set(0, ModContent.GetInstance<PetPersonalization>().AbilityDisplayPos.Y);

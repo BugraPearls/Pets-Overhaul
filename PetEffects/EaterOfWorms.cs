@@ -88,11 +88,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<EaterOfWorms>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EaterOfWorldsPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.EaterOfWorldsPetItem")
                        .Replace("<miningSpeed>", Math.Round(eaterOfWorms.nonOreSpeed * 100, 2).ToString())
                        .Replace("<multipleBreakChance>", eaterOfWorms.tileBreakSpreadChance.ToString())
                        .Replace("<width>", eaterOfWorms.tileBreakXSpread.ToString())
                        .Replace("<length>", eaterOfWorms.tileBreakYSpread.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EaterOfWorldsPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.EaterOfWorldsPetItem");
     }
 }

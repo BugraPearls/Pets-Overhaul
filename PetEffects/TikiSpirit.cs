@@ -77,11 +77,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TikiSpirit>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.TikiTotem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.TikiTotem")
                        .Replace("<atkSpdToDmg>", Math.Round(tikiSpirit.atkSpdToDmgConversion * 100, 2).ToString())
                        .Replace("<atkSpdToRange>", Math.Round(tikiSpirit.atkSpdToRangeConversion * 100, 2).ToString())
                        .Replace("<nonWhipCrit>", tikiSpirit.nonWhipCrit.ToString())
                        .Replace("<whipCrit>", tikiSpirit.whipCritBonus.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.TikiTotem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.TikiTotem");
     }
 }

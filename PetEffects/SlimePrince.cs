@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => cooldown;
         public override int PetStackCurrent => howManyIsAlive;
         public override int PetStackMax => 0;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.KingSlimePetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.KingSlimePetItemStack");
         public override void ExtraPreUpdate()
         {
             howManyIsAlive = 0;
@@ -67,8 +67,8 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SlimePrince>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.KingSlimePetItem")
-            .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.KingSlimePetItem")
+            .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
             .Replace("<defMult>", Math.Round(slimePrince.defMult * 100, 2).ToString())
             .Replace("<hpMult>", Math.Round(slimePrince.hpMult * 100, 2).ToString())
             .Replace("<dmg>", slimePrince.baseDmg.ToString())
@@ -78,6 +78,6 @@ namespace PetsOverhaul.PetEffects
             .Replace("<radius>", Math.Round(slimePrince.radius / 16f, 2).ToString())
             .Replace("<cooldown>", Math.Round(slimePrince.cooldown / 60f, 2).ToString())
             .Replace("<lifetime>", Math.Round(SlimePrince.lifetimeOfServant / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.KingSlimePetItem").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.KingSlimePetItem").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

@@ -59,13 +59,13 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Glommer>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.GlommerPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.GlommerPetItem")
                         .Replace("<sanityRange>", Math.Round(glommer.glommerSanityRange / 16f, 2).ToString())
                         .Replace("<sanityAmount>", Math.Round(glommer.glommerSanityAura * 100, 2).ToString())
                         .Replace("<currentHaste>", Math.Round(glommer.Pet.abilityHaste * 100, 2).ToString())
                         .Replace("<manaRecover>", glommer.glommerSanityRecover.ToString())
                         .Replace("<manaRecoverCd>", Math.Round(glommer.glommerSanityTime / 60f, 2).ToString())
                         .Replace("<goop>", ModContent.ItemType<GlommersGoop>().ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.GlommerPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.GlommerPetItem");
     }
 }

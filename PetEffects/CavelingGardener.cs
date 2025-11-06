@@ -57,12 +57,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CavelingGardener>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.GlowTulip")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.GlowTulip")
                 .Replace("<harvestChance>", cavelingGardener.cavelingRegularPlantChance.ToString())
                 .Replace("<rarePlantChance>", cavelingGardener.cavelingRarePlantChance.ToString())
                 .Replace("<gemstoneTreeChance>", cavelingGardener.cavelingGemTreeChance.ToString())
                 .Replace("<shineMult>", cavelingGardener.shineMult.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.GlowTulip");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.GlowTulip");
     }
 }
 

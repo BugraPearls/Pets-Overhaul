@@ -128,7 +128,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyOgre>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2OgrePetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DD2OgrePetItem")
                 .Replace("<moveSpdNerf>", babyOgre.movespdNerf.ToString())
                 .Replace("<atkSpdNerf>", babyOgre.atkSpdMult.ToString())
                 .Replace("<dmgNerf>", Math.Round(babyOgre.nonMeleedmg * 100, 2).ToString())
@@ -139,6 +139,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<healthIncrease>", Math.Round(babyOgre.healthIncrease * 100, 2).ToString())
                 .Replace("<defMult>", babyOgre.defMult.ToString())
                 .Replace("<damageReduction>", Math.Round(babyOgre.dr * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2OgrePetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DD2OgrePetItem");
     }
 }

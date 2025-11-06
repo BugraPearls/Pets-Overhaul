@@ -31,7 +31,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => alertCd;
         public override int PetStackCurrent => alertEnemies;
         public override int PetStackMax => alertEnemiesMax;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BambooLeafStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.BambooLeafStack");
         public override void ExtraPreUpdate()
         {
             alertTimer--;
@@ -109,8 +109,8 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyRedPanda>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BambooLeaf")
-                .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BambooLeaf")
+                .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<alertAs>", Math.Round(babyRedPanda.alertAs * 100, 2).ToString())
                 .Replace("<alertMs>", Math.Round(babyRedPanda.alertMs * 100, 2).ToString())
                 .Replace("<alertAggro>", babyRedPanda.alertAggro.ToString())
@@ -121,6 +121,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<atkSpd>", Math.Round(babyRedPanda.regularAtkSpd * 100, 2).ToString())
                 .Replace("<jungleAtkSpd>", Math.Round(babyRedPanda.jungleBonusSpd * 100, 2).ToString())
                 .Replace("<bambooChance>", babyRedPanda.bambooChance.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BambooLeaf").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BambooLeaf").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

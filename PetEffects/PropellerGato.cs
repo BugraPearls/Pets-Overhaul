@@ -76,12 +76,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<PropellerGato>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2PetGato")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DD2PetGato")
                         .Replace("<crit>", propellerGato.bonusCritChance.ToString())
                         .Replace("<maxSentry>", propellerGato.turretIncrease.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2PetGato");
-        public override string CustomTooltip => PetTextsColors.LocVal("CustomPetEffects.DD2PetGato")
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DD2PetGato");
+        public override string CustomTooltip => PetUtils.LocVal("CustomPetEffects.DD2PetGato")
             .Replace("<wingTime>", Math.Round(propellerGato.wingTime / 60f, 2).ToString());
-        public override string CustomSimpleTooltip => PetTextsColors.LocVal("SimpleCustomPetEffects.DD2PetGato");
+        public override string CustomSimpleTooltip => PetUtils.LocVal("SimpleCustomPetEffects.DD2PetGato");
     }
 }

@@ -83,11 +83,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabySnowman>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ToySled")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.ToySled")
                 .Replace("<frostburnTime>", Math.Round(babySnowman.frostburnTime / 60f * babySnowman.FrostArmorMult, 2).ToString())
                 .Replace("<slowAmount>", Math.Round(babySnowman.snowmanSlow * 100 * babySnowman.FrostArmorMult, 2).ToString())
                 .Replace("<slowTime>", Math.Round(babySnowman.slowTime / 60f * babySnowman.FrostArmorMult, 2).ToString())
                 .Replace("<frostMult>", babySnowman.frostMult.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ToySled");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ToySled");
     }
 }

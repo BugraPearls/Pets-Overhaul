@@ -191,7 +191,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => CritChanceAll.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.SuspiciousLookingTentacle")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.SuspiciousLookingTentacle")
 
                         .Replace("<def>", Defense.BaseAndPerQuality())
                         .Replace("<defLine>", Defense.StatSummaryLine())

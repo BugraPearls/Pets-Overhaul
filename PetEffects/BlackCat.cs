@@ -27,8 +27,8 @@ namespace PetsOverhaul.PetEffects
         public float currentMoonLuck = 0;
         public override int PetAbilityCooldown => CustomEffectActive ? lunarVeilCooldown : moonlightCd;
         public override int PetStackCurrent => lunarVeilDuration > 0 ? lunarVeilDuration : lunarVeilPostDuration;
-        public override string PetStackText => PetTextsColors.LocVal("CustomPetEffects.UnluckyYarnStack");
-        public override string PetStackSpecial => CustomEffectActive ? PetTextsColors.SecondsOutOfText(PetStackCurrent, 0) : string.Empty;
+        public override string PetStackText => PetUtils.LocVal("CustomPetEffects.UnluckyYarnStack");
+        public override string PetStackSpecial => CustomEffectActive ? PetUtils.SecondsOutOfText(PetStackCurrent, 0) : string.Empty;
         public override bool CustomEffectIsContributor => false;
         public override bool HasCustomEffect => true;  //Dedicated to Kinga
         public override PetClasses CustomPrimaryClass => PetClasses.Defensive;
@@ -123,12 +123,12 @@ namespace PetsOverhaul.PetEffects
                         moonlightRoll *= -1;
                         string reason = Main.rand.Next(5) switch
                         {
-                            0 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1"),
-                            1 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath2"),
-                            2 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath3"),
-                            3 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath4"),
-                            4 => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath5"),
-                            _ => PetTextsColors.LocVal("PetItemTooltips.BlackCatDeath1"),
+                            0 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
+                            1 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath2"),
+                            2 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath3"),
+                            3 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath4"),
+                            4 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath5"),
+                            _ => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
                         };
                         Player.Hurt(PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)), moonlightRoll, 0, dodgeable: false, knockback: 0, scalingArmorPenetration: 1f);
                     }
@@ -180,8 +180,8 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BlackCat>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.UnluckyYarn")
-                .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.UnluckyYarn")
+                .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<moonlightMin>", blackCat.moonlightLowest.ToString())
                 .Replace("<moonlightMax>", blackCat.moonlightHighest.ToString())
                 .Replace("<moonlightCd>", Math.Round(blackCat.moonlightCd / 60f, 2).ToString())
@@ -190,14 +190,14 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<maximumMoon>", blackCat.luckMoonHighest.ToString())
                 .Replace("<moonLuck>", Math.Round(blackCat.currentMoonLuck, 2).ToString())
                 .Replace("<playerLuck>", Math.Round(blackCat.Player.luck, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.UnluckyYarn").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
-        public override string CustomTooltip => PetTextsColors.LocVal("CustomPetEffects.UnluckyYarn")
-            .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.UnluckyYarn").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
+        public override string CustomTooltip => PetUtils.LocVal("CustomPetEffects.UnluckyYarn")
+            .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
             .Replace("<seconds>", Math.Round(blackCat.lunarVeilDurationMax / 60f, 2).ToString())
             .Replace("<cooldown>", Math.Round(blackCat.lunarVeilCooldown / 60f, 2).ToString())
             .Replace("<postDuration>", Math.Round(blackCat.lunarVeilPostDurationMax / 60f, 2).ToString())
             .Replace("<ms>", Math.Round(blackCat.lunarVeilMs * 100, 2).ToString())
             .Replace("<manaRegen>", blackCat.lunarVeilManaRegen.ToString());
-        public override string CustomSimpleTooltip => PetTextsColors.LocVal("SimpleCustomPetEffects.UnluckyYarn").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string CustomSimpleTooltip => PetUtils.LocVal("SimpleCustomPetEffects.UnluckyYarn").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

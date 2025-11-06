@@ -86,7 +86,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TheTwins>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.TwinsPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.TwinsPetItem")
                         .Replace("<closeRange>", Math.Round(theTwins.closeRange / 16f, 2).ToString())
                         .Replace("<defReduce>", theTwins.defDrop.ToString())
                         .Replace("<cursedTime>", Math.Round(theTwins.infernoTime / 60f, 2).ToString())
@@ -95,6 +95,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<bossHpDmg>", Math.Round(theTwins.bossHpDmg * 100, 2).ToString())
                         .Replace("<bossCap>", theTwins.percDamageCap.ToString())
                         .Replace("<hpDmgCooldown>", Math.Round(theTwins.cooldown / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.TwinsPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.TwinsPetItem");
     }
 }

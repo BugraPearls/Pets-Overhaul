@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => shellHardenCd;
         public override int PetStackCurrent => currentStacks;
         public override int PetStackMax => shellHardenStacks;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.SeaweedStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.SeaweedStack");
         public override void ExtraPreUpdate()
         {
             timer--;
@@ -103,8 +103,8 @@ namespace PetsOverhaul.PetEffects
             }
         }
         public override string PetsTooltip =>
-            PetTextsColors.LocVal("PetItemTooltips.Seaweed")
-                .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+            PetUtils.LocVal("PetItemTooltips.Seaweed")
+                .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<hitCount>", turtle.shellHardenStacks.ToString())
                 .Replace("<shellDuration>", Math.Round(turtle.shellHardenDuration / 60f, 2).ToString())
                 .Replace("<reducedDmg>", Math.Round(turtle.dmgReduceShellHarden * 100, 2).ToString())
@@ -113,6 +113,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<def>", Math.Round(turtle.def * 100, 2).ToString())
                 .Replace("<kbResist>", Math.Round(turtle.kbResist * 100, 2).ToString())
                 .Replace("<moveSpd>", Math.Round(turtle.moveSpd * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Seaweed").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.Seaweed").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

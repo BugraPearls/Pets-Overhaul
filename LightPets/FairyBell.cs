@@ -56,7 +56,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => GlobalFortune.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.FairyBell")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.FairyBell")
 
                         .Replace("<haste>", AbilityHaste.BaseAndPerQuality())
                         .Replace("<fortune>", GlobalFortune.BaseAndPerQuality())

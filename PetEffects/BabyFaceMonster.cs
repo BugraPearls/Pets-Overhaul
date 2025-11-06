@@ -20,7 +20,7 @@ namespace PetsOverhaul.PetEffects
         public int currentRegen = 0;
         public override int PetStackCurrent => currentRegen;
         public override int PetStackMax => 0;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BoneRattleStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.BoneRattleStack");
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override void PreUpdateBuffs() //Since inCombatTimerMax is reset in ResetEffects(), we set the desired inCombatTimerMax here.
         {
@@ -104,13 +104,13 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyFaceMonster>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BoneRattle")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BoneRattle")
                 .Replace("<extraRegenTime>", babyFaceMonster.bonusRegenPerFrame.ToString())
                 .Replace("<stage1Time>", Math.Round((babyFaceMonster.stage2time - babyFaceMonster.stage1time) / 60f, 2).ToString())
                 .Replace("<stage2Time>", Math.Round(babyFaceMonster.stage2time / 60f, 2).ToString())
                 .Replace("<stage1Regen>", babyFaceMonster.stage1regen.ToString())
                 .Replace("<stage2Regen>", babyFaceMonster.stage2regen.ToString())
                 .Replace("<shieldAmount>", Math.Round(babyFaceMonster.stage2ShieldMult * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BoneRattle");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BoneRattle");
     }
 }

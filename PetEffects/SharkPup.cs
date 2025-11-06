@@ -87,12 +87,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SharkPup>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SharkBait")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.SharkBait")
                         .Replace("<breath>", Math.Round(sharkPup.breathBoost * 100, 2).ToString())
                         .Replace("<seaCreatureDmg>", sharkPup.seaCreatureDamage.ToString())
                         .Replace("<seaCreatureResist>", sharkPup.seaCreatureResist.ToString())
                         .Replace("<shield>", sharkPup.shieldOnCatch.ToString())
                         .Replace("<shieldTime>", Math.Round(sharkPup.shieldTime / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SharkBait");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.SharkBait");
     }
 }

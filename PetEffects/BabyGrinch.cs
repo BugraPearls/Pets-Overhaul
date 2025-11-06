@@ -62,13 +62,13 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyGrinch>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BabyGrinchMischiefWhistle")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BabyGrinchMischiefWhistle")
                 .Replace("<slowAmount>", Math.Round(babyGrinch.grinchSlow * 100, 2).ToString())
                 .Replace("<slowRange>", Math.Round(babyGrinch.grinchRange / 16f, 2).ToString())
                 .Replace("<dmg>", Math.Round(babyGrinch.winterDmg * 100, 2).ToString())
                 .Replace("<crit>", babyGrinch.winterCrit.ToString())
-            .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(BabyGrinch.FrostMoonWeapons));
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BabyGrinchMischiefWhistle");
+            .Replace("<weapons>", PetUtils.ItemsToTooltipImages(BabyGrinch.FrostMoonWeapons));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BabyGrinchMischiefWhistle");
     }
 }
 

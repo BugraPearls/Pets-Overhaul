@@ -64,10 +64,10 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<ShadowMimic>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.OrnateShadowKey")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.OrnateShadowKey")
             .Replace("<threshold>", Math.Round(shadowMimic.lowChanceThreshold * 100, 2).ToString())
             .Replace("<chanceIncrease>", (shadowMimic.numeratorMult - shadowMimic.denominatorMult).ToString())
             .Replace("<chanceToDouble>", shadowMimic.chanceToRollDoubleItem.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.OrnateShadowKey");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.OrnateShadowKey");
     }
 }

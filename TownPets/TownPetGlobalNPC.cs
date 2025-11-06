@@ -26,7 +26,7 @@ namespace PetsOverhaul.TownPets
             }
             if (found == false)
             {
-                chat += PetTextsColors.LocVal("Misc.TownPetPetMe");
+                chat += PetUtils.LocVal("Misc.TownPetPetMe");
             }
         }
         public override void Load()

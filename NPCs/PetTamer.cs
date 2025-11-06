@@ -105,7 +105,7 @@ namespace PetsOverhaul.NPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
 				// Sets your NPC's flavor text in the bestiary.
-				new FlavorTextBestiaryInfoElement(PetTextsColors.LocVal("NPCs.PetTamer.BestiaryFlavorText")),
+				new FlavorTextBestiaryInfoElement(PetUtils.LocVal("NPCs.PetTamer.BestiaryFlavorText")),
             });
         }
         public override void HitEffect(NPC.HitInfo hit)
@@ -178,20 +178,20 @@ namespace PetsOverhaul.NPCs
         {
             WeightedRandom<string> chat = new();
 
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common1"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common2"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common3"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common4"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common5"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common6"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common7"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Common8"), 10);
-            chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.Rare1"), 1);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common1"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common2"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common3"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common4"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common5"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common6"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common7"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Common8"), 10);
+            chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.Rare1"), 1);
 
             int wiz = NPC.FindFirstNPC(NPCID.Wizard);
             if (wiz != -1)
             {
-                chat.Add(PetTextsColors.LocVal("NPCs.PetTamer.Quotes.WizardQuote").Replace("<name>", Main.npc[wiz].FullName), 15);
+                chat.Add(PetUtils.LocVal("NPCs.PetTamer.Quotes.WizardQuote").Replace("<name>", Main.npc[wiz].FullName), 15);
             }
             string chosenChat = chat; // chat is implicitly cast to a string. This is where the random choice is made.
 
@@ -201,7 +201,7 @@ namespace PetsOverhaul.NPCs
         public override void SetChatButtons(ref string button, ref string button2)
         { // What the chat buttons are when you open up the chat UI
             button = Language.GetTextValue("LegacyInterface.28");
-            button2 = PetTextsColors.LocVal("NPCs.PetTamer.Combine");
+            button2 = PetUtils.LocVal("NPCs.PetTamer.Combine");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shop)

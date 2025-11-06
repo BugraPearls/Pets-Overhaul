@@ -37,34 +37,34 @@ namespace PetsOverhaul.Commands
             switch (args.Length)
             {
                 case 0:
-                    caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
+                    caller.Reply(PetUtils.LocVal("Commands.Help"), Color.Gray);
                     break;
                 case 1:
                     switch (args[0].ToLower())
                     {
                         case "fortune" or "fortunestat" or "fortunestats":
                             GlobalPet Pet = caller.Player.GetModPlayer<GlobalPet>();
-                            caller.Reply(PetTextsColors.LocVal("Commands.FortuneInfo"), Color.Gray);
-                            caller.Reply(PetTextsColors.LocVal("Commands.FortuneCurrent").Replace("<global>", Pet.globalFortune.ToString())
+                            caller.Reply(PetUtils.LocVal("Commands.FortuneInfo"), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.FortuneCurrent").Replace("<global>", Pet.globalFortune.ToString())
                                 .Replace("<mining>", Pet.miningFortune.ToString()).Replace("<fishing>", Pet.fishingFortune.ToString()).Replace("<harvesting>", Pet.harvestingFortune.ToString()));
                             break;
 
                         case "vanity" or "vanitypet":
-                            caller.Reply(PetTextsColors.LocVal("Commands.VanityPet"));
+                            caller.Reply(PetUtils.LocVal("Commands.VanityPet"));
                             break;
 
                         case "junimo" or "junimoscoreboard" or "junimoleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 Junimo junimoLvls = caller.Player.GetModPlayer<Junimo>();
-                                caller.Reply(PetTextsColors.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3())
-                                    .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)).Replace("<level>", junimoLvls.junimoMiningLevel.ToString()).Replace("<exp>", junimoLvls.junimoMiningExp.ToString()));
+                                caller.Reply(PetUtils.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3())
+                                    .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Mining)).Replace("<level>", junimoLvls.junimoMiningLevel.ToString()).Replace("<exp>", junimoLvls.junimoMiningExp.ToString()));
 
-                                caller.Reply(PetTextsColors.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3())
-                                    .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", junimoLvls.junimoFishingLevel.ToString()).Replace("<exp>", junimoLvls.junimoFishingExp.ToString()));
+                                caller.Reply(PetUtils.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3())
+                                    .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", junimoLvls.junimoFishingLevel.ToString()).Replace("<exp>", junimoLvls.junimoFishingExp.ToString()));
 
-                                caller.Reply(PetTextsColors.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3())
-                                    .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", junimoLvls.junimoHarvestingLevel.ToString()).Replace("<exp>", junimoLvls.junimoHarvestingExp.ToString()));
+                                caller.Reply(PetUtils.LocVal("Commands.SinglePlayerJunimo").Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3())
+                                    .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", junimoLvls.junimoHarvestingLevel.ToString()).Replace("<exp>", junimoLvls.junimoHarvestingExp.ToString()));
                             }
                             else
                             {
@@ -80,37 +80,37 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
-                                    .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)));
+                                caller.Reply(PetUtils.LocVal("Commands.LeaderboardList")
+                                    .Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Mining)));
                                 for (int i = topMining.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topMining.Find(x => x.PlayerExp == topMining.Max(x => x.PlayerExp));
-                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
-                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
+                                    caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topMining.Remove(topPlayer);
                                 }
 
                                 displayCounter = 0;
-                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
-                                    .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)));
+                                caller.Reply(PetUtils.LocVal("Commands.LeaderboardList")
+                                    .Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Fishing)));
                                 for (int i = topFishing.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topFishing.Find(x => x.PlayerExp == topFishing.Max(x => x.PlayerExp));
-                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
-                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
+                                    caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                 }
 
                                 displayCounter = 0;
-                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
-                                    .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)));
+                                caller.Reply(PetUtils.LocVal("Commands.LeaderboardList")
+                                    .Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Harvesting)));
                                 for (int i = topHarvesting.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerExp == topHarvesting.Max(x => x.PlayerExp));
-                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
-                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
+                                    caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topHarvesting.Remove(topPlayer);
                                 }
                             }
@@ -119,7 +119,7 @@ namespace PetsOverhaul.Commands
                         case "miningscoreboard" or "miningleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
-                                caller.Reply(PetTextsColors.LocVal("Commands.UseInMultiplayer"));
+                                caller.Reply(PetUtils.LocVal("Commands.UseInMultiplayer"));
                             }
                             else
                             {
@@ -131,14 +131,14 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
-                                    .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Mining).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)));
+                                caller.Reply(PetUtils.LocVal("Commands.LeaderboardList")
+                                    .Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Mining)));
                                 for (int i = topMining.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topMining.Find(x => x.PlayerExp == topMining.Max(x => x.PlayerExp));
-                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
-                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
+                                    caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topMining.Remove(topPlayer);
                                 }
                             }
@@ -147,7 +147,7 @@ namespace PetsOverhaul.Commands
                         case "fishingscoreboard" or "fishingleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
-                                caller.Reply(PetTextsColors.LocVal("Commands.UseInMultiplayer"));
+                                caller.Reply(PetUtils.LocVal("Commands.UseInMultiplayer"));
                             }
                             else
                             {
@@ -159,14 +159,14 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
-                                    .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Fishing).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)));
+                                caller.Reply(PetUtils.LocVal("Commands.LeaderboardList")
+                                    .Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Fishing)));
                                 for (int i = topFishing.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topFishing.Find(x => x.PlayerExp == topFishing.Max(x => x.PlayerExp));
-                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
-                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
+                                    caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topFishing.Remove(topPlayer);
                                 }
                             }
@@ -175,7 +175,7 @@ namespace PetsOverhaul.Commands
                         case "harvestingscoreboard" or "harvestingleaderboard":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
-                                caller.Reply(PetTextsColors.LocVal("Commands.UseInMultiplayer"));
+                                caller.Reply(PetUtils.LocVal("Commands.UseInMultiplayer"));
                             }
                             else
                             {
@@ -187,25 +187,25 @@ namespace PetsOverhaul.Commands
                                 }
                                 int displayCounter = 0;
 
-                                caller.Reply(PetTextsColors.LocVal("Commands.LeaderboardList")
-                                    .Replace("<color>", PetTextsColors.ClassEnumToColor(PetClasses.Harvesting).Hex3()).Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)));
+                                caller.Reply(PetUtils.LocVal("Commands.LeaderboardList")
+                                    .Replace("<color>", PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Harvesting)));
                                 for (int i = topHarvesting.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
                                     TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerExp == topHarvesting.Max(x => x.PlayerExp));
-                                    caller.Reply(PetTextsColors.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
-                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetTextsColors.HighQuality : displayCounter == 2 ? PetTextsColors.MidQuality : PetTextsColors.LowQuality);
+                                    caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topHarvesting.Remove(topPlayer);
                                 }
                             }
                             break;
 
                         case "faq" or "question":
-                            caller.Reply(PetTextsColors.LocVal("Commands.FAQ"));
+                            caller.Reply(PetUtils.LocVal("Commands.FAQ"));
                             break;
 
                         case "light" or "lightpet" or "lightpets":
-                            string reply = PetTextsColors.LocVal("Commands.LightPetList") + " ";
+                            string reply = PetUtils.LocVal("Commands.LightPetList") + " ";
                             int counterToGoDown = 5;
                             foreach (ModPlayer player in caller.Player.ModPlayers)
                             {
@@ -223,8 +223,8 @@ namespace PetsOverhaul.Commands
                             caller.Reply(reply);
                             break;
                         default:
-                            caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
+                            caller.Reply(PetUtils.LocVal("Commands.Help"), Color.Gray);
                             break;
 
                     }
@@ -233,7 +233,7 @@ namespace PetsOverhaul.Commands
                     switch (args[0].ToLower())
                     {
                         case "class" or "pets":
-                            string reply = PetTextsColors.LocVal("Commands.PetList") + " ";
+                            string reply = PetUtils.LocVal("Commands.PetList") + " ";
 
                             void iterate(PetClasses petClass, bool abilityPets = false)
                             {
@@ -258,79 +258,79 @@ namespace PetsOverhaul.Commands
                                     }
                                 }
                                 if (found == false)
-                                    reply += PetTextsColors.LocVal("Commands.NoPets");
+                                    reply += PetUtils.LocVal("Commands.NoPets");
                                 caller.Reply(reply);
                             }
 
                             switch (args[1].ToLower())
                             {
                                 case "all":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Commands.All"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Commands.All"));
                                     iterate(PetClasses.None);
                                     break;
                                 case "melee":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Melee"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Melee"));
                                     iterate(PetClasses.Melee);
                                     break;
                                 case "ranged":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Ranged"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Ranged"));
                                     iterate(PetClasses.Ranged);
                                     break;
                                 case "magic":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Magic"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Magic"));
                                     iterate(PetClasses.Magic);
                                     break;
                                 case "summoner":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Summoner"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Summoner"));
                                     iterate(PetClasses.Summoner);
                                     break;
                                 case "utility":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Utility"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Utility"));
                                     iterate(PetClasses.Utility);
                                     break;
                                 case "mobility":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Mobility"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Mobility"));
                                     iterate(PetClasses.Mobility);
                                     break;
                                 case "harvesting":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Harvesting"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Harvesting"));
                                     iterate(PetClasses.Harvesting);
                                     break;
                                 case "mining":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Mining"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Mining"));
                                     iterate(PetClasses.Mining);
                                     break;
                                 case "fishing":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Fishing"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Fishing"));
                                     iterate(PetClasses.Fishing);
                                     break;
                                 case "offensive":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Offensive"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Offensive"));
                                     iterate(PetClasses.Offensive);
                                     break;
                                 case "defensive":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Defensive"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Defensive"));
                                     iterate(PetClasses.Defensive);
                                     break;
                                 case "supportive":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Supportive"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Supportive"));
                                     iterate(PetClasses.Supportive);
                                     break;
                                 case "rogue":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Classes.Rogue"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Classes.Rogue"));
                                     iterate(PetClasses.Rogue);
                                     break;
                                 case "ability" or "cooldown":
-                                    reply = reply.Replace("<class>", PetTextsColors.LocVal("Misc.Ability"));
+                                    reply = reply.Replace("<class>", PetUtils.LocVal("Misc.Ability"));
                                     iterate(PetClasses.None, true);
                                     break;
                                 default:
-                                    caller.Reply(PetTextsColors.LocVal("Commands.ClassArgumentInvalid"), Color.Red);
+                                    caller.Reply(PetUtils.LocVal("Commands.ClassArgumentInvalid"), Color.Red);
                                     break;
                             }
                             break;
                         case "item" or "items":
-                            string itemReply = PetTextsColors.LocVal("Commands.Items");
+                            string itemReply = PetUtils.LocVal("Commands.Items");
                             switch (args[1].ToLower())
                             {
                                 case "harvesting":
@@ -347,7 +347,7 @@ namespace PetsOverhaul.Commands
                                             harv.AddRange(plantList);
                                         }
                                     }
-                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetTextsColors.ItemsToTooltipImages(harv, 22, 0) + " " + PetTextsColors.LocVal("Misc.RarePlant") + ": " + PetTextsColors.ItemsToTooltipImages(rareHarv, 22, 10);
+                                    itemReply = itemReply.Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Harvesting)) + "\n" + PetUtils.ItemsToTooltipImages(harv, 22, 0) + " " + PetUtils.LocVal("Misc.RarePlant") + ": " + PetUtils.ItemsToTooltipImages(rareHarv, 22, 10);
 
                                     break;
                                 case "mining":
@@ -356,7 +356,7 @@ namespace PetsOverhaul.Commands
                                     {
                                         mining.AddRange(oreList);
                                     }
-                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Mining)) + "\n" + PetTextsColors.ItemsToTooltipImages(mining, 22, 0);
+                                    itemReply = itemReply.Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Mining)) + "\n" + PetUtils.ItemsToTooltipImages(mining, 22, 0);
                                     break;
                                 case "fishing":
                                     List<int> fish = [];
@@ -364,23 +364,23 @@ namespace PetsOverhaul.Commands
                                     {
                                         fish.AddRange(fishList);
                                     }
-                                    itemReply = itemReply.Replace("<class>", PetTextsColors.PetClassLocalized(PetClasses.Fishing)) + "\n" + PetTextsColors.ItemsToTooltipImages(fish, 22, 0);
+                                    itemReply = itemReply.Replace("<class>", PetUtils.PetClassLocalized(PetClasses.Fishing)) + "\n" + PetUtils.ItemsToTooltipImages(fish, 22, 0);
                                     break;
                                 default:
-                                    caller.Reply(PetTextsColors.LocVal("Commands.ClassArgumentInvalidItems"), Color.Red);
+                                    caller.Reply(PetUtils.LocVal("Commands.ClassArgumentInvalidItems"), Color.Red);
                                     break;
                             }
                             caller.Reply(itemReply);
                             break;
                         default:
-                            caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
+                            caller.Reply(PetUtils.LocVal("Commands.Help"), Color.Gray);
                             break;
                     }
                     break;
                 default:
-                    caller.Reply(PetTextsColors.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                    caller.Reply(PetTextsColors.LocVal("Commands.Help"), Color.Gray);
+                    caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
+                    caller.Reply(PetUtils.LocVal("Commands.Help"), Color.Gray);
                     break;
             }
         }

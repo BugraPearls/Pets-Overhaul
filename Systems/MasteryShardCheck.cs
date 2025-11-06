@@ -61,7 +61,7 @@ namespace PetsOverhaul.Systems
 
         public string GetConditionDescription()
         {
-            return PetTextsColors.LocVal("NPCs.MasteryShard1");
+            return PetUtils.LocVal("NPCs.MasteryShard1");
         }
     }
     public class FirstKillWoF : IItemDropRuleCondition, IProvideItemConditionDescription
@@ -78,7 +78,7 @@ namespace PetsOverhaul.Systems
 
         public string GetConditionDescription()
         {
-            return PetTextsColors.LocVal("NPCs.MasteryShard2");
+            return PetUtils.LocVal("NPCs.MasteryShard2");
         }
     }
     public class FirstKillGolem : IItemDropRuleCondition, IProvideItemConditionDescription
@@ -95,7 +95,7 @@ namespace PetsOverhaul.Systems
 
         public string GetConditionDescription()
         {
-            return PetTextsColors.LocVal("NPCs.MasteryShard3");
+            return PetUtils.LocVal("NPCs.MasteryShard3");
         }
     }
     public class FirstKillSkeletron : IItemDropRuleCondition, IProvideItemConditionDescription
@@ -112,7 +112,7 @@ namespace PetsOverhaul.Systems
 
         public string GetConditionDescription()
         {
-            return PetTextsColors.LocVal("NPCs.MasteryShard4");
+            return PetUtils.LocVal("NPCs.MasteryShard4");
         }
     }
     public class FirstKillMoonLord : IItemDropRuleCondition, IProvideItemConditionDescription
@@ -129,7 +129,7 @@ namespace PetsOverhaul.Systems
 
         public string GetConditionDescription()
         {
-            return PetTextsColors.LocVal("NPCs.MasteryShard5");
+            return PetUtils.LocVal("NPCs.MasteryShard5");
         }
     }
 }

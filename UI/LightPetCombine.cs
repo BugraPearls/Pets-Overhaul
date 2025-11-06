@@ -100,7 +100,7 @@ namespace PetsOverhaul.UI
             panel.VAlign = 0.5f;
             Append(panel);
 
-            UIText header = new(PetTextsColors.LocVal("LightPetCombineUI.Header"));
+            UIText header = new(PetUtils.LocVal("LightPetCombineUI.Header"));
             header.HAlign = 0.5f;
             header.Top.Set(15, 0);
             panel.Append(header);
@@ -113,11 +113,11 @@ namespace PetsOverhaul.UI
             button.OnLeftClick += OnButtonClick;
             panel.Append(button);
 
-            UIText text = new(PetTextsColors.LocVal("LightPetCombineUI.Combine"));
+            UIText text = new(PetUtils.LocVal("LightPetCombineUI.Combine"));
             text.HAlign = text.VAlign = 0.5f;
             button.Append(text);
 
-            UIText infoText = new(PetTextsColors.LocVal("LightPetCombineUI.InfoText"));
+            UIText infoText = new(PetUtils.LocVal("LightPetCombineUI.InfoText"));
             infoText.Top.Set(125, 0);
             panel.Append(infoText);
 
@@ -135,12 +135,12 @@ namespace PetsOverhaul.UI
             slot2.Height.Set(40, 0);
             panel.Append(slot2);
 
-            price = new(PetTextsColors.LocVal("LightPetCombineUI.Price"));
+            price = new(PetUtils.LocVal("LightPetCombineUI.Price"));
             price.Top.Set(55, 0);
             price.Left.Set(250, 0);
             panel.Append(price);
 
-            infoRegardingState = new(PetTextsColors.LocVal("LightPetCombineUI.State1"));
+            infoRegardingState = new(PetUtils.LocVal("LightPetCombineUI.State1"));
             infoRegardingState.Top.Set(85, 0);
             infoRegardingState.Left.Set(250, 0);
             panel.Append(infoRegardingState);
@@ -176,9 +176,9 @@ namespace PetsOverhaul.UI
             {
                 price.SetText("Cost: [i:74]" + (cost / 1000000).ToString() + " [i:73]" + (cost % 1000000 / 10000).ToString() + " [i:72]" + (cost % 10000 / 100).ToString() + " [i:71]" + (cost % 100).ToString());
                 if (Main.LocalPlayer.CanAfford(cost))
-                    infoRegardingState.SetText(PetTextsColors.LocVal("LightPetCombineUI.State2"));
+                    infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State2"));
                 else
-                    infoRegardingState.SetText(PetTextsColors.LocVal("LightPetCombineUI.State3"));
+                    infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State3"));
             }
             else
             {
@@ -189,21 +189,21 @@ namespace PetsOverhaul.UI
                     bool flag2 = PetItemIDs.LightPetNamesAndItems.ContainsValue(slot2.Item.type);
                     if (!flag1 && !flag2)
                     {
-                        infoRegardingState.SetText(PetTextsColors.LocVal("LightPetCombineUI.State4"));
+                        infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State4"));
                     }
                     else if (!flag1)
                     {
-                        infoRegardingState.SetText(PetTextsColors.LocVal("LightPetCombineUI.State5"));
+                        infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State5"));
                     }
                     else if (!flag2)
                     {
-                        infoRegardingState.SetText(PetTextsColors.LocVal("LightPetCombineUI.State6"));
+                        infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State6"));
                     }
                 }
                 else
                 {
 
-                    infoRegardingState.SetText(PetTextsColors.LocVal("LightPetCombineUI.State1"));
+                    infoRegardingState.SetText(PetUtils.LocVal("LightPetCombineUI.State1"));
                 }
             }
 

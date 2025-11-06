@@ -119,11 +119,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Puppy>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DogWhistle")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DogWhistle")
                 .Replace("<critter>", puppy.catchChance.ToString())
                 .Replace("<rareCritter>", puppy.rareCatchChance.ToString())
                 .Replace("<rareCritterCoin>", Math.Round(puppy.rareCritterCoin / 10000f, 2).ToString())
                 .Replace("<rareEnemyCoin>", Math.Round(puppy.rareEnemyCoin / 10000f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DogWhistle");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DogWhistle");
     }
 }

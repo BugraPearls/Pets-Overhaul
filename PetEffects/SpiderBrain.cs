@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => cdToAddToPool;
         public override int PetStackCurrent => lifePool;
         public override int PetStackMax => (int)(Player.statLifeMax2 * lifePoolMaxPerc);
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.BrainOfCthulhuPetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.BrainOfCthulhuPetItemStack");
         public override void ExtraPreUpdate()
         {
             if (PetIsEquipped(false))
@@ -75,11 +75,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SpiderBrain>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BrainOfCthulhuPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BrainOfCthulhuPetItem")
                         .Replace("<lifesteal>", Math.Round(spiderBrain.lifestealAmount * 100, 2).ToString())
                         .Replace("<maxPool>", Math.Round(spiderBrain.lifePoolMaxPerc * 100, 2).ToString())
                         .Replace("<healthRecovery>", Math.Round(spiderBrain.cdToAddToPool / 60f, 2).ToString())
                         .Replace("<pool>", spiderBrain.lifePool.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BrainOfCthulhuPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BrainOfCthulhuPetItem");
     }
 }

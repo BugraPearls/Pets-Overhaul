@@ -181,15 +181,15 @@ namespace PetsOverhaul.Systems
             if (HasCustomEffect)
             {
                 if (CustomEffectActive)
-                    tip = "\n" + CustomPetsTooltip + "\n" + PetTextsColors.LocVal("Misc.CustomLine").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                    tip = "\n" + CustomPetsTooltip + "\n" + PetUtils.LocVal("Misc.CustomLine").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
                 else
                 {
-                    tip += "\n" + PetTextsColors.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetTextsColors.KeybindText(PetKeybinds.PetCustomSwitch));
+                    tip += "\n" + PetUtils.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
                 }
             }
 
             if (GetRoll() <= 0)
-                tip = string.Concat(tip, "\n" + PetTextsColors.RollMissingText());
+                tip = string.Concat(tip, "\n" + PetUtils.RollMissingText());
 
             if (tooltips.Exists(x => x.Name == "Tooltip0"))
                 tooltips.Find(x => x.Name == "Tooltip0").Text += tip;
@@ -291,16 +291,16 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public readonly string StatSummaryLine()
         {
-            return PetTextsColors.LightPetRarityColorConvert(isInt ? ("+" + CurrentStatInt.ToString()) : (Math.Round(CurrentStatFloat * 100, 2).ToString() + "%"), CurrentRoll, MaxRoll) + " " +
-                PetTextsColors.LocVal("LightPetTooltips.Quality") + " " + PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
+            return PetUtils.LightPetRarityColorConvert(isInt ? ("+" + CurrentStatInt.ToString()) : (Math.Round(CurrentStatFloat * 100, 2).ToString() + "%"), CurrentRoll, MaxRoll) + " " +
+                PetUtils.LocVal("LightPetTooltips.Quality") + " " + PetUtils.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetUtils.LocVal("LightPetTooltips.OutOf") + " " + PetUtils.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
         /// <summary>
         /// Use this overload if Summary line is intended to show the current stat differently than what StatSummaryLine() does.
         /// </summary>
         public readonly string StatSummaryLine(string currentStat)
         {
-            return PetTextsColors.LightPetRarityColorConvert(currentStat, CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.Quality") + " " +
-                PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + PetTextsColors.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
+            return PetUtils.LightPetRarityColorConvert(currentStat, CurrentRoll, MaxRoll) + " " + PetUtils.LocVal("LightPetTooltips.Quality") + " " +
+                PetUtils.LightPetRarityColorConvert(CurrentRoll.ToString(), CurrentRoll, MaxRoll) + " " + PetUtils.LocVal("LightPetTooltips.OutOf") + " " + PetUtils.LightPetRarityColorConvert(MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
         /// <summary>
         /// Returns the stat's Base and Per Roll stats, alongside required spacings, multiplication and operators.
@@ -309,18 +309,18 @@ namespace PetsOverhaul.Systems
         {
             int mult = isInt ? 1 : 100;
             return (BaseStat == 0 ? "" : (Math.Round(BaseStat * mult, 2).ToString() + " + ")) + Math.Round(StatPerRoll * mult, 2).ToString()
-                + (isInt ? " " : "% ") + PetTextsColors.LocVal("LightPetTooltips.Per");
+                + (isInt ? " " : "% ") + PetUtils.LocVal("LightPetTooltips.Per");
         }
         /// <summary> 
         /// Use this overload if displayed values are intended to be displayed in a different way than BaseAndPerQuality().
         /// </summary>
         public readonly string BaseAndPerQuality(string perRoll, string baseRoll = "")
         {
-            return (BaseStat == 0 ? "" : (baseRoll + " + ")) + perRoll + " " + PetTextsColors.LocVal("LightPetTooltips.Per");
+            return (BaseStat == 0 ? "" : (baseRoll + " + ")) + perRoll + " " + PetUtils.LocVal("LightPetTooltips.Per");
         }
         public readonly string QualityLine()
         {
-            return PetTextsColors.LightPetRarityColorConvert(CurrentRoll.ToString() + " " + PetTextsColors.LocVal("LightPetTooltips.OutOf") + " " + MaxRoll.ToString(), CurrentRoll, MaxRoll);
+            return PetUtils.LightPetRarityColorConvert(CurrentRoll.ToString() + " " + PetUtils.LocVal("LightPetTooltips.OutOf") + " " + MaxRoll.ToString(), CurrentRoll, MaxRoll);
         }
     }
 }

@@ -54,12 +54,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyImp>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.HellCake")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.HellCake")
                 .Replace("<immuneTime>", Math.Round(babyImp.lavaImmune / 60f, 2).ToString())
                 .Replace("<lavaDef>", babyImp.lavaDef.ToString())
                 .Replace("<lavaSpd>", Math.Round(babyImp.lavaSpd * 100, 2).ToString())
                 .Replace("<obbyDef>", babyImp.obbyDef.ToString())
                 .Replace("<obbySpd>", Math.Round(babyImp.obbySpd * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.HellCake");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.HellCake");
     }
 }

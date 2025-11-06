@@ -67,12 +67,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Plantero>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.MudBud")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.MudBud")
                         .Replace("<chance>", plantero.spawnChance.ToString())
                         .Replace("<dmg>", plantero.damageMult.ToString())
                         .Replace("<flatDmg>", plantero.flatDmg.ToString())
                         .Replace("<kb>", plantero.knockBack.ToString())
                         .Replace("<pen>", plantero.pen.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.MudBud");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.MudBud");
     }
 }

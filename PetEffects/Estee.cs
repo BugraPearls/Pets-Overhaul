@@ -59,7 +59,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Estee>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.CelestialWand")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.CelestialWand")
                         .Replace("<maxMana>", Math.Round(estee.manaIncrease * 100, 2).ToString())
                         .Replace("<dmgPenalty>", Math.Round(estee.penaltyMult * 100, 2).ToString())
                         .Replace("<manaToDmg>", Math.Round(estee.manaMagicIncreasePer1 * 100, 2).ToString())
@@ -67,6 +67,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<bonusMana>", (estee.Player.statManaMax2 - estee.Player.statManaMax).ToString())
                         .Replace("<reducedDmg>", Math.Round(estee.CurrentPenalty * 100, 2).ToString())
                         .Replace("<increasedDmg>", Math.Round(estee.manaMult * estee.manaMagicIncreasePer1 * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.CelestialWand");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.CelestialWand");
     }
 }

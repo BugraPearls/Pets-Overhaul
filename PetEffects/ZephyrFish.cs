@@ -94,7 +94,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<ZephyrFish>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ZephyrFish")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.ZephyrFish")
                         .Replace("<windFish>", Math.Round(zephyrFish.speedMult / 8f, 2).ToString())
                         .Replace("<regularChance>", zephyrFish.baseChance.ToString())
                         .Replace("<windChance>", zephyrFish.windChance.ToString())
@@ -102,6 +102,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<maxAnglerPower>", Math.Round(zephyrFish.maxQuestPower * 100, 2).ToString())
                         .Replace("<anglerQuests>", Main.LocalPlayer.anglerQuestsFinished.ToString())
                         .Replace("<currentAnglerPower>", Math.Round(zephyrFish.powerPerQuest * Main.LocalPlayer.anglerQuestsFinished * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ZephyrFish");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ZephyrFish");
     }
 }

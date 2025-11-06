@@ -128,7 +128,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Spider>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SpiderEgg")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.SpiderEgg")
                         .Replace("<poisonTime>", Math.Round(spider.poisonTime / 60f, 2).ToString())
                         .Replace("<poiPerc>", spider.poisonDmgMult.ToString())
                         .Replace("<poiFlat>", spider.poisonFlatDmg.ToString())
@@ -138,6 +138,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<venomFlat>", spider.venomFlatDmg.ToString())
                         .Replace("<venomKb>", spider.kbIncreaseVenom.ToString())
                         .Replace("<venomCrit>", spider.venomCrit.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SpiderEgg");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.SpiderEgg");
     }
 }

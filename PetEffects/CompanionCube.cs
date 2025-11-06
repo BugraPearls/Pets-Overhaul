@@ -79,12 +79,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CompanionCube>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.CompanionCube")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.CompanionCube")
                         .Replace("<manaToHealth>", Math.Round(companionCube.manaToHealth * 100, 2).ToString())
                         .Replace("<healthToMana>", Math.Round(companionCube.healthToMana * 100, 2).ToString())
                         .Replace("<manaPotionNerf>", Math.Round(companionCube.manaPotionNerf * 100, 2).ToString())
                         .Replace("<manaToHealthNerf>", Math.Round(companionCube.manaToHealthNerf * 100, 2).ToString())
                         .Replace("<halfOfSickness>", Math.Round(Player.manaSickLessDmg * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.CompanionCube");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.CompanionCube");
     }
 }

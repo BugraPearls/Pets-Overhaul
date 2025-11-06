@@ -181,7 +181,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => MagicDamage.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.WispInABottle")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.WispInABottle")
 
                         .Replace("<magic>", MagicDamage.BaseAndPerQuality())
                         .Replace("<ranged>", RangedDamage.BaseAndPerQuality())
@@ -192,7 +192,7 @@ namespace PetsOverhaul.LightPets
                         .Replace("<rangedLine>", RangedDamage.StatSummaryLine())
                         .Replace("<velocityLine>", ProjectileVelocity.StatSummaryLine())
                         .Replace("<petDmgLine>", PetDamage.StatSummaryLine());
-        public override string CustomPetsTooltip => PetTextsColors.LocVal("CustomPetEffects.WispInABottle")
+        public override string CustomPetsTooltip => PetUtils.LocVal("CustomPetEffects.WispInABottle")
 
                         .Replace("<chance>", CustomChance.ToString())
                         .Replace("<base>", CustomFlat.ToString())

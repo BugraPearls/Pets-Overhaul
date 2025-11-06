@@ -78,7 +78,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => Defense.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.MagicLantern")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.MagicLantern")
 
                         .Replace("<dr>", DamageReduction.BaseAndPerQuality())
                         .Replace("<fortune>", MiningFortune.BaseAndPerQuality())

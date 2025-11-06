@@ -52,7 +52,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<EverscreamSapling>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EverscreamPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.EverscreamPetItem")
                         .Replace("<magicCritNerf>", everscreamSapling.critMult.ToString())
                         .Replace("<maxMana>", everscreamSapling.manaIncrease.ToString())
                         .Replace("<missingMana>", Math.Round(everscreamSapling.missingManaPercent * 100, 2).ToString())
@@ -60,6 +60,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<manaRecoveryCd>", (everscreamSapling.cooldown / 60f).ToString())
                         .Replace("<dmg>", Math.Round(everscreamSapling.dmgIncr * 100, 2).ToString())
                         .Replace("<crit>", everscreamSapling.howMuchCrit.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EverscreamPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.EverscreamPetItem");
     }
 }

@@ -74,7 +74,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Pigman>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.PigPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.PigPetItem")
                        .Replace("<foodChance>", pigman.foodChance.ToString())
                        .Replace("<potionChance>", pigman.potionChance.ToString())
                        .Replace("<shield1>", pigman.tier1Shield.ToString())
@@ -82,6 +82,6 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<shield3>", pigman.tier3Shield.ToString())
                        .Replace("<shieldTime>", Math.Round(pigman.shieldTime / 60f, 2).ToString())
                        .Replace("<cooldown>", Math.Round(pigman.shieldCooldown / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.PigPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.PigPetItem");
     }
 }

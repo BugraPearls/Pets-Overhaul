@@ -25,7 +25,7 @@ namespace PetsOverhaul.UI
         {
             if (ModContent.GetInstance<PetPersonalization>().ShowResourceDisplay && Main.playerInventory == false && (MaxStack >= 0 || StackSpecial != string.Empty))
             {
-                string currTxt = $"{PetTextsColors.LocVal("Misc.Current")} {TextStack}:";
+                string currTxt = $"{PetUtils.LocVal("Misc.Current")} {TextStack}:";
                 if (StackSpecial != string.Empty)
                 {
                     stacks.SetText($"{currTxt} {StackSpecial}");
@@ -36,7 +36,7 @@ namespace PetsOverhaul.UI
                 }
                 else
                 {
-                    stacks.SetText($"{currTxt} {CurrentStack} {PetTextsColors.LocVal("LightPetTooltips.OutOf")} {MaxStack}");
+                    stacks.SetText($"{currTxt} {CurrentStack} {PetUtils.LocVal("LightPetTooltips.OutOf")} {MaxStack}");
                 }
                 stacks.Top.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.Y);
                 stacks.Left.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.X);

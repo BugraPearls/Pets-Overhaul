@@ -86,16 +86,16 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SugarGlider>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EucaluptusSap")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.EucaluptusSap")
                 .Replace("<glide>", sugarGlider.glideSpeedMult.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EucaluptusSap");
-        public override string CustomTooltip => PetTextsColors.LocVal("CustomPetEffects.EucaluptusSap")
-            .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.EucaluptusSap");
+        public override string CustomTooltip => PetUtils.LocVal("CustomPetEffects.EucaluptusSap")
+            .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
             .Replace("<glide>", sugarGlider.customGlideWeak.ToString())
             .Replace("<dmg>", sugarGlider.shuricornDamage.ToString())
             .Replace("<kb>", sugarGlider.shuricornKb.ToString())
             .Replace("<cooldown>", Math.Round(sugarGlider.shuricornCooldown / 60f, 2).ToString())
             .Replace("<mark>", Math.Round(SugarGlider.shuricornDuration / 60f, 2).ToString());
-        public override string CustomSimpleTooltip => PetTextsColors.LocVal("CustomSimplePetEffects.EucaluptusSap");
+        public override string CustomSimpleTooltip => PetUtils.LocVal("CustomSimplePetEffects.EucaluptusSap");
     }
 }

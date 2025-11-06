@@ -77,7 +77,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => WingTime.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.JewelOfLight")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.JewelOfLight")
 
                         .Replace("<moveSpd>", MovementSpeed.BaseAndPerQuality())
                         .Replace("<wingTime>", WingTime.BaseAndPerQuality(Math.Round(WingTime.StatPerRoll / 60f, 2).ToString(), Math.Round(WingTime.BaseStat / 60f, 2).ToString()))

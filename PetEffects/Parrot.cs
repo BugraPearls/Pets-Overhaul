@@ -111,11 +111,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Parrot>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ParrotCracker")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.ParrotCracker")
                 .Replace("<projChance>", parrot.projChance.ToString())
                 .Replace("<projDamage>", parrot.projDamage.ToString())
                 .Replace("<meleeChance>", parrot.meleeChance.ToString())
                 .Replace("<meleeDamage>", parrot.meleeDamage.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ParrotCracker");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ParrotCracker");
     }
 }

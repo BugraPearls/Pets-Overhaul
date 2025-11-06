@@ -71,7 +71,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TinyFishron>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DukeFishronPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DukeFishronPetItem")
                         .Replace("<baseMult>", tinyFishron.fishingPowerPenalty.ToString())
                         .Replace("<anglerFishingPower>", tinyFishron.fpPerQuest.ToString())
                         .Replace("<flatChance>", tinyFishron.stackChance.ToString())
@@ -79,6 +79,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<bobberChance>", tinyFishron.bobberChance.ToString())
                         .Replace("<anglerQuests>", Main.LocalPlayer.anglerQuestsFinished.ToString())
                         .Replace("<currentAnglerWithBaseMult>", Math.Round(Main.LocalPlayer.anglerQuestsFinished * tinyFishron.fpPerQuest + tinyFishron.fishingPowerPenalty, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DukeFishronPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DukeFishronPetItem");
     }
 }

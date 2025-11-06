@@ -72,12 +72,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<ItsyBetsy>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2BetsyPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DD2BetsyPetItem")
                         .Replace("<debuffTime>", Math.Round(itsyBetsy.debuffTime / 60f, 2).ToString())
                         .Replace("<defDecrease>", Math.Round(itsyBetsy.defReduction * 100, 2).ToString())
                         .Replace("<maxStack>", itsyBetsy.maxStacks.ToString())
                         .Replace("<missingHpSteal>", Math.Round(itsyBetsy.missingHpRecover * 100, 2).ToString())
                         .Replace("<maxStackIncr>", Math.Round(itsyBetsy.maxStackBonusRecover * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2BetsyPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DD2BetsyPetItem");
     }
 }

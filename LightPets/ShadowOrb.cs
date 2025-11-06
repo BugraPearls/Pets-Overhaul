@@ -67,7 +67,7 @@ namespace PetsOverhaul.LightPets
             }
         }
         public override int GetRoll() => Mana.CurrentRoll;
-        public override string PetsTooltip => PetTextsColors.LocVal("LightPetTooltips.ShadowOrb")
+        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.ShadowOrb")
 
                         .Replace("<mana>", Mana.BaseAndPerQuality())
                         .Replace("<shield>", ShieldingPower.BaseAndPerQuality())

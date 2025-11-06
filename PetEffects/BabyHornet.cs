@@ -94,7 +94,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BabyHornet>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.Nectar")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.Nectar")
                 .Replace("<moveSpd>", Math.Round(babyHornet.moveSpdIncr * 100, 2).ToString())
                 .Replace("<def>", babyHornet.defReduction.ToString())
                 .Replace("<dmgCrit>", Math.Round(babyHornet.dmgReduction * 100, 2).ToString())
@@ -104,6 +104,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<beeDmg>", babyHornet.beeDmg.ToString())
                 .Replace("<beeKb>", babyHornet.beeKb.ToString())
                 .Replace("<beeCd>", Math.Round(babyHornet.beeCooldown / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.Nectar");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.Nectar");
     }
 }

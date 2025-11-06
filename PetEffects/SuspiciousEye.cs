@@ -33,7 +33,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => phaseCd;
         public override int PetStackCurrent => ragePoints;
         public override int PetStackMax => 0;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.EyeOfCthulhuPetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.EyeOfCthulhuPetItemStack");
         public override void ExtraPreUpdate()
         {
             if (eocTimer >= -1)
@@ -76,7 +76,7 @@ namespace PetsOverhaul.PetEffects
                     Gore.NewGore(GlobalPet.GetSource_Pet(EntitySourcePetIDs.PetMisc), Player.Center, Main.rand.NextVector2Circular(2f, 2f), 9, 0.5f);
                     PopupText.NewText(new AdvancedPopupRequest() with
                     {
-                        Text = PetTextsColors.LocVal("PetItemTooltips.EocEnrage"),
+                        Text = PetUtils.LocVal("PetItemTooltips.EocEnrage"),
                         DurationInFrames = 150,
                         Velocity = new Vector2(0, -10),
                         Color = Color.DarkRed
@@ -108,7 +108,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     PopupText.NewText(new AdvancedPopupRequest() with
                     {
-                        Text = PetTextsColors.LocVal("PetItemTooltips.EocCalm"),
+                        Text = PetUtils.LocVal("PetItemTooltips.EocCalm"),
                         DurationInFrames = 150,
                         Velocity = new Vector2(0, -10),
                         Color = Color.OrangeRed
@@ -148,8 +148,8 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<SuspiciousEye>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.EyeOfCthulhuPetItem")
-                .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.EyeOfCthulhuPetItem")
+                .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
                 .Replace("<forcedEnrageMult>", Math.Round(suspiciousEye.forcedEnrageShield * 100, 2).ToString())
                 .Replace("<shieldDuration>", Math.Round(suspiciousEye.shieldTime / 60f, 2).ToString())
                 .Replace("<frameReduction>", suspiciousEye.dashFrameReduce.ToString())
@@ -161,6 +161,6 @@ namespace PetsOverhaul.PetEffects
                 .Replace("<defToCrit>", Math.Round(suspiciousEye.critMult * 100, 2).ToString())
                 .Replace("<enrageLength>", Math.Round(suspiciousEye.phaseTime / 60f, 2).ToString())
                 .Replace("<enrageCd>", Math.Round(suspiciousEye.phaseCd / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.EyeOfCthulhuPetItem").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.EyeOfCthulhuPetItem").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }

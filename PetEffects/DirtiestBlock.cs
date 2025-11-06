@@ -54,11 +54,11 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<DirtiestBlock>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DirtiestBlock")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DirtiestBlock")
                         .Replace("<any>", Math.Round(dirtiestBlock.everythingCoin / 100f, 2).ToString())
                         .Replace("<soil>", Math.Round(dirtiestBlock.soilCoin / 100f, 2).ToString())
-                        .Replace("<soilItems>", PetTextsColors.ItemsToTooltipImages(DirtiestBlock.CommonBlock, 12))
+                        .Replace("<soilItems>", PetUtils.ItemsToTooltipImages(DirtiestBlock.CommonBlock, 12))
                         .Replace("<dirt>", Math.Round(dirtiestBlock.dirtCoin / 100f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DirtiestBlock");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DirtiestBlock");
     }
 }

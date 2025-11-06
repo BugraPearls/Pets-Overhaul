@@ -60,14 +60,14 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<CursedSapling>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.CursedSapling")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.CursedSapling")
                         .Replace("<minionSlot>", cursedSapling.maxMinion.ToString())
                         .Replace("<dmg>", Math.Round(cursedSapling.pumpkinWeaponDmg * 100, 2).ToString())
-                        .Replace("<weapons>", PetTextsColors.ItemsToTooltipImages(CursedSapling.PumpkinMoonWeapons))
+                        .Replace("<weapons>", PetUtils.ItemsToTooltipImages(CursedSapling.PumpkinMoonWeapons))
                         .Replace("<ravenDmg>", Math.Round(cursedSapling.ravenDmg * 100, 2).ToString())
                         .Replace("<whipRange>", Math.Round(cursedSapling.whipRange * 100, 2).ToString())
                         .Replace("<whipSpeed>", Math.Round(cursedSapling.whipSpeed * 100, 2).ToString())
                         .Replace("<darkHarvestMult>", cursedSapling.darkHarvestMult.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.CursedSapling");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.CursedSapling");
     }
 }

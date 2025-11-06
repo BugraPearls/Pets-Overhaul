@@ -50,10 +50,10 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Spiffo>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SpiffoPlush")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.SpiffoPlush")
                         .Replace("<ammoReserve>", spiffo.ammoReserveChance.ToString())
                         .Replace("<armorPen>", spiffo.zombieArmorPen.ToString())
                         .Replace("<penChance>", spiffo.penetrateChance.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SpiffoPlush");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.SpiffoPlush");
     }
 }

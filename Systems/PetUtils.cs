@@ -10,9 +10,9 @@ namespace PetsOverhaul.Systems
 {
 
     /// <summary>
-    /// <see langword="class"/> that contains many useful <see langword="method"/>'s for better tooltip and string usage, alongside including colors used by Pets Overhaul.
+    /// <see langword="class"/> that contains many useful utilizable methods and fields that will assist with Pet effects development.
     /// </summary>
-    public class PetTextsColors
+    public class PetUtils
     {
         /// <summary>
         /// Shortened and easier form of PetTextsColors.LocVal("<paramref name="localizationKeyValue"/>") to retrieve Pets Overhaul's localization values.

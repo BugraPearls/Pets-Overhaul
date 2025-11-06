@@ -33,7 +33,7 @@ namespace PetsOverhaul.Items
                         case "Tooltip2":
                             double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
                             line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + "%")
-                                .Replace("<hastePosiOrNega>", (currentHaste >= 0 ? PetTextsColors.LocVal("Misc.Faster") : PetTextsColors.LocVal("Misc.Slower")));
+                                .Replace("<hastePosiOrNega>", (currentHaste >= 0 ? PetUtils.LocVal("Misc.Faster") : PetUtils.LocVal("Misc.Slower")));
                             break;
                         case "Tooltip3":
                             line.Text = line.Text.Replace("<damage>", pet.petDirectDamageMultiplier.ToString());
@@ -91,7 +91,7 @@ namespace PetsOverhaul.Items
                                 items.Add(ModContent.ItemType<LihzahrdWrench>());
                             if (GlobalPet.pumpkingConsumed)
                                 items.Add(ModContent.ItemType<PumpkingsHead>());
-                            line.Text = line.Text.Replace("<items>", PetTextsColors.ItemsToTooltipImages(items));
+                            line.Text = line.Text.Replace("<items>", PetUtils.ItemsToTooltipImages(items));
                             break;
                         default:
                             break;

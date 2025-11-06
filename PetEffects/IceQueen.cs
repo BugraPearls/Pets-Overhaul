@@ -137,7 +137,7 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<IceQueen>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.IceQueenPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.IceQueenPetItem")
                         .Replace("<frozenTombTime>", Math.Round(iceQueen.tombTime / 60f, 2).ToString())
                         .Replace("<range>", Math.Round(iceQueen.queenRange / 16f, 2).ToString())
                         .Replace("<slowAmount>", Math.Round(iceQueen.slowAmount * 100, 2).ToString())
@@ -147,6 +147,6 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<baseDmg>", iceQueen.freezeDamage.ToString())
                         .Replace("<postTombImmunity>", Math.Round(iceQueen.immuneTime / 60f, 2).ToString())
                         .Replace("<tombCooldown>", Math.Round(iceQueen.cooldown / 3600f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.IceQueenPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.IceQueenPetItem");
     }
 }

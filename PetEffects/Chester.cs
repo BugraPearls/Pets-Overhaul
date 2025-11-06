@@ -48,10 +48,10 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Chester>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.ChesterPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.ChesterPetItem")
                 .Replace("<pickupRange>", Math.Round(chester.suckingUpRange / 16f, 2).ToString())
                 .Replace("<placementRange>", chester.placementRange.ToString())
                 .Replace("<chestDef>", chester.chestOpenDef.ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.ChesterPetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ChesterPetItem");
     }
 }

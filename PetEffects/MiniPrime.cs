@@ -27,7 +27,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => shieldRecovery;
         public override int PetStackCurrent => howManyShieldsAvailable;
         public override int PetStackMax => 5;
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.SkeletronPrimePetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.SkeletronPrimePetItemStack");
         public override void ExtraPreUpdate()
         {
             shieldedStatBoostActive = false;
@@ -114,13 +114,13 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<MiniPrime>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.SkeletronPrimePetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.SkeletronPrimePetItem")
                         .Replace("<shieldMaxHealthAmount>", Math.Round(miniPrime.shieldMult * 100, 2).ToString())
                         .Replace("<shieldCooldown>", Math.Round(miniPrime.shieldRecovery / 300f, 2).ToString())
                         .Replace("<dmg>", Math.Round(miniPrime.dmgIncrease * 100, 2).ToString())
                         .Replace("<crit>", miniPrime.critIncrease.ToString())
                         .Replace("<def>", miniPrime.defIncrease.ToString())
                         .Replace("<shieldLifetime>", Math.Round(miniPrime.shieldTime / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.SkeletronPrimePetItem");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.SkeletronPrimePetItem");
     }
 }

@@ -45,7 +45,7 @@ namespace PetsOverhaul.TownPets
                 return;
             }
             buffName = DisplayName.Value.Replace("<Name>", GlobalPet.LastTownPet);
-            tip = BuffTooltip + "\n" + PetTextsColors.LocVal("Misc.TownPetBuffTip");
+            tip = BuffTooltip + "\n" + PetUtils.LocVal("Misc.TownPetBuffTip");
             rare = 0;
         }
     }

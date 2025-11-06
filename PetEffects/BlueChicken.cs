@@ -195,12 +195,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<BlueChicken>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.BlueEgg")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BlueEgg")
                 .Replace("<plantChance>", blueChicken.plantChance.ToString())
                 .Replace("<rarePlantChance>", blueChicken.rarePlantChance.ToString())
                 .Replace("<choppableChance>", blueChicken.treeChance.ToString())
                 .Replace("<eggMinute>", (blueChicken.blueEggTimer / 3600).ToString())
                 .Replace("<egg>", ModContent.ItemType<Egg>().ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.BlueEgg");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BlueEgg");
     }
 }

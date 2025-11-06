@@ -60,7 +60,7 @@ namespace PetsOverhaul.Items
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            tooltips.Insert(2, new(Mod, "UseMana", PetTextsColors.LocVal("Items.GlommersGoop.Mana")));
+            tooltips.Insert(2, new(Mod, "UseMana", PetUtils.LocVal("Items.GlommersGoop.Mana")));
         }
     }
 }

@@ -96,12 +96,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<Hoardagron>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DD2PetDragon")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DD2PetDragon")
                         .Replace("<arrowVelo>", hoardagron.arrowSpd.ToString())
                         .Replace("<arrowPierce>", hoardagron.arrowPen.ToString())
                         .Replace("<bulletVelo>", hoardagron.bulletSpd.ToString())
                         .Replace("<threshold>", Math.Round(hoardagron.specialThreshold * 100, 2).ToString())
                         .Replace("<bossThreshold>", Math.Round(hoardagron.specialBossThreshold * 100, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DD2PetDragon");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DD2PetDragon");
     }
 }

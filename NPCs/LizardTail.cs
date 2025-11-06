@@ -45,7 +45,7 @@ namespace PetsOverhaul.NPCs
         {
             bestiaryEntry.AddTags(
                 BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheTemple,
-                new FlavorTextBestiaryInfoElement(PetTextsColors.LocVal("NPCs.LizardTailBestiaryEntry")));
+                new FlavorTextBestiaryInfoElement(PetUtils.LocVal("NPCs.LizardTailBestiaryEntry")));
         }
         public override void FindFrame(int frameHeight)
         {

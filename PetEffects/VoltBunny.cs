@@ -50,12 +50,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<VoltBunny>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.LightningCarrot")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.LightningCarrot")
                        .Replace("<flatSpd>", Math.Round(voltBunny.movespdFlat * 100, 2).ToString())
                        .Replace("<multSpd>", voltBunny.movespdMult.ToString())
                        .Replace("<spdToDmg>", Math.Round(voltBunny.movespdToDmg * 100, 2).ToString())
                        .Replace("<staticAmount>", Math.Round(voltBunny.staticParalysis * 100, 2).ToString())
                        .Replace("<staticTime>", Math.Round(voltBunny.staticLength / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.LightningCarrot");
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.LightningCarrot");
     }
 }

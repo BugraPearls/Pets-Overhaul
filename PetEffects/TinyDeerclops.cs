@@ -42,7 +42,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override int PetStackCurrent => CurrentTotalDmgStored;
         public override int PetStackMax => (int)(Player.statLifeMax2 * maxHealthPerc);
-        public override string PetStackText => PetTextsColors.LocVal("PetItemTooltips.DeerclopsPetItemStack");
+        public override string PetStackText => PetUtils.LocVal("PetItemTooltips.DeerclopsPetItemStack");
         public override PetClasses PetClassPrimary => PetClasses.Defensive;
         public override PetClasses PetClassSecondary => PetClasses.Melee;
         public override int PetAbilityCooldown => cooldown;
@@ -241,12 +241,12 @@ namespace PetsOverhaul.PetEffects
                     return ModContent.GetInstance<TinyDeerclops>();
             }
         }
-        public override string PetsTooltip => PetTextsColors.LocVal("PetItemTooltips.DeerclopsPetItem")
+        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.DeerclopsPetItem")
                             .Replace("<dmgReduce>", Math.Round(tinyDeerclops.damageReduction * 100, 2).ToString())
                             .Replace("<reduceRadius>", Math.Round(tinyDeerclops.radius / 16f, 2).ToString())
                             .Replace("<storeDuration>", Math.Round(tinyDeerclops.storeDuration / 60f, 2).ToString())
                             .Replace("<maxStore>", Math.Round(tinyDeerclops.maxHealthPerc * 100, 2).ToString())
-                            .Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility))
+                            .Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility))
                             .Replace("<shieldMult>", Math.Round(tinyDeerclops.shieldMult * 100, 2).ToString())
                             .Replace("<shieldDuration>", Math.Round(tinyDeerclops.shieldDuration / 60f, 2).ToString())
                             .Replace("<abilityRadius>", Math.Round(tinyDeerclops.abilityRadius / 16f, 2).ToString())
@@ -255,6 +255,6 @@ namespace PetsOverhaul.PetEffects
                             .Replace("<slow>", Math.Round(tinyDeerclops.slowAmount * 100, 2).ToString())
                             .Replace("<slowDuration>", Math.Round(tinyDeerclops.slowDuration / 60f, 2).ToString())
                             .Replace("<cooldown>", Math.Round(tinyDeerclops.cooldown / 60f, 2).ToString());
-        public override string SimpleTooltip => PetTextsColors.LocVal("SimpleTooltips.DeerclopsPetItem").Replace("<keybind>", PetTextsColors.KeybindText(PetKeybinds.UsePetAbility));
+        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.DeerclopsPetItem").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }
