@@ -25,7 +25,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                PetUtils.CircularDustEffect(Player.Center, DustID.Torch, bernieRange, 100);
+                PetUtils.CircularDustEffect(Player.Center, DustID.Torch, bernieRange);
                 Player.buffImmune[BuffID.Burning] = true;
                 Player.buffImmune[BuffID.OnFire] = true;
                 Player.buffImmune[BuffID.OnFire3] = true;

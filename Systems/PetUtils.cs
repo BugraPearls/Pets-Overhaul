@@ -89,10 +89,15 @@ namespace PetsOverhaul.Systems
             return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type);
         }
         /// <summary>
-        /// Creates a Circle around the given Center with dust ID. dustAmount is usually recommended to be around radius / 10.
+        /// Creates a Circle of dusts around the given Center with the Dust ID.
         /// </summary>
-        public static void CircularDustEffect(Vector2 Center, int dustID, int radius, int dustAmount, float scale = 1f)
+        /// <param name="dustAmount">Keep it at 0 or lower than 0 to default it to be radius divided by 10.</param>
+        public static void CircularDustEffect(Vector2 Center, int dustID, int radius, int dustAmount = 0, float scale = 1f)
         {
+            if (dustAmount <= 0)
+            {
+                dustAmount = radius / 10;
+            }
             float actDustAmount = dustAmount;
             actDustAmount *= ModContent.GetInstance<PetPersonalization>().CircularDustAmount switch
             {

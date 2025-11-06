@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
 
             if (PetIsEquipped())
             {
-                PetUtils.CircularDustEffect(Player.Center, DustID.ShimmerTorch, glommerSanityRange, 100);
+                PetUtils.CircularDustEffect(Player.Center, DustID.ShimmerTorch, glommerSanityRange);
                 foreach (var player in Main.ActivePlayers)
                 {
                     if (Player.Distance(player.Center) < glommerSanityRange)
