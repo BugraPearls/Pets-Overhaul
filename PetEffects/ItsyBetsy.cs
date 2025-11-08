@@ -20,18 +20,18 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassSecondary => PetClasses.Supportive;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (target.GetGlobalNPC<NPCGlobalPet>().curseCounter > maxStacks)
+            if (target.GetGlobalNPC<PetGlobalNPC>().curseCounter > maxStacks)
             {
-                target.GetGlobalNPC<NPCGlobalPet>().curseCounter = maxStacks;
+                target.GetGlobalNPC<PetGlobalNPC>().curseCounter = maxStacks;
             }
 
             if (target.HasBuff(ModContent.BuffType<QueensDamnation>()))
             {
-                modifiers.Defense *= 1f - defReduction * target.GetGlobalNPC<NPCGlobalPet>().curseCounter;
+                modifiers.Defense *= 1f - defReduction * target.GetGlobalNPC<PetGlobalNPC>().curseCounter;
             }
             else
             {
-                target.GetGlobalNPC<NPCGlobalPet>().curseCounter = 0;
+                target.GetGlobalNPC<PetGlobalNPC>().curseCounter = 0;
             }
         }
         public override void Load()
@@ -44,7 +44,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void OnEnemyKill(NPC npc, Player player)
         {
-            if (PetUtils.LifestealCheck(npc) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet) && npcPet.curseCounter > 0 && player.TryGetModPlayer(out ItsyBetsy betsy))
+            if (PetUtils.LifestealCheck(npc) && npc.TryGetGlobalNPC(out PetGlobalNPC npcPet) && npcPet.curseCounter > 0 && player.TryGetModPlayer(out ItsyBetsy betsy))
             {
                 betsy.Pet.PetRecovery(player.statLifeMax2 - player.statLife, betsy.missingHpRecover * npcPet.curseCounter * (1f + (npcPet.curseCounter >= betsy.maxStacks ? betsy.maxStackBonusRecover : 0)));
             }
@@ -54,7 +54,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && hit.DamageType == DamageClass.Ranged)
             {
                 target.AddBuff(ModContent.BuffType<QueensDamnation>(), debuffTime);
-                target.GetGlobalNPC<NPCGlobalPet>().curseCounter++;
+                target.GetGlobalNPC<PetGlobalNPC>().curseCounter++;
             }
         }
     }

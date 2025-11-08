@@ -15,7 +15,7 @@ namespace PetsOverhaul.Projectiles
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (target.TryGetGlobalNPC(out NPCGlobalPet pet))
+            if (target.TryGetGlobalNPC(out PetGlobalNPC pet))
             {
                 pet.shuricornMark = SugarGlider.shuricornDuration;
             }

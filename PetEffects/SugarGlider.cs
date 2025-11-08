@@ -49,7 +49,7 @@ namespace PetsOverhaul.PetEffects
             {
                 foreach (var npc in Main.ActiveNPCs)
                 {
-                    if (npc.TryGetGlobalNPC(out NPCGlobalPet enemy) && enemy.shuricornMark > 0 && WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
+                    if (npc.TryGetGlobalNPC(out PetGlobalNPC enemy) && enemy.shuricornMark > 0 && WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
                     {
                         Player.SetImmuneTimeForAllTypes(15);
                         Player.Center = npc.Center;

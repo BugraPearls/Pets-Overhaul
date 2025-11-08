@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 namespace PetsOverhaul.Systems
 {
     /// <summary>
-    /// Slow thats applied to an NPC, by a Pet. Use <see cref="NPCGlobalPet.AddSlow(PetSlow, NPC)"/> to add Slow to a NPC.
+    /// Slow thats applied to an NPC, by a Pet. Use <see cref="PetGlobalNPC.AddSlow(PetSlow, NPC)"/> to add Slow to a NPC.
     /// </summary>
     /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
     /// <param name="slowTime">Time for slow to be applied in frames.</param>
@@ -31,7 +31,7 @@ namespace PetsOverhaul.Systems
     /// <summary>
     /// GlobalNPC class that carries out Slow Mechanics of Pets. <see cref="AddSlow(PetSlow, NPC)"/> can be used to add PetSlow to passed NPC instance.
     /// </summary>
-    public sealed class NPCGlobalPet : GlobalNPC
+    public sealed class PetGlobalNPC : GlobalNPC
     {
         /// <summary>
         /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
@@ -44,7 +44,7 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static Vector2 RetrievePetSlowedVelocity(NPC npc)
         {
-            if (npc.TryGetGlobalNPC(out NPCGlobalPet pet))
+            if (npc.TryGetGlobalNPC(out PetGlobalNPC pet))
             {
                 float slow = pet.currentTotalSlow;
                 if (slow < -0.9f)
@@ -221,7 +221,7 @@ namespace PetsOverhaul.Systems
 
                     c.Remove(); //velocity field spesifically is removed. I tried using EmitPop(), but that causes issues & does not work.
 
-                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
+                    c.Emit(OpCodes.Call, typeof(PetGlobalNPC).GetMethod("RetrievePetSlowedVelocity")); //we replace the velocity field with our custom Method on NpcPet that returns slowed down Velocity. Ldarg is the npc parameter.
                     //Ldarg still stays before this call, as we ONLY REMOVE the velocity field, but not the Ldarg, so loaded argument of npc instance is used for our method.
                 }
             }
@@ -247,7 +247,7 @@ namespace PetsOverhaul.Systems
 
                     c.Remove();
 
-                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity"));
+                    c.Emit(OpCodes.Call, typeof(PetGlobalNPC).GetMethod("RetrievePetSlowedVelocity"));
                 }
             }
             catch (Exception)
@@ -271,7 +271,7 @@ namespace PetsOverhaul.Systems
 
                     c.Remove();
 
-                    c.Emit(OpCodes.Call, typeof(NPCGlobalPet).GetMethod("RetrievePetSlowedVelocity"));
+                    c.Emit(OpCodes.Call, typeof(PetGlobalNPC).GetMethod("RetrievePetSlowedVelocity"));
                 }
             }
             catch (Exception)
@@ -354,7 +354,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         internal static void AddToSlowList(PetSlow slowToBeAdded, NPC npc)
         {
-            if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out NPCGlobalPet npcPet))
+            if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out PetGlobalNPC npcPet))
             {
                 if (npc.boss && PetIDs.NonBossTrueBosses.Contains(npc.type))
                 {

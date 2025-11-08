@@ -32,7 +32,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && info.DamageSource.TryGetCausingEntity(out Entity entity) && entity is NPC npc)
             {
-                NPCGlobalPet.AddSlow(new PetSlow(staticParalysis, staticLength, PetSlowIDs.VoltBunny), npc);
+                PetGlobalNPC.AddSlow(new PetSlow(staticParalysis, staticLength, PetSlowIDs.VoltBunny), npc);
             }
         }
     }

@@ -19,7 +19,7 @@ namespace PetsOverhaul.Buffs
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            if (npc.TryGetGlobalNPC(out NPCGlobalPet npcAffected))
+            if (npc.TryGetGlobalNPC(out PetGlobalNPC npcAffected))
             {
                 stacks = npcAffected.curseCounter;
             }

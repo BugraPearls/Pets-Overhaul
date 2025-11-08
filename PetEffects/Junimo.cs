@@ -740,7 +740,7 @@ namespace PetsOverhaul.PetEffects
         public override bool InstancePerEntity => true;
         public override void OnKill(NPC npc)
         {
-            if (npc.TryGetGlobalNPC(out NPCGlobalPet npcPet) && npcPet.seaCreature && npc.friendly == false)
+            if (npc.TryGetGlobalNPC(out PetGlobalNPC npcPet) && npcPet.seaCreature && npc.friendly == false)
             {
                 int playerId = npcPet.playerThatFishedUp;
                 if (Main.netMode != NetmodeID.SinglePlayer)

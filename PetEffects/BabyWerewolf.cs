@@ -30,23 +30,23 @@ namespace PetsOverhaul.PetEffects
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (target.GetGlobalNPC<NPCGlobalPet>().maulCounter > maxStacks)
+            if (target.GetGlobalNPC<PetGlobalNPC>().maulCounter > maxStacks)
             {
-                target.GetGlobalNPC<NPCGlobalPet>().maulCounter = maxStacks;
+                target.GetGlobalNPC<PetGlobalNPC>().maulCounter = maxStacks;
             }
 
             if (target.HasBuff(ModContent.BuffType<Mauled>()))
             {
-                modifiers.FinalDamage *= target.GetGlobalNPC<NPCGlobalPet>().maulCounter * 0.02f + 1;
+                modifiers.FinalDamage *= target.GetGlobalNPC<PetGlobalNPC>().maulCounter * 0.02f + 1;
             }
             else
             {
-                target.GetGlobalNPC<NPCGlobalPet>().maulCounter = 0;
+                target.GetGlobalNPC<PetGlobalNPC>().maulCounter = 0;
             }
 
             if (PetIsEquipped())
             {
-                modifiers.CritDamage -= critDmgReduction - target.GetGlobalNPC<NPCGlobalPet>().maulCounter * maulCritDmgIncrease;
+                modifiers.CritDamage -= critDmgReduction - target.GetGlobalNPC<PetGlobalNPC>().maulCounter * maulCritDmgIncrease;
             }
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
@@ -54,7 +54,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && hit.Crit)
             {
                 target.AddBuff(ModContent.BuffType<Mauled>(), debuffLength);
-                target.GetGlobalNPC<NPCGlobalPet>().maulCounter++;
+                target.GetGlobalNPC<PetGlobalNPC>().maulCounter++;
             }
         }
         public override void ModifyWeaponCrit(Item item, ref float crit)

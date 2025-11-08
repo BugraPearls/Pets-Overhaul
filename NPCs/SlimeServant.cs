@@ -60,7 +60,7 @@ namespace PetsOverhaul.NPCs
             {
                 if (NPC.Distance(npc.Center) < radius && npc.friendly == false)
                 {
-                    NPCGlobalPet.AddSlow(new PetSlow(slow, slowDuration, PetSlowIDs.PrinceSlime), npc);
+                    PetGlobalNPC.AddSlow(new PetSlow(slow, slowDuration, PetSlowIDs.PrinceSlime), npc);
                     npc.AddBuff(BuffID.Slimed, slimyDuration);
                 }
             }

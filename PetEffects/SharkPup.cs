@@ -19,14 +19,14 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassSecondary => PetClasses.Utility;
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            if (PetIsEquipped() && npc.GetGlobalNPC<NPCGlobalPet>().seaCreature)
+            if (PetIsEquipped() && npc.GetGlobalNPC<PetGlobalNPC>().seaCreature)
             {
                 modifiers.FinalDamage *= seaCreatureResist;
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (PetIsEquipped() && target.GetGlobalNPC<NPCGlobalPet>().seaCreature)
+            if (PetIsEquipped() && target.GetGlobalNPC<PetGlobalNPC>().seaCreature)
             {
                 modifiers.FinalDamage *= seaCreatureDamage;
             }
@@ -52,7 +52,7 @@ namespace PetsOverhaul.PetEffects
         public bool seaCreatureProj = false;
         public override void OnSpawn(Projectile projectile, IEntitySource source)
         {
-            if (source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.GetGlobalNPC<NPCGlobalPet>().seaCreature)
+            if (source is EntitySource_Parent parent && parent.Entity is NPC npc && npc.GetGlobalNPC<PetGlobalNPC>().seaCreature)
             {
                 seaCreatureProj = true;
             }
