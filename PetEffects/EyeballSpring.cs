@@ -45,7 +45,7 @@ namespace PetsOverhaul.PetEffects
         public override bool InstancePerEntity => true;
         public override void VerticalWingSpeeds(Item item, Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
-            if (player.TryGetModPlayer(out EyeballSpring eyeballs) && player.GetModPlayer<PetModPlayer>().PetInUseWithSwapCd(ItemID.EyeSpring))
+            if (player.TryGetModPlayer(out EyeballSpring eyeballs) && player.PetPlayer().PetInUseWithSwapCd(ItemID.EyeSpring))
             {
                 maxAscentMultiplier *= eyeballs.ascentPenaltyMult;
             }

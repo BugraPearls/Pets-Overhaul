@@ -20,9 +20,9 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
+            PetModPlayer PickerPet = player.PetPlayer();
             DirtiestBlock dirt = player.GetModPlayer<DirtiestBlock>();
-            if (PickerPet.PickupChecks(item, dirt.PetItemID, out PetGlobalItem itemChck) && itemChck.blockNotByPlayer == true)
+            if (player.PetPlayer().PickupChecks(item, dirt.PetItemID, out PetGlobalItem itemChck) && itemChck.blockNotByPlayer == true)
             {
                 if (item.type == ItemID.DirtBlock)
                 {

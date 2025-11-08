@@ -49,7 +49,7 @@ namespace PetsOverhaul.PetEffects
 
         public override void HorizontalWingSpeeds(Item item, Player player, ref float speed, ref float acceleration)
         {
-            if (player.TryGetModPlayer(out AlienSkater alienSkater) && player.GetModPlayer<PetModPlayer>().PetInUseWithSwapCd(ItemID.MartianPetItem))
+            if (player.TryGetModPlayer(out AlienSkater alienSkater) && player.PetPlayer().PetInUseWithSwapCd(ItemID.MartianPetItem))
             {
                 speed *= alienSkater.speedMult;
                 acceleration *= alienSkater.accMult;

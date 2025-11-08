@@ -473,7 +473,7 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
+            PetModPlayer PickerPet = player.PetPlayer();
             Junimo juni = player.GetModPlayer<Junimo>();
             if (PickerPet.PickupChecks(item, juni.PetItemID, out PetGlobalItem itemChck))
             {

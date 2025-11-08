@@ -339,7 +339,7 @@ namespace PetsOverhaul.Systems
                 player = whoAmI;
             }
 
-            Main.player[player].GetModPlayer<PetModPlayer>().ShieldFullBlockEffect(damageAmount);
+            Main.player[player].PetPlayer().ShieldFullBlockEffect(damageAmount);
 
             if (Main.netMode == NetmodeID.Server)
             {

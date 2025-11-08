@@ -139,9 +139,8 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
             BlueChicken chick = player.GetModPlayer<BlueChicken>();
-            if (PickerPet.PickupChecks(item, chick.PetItemID, out PetGlobalItem itemChck))
+            if (player.PetPlayer().PickupChecks(item, chick.PetItemID, out PetGlobalItem itemChck))
             {
                 if (itemChck.herbBoost)
                 {

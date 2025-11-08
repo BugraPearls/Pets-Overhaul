@@ -29,7 +29,7 @@ namespace PetsOverhaul.PetEffects
     {
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            if (player.GetModPlayer<PetModPlayer>().PetInUse(ItemID.ChesterPetItem) && grabRange > 0)
+            if (player.PetPlayer().PetInUse(ItemID.ChesterPetItem) && grabRange > 0)
             {
                 grabRange += player.GetModPlayer<Chester>().suckingUpRange;
             }

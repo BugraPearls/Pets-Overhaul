@@ -99,7 +99,7 @@ namespace PetsOverhaul.PetEffects
         public override bool InstancePerEntity => true;
         public override void HorizontalWingSpeeds(Item item, Player player, ref float speed, ref float acceleration)
         {
-            if (player.GetModPlayer<PetModPlayer>().PetInUseWithSwapCd(ItemID.DD2OgrePetItem))
+            if (player.PetPlayer().PetInUseWithSwapCd(ItemID.DD2OgrePetItem))
             {
                 speed *= player.GetModPlayer<BabyOgre>().horizontalMult;
                 acceleration *= player.GetModPlayer<BabyOgre>().horizontalMult;
@@ -107,7 +107,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void VerticalWingSpeeds(Item item, Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
-            if (player.GetModPlayer<PetModPlayer>().PetInUseWithSwapCd(ItemID.DD2OgrePetItem))
+            if (player.PetPlayer().PetInUseWithSwapCd(ItemID.DD2OgrePetItem))
             {
                 maxAscentMultiplier *= player.GetModPlayer<BabyOgre>().verticalMult;
                 maxCanAscendMultiplier *= player.GetModPlayer<BabyOgre>().verticalMult;

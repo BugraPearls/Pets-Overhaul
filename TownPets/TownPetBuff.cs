@@ -36,7 +36,7 @@ namespace PetsOverhaul.TownPets
         public virtual string BuffTooltip => Description.Value;
         public sealed override void Update(Player player, ref int buffIndex)
         {
-            UpdateEffects(player, player.GetModPlayer<PetModPlayer>(), ref buffIndex);
+            UpdateEffects(player, player.PetPlayer(), ref buffIndex);
         }
         public sealed override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {

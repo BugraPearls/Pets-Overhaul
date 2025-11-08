@@ -150,7 +150,7 @@ namespace PetsOverhaul.NPCs
         {
             foreach (var item in Main.ActivePlayers)
             {
-                if (item.GetModPlayer<PetModPlayer>().petObtained)
+                if (item.PetPlayer().petObtained)
                     return true;
             }
             return false;

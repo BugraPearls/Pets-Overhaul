@@ -26,7 +26,7 @@ namespace PetsOverhaul.Systems
 
         public static void PreOnPickup(Item item, Player player)
         {
-            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
+            PetModPlayer PickerPet = player.PetPlayer();
             if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
             {
                 if (fortune.globalDrop)

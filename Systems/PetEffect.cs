@@ -33,7 +33,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Accesses the GlobalPet class, which has useful methods and fields for Pet implementation.
         /// </summary>
-        public PetModPlayer Pet => Player.GetModPlayer<PetModPlayer>();
+        public PetModPlayer Pet => Player.PetPlayer();
         /// <summary>
         /// Primary Class of Pet that will appear on its tooltip with its color.
         /// </summary>

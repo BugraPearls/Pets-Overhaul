@@ -35,9 +35,8 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            PetModPlayer Pet = player.GetModPlayer<PetModPlayer>();
             BabyDinosaur dino = player.GetModPlayer<BabyDinosaur>();
-            if (Pet.PickupChecks(item, dino.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
+            if (player.PetPlayer().PickupChecks(item, dino.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
             {
                 AddItemsToPool();
                 if (PetModPlayer.ItemPool.Count > 0)

@@ -30,7 +30,7 @@ namespace PetsOverhaul.Systems
     }
     public abstract class LightPetEffect : ModPlayer
     {
-        public PetModPlayer Pet => Player.GetModPlayer<PetModPlayer>();
+        public PetModPlayer Pet => Player.PetPlayer();
         /// <summary>
         /// This field is to make this Light Pet appear on /pet light|lightpet|lightpets command(s).
         /// </summary>

@@ -24,7 +24,7 @@ namespace PetsOverhaul.PetEffects
         public override bool InstancePerEntity => true;
         public override bool ConsumeItem(Item item, Player player)
         {
-            PetModPlayer Pet = player.GetModPlayer<PetModPlayer>();
+            PetModPlayer Pet = player.PetPlayer();
             Pigman pig = player.GetModPlayer<Pigman>();
             if (pig.PetIsEquipped(false))
             {

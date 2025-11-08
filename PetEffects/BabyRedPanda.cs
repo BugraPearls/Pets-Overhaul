@@ -84,9 +84,8 @@ namespace PetsOverhaul.PetEffects
         }
         public static void PreOnPickup(Item item, Player player)
         {
-            PetModPlayer PickerPet = player.GetModPlayer<PetModPlayer>();
             BabyRedPanda panda = player.GetModPlayer<BabyRedPanda>();
-            if (PickerPet.PickupChecks(item, panda.PetItemID, out PetGlobalItem _) && item.type == ItemID.BambooBlock)
+            if (player.PetPlayer().PickupChecks(item, panda.PetItemID, out PetGlobalItem _) && item.type == ItemID.BambooBlock)
             {
                 for (int i = 0; i < PetUtils.Randomizer(panda.bambooChance * item.stack); i++)
                 {

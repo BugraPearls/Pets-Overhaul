@@ -33,7 +33,7 @@ namespace PetsOverhaul.Commands
                     switch (args[0].ToLower())
                     {
                         case "fortune" or "fortunestat" or "fortunestats":
-                            PetModPlayer Pet = caller.Player.GetModPlayer<PetModPlayer>();
+                            PetModPlayer Pet = caller.Player.PetPlayer();
                             caller.Reply(PetUtils.LocVal("Commands.FortuneInfo"), Color.Gray);
                             caller.Reply(PetUtils.LocVal("Commands.FortuneCurrent").Replace("<global>", Pet.globalFortune.ToString())
                                 .Replace("<mining>", Pet.miningFortune.ToString()).Replace("<fishing>", Pet.fishingFortune.ToString()).Replace("<harvesting>", Pet.harvestingFortune.ToString()));
