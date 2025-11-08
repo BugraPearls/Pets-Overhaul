@@ -155,7 +155,7 @@ namespace PetsOverhaul.PetEffects
                             }
                         }
                     }
-                    else if (PetGlobalItem.treeItem[item.type])
+                    else if (PetIDs.treeItem[item.type])
                     {
                         PoolTree();
                         if (PetModPlayer.ItemPool.Count > 0)

@@ -14,7 +14,7 @@ namespace PetsOverhaul.Systems
         #region Pet Food related
         public override void Drop(int i, int j, int type)
         {
-            if (PetGlobalItem.treeTile[type] && Main.rand.NextBool(50))
+            if (PetIDs.treeTile[type] && Main.rand.NextBool(50))
             {
                 Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
             }

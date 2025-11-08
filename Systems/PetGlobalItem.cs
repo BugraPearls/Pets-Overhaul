@@ -19,36 +19,8 @@ namespace PetsOverhaul.Systems
         /// 1000 is 10 exp.
         /// </summary>
         public const int MinimumExpForRarePlant = 1000;
-        #region Bool Sets
-        /// <summary>
-        /// Includes Gem tiles.
-        /// </summary>
-        public static bool[] gemTile = TileID.Sets.Factory.CreateBoolSet(false, TileID.Amethyst, TileID.Topaz, TileID.Sapphire, TileID.Emerald, TileID.Ruby, TileID.AmberStoneBlock, TileID.Diamond, TileID.ExposedGems, TileID.Crystals);
-        /// <summary>
-        /// Includes tiles that are extractable by an Extractinator and a few other stuff that aren't recognized as ores such as Obsidian and Luminite
-        /// </summary>
-        public static bool[] extractableAndOthers = TileID.Sets.Factory.CreateBoolSet(false, TileID.DesertFossil, TileID.Slush, TileID.Silt, TileID.Obsidian, TileID.LunarOre);
-        /// <summary>
-        /// Includes tiles that counts as trees.
-        /// </summary>
-        public static bool[] treeTile = TileID.Sets.Factory.CreateBoolSet(false, TileID.TreeAmber, TileID.TreeAmethyst, TileID.TreeAsh, TileID.TreeDiamond, TileID.TreeEmerald, TileID.TreeRuby, TileID.Trees, TileID.TreeSapphire, TileID.TreeTopaz, TileID.MushroomTrees, TileID.PalmTree, TileID.VanityTreeSakura, TileID.VanityTreeYellowWillow, TileID.Bamboo, TileID.Cactus);
 
-        /// <summary>
-        /// Contains items dropped by gemstone trees. Current only use is Caveling Gardener and checking for the Gemstone Tree
-        /// </summary>
-        public static bool[] gemstoneTreeItem = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.GemTreeAmberSeed, ItemID.GemTreeAmethystSeed, ItemID.GemTreeDiamondSeed, ItemID.GemTreeEmeraldSeed, ItemID.GemTreeRubySeed, ItemID.GemTreeSapphireSeed, ItemID.GemTreeTopazSeed, ItemID.Amethyst, ItemID.Topaz, ItemID.Sapphire, ItemID.Emerald, ItemID.Ruby, ItemID.Amber, ItemID.Diamond, ItemID.StoneBlock);
-        /// <summary>
-        /// Contains items dropped by trees. Only used by Blue Chicken.
-        /// </summary>
-        public static bool[] treeItem = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.Acorn, ItemID.BambooBlock, ItemID.Cactus, ItemID.Wood, ItemID.AshWood, ItemID.BorealWood, ItemID.PalmWood, ItemID.Ebonwood, ItemID.Shadewood, ItemID.RichMahogany, ItemID.Pearlwood, ItemID.SpookyWood);
-        /// <summary>
-        /// Contains forageable items on Ocean biomes that counts as herb item for Harvesting Pet purposes.
-        /// </summary>
-        public static bool[] seaPlantItem = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.Coral, ItemID.Seashell, ItemID.Starfish, ItemID.LightningWhelkShell, ItemID.TulipShell, ItemID.JunoniaShell);
-        /// <summary>
-        /// Contains plants that cannot be planted by using a Seed.
-        /// </summary>
-        public static bool[] plantsWithNoSeeds = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.Hay, ItemID.Mushroom, ItemID.GlowingMushroom, ItemID.VileMushroom, ItemID.ViciousMushroom, ItemID.GreenMushroom, ItemID.TealMushroom, ItemID.SkyBlueFlower, ItemID.YellowMarigold, ItemID.BlueBerries, ItemID.LimeKelp, ItemID.PinkPricklyPear, ItemID.OrangeBloodroot, ItemID.StrangePlant1, ItemID.StrangePlant2, ItemID.StrangePlant3, ItemID.StrangePlant4, ItemID.LifeFruit);
+        #region Bool Sets
         #endregion
 
         #region Item checks to determine which Pet benefits
@@ -103,7 +75,7 @@ namespace PetsOverhaul.Systems
 
                 if (PlayerPlacedBlockList.placedBlocksByPlayer.Contains(new Point16(brokenTile.TileCoords.X, brokenTile.TileCoords.Y)) == false)
                 {
-                    oreBoost = TileID.Sets.Ore[tileType] || gemTile[tileType] || extractableAndOthers[tileType] || PetIDs.MiningXpPerBlock.Exists(x => x.oreList.Contains(item.type));
+                    oreBoost = TileID.Sets.Ore[tileType] || PetIDs.gemTile[tileType] || PetIDs.extractableAndOthers[tileType] || PetIDs.MiningXpPerBlock.Exists(x => x.oreList.Contains(item.type));
                     blockNotByPlayer = true;
                 }
 
@@ -113,7 +85,7 @@ namespace PetsOverhaul.Systems
 
                 if (herbBoost)
                 {
-                    if (TileID.Sets.CountsAsGemTree[tileType] == false && gemstoneTreeItem[item.type] || treeTile[tileType] == false && treeItem[item.type] || blockNotByPlayer == false && seaPlantItem[item.type] || blockNotByPlayer == false && plantsWithNoSeeds[item.type]) //Excluding other plants if their certain condition is not met
+                    if (TileID.Sets.CountsAsGemTree[tileType] == false && PetIDs.gemstoneTreeItem[item.type] || PetIDs.treeTile[tileType] == false && PetIDs.treeItem[item.type] || blockNotByPlayer == false && PetIDs.seaPlantItem[item.type] || blockNotByPlayer == false && PetIDs.plantsWithNoSeeds[item.type]) //Excluding other plants if their certain condition is not met
                     {
                         herbBoost = false;
                     }
