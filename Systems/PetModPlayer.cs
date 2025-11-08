@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -137,6 +138,11 @@ namespace PetsOverhaul.Systems
         /// Name of last Town Pet you've received buffs from.
         /// </summary>
         public static string LastTownPet = string.Empty;
+
+        /// <summary>
+        /// whoAmI of Pet Tamer who opened their Light Pet combination menu. Menu closes if Player gets away from them or this value is negative.
+        /// </summary>
+        public int LastPetTamer = -1;
 
         /// <summary>
         /// Whether or not current switched tooltip is simplified or not.
@@ -659,6 +665,11 @@ namespace PetsOverhaul.Systems
                 {
                     SoundEngine.PlaySound(SoundID.MaxMana with { PitchVariance = 0.3f }, Player.Center);
                 }
+            }
+
+            if (Player.talkNPC == -1 || Player.talkNPC != LastPetTamer) //If currently not talking to an NPC, or, if current talked NPC is not Pet Tamer we've prompted to open Combination menu with (So if any other NPC is talked to while menu is open, it will close)
+            {
+                PetTamer.openLightCombineMenu = false;
             }
         }
         public override void PostUpdate()

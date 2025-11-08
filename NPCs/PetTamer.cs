@@ -212,6 +212,7 @@ namespace PetsOverhaul.NPCs
             }
             else
             {
+                Main.LocalPlayer.PetPlayer().LastPetTamer = NPC.whoAmI;
                 Main.npcChatText = "";
                 Main.playerInventory = true;
                 openLightCombineMenu = true;
