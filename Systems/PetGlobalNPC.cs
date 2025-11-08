@@ -22,7 +22,7 @@ namespace PetsOverhaul.Systems
     /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
     /// <param name="slowTime">Time for slow to be applied in frames.</param>
     /// <param name="slowId">Slows with the ID of -1 (or lower) are independent. If another slow with ID higher than 0 meets itself, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once.</param>
-    public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowIDs.IndependentSlow)
+    public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowIDs.Any)
     {
         public float SlowAmount = slowAmount;
         public int SlowTime = slowTime;
@@ -302,15 +302,15 @@ namespace PetsOverhaul.Systems
                     {
                         currentTotalSlow += slow.SlowAmount;
 
-                        if (PetSlowIDs.ElectricBasedSlows.Exists(x => x == slow.SlowId))
+                        if (PetSlowIDs.Sets.ElectricBasedSlows[slow.SlowId])
                         {
                             electricSlow = true;
                         }
-                        if (PetSlowIDs.ColdBasedSlows.Exists(x => x == slow.SlowId))
+                        if (PetSlowIDs.Sets.ColdBasedSlows[slow.SlowId])
                         {
                             coldSlow = true;
                         }
-                        if (PetSlowIDs.SicknessBasedSlows.Exists(x => x == slow.SlowId))
+                        if (PetSlowIDs.Sets.SicknessBasedSlows[slow.SlowId])
                         {
                             sickSlow = true;
                         }

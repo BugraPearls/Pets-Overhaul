@@ -1,5 +1,8 @@
 ﻿using PetsOverhaul.Items;
+using ReLogic.Reflection;
 using System.Collections.Generic;
+using System.Net;
+using System.Reflection.Metadata;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -258,25 +261,30 @@ namespace PetsOverhaul.Systems
     /// <summary>
     /// Class that contains PetSlowID's, where same slow ID does not overlap with itself, and a slow with greater slow & better remaining time will override the obsolete one.
     /// </summary>
-    public static class PetSlowIDs
+    public class PetSlowIDs
     {
-        /// <summary>
-        /// This type of slows creates Electricity dusts on enemy.
-        /// </summary>
-        public static List<int> ElectricBasedSlows = [VoltBunny, PhantasmalLightning];
-        /// <summary>
-        /// This type of slows creates ice water dusts on enemy.
-        /// </summary>
-        public static List<int> ColdBasedSlows = [Grinch, Snowman, Deerclops, IceQueen, PhantasmalIce];
-        /// <summary>
-        /// This type of slows creates 'poisoned' dusts on enemy.
-        /// </summary>
-        public static List<int> SicknessBasedSlows = [PrincessSlime, PrinceSlime];
-        /// <summary>
-        /// Slows with ID lower than 0 won't be overriden by itself by any means and can have multiples of the same ID this way. This value defaults to be PetSlowIDs.ColdBasedSlows[Type] == true.
-        /// </summary>
-        public const int IndependentSlow = -1;
-        public const int Grinch = 0;
+        [ReinitializeDuringResizeArrays]
+        public static class Sets
+        {
+            public static SetFactory Factory = new SetFactory(SlowIDCount, "PetsOverhaul/PetSlowIDs", Search);
+
+            public static bool[] ElectricBasedSlows = Factory.CreateNamedSet("ElectricSlows")
+            .Description("Enemies with this type of slow will emit Electric dusts.")
+            .RegisterBoolSet(false, VoltBunny, PhantasmalLightning);
+
+            public static bool[] ColdBasedSlows = Factory.CreateNamedSet("ColdSlows")
+            .Description("Enemies with this type of slow will emit Icy dusts.")
+            .RegisterBoolSet(false, Any, Snowman, Deerclops, IceQueen, PhantasmalIce, Grinch);
+
+            public static bool[] SicknessBasedSlows = Factory.CreateNamedSet("SicknessSlows")
+            .Description("Enemies with this type of slow will emit poison dusts.")
+            .RegisterBoolSet(false, PrincessSlime, PrinceSlime);
+        }
+        internal static int SlowIDCount { get; set; } = 10; //This is the 'base' amount of ID's we have. It goes up from here as more Slow ID's gets added.
+
+        public static IdDictionary Search = IdDictionary.Create<PetSlowIDs,int>();
+
+        public const int Any = 0;
         public const int Snowman = 1;
         public const int PrincessSlime = 2;
         public const int Deerclops = 3;
@@ -285,5 +293,29 @@ namespace PetsOverhaul.Systems
         public const int PhantasmalIce = 6;
         public const int PhantasmalLightning = 7;
         public const int PrinceSlime = 8;
+        public const int Grinch = 9;
+    }
+    public class PetSlowIDLoaderSystem : ModSystem
+    {
+        //public override void Load()
+        //{
+        //    RegisterSlowID("PlaguebringerBab"); //This was a test, and works
+        //    RegisterSlowID("TrashmanTrashcan");
+        //}
+        /// <summary>
+        /// Add Pet Slow IDs through here! All needed to be done to register a Pet Slow into PetSlowIDs is to call this method in a Load(), and type out the name for given Slow ID.
+        /// </summary>
+        /// <param name="name">Name for registered Slow ID</param>
+        public static void RegisterSlowID(string name)
+        {
+            PetSlowIDs.Search.Add(name, PetSlowIDs.SlowIDCount);
+            PetSlowIDs.SlowIDCount++;
+        }
+
+        //public override void SetStaticDefaults()
+        //{
+        //    PetSlowIDs.Sets.SicknessBasedSlows[PetSlowIDs.Search.GetId("PlaguebringerBab")] = true; //This was a test, and works
+        //    PetSlowIDs.Sets.SicknessBasedSlows[PetSlowIDs.Search.GetId("TrashmanTrashcan")] = true;
+        //}
     }
 }
