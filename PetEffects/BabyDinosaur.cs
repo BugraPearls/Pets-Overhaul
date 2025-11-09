@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 
 namespace PetsOverhaul.PetEffects
 {
@@ -11,23 +12,28 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.AmberMosquito;
         public int chance = 175; // 17.5% because its with 1000
         public override PetClasses PetClassPrimary => PetClasses.Mining;
-        public static void AddItemsToPool()
+        public static int RandomizeItemDrop()
         {
-            PetModPlayer.ItemWeight(ItemID.TinOre, 10);
-            PetModPlayer.ItemWeight(ItemID.CopperOre, 10);
-            PetModPlayer.ItemWeight(ItemID.Amethyst, 9);
-            PetModPlayer.ItemWeight(ItemID.IronOre, 9);
-            PetModPlayer.ItemWeight(ItemID.LeadOre, 9);
-            PetModPlayer.ItemWeight(ItemID.Topaz, 8);
-            PetModPlayer.ItemWeight(ItemID.Sapphire, 8);
-            PetModPlayer.ItemWeight(ItemID.SilverOre, 8);
-            PetModPlayer.ItemWeight(ItemID.TungstenOre, 8);
-            PetModPlayer.ItemWeight(ItemID.GoldOre, 7);
-            PetModPlayer.ItemWeight(ItemID.PlatinumOre, 7);
-            PetModPlayer.ItemWeight(ItemID.Emerald, 7);
-            PetModPlayer.ItemWeight(ItemID.Ruby, 7);
-            PetModPlayer.ItemWeight(ItemID.Diamond, 6);
-            PetModPlayer.ItemWeight(ItemID.Amber, 6);
+            WeightedRandom<int> itemsToDrop = new();
+
+            itemsToDrop.Add(ItemID.TinOre, 10);
+            itemsToDrop.Add(ItemID.CopperOre, 10);
+            itemsToDrop.Add(ItemID.Amethyst, 9);
+            itemsToDrop.Add(ItemID.IronOre, 9);
+            itemsToDrop.Add(ItemID.LeadOre, 9);
+            itemsToDrop.Add(ItemID.Topaz, 8);
+            itemsToDrop.Add(ItemID.Sapphire, 8);
+            itemsToDrop.Add(ItemID.SilverOre, 8);
+            itemsToDrop.Add(ItemID.TungstenOre, 8);
+            itemsToDrop.Add(ItemID.GoldOre, 7);
+            itemsToDrop.Add(ItemID.PlatinumOre, 7);
+            itemsToDrop.Add(ItemID.Emerald, 7);
+            itemsToDrop.Add(ItemID.Ruby, 7);
+            itemsToDrop.Add(ItemID.Diamond, 6);
+            itemsToDrop.Add(ItemID.Amber, 6);
+
+            int result = itemsToDrop;
+            return result;
         }
         public override void Load()
         {
@@ -38,34 +44,30 @@ namespace PetsOverhaul.PetEffects
             BabyDinosaur dino = player.GetModPlayer<BabyDinosaur>();
             if (player.PetPlayer().PickupChecks(item, dino.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
             {
-                AddItemsToPool();
-                if (PetModPlayer.ItemPool.Count > 0)
+                for (int i = 0; i < PetUtils.Randomizer(dino.chance * item.stack, 1000); i++)
                 {
-                    for (int i = 0; i < PetUtils.Randomizer(dino.chance * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningItem), PetModPlayer.ItemPool[Main.rand.Next(PetModPlayer.ItemPool.Count)], 1);
-                    }
+                    player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningItem), RandomizeItemDrop(), 1);
                 }
             }
         }
-    }
-    public sealed class AmberMosquito : PetTooltip
-    {
-        public override PetEffect PetsEffect => babyDinosaur;
-        public static BabyDinosaur babyDinosaur
+        public sealed class AmberMosquito : PetTooltip
         {
-            get
+            public override PetEffect PetsEffect => babyDinosaur;
+            public static BabyDinosaur babyDinosaur
             {
-                if (Main.LocalPlayer.TryGetModPlayer(out BabyDinosaur pet))
-                    return pet;
-                else
-                    return ModContent.GetInstance<BabyDinosaur>();
+                get
+                {
+                    if (Main.LocalPlayer.TryGetModPlayer(out BabyDinosaur pet))
+                        return pet;
+                    else
+                        return ModContent.GetInstance<BabyDinosaur>();
+                }
             }
+            public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.AmberMosquito")
+                    .Replace("<oreChance>", Math.Round(babyDinosaur.chance / 10f, 2).ToString());
+
+            public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.AmberMosquito");
+
         }
-        public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.AmberMosquito")
-                .Replace("<oreChance>", Math.Round(babyDinosaur.chance / 10f, 2).ToString());
-
-        public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.AmberMosquito");
-
     }
 }

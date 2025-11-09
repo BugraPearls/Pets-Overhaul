@@ -60,10 +60,6 @@ namespace PetsOverhaul.Systems
         public int fishingFortune = 0;
         public Color skin;
         public bool skinColorChanged = false;
-        /// <summary>
-        /// Is cleared at the end of PostUpdate hook. Main use is for Weighted Lists with usage of ItemWeight() Method. Retrieve a value using Main.rand.Next() for its index for Weighted list usage.
-        /// </summary>
-        public static List<int> ItemPool = [];
 
         /// <summary>
         /// Ran and is reset at end of PostUpdate().
@@ -161,16 +157,6 @@ namespace PetsOverhaul.Systems
 
         #region Utility related methods, that directly uses Player fields. For static methods, see PetUtils.cs.
 
-        /// <summary>
-        /// Add an id to pool List with how many times it should be added as the weight.
-        /// </summary>
-        public static void ItemWeight(int itemId, int weight)
-        {
-            for (int i = 0; i < weight; i++)
-            {
-                ItemPool.Add(itemId);
-            }
-        }
         /// <summary>
         /// Runs all of the standart OnPickup's checks for the Pet to work with no problems.
         /// </summary>
@@ -594,11 +580,6 @@ namespace PetsOverhaul.Systems
             petHealMultiplier = 1f;
             petShieldMultiplier = 1f;
             petDirectDamageMultiplier = 1f;
-
-            if (ItemPool.Count > 0)
-            {
-                ItemPool.Clear();
-            }
         }
         public override void PreUpdate()
         {
