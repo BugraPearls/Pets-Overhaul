@@ -441,7 +441,7 @@ namespace PetsOverhaul.Systems
                                 {
                                     NetMessage.SendData(MessageID.SyncItem, -1, -1, null, number, 1f);
                                 }
-                                PetTilePlacement.RemoveFromList(i, j);
+                                PetGlobalTile.RemoveFromList(i, j);
                             }
                         }
                         if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -456,7 +456,7 @@ namespace PetsOverhaul.Systems
                         {
                             NetMessage.SendData(MessageID.TileManipulation, -1, -1, null, 0, i, j);
                         }
-                        PetTilePlacement.RemoveFromList(i, j);
+                        PetGlobalTile.RemoveFromList(i, j);
                     }
                 }
             }
@@ -466,7 +466,7 @@ namespace PetsOverhaul.Systems
             bool PlacedFlower = orig(self, X, Y);
             if (PlacedFlower)
             {
-                PetTilePlacement.AddToList(X, Y);
+                PetGlobalTile.AddToList(X, Y);
             }
             return PlacedFlower;
         }

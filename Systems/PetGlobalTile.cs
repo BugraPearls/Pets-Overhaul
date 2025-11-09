@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 namespace PetsOverhaul.Systems
 {
-    public class PetTilePlacement : GlobalTile
+    public class PetGlobalTile : GlobalTile
     {
         #region Pet Food related
         public override void Drop(int i, int j, int type)

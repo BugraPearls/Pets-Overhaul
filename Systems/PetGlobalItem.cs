@@ -79,7 +79,7 @@ namespace PetsOverhaul.Systems
                     blockNotByPlayer = true;
                 }
 
-                PetTilePlacement.RemoveFromList(brokenTile.TileCoords.X, brokenTile.TileCoords.Y);
+                PetGlobalTile.RemoveFromList(brokenTile.TileCoords.X, brokenTile.TileCoords.Y);
 
                 herbBoost = PetIDs.HarvestingXpPerGathered.Exists(x => x.plantList.Contains(item.type));
 
