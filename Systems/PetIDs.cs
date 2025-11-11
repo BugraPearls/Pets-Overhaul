@@ -1,8 +1,6 @@
 ﻿using PetsOverhaul.Items;
 using ReLogic.Reflection;
 using System.Collections.Generic;
-using System.Net;
-using System.Reflection.Metadata;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,22 +15,22 @@ namespace PetsOverhaul.Systems
         #region Sets
         public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
             .RegisterBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.
-        
+
         /// <summary>
         /// List of enemies that should not get health recovered off of.
         /// </summary>
         public static List<int> EnemiesForLifestealToIgnore = [];
-        
+
         /// <summary>
         /// Contains list of debuffs that are related to burning.
         /// </summary>
         public static List<int> BurnDebuffs = [BuffID.Burning, BuffID.OnFire, BuffID.OnFire3, BuffID.Frostburn, BuffID.CursedInferno, BuffID.ShadowFlame, BuffID.Frostburn2];
-        
+
         /// <summary>
         /// Contains all Vanilla bosses that does not return npc.boss = true
         /// </summary>
         public static List<int> NonBossTrueBosses = [NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.EaterofWorldsHead, NPCID.LunarTowerSolar, NPCID.LunarTowerNebula, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.TorchGod, NPCID.Retinazer, NPCID.Spazmatism];
-        
+
         /// <summary>
         /// Contains list of enemies that are associated with Corruption biome.
         /// </summary>
@@ -52,12 +50,12 @@ namespace PetsOverhaul.Systems
         /// Includes Gem tiles.
         /// </summary>
         public static bool[] gemTile = TileID.Sets.Factory.CreateBoolSet(false, TileID.Amethyst, TileID.Topaz, TileID.Sapphire, TileID.Emerald, TileID.Ruby, TileID.AmberStoneBlock, TileID.Diamond, TileID.ExposedGems, TileID.Crystals);
-        
+
         /// <summary>
         /// Includes tiles that are extractable by an Extractinator and a few other stuff that aren't recognized as ores such as Obsidian and Luminite
         /// </summary>
         public static bool[] extractableAndOthers = TileID.Sets.Factory.CreateBoolSet(false, TileID.DesertFossil, TileID.Slush, TileID.Silt, TileID.Obsidian, TileID.LunarOre);
-        
+
         /// <summary>
         /// Includes tiles that counts as trees.
         /// </summary>
@@ -67,22 +65,22 @@ namespace PetsOverhaul.Systems
         /// Contains items dropped by gemstone trees. Current only use is Caveling Gardener and checking for the Gemstone Tree
         /// </summary>
         public static bool[] gemstoneTreeItem = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.GemTreeAmberSeed, ItemID.GemTreeAmethystSeed, ItemID.GemTreeDiamondSeed, ItemID.GemTreeEmeraldSeed, ItemID.GemTreeRubySeed, ItemID.GemTreeSapphireSeed, ItemID.GemTreeTopazSeed, ItemID.Amethyst, ItemID.Topaz, ItemID.Sapphire, ItemID.Emerald, ItemID.Ruby, ItemID.Amber, ItemID.Diamond, ItemID.StoneBlock);
-        
+
         /// <summary>
         /// Contains items dropped by trees. Only used by Blue Chicken.
         /// </summary>
         public static bool[] treeItem = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.Acorn, ItemID.BambooBlock, ItemID.Cactus, ItemID.Wood, ItemID.AshWood, ItemID.BorealWood, ItemID.PalmWood, ItemID.Ebonwood, ItemID.Shadewood, ItemID.RichMahogany, ItemID.Pearlwood, ItemID.SpookyWood);
-        
+
         /// <summary>
         /// Contains forageable items on Ocean biomes that counts as herb item for Harvesting Pet purposes.
         /// </summary>
         public static bool[] seaPlantItem = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.Coral, ItemID.Seashell, ItemID.Starfish, ItemID.LightningWhelkShell, ItemID.TulipShell, ItemID.JunoniaShell);
-        
+
         /// <summary>
         /// Contains plants that cannot be planted by using a Seed.
         /// </summary>
         public static bool[] plantsWithNoSeeds = ItemID.Sets.Factory.CreateBoolSet(false, ItemID.Hay, ItemID.Mushroom, ItemID.GlowingMushroom, ItemID.VileMushroom, ItemID.ViciousMushroom, ItemID.GreenMushroom, ItemID.TealMushroom, ItemID.SkyBlueFlower, ItemID.YellowMarigold, ItemID.BlueBerries, ItemID.LimeKelp, ItemID.PinkPricklyPear, ItemID.OrangeBloodroot, ItemID.StrangePlant1, ItemID.StrangePlant2, ItemID.StrangePlant3, ItemID.StrangePlant4, ItemID.LifeFruit);
-        
+
         #endregion
 
         #region Mining, Harvesting, Fishing Items & Enemies and Exp values
@@ -282,7 +280,7 @@ namespace PetsOverhaul.Systems
         }
         internal static int SlowIDCount { get; set; } = 10; //This is the 'base' amount of ID's we have. It goes up from here as more Slow ID's gets added.
 
-        public static IdDictionary Search = IdDictionary.Create<PetSlowIDs,int>();
+        public static IdDictionary Search = IdDictionary.Create<PetSlowIDs, int>();
 
         public const int Any = 0;
         public const int Snowman = 1;
