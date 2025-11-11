@@ -292,28 +292,15 @@ namespace PetsOverhaul.Systems
         public const int PhantasmalLightning = 7;
         public const int PrinceSlime = 8;
         public const int Grinch = 9;
-    }
-    public class PetSlowIDLoaderSystem : ModSystem
-    {
-        //public override void Load()
-        //{
-        //    RegisterSlowID("PlaguebringerBab"); //This was a test, and works
-        //    RegisterSlowID("TrashmanTrashcan");
-        //}
+
         /// <summary>
-        /// Add Pet Slow IDs through here! All needed to be done to register a Pet Slow into PetSlowIDs is to call this method in a Load(), and type out the name for given Slow ID.
+        /// Use this in Load(). Assign Bool Factories in SetStaticDefaults().
         /// </summary>
-        /// <param name="name">Name for registered Slow ID</param>
+        /// <param name="name"></param>
         public static void RegisterSlowID(string name)
         {
-            PetSlowIDs.Search.Add(name, PetSlowIDs.SlowIDCount);
-            PetSlowIDs.SlowIDCount++;
+            Search.Add(name, SlowIDCount);
+            SlowIDCount++;
         }
-
-        //public override void SetStaticDefaults()
-        //{
-        //    PetSlowIDs.Sets.SicknessBasedSlows[PetSlowIDs.Search.GetId("PlaguebringerBab")] = true; //This was a test, and works
-        //    PetSlowIDs.Sets.SicknessBasedSlows[PetSlowIDs.Search.GetId("TrashmanTrashcan")] = true;
-        //}
     }
 }
