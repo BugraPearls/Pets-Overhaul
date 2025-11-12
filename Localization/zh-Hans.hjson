@@ -1783,6 +1783,7 @@ Mods: {
 		}
 
 		NPCs: {
+			SlimeServant.DisplayName: 史莱姆仆从
 			LizardTail.DisplayName: 蜥蜴尾巴
 			LizardTailBestiaryEntry:
 				'''
@@ -1832,8 +1833,6 @@ Mods: {
 					Princess_LovesNPC: 我喜欢{NPCName}！他的宠物太太太太太太可爱了！
 				}
 			}
-
-			SlimeServant.DisplayName: 史莱姆仆从
 		}
 
 		Configs: {
