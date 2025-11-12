@@ -42,7 +42,7 @@ namespace PetsOverhaul.PetEffects
                         {
                             for (int a = 0; a < NPC.maxBuffs; a++)
                             {
-                                if (PetIDs.BurnDebuffs.Contains(npc.buffType[a]))
+                                if (PetIDs.BurnDebuffs[npc.buffType[a]])
                                 {
                                     npc.buffTime[a]++;
                                 }
@@ -50,7 +50,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         for (int a = 0; a < NPC.maxBuffs; a++)
                         {
-                            if (PetIDs.BurnDebuffs.Contains(npc.buffType[a]))
+                            if (PetIDs.BurnDebuffs[npc.buffType[a]])
                             {
                                 EnemiesBurning++;
                                 break;

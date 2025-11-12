@@ -86,7 +86,7 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static bool LifestealCheck(NPC npc)
         {
-            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type);
+            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore[npc.type];
         }
         /// <summary>
         /// Creates a Circle of dusts around the given Center with the Dust ID.
