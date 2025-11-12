@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
@@ -15,6 +16,7 @@ namespace PetsOverhaul.Systems
     public static class PetUtils
     {
         public static PetModPlayer PetPlayer(this Player player) => player.GetModPlayer<PetModPlayer>();
+
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
             return new EntitySource_Pet
@@ -86,7 +88,7 @@ namespace PetsOverhaul.Systems
         /// <returns></returns>
         public static bool LifestealCheck(NPC npc)
         {
-            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore[npc.type];
+            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type) && npc.canGhostHeal;
         }
         /// <summary>
         /// Creates a Circle of dusts around the given Center with the Dust ID.
