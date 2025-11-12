@@ -11,7 +11,7 @@ namespace PetsOverhaul.Systems
     /// <summary>
     /// ModPlayer Class that includes Dictionaries and Methods used by Pets Overhaul's sound effects.
     /// </summary>
-    public sealed class PetSounds : ModPlayer
+    public static class PetSounds
     {
         public static Dictionary<int, SoundStyle[]> PetItemIdToHurtSound = new() {
             {
@@ -329,7 +329,7 @@ namespace PetsOverhaul.Systems
                 SoundID.NPCDeath62 with { PitchVariance = 0.5f, Volume = 0.8f}
             }
         };
-        public SlotId PlayHurtSoundFromItemId(int itemId)
+        public static SlotId PlayHurtSoundFromItemId(int itemId, Player player)
         {
             if (ModContent.GetInstance<PetPersonalization>().HurtSoundEnabled == false)
                 return SlotId.Invalid;
@@ -342,13 +342,13 @@ namespace PetsOverhaul.Systems
             }
             if (itemId == ItemID.BerniePetItem)
             {
-                itemsHurtSound = PetItemIdToHurtSound[itemId][Player.Male == true ? 0 : 1];
+                itemsHurtSound = PetItemIdToHurtSound[itemId][player.Male == true ? 0 : 1];
             }
 
-            return itemsHurtSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(itemsHurtSound with { Type = SoundType.Sound }, Player.Center);
+            return itemsHurtSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(itemsHurtSound with { Type = SoundType.Sound }, player.Center);
         }
 
-        public SlotId PlayAmbientSoundFromItemId(int itemId)
+        public static SlotId PlayAmbientSoundFromItemId(int itemId, Player player)
         {
             int chance;
             switch (ModContent.GetInstance<PetPersonalization>().PassiveSoundFrequency)
@@ -368,7 +368,7 @@ namespace PetsOverhaul.Systems
                     chance = 7200;
                     break;
             }
-            if (Main.myPlayer == Player.whoAmI && Main.rand.NextBool(chance))
+            if (Main.myPlayer == player.whoAmI && Main.rand.NextBool(chance))
             {
                 SoundStyle petAmbientSound = SoundID.MenuClose;
 
@@ -377,13 +377,13 @@ namespace PetsOverhaul.Systems
                     petAmbientSound = value[Main.rand.Next(value.Length)];
                 }
 
-                return petAmbientSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(petAmbientSound with { Type = SoundType.Ambient, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew }, Player.Center);
+                return petAmbientSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(petAmbientSound with { Type = SoundType.Ambient, SoundLimitBehavior = SoundLimitBehavior.IgnoreNew }, player.Center);
             }
             return SlotId.Invalid;
 
         }
 
-        public SlotId PlayKillSoundFromItemId(int itemId)
+        public static SlotId PlayKillSoundFromItemId(int itemId, Player player)
         {
             if (ModContent.GetInstance<PetPersonalization>().DeathSoundEnabled == false)
                 return SlotId.Invalid;
@@ -401,7 +401,7 @@ namespace PetsOverhaul.Systems
                     : (SoundID.NPCDeath59 with { PitchVariance = 0.5f });
             }
 
-            return petKillSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(petKillSound with { Type = SoundType.Sound }, Player.Center);
+            return petKillSound == SoundID.MenuClose ? SlotId.Invalid : SoundEngine.PlaySound(petKillSound with { Type = SoundType.Sound }, player.Center);
         }
     }
 }

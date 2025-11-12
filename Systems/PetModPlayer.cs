@@ -553,7 +553,7 @@ namespace PetsOverhaul.Systems
         }
         public override void OnHurt(Player.HurtInfo info)
         {
-            Player.GetModPlayer<PetSounds>().PlayHurtSoundFromItemId(Player.miscEquips[0].type);
+            PetSounds.PlayHurtSoundFromItemId(Player.miscEquips[0].type, Player);
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
@@ -722,7 +722,7 @@ namespace PetsOverhaul.Systems
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            playSound = Player.GetModPlayer<PetSounds>().PlayKillSoundFromItemId(Player.miscEquips[0].type) == ReLogic.Utilities.SlotId.Invalid;
+            playSound = PetSounds.PlayKillSoundFromItemId(Player.miscEquips[0].type, Player) == ReLogic.Utilities.SlotId.Invalid;
 
             return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
         }
@@ -748,7 +748,7 @@ namespace PetsOverhaul.Systems
 
                 previousPetItem = Player.miscEquips[0].type;
             }
-            Player.GetModPlayer<PetSounds>().PlayAmbientSoundFromItemId(Player.miscEquips[0].type);
+            PetSounds.PlayAmbientSoundFromItemId(Player.miscEquips[0].type, Player);
         }
         public override void UpdateDead()
         {
