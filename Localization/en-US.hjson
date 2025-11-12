@@ -1833,6 +1833,11 @@ Mods: {
 
 		NPCs: {
 			SlimeServant.DisplayName: Slime Servant
+			SlimeServantBestiaryEntry:
+				'''
+				A loyal Slime Servant, underling of the Slime Prince.
+				Its strength mimics an enhanced Blue Slime, while also getting Power from the Player that Slime Prince serves to.
+				'''
 			LizardTail.DisplayName: Lizard Tail
 			LizardTailBestiaryEntry:
 				'''

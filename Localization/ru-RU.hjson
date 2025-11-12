@@ -1825,6 +1825,11 @@ Mods: {
 
 		NPCs: {
 			SlimeServant.DisplayName: Слизистый слуга
+			SlimeServantBestiaryEntry:
+				'''
+				Верный слезневый слуга, подчинённый Принцу Слизней.  
+				Его сила подобна усиленному Синему Слизню и также питается от игрока, которому служит Принц Слизней.
+				'''
 			LizardTail.DisplayName: Хвост ящерицы
 			LizardTailBestiaryEntry:
 				'''

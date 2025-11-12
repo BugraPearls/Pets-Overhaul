@@ -44,7 +44,7 @@ namespace PetsOverhaul.NPCs
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.AddTags(
-                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.TheTemple,
+                new SpawnConditionBestiaryInfoElement("ItemName.LizardEgg", BestiaryDatabaseNPCsPopulator.CrownosIconIndexes.ItemSpawn, "Images/MapBG14"),
                 new FlavorTextBestiaryInfoElement(PetUtils.LocVal("NPCs.LizardTailBestiaryEntry")));
         }
         public override void FindFrame(int frameHeight)

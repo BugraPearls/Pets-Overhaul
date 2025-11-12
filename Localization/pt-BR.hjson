@@ -1856,6 +1856,11 @@ Mods: {
 
 		NPCs: {
 			SlimeServant.DisplayName: Servo de Slime
+			SlimeServantBestiaryEntry:
+				'''
+				Um fiel Servo de Slime, subordinado do Príncipe Slime.  
+				Sua força imita a de um Slime Azul aprimorado, enquanto também obtém poder do Jogador a quem o Príncipe Slime serve.
+				'''
 			LizardTail.DisplayName: Rabo de Lagarto
 			LizardTailBestiaryEntry:
 				'''

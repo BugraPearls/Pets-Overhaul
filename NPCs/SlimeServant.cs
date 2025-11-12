@@ -4,8 +4,11 @@ using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.DataStructures;
+using Terraria.GameContent.Bestiary;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.UI;
 using Terraria.Utilities;
 
 namespace PetsOverhaul.NPCs
@@ -38,6 +41,20 @@ namespace PetsOverhaul.NPCs
             NPC.knockBackResist = 0.5f;
             AnimationType = NPCID.BlueSlime;
         }
+        public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
+        {
+            bestiaryEntry.AddTags(
+                new SpawnConditionBestiaryInfoElement("ItemName.KingSlimePetItem", BestiaryDatabaseNPCsPopulator.CrownosIconIndexes.ItemSpawn, "Images/MapBG1"),
+                new FlavorTextBestiaryInfoElement(PetUtils.LocVal("NPCs.SlimeServantBestiaryEntry")));
+            bestiaryEntry.UIInfoProvider = new CommonEnemyUICollectionInfoProvider(NPC.GetBestiaryCreditId(), quickUnlock: true);
+        }
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (source is EntitySource_Pet)
+            {
+                Main.BestiaryTracker.Sights.RegisterWasNearby(NPC);
+            }
+        }
         public override void OnKill()
         {
             int slimyDuration;
@@ -64,7 +81,7 @@ namespace PetsOverhaul.NPCs
                     npc.AddBuff(BuffID.Slimed, slimyDuration);
                 }
             }
-
+            Main.BestiaryTracker.Kills.RegisterKill(NPC);
         }
         public override void AI() //This is taken from Vanilla Slime AI. Cut out the non-blue slime parts and adjusted accordingly for targeting Enemies etc.
         {
