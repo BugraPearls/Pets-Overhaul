@@ -65,7 +65,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClasses PetClassSecondary => PetClasses.Offensive;
         public void OnMountHit(NPC npc)
         {
-            PetGlobalNPC.AddSlow(new PetSlow(slow, slowDuration, PetSlowIDs.PrincessSlime), npc);
+            PetGlobalNPC.AddSlow(new PetSlow(slow, slowDuration, PetSlowID.PrincessSlime), npc);
             if (Pet.timer <= 0)
             {
                 Pet.timer = Pet.timerMax;

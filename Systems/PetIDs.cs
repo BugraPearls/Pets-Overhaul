@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace PetsOverhaul.Systems
 {
     /// <summary>
-    /// Class that contains ID sets or dictionaries that is related to Pets Overhaul.
+    /// Class that contains ID Bool Sets, Dictionaries and Lists that is related to Pets Overhaul.
     /// </summary>
     [ReinitializeDuringResizeArrays]
     public static class PetIDs
@@ -271,7 +271,7 @@ namespace PetsOverhaul.Systems
     /// <summary>
     /// Class that contains PetSlowID's, where same slow ID does not overlap with itself, and a slow with greater slow & better remaining time will override the obsolete one.
     /// </summary>
-    public class PetSlowIDs
+    public class PetSlowID
     {
         [ReinitializeDuringResizeArrays]
         public static class Sets
@@ -292,7 +292,7 @@ namespace PetsOverhaul.Systems
         }
         internal static int SlowIDCount { get; set; } = 10; //This is the 'base' amount of ID's we have. It goes up from here as more Slow ID's gets added.
 
-        public static IdDictionary Search = IdDictionary.Create<PetSlowIDs, int>();
+        public static IdDictionary Search = IdDictionary.Create<PetSlowID, int>();
 
         public const int Any = 0;
         public const int Snowman = 1;

@@ -42,7 +42,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (Player.Distance(npc.Center) < grinchRange)
                     {
-                        PetGlobalNPC.AddSlow(new PetSlow(grinchSlow, 1, PetSlowIDs.Grinch), npc);
+                        PetGlobalNPC.AddSlow(new PetSlow(grinchSlow, 1, PetSlowID.Grinch), npc);
                     }
                 }
             }

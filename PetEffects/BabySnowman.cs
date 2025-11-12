@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped())
             {
                 target.AddBuff(FrostBurnId, frostburnTime * FrostArmorMult);
-                PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowIDs.Snowman), target);
+                PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowID.Snowman), target);
             }
         }
         public override void MeleeEffects(Item item, Rectangle hitbox)

@@ -21,12 +21,12 @@ namespace PetsOverhaul.Systems
     /// </summary>
     /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
     /// <param name="slowTime">Time for slow to be applied in frames.</param>
-    /// <param name="slowId">Slows with the ID of 0 (<see cref="PetSlowIDs.Any"/>) are independent. If another slow ID finds another of same ID while being added, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once except for <see cref="PetSlowIDs.Any"/></param>. Any SlowID's that is below 0 or above existing SlowID's will turn into <see cref="PetSlowIDs.Any"/>.
-    public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowIDs.Any)
+    /// <param name="slowId">Slows with the ID of 0 (<see cref="PetSlowID.Any"/>) are independent. If another slow ID finds another of same ID while being added, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once except for <see cref="PetSlowID.Any"/></param>. Any SlowID's that is below 0 or above existing SlowID's will turn into <see cref="PetSlowID.Any"/>.
+    public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowID.Any)
     {
         public float SlowAmount = slowAmount;
         public int SlowTime = slowTime;
-        public int SlowId = Math.Clamp(slowId, PetSlowIDs.Any, PetSlowIDs.Search.Count);
+        public int SlowId = Math.Clamp(slowId, PetSlowID.Any, PetSlowID.Search.Count);
     }
     /// <summary>
     /// GlobalNPC class that carries out Slow Mechanics of Pets. <see cref="AddSlow(PetSlow, NPC)"/> can be used to add PetSlow to passed NPC instance.
@@ -302,15 +302,15 @@ namespace PetsOverhaul.Systems
                     {
                         currentTotalSlow += slow.SlowAmount;
 
-                        if (PetSlowIDs.Sets.ElectricBasedSlows[slow.SlowId])
+                        if (PetSlowID.Sets.ElectricBasedSlows[slow.SlowId])
                         {
                             electricSlow = true;
                         }
-                        if (PetSlowIDs.Sets.ColdBasedSlows[slow.SlowId])
+                        if (PetSlowID.Sets.ColdBasedSlows[slow.SlowId])
                         {
                             coldSlow = true;
                         }
-                        if (PetSlowIDs.Sets.SicknessBasedSlows[slow.SlowId])
+                        if (PetSlowID.Sets.SicknessBasedSlows[slow.SlowId])
                         {
                             sickSlow = true;
                         }
@@ -360,7 +360,7 @@ namespace PetsOverhaul.Systems
                 {
                     slowToBeAdded.SlowAmount *= 0.2f;
                 }
-                if (slowToBeAdded.SlowId == PetSlowIDs.Any)
+                if (slowToBeAdded.SlowId == PetSlowID.Any)
                 {
                     npcPet.SlowList.Add(slowToBeAdded);
                     return;
