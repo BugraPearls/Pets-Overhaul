@@ -21,12 +21,12 @@ namespace PetsOverhaul.Systems
     /// </summary>
     /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
     /// <param name="slowTime">Time for slow to be applied in frames.</param>
-    /// <param name="slowId">Slows with the ID of -1 (or lower) are independent. If another slow with ID higher than 0 meets itself, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once.</param>
+    /// <param name="slowId">Slows with the ID of 0 (<see cref="PetSlowIDs.Any"/>) are independent. If another slow ID finds another of same ID while being added, it will replace the 'worse slow' of the same ID. Same slow ID cannot exist more than once except for <see cref="PetSlowIDs.Any"/></param>. Any SlowID's that is below 0 or above existing SlowID's will turn into <see cref="PetSlowIDs.Any"/>.
     public struct PetSlow(float slowAmount, int slowTime, int slowId = PetSlowIDs.Any)
     {
         public float SlowAmount = slowAmount;
         public int SlowTime = slowTime;
-        public int SlowId = slowId;
+        public int SlowId = Math.Clamp(slowId, PetSlowIDs.Any, PetSlowIDs.Search.Count);
     }
     /// <summary>
     /// GlobalNPC class that carries out Slow Mechanics of Pets. <see cref="AddSlow(PetSlow, NPC)"/> can be used to add PetSlow to passed NPC instance.
@@ -360,7 +360,7 @@ namespace PetsOverhaul.Systems
                 {
                     slowToBeAdded.SlowAmount *= 0.2f;
                 }
-                if (slowToBeAdded.SlowId <= -1)
+                if (slowToBeAdded.SlowId == PetSlowIDs.Any)
                 {
                     npcPet.SlowList.Add(slowToBeAdded);
                     return;
