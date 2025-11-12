@@ -29,6 +29,7 @@ namespace PetsOverhaul.NPCs
         public override string Texture => $"Terraria/Images/NPC_{NPCID.BlueSlime}";
         public override void SetStaticDefaults()
         {
+            ContentSamples.NpcBestiaryRarityStars[Type] = 2;
             Main.npcFrameCount[Type] = Main.npcFrameCount[NPCID.BlueSlime];
         }
         public override void SetDefaults()

@@ -19,17 +19,20 @@ namespace PetsOverhaul.NPCs
         public int amountOfFrames = 7;
         public override void SetStaticDefaults()
         {
+            ContentSamples.NpcBestiaryRarityStars[Type] = 4;
             Main.npcFrameCount[Type] = amountOfFrames;
-            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
-            {
-                Velocity = 1f,
-                Direction = 1
-            };
+            //NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
+            //{
+            //    Velocity = 1f,
+            //    Direction = 1
+            //    , 
+            //};
 
-            NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+            //NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
         }
         public override void SetDefaults()
         {
+            NPC.aiStyle = -1;
             NPC.width = 18;
             NPC.height = 18;
             NPC.damage = 0;
