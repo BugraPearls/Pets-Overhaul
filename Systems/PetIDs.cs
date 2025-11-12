@@ -12,40 +12,48 @@ namespace PetsOverhaul.Systems
     [ReinitializeDuringResizeArrays]
     public static class PetIDs
     {
-        #region Sets
-        public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateNamedSet("TownPetBuffs").Description("List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.")
-            .RegisterBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.
-
+        #region BuffID Sets
         /// <summary>
-        /// List of enemies that should not get health recovered off of.
+        /// List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.
         /// </summary>
-        public static List<int> EnemiesForLifestealToIgnore = [];
+        public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.
 
         /// <summary>
         /// Contains list of debuffs that are related to burning.
         /// </summary>
-        public static List<int> BurnDebuffs = [BuffID.Burning, BuffID.OnFire, BuffID.OnFire3, BuffID.Frostburn, BuffID.CursedInferno, BuffID.ShadowFlame, BuffID.Frostburn2];
+        public static bool[] BurnDebuffs = BuffID.Sets.Factory.CreateBoolSet(false, BuffID.Burning, BuffID.OnFire, BuffID.OnFire3, BuffID.Frostburn, BuffID.CursedInferno, BuffID.ShadowFlame, BuffID.Frostburn2);
+
+        #endregion
+
+        #region NPCID Sets
+        /// <summary>
+        /// List of enemies that should not get health recovered off of.
+        /// </summary>
+        public static bool[] EnemiesForLifestealToIgnore = NPCID.Sets.Factory.CreateBoolSet(false); //LifestealCheck() method already covers vanilla cases of this. This is usually for other mods.
 
         /// <summary>
         /// Contains all Vanilla bosses that does not return npc.boss = true
         /// </summary>
-        public static List<int> NonBossTrueBosses = [NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.EaterofWorldsHead, NPCID.LunarTowerSolar, NPCID.LunarTowerNebula, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.TorchGod, NPCID.Retinazer, NPCID.Spazmatism];
+        public static bool[] NonBossTrueBosses = NPCID.Sets.Factory.CreateBoolSet(false, NPCID.TheDestroyer, NPCID.TheDestroyerBody, NPCID.TheDestroyerTail, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.EaterofWorldsHead, NPCID.LunarTowerSolar, NPCID.LunarTowerNebula, NPCID.LunarTowerStardust, NPCID.LunarTowerVortex, NPCID.TorchGod, NPCID.Retinazer, NPCID.Spazmatism);
 
         /// <summary>
         /// Contains list of enemies that are associated with Corruption biome.
         /// </summary>
-        public static List<int> CorruptEnemies = [NPCID.EaterofSouls, NPCID.LittleEater, NPCID.BigEater, NPCID.DevourerHead, NPCID.DevourerBody, NPCID.DevourerTail, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimeling, NPCID.Slimer, NPCID.Slimer2, NPCID.SeekerHead, NPCID.SeekerBody, NPCID.SeekerTail, NPCID.DarkMummy, NPCID.CursedHammer, NPCID.Clinger, NPCID.BigMimicCorruption, NPCID.DesertGhoulCorruption, NPCID.SandsharkCorrupt, NPCID.PigronCorruption, NPCID.CorruptGoldfish, NPCID.CorruptBunny, NPCID.CorruptPenguin, NPCID.DesertDjinn];
+        public static bool[] CorruptEnemies = NPCID.Sets.Factory.CreateBoolSet(false, NPCID.EaterofSouls, NPCID.LittleEater, NPCID.BigEater, NPCID.DevourerHead, NPCID.DevourerBody, NPCID.DevourerTail, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail, NPCID.Corruptor, NPCID.CorruptSlime, NPCID.Slimeling, NPCID.Slimer, NPCID.Slimer2, NPCID.SeekerHead, NPCID.SeekerBody, NPCID.SeekerTail, NPCID.DarkMummy, NPCID.CursedHammer, NPCID.Clinger, NPCID.BigMimicCorruption, NPCID.DesertGhoulCorruption, NPCID.SandsharkCorrupt, NPCID.PigronCorruption, NPCID.CorruptGoldfish, NPCID.CorruptBunny, NPCID.CorruptPenguin, NPCID.DesertDjinn);
 
         /// <summary>
         /// Contains list of enemies that are associated with Crimson biome.
         /// </summary>
-        public static List<int> CrimsonEnemies = [NPCID.BloodCrawler, NPCID.BloodCrawlerWall, NPCID.FaceMonster, NPCID.Crimera, NPCID.LittleCrimera, NPCID.BigCrimera, NPCID.BrainofCthulhu, NPCID.Creeper, NPCID.Herpling, NPCID.Crimslime, NPCID.BigCrimslime, NPCID.LittleCrimslime, NPCID.BloodJelly, NPCID.BloodFeeder, NPCID.BloodMummy, NPCID.CrimsonAxe, NPCID.IchorSticker, NPCID.FloatyGross, NPCID.BigMimicCrimson, NPCID.DesertGhoulCrimson, NPCID.SandsharkCrimson, NPCID.PigronCrimson, NPCID.CrimsonGoldfish, NPCID.CrimsonBunny, NPCID.CrimsonPenguin, NPCID.DesertDjinn];
+        public static bool[] CrimsonEnemies = NPCID.Sets.Factory.CreateBoolSet(false, NPCID.BloodCrawler, NPCID.BloodCrawlerWall, NPCID.FaceMonster, NPCID.Crimera, NPCID.LittleCrimera, NPCID.BigCrimera, NPCID.BrainofCthulhu, NPCID.Creeper, NPCID.Herpling, NPCID.Crimslime, NPCID.BigCrimslime, NPCID.LittleCrimslime, NPCID.BloodJelly, NPCID.BloodFeeder, NPCID.BloodMummy, NPCID.CrimsonAxe, NPCID.IchorSticker, NPCID.FloatyGross, NPCID.BigMimicCrimson, NPCID.DesertGhoulCrimson, NPCID.SandsharkCrimson, NPCID.PigronCrimson, NPCID.CrimsonGoldfish, NPCID.CrimsonBunny, NPCID.CrimsonPenguin, NPCID.DesertDjinn);
 
         /// <summary>
         /// Contains list of enemies that are associated with Hallow biome. 
         /// </summary>
-        public static List<int> HallowEnemies = [NPCID.Pixie, NPCID.Unicorn, NPCID.RainbowSlime, NPCID.Gastropod, NPCID.LightMummy, NPCID.QueenSlimeBoss, NPCID.QueenSlimeMinionBlue, NPCID.QueenSlimeMinionPink, NPCID.QueenSlimeMinionPurple, NPCID.HallowBoss, NPCID.IlluminantSlime, NPCID.IlluminantBat, NPCID.ChaosElemental, NPCID.EnchantedSword, NPCID.BigMimicHallow, NPCID.DesertGhoulHallow, NPCID.PigronHallow, NPCID.SandsharkHallow];
+        public static bool[] HallowEnemies = NPCID.Sets.Factory.CreateBoolSet(false, NPCID.Pixie, NPCID.Unicorn, NPCID.RainbowSlime, NPCID.Gastropod, NPCID.LightMummy, NPCID.QueenSlimeBoss, NPCID.QueenSlimeMinionBlue, NPCID.QueenSlimeMinionPink, NPCID.QueenSlimeMinionPurple, NPCID.HallowBoss, NPCID.IlluminantSlime, NPCID.IlluminantBat, NPCID.ChaosElemental, NPCID.EnchantedSword, NPCID.BigMimicHallow, NPCID.DesertGhoulHallow, NPCID.PigronHallow, NPCID.SandsharkHallow);
 
+        #endregion
+
+        #region TileID Sets
         /// <summary>
         /// Includes Gem tiles.
         /// </summary>
@@ -61,6 +69,9 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static bool[] treeTile = TileID.Sets.Factory.CreateBoolSet(false, TileID.TreeAmber, TileID.TreeAmethyst, TileID.TreeAsh, TileID.TreeDiamond, TileID.TreeEmerald, TileID.TreeRuby, TileID.Trees, TileID.TreeSapphire, TileID.TreeTopaz, TileID.MushroomTrees, TileID.PalmTree, TileID.VanityTreeSakura, TileID.VanityTreeYellowWillow, TileID.Bamboo, TileID.Cactus);
 
+        #endregion
+
+        #region ItemID Sets
         /// <summary>
         /// Contains items dropped by gemstone trees. Current only use is Caveling Gardener and checking for the Gemstone Tree
         /// </summary>
