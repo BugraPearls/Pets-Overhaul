@@ -356,7 +356,7 @@ namespace PetsOverhaul.Systems
         {
             if (npc.active && NPCID.Sets.ImmuneToAllBuffs[npc.type] == false && (npc.isLikeATownNPC == false || npc.friendly == false) && npc.TryGetGlobalNPC(out PetGlobalNPC npcPet))
             {
-                if (npc.boss && PetIDs.NonBossTrueBosses.Contains(npc.type))
+                if (npc.boss || PetIDs.NonBossTrueBosses.Contains(npc.type))
                 {
                     slowToBeAdded.SlowAmount *= 0.2f;
                 }
