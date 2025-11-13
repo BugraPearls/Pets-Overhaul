@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
 using Terraria;
@@ -17,6 +18,8 @@ namespace PetsOverhaul.NPCs
         public int frameTimer = 0;
         public int nextFrame = 5;
         public int amountOfFrames = 7;
+        private int drawArrowTimer = 0;
+        private bool switchedArrow = false;
         public override void SetStaticDefaults()
         {
             ContentSamples.NpcBestiaryRarityStars[Type] = 4;
@@ -99,10 +102,14 @@ namespace PetsOverhaul.NPCs
         }
         public override Color? GetAlpha(Color drawColor)
         {
+            return drawColor with { A = CurrentAlpha() };
+        }
+        public byte CurrentAlpha()
+        {
             int alpha = lifespan / 6 + 1;
             if (alpha > 255)
                 alpha = 255;
-            return drawColor with { A = (byte)alpha };
+            return (byte)alpha;
         }
         public override void AI()
         {
@@ -113,7 +120,6 @@ namespace PetsOverhaul.NPCs
 
             if (waitTime <= 0)
             {
-                Lighting.AddLight(NPC.Center, Color.GreenYellow.ToVector3() * (lifespan / 400f) * Main.mouseTextColor * 0.0255f);
                 Player player = Main.player[NPC.FindClosestPlayer()];
                 if (NPC.getRect().Intersects(player.getRect()))
                 {
@@ -131,6 +137,24 @@ namespace PetsOverhaul.NPCs
                 Kill();
             }
         }
-
+        public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {//ai[3] is only passed as 1 here from LizardTail, which will make the 'arrow' appear.
+            if (NPC.ai[3] == 1 && waitTime <= 0 && Main.myPlayer == Main.LocalPlayer.whoAmI)
+            {
+                if (switchedArrow == false) 
+                {
+                    drawArrowTimer++;
+                }
+                else
+                {
+                    drawArrowTimer--;
+                }
+                if (drawArrowTimer >= 60 || drawArrowTimer <= 0)
+                {
+                    switchedArrow = !switchedArrow;
+                }
+                    spriteBatch.Draw((Texture2D)Main.Assets.Request<Texture2D>("Images/Item_40"), NPC.position with { Y = NPC.position.Y - 60f + drawArrowTimer * 0.2f } - screenPos, Main.MouseTextColorReal with { A = CurrentAlpha() });
+            }
+        }
     }
 }
