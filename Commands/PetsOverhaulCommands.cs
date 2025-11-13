@@ -223,7 +223,7 @@ namespace PetsOverhaul.Commands
                             break;
                         default:
                             caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(PetUtils.LocVal("Commands.Help"), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", allClasses()), Color.Gray);
                             break;
 
                     }
@@ -328,7 +328,7 @@ namespace PetsOverhaul.Commands
                             break;
                         default:
                             caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(PetUtils.LocVal("Commands.Help"), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", allClasses()), Color.Gray);
                             break;
                     }
                     break;
