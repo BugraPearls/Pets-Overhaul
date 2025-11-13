@@ -66,7 +66,7 @@ namespace PetsOverhaul.PetEffects
                     Player.statLife = dmg + 1;
                 }
                 Player.Hurt(new Player.HurtInfo() with { Damage = dmg, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason("If you're seeing this death message, report it through our discord or steam page.") });
-                NPC.NewNPC(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)Player.Center.X, (int)Player.Center.Y, ModContent.NPCType<LizardTail>(), ai0: Player.statLifeMax2 * tailMaxHp, ai1: (int)(tailWait * (1 / (1 + Pet.abilityHaste))), ai2: Pet.timerMax / 2, ai3:1); //ai[3] is only passed here from LizardTail, which will make the 'arrow' appear.
+                NPC.NewNPC(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)Player.Center.X, (int)Player.Center.Y, ModContent.NPCType<LizardTail>(), ai0: Player.statLifeMax2 * tailMaxHp, ai1: (int)(tailWait * (1 / (1 + Pet.abilityHaste))), ai2: Pet.timerMax / 2, ai3: 1); //ai[3] is only passed here from LizardTail, which will make the 'arrow' appear.
                 Pet.timer = Pet.timerMax;
                 buffTimer = buffDurations;
             }

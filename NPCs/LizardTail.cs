@@ -141,7 +141,7 @@ namespace PetsOverhaul.NPCs
         {//ai[3] is only passed as 1 here from LizardTail, which will make the 'arrow' appear.
             if (NPC.ai[3] == 1 && waitTime <= 0 && Main.myPlayer == Main.LocalPlayer.whoAmI)
             {
-                if (switchedArrow == false) 
+                if (switchedArrow == false)
                 {
                     drawArrowTimer++;
                 }
@@ -153,7 +153,7 @@ namespace PetsOverhaul.NPCs
                 {
                     switchedArrow = !switchedArrow;
                 }
-                    spriteBatch.Draw((Texture2D)Main.Assets.Request<Texture2D>("Images/Item_40"), NPC.position with { Y = NPC.position.Y - 60f + drawArrowTimer * 0.2f } - screenPos, Main.MouseTextColorReal with { A = CurrentAlpha() });
+                spriteBatch.Draw((Texture2D)Main.Assets.Request<Texture2D>("Images/Item_40"), NPC.position with { Y = NPC.position.Y - 60f + drawArrowTimer * 0.2f } - screenPos, Main.MouseTextColorReal with { A = CurrentAlpha() });
             }
         }
     }

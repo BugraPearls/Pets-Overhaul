@@ -96,8 +96,8 @@ namespace PetsOverhaul.NPCs
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             bestiaryEntry.AddTags(
-				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
-				new FlavorTextBestiaryInfoElement(PetUtils.LocVal("NPCs.PetTamer.BestiaryFlavorText")));
+                BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
+                new FlavorTextBestiaryInfoElement(PetUtils.LocVal("NPCs.PetTamer.BestiaryFlavorText")));
         }
         public override void HitEffect(NPC.HitInfo hit)
         {

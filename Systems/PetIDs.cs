@@ -1,8 +1,6 @@
 ﻿using PetsOverhaul.Items;
 using ReLogic.Reflection;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria.ID;
 using Terraria.ModLoader;
 

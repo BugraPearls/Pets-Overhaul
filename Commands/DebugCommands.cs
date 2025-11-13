@@ -1,9 +1,4 @@
 ﻿using PetsOverhaul.Systems;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Commands
@@ -26,7 +21,7 @@ namespace PetsOverhaul.Commands
                 }
                 caller.Reply("Can't find any.");
             }
-            else 
+            else
             {
                 caller.Reply("Give an integer argument to the command.");
             }
@@ -50,7 +45,7 @@ namespace PetsOverhaul.Commands
                     return;
                 }
             }
-                caller.Reply("Can't find any.");
+            caller.Reply("Can't find any.");
         }
     }
 }
