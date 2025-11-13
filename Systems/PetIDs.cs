@@ -1,5 +1,6 @@
 ﻿using PetsOverhaul.Items;
 using ReLogic.Reflection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria.ID;
@@ -273,6 +274,16 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public class PetSlowID
     {
+        /// <summary>
+        /// Assign Sets only in SetStaticDefaults() or with use of <see cref="ReinitializeDuringResizeArraysAttribute"/>. Example:
+        /// <code>
+        /// internal static int MyCustomSlowID; //This needs to be assigned in a Load() with usage of <see cref="RegisterSlowID(string, ref int)"/>.
+        /// public override SetStaticDefaults()
+        /// {
+        ///     PetSlowID.Sets.ElectricBasedSlows[MyCustomSlowID] = true;
+        /// } 
+        /// </code>
+        /// </summary>
         [ReinitializeDuringResizeArrays]
         public static class Sets
         {
@@ -306,12 +317,24 @@ namespace PetsOverhaul.Systems
         public const int Grinch = 9;
 
         /// <summary>
-        /// Use this in Load(). Assign Bool Factories in SetStaticDefaults().
+        /// This should be called in Load(). If needed, assign Bool Factories in SetStaticDefaults().
+        /// 
+        /// Example use:
+        /// <code>
+        /// internal static int MyCustomSlowID;
+        /// 
+        /// public override Load()
+        /// {
+        ///     PetSlowID.RegisterSlowID(nameof(MyCustomSlowID), ref MyCustomSlowID);
+        /// }
+        /// </code>
         /// </summary>
-        /// <param name="name"></param>
-        public static void RegisterSlowID(string name)
+        /// <param name="nameofID">Name of the field to be added to the PetSlowID's. Usage: nameof("your field here")</param>
+        /// <param name="fieldOfID">Field that will have its ID assigned to.</param>
+        public static void RegisterSlowID(string nameofID, ref int fieldOfID)
         {
-            Search.Add(name, SlowIDCount);
+            Search.Add(nameofID, SlowIDCount);
+            fieldOfID = SlowIDCount;
             SlowIDCount++;
         }
     }
