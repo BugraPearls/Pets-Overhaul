@@ -14,7 +14,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class BlackCat : PetEffect
     {
         public override int PetItemID => ItemID.UnluckyYarn;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
         public float luckFlat = 0.09f;
         public float luckMoonLowest = -0.03f;
         public float luckMoonLow = -0.01f;
@@ -31,7 +31,7 @@ namespace PetsOverhaul.PetEffects
         public override string PetStackSpecial => CustomEffectActive ? PetUtils.SecondsOutOfText(PetStackCurrent, 0) : string.Empty;
         public override bool CustomEffectIsContributor => false;
         public override bool HasCustomEffect => true;  //Dedicated to Kinga
-        public override PetClasses CustomPrimaryClass => PetClasses.Defensive;
+        public override PetClass CustomPrimaryClass => PetClassID.Defensive;
         public int lunarVeilDuration = 0;
         public int lunarVeilDurationMax = 600;
         public int lunarVeilCooldown = 7200;

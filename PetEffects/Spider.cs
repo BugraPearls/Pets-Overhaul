@@ -19,7 +19,7 @@ namespace PetsOverhaul.PetEffects
         public float kbIncreasePoison = 1.25f;
         public int poisonTime = 600;
 
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
         public override void ModifyHitNPCWithItem(Item item, NPC target, ref NPC.HitModifiers modifiers)
         {
             if (PetIsEquipped())

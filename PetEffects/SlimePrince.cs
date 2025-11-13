@@ -12,8 +12,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class SlimePrince : PetEffect
     {
         public override int PetItemID => ItemID.KingSlimePetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
-        public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
+        public override PetClass PetClassSecondary => PetClassID.Offensive;
         public float knockback = 8f;
         public int baseDmg = 20; //Most values are used inside the SlimeServant's code
         public float defMult = 0.2f;

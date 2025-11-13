@@ -13,8 +13,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabyRedPanda : PetEffect
     {
         public override int PetItemID => ItemID.BambooLeaf;
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
-        public override PetClasses PetClassSecondary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
+        public override PetClass PetClassSecondary => PetClassID.Utility;
         public float regularAtkSpd = 0.035f;
         public float jungleBonusSpd = 0.025f;
         public int bambooChance = 50;

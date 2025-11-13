@@ -197,26 +197,9 @@ namespace PetsOverhaul.Systems
         public static Color DefensiveClass => new(14, 168, 14);
         public static Color SupportiveClass => new(242, 82, 169);
         public static Color RogueClass => new(255, 233, 36); //This is a temporary addition for Calamity addon, Classes will use Int rather than enum post 3.0.
-        public static Color ClassEnumToColor(PetClasses Class) //Todo, will be a dictionary so easily addable from outside sources, ex. an addon.
+        public static Color GetClassColor(PetClass Class)
         {
-            return Class switch
-            {
-                PetClasses.None => new(0, 0, 0),
-                PetClasses.Melee => MeleeClass,
-                PetClasses.Ranged => RangedClass,
-                PetClasses.Magic => MagicClass,
-                PetClasses.Summoner => SummonerClass,
-                PetClasses.Utility => UtilityClass,
-                PetClasses.Mobility => MobilityClass,
-                PetClasses.Harvesting => HarvestingClass,
-                PetClasses.Mining => MiningClass,
-                PetClasses.Fishing => FishingClass,
-                PetClasses.Offensive => OffensiveClass,
-                PetClasses.Defensive => DefensiveClass,
-                PetClasses.Supportive => SupportiveClass,
-                PetClasses.Rogue => RogueClass, //This is a temporary addition for Calamity addon, Classes will use Int rather than enum post 3.0.
-                _ => new(0, 0, 0),
-            };
+            return Class.ClassColor;
         }
         #endregion
 
@@ -228,6 +211,10 @@ namespace PetsOverhaul.Systems
         /// <returns>Localization text value of "Mods.PetsOverhaul." + localizationKeyValue</returns>
         public static string LocVal(string localizationKeyValue)
         {
+            if (localizationKeyValue.Contains("Mods.PetsOverhaul.")) //If value passed through is a full localization path where Mods.PetsOverhaul. exists, instead of a partial one, it returns the full path.
+            {
+                return Language.GetTextValue(localizationKeyValue);
+            }
             return Language.GetTextValue("Mods.PetsOverhaul." + localizationKeyValue);
         }
         /// <summary>
@@ -259,31 +246,31 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Writes out Pet's Classes and their color mix. Works fine if only one class is given.
         /// </summary>
-        public static string ClassText(PetClasses Class1, PetClasses Class2 = PetClasses.None)
+        public static string ClassText(PetClass Class1, PetClass Class2 = new PetClass())
         {
-            if (Class1 == Class2)
+            if (Class2.InternalID == 0 || Class1 == Class2)
             {
-                Class2 = PetClasses.None;
+                Class2 = PetClassID.None;
             }
 
-            if (Class1 == PetClasses.None && Class2 == PetClasses.None)
+            if (Class1 == PetClassID.None && Class2 == PetClassID.None)
             {
                 return "No class given.";
             }
-            else if (Class1 != PetClasses.None && Class2 != PetClasses.None)
+            else if (Class1 != PetClassID.None && Class2 != PetClassID.None)
             {
                 {
-                    Color color = Color.Lerp(ClassEnumToColor(Class1), ClassEnumToColor(Class2), 0.5f);
-                    return $"[c/{color.Hex3()}:{LocVal("Classes." + Class1)} {LocVal("Misc.And")} {LocVal("Classes." + Class2)} {LocVal("Misc.Pet")}]";
+                    Color color = Color.Lerp(GetClassColor(Class1), GetClassColor(Class2), 0.5f);
+                    return $"[c/{color.Hex3()}:{LocVal(Class1.LocalizationPath)} {LocVal("Misc.And")} {LocVal(Class2.LocalizationPath)} {LocVal("Misc.Pet")}]";
                 }
             }
-            else if (Class2 == PetClasses.None)
+            else if (Class2 == PetClassID.None)
             {
-                return $"[c/{ClassEnumToColor(Class1).Hex3()}:{LocVal("Classes." + Class1)} {LocVal("Misc.Pet")}]";
+                return $"[c/{GetClassColor(Class1).Hex3()}:{LocVal(Class1.LocalizationPath)} {LocVal("Misc.Pet")}]";
             }
             else
             {
-                return $"[c/{ClassEnumToColor(Class2).Hex3()}:{LocVal("Classes." + Class2)} {LocVal("Misc.Pet")}]";
+                return $"[c/{GetClassColor(Class2).Hex3()}:{LocVal(Class2.LocalizationPath)} {LocVal("Misc.Pet")}]";
             }
         }
         /// <summary>
@@ -299,9 +286,9 @@ namespace PetsOverhaul.Systems
         {
             return $"[c/{LowQuality.Hex3()}:{LocVal("LightPetTooltips.NotRolled")}]";
         }
-        public static string PetClassLocalized(PetClasses petClass)
+        public static string PetClassLocalized(PetClass petClass)
         {
-            return LocVal("Classes." + petClass.ToString());
+            return Language.GetTextValue(petClass.LocalizationPath);
         }
         /// <summary>
         /// Converts all integers in given list to be in [i:ItemID] format, which is shown in game as the item itself within the string. Goes down below when countToGoBelow is reached. countStart is where it upstarts the count to go one line below, since there can be a text beforehand. Will also return the text 'None' if there is no items in the list.
@@ -325,7 +312,7 @@ namespace PetsOverhaul.Systems
             }
             if (result == "")
             {
-                result = PetClassLocalized(PetClasses.None);
+                result = PetClassLocalized(PetClassID.None);
             }
             return result;
         }
@@ -343,6 +330,18 @@ namespace PetsOverhaul.Systems
                 return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
             }
             return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
+        }
+
+        /// <summary>
+        /// Mainly for use of Commands to not deal with capital letters.
+        /// </summary>
+        public static string FirstCharToUpper(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return string.Empty;
+            }
+            return char.ToUpper(text[0]) + text[1..];
         }
         #endregion
     }

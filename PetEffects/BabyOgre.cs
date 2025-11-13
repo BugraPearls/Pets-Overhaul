@@ -9,8 +9,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabyOgre : PetEffect
     {
         public override int PetItemID => ItemID.DD2OgrePetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Melee;
-        public override PetClasses PetClassSecondary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Melee;
+        public override PetClass PetClassSecondary => PetClassID.Defensive;
         public float dr = 0.02f;
         public float nonMeleedmg = 0.2f;
         public int crit = 10;

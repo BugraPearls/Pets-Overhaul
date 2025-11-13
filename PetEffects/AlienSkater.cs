@@ -10,7 +10,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class AlienSkater : PetEffect
     {
         public override int PetItemID => ItemID.MartianPetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Mobility;
         public float accelerator = 0.10f;
         public float speedMult = 1.05f;
         public float accMult = 1.1f;

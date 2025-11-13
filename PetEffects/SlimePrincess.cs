@@ -61,8 +61,8 @@ namespace PetsOverhaul.PetEffects
         public float mountDmgIncr = 0.35f;
         public int cooldown = 180;
         public override int PetAbilityCooldown => cooldown;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
-        public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
+        public override PetClass PetClassSecondary => PetClassID.Offensive;
         public void OnMountHit(NPC npc)
         {
             PetGlobalNPC.AddSlow(new PetSlow(slow, slowDuration, PetSlowID.PrincessSlime), npc);

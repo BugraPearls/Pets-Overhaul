@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.PlanteraPetItem;
         public float secondMultiplier = 0.1f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Ranged;
+        public override PetClass PetClassPrimary => PetClassID.Ranged;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (PetIsEquipped() && modifiers.DamageType.CountsAsClass<RangedDamageClass>())

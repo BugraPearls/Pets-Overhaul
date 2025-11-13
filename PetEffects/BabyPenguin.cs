@@ -10,8 +10,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabyPenguin : PetEffect
     {
         public override int PetItemID => ItemID.Fish;
-        public override PetClasses PetClassPrimary => PetClasses.Fishing;
-        public override PetClasses PetClassSecondary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Fishing;
+        public override PetClass PetClassSecondary => PetClassID.Utility;
         internal int penguinOldChilledTime = 0;
         public int snowAndOceanPower = 25;
         public int regularFish = 20;

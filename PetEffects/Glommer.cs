@@ -16,8 +16,8 @@ namespace PetsOverhaul.PetEffects
         public float glommerSanityAura = 0.3f;
         public int glommerSanityRange = 1040;
 
-        public override PetClasses PetClassPrimary => PetClasses.Magic;
-        public override PetClasses PetClassSecondary => PetClasses.Supportive;
+        public override PetClass PetClassPrimary => PetClassID.Magic;
+        public override PetClass PetClassSecondary => PetClassID.Supportive;
         public override int PetAbilityCooldown => glommerSanityTime;
         public override void PostUpdateMiscEffects()
         {

@@ -13,7 +13,7 @@ namespace PetsOverhaul.PetEffects
         public int fuelMax = 150;
         public int harpyFlight = 150;
         private bool cooldownStarted;
-        public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Mobility;
         public override int PetAbilityCooldown => harpyCd;
         public override string PetStackText => PetUtils.LocVal("PetItemTooltips.BirdieRattleStack");
         public override string PetStackSpecial => PetUtils.SecondsOutOfText(harpyFlight, fuelMax); //Instead of Max & current, we write it out ourselves here as this is somewhat of a special case.

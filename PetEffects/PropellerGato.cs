@@ -13,10 +13,10 @@ namespace PetsOverhaul.PetEffects
         public int bonusCritChance = 15;
         public int turretIncrease = 1;
 
-        public override PetClasses PetClassPrimary => PetClasses.Summoner;
+        public override PetClass PetClassPrimary => PetClassID.Summoner;
         public override bool CustomEffectIsContributor => true;
         public override bool HasCustomEffect => true; //Dedicated to Furqi
-        public override PetClasses CustomPrimaryClass => PetClasses.Mobility;
+        public override PetClass CustomPrimaryClass => PetClassID.Mobility;
         public int wingTime = 90;
         public override void SaveData(TagCompound tag)
         {

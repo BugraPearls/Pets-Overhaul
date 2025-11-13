@@ -25,23 +25,6 @@
         PetNPC,
         PetMisc,
     }
-    public enum PetClasses
-    {
-        None,
-        Melee,
-        Ranged,
-        Magic,
-        Summoner,
-        Utility,
-        Mobility,
-        Harvesting,
-        Mining,
-        Fishing,
-        Offensive,
-        Defensive,
-        Supportive,
-        Rogue, //This is a temporary addition for Calamity addon, Classes will use Int rather than enum post 3.0. (Maybe not? seems unnecessary idk)
-    }
     public enum ShieldPosition
     {
         PlayerLeft,

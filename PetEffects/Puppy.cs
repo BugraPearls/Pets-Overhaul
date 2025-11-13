@@ -12,7 +12,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class Puppy : PetEffect
     {
         public override int PetItemID => ItemID.DogWhistle;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
         public int catchChance = 65;
         public int rareCatchChance = 15;
         public int rareCritterCoin = 25000;

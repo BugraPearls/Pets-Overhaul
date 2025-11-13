@@ -13,7 +13,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class EaterOfWorms : PetEffect
     {
         public override int PetItemID => ItemID.EaterOfWorldsPetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Mining;
+        public override PetClass PetClassPrimary => PetClassID.Mining;
 
         private readonly List<(int X, int Y)> tilesToRandomize = [];
         public int tileBreakXSpread = 3;

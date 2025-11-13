@@ -10,7 +10,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class ShadowMimic : PetEffect
     {
         public override int PetItemID => ItemID.OrnateShadowKey;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
         public int chanceToRollDoubleItem = 30; //30% chance to double max/min's of stacks
         public int numeratorMult = 125; //effectively 25% increase on numerator, since denominator is also multiplied by 100 to keep the values consistent with percentages.
         public int denominatorMult = 100;

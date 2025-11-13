@@ -9,7 +9,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabyTruffle : PetEffect
     {
         public override int PetItemID => ItemID.StrangeGlowingMushroom;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
         public float increaseFloat = 0.04f;
         public int increaseInt = 4;
         public int shroomPotionCd = 60;

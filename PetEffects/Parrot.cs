@@ -16,7 +16,7 @@ namespace PetsOverhaul.PetEffects
         public int meleeChance = 28;
         public float projDamage = 0.75f;
         public float meleeDamage = 0.75f;
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
 
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {

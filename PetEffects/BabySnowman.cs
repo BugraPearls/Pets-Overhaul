@@ -21,8 +21,8 @@ namespace PetsOverhaul.PetEffects
         /// </summary>
         public static int FrostBurnId => Main.hardMode ? BuffID.Frostburn2 : BuffID.Frostburn;
 
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
-        public override PetClasses PetClassSecondary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
+        public override PetClass PetClassSecondary => PetClassID.Utility;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (PetIsEquipped())

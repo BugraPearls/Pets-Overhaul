@@ -9,8 +9,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabyImp : PetEffect
     {
         public override int PetItemID => ItemID.HellCake;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
-        public override PetClasses PetClassSecondary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
+        public override PetClass PetClassSecondary => PetClassID.Defensive;
         public int lavaImmune = 600;
         public int lavaDef = 10;
         public float lavaSpd = 0.15f;

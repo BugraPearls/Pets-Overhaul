@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
     {
         public override int PetItemID => ItemID.AmberMosquito;
         public int chance = 175; // 17.5% because its with 1000
-        public override PetClasses PetClassPrimary => PetClasses.Mining;
+        public override PetClass PetClassPrimary => PetClassID.Mining;
         public static int RandomizeItemDrop()
         {
             WeightedRandom<int> itemsToDrop = new();

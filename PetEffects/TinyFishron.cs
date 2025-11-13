@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public int stackChance = 10;
         public float multiplier = 1f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Fishing;
+        public override PetClass PetClassPrimary => PetClassID.Fishing;
         public override void GetFishingLevel(Item fishingRod, Item bait, ref float fishingLevel)
         {
             if (PetIsEquipped(false))

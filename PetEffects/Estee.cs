@@ -9,7 +9,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class Estee : PetEffect
     {
         public override int PetItemID => ItemID.CelestialWand;
-        public override PetClasses PetClassPrimary => PetClasses.Magic;
+        public override PetClass PetClassPrimary => PetClassID.Magic;
         public float manaIncrease = 0.15f;
         public float manaMagicIncreasePer1 = 0.00115f;
         public float penaltyMult = 0.4f;

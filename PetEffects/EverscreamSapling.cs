@@ -17,7 +17,7 @@ namespace PetsOverhaul.PetEffects
         public int flatRecovery = 5;
         public int manaIncrease = 100;
 
-        public override PetClasses PetClassPrimary => PetClasses.Magic;
+        public override PetClass PetClassPrimary => PetClassID.Magic;
         public override int PetAbilityCooldown => cooldown;
         public override void PostUpdateMiscEffects()
         {

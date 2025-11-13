@@ -21,7 +21,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetStackCurrent => currentRegen;
         public override int PetStackMax => 0;
         public override string PetStackText => PetUtils.LocVal("PetItemTooltips.BoneRattleStack");
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
         public override void PreUpdateBuffs() //Since inCombatTimerMax is reset in ResetEffects(), we set the desired inCombatTimerMax here.
         {
             if (PetIsEquipped(false))

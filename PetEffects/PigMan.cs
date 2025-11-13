@@ -9,7 +9,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class Pigman : PetEffect
     {
         public override int PetItemID => ItemID.PigPetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
         public int foodChance = 15;
         public int potionChance = 10;
         public int shieldCooldown = 420;

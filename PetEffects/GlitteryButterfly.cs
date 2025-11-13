@@ -9,7 +9,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class GlitteryButterfly : PetEffect
     {
         public override int PetItemID => ItemID.BedazzledNectar;
-        public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Mobility;
         public int wingTime = 45;
         public float currentWingPercIncr = 0.5f;
         public float healthPenalty = 0.15f;

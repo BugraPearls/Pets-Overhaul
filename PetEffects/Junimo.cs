@@ -17,7 +17,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class Junimo : PetEffect
     {
         public override int PetItemID => ItemID.JunimoPetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
         public string extraBosses = "";
         public int maxLvls = 25;
         public int externalLvlIncr = 0;
@@ -39,9 +39,9 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                if (classThatGotExp == PetClasses.Harvesting)
+                if (classThatGotExp == PetClassID.Harvesting)
                     return junimoHarvestingExp - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
-                if (classThatGotExp == PetClasses.Mining)
+                if (classThatGotExp == PetClassID.Mining)
                     return junimoMiningExp - junimoMiningLevelsToXp[junimoMiningLevel - 1];
 
                 return junimoFishingExp - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
@@ -51,15 +51,15 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                if (classThatGotExp == PetClasses.Harvesting)
+                if (classThatGotExp == PetClassID.Harvesting)
                     return junimoHarvestingLevelsToXp[junimoHarvestingLevel] - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
-                if (classThatGotExp == PetClasses.Mining)
+                if (classThatGotExp == PetClassID.Mining)
                     return junimoMiningLevelsToXp[junimoMiningLevel] - junimoMiningLevelsToXp[junimoMiningLevel - 1];
 
                 return junimoFishingLevelsToXp[junimoFishingLevel] - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
             }
         }
-        public PetClasses classThatGotExp = PetClasses.Harvesting;
+        public PetClass classThatGotExp = PetClassID.Harvesting;
 
         public override int PetStackCurrent => CurrentExpStack;
         public override int PetStackMax => CurrentExpRequiredStack;
@@ -488,7 +488,7 @@ namespace PetsOverhaul.PetEffects
                     juni.junimoHarvestingExp += value;
                     juni.popupExpHarv += value;
                     juni.popupIndexHarv = juni.PopupExp(juni.popupIndexHarv, juni.popupExpHarv, PetUtils.HarvestingClass);
-                    juni.classThatGotExp = PetClasses.Harvesting;
+                    juni.classThatGotExp = PetClassID.Harvesting;
 
                 }
                 else if (itemChck.fishingDrop || itemChck.fortuneFishingDrop)
@@ -502,7 +502,7 @@ namespace PetsOverhaul.PetEffects
                     juni.junimoFishingExp += value;
                     juni.popupExpFish += value;
                     juni.popupIndexFish = juni.PopupExp(juni.popupIndexFish, juni.popupExpFish, PetUtils.FishingClass);
-                    juni.classThatGotExp = PetClasses.Fishing;
+                    juni.classThatGotExp = PetClassID.Fishing;
                 }
                 else if (itemChck.blockNotByPlayer && (itemChck.oreBoost || itemChck.miningDrop || itemChck.fortuneMiningDrop))
                 {
@@ -515,7 +515,7 @@ namespace PetsOverhaul.PetEffects
                     juni.junimoMiningExp += value;
                     juni.popupExpMining += value;
                     juni.popupIndexMining = juni.PopupExp(juni.popupIndexMining, juni.popupExpMining, PetUtils.MiningClass);
-                    juni.classThatGotExp = PetClasses.Mining;
+                    juni.classThatGotExp = PetClassID.Mining;
                 }
             }
         }
@@ -550,7 +550,7 @@ namespace PetsOverhaul.PetEffects
                 junimoFishingExp += value;
                 popupExpFish += value;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
-                classThatGotExp = PetClasses.Fishing;
+                classThatGotExp = PetClassID.Fishing;
             }
         }
         public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
@@ -562,7 +562,7 @@ namespace PetsOverhaul.PetEffects
                 popupExpFish += value;
                 anglerQuestDayCheck = true;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
-                classThatGotExp = PetClasses.Fishing;
+                classThatGotExp = PetClassID.Fishing;
             }
         }
         public override void ModifyCaughtFish(Item fish)
@@ -578,7 +578,7 @@ namespace PetsOverhaul.PetEffects
                 junimoFishingExp += value;
                 popupExpFish += value;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
-                classThatGotExp = PetClasses.Fishing;
+                classThatGotExp = PetClassID.Fishing;
             }
         }
         public override void ExtraPreUpdateNoCheck()
@@ -777,22 +777,22 @@ namespace PetsOverhaul.PetEffects
                         .Replace("<moreBoss>", junimo.extraBosses)
                         .Replace("<harvestingProfit>", Math.Round(junimo.harvestingCoin * junimo.junimoHarvestingLevel, 2).ToString())
                         .Replace("<flatHealth>", Math.Round(junimo.junimoMiningLevel * junimo.miningHealthPerLevel, 1).ToString())
-                        .Replace("<harvestLevel>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{junimo.junimoHarvestingLevel}]")
-                        .Replace("<harvestNext>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{(junimo.junimoHarvestingLevel >= junimo.maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoHarvestingLevelsToXp[junimo.junimoHarvestingLevel] - junimo.junimoHarvestingExp).ToString())}]")
-                        .Replace("<harvestCurrent>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{junimo.junimoHarvestingExp}]")
+                        .Replace("<harvestLevel>", $"[c/{PetUtils.GetClassColor(PetClassID.Harvesting).Hex3()}:{junimo.junimoHarvestingLevel}]")
+                        .Replace("<harvestNext>", $"[c/{PetUtils.GetClassColor(PetClassID.Harvesting).Hex3()}:{(junimo.junimoHarvestingLevel >= junimo.maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoHarvestingLevelsToXp[junimo.junimoHarvestingLevel] - junimo.junimoHarvestingExp).ToString())}]")
+                        .Replace("<harvestCurrent>", $"[c/{PetUtils.GetClassColor(PetClassID.Harvesting).Hex3()}:{junimo.junimoHarvestingExp}]")
                         .Replace("<miningProfit>", Math.Round(junimo.miningCoin * junimo.junimoMiningLevel, 2).ToString())
                         .Replace("<bonusMs>", Math.Round(junimo.junimoHarvestingLevel * junimo.harvestingMoveSpeedPerLevel * 100, 2).ToString())
-                        .Replace("<miningLevel>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3()}:{junimo.junimoMiningLevel}]")
-                        .Replace("<miningNext>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3()}:{(junimo.junimoMiningLevel >= junimo.maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoMiningLevelsToXp[junimo.junimoMiningLevel] - junimo.junimoMiningExp).ToString())}]")
-                        .Replace("<miningCurrent>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3()}:{junimo.junimoMiningExp}]")
+                        .Replace("<miningLevel>", $"[c/{PetUtils.GetClassColor(PetClassID.Mining).Hex3()}:{junimo.junimoMiningLevel}]")
+                        .Replace("<miningNext>", $"[c/{PetUtils.GetClassColor(PetClassID.Mining).Hex3()}:{(junimo.junimoMiningLevel >= junimo.maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoMiningLevelsToXp[junimo.junimoMiningLevel] - junimo.junimoMiningExp).ToString())}]")
+                        .Replace("<miningCurrent>", $"[c/{PetUtils.GetClassColor(PetClassID.Mining).Hex3()}:{junimo.junimoMiningExp}]")
                         .Replace("<fishingProfit>", Math.Round(junimo.fishingCoin * junimo.junimoFishingLevel, 2).ToString())
                         .Replace("<bonusDamage>", Math.Round(junimo.junimoFishingLevel * junimo.fishingDamagePerLevel * 100, 2).ToString())
-                        .Replace("<fishingLevel>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{junimo.junimoFishingLevel}]")
-                        .Replace("<fishingNext>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{(junimo.junimoFishingLevel >= junimo.maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoFishingLevelsToXp[junimo.junimoFishingLevel] - junimo.junimoFishingExp).ToString())}]")
-                        .Replace("<fishingCurrent>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{junimo.junimoFishingExp}]")
-                        .Replace("<harvesting>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Harvesting).Hex3()}:{PetUtils.PetClassLocalized(PetClasses.Harvesting)}]")
-                        .Replace("<mining>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Mining).Hex3()}:{PetUtils.PetClassLocalized(PetClasses.Mining)}]")
-                        .Replace("<fishing>", $"[c/{PetUtils.ClassEnumToColor(PetClasses.Fishing).Hex3()}:{PetUtils.PetClassLocalized(PetClasses.Fishing)}]");
+                        .Replace("<fishingLevel>", $"[c/{PetUtils.GetClassColor(PetClassID.Fishing).Hex3()}:{junimo.junimoFishingLevel}]")
+                        .Replace("<fishingNext>", $"[c/{PetUtils.GetClassColor(PetClassID.Fishing).Hex3()}:{(junimo.junimoFishingLevel >= junimo.maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxLevelText") : (junimo.junimoFishingLevelsToXp[junimo.junimoFishingLevel] - junimo.junimoFishingExp).ToString())}]")
+                        .Replace("<fishingCurrent>", $"[c/{PetUtils.GetClassColor(PetClassID.Fishing).Hex3()}:{junimo.junimoFishingExp}]")
+                        .Replace("<harvesting>", $"[c/{PetUtils.GetClassColor(PetClassID.Harvesting).Hex3()}:{PetUtils.PetClassLocalized(PetClassID.Harvesting)}]")
+                        .Replace("<mining>", $"[c/{PetUtils.GetClassColor(PetClassID.Mining).Hex3()}:{PetUtils.PetClassLocalized(PetClassID.Mining)}]")
+                        .Replace("<fishing>", $"[c/{PetUtils.GetClassColor(PetClassID.Fishing).Hex3()}:{PetUtils.PetClassLocalized(PetClassID.Fishing)}]");
         public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.JunimoPetItem");
     }
 }

@@ -9,8 +9,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class Destroyer : PetEffect
     {
         public override int PetItemID => ItemID.DestroyerPetItem;
-        public override PetClasses PetClassSecondary => PetClasses.Defensive;
-        public override PetClasses PetClassPrimary => PetClasses.Mining;
+        public override PetClass PetClassSecondary => PetClassID.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Mining;
         public int ironskinBonusDef = 8;
         public float flatDefMult = 0.15f;
         public float defItemMult = 0.35f;

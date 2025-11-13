@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class Turtle : PetEffect
     {
         public override int PetItemID => ItemID.Seaweed;
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
         public float moveSpd = 0.12f;
         public float def = 0.07f;
         public float kbResist = 0.55f;

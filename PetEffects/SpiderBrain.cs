@@ -14,7 +14,7 @@ namespace PetsOverhaul.PetEffects
         public int cdToAddToPool = 165;
         public float lifestealAmount = 0.035f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
         public override int PetAbilityCooldown => cdToAddToPool;
         public override int PetStackCurrent => lifePool;
         public override int PetStackMax => (int)(Player.statLifeMax2 * lifePoolMaxPerc);

@@ -15,8 +15,8 @@ namespace PetsOverhaul.PetEffects
         public float grinchSlow = 0.9f;
         public int grinchRange = 400;
         public static List<int> FrostMoonWeapons = [ItemID.ChristmasTreeSword, ItemID.Razorpine, ItemID.ElfMelter, ItemID.ChainGun, ItemID.BlizzardStaff, ItemID.SnowmanCannon, ItemID.NorthPole];
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
-        public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
+        public override PetClass PetClassSecondary => PetClassID.Offensive;
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
             if (PetIsEquipped() && FrostMoonWeapons.Contains(item.type))

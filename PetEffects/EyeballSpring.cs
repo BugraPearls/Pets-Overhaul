@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class EyeballSpring : PetEffect
     {
         public override int PetItemID => ItemID.EyeSpring;
-        public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Mobility;
         public float acceleration = 0.16f;
         public float jumpBoost = 4.55f;
         public float ascentPenaltyMult = 0.55f;

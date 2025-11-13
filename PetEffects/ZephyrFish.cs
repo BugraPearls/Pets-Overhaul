@@ -17,7 +17,7 @@ namespace PetsOverhaul.PetEffects
         public int windChance = 120;
         public int speedMult = 20;
         public bool AmplifiedFishingChance { get; internal set; }
-        public override PetClasses PetClassPrimary => PetClasses.Fishing;
+        public override PetClass PetClassPrimary => PetClassID.Fishing;
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped(false))

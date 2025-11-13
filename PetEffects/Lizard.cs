@@ -30,8 +30,8 @@ namespace PetsOverhaul.PetEffects
         public int defense = 10;
         public float jumpMult = 0.5f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
-        public override PetClasses PetClassSecondary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
+        public override PetClass PetClassSecondary => PetClassID.Utility;
         public override int PetAbilityCooldown => tailCooldown;
         public override void ExtraPreUpdateNoCheck()
         {

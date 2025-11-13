@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public int flatDmg = 15;
         public int pen = 20;
 
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
         public void SpawnGasCloud(NPC target, int damage, DamageClass dmgType)
         {
             if (PetIsEquipped())

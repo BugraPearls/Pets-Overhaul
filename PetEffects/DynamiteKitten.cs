@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public int armorPen = 15;
         public int explosionSize = 200;
 
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
         public override int PetAbilityCooldown => cooldown;
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {

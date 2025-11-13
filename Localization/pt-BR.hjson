@@ -71,7 +71,7 @@ Mods: {
 				/pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
 				Mostra uma quantidade ilimitada de jogadores online com as maiores contagens de Exp na habilidade escolhida entre as 3 habilidades de Junimo.
 				/pet faq, /pet question -> Mostra perguntas frequentes sobre o Pets Overhaul.
-				/pet pets, class {all|ability(or cooldown)|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
+				/pet pets, class {all, ability(or cooldown), <petClasses>}
 				-> Mostra todos os PET's no chat que possuem a classe informada no segundo argumento. O argumento 'all' exibirá TODOS os efeitos de Pets, independentemente da classe.
 				/pet light, lightpet, lightpets -> Exibe todos os PET's de Luz.
 				/pet item, items {harvesting|mining|fishing} -> Exibe todos os itens afetados pelos bônus da classe de PET's informada.
@@ -118,7 +118,7 @@ Mods: {
 			NoPets: Nenhum PET disponível para esta classe. (Talvez você esteja sem um addon para esta classe?)
 			Items: Todos os itens afetados pelos efeitos de PET's da classe <class> (Apenas quando obtidos naturalmente):
 			ClassArgumentInvalidItems: A classe fornecida é inválida, tente uma das seguintes: {harvesting|mining|fishing}.
-			ClassArgumentInvalid: A classe fornecida é inválida, tente uma das seguintes: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
+			ClassArgumentInvalid: A classe fornecida é inválida, tente uma das seguintes: {all, ability(or cooldown), <petClasses>}
 			ArgumentInvalid: O argumento enviado foi invalido, aqui está a lista de comandos do Pet Overhaul: (comandos não são sensíveis a maiúsculas e minúsculas)
 			UseInMultiplayer: Por favor, use esse comando no Multiplayer! Se você quer ver as habilidades do seu Junimo. use /pet junimo, /pet junimoscoreboard ou /pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:O nível de <class> do seu Junimo: <level> A experiência da <class> do seu Junimo: <exp>]"

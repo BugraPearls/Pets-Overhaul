@@ -14,8 +14,8 @@ namespace PetsOverhaul.PetEffects
         public float movespdToDmg = 0.2f;
         public float staticParalysis = 3f;
         public int staticLength = 45;
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
-        public override PetClasses PetClassSecondary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
+        public override PetClass PetClassSecondary => PetClassID.Mobility;
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())

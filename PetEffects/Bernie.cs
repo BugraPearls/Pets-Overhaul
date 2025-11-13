@@ -15,8 +15,8 @@ namespace PetsOverhaul.PetEffects
         public int manaDrain = 4;
         public int healthDrain = 3;
         public int EnemiesBurning { get; internal set; }
-        public override PetClasses PetClassPrimary => PetClasses.Utility;
-        public override PetClasses PetClassSecondary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Utility;
+        public override PetClass PetClassSecondary => PetClassID.Defensive;
         public override int PetAbilityCooldown => burnDrain;
         public override int PetStackCurrent => EnemiesBurning;
         public override int PetStackMax => maxBurning;

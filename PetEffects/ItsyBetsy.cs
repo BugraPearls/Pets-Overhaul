@@ -16,8 +16,8 @@ namespace PetsOverhaul.PetEffects
         public float missingHpRecover = 0.007f;
         public float maxStackBonusRecover = 0.5f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Ranged;
-        public override PetClasses PetClassSecondary => PetClasses.Supportive;
+        public override PetClass PetClassPrimary => PetClassID.Ranged;
+        public override PetClass PetClassSecondary => PetClassID.Supportive;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (target.GetGlobalNPC<PetGlobalNPC>().curseCounter > maxStacks)

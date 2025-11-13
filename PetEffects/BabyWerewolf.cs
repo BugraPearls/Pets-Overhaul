@@ -17,8 +17,8 @@ namespace PetsOverhaul.PetEffects
         public int maxStacks = 15;
         public int debuffLength = 1200;
 
-        public override PetClasses PetClassPrimary => PetClasses.Supportive;
-        public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Supportive;
+        public override PetClass PetClassSecondary => PetClassID.Offensive;
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped(false) && Main.moonPhase == 0)

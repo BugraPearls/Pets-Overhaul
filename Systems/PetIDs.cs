@@ -1,8 +1,13 @@
-﻿using PetsOverhaul.Items;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Xna.Framework;
+using PetsOverhaul.Items;
+using PetsOverhaul.PetEffects;
 using ReLogic.Reflection;
 using System.Collections.Generic;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PetsOverhaul.Systems
 {
@@ -285,19 +290,13 @@ namespace PetsOverhaul.Systems
         [ReinitializeDuringResizeArrays]
         public static class Sets
         {
-            public static SetFactory Factory = new SetFactory(SlowIDCount, "PetsOverhaul/PetSlowIDs", Search);
+            public static SetFactory Factory = new(SlowIDCount, "PetsOverhaul/PetSlowID", Search);
 
-            public static bool[] ElectricBasedSlows = Factory.CreateNamedSet("ElectricSlows")
-            .Description("Enemies with this type of slow will emit Electric dusts.")
-            .RegisterBoolSet(false, VoltBunny, PhantasmalLightning);
+            public static bool[] ElectricBasedSlows = Factory.CreateBoolSet(false, VoltBunny, PhantasmalLightning);
 
-            public static bool[] ColdBasedSlows = Factory.CreateNamedSet("ColdSlows")
-            .Description("Enemies with this type of slow will emit Icy dusts.")
-            .RegisterBoolSet(false, Any, Snowman, Deerclops, IceQueen, PhantasmalIce, Grinch);
+            public static bool[] ColdBasedSlows = Factory.CreateBoolSet(false, Any, Snowman, Deerclops, IceQueen, PhantasmalIce, Grinch);
 
-            public static bool[] SicknessBasedSlows = Factory.CreateNamedSet("SicknessSlows")
-            .Description("Enemies with this type of slow will emit poison dusts.")
-            .RegisterBoolSet(false, PrincessSlime, PrinceSlime);
+            public static bool[] SicknessBasedSlows = Factory.CreateBoolSet(false, PrincessSlime, PrinceSlime);
         }
         internal static int SlowIDCount { get; set; } = 10; //This is the 'base' amount of ID's we have. It goes up from here as more Slow ID's gets added.
 
@@ -334,6 +333,40 @@ namespace PetsOverhaul.Systems
             Search.Add(nameofID, SlowIDCount);
             fieldOfID = SlowIDCount;
             SlowIDCount++;
+        }
+    }
+    /// <summary>
+    /// Class that contains base Mod's Pet Classes. If you want to add another class here, example use inside a ModSystem:
+    /// <code>
+    ///         public static PetClass Rogue = new("Rogue","Mods.PetsOverhaul.Classes.Rogue", PetUtils.RogueClass);
+    ///public override void SetStaticDefaults()
+    ///{
+    ///    PetClassID.RegisterPetClass(ref Rogue);
+    ///}
+    /// </code>
+    /// </summary>
+    public class PetClassID
+    {
+        public static readonly PetClass None = new("None", PetUtils.LocVal("Classes.None"), Color.White, 0);
+        public static readonly PetClass Melee = new("Melee", PetUtils.LocVal("Classes.Melee"), PetUtils.MeleeClass, 1);
+        public static readonly PetClass Ranged = new("Ranged", PetUtils.LocVal("Classes.Ranged"), PetUtils.RangedClass, 2);
+        public static readonly PetClass Magic = new("Magic", PetUtils.LocVal("Classes.Magic"), PetUtils.MagicClass, 3);
+        public static readonly PetClass Summoner = new("Summoner", PetUtils.LocVal("Classes.Summoner"), PetUtils.SummonerClass, 4);
+        public static readonly PetClass Utility = new("Utility", PetUtils.LocVal("Classes.Utility"), PetUtils.UtilityClass, 5);
+        public static readonly PetClass Mobility = new("Mobility", PetUtils.LocVal("Classes.Mobility"), PetUtils.MobilityClass, 6);
+        public static readonly PetClass Harvesting = new("Harvesting", PetUtils.LocVal("Classes.Harvesting"), PetUtils.HarvestingClass, 7);
+        public static readonly PetClass Mining = new("Mining", PetUtils.LocVal("Classes.Mining"), PetUtils.MiningClass, 8);
+        public static readonly PetClass Fishing = new("Fishing", PetUtils.LocVal("Classes.Fishing"), PetUtils.FishingClass, 9);
+        public static readonly PetClass Offensive = new("Offensive", PetUtils.LocVal("Classes.Offensive"), PetUtils.OffensiveClass, 10);
+        public static readonly PetClass Defensive = new("Defensive", PetUtils.LocVal("Classes.Defensive"), PetUtils.DefensiveClass, 11);
+        public static readonly PetClass Supportive = new("Supportive", PetUtils.LocVal("Classes.Supportive"), PetUtils.SupportiveClass, 12);
+
+        public static List<PetClass> AllClasses = [None, Melee, Ranged, Magic, Summoner, Utility, Mobility, Harvesting, Mining, Fishing, Offensive, Defensive, Supportive];
+
+        public static void RegisterPetClass(ref PetClass fieldOfClass)
+        {
+            fieldOfClass.InternalID = AllClasses.Count;
+            AllClasses.Add(fieldOfClass);
         }
     }
 }

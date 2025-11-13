@@ -11,7 +11,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class CarrotBunny : PetEffect
     {
         public override int PetItemID => ItemID.Carrot;
-        public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Mobility;
         private int bunnyTimer = 0;
         public int bunnyStack = 0;
         public int maxStack = 10;

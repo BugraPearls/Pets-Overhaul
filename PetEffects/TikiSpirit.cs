@@ -14,7 +14,7 @@ namespace PetsOverhaul.PetEffects
         public float atkSpdToDmgConversion = 0.30f;
         public float atkSpdToRangeConversion = 0.15f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Summoner;
+        public override PetClass PetClassPrimary => PetClassID.Summoner;
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())

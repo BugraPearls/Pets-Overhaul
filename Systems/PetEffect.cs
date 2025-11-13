@@ -1,10 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Systems
 {
+    /// <summary>
+    /// PetClass value that any 'normal pet' has. Outside mods needs to manually use <see cref="PetClassID.RegisterPetClass(ref PetClass)"/> to have any newly added Pet Class registered into the system properly.
+    /// </summary>
+    /// <param name="localizationPath">The localization path where this Classes name can be found.</param>
+    /// <param name="classColor">Color that this class will use when appearing in tooltips etc.</param>
+    public struct PetClass(string internalName, string localizationPath, Color classColor)
+    {
+        public string InternalName = internalName;
+        public int InternalID { get; internal set; } = 0;
+        public string LocalizationPath = localizationPath;
+        public Color ClassColor = classColor;
+        internal PetClass(string internalName,string localizationPath, Color classColor, int IDNumber) : this(internalName,localizationPath,classColor) //We only guarantee base mod's assigned Classes to be a certain ID number. Others will have it assigned via RegisterPetClass(string, ref PetClass).
+        {
+            InternalID = IDNumber;
+        }
+        public static bool operator ==(PetClass left, PetClass right) => left.InternalID == right.InternalID;
+        public static bool operator !=(PetClass left, PetClass right) => left.InternalID != right.InternalID;
+        public override string ToString()
+        {
+            return InternalName;
+        }
+    }
     /// <summary>
     /// Abstract class that contains what every Primary Pet Effect contains.
     /// </summary>
@@ -37,11 +60,11 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Primary Class of Pet that will appear on its tooltip with its color.
         /// </summary>
-        public abstract PetClasses PetClassPrimary { get; }
+        public abstract PetClass PetClassPrimary { get; }
         /// <summary>
         /// Secondary Class of Pet that will appear on its tooltip, which will mix its color with the Primary Classes color. Defaults to None.
         /// </summary>
-        public virtual PetClasses PetClassSecondary => PetClasses.None;
+        public virtual PetClass PetClassSecondary => PetClassID.None;
         /// <summary>
         /// Item ID of the Pet. Used by PetTooltip class, ThisPetInUse() etc. 
         /// </summary>
@@ -61,8 +84,8 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Custom Pet Effect's class to appear when its switched to.
         /// </summary>
-        public virtual PetClasses CustomPrimaryClass => PetClasses.None;
-        public virtual PetClasses CustomSecondaryClass => PetClasses.None;
+        public virtual PetClass CustomPrimaryClass => PetClassID.None;
+        public virtual PetClass CustomSecondaryClass => PetClassID.None;
         /// <summary>
         /// Checks for given PetItemID is currently in the MiscSlot[0]. Returns false if HasCustomEffect and CustomEffectActive is both true.
         /// </summary>
@@ -212,8 +235,8 @@ namespace PetsOverhaul.Systems
             {
                 Tip = PetsTooltip;
             }
-            PetClasses petClass1;
-            PetClasses petClass2;
+            PetClass petClass1;
+            PetClass petClass2;
             if (PetsEffect.HasCustomEffect && PetsEffect.CustomEffectActive)
             {
                 petClass1 = PetsEffect.CustomPrimaryClass;

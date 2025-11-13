@@ -72,7 +72,7 @@ Mods: {
 				 /pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
 				 Отображает список онлайн игроков с наибольшим количеством опыта для выбранного навыка из 3 навыков Junimo.
 				 /pet faq, /pet question -> Отображает часто задаваемые вопросы по Pets Overhaul.
-				 /pet pets, class {all|ability(или cooldown)|melee|range|magic|summoner|utility|mobility|harvesting|mining|fishing|attanchive|defense|supportive|rogue}
+				 /pet pets, class {all, ability(или cooldown), <petClasses>}
 				-> Отображает всех питомцев в чате, имеющих класс, указанный во 2-м аргументе. Аргумент 'all' покажет ВСЕ эффекты питомцев независимо от класса.
 				/pet light, lightpet, lightpets -> Отображает всех легких питомцев.
 				/pet item, items {harvesting|mining|fishing} -> Отображает все предметы, на которые влияют бонусы указанного класса питомцев.
@@ -117,7 +117,7 @@ Mods: {
 			NoPets: Для данного класса нет доступных питомцев. (Возможно, у вас отсутствует аддон для этого класса?)
 			Items: Все предметы, затронутые эффектами питомцев класса <class> (Только при естественном получении):
 			ClassArgumentInvalidItems: Указанный класс недействителен, попробуйте один из следующих: {harvesting|mining|fishing}.
-			ClassArgumentInvalid: Указанный класс недействителен, попробуйте один из следующих: {all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
+			ClassArgumentInvalid: Указанный класс недействителен, попробуйте один из следующих: {all, ability, <petClasses>}.
 			ArgumentInvalid: Аргумент недействителен, вот список команд Pets Overhaul: (команды нечувствительны к регистру)
 			UseInMultiplayer: Используйте эту команду в многопользовательской игре! Если вы хотите увидеть свои навыки Junimo, используйте /pet junimo, /pet junimoscoreboard или /pet junimoleaderboard.
 			SinglePlayerJunimo: "[c/<color>:Ваш <class> уровень Junimo: <level>, Ваш <class> опыт Junimo: <exp>]"

@@ -10,7 +10,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class HoneyBee : PetEffect
     {
         public override int PetItemID => ItemID.QueenBeePetItem;
-        public override PetClasses PetClassPrimary => PetClasses.Supportive;
+        public override PetClass PetClassPrimary => PetClassID.Supportive;
         public float bottledHealth = 0.18f;
         public float honeyfinHealth = 0.25f;
         public float selfPotionIncrease = 0.1f;

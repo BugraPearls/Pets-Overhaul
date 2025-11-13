@@ -12,7 +12,7 @@ namespace PetsOverhaul.PetEffects
         public int zombieArmorPen = 6;
         public int penetrateChance = 75;
 
-        public override PetClasses PetClassPrimary => PetClasses.Ranged;
+        public override PetClass PetClassPrimary => PetClassID.Ranged;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (PetIsEquipped() && NPCID.Sets.Zombies[target.type] && modifiers.DamageType.Type == DamageClass.Ranged.Type)

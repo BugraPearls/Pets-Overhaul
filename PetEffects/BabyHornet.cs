@@ -10,8 +10,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabyHornet : PetEffect
     {
         public override int PetItemID => ItemID.Nectar;
-        public override PetClasses PetClassPrimary => PetClasses.Summoner;
-        public override PetClasses PetClassSecondary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Summoner;
+        public override PetClass PetClassSecondary => PetClassID.Utility;
         public int beeCooldown = 90;
         public int beeDmg = 6;
         public float beeKb = 0.9f;

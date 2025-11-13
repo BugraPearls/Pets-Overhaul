@@ -12,8 +12,8 @@ namespace PetsOverhaul.PetEffects
     public sealed class DualSlime : PetEffect
     {
         public override int PetItemID => ItemID.ResplendentDessert;
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
-        public override PetClasses PetClassSecondary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
+        public override PetClass PetClassSecondary => PetClassID.Defensive;
         public int shield = 55;
         public int shieldTime = 1500;
         public float mountDmgIncr = 0.45f;

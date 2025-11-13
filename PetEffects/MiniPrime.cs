@@ -22,8 +22,8 @@ namespace PetsOverhaul.PetEffects
 
         public int howManyShieldsAvailable = 0; //Purely added for UI display
 
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
-        public override PetClasses PetClassSecondary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
+        public override PetClass PetClassSecondary => PetClassID.Offensive;
         public override int PetAbilityCooldown => shieldRecovery;
         public override int PetStackCurrent => howManyShieldsAvailable;
         public override int PetStackMax => 5;

@@ -48,4 +48,21 @@ namespace PetsOverhaul.Commands
             caller.Reply("Can't find any.");
         }
     }
+    public class PetClassCheck : ModCommand
+    {
+        public override bool IsCaseSensitive => true;
+        public override CommandType Type => CommandType.Chat;
+        public override string Command => "petclass";
+        public override void Action(CommandCaller caller, string input, string[] args)
+        {
+            if (args.Length == 1)
+            {
+                PetClass petClass = PetClassID.AllClasses.Find(x => x.InternalName == args[0]);
+
+                    caller.Reply(petClass.InternalID.ToString());
+                    return;
+            }
+            caller.Reply("Can't find any.");
+        }
+    }
 }

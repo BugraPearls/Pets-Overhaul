@@ -23,7 +23,7 @@ namespace PetsOverhaul.PetEffects
         public int shieldAmount = 50;
         public int shieldDuration = 420;
 
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
         public override int PetAbilityCooldown => cooldown;
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {

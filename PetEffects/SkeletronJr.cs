@@ -28,7 +28,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override int PetStackMax => 0;
         public override string PetStackText => PetUtils.LocVal("PetItemTooltips.SkeletronPetItemStack");
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
         public override void ExtraPreUpdate()
         {
             timer++;

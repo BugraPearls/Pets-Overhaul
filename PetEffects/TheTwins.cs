@@ -18,8 +18,8 @@ namespace PetsOverhaul.PetEffects
         public int percDamageCap = 35;
         public int defDrop = 2;
 
-        public override PetClasses PetClassPrimary => PetClasses.Offensive;
-        public override PetClasses PetClassSecondary => PetClasses.Utility;
+        public override PetClass PetClassPrimary => PetClassID.Offensive;
+        public override PetClass PetClassSecondary => PetClassID.Utility;
         public override int PetAbilityCooldown => cooldown;
         public override void ExtraPreUpdateNoCheck()
         {

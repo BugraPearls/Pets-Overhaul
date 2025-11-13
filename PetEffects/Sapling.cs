@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public float planteraLifesteal = 0.019f;
         public float regularLifesteal = 0.015f;
         public float damagePenalty = 0.7f;
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (PetIsEquipped() && PetUtils.LifestealCheck(target))

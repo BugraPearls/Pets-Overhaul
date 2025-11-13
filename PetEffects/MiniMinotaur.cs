@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         public float moveSpd = 0.0018f;
         public float defMult = 0.0012f;
 
-        public override PetClasses PetClassPrimary => PetClasses.Melee;
+        public override PetClass PetClassPrimary => PetClassID.Melee;
         public override int PetStackCurrent => minotaurStack;
         public override int PetStackMax => maxStack;
         public override string PetStackText => PetUtils.LocVal("PetItemTooltips.TartarSauceStack");

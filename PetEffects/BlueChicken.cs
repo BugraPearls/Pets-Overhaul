@@ -13,7 +13,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class BlueChicken : PetEffect
     {
         public override int PetItemID => ItemID.BlueEgg;
-        public override PetClasses PetClassPrimary => PetClasses.Harvesting;
+        public override PetClass PetClassPrimary => PetClassID.Harvesting;
         public int blueEggTimer = 39600;
         public float tipsyMovespd = 0.1f;
         public int plantChance = 28;

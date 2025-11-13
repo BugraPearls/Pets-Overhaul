@@ -10,7 +10,7 @@ namespace PetsOverhaul.PetEffects
     public sealed class Squashling : PetEffect
     {
         public override int PetItemID => ItemID.MagicalPumpkinSeed;
-        public override PetClasses PetClassPrimary => PetClasses.Harvesting;
+        public override PetClass PetClassPrimary => PetClassID.Harvesting;
         public int squashlingCommonChance = 50;
         public int squashlingRareChance = 20;
         public int pumpkinArmorBonusHp = 5;

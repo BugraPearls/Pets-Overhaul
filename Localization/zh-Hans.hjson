@@ -70,7 +70,7 @@ Mods: {
 				/pet junimo，/pet junimoscoreboard，/pet junimoleaderboard -> 显示祝尼魔三个职业总计经验值最高的前三名在线玩家
 				/pet {mining|fishing|harvesting}scoreboard，/pet {mining|fishing|harvesting}leaderboard -> 显示所有玩家的祝尼魔对应职业的经验值
 				/pet faq，/pet question -> 显示关于宠物大修的常见问题
-				/pet pets 或/pet class {all|ability（或cooldown）|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}
+				/pet pets 或/pet class {all, ability（或cooldown), <petClasses>}
 				-> 在聊天栏中显示参数中的职业宠物列表。“all”参数会显示所有宠物。
 				->all->全职业，melee->近战，ranged->远程，magic->魔法，summoner->召唤，utility->通用，mobility->机动，harvesting->采集，mining->挖掘，fishing->钓鱼，offensive->进攻，defensive->防御，supportive->辅助，rogue->盗贼
 				/pet item {harvesting|mining|fishing} -> 显示受给定职业效果影响的物品，参数分别为采集/挖掘/钓鱼
@@ -110,7 +110,7 @@ Mods: {
 			NoPets: 没有此职业的宠物。（你没装宠物大修-灾厄附属？）
 			Items: 受<class>职业宠物效果影响的物品：（仅当自然获取时）
 			ClassArgumentInvalidItems: 无效职业参数，以下为有效参数：{harvesting|mining|fishing}.
-			ClassArgumentInvalid: 无效职业参数，以下为有效参数：{all|melee|ranged|magic|summoner|utility|mobility|harvesting|mining|fishing|offensive|defensive|supportive|rogue}.
+			ClassArgumentInvalid: 无效职业参数，以下为有效参数：{all, ability（或cooldown), <petClasses>}
 			ArgumentInvalid: 参数无效，以下是宠物大修命令列表：（不区分大小写）
 			UseInMultiplayer: 请在多人游戏中使用此命令！如果你想查看你的祝尼魔经验值，用/pet junimo，/pet junimoscoreboard，或/pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:你的祝尼魔 <class> 等级： <level> 你的祝尼魔 <class> 经验： <exp>]"

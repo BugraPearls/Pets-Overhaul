@@ -41,8 +41,8 @@ namespace PetsOverhaul.PetEffects
         public override int PetStackCurrent => CurrentTotalDmgStored;
         public override int PetStackMax => (int)(Player.statLifeMax2 * maxHealthPerc);
         public override string PetStackText => PetUtils.LocVal("PetItemTooltips.DeerclopsPetItemStack");
-        public override PetClasses PetClassPrimary => PetClasses.Defensive;
-        public override PetClasses PetClassSecondary => PetClasses.Melee;
+        public override PetClass PetClassPrimary => PetClassID.Defensive;
+        public override PetClass PetClassSecondary => PetClassID.Melee;
         public override int PetAbilityCooldown => cooldown;
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
