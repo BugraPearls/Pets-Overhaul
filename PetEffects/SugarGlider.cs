@@ -19,9 +19,9 @@ namespace PetsOverhaul.PetEffects
         public int shuricornDamage = 20;
         public const int shuricornDuration = 300;
         public float shuricornKb = 7f;
-        public override PetClasses PetClassPrimary => PetClasses.Mobility;
+        public override PetClass PetClassPrimary => PetClassID.Mobility;
         public override bool HasCustomEffect => true; //Dedicated to sskToji
-        public override PetClasses CustomPrimaryClass => PetClasses.Mobility;
+        public override PetClass CustomPrimaryClass => PetClassID.Mobility;
         public override bool CustomEffectIsContributor => true;
         public override int PetAbilityCooldown => CustomEffectActive ? shuricornCooldown : base.PetAbilityCooldown;
         public override void ExtraProcessTriggers(TriggersSet triggersSet)
@@ -95,6 +95,6 @@ namespace PetsOverhaul.PetEffects
             .Replace("<kb>", sugarGlider.shuricornKb.ToString())
             .Replace("<cooldown>", Math.Round(sugarGlider.shuricornCooldown / 60f, 2).ToString())
             .Replace("<mark>", Math.Round(SugarGlider.shuricornDuration / 60f, 2).ToString());
-        public override string CustomSimpleTooltip => PetUtils.LocVal("CustomSimplePetEffects.EucaluptusSap");
+        public override string CustomSimpleTooltip => PetUtils.LocVal("SimpleCustomPetEffects.EucaluptusSap").Replace("<keybind>", PetUtils.KeybindText(PetKeybinds.UsePetAbility));
     }
 }
