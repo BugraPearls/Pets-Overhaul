@@ -196,7 +196,6 @@ namespace PetsOverhaul.Systems
         public static Color OffensiveClass => new(246, 84, 106);
         public static Color DefensiveClass => new(14, 168, 14);
         public static Color SupportiveClass => new(242, 82, 169);
-        public static Color RogueClass => new(255, 233, 36); //This is a temporary addition for Calamity addon, Classes will use Int rather than enum post 3.0.
         public static Color GetClassColor(PetClass Class)
         {
             return Class.ClassColor;
@@ -211,7 +210,7 @@ namespace PetsOverhaul.Systems
         /// <returns>Localization text value of "Mods.PetsOverhaul." + localizationKeyValue</returns>
         public static string LocVal(string localizationKeyValue)
         {
-            if (localizationKeyValue.Contains("Mods.PetsOverhaul.")) //If value passed through is a full localization path where Mods.PetsOverhaul. exists, instead of a partial one, it returns the full path.
+            if (localizationKeyValue.Contains("Mods.")) //If value passed through is a full localization path where Mods. exists instead of a partial one, it returns the full path.
             {
                 return Language.GetTextValue(localizationKeyValue);
             }

@@ -59,7 +59,6 @@ Mods: {
 			Offensive: Атакующий
 			Defensive: Защищающий
 			Supportive: Поддерживающий
-			Rogue: Разбойничий
 		}
 
 		Commands: {

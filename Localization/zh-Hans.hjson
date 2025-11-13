@@ -58,7 +58,6 @@ Mods: {
 			Offensive: 进攻
 			Defensive: 防御
 			Supportive: 辅助
-			Rogue: 盗贼
 		}
 
 		Commands: {
