@@ -21,14 +21,12 @@ namespace PetsOverhaul.NPCs
         {
             ContentSamples.NpcBestiaryRarityStars[Type] = 4;
             Main.npcFrameCount[Type] = amountOfFrames;
-            //NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
-            //{
-            //    Velocity = 1f,
-            //    Direction = 1
-            //    , 
-            //};
-
-            //NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
+            NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new()
+            {
+                Velocity = 1f,
+            };
+            drawModifiers.Position.Y += -10;
+            NPCID.Sets.NPCBestiaryDrawOffset[Type] = drawModifiers;
         }
         public override void SetDefaults()
         {
@@ -52,9 +50,13 @@ namespace PetsOverhaul.NPCs
         }
         public override void FindFrame(int frameHeight)
         {
-            NPC.frame.Y += frameTimer % nextFrame == 0 ? 18 : 0;
+            NPC.frame.Y += frameTimer % nextFrame == 0 ? frameHeight : 0;
             if (frameTimer == 0)
                 NPC.frame.Y = 0;
+
+            frameTimer++;
+            if (frameTimer >= amountOfFrames * nextFrame)
+                frameTimer = 0;
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
@@ -106,9 +108,6 @@ namespace PetsOverhaul.NPCs
         {
             waitTime--;
             lifespan--;
-            frameTimer++;
-            if (frameTimer >= amountOfFrames * nextFrame)
-                frameTimer = 0;
 
             NPC.velocity *= 0.9f;
 
