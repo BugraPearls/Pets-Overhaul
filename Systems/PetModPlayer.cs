@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
@@ -659,6 +660,10 @@ namespace PetsOverhaul.Systems
                 petObtained = true;
             }
 
+            if (petObtained)
+            {
+                ModContent.GetInstance<NeedOfCompany>().PetEquipped.Complete();
+            }
             if (petShield.Count > 0)
             {
                 while (shieldToBeReduced > 0 && petShield.Count > 0)

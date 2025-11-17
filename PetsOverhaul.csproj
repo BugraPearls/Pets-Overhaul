@@ -38,6 +38,4 @@
   <ItemGroup>
     <None Remove="UI\PetShield.png" />
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
 </Project>

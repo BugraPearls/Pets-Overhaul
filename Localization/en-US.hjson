@@ -1961,5 +1961,12 @@ Mods: {
 				}
 			}
 		}
+
+		Achievements: {
+			NeedOfCompany: {
+				Description: Equip any Regular Pet or Light Pet. This will catch the attention of the Pet Tamer town NPC.
+				FriendlyName: Need Of Company
+			}
+		}
 	}
 }
