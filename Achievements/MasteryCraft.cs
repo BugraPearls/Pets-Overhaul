@@ -15,10 +15,13 @@ namespace PetsOverhaul.Achievements
         {
             AchievementsHelper.OnItemCraft += MasterShardCrafts;
         }
-
+        public override void Unload()
+        {
+            AchievementsHelper.OnItemCraft -= MasterShardCrafts;
+        }
         private void MasterShardCrafts(short itemId, int count)
         {
-            if (ContentSamples.ItemsByType[itemId].master && (PetIDs.PetNamesAndItems.ContainsValue(itemId) || PetIDs.LightPetNamesAndItems.ContainsValue(itemId)))
+            if (ContentSamples.ItemsByType[itemId].master && PetUtils.ItemIsPetItem(itemId))
             {
                 PetCrafted.Complete();
             }

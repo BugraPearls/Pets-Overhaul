@@ -2000,6 +2000,11 @@ Mods: {
 				// Description: Mods.PetsOverhaul.Achievements.ForgingPets.Description
 				// FriendlyName: Forging Pets
 			}
+
+			QuestionableKibble: {
+				// Description: Mods.PetsOverhaul.Achievements.QuestionableKibble.Description
+				// FriendlyName: Questionable Kibble
+			}
 		}
 	}
 }

@@ -15,7 +15,7 @@ namespace PetsOverhaul.Systems
     public static class PetUtils
     {
         public static PetModPlayer PetPlayer(this Player player) => player.GetModPlayer<PetModPlayer>();
-
+        public static bool ItemIsPetItem(int ItemId) => PetIDs.LightPetNamesAndItems.ContainsValue(ItemId) || PetIDs.PetNamesAndItems.ContainsValue(ItemId);
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
             return new EntitySource_Pet
