@@ -1990,6 +1990,16 @@ Mods: {
 				// Description: Equip any Regular Pet or Light Pet. This will catch the attention of the Pet Tamer town NPC.
 				// FriendlyName: Need Of Company
 			}
+
+			MasteryCraft: {
+				// Description: Mods.PetsOverhaul.Achievements.MasteryCraft.Description
+				// FriendlyName: Mastery Craft
+			}
+
+			ForgingPets: {
+				// Description: Mods.PetsOverhaul.Achievements.ForgingPets.Description
+				// FriendlyName: Forging Pets
+			}
 		}
 	}
 }
