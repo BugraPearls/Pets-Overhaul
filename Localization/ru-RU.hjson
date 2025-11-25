@@ -1974,6 +1974,11 @@ Mods: {
 				// Description: Mods.PetsOverhaul.Achievements.QuestionableKibble.Description
 				// FriendlyName: Questionable Kibble
 			}
+
+			Purrfection: {
+				// Description: Mods.PetsOverhaul.Achievements.Purrfection.Description
+				// FriendlyName: Purrfection
+			}
 		}
 	}
 }

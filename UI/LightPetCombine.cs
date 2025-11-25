@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
@@ -151,6 +153,31 @@ namespace PetsOverhaul.UI
             {
                 Item item = Main.LocalPlayer.QuickSpawnItemDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Light Pet Combine"), NewItem);
                 item.value = slot1.Item.value;
+                foreach (var globalOfItem in item.Globals)
+                {
+                    if (globalOfItem.GetType().IsSubclassOf(typeof(LightPetItem)))
+                    {
+                        FieldInfo[] lightPetRolls = globalOfItem.GetType().GetFields();
+                        int perfectCount = 0;
+                        for (int i = 0; i < lightPetRolls.Length; i++)
+                        {
+                            if (lightPetRolls[i].FieldType != typeof(LightPetStat))
+                            {
+                                continue;
+                            }
+                            LightPetStat quality = (LightPetStat)lightPetRolls[i].GetValue(globalOfItem);
+
+                            if (quality.CurrentRoll == quality.MaxRoll)
+                            {
+                                perfectCount++;
+                            }
+                        }
+                        if (perfectCount == lightPetRolls.Length)
+                        {
+                            ModContent.GetInstance<Purrfection>().PerfectCombined.Complete();
+                        }
+                    }
+                }
                 slot1.Item.TurnToAir();
                 slot2.Item.TurnToAir();
                 SoundEngine.PlaySound(SoundID.Item37);
