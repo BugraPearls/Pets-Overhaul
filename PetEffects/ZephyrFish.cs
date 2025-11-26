@@ -72,7 +72,7 @@ namespace PetsOverhaul.PetEffects
 
         public override void ModifyCaughtFish(Item fish)
         {
-            if (PetIsEquipped(false) && fish.maxStack != 1)
+            if (PetIsEquipped(false))
             {
                 Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingItem, fish.type, PetUtils.Randomizer((AmplifiedFishingChance ? windChance : 0 + baseChance) * fish.stack));
             }
