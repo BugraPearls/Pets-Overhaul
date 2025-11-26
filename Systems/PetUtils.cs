@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
+using PetsOverhaul.PetEffects;
 using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 

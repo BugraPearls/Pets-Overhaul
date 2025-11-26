@@ -52,10 +52,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false) && IceFishingDrops.Contains(fish.type))
             {
-                for (int i = 0; i < PetUtils.Randomizer(snowFishChance * fish.stack); i++)
-                {
-                    Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingItem), fish.type, 1);
-                }
+                Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingItem, fish.type, PetUtils.Randomizer(snowFishChance * fish.stack));
             }
         }
     }

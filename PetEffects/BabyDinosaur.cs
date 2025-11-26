@@ -44,10 +44,7 @@ namespace PetsOverhaul.PetEffects
             BabyDinosaur dino = player.GetModPlayer<BabyDinosaur>();
             if (player.PetPlayer().PickupChecks(item, dino.PetItemID, out PetGlobalItem itemChck) && itemChck.oreBoost)
             {
-                for (int i = 0; i < PetUtils.Randomizer(dino.chance * item.stack, 1000); i++)
-                {
-                    player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningItem), RandomizeItemDrop(), 1);
-                }
+                dino.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.MiningItem, RandomizeItemDrop(), PetUtils.Randomizer(dino.chance * item.stack, 1000));
             }
         }
         public sealed class AmberMosquito : PetTooltip

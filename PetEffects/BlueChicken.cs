@@ -162,24 +162,15 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
                     {
-                        for (int i = 0; i < PetUtils.Randomizer(chick.rarePlantChance * item.stack); i++)
-                        {
-                            player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), PoolRarePlant(), 1);
-                        }
+                        chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolRarePlant(), PetUtils.Randomizer(chick.rarePlantChance * item.stack));
                     }
                     else if (PetIDs.treeItem[item.type])
                     {
-                        for (int i = 0; i < PetUtils.Randomizer(chick.treeChance * item.stack); i++)
-                        {
-                            player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), PoolTree(), 1);
-                        }
+                        chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolTree(), PetUtils.Randomizer(chick.treeChance * item.stack));
                     }
                     else
                     {
-                        for (int i = 0; i < PetUtils.Randomizer(chick.plantChance * item.stack); i++)
-                        {
-                            player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), PoolPlant(), 1);
-                        }
+                        chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolPlant(), PetUtils.Randomizer(chick.plantChance * item.stack));
                     }
                 }
             }

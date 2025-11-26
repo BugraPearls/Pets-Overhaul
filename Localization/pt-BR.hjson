@@ -1992,23 +1992,43 @@ Mods: {
 			}
 
 			MasteryCraft: {
-				// Description: Mods.PetsOverhaul.Achievements.MasteryCraft.Description
+				// Description: Craft any Master Mode Pet Item, using the Mastery Shard item. Which drops rarely from enemies.
 				// FriendlyName: Mastery Craft
 			}
 
 			ForgingPets: {
-				// Description: Mods.PetsOverhaul.Achievements.ForgingPets.Description
+				// Description: Craft any Pet on a Pet Forge using Pet Food, alongside other relevant items.
 				// FriendlyName: Forging Pets
 			}
 
 			QuestionableKibble: {
-				// Description: Mods.PetsOverhaul.Achievements.QuestionableKibble.Description
+				// Description: Shimmer a Pet into Pet Food. A shiny liquid being involved doesn't make this sound any better
 				// FriendlyName: Questionable Kibble
 			}
 
 			Purrfection: {
-				// Description: Mods.PetsOverhaul.Achievements.Purrfection.Description
+				// Description: Combine two Light Pets at Pet Tamer to obtain any Light Pet with maximum possible quality. I am perfect.
 				// FriendlyName: Purrfection
+			}
+
+			TheCollector: {
+				// Description: Equip all the Regular Pets in the game at least once.
+				// FriendlyName: The Collector
+			}
+
+			GottaPetThemAll: {
+				// FriendlyName: Gotta Pet Them All
+				// Description: Pet every Town Pet, so that you obtain all of their respective buffs one by one.
+			}
+
+			GleamingCollection: {
+				// FriendlyName: Gleaming Collection
+				// Description: Equip all the Light Pets in the game at least once.
+			}
+
+			UnpaidLabor: {
+				// FriendlyName: Unpaid Labor
+				// Description: Obtain a total of 1 platinum coin worth of items from your Pets, such as Utility, Mining, Harvesting or Fishing Pets.
 			}
 		}
 	}

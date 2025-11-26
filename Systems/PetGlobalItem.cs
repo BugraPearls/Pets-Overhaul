@@ -25,13 +25,11 @@ namespace PetsOverhaul.Systems
         public bool oreBoost = false;
         public bool blockNotByPlayer = false;
         public bool pickedUpBefore = false;
-        public bool harvestingDrop = false;
-        public bool miningDrop = false;
-        public bool fishingDrop = false;
-        public bool globalDrop = false;
-        public bool fortuneHarvestingDrop = false;
-        public bool fortuneMiningDrop = false;
-        public bool fortuneFishingDrop = false;
+        public bool harvestingDropFromPet = false;
+        public bool miningDropFromPet = false;
+        public bool fishingDropFromPet = false;
+        public bool globalDropFromPet = false;
+        public bool doNotBenefitFromThisItem = false;
 
         public override void UpdateInventory(Item item, Player player)
         {
@@ -48,19 +46,37 @@ namespace PetsOverhaul.Systems
             }
             if (source is EntitySource_Pet petSource)
             {
-                globalDrop = petSource.ContextType == EntitySourcePetIDs.GlobalItem;
+                globalDropFromPet = petSource.ContextType == EntitySourcePetIDs.GlobalItem;
 
-                harvestingDrop = petSource.ContextType == EntitySourcePetIDs.HarvestingItem;
+                harvestingDropFromPet = petSource.ContextType == EntitySourcePetIDs.HarvestingItem;
 
-                miningDrop = petSource.ContextType == EntitySourcePetIDs.MiningItem;
+                miningDropFromPet = petSource.ContextType == EntitySourcePetIDs.MiningItem;
 
-                fishingDrop = petSource.ContextType == EntitySourcePetIDs.FishingItem;
+                fishingDropFromPet = petSource.ContextType == EntitySourcePetIDs.FishingItem;
 
-                fortuneHarvestingDrop = petSource.ContextType == EntitySourcePetIDs.HarvestingFortuneItem;
+                if (petSource.ContextType == EntitySourcePetIDs.HarvestingFortuneItem)
+                {
+                    harvestingDropFromPet = true;
+                    doNotBenefitFromThisItem = true;
+                }
 
-                fortuneMiningDrop = petSource.ContextType == EntitySourcePetIDs.MiningFortuneItem;
+                if (petSource.ContextType == EntitySourcePetIDs.MiningFortuneItem)
+                {
+                    miningDropFromPet = true;
+                    doNotBenefitFromThisItem = true;
+                }
 
-                fortuneFishingDrop = petSource.ContextType == EntitySourcePetIDs.FishingFortuneItem;
+                if (petSource.ContextType == EntitySourcePetIDs.FishingFortuneItem)
+                {
+                    fishingDropFromPet = true;
+                    doNotBenefitFromThisItem = true;
+                }
+
+                if (petSource.ContextType == EntitySourcePetIDs.GlobalFortuneItem)
+                {
+                    globalDropFromPet = true;
+                    doNotBenefitFromThisItem = true;
+                }
             }
             else if (source is EntitySource_ShakeTree && item.IsACoin == false)
             {
@@ -94,17 +110,17 @@ namespace PetsOverhaul.Systems
         #region Netcode for checks
         public override void NetSend(Item item, BinaryWriter writer)
         {
-            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost, globalDrop, harvestingDrop, miningDrop, fishingDrop);
-            BitsByte sources2 = new(fortuneHarvestingDrop, fortuneMiningDrop, fortuneFishingDrop);
+            BitsByte sources1 = new(blockNotByPlayer, pickedUpBefore, herbBoost, oreBoost, globalDropFromPet, harvestingDropFromPet, miningDropFromPet, fishingDropFromPet);
+            BitsByte sources2 = new(doNotBenefitFromThisItem);
             writer.Write(sources1);
             writer.Write(sources2);
         }
         public override void NetReceive(Item item, BinaryReader reader)
         {
             BitsByte sources1 = reader.ReadByte();
-            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost, ref globalDrop, ref harvestingDrop, ref miningDrop, ref fishingDrop);
+            sources1.Retrieve(ref blockNotByPlayer, ref pickedUpBefore, ref herbBoost, ref oreBoost, ref globalDropFromPet, ref harvestingDropFromPet, ref miningDropFromPet, ref fishingDropFromPet);
             BitsByte sources2 = reader.ReadByte();
-            sources2.Retrieve(ref fortuneHarvestingDrop, ref fortuneMiningDrop, ref fortuneFishingDrop);
+            sources2.Retrieve(ref doNotBenefitFromThisItem);
         }
         #endregion
 

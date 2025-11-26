@@ -39,10 +39,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false) && fish.maxStack != 1)
             {
-                for (int i = 0; i < PetUtils.Randomizer(stackChance + (int)(Player.GetFishingConditions().FinalFishingLevel * multiplier) * fish.stack); i++)
-                {
-                    Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingItem), fish.type, 1);
-                }
+                Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingItem, fish.type, PetUtils.Randomizer(stackChance + (int)(Player.GetFishingConditions().FinalFishingLevel * multiplier) * fish.stack));
             }
         }
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

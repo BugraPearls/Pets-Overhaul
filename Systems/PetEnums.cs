@@ -21,6 +21,7 @@
         HarvestingFortuneItem,
         MiningFortuneItem,
         FishingFortuneItem,
+        GlobalFortuneItem,
         PetProjectile,
         PetNPC,
         PetMisc,

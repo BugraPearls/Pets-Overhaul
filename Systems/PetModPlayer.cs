@@ -165,11 +165,11 @@ namespace PetsOverhaul.Systems
         #region Utility related methods, that directly uses Player fields. For static methods, see PetUtils.cs.
 
         /// <summary>
-        /// Runs all of the standart OnPickup's checks for the Pet to work with no problems.
+        /// Runs all of the standart OnPickup's checks for the Pet to work with no problems. Try to always use this for Gathering Pets that works on-pickup.
         /// </summary>
         public bool PickupChecks(Item item, int petitemid, out PetGlobalItem itemPet)
         {
-            if (PetInUse(petitemid) && Player.CanPullItem(item, Player.ItemSpace(item)) && item.TryGetGlobalItem(out PetGlobalItem petItemCheck) && petItemCheck.pickedUpBefore == false)
+            if (PetInUse(petitemid) && Player.CanPullItem(item, Player.ItemSpace(item)) && item.TryGetGlobalItem(out PetGlobalItem petItemCheck) && petItemCheck.pickedUpBefore == false && petItemCheck.doNotBenefitFromThisItem == false)
             {
                 itemPet = petItemCheck;
                 return true;
@@ -199,65 +199,73 @@ namespace PetsOverhaul.Systems
             }
             Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.CopperCoin, coinAmount);
         }
+
+        /// <summary>
+        /// Spawns an item on the Player instance with given <see cref="EntitySourcePetIDs"/>, and with the given stack. More than once is spawned if item is unstackable. Try to always use <see cref="PetUtils.Randomizer(int, int)"/> for <paramref name="howMany"/> parameter!! Will safely skip the item spawning if howMany is 0.
+        /// </summary>
+        /// <param name="sourceID"><see cref="EntitySourcePetIDs"/> value to be passed as source when spawning the item.</param>
+        /// <param name="ItemID">ID of the item.</param>
+        /// <param name="howMany">How many times to do it. Always use the <see cref="PetUtils.Randomizer(int, int)"/> method to pass through a more consistent amount.</param>
+        public void SpawnItemSourcingFromPet(EntitySourcePetIDs sourceID, int ItemID, int howMany = 1)
+        {
+            if (howMany <= 0)
+            {
+                return;
+            }
+            if (ContentSamples.ItemsByType[ItemID].maxStack > 1)
+            {
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(sourceID), ItemID, howMany);
+            }
+            else
+            {
+                for (int i = 0; i < howMany; i++)
+                {
+                    Player.QuickSpawnItem(PetUtils.GetSource_Pet(sourceID), ItemID, 1);
+                }
+            }
+        }
         public static void PreOnPickup(Item item, Player player)
         {
             PetModPlayer PickerPet = player.PetPlayer();
-            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
+            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)) && fortune.doNotBenefitFromThisItem == false)
             {
-                if (fortune.globalDrop)
+                if (fortune.globalDropFromPet)
                 {
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    for (int i = 0; i < PetUtils.Randomizer(PickerPet.globalFortune * item.stack); i++)
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), item.type, 1);
-                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    }
+                    int count = PetUtils.Randomizer(PickerPet.globalFortune * item.stack);
+                    PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.GlobalFortuneItem, item.type, count);
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count); //So we increment the achievement for both the normal item drop (item.stack) from the Pet, and from Fortune stats thats buffing up the Pet drops.
                 }
 
-                if (fortune.harvestingDrop)
+                if (fortune.harvestingDropFromPet)
                 {
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
-                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    }
+                    int count = PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000);
+                    PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingFortuneItem, item.type, count);
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count);
                 }
 
-                if (fortune.miningDrop)
+                if (fortune.miningDropFromPet)
                 {
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
-                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    }
+                    int count = PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000);
+                    PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.MiningFortuneItem, item.type, count);
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count);
                 }
 
-                if (fortune.fishingDrop)
+                if (fortune.fishingDropFromPet)
                 {
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), item.type, 1);
-                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
-                    }
+                    int count = PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000);
+                    PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingFortuneItem, item.type, count);
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count);
                 }
 
+                //These are extra increases of Fortune stats. Ones above directly increases drops by Pets. Does not increment achievement. Fishing is down at ModifyCaughtFish.
                 if (fortune.herbBoost)
                 {
-                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
-                    }
+                    PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingFortuneItem, item.type, PetUtils.Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000));
                 }
 
                 if (fortune.oreBoost)
                 {
-                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
-                    }
+                    PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.MiningFortuneItem, item.type, PetUtils.Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000));
                 }
             }
         }
@@ -863,10 +871,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyCaughtFish(Item fish) //this is where fish is actually caught/reeled out.
         {
-            for (int i = 0; i < PetUtils.Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000); i++)
-            {
-                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), fish.type, 1);
-            }
+            SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingFortuneItem, fish.type, PetUtils.Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000));
             if (Main.rand.NextBool(5))
             {
                 Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1, 3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
