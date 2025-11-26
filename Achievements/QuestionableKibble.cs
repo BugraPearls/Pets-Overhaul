@@ -15,7 +15,7 @@ namespace PetsOverhaul.Achievements
         public CustomFlagCondition PetShimmered { get; private set; }
         public override void SetStaticDefaults()
         {
-            Achievement.SetCategory(AchievementCategory.Collector);
+            Achievement.SetCategory(AchievementCategory.Explorer);
             PetShimmered = AddCondition();
         }
         public override void Load()
