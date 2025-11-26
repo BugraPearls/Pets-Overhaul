@@ -477,41 +477,41 @@ namespace PetsOverhaul.PetEffects
             Junimo juni = player.GetModPlayer<Junimo>();
             if (PickerPet.PickupChecks(item, juni.PetItemID, out PetGlobalItem itemChck))
             {
-                if (itemChck.harvestingDrop || itemChck.fortuneHarvestingDrop || itemChck.herbBoost)
+                if (itemChck.harvestingDropFromPet || itemChck.herbBoost)
                 {
                     int index = PetIDs.HarvestingXpPerGathered.IndexOf(PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)));
                     int value = index == -1
                         ? juni.defaultExps * item.stack
                         : PetIDs.HarvestingXpPerGathered[index].expAmount * item.stack;
-                    PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.harvestingCoin * juni.junimoHarvestingLevel * value)));
                     value = PetUtils.Randomizer(value);
+                    PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.harvestingCoin * juni.junimoHarvestingLevel * value * 100)));
                     juni.junimoHarvestingExp += value;
                     juni.popupExpHarv += value;
                     juni.popupIndexHarv = juni.PopupExp(juni.popupIndexHarv, juni.popupExpHarv, PetUtils.HarvestingClass);
                     juni.classThatGotExp = PetClassID.Harvesting;
 
                 }
-                else if (itemChck.fishingDrop || itemChck.fortuneFishingDrop)
+                else if (itemChck.fishingDropFromPet)
                 {
                     int index = PetIDs.FishingXpPerCaught.IndexOf(PetIDs.FishingXpPerCaught.Find(x => x.fishList.Contains(item.type)));
                     int value = index == -1
                         ? juni.defaultExps * item.stack
                         : PetIDs.FishingXpPerCaught[index].expAmount * item.stack;
-                    PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.fishingCoin * juni.junimoFishingLevel * value)));
                     value = PetUtils.Randomizer(value);
+                    PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.fishingCoin * juni.junimoFishingLevel * value * 100)));
                     juni.junimoFishingExp += value;
                     juni.popupExpFish += value;
                     juni.popupIndexFish = juni.PopupExp(juni.popupIndexFish, juni.popupExpFish, PetUtils.FishingClass);
                     juni.classThatGotExp = PetClassID.Fishing;
                 }
-                else if (itemChck.blockNotByPlayer && (itemChck.oreBoost || itemChck.miningDrop || itemChck.fortuneMiningDrop))
+                else if (itemChck.blockNotByPlayer && (itemChck.oreBoost || itemChck.miningDropFromPet))
                 {
                     int index = PetIDs.MiningXpPerBlock.IndexOf(PetIDs.MiningXpPerBlock.Find(x => x.oreList.Contains(item.type)));
                     int value = index == -1
                         ? juni.defaultExps * item.stack
                         : PetIDs.MiningXpPerBlock[index].expAmount * item.stack;
-                    PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.miningCoin * juni.junimoMiningLevel * value)));
                     value = PetUtils.Randomizer(value);
+                    PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.miningCoin * juni.junimoMiningLevel * value * 100)));
                     juni.junimoMiningExp += value;
                     juni.popupExpMining += value;
                     juni.popupIndexMining = juni.PopupExp(juni.popupIndexMining, juni.popupExpMining, PetUtils.MiningClass);
