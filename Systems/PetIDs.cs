@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using PetsOverhaul.Items;
 using PetsOverhaul.PetEffects;
+using PetsOverhaul.TownPets.TownPetBuffs;
 using ReLogic.Reflection;
 using System.Collections.Generic;
 using Terraria.ID;
@@ -19,9 +20,9 @@ namespace PetsOverhaul.Systems
     {
         #region BuffID Sets
         /// <summary>
-        /// List of Town Pet Buffs added by Pets Overhaul. Buffs here will be removed upon obtaining a new Town Pet Buff.
+        /// List of Town Pet Buffs added by Pets Overhaul.
         /// </summary>
-        public static bool[] TownPetBuffIDs = BuffID.Sets.Factory.CreateBoolSet(false); //We are not assigning here, as ALL TownPetBuffs has this set to true for their type by default.
+        public static List<int> TownPetBuffs = [TownPetBuffID.Bunny,TownPetBuffID.Cat, TownPetBuffID.Clumsy, TownPetBuffID.Cool, TownPetBuffID.Diva, TownPetBuffID.Dog, TownPetBuffID.Mystic,TownPetBuffID.Nerd, TownPetBuffID.Old, TownPetBuffID.Squire, TownPetBuffID.Surly]; 
 
         /// <summary>
         /// Contains list of debuffs that are related to burning.
@@ -271,6 +272,20 @@ namespace PetsOverhaul.Systems
             {"Slime Royals", ItemID.ResplendentDessert},
         };
         #endregion
+    }
+    public class TownPetBuffID
+    {
+        public static int Bunny => ModContent.BuffType<TownPetBunny>();
+        public static int Cat => ModContent.BuffType<TownPetCat>();
+        public static int Clumsy => ModContent.BuffType<TownPetClumsy>();
+        public static int Cool => ModContent.BuffType<TownPetCool>();
+        public static int Diva => ModContent.BuffType<TownPetDiva>();
+        public static int Dog => ModContent.BuffType<TownPetDog>();
+        public static int Mystic => ModContent.BuffType<TownPetMystic>();
+        public static int Nerd => ModContent.BuffType<TownPetNerd>();
+        public static int Old => ModContent.BuffType<TownPetOld>();
+        public static int Squire => ModContent.BuffType<TownPetSquire>();
+        public static int Surly => ModContent.BuffType<TownPetSurly>();
     }
     /// <summary>
     /// Class that contains PetSlowID's, where same slow ID does not overlap with itself, and a slow with greater slow & better remaining time will override the obsolete one.

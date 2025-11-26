@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using PetsOverhaul.TownPets.TownPetBuffs;
 using Terraria;
 using Terraria.Audio;
@@ -18,7 +19,7 @@ namespace PetsOverhaul.TownPets
             bool found = false;
             for (int i = 0; i < Main.LocalPlayer.buffType.Length; i++)
             {
-                if (PetIDs.TownPetBuffIDs[Main.LocalPlayer.buffType[i]])
+                if (PetIDs.TownPetBuffs.Contains(Main.LocalPlayer.buffType[i]))
                 {
                     found = true;
                     break; //No need to continue the for if found
@@ -40,7 +41,7 @@ namespace PetsOverhaul.TownPets
             int prevId = -1;
             foreach (int type in self.buffType)
             {
-                if (PetIDs.TownPetBuffIDs[type])
+                if (PetIDs.TownPetBuffs.Contains(type))
                 {
                     prevId = type;
                     self.ClearBuff(type);
@@ -63,6 +64,11 @@ namespace PetsOverhaul.TownPets
             };
             if (buffToAdd != -1)
             {
+                if (self.PetPlayer().PettedTownPets.Contains(buffToAdd) == false)
+                {
+                    self.PetPlayer().PettedTownPets.Add(buffToAdd);
+                    ModContent.GetInstance<GottaPetThemAll>().Petted.Value++;
+                }
                 self.AddBuff(buffToAdd, 1);
                 if (prevId == -1 || prevId != buffToAdd)
                 {

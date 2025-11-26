@@ -1,4 +1,5 @@
 ﻿using PetsOverhaul.Systems;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,7 +12,6 @@ namespace PetsOverhaul.TownPets
         {
             Main.buffNoTimeDisplay[Type] = true;
             BuffID.Sets.TimeLeftDoesNotDecrease[Type] = true;
-            PetIDs.TownPetBuffIDs[Type] = true;
         }
         /// <summary>
         /// Update (player) with GlobalPet also added as a parameter.
