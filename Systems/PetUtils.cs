@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace PetsOverhaul.Systems
     public static class PetUtils
     {
         public static PetModPlayer PetPlayer(this Player player) => player.GetModPlayer<PetModPlayer>();
+        public static int CurrentPet(this Player player) => player.miscEquips[0].type;
+        public static int CurrentLightPet(this Player player) => player.miscEquips[1].type;
         public static bool ItemIsPetItem(int ItemId) => PetIDs.LightPetNamesAndItems.ContainsValue(ItemId) || PetIDs.PetNamesAndItems.ContainsValue(ItemId);
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
@@ -23,61 +26,6 @@ namespace PetsOverhaul.Systems
                 ContextType = typeId,
                 Context = context
             };
-        }
-
-        public static void PreOnPickup(Item item, Player player)
-        {
-            PetModPlayer PickerPet = player.PetPlayer();
-            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
-            {
-                if (fortune.globalDrop)
-                {
-                    for (int i = 0; i < Randomizer(PickerPet.globalFortune * item.stack); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.GlobalItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.harvestingDrop)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.miningDrop)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.fishingDrop)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.herbBoost)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
-                    }
-                }
-
-                if (fortune.oreBoost)
-                {
-                    for (int i = 0; i < Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
-                    {
-                        player.QuickSpawnItem(GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
-                    }
-                }
-            }
         }
 
         /// <summary>

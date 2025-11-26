@@ -539,7 +539,7 @@ namespace PetsOverhaul.PetEffects
         }
         public void ExpOnSeaCreatureKill(int npcId)
         {
-            if (Player.whoAmI == Main.myPlayer && Player.miscEquips[0].type == ItemID.JunimoPetItem)
+            if (Player.whoAmI == Main.myPlayer && Player.CurrentPet() == ItemID.JunimoPetItem)
             {
                 int value;
                 int index = PetIDs.FishingXpPerKill.IndexOf(PetIDs.FishingXpPerKill.Find(x => x.enemyList.Contains(npcId)));

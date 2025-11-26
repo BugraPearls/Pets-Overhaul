@@ -150,6 +150,13 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public PetEffect currentActivePet = null;
 
+        #region Achievement Fields
+        public List<int> FoundPets = new(PetIDs.PetNamesAndItems.Count);
+        public List<int> FoundLightPets = new(PetIDs.LightPetNamesAndItems.Count);
+        public List<int> PettedTownPets = new(PetIDs.TownPetBuffs.Count);
+
+        #endregion
+
         /// <summary>
         /// Is invoked at PetNpc, OnKill hook, refer to Puppy Pet's OnEnemyKill() & Load/Unload to figure how its used properly. Only called on Player that last hit the NPC, when NPC is dead.
         /// </summary>
@@ -192,6 +199,68 @@ namespace PetsOverhaul.Systems
             }
             Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.CopperCoin, coinAmount);
         }
+        public static void PreOnPickup(Item item, Player player)
+        {
+            PetModPlayer PickerPet = player.PetPlayer();
+            if (item.TryGetGlobalItem(out PetGlobalItem fortune) && fortune.pickedUpBefore == false && player.CanPullItem(item, player.ItemSpace(item)))
+            {
+                if (fortune.globalDrop)
+                {
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    for (int i = 0; i < PetUtils.Randomizer(PickerPet.globalFortune * item.stack); i++)
+                    {
+                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), item.type, 1);
+                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    }
+                }
+
+                if (fortune.harvestingDrop)
+                {
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000); i++) //Multiplied by 10 and divided by 1000 since we divide globalFortune by 2, to get more precise numbers.
+                    {
+                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
+                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    }
+                }
+
+                if (fortune.miningDrop)
+                {
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
+                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    }
+                }
+
+                if (fortune.fishingDrop)
+                {
+                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.FishingFortuneItem), item.type, 1);
+                        ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value;
+                    }
+                }
+
+                if (fortune.herbBoost)
+                {
+                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune + PickerPet.harvestingFortune) * 10 / 2 * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingFortuneItem), item.type, 1);
+                    }
+                }
+
+                if (fortune.oreBoost)
+                {
+                    for (int i = 0; i < PetUtils.Randomizer((PickerPet.globalFortune + PickerPet.miningFortune) * 10 / 2 * item.stack, 1000); i++)
+                    {
+                        player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.MiningFortuneItem), item.type, 1);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Checks if the given Pet Item is in use and checks if pet has been lately swapped or not.
@@ -205,7 +274,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public bool PetInUse(int petItemID)
         {
-            return Player.miscEquips[0].type == petItemID;
+            return Player.CurrentPet() == petItemID;
         }
 
         public bool AbilityPressCheck()
@@ -375,7 +444,7 @@ namespace PetsOverhaul.Systems
         #region ModPlayer Overrides
         public override void Load()
         {
-            PetsOverhaul.OnPickupActions += PetUtils.PreOnPickup;
+            PetsOverhaul.OnPickupActions += PreOnPickup;
             On_Player.DoBootsEffect_PlaceFlowersOnTile += GrassIsPlacedByPlayer;
             On_Player.ItemCheck_CutTiles += CutGrassIsRemovedFromList;
         }
@@ -467,6 +536,9 @@ namespace PetsOverhaul.Systems
             tag.Add("golemConsume", golemConsumed);
             tag.Add("pumpkingConsume", pumpkingConsumed);
             tag.Add("hasPet", petObtained);
+            tag.Add("foundPets", FoundPets);
+            tag.Add("foundLightPets", FoundLightPets);
+            tag.Add("pettedTownPets", PettedTownPets);
         }
         public override void LoadData(TagCompound tag)
         {
@@ -509,6 +581,21 @@ namespace PetsOverhaul.Systems
             {
                 petObtained = pet;
             }
+
+            if (tag.TryGet("foundPets", out List<int> found))
+            {
+                FoundPets = found;
+            }
+
+            if (tag.TryGet("foundLightPets", out List<int> foundLight))
+            {
+                FoundLightPets = foundLight;
+            }
+
+            if (tag.TryGet("pettedTownPets", out List<int> petted))
+            {
+                PettedTownPets = petted;
+            }
         }
         public override void NaturalLifeRegen(ref float regen)
         {
@@ -545,7 +632,7 @@ namespace PetsOverhaul.Systems
                     shieldToBeReduced += currentShield;
                 }
             };
-            if (ModContent.GetInstance<PetPersonalization>().HurtSoundEnabled && PetSounds.PetItemIdToHurtSound.ContainsKey(Player.miscEquips[0].type))
+            if (ModContent.GetInstance<PetPersonalization>().HurtSoundEnabled && PetSounds.PetItemIdToHurtSound.ContainsKey(Player.CurrentPet()))
             {
                 modifiers.DisableSound();
             }
@@ -554,7 +641,7 @@ namespace PetsOverhaul.Systems
         }
         public override void OnHurt(Player.HurtInfo info)
         {
-            PetSounds.PlayHurtSoundFromItemId(Player.miscEquips[0].type, Player);
+            PetSounds.PlayHurtSoundFromItemId(Player.CurrentPet(), Player);
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
@@ -583,7 +670,7 @@ namespace PetsOverhaul.Systems
         }
         public override void PreUpdate()
         {
-            if (Player.miscEquips[0].type == ItemID.None)
+            if (Player.CurrentPet() == ItemID.None)
             {
                 currentActivePet = null;
             }
@@ -655,7 +742,7 @@ namespace PetsOverhaul.Systems
         }
         public override void PostUpdate()
         {
-            if (petObtained == false && (Player.miscEquips[0].type != ItemID.None || Player.miscEquips[1].type != ItemID.None))
+            if (petObtained == false && (Player.CurrentPet() != ItemID.None || Player.CurrentLightPet() != ItemID.None))
             {
                 petObtained = true;
             }
@@ -714,7 +801,7 @@ namespace PetsOverhaul.Systems
         }
         public override void OnEnterWorld()
         {
-            previousPetItem = Player.miscEquips[0].type;
+            previousPetItem = Player.CurrentPet();
             if (ModContent.GetInstance<PetPersonalization>().EnableNotice)
             {
                 Main.NewText(PetUtils.LocVal("Misc.Notice"));
@@ -727,13 +814,13 @@ namespace PetsOverhaul.Systems
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
-            playSound = PetSounds.PlayKillSoundFromItemId(Player.miscEquips[0].type, Player) == ReLogic.Utilities.SlotId.Invalid;
+            playSound = PetSounds.PlayKillSoundFromItemId(Player.CurrentPet(), Player) == ReLogic.Utilities.SlotId.Invalid;
 
             return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genGore, ref damageSource);
         }
         public override void UpdateEquips()
         {
-            if (Player.miscEquips[0].type == ItemID.None)
+            if (Player.CurrentPet() == ItemID.None)
             {
                 timerMax = 0;
                 currentPetStacksMax = -1;
@@ -741,7 +828,7 @@ namespace PetsOverhaul.Systems
                 return;
             }
 
-            if (previousPetItem != Player.miscEquips[0].type)
+            if (previousPetItem != Player.CurrentPet())
             {
                 timerMax = 0;
                 currentPetStacksMax = -1;
@@ -751,9 +838,22 @@ namespace PetsOverhaul.Systems
                     Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldown);
                 }
 
-                previousPetItem = Player.miscEquips[0].type;
+                previousPetItem = Player.CurrentPet();
             }
-            PetSounds.PlayAmbientSoundFromItemId(Player.miscEquips[0].type, Player);
+
+            if (Player.CurrentPet() != ItemID.None && FoundPets.Contains(Player.CurrentPet()) == false)
+            {
+                FoundPets.Add(Player.CurrentPet());
+                ModContent.GetInstance<TheCollector>().CollectedPets.Value++;
+            }
+
+            if (Player.CurrentLightPet() != ItemID.None && FoundLightPets.Contains(Player.CurrentLightPet()) == false)
+            {
+                FoundLightPets.Add(Player.CurrentLightPet());
+                ModContent.GetInstance<GleamingCollection>().CollectedPets.Value++;
+            }
+
+            PetSounds.PlayAmbientSoundFromItemId(Player.CurrentPet(), Player);
         }
         public override void UpdateDead()
         {
