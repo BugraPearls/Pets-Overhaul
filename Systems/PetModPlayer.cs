@@ -197,7 +197,10 @@ namespace PetsOverhaul.Systems
                 Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.SilverCoin, coinAmount / 100);
                 coinAmount %= 100;
             }
-            Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.CopperCoin, coinAmount);
+            if (coinAmount > 0)
+            {
+                Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ItemID.CopperCoin, coinAmount);
+            }
         }
 
         /// <summary>
