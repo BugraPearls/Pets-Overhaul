@@ -547,6 +547,7 @@ namespace PetsOverhaul.PetEffects
                     ? PetUtils.Randomizer(defaultSeaCreatureExp)
                     : PetUtils.Randomizer(PetIDs.FishingXpPerKill[index].expAmount);
 
+                Pet.GiveCoins((int)(fishingCoin * junimoFishingLevel * value));
                 junimoFishingExp += value;
                 popupExpFish += value;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
@@ -558,6 +559,8 @@ namespace PetsOverhaul.PetEffects
             if (anglerQuestDayCheck == false && PetIsEquipped(false))
             {
                 int value = PetUtils.Randomizer(anglerQuestExp);
+
+                Pet.GiveCoins((int)(fishingCoin * junimoFishingLevel * value));
                 junimoFishingExp += value;
                 popupExpFish += value;
                 anglerQuestDayCheck = true;
@@ -573,8 +576,8 @@ namespace PetsOverhaul.PetEffects
                 int value = index == -1
                     ? defaultExps * fish.stack
                     : PetIDs.FishingXpPerCaught[index].expAmount * fish.stack;
-                Pet.GiveCoins(PetUtils.Randomizer((int)(fishingCoin * junimoFishingLevel * value)));
                 value = PetUtils.Randomizer(value);
+                Pet.GiveCoins(PetUtils.Randomizer((int)(fishingCoin * junimoFishingLevel * value * 100)));
                 junimoFishingExp += value;
                 popupExpFish += value;
                 popupIndexFish = PopupExp(popupIndexFish, popupExpFish, new Color(3, 130, 233));
