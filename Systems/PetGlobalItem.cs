@@ -20,9 +20,6 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public const int MinimumExpForRarePlant = 1000;
 
-        #region Bool Sets
-        #endregion
-
         #region Item checks to determine which Pet benefits
         public bool herbBoost = false;
         public bool oreBoost = false;
