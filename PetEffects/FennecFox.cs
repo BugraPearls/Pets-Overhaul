@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -80,6 +81,15 @@ namespace PetsOverhaul.PetEffects
                 Player.moveSpeed += speedIncrease;
                 Player.GetDamage<MeleeDamageClass>() += meleeDmg;
                 Player.GetJumpState<FennecFoxJump>().Enable();
+
+                int count = 0;
+                foreach (var item in Player.ExtraJumps)
+                {
+                    if (item.Enabled)
+                        count++;
+                }
+                if (count >= 6)
+                    ModContent.GetInstance<HextupleJumper>().flag.Complete();
             }
         }
     }

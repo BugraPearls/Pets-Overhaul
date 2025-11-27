@@ -209,22 +209,24 @@ namespace PetsOverhaul.Systems
         /// <param name="sourceID"><see cref="EntitySourcePetIDs"/> value to be passed as source when spawning the item.</param>
         /// <param name="ItemID">ID of the item.</param>
         /// <param name="howMany">How many times to do it. Always use the <see cref="PetUtils.Randomizer(int, int)"/> method to pass through a more consistent amount.</param>
-        public void SpawnItemSourcingFromPet(EntitySourcePetIDs sourceID, int ItemID, int howMany = 1)
+        public int SpawnItemSourcingFromPet(EntitySourcePetIDs sourceID, int ItemId, int howMany = 1)
         {
             if (howMany <= 0)
             {
-                return;
+                return 0;
             }
-            if (ContentSamples.ItemsByType[ItemID].maxStack > 1)
+            if (ContentSamples.ItemsByType[ItemId].maxStack > 1)
             {
-                Player.QuickSpawnItem(PetUtils.GetSource_Pet(sourceID), ItemID, howMany);
+                return Player.QuickSpawnItem(PetUtils.GetSource_Pet(sourceID), ItemId, howMany);
             }
             else
             {
+                int id = 0;
                 for (int i = 0; i < howMany; i++)
                 {
-                    Player.QuickSpawnItem(PetUtils.GetSource_Pet(sourceID), ItemID, 1);
+                   id = Player.QuickSpawnItem(PetUtils.GetSource_Pet(sourceID), ItemId, 1);
                 }
+                return id;
             }
         }
         public static void PreOnPickup(Item item, Player player)

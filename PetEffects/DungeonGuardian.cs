@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Buffs;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Buffs;
 using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;
@@ -32,6 +33,7 @@ namespace PetsOverhaul.PetEffects
                 if (Player.ZoneDungeon == true)
                 {
                     Player.lifeRegen += lifeRegen;
+                    ModContent.GetInstance<IAmUntouchable>().flag.Complete();
                 }
                 Player.GetArmorPenetration<GenericDamageClass>() += armorPen;
             }

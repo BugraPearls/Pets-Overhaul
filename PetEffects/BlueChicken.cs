@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Config;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using PetsOverhaul.Systems;
 using System.Linq;
@@ -30,6 +31,7 @@ namespace PetsOverhaul.PetEffects
                         if (Main.rand.NextBool(4, 100))
                         {
                             Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ItemID.BlueEgg);
+                            ModContent.GetInstance<Petception>().flag.Complete();
                         }
                         else
                         {
@@ -160,17 +162,23 @@ namespace PetsOverhaul.PetEffects
             {
                 if (itemChck.herbBoost)
                 {
+                    int id = 0; //for achievement to check if we got a Pet item
                     if (PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
                     {
-                        chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolRarePlant(), PetUtils.Randomizer(chick.rarePlantChance * item.stack));
+                        id = chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolRarePlant(), PetUtils.Randomizer(chick.rarePlantChance * item.stack));
                     }
                     else if (PetIDs.treeItem[item.type])
                     {
-                        chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolTree(), PetUtils.Randomizer(chick.treeChance * item.stack));
+                        id = chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolTree(), PetUtils.Randomizer(chick.treeChance * item.stack));
                     }
                     else
                     {
-                        chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolPlant(), PetUtils.Randomizer(chick.plantChance * item.stack));
+                        id = chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolPlant(), PetUtils.Randomizer(chick.plantChance * item.stack));
+                    }
+
+                    if (PetUtils.ItemIsPetItem(id))
+                    {
+                        ModContent.GetInstance<Petception>().flag.Complete();
                     }
                 }
             }

@@ -1930,7 +1930,7 @@ Mods: {
 			}
 
 			QuestionableKibble: {
-				// Description: Shimmer a Pet into Pet Food. A shiny liquid being involved doesn't make this sound any better
+				// Description: Shimmer a Pet into Pet Food. A shiny liquid being involved doesn't make this sound any better.
 				// FriendlyName: Questionable Kibble
 			}
 
@@ -1957,6 +1957,21 @@ Mods: {
 			UnpaidLabor: {
 				// FriendlyName: Unpaid Labor
 				// Description: Obtain a total of 5 platinum coins worth of items from your Pets, such as Utility, Mining, Harvesting or Fishing Pets.
+			}
+
+			HextupleJumper: {
+				// FriendlyName: Hextuple Jumper
+				// Description: Achieve 6 or above Bonus Jumps while using Fennec Fox Pet or using Slime Princess Pet while on a mount.
+			}
+
+			IAmUntouchable: {
+				// FriendlyName: I Am Untouchable
+				// Description: Enter the Dungeon with the Baby Dungeon Guardian Pet equipped. Weak Dungeon enemies bows down before you. Somehow spikes included.
+			}
+
+			Petception: {
+				// Description: Obtain a Blue Chicken Egg, an Eucalyptus Sap or a Magical Pumpkin Seed while gaining extra drops with the Blue Chicken Pet.
+				// FriendlyName: Petception
 			}
 		}
 	}

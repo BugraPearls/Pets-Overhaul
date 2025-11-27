@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -307,6 +308,15 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && Player.mount.Active)
             {
                 Player.GetJumpState<SlimePrincessJump>().Enable();
+
+                int count = 0;
+                foreach (var item in Player.ExtraJumps)
+                {
+                    if (item.Enabled)
+                        count++;
+                }
+                if (count >= 6)
+                    ModContent.GetInstance<HextupleJumper>().flag.Complete();
             }
         }
     }
