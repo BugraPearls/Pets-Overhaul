@@ -1997,7 +1997,7 @@ Mods: {
 
 			UnpaidLabor: {
 				// FriendlyName: Unpaid Labor
-				// Description: Obtain a total of 1 platinum coin worth of items from your Pets, such as Utility, Mining, Harvesting or Fishing Pets.
+				// Description: Obtain a total of 5 platinum coins worth of items from your Pets, such as Utility, Mining, Harvesting or Fishing Pets.
 			}
 		}
 	}

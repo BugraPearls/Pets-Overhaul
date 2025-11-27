@@ -15,7 +15,7 @@ namespace PetsOverhaul.Achievements
         public override void SetStaticDefaults()
         {
             Achievement.SetCategory(AchievementCategory.Challenger);
-            CoinsGained = AddIntCondition(Item.platinum);
+            CoinsGained = AddIntCondition(Item.platinum * 5);
         }
     }
 }
