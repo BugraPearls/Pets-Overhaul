@@ -13,13 +13,12 @@ namespace PetsOverhaul.LightPets
     public sealed class WispInABottleEffect : LightPetEffect
     {
         public int timer = 0;
-        public override int LightPetItemID => ItemID.WispinaBottle;
-        public override bool HasCustomEffect => true; //Custom effect dedicated to ROH
-        public override void ExtraProcessTriggers(TriggersSet triggersSet)
+        public override int LightPetItemID => ItemID.WispinaBottle; //Custom effect dedicated to ROH
+        public override void ProcessTriggers(TriggersSet triggersSet)
         {
-            if (HasCustomEffect && PetKeybinds.PetCustomSwitch.JustPressed && Main.HoverItem.type == LightPetItemID && Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle))
+            if (Main.HoverItem.type == LightPetItemID && PetKeybinds.PetCustomSwitch.JustPressed) //We want custom effect to swap when hovered over the item of same id
             {
-                wispInABottle.CustomEffectActive = !wispInABottle.CustomEffectActive;
+                CustomActive = !CustomActive;
             }
         }
         public override void PreUpdate()
@@ -33,7 +32,7 @@ namespace PetsOverhaul.LightPets
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle))
             {
-                if (CustomEffectActive == false)
+                if (wispInABottle.CustomEffectActive == false)
                 {
                     Player.GetDamage<MagicDamageClass>() += wispInABottle.MagicDamage.CurrentStatFloat;
                     Player.GetDamage<RangedDamageClass>() += wispInABottle.RangedDamage.CurrentStatFloat;
@@ -45,7 +44,7 @@ namespace PetsOverhaul.LightPets
         {
             if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && (item.DamageType == DamageClass.Magic || item.DamageType == DamageClass.Ranged))
             {
-                if (CustomEffectActive == false)
+                if (wispInABottle.CustomEffectActive == false)
                 {
                     velocity *= wispInABottle.ProjectileVelocity.CurrentStatFloat + 1;
                 }
@@ -53,7 +52,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (CustomEffectActive && Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && Main.rand.NextBool(wispInABottle.CustomChance, 100) && timer <= 0)
+            if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool(wispInABottle.CustomChance, 100) && timer <= 0)
             {
                 Projectile theWisp = null;
                 foreach (var projectile in Main.ActiveProjectiles)
@@ -130,6 +129,7 @@ namespace PetsOverhaul.LightPets
         public int CustomChance => PetDamage.CurrentRoll + 15;
         public override int LightPetItemID => ItemID.WispinaBottle;
         public override bool HasCustomEffect => true;
+        public override bool CustomEffectActive => Main.LocalPlayer.GetModPlayer<WispInABottleEffect>().CustomActive; //We make it so it uses the ModPlayer's CustomActive when access to the property is required.
         public override void UpdateInventory(Item item, Player player)
         {
             MagicDamage.SetRoll(player.luck);

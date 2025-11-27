@@ -35,20 +35,7 @@ namespace PetsOverhaul.Systems
         /// This field is to make this Light Pet appear on /pet light|lightpet|lightpets command(s).
         /// </summary>
         public abstract int LightPetItemID { get; }
-        public virtual bool HasCustomEffect => false;
-        public virtual bool CustomEffectActive { get; set; }
-        public virtual void ExtraProcessTriggers(TriggersSet triggersSet) { }
-        public sealed override void ProcessTriggers(TriggersSet triggersSet)
-        {
-            ExtraProcessTriggers(triggersSet);
-            if (Main.HoverItem.type == LightPetItemID)
-            {
-                if (HasCustomEffect && PetKeybinds.PetCustomSwitch.JustPressed)
-                {
-                    CustomEffectActive = !CustomEffectActive;
-                }
-            }
-        }
+        public bool CustomActive = false; //This needs to be on the Player instance, as we both want it to trigger on all same items of same type, and allows for much, much easier access to the field. See WispInABottle.cs for implementation.
     }
     public abstract class LightPetItem : GlobalItem
     {
