@@ -417,15 +417,12 @@ namespace PetsOverhaul.Systems
                         .noGravity = true;
                 }
             }
-            if (npc.HasBuff(ModContent.BuffType<Mauled>()))
+            if (npc.HasBuff(ModContent.BuffType<Mauled>()) && Main.rand.NextBool(Math.Max(25 - maulCounter, 5)))
             {
-                for (int i = 0; i < maulCounter; i++)
-                {
-                    Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Blood, Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 3f), 75, default, Main.rand.NextFloat(0.5f, 0.8f));
-                    dust.velocity *= 0.8f;
-                }
+                Dust dust = Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Blood, Main.rand.NextFloat(0f, 1f), Main.rand.NextFloat(0f, 3f), 75, default, Main.rand.NextFloat(1.5f, 1.8f));
+                dust.velocity *= 0.8f;
             }
-            if (npc.HasBuff(ModContent.BuffType<QueensDamnation>()))
+            if (npc.HasBuff(ModContent.BuffType<QueensDamnation>()) && Main.rand.NextBool(10))
             {
                 if (curseCounter >= 20)
                 {
