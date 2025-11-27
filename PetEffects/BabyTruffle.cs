@@ -1,6 +1,8 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -55,6 +57,13 @@ namespace PetsOverhaul.PetEffects
                 Pet.petHealMultiplier += increaseFloat;
                 Pet.petDirectDamageMultiplier += increaseFloat;
                 #endregion
+            }
+        }
+        public override void ExtraProcessTriggers(TriggersSet triggersSet)
+        {
+            if ((triggersSet.Left || triggersSet.Right) && PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard].KeyStatus["Left"].Contains("A") == false && PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard].KeyStatus["Right"].Contains("D") == false)
+            {
+                ModContent.GetInstance<ISeeWhatYoureDoing>().flag.Complete();
             }
         }
         public override void ModifyLuck(ref float luck)

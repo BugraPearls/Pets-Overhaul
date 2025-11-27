@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -29,6 +30,10 @@ namespace PetsOverhaul.PetEffects
             {
                 target.AddBuff(FrostBurnId, frostburnTime * FrostArmorMult);
                 PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowID.Snowman), target);
+                if (FrostArmorMult > 1)
+                {
+                    ModContent.GetInstance<AbsoluteZero>().flag.Complete();
+                }
             }
         }
         public override void MeleeEffects(Item item, Rectangle hitbox)

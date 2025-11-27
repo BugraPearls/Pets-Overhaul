@@ -1973,6 +1973,21 @@ Mods: {
 				// Description: Obtain a Blue Chicken Egg, an Eucalyptus Sap or a Magical Pumpkin Seed while gaining extra drops with the Blue Chicken Pet.
 				// FriendlyName: Petception
 			}
+
+			AbsoluteZero: {
+				// FriendlyName: Absolute Zero
+				// Description: Slow down an enemy with Baby Snowman Pet while full Frozen Armor is equipped. It doesn't get any colder than this.
+			}
+
+			Vulnerable: {
+				// FriendlyName: Vulnerable
+				// Description: Strike an enemy that has maximum Mauled debuff stacks on an enemy, which is applied by Baby Werewolf Pet, making them take more damage.
+			}
+
+			ISeeWhatYoureDoing: {
+				// FriendlyName: I See What You're Doing
+				// Description: Change both left and right movement controls while Baby Truffle Pet is equipped. Pet doesn't have any downsides now though does it?
+			}
 		}
 	}
 }

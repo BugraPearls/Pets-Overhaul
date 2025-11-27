@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Buffs;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Buffs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -28,11 +29,20 @@ namespace PetsOverhaul.PetEffects
                 Player.npcTypeNoAggro[NPCID.Werewolf] = true;
             }
         }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (PetIsEquipped() && hit.Crit)
+            {
+                target.AddBuff(ModContent.BuffType<Mauled>(), debuffLength);
+                target.GetGlobalNPC<PetGlobalNPC>().maulCounter++;
+            }
+        }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (target.GetGlobalNPC<PetGlobalNPC>().maulCounter > maxStacks)
             {
                 target.GetGlobalNPC<PetGlobalNPC>().maulCounter = maxStacks;
+                ModContent.GetInstance<Vulnerable>().flag.Complete();
             }
 
             if (target.HasBuff(ModContent.BuffType<Mauled>()))
@@ -47,14 +57,6 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped())
             {
                 modifiers.CritDamage -= critDmgReduction - target.GetGlobalNPC<PetGlobalNPC>().maulCounter * maulCritDmgIncrease;
-            }
-        }
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            if (PetIsEquipped() && hit.Crit)
-            {
-                target.AddBuff(ModContent.BuffType<Mauled>(), debuffLength);
-                target.GetGlobalNPC<PetGlobalNPC>().maulCounter++;
             }
         }
         public override void ModifyWeaponCrit(Item item, ref float crit)
