@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -55,22 +56,23 @@ namespace PetsOverhaul.PetEffects
                                 EnemiesBurning++;
                                 break;
                             }
-                            if (EnemiesBurning >= 5)
-                            {
-                                break;
-                            }
                         }
                     }
                 }
+                if (EnemiesBurning > 0)
+                {
+                    ModContent.GetInstance<Arsonist>().BurnAmplifiedFrames.Value += EnemiesBurning;
+                }
                 if (Pet.timer <= 0 && EnemiesBurning > 0)
                 {
-                    if (EnemiesBurning > 5)
+                    int count = EnemiesBurning;
+                    if (count > 5)
                     {
-                        EnemiesBurning = 5;
+                        count = 5;
                     }
 
-                    Pet.PetRecovery(burnDrain * healthDrain * EnemiesBurning, 0.005f, isLifesteal: false);
-                    Pet.PetRecovery(burnDrain * manaDrain * EnemiesBurning, 0.005f, isLifesteal: false, manaSteal: true);
+                    Pet.PetRecovery(burnDrain * healthDrain * count, 0.005f, isLifesteal: false);
+                    Pet.PetRecovery(burnDrain * manaDrain * count, 0.005f, isLifesteal: false, manaSteal: true);
                     Pet.timer = Pet.timerMax;
                 }
             }
