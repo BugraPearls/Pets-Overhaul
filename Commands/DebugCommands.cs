@@ -59,10 +59,20 @@ namespace PetsOverhaul.Commands
             {
                 PetClass petClass = PetClassID.AllClasses.Find(x => x.InternalName == args[0]);
 
-                    caller.Reply(petClass.InternalID.ToString());
-                    return;
+                caller.Reply(petClass.InternalID.ToString());
+                return;
             }
             caller.Reply("Can't find any.");
+        }
+    }
+    public class ResetCooldown : ModCommand
+    {
+        public override CommandType Type => CommandType.Chat;
+        public override string Command => "respetcd";
+        public override void Action(CommandCaller caller, string input, string[] args)
+        {
+            if (caller.Player.name.Contains("test")) //not a perfect preveneter lol but still. If Player's name contains "test", its usable
+            caller.Player.PetPlayer().timer = -1;
         }
     }
 }
