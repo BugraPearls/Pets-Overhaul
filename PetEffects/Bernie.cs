@@ -15,6 +15,7 @@ namespace PetsOverhaul.PetEffects
         public int maxBurning = 5;
         public int manaDrain = 4;
         public int healthDrain = 3;
+        private int achievementTracker = 0; //This is here because for whatever reason I cannot tie my Achievement Conditions to my custom Tracker to show it as 'Minutes' on Achievements, now have to do it as seconds. This way with no 'SaveData', we may lose some frames for the achievement progression.
         public int EnemiesBurning { get; internal set; }
         public override PetClass PetClassPrimary => PetClassID.Utility;
         public override PetClass PetClassSecondary => PetClassID.Defensive;
@@ -61,7 +62,13 @@ namespace PetsOverhaul.PetEffects
                 }
                 if (EnemiesBurning > 0)
                 {
-                    ModContent.GetInstance<Arsonist>().BurnAmplifiedFrames.Value += EnemiesBurning;
+                    achievementTracker += EnemiesBurning;
+                    if (achievementTracker >= 60)
+                    {
+                        int modulus = achievementTracker % 60;
+                        ModContent.GetInstance<Arsonist>().BurnAmplifiedFrames.Value += (achievementTracker -modulus ) / 60;
+                        achievementTracker = modulus;
+                    }
                 }
                 if (Pet.timer <= 0 && EnemiesBurning > 0)
                 {
