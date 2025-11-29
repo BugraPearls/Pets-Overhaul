@@ -475,7 +475,7 @@ Mods: {
 				'''
 				- Press Pet Ability Keybind (<keybind>) to absorb Moonlight.
 				  * Heal or take damage between <moonlightMin> and <moonlightMax> randomly.
-				  * Negative luck reduces the values, while positive luck increases them.
+				  * Negative or positive luck increases both odds and amount of heal or damage.
 				  * Can be only used during the night, and has a <moonlightCd> second cooldown.
 				- Increases luck by <flatLuck>.
 				- Grants luck depending on the current moon cycle.
@@ -1619,7 +1619,8 @@ Mods: {
 				Description:
 					'''
 					You're currently ENRAGED! All you can think of is bloodshed!
-					Your defense and DR are set to 0, and your Shield of Cthulhu is quicker.
+					Your defense and DR are set to 0 and maximum health cannot exceed 50%.
+					But your offensive capabilities are improved and your Shield of Cthulhu is quicker.
 					Current Rage Points: <rage>
 					Current Damage Boost: <dmg>%
 					Current Movement Speed Boost: <speed>%
@@ -2036,6 +2037,16 @@ Mods: {
 			ISeeWhatYoureDoing: {
 				FriendlyName: I See What You're Doing
 				Description: Change both left and right movement controls while Baby Truffle Pet is equipped. Pet doesn't have any downsides now though does it?
+			}
+
+			Arsonist: {
+				Description: Extend total of 1 hour Burn debuff duration using Bernie Pet. You can feel regaining your sanity...
+				FriendlyName: Arsonist
+			}
+
+			BringsBadLuckAfterall: {
+				Description: Take damage using Black Cat's ability 3 times in a row. Superstitions were right afterall.
+				FriendlyName: Brings Bad Luck Afterall
 			}
 		}
 	}

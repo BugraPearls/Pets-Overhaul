@@ -1988,6 +1988,16 @@ Mods: {
 				// FriendlyName: I See What You're Doing
 				// Description: Change both left and right movement controls while Baby Truffle Pet is equipped. Pet doesn't have any downsides now though does it?
 			}
+
+			Arsonist: {
+				// Description: Extend total of 1 hour Burn debuff duration using Bernie Pet. You can feel regaining your sanity...
+				// FriendlyName: Arsonist
+			}
+
+			BringsBadLuckAfterall: {
+				// Description: Take damage using Black Cat's ability 3 times in a row. Superstitions were right afterall.
+				// FriendlyName: Brings Bad Luck Afterall
+			}
 		}
 	}
 }

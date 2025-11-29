@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Config;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -21,9 +22,9 @@ namespace PetsOverhaul.PetEffects
         public float luckMoonMid = 0.01f;
         public float luckMoonHigh = 0.03f;
         public float luckMoonHighest = 0.05f;
-        public int moonlightCd = 1020;
-        public int moonlightLowest = -10;
-        public int moonlightHighest = 20;
+        public int moonlightCd = 420;
+        public int moonlightLowest = -20;
+        public int moonlightHighest = 25;
         public float currentMoonLuck = 0;
         public override int PetAbilityCooldown => CustomEffectActive ? lunarVeilCooldown : moonlightCd;
         public override int PetStackCurrent => lunarVeilDuration > 0 ? lunarVeilDuration : lunarVeilPostDuration;
@@ -112,12 +113,24 @@ namespace PetsOverhaul.PetEffects
                     {
                         SoundEngine.PlaySound(SoundID.Item29 with { PitchRange = (-1f, -0.8f) }, Player.Center);
                     }
-                    int moonlightRoll = Main.rand.Next(moonlightLowest, moonlightHighest + 1);
-                    moonlightRoll = PetUtils.Randomizer((int)(moonlightRoll * (Player.luck + 1) * 100));
-                    if (moonlightRoll == 0)
+
+                    int moonlightRoll = 0;
+                    while (moonlightRoll == 0) //keeps re-rolling if we get 0 from rand.Next().
                     {
-                        moonlightRoll = Main.rand.NextBool() ? -1 : 1;
+                        if (Player.luck == 0)
+                        {
+                            moonlightRoll = Main.rand.Next(moonlightLowest, moonlightHighest + 1);
+                        }
+                        else if (Player.luck > 0)
+                        {
+                            moonlightRoll = Main.rand.Next(moonlightLowest, PetUtils.Randomizer((int)(moonlightHighest * (Player.luck + 1) * 100)) + 1);
+                        }
+                        else
+                        {
+                            moonlightRoll = Main.rand.Next(PetUtils.Randomizer((int)(moonlightLowest * (Player.luck * -1 + 1) * 100)), moonlightHighest + 1);
+                        }
                     }
+                    
                     if (moonlightRoll < 0)
                     {
                         moonlightRoll *= -1;
@@ -130,11 +143,13 @@ namespace PetsOverhaul.PetEffects
                             4 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath5"),
                             _ => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
                         };
-                        Player.Hurt(PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)), moonlightRoll, 0, dodgeable: false, knockback: 0, scalingArmorPenetration: 1f);
+                        Player.Hurt(new Player.HurtInfo() with { Damage = moonlightRoll, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name))});
+                        ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value++;
                     }
                     else
                     {
                         Pet.PetRecovery(moonlightRoll, 1f, isLifesteal: false);
+                        ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value = 0;
                     }
                     Pet.timer = Pet.timerMax;
                 }

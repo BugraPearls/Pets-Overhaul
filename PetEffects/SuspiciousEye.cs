@@ -61,7 +61,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                if (Pet.inCombatTimer >= 0 && Player.statLife <= Player.statLifeMax2 / 2 && Pet.timer <= 0)
+                if (Pet.inCombatTimer > 0 && Player.statLife <= Player.statLifeMax2 / 2 && Pet.timer <= 0)
                 {
                     eocTimer = phaseTime;
                     Pet.timer = Pet.timerMax;
