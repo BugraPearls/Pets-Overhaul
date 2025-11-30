@@ -18,6 +18,10 @@ namespace PetsOverhaul.PetEffects
 
         public override PetClass PetClassPrimary => PetClassID.Ranged;
         public override PetClass PetClassSecondary => PetClassID.Supportive;
+        public override void PostUpdateMiscEffects()
+        {
+            PetUtils.OldOnesAchievementHelper(Player);
+        }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
             if (target.GetGlobalNPC<PetGlobalNPC>().curseCounter > maxStacks)

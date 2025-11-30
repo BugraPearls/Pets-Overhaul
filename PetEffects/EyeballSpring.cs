@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Config;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -37,6 +38,17 @@ namespace PetsOverhaul.PetEffects
                 }
                 Player.runAcceleration *= acceleration + 1f;
                 Player.jumpSpeedBoost += jumpBoost;
+            }
+        }
+        public override void Load()
+        {
+            PetModPlayer.OnEnemyDeath += OnEnemyKill;
+        }
+        public static void OnEnemyKill(NPC npc, Player player)
+        {
+            if (npc.type == NPCID.Eyezor && player.CurrentPet() == ItemID.EyeSpring && player.whoAmI == Main.myPlayer)
+            {
+                ModContent.GetInstance<IveFoundYourEye>().flag.Complete();
             }
         }
     }

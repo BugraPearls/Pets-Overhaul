@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -44,6 +45,11 @@ namespace PetsOverhaul.PetEffects
                         harpyFlight = (int)Player.wingTime;
                     }
                     Player.noFallDmg = true;
+
+                    if (harpyFlight <= 0 && Player.ZoneSkyHeight)
+                    {
+                        ModContent.GetInstance<FakeHarpy>().flag.Complete();
+                    }
                 }
                 if (cooldownStarted == false && harpyFlight < fuelMax)
                 {

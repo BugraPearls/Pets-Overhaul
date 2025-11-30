@@ -19,6 +19,10 @@ namespace PetsOverhaul.PetEffects
         public float specialBossThreshold = 0.06f;
         public int arrowPen = 1;
         public override PetClass PetClassPrimary => PetClassID.Ranged;
+        public override void PostUpdateMiscEffects()
+        {
+            PetUtils.OldOnesAchievementHelper(Player);
+        }
         public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
             if (PetIsEquipped())

@@ -31,6 +31,8 @@ namespace PetsOverhaul.PetEffects
         }
         public override void PostUpdateMiscEffects()
         {
+            PetUtils.OldOnesAchievementHelper(Player);
+
             if (PetIsEquipped())
             {
                 Player.maxTurrets++;

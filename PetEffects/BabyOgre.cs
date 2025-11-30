@@ -24,6 +24,8 @@ namespace PetsOverhaul.PetEffects
 
         public override void PostUpdateMiscEffects()
         {
+            PetUtils.OldOnesAchievementHelper(Player);
+
             if (Main.masterMode == true)
             {
                 healthIncrease = 0.80f;

@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -28,6 +29,10 @@ namespace PetsOverhaul.PetEffects
                 else
                 {
                     Player.wingTimeMax += (int)(Player.wingTimeMax * currentWingPercIncr) + wingTime;
+                    if (Player.wingTimeMax >= 330)
+                    {
+                        ModContent.GetInstance<PrettyButteryFlight>().flag.Complete();
+                    }
                 }
             }
         }

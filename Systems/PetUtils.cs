@@ -124,6 +124,13 @@ namespace PetsOverhaul.Systems
             return amount;
         }
 
+        public static void OldOnesAchievementHelper(Player player)
+        { 
+            if (player.ZoneOldOneArmy && (player.CurrentPet() == ItemID.DD2PetDragon || player.CurrentPet() == ItemID.DD2PetGato || player.CurrentLightPet() == ItemID.DD2PetGhost || player.CurrentPet() == ItemID.DD2BetsyPetItem || player.CurrentPet() == ItemID.DD2OgrePetItem))
+            {
+                ModContent.GetInstance<AnotherWorld>().flag.Complete();
+            }
+        }
         #region Colors
         public static Color LowQuality => new(130, 130, 130);
         public static Color MidQuality => new(77, 117, 154);

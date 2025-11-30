@@ -2039,6 +2039,31 @@ Mods: {
 				// Description: Take damage using Black Cat's ability 3 times in a row. Superstitions were right afterall.
 				// FriendlyName: Brings Bad Luck Afterall
 			}
+
+			HeavyDutyPet: {
+				// Description: Strike 10 enemies at the same time with one explosion by your Dynamite Kitten Pet.
+				// FriendlyName: Heavy Duty Pet
+			}
+
+			AnotherWorld: {
+				// FriendlyName: Another World
+				// Description: Have Itsy Betsy, Baby Ogre, Hoardagron, Propeller Gato or a Flickerwick equipped while an Old One's Army event is active.
+			}
+
+			FakeHarpy: {
+				// FriendlyName: Fake Harpy
+				// Description: Run out of Wing Time while flying in the Space using Lil' Harpy Pet. You can't even glide? What a knockoff.
+			}
+
+			IveFoundYourEye: {
+				// FriendlyName: I've Found Your Eye
+				// Description: Kill an Eyezor while Eye Spring Pet is equipped. Return to sender.
+			}
+
+			PrettyButteryFlight: {
+				// FriendlyName: Pretty Buttery Flight
+				// Description: Achieve 5.5 seconds or more flight time while using Glittery Butterfly Pet. Believe it or not, flies does not like butter.
+			}
 		}
 	}
 }
