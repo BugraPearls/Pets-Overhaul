@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -50,11 +51,13 @@ namespace PetsOverhaul.PetEffects
                     }
                     if (Main.rand.NextBool(pig.foodChance, 100))
                     {
+                        ModContent.GetInstance<Muncher>().Munchies.Value++;
                         return false;
                     }
                 }
                 else if (item.buffType != 0 && Main.debuff[item.buffType] == false && Main.rand.NextBool(pig.potionChance, 100))
                 {
+                    ModContent.GetInstance<Muncher>().Munchies.Value++;
                     return false;
                 }
             }

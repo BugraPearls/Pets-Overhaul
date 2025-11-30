@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -46,6 +47,11 @@ namespace PetsOverhaul.PetEffects
                 }
             }
             tempResult = orig(self, rule, info);
+
+            if (info.player.CurrentPet() == ItemID.OrnateShadowKey && tempResult.State == ItemDropAttemptResultState.Success)
+            {
+                ModContent.GetInstance<LootChaser>().Count.Value++;
+            }
 
             return tempResult;
         }

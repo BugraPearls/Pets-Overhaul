@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;
@@ -14,8 +15,34 @@ namespace PetsOverhaul.PetEffects
         public float knockBack = 0.4f;
         public int flatDmg = 15;
         public int pen = 20;
-
+        private int timerForAchievementPepper = 0;
+        private int timerForAchievementNachos = 0;
         public override PetClass PetClassPrimary => PetClassID.Offensive;
+        public override bool CanUseItem(Item item)
+        {
+            if (item.type == ItemID.SpicyPepper)
+            {
+                timerForAchievementPepper = 60;
+                if (timerForAchievementNachos > 0)
+                    ModContent.GetInstance<PlantaHermano>().flag.Complete();
+            }
+            if (item.type == ItemID.Nachos)
+            {
+                timerForAchievementNachos = 60;
+                if (timerForAchievementPepper > 0)
+                    ModContent.GetInstance<PlantaHermano>().flag.Complete();
+            }
+            return base.CanUseItem(item);
+        }
+        public override void ExtraPreUpdate()
+        {
+            timerForAchievementPepper--;
+            if (timerForAchievementPepper < 0)
+                timerForAchievementPepper = 0;
+            timerForAchievementNachos--;
+            if (timerForAchievementNachos < 0)
+                timerForAchievementNachos = 0;
+        }
         public void SpawnGasCloud(NPC target, int damage, DamageClass dmgType)
         {
             if (PetIsEquipped())

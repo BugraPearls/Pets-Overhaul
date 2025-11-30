@@ -2023,6 +2023,46 @@ Mods: {
 				// FriendlyName: Pretty Buttery Flight
 				// Description: Achieve 5.5 seconds or more flight time while using Glittery Butterfly Pet. Believe it or not, flies does not like butter.
 			}
+
+			ThisWontBeHowIDie: {
+				// Description: Kill a total of 100 Zombie type of enemies while Spiffo Pet is equipped. I guess you get to live this life.
+				// FriendlyName: This won't be how I die
+			}
+
+			TheSummit: {
+				// Description: Reach Level 50 on all three skills of your Junimo Pet. "It's been a long road... And you've made us very proud!"
+				// FriendlyName: The Summit
+			}
+
+			PlantaHermano: {
+				// Description: While you have Plantero Pet equipped, eat Nachos and Spicy Pepper within a second.
+				// FriendlyName: Planta Hermano
+			}
+
+			NutritiousDecoy: {
+				// Description: Drop down a Lizard Tail with your Lizard Pet, and pick it back up from the ground, replenishing health and recovering its cooldown. The fact that a Lizard's tail is the fattiest part of its body means for most predators, its successful enough of a hunt.
+				// FriendlyName: Nutritious Decoy
+			}
+
+			Muncher: {
+				// Description: Save up 50 Food Items or Potions using your Pig Man Pet. Very hungry.
+				// FriendlyName: Muncher
+			}
+
+			LootChaser: {
+				// Description: Find 50 items with lower than 25% chance to drop from Enemy loot or Loot Bags with Shadow Mimic Pet, as the Pet increases the odds.
+				// FriendlyName: Loot Chaser
+			}
+
+			ElusiveHunter: {
+				// Description: Kill or catch 15 rare creatures with Puppy Pet to gain bonus money and to easily spot them. A born hunter.
+				// FriendlyName: Elusive Hunter
+			}
+
+			Copycat: {
+				// Description: Have your Parrot Pet shoot out 100 duplicate projectiles. Have your Parrot Pet shoot out 100 duplicate projectiles. What?
+				// FriendlyName: Copycat
+			}
 		}
 	}
 }

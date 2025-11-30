@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
@@ -651,6 +652,7 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<upOrMax>", junimoHarvestingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
                 PopupText.NewText(popupMessage, Player.Center);
             }
+
             if (junimoMiningLevel < maxLvls && junimoMiningExp >= junimoMiningLevelsToXp[junimoMiningLevel])
             {
                 junimoMiningLevel++;
@@ -687,6 +689,21 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Fishing"))
                     .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
                 PopupText.NewText(popupMessage, Player.Center);
+            }
+            
+            if (junimoHarvestingLevel >= 50)
+            {
+                ModContent.GetInstance<TheSummit>().HarvestingLvl.Complete();
+            }
+
+            if (junimoMiningLevel >= 50)
+            {
+                ModContent.GetInstance<TheSummit>().MiningLvl.Complete();
+            }
+
+            if (junimoFishingLevel >= 50)
+            {
+                ModContent.GetInstance<TheSummit>().FishingLvl.Complete();
             }
         }
         public override void SaveData(TagCompound tag)

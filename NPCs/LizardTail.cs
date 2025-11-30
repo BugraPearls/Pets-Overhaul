@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
 using Terraria;
@@ -125,9 +126,13 @@ namespace PetsOverhaul.NPCs
                 {
                     Lizard lizard = player.GetModPlayer<Lizard>();
                     if (lizard.Player.whoAmI == Main.myPlayer)
-                        Main.BestiaryTracker.Kills.RegisterKill(NPC); //Give Player bestiary Kill count if 'picked up'
+                    {
+                        Main.BestiaryTracker.Kills.RegisterKill(NPC); //Give Player bestiary Kill count if 'picked up' and complete their achievement
+                        ModContent.GetInstance<NutritiousDecoy>().flag.Complete();
+                    }
                     lizard.Pet.PetRecovery(player.statLifeMax2, lizard.percentHpRecover, isLifesteal: false);
                     lizard.Pet.timer = (int)(lizard.Pet.timer * lizard.tailCdRefund);
+
                     Kill();
                     return;
                 }

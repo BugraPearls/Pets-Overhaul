@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -22,13 +23,20 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetIsEquipped() && target.active == false && proj.CountsAsClass<RangedDamageClass>() && proj.penetrate >= 0)
+            if (PetIsEquipped() && target.active == false)
             {
-                proj.penetrate += PetUtils.Randomizer(penetrateChance);
-                if (proj.usesLocalNPCImmunity == false)
+                if (proj.CountsAsClass<RangedDamageClass>() && proj.penetrate >= 0)
                 {
-                    proj.usesLocalNPCImmunity = true;
-                    proj.localNPCHitCooldown = 10;
+                    proj.penetrate += PetUtils.Randomizer(penetrateChance);
+                    if (proj.usesLocalNPCImmunity == false)
+                    {
+                        proj.usesLocalNPCImmunity = true;
+                        proj.localNPCHitCooldown = 10;
+                    }
+                }
+                if (NPCID.Sets.Zombies[target.type])
+                {
+                    ModContent.GetInstance<ThisWontBeHowIDie>().Kills.Value++;
                 }
             }
         }

@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Config;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -93,6 +94,7 @@ namespace PetsOverhaul.PetEffects
                         petProjectile.DamageType = damageType;
                         petProjectile.CritChance = (int)parrot.Player.GetTotalCritChance(damageType);
                         parrot.PlayParrotSound();
+                        ModContent.GetInstance<Copycat>().Count.Value++;
                     }
                 }
             }
