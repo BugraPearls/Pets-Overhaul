@@ -2081,7 +2081,7 @@ Mods: {
 			}
 
 			NutritiousDecoy: {
-				// Description: Drop down a Lizard Tail with your Lizard Pet, and pick it back up from the ground, replenishing health and recovering its cooldown. The fact that a Lizard's tail is the fattiest part of its body means for most predators, its successful enough of a hunt.
+				// Description: Drop down a Lizard Tail with your Lizard Pet, and pick it back up from the ground, replenishing health and recovering its cooldown.
 				// FriendlyName: Nutritious Decoy
 			}
 
@@ -2103,6 +2103,11 @@ Mods: {
 			Copycat: {
 				// Description: Have your Parrot Pet shoot out 100 duplicate projectiles. Have your Parrot Pet shoot out 100 duplicate projectiles. What?
 				// FriendlyName: Copycat
+			}
+
+			UnstoppableAndImmovable: {
+				// Description: What would happen if unstoppable force of Terraria, the Giant Tortoise that is charging were to meet an immovable object, you with the Turtle Pet, having your Pet's Hardened Shell ability active.
+				// FriendlyName: Unstoppable Force vs Immovable Object
 			}
 		}
 	}

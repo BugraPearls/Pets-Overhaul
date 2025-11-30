@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Buffs;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Buffs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -68,10 +69,18 @@ namespace PetsOverhaul.PetEffects
                     if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out PetGlobalProjectile proj) && Main.npc[proj.sourceNpcId].active && Main.npc[proj.sourceNpcId].dontTakeDamage == false)
                     {
                         Main.npc[proj.sourceNpcId].SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflectProjectile, DamageClass.Generic), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
+                        if (Main.npc[proj.sourceNpcId].type == NPCID.GiantTortoise && (Main.npc[proj.sourceNpcId].ai[0] == 3 || Main.npc[proj.sourceNpcId].ai[0] == 4))
+                        {
+                            ModContent.GetInstance<UnstoppableAndImmovable>().flag.Complete();
+                        }
                     }
                     else if (entity is NPC npc && npc.active == true && npc.dontTakeDamage == false)
                     {
                         npc.SimpleStrikeNPC(Main.DamageVar(Pet.PetDamage(damageTaken * dmgReflect, DamageClass.Generic), Player.luck), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
+                        if (npc.type == NPCID.GiantTortoise && (npc.ai[0] == 3 || npc.ai[0] == 4)) //when its 3 and 4, thats where its midair.
+                        {
+                            ModContent.GetInstance<UnstoppableAndImmovable>().flag.Complete();
+                        }
                     }
                 }
                 currentStacks--;
