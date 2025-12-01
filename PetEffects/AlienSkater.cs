@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using Terraria;
 using Terraria.GameInput;
@@ -17,6 +18,7 @@ namespace PetsOverhaul.PetEffects
         public float speedAccIncr = 0.25f;
         public float wingTimeStore = 0.5f;
         private float wingTimeBank = 0;
+        private int achievementBank = 0;
         public override void PostUpdateRunSpeeds()
         {
             if (PetIsEquipped())
@@ -26,6 +28,12 @@ namespace PetsOverhaul.PetEffects
                 {
                     Player.wingTime++;
                     wingTimeBank--;
+                    achievementBank++;
+                }
+                if (achievementBank == 60)
+                {
+                    achievementBank = 0;
+                    ModContent.GetInstance<HoverboardSkater>().TimeSaved.Value++;
                 }
             }
         }

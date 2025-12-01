@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Config;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -68,6 +69,7 @@ namespace PetsOverhaul.PetEffects
                         SoundEngine.PlaySound(SoundID.Item49 with { PitchVariance = 0.3f, Volume = 0.8f }, Player.Center);
                     }
                 }
+
                 iceQueenFrame++;
                 Player.buffImmune[BuffID.Frozen] = false;
                 Player.AddBuff(BuffID.Frozen, 1);
@@ -82,7 +84,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         if (npc.dontTakeDamage == false && npc.friendly == false && Player.Distance(npc.Center) < queenRange)
                         {
-                            npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage, DamageClass.Generic), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck);
+                            PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage, DamageClass.Generic), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck));
                         }
                     }
                     if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
@@ -108,13 +110,14 @@ namespace PetsOverhaul.PetEffects
                 }
 
                 frozenTomb = true;
-
+                
                 if (Player.lifeRegen < 0)
                 {
                     Player.lifeRegen = 0;
                 }
                 Player.statLife = 1;
                 Pet.timer = Pet.timerMax;
+                ModContent.GetInstance<FreezingTheReaper>().flag.Complete();
                 return false;
             }
             else

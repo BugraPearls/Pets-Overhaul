@@ -281,7 +281,7 @@ namespace PetsOverhaul.NPCs
                             kb = dual.knockback;
                             luck = dual.Player.luck;
                         }
-                        npc.SimpleStrikeNPC(damage, npc.direction, crit, kb, DamageClass.Generic, true, luck);
+                        PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(damage, npc.direction, crit, kb, DamageClass.Generic, true, luck));
                         npc.GetImmuneTime(Owner, 10);
                     }
                 }

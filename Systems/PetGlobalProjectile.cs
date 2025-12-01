@@ -56,5 +56,13 @@ namespace PetsOverhaul.Systems
                 fromMount = true;
             }
         }
+
+        public override void OnHitNPC(Projectile projectile, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            if (petProj && PetUtils.LifestealCheck(target)) //lifestealcheck is valid here as it checks for statue/friendly etc.
+            {
+                PetUtils.AddToDmgAchievement(damageDone);
+            }
+        }
     }
 }

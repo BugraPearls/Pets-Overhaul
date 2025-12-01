@@ -2065,8 +2065,38 @@ Mods: {
 			}
 
 			UnstoppableAndImmovable: {
-				// Description: What would happen if unstoppable force of Terraria, the Giant Tortoise that is charging were to meet an immovable object, you with the Turtle Pet, having your Pet's Hardened Shell ability active.
+				// Description: What would happen if unstoppable force of Terraria, the Giant Tortoise that is charging were to meet an immovable object, you with the Turtle Pet, where your Pet's Hardened Shell ability is active.
 				// FriendlyName: Unstoppable Force vs Immovable Object
+			}
+
+			WarriorPet: {
+				// Description: Deal 25000 damage with Pet sourced damages. Whether it be projectiles spawned by your Pets or direct damages of their effects.
+				// FriendlyName: Warrior Pet
+			}
+
+			TooMuchHoney: {
+				// Description: Consume Bottled Honey or Honeyfin using Honey Bee Pet. In multiplayer, your friends will apreciate you overdosing on sugar.
+				// FriendlyName: Too Much Honey
+			}
+
+			SagePet: {
+				// Description: Heal 15000 health with Pet Healings. Any health recovery from your Pets count for this.
+				// FriendlyName: Sage Pet
+			}
+
+			HoverboardSkater: {
+				// Description: Save up 10 minutes of Wing Time by flying in X axis with Alien Skater Pet. Flying upwards is lame anyways.
+				// FriendlyName: Hoverboard Skater
+			}
+
+			GuardPet: {
+				// Description: Block 5000 damage with Shields from your Pet Effects.
+				// FriendlyName: Guard Pet
+			}
+
+			FreezingTheReaper: {
+				// Description: Survive a fatal hit with your Ice Queen Pet's effect.
+				// FriendlyName: Freezing The Reaper
 			}
 		}
 	}

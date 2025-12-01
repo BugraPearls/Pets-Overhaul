@@ -391,6 +391,8 @@ namespace PetsOverhaul.Systems
                         Player.statLife += calculatedAmount;
                         Player.HealEffect(healEff);
                     }
+
+                    ModContent.GetInstance<SagePet>().Heal.Value += calculatedAmount;
                 }
                 else
                 {
@@ -766,6 +768,7 @@ namespace PetsOverhaul.Systems
             }
             if (petShield.Count > 0)
             {
+                int addToAchievement = 0;
                 while (shieldToBeReduced > 0 && petShield.Count > 0)
                 {
                     (int shieldAmount, int shieldTimer) value = petShield.Find(x => x.shieldTimer == petShield.Min(x => x.shieldTimer));
@@ -773,15 +776,18 @@ namespace PetsOverhaul.Systems
                     if (index != -1 && value.shieldAmount <= shieldToBeReduced)
                     {
                         shieldToBeReduced -= value.shieldAmount;
+                        addToAchievement += value.shieldAmount;
                         petShield.RemoveAt(index);
                     }
                     else if (index != -1 && value.shieldAmount > shieldToBeReduced)
                     {
                         value.shieldAmount -= shieldToBeReduced;
+                        addToAchievement += shieldToBeReduced;
                         shieldToBeReduced = 0;
                         petShield[index] = value;
                     }
                 }
+                ModContent.GetInstance<GuardPet>().Shield.Value += addToAchievement;
 
                 shieldToBeReduced = 0;
                 currentShield = 0;

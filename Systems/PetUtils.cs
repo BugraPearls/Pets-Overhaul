@@ -98,7 +98,14 @@ namespace PetsOverhaul.Systems
             Main.combatText[textToRemove].active = false;
             return textToRemove;
         }
-
+        /// <summary>
+        /// Run npc.SimpleStrikeNPC() as parameter.
+        /// </summary>
+        /// <param name="dealtActualDmg">How much to be added to the achievement.</param>
+        public static void AddToDmgAchievement(int dealtActualDmg)
+        {
+            ModContent.GetInstance<WarriorPet>().Damage.Value += dealtActualDmg;
+        }
         /// <summary>
         /// Randomizes the given number. numToBeRandomized / randomizeTo returns how many times its 100% chance and rolls if the leftover, non-100% amount is true. Randomizer(225) returns +2 and +1 more with 25% chance.
         /// randomizeTo is converted to positive if its negative for proper usage of Method. Negative values can be applied on numToBeRandomized to get the Method working the exact way, but to reduce. Ex: Randomizer(-225) returns -2 and -1 more with 25% chance.

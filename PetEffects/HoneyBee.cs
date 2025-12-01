@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Buffs;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Buffs;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -69,6 +70,8 @@ namespace PetsOverhaul.PetEffects
         {
             if (player.GetModPlayer<HoneyBee>().PetIsEquipped() && (item.type == ItemID.BottledHoney || item.type == ItemID.Honeyfin))
             {
+                ModContent.GetInstance<TooMuchHoney>().flag.Complete();
+
                 bool isBottledHoney = item.type == ItemID.BottledHoney;
                 HoneyBee.HealByHoneyBee(isBottledHoney, player.whoAmI, true);
                 if (Main.netMode == NetmodeID.MultiplayerClient)
