@@ -2116,7 +2116,7 @@ Mods: {
 
 			UnstoppableAndImmovable: {
 				Description: What would happen if unstoppable force of Terraria, the Giant Tortoise that is charging were to meet an immovable object, you with the Turtle Pet, where your Pet's Hardened Shell ability is active.
-				FriendlyName: Unstoppable Charging Shell vs Immovable Grounded Shell
+				FriendlyName: Unstoppable Force vs Immovable Object
 			}
 		}
 	}
