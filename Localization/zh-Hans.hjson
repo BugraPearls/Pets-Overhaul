@@ -2035,7 +2035,7 @@ Mods: {
 			}
 
 			PlantaHermano: {
-				// Description: While you have Plantero Pet equipped, eat Nachos and Spicy Pepper within a second.
+				// Description: While you have Plantero Pet equipped, eat Nachos and Spicy Pepper within a second. Where is the guac though?
 				// FriendlyName: Planta Hermano
 			}
 
@@ -2097,6 +2097,41 @@ Mods: {
 			FreezingTheReaper: {
 				// Description: Survive a fatal hit with your Ice Queen Pet's effect.
 				// FriendlyName: Freezing The Reaper
+			}
+
+			YouAndSlimeArmy: {
+				// Description: Have 5 Slime Servants alive at a time, a friendly NPC who will fight for you, who is summoned by Slime Prince Pet or Slime Royal Pets Ability.
+				// FriendlyName: You And Slime Army
+			}
+
+			TooManyBobbers: {
+				// Description: Throw 2 extra Bobbers while fishing using the Tiny Fishron Pet.
+				// FriendlyName: Too Many Bobbers
+			}
+
+			INeededALittleMoreTime: {
+				// Description: Receive more damage than 100% of your health in damage over time by your Skeletron Jr. Pet, and drink a Potion to increase your health enough to survive the damage over time.
+				// FriendlyName: I Needed A Little More Time
+			}
+
+			FreezingRage: {
+				// Description: Strike enemies in the middle of the cone of Tiny Deerclops Pet's Ability, when the stored damage is at maximum; 50% of your health. Enemies in the middle has their defense ignored for the hit!
+				// FriendlyName: Freezing Rage
+			}
+
+			DefensiveBuild: {
+				// Description: Achieve 100 or above Rage Points by sacrificing all your defensive capabilities and maximum health by using your Suspicious Eye Pet's Ability, to heavily improve your offensive capabilities.
+				// FriendlyName: Defensive Build
+			}
+
+			CrispyFriedCalamari: {
+				// Description: Shimmer Moonling Pet to turn it into Pet Food. Sounds delicious, but why?
+				// FriendlyName: Crispy Fried Calamari
+			}
+
+			AncientSorcery: {
+				// Description: Use all 3 different spells of Phantasmal Dragon Pet within 18 seconds. Lunatic Cultist may or may not be impressed.
+				// FriendlyName: Ancient Sorcery
 			}
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
@@ -164,6 +165,10 @@ namespace PetsOverhaul.PetEffects
                             {
                                 //This is done right before the strike, so the modifiers can apply the 0 multiplier on defense, afterwards this check is removed. DOES NOT allow you to deal more damage to things like Dungeon Guardian & DOES NOT bypass %dmg reductions. Just the defense stat.
                                 defIgnore.defShouldBeIgnoredForNextHit = true;
+                                if (consumedDamage >= PetStackMax)
+                                {
+                                    ModContent.GetInstance<FreezingRage>().flag.Complete();
+                                }
                             }
                             //DR % increase is multiplicative here
                             DoTheStrike(npc);

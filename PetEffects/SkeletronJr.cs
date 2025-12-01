@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Systems;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.Systems;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -105,6 +106,14 @@ namespace PetsOverhaul.PetEffects
         public override void UpdateDead()
         {
             skeletronTakenDamage.Clear();
+        }
+        public override bool CanUseItem(Item item)
+        {
+            if (item.potion && PetStackCurrent > Player.statLife && item.healLife + Player.statLife > PetStackCurrent)
+            {
+                ModContent.GetInstance<INeededALittleMoreTime>().flag.Complete();
+            }
+            return base.CanUseItem(item);
         }
     }
     public sealed class SkeletronJrEnemy : GlobalNPC

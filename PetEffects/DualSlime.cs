@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using System;
@@ -35,6 +36,10 @@ namespace PetsOverhaul.PetEffects
                 if (npc.type == ModContent.NPCType<SlimeServant>() && npc.GetGlobalNPC<SlimeServantOwner>().Owner == Player.whoAmI)
                 {
                     howManyIsAlive++;
+                    if (howManyIsAlive >= 5)
+                    {
+                        ModContent.GetInstance<YouAndSlimeArmy>().flag.Complete();
+                    }
                 }
             }
         }

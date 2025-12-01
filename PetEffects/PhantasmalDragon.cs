@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
@@ -36,6 +37,9 @@ namespace PetsOverhaul.PetEffects
         public int fireVolleyFrames = 90;
         public int fireBurnTime = 180;
         public float fireKnockback = 3.8f;
+
+        private int achievementDuration = 0;
+        private bool[] achievementCasts = [false, false, false]; //0 = ice, 1 = lightning, 2 = fire
         public string CurrentSpellName => currentAbility switch
         {
             0 => PetUtils.LocVal("PetItemTooltips.DragonIceName"),
@@ -66,6 +70,15 @@ namespace PetsOverhaul.PetEffects
             fireVolley--;
             if (fireVolley < 0)
                 fireVolley = 0;
+
+            if (achievementDuration > 0)
+            {
+                achievementDuration--;
+                if (achievementCasts[0] && achievementCasts[1] && achievementCasts[2])
+                {
+                    ModContent.GetInstance<AncientSorcery>().flag.Complete();
+                }
+            }
         }
         public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
@@ -86,15 +99,33 @@ namespace PetsOverhaul.PetEffects
                         petProjectile.DamageType = DamageClass.Generic;
                         petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
                         petProjectile.netUpdate = true;
-                        break;
+
+                        if (achievementDuration <= 0)
+                        {
+                            achievementDuration = 1080;
+                        }
+                        achievementCasts[0] = true;
+                            break;
                     case 1: //Lightning
                         Projectile petProj = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
                         petProj.DamageType = DamageClass.Generic;
                         petProj.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
                         petProj.netUpdate = true;
+
+                        if (achievementDuration <= 0)
+                        {
+                            achievementDuration = 1080;
+                        }
+                        achievementCasts[1] = true;
                         break;
                     case 2: //Fire
                         fireVolley = fireVolleyFrames;
+
+                        if (achievementDuration <= 0)
+                        {
+                            achievementDuration = 1080;
+                        }
+                        achievementCasts[2] = true;
                         break;
                     default:
                         break;

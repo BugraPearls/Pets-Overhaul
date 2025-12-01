@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
@@ -94,6 +95,12 @@ namespace PetsOverhaul.PetEffects
                     ragePoints = 0;
                     ragePoints += Player.statDefense;
                     ragePoints += (int)Math.Round(Player.endurance * 100);
+
+                    if (ragePoints >= 100)
+                    {
+                        ModContent.GetInstance<DefensiveBuild>().flag.Complete();
+                    }
+
                     Player.statDefense *= 0;
                     Player.endurance *= 0;
                     Player.GetDamage<GenericDamageClass>() += ragePoints * dmgMult / 100;

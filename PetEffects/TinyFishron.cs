@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -46,7 +47,12 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped(false) && item.fishingPole > 0)
             {
-                for (int i = 0; i < PetUtils.Randomizer(bobberChance); i++)
+                int bobChance = PetUtils.Randomizer(bobberChance);
+                if (bobChance > 1)
+                {
+                    ModContent.GetInstance<TooManyBobbers>().flag.Complete();
+                }
+                for (int i = 0; i < bobChance; i++)
                 {
                     Vector2 bobberSpeed = velocity + new Vector2(Main.rand.NextFloat(-50f, 50f) * 0.05f, Main.rand.NextFloat(-50f, 50f) * 0.05f);
                     Projectile petProjectile = Projectile.NewProjectileDirect(source, position, bobberSpeed, ProjectileID.FishingBobber, 0, 0f, Player.whoAmI);
