@@ -749,9 +749,9 @@ namespace PetsOverhaul.Systems
                     SoundEngine.PlaySound(SoundID.MaxMana with { PitchVariance = 0.3f }, Player.Center);
                 }
             }
-
-            if (Player.talkNPC == -1 || Player.talkNPC != LastPetTamer) //If currently not talking to an NPC, or, if current talked NPC is not Pet Tamer we've prompted to open Combination menu with (So if any other NPC is talked to while menu is open, it will close)
-            {
+            
+            if (Main.myPlayer == Player.whoAmI && (Player.talkNPC == -1 || Player.talkNPC != LastPetTamer)) //If currently not talking to an NPC, or, if current talked NPC is not Pet Tamer we've prompted to open Combination menu with (So if any other NPC is talked to while menu is open, it will close)
+            { //If it isn't for Main.myPlayer == Player.whoAmI, this code runs on other clients too in the name of the original client. This causes Light Pet menu to insta close.
                 PetTamer.openLightCombineMenu = false;
             }
         }
