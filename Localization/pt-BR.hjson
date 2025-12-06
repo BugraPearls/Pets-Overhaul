@@ -26,8 +26,7 @@ Mods: {
 			CustomLine: "[c/a3bdf8:Pressione] <switchKey> [c/a3bdf8:para voltar ao efeito padrão deste mascote.]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.7, mudanças recentes: melhorias internas, grandes aperfeiçoamentos na Wiki (créditos da Wiki: Pearlie, Th3Moo5e)]
-				[c/90C2AA:Melhorias em Localizações e Tooltips (créditos da CN: ROH), Efeitos Extras de Pets Personalizados e muito mais!]
+				[c/90C2AA:Pets Overhaul 3.8, mudanças recentes: adição das Conquistas do Pets Overhaul e melhorias no sistema]
 				[c/b4bfc5:Entre no nosso discord para feedback e reportar problemas! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:para ver mais comandos do Pets Overhaul, lhe dando mais informações!]
 				'''
@@ -2132,7 +2131,7 @@ Mods: {
 			}
 
 			Copycat: {
-				// Description: Have your Parrot Pet shoot out 100 duplicate projectiles. Have your Parrot Pet shoot out 100 duplicate projectiles. What?
+				// Description: Have your Parrot Pet shoot out 250 duplicate projectiles. Have your Parrot Pet shoot out 250 duplicate projectiles. What?
 				// FriendlyName: Copycat
 			}
 
@@ -2193,7 +2192,7 @@ Mods: {
 
 			DefensiveBuild: {
 				// Description: Achieve 100 or above Rage Points by sacrificing all your defensive capabilities and maximum health by using your Suspicious Eye Pet's Ability, to heavily improve your offensive capabilities.
-				// FriendlyName: Defensive Build
+				// FriendlyName: '''"Defensive Build"'''
 			}
 
 			CrispyFriedCalamari: {

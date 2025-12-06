@@ -26,8 +26,7 @@ Mods: {
 			CustomLine: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物原本效果]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul（宠物大修）3.6.3更新：专属宠物效果，宠物减速/宠物食物优化]
-				[c/90C2AA:宠物现在可以被微光分解为宠物食物，水下呼吸效果优化以及平衡改动]
+				[c/90C2AA:Pets Overhaul（宠物大修）3.8，最新改动：新增 Pets Overhaul 成就与系统改进]
 				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
 				'''
@@ -2060,7 +2059,7 @@ Mods: {
 			}
 
 			Copycat: {
-				// Description: Have your Parrot Pet shoot out 100 duplicate projectiles. Have your Parrot Pet shoot out 100 duplicate projectiles. What?
+				// Description: Have your Parrot Pet shoot out 250 duplicate projectiles. Have your Parrot Pet shoot out 250 duplicate projectiles. What?
 				// FriendlyName: Copycat
 			}
 
@@ -2121,7 +2120,7 @@ Mods: {
 
 			DefensiveBuild: {
 				// Description: Achieve 100 or above Rage Points by sacrificing all your defensive capabilities and maximum health by using your Suspicious Eye Pet's Ability, to heavily improve your offensive capabilities.
-				// FriendlyName: Defensive Build
+				// FriendlyName: '''"Defensive Build"'''
 			}
 
 			CrispyFriedCalamari: {

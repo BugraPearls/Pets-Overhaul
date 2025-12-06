@@ -10,6 +10,7 @@ Additions
 - With their unique Quality Rolling system, 10 new Light Pet effects!
 - A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both! Once you equip a Pet of your own, he will be interested in moving in!
 - More than 10 Town Pet buffs obtained by "petting" the Town Pets!
+- 44 Achievements, related to Pets and their effects, even including some hidden ones!
 - Extremely rare Mastery Shard item dropping from any mob and 100% chance only once per world from select bosses allowing you to craft Master Mode exclusive Pets in Non-Master Mode worlds!
 - Added Crafting Recipes for every single Pet, although costly, allowing you to get the Pet you want in an alternative way if you can't obtain it the original way! They all are crafted on a Pet Forge, which is bought from Pet Tamer, and contain the Pet Food item, which can be obtained by various means, or again bought from Pet Tamer.
 

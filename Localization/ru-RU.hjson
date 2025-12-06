@@ -26,8 +26,7 @@ Mods: {
 			CustomLine: "[c/a3bdf8:Нажмите] <switchKey> [c/a3bdf8:чтобы вернуться к обычному эффекту этого питомца.]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.7, последние изменения: внутренние обновления, крупные улучшения в Вики (авторы Вики: Pearlie, Th3Moo5e)]
-				[c/90C2AA:Улучшения локализации и подсказок (китайская локализация: ROH), дополнительные кастомные эффекты питомцев и многое другое!]
+				[c/90C2AA:Pets Overhaul 3.8, последние изменения: добавление достижений Pets Overhaul и улучшения системы]
 				[c/90C2AA:Основные улучшения китайского перевода. Сделано: ROH, исправления для всех локализаций]
 				[c/b4bfc5:Присоединяйтесь к нашему серверу Discord для отзывов и сообщений об ошибках! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Используйте] [c/ff8234:/pet] [c/b4bfc5:чтобы увидеть команды для Pets Overhaul и получить больше информации!]
@@ -2101,7 +2100,7 @@ Mods: {
 			}
 
 			Copycat: {
-				// Description: Have your Parrot Pet shoot out 100 duplicate projectiles. Have your Parrot Pet shoot out 100 duplicate projectiles. What?
+				// Description: Have your Parrot Pet shoot out 250 duplicate projectiles. Have your Parrot Pet shoot out 250 duplicate projectiles. What?
 				// FriendlyName: Copycat
 			}
 
@@ -2162,7 +2161,7 @@ Mods: {
 
 			DefensiveBuild: {
 				// Description: Achieve 100 or above Rage Points by sacrificing all your defensive capabilities and maximum health by using your Suspicious Eye Pet's Ability, to heavily improve your offensive capabilities.
-				// FriendlyName: Defensive Build
+				// FriendlyName: '''"Defensive Build"'''
 			}
 
 			CrispyFriedCalamari: {
