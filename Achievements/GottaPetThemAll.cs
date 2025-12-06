@@ -1,10 +1,6 @@
 ﻿using PetsOverhaul.Systems;
-using PetsOverhaul.TownPets;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria.Achievements;
 using Terraria.GameContent.Achievements;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Achievements

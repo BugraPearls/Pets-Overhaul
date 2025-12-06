@@ -130,7 +130,7 @@ namespace PetsOverhaul.PetEffects
                             moonlightRoll = Main.rand.Next(PetUtils.Randomizer((int)(moonlightLowest * (Player.luck * -1 + 1) * 100)), moonlightHighest + 1);
                         }
                     }
-                    
+
                     if (moonlightRoll < 0)
                     {
                         moonlightRoll *= -1;
@@ -143,7 +143,7 @@ namespace PetsOverhaul.PetEffects
                             4 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath5"),
                             _ => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
                         };
-                        Player.Hurt(new Player.HurtInfo() with { Damage = moonlightRoll, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name))});
+                        Player.Hurt(new Player.HurtInfo() with { Damage = moonlightRoll, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)) });
                         ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value++;
                     }
                     else

@@ -72,7 +72,7 @@ namespace PetsOverhaul.Commands
         public override void Action(CommandCaller caller, string input, string[] args)
         {
             if (caller.Player.name.Contains("test")) //not a perfect preveneter lol but still. If Player's name contains "test", its usable
-            caller.Player.PetPlayer().timer = -1;
+                caller.Player.PetPlayer().timer = -1;
         }
     }
 }

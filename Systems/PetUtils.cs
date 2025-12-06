@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
-using PetsOverhaul.PetEffects;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -132,7 +131,7 @@ namespace PetsOverhaul.Systems
         }
 
         public static void OldOnesAchievementHelper(Player player)
-        { 
+        {
             if (player.ZoneOldOneArmy && (player.CurrentPet() == ItemID.DD2PetDragon || player.CurrentPet() == ItemID.DD2PetGato || player.CurrentLightPet() == ItemID.DD2PetGhost || player.CurrentPet() == ItemID.DD2BetsyPetItem || player.CurrentPet() == ItemID.DD2OgrePetItem))
             {
                 ModContent.GetInstance<AnotherWorld>().flag.Complete();

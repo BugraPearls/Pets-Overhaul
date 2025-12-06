@@ -17,7 +17,7 @@ namespace PetsOverhaul.Systems
         public int InternalID { get; internal set; } = 0;
         public string LocalizationPath = localizationPath;
         public Color ClassColor = classColor;
-        internal PetClass(string internalName,string localizationPath, Color classColor, int IDNumber) : this(internalName,localizationPath,classColor) //We only guarantee base mod's assigned Classes to be a certain ID number. Others will have it assigned via RegisterPetClass(string, ref PetClass).
+        internal PetClass(string internalName, string localizationPath, Color classColor, int IDNumber) : this(internalName, localizationPath, classColor) //We only guarantee base mod's assigned Classes to be a certain ID number. Others will have it assigned via RegisterPetClass(string, ref PetClass).
         {
             InternalID = IDNumber;
         }

@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
-using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 

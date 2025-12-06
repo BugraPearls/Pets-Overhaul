@@ -27,7 +27,7 @@ namespace PetsOverhaul.PetEffects
             {
                 if (itemChck.herbBoost && (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight || player.ZoneUnderworldHeight))
                 {
-                    int count = PetUtils.Randomizer((PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ? 
+                    int count = PetUtils.Randomizer((PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ?
                         caveling.cavelingRarePlantChance : caveling.cavelingRegularPlantChance + (PetIDs.gemstoneTreeItem[item.type] ? caveling.cavelingGemTreeChance : 0)) * item.stack);
                     caveling.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, item.type, count);
                 }

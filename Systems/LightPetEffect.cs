@@ -5,7 +5,6 @@ using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
-using Terraria.GameInput;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Systems

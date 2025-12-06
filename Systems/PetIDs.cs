@@ -1,14 +1,10 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Items;
-using PetsOverhaul.PetEffects;
 using PetsOverhaul.TownPets.TownPetBuffs;
 using ReLogic.Reflection;
 using System.Collections.Generic;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PetsOverhaul.Systems
 {
@@ -22,7 +18,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// List of Town Pet Buffs added by Pets Overhaul.
         /// </summary>
-        public static List<int> TownPetBuffs = [TownPetBuffID.Bunny,TownPetBuffID.Cat, TownPetBuffID.Clumsy, TownPetBuffID.Cool, TownPetBuffID.Diva, TownPetBuffID.Dog, TownPetBuffID.Mystic,TownPetBuffID.Nerd, TownPetBuffID.Old, TownPetBuffID.Squire, TownPetBuffID.Surly]; 
+        public static List<int> TownPetBuffs = [TownPetBuffID.Bunny, TownPetBuffID.Cat, TownPetBuffID.Clumsy, TownPetBuffID.Cool, TownPetBuffID.Diva, TownPetBuffID.Dog, TownPetBuffID.Mystic, TownPetBuffID.Nerd, TownPetBuffID.Old, TownPetBuffID.Squire, TownPetBuffID.Surly];
 
         /// <summary>
         /// Contains list of debuffs that are related to burning.

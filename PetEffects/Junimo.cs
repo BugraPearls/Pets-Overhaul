@@ -690,7 +690,7 @@ namespace PetsOverhaul.PetEffects
                     .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
                 PopupText.NewText(popupMessage, Player.Center);
             }
-            
+
             if (junimoHarvestingLevel >= 50)
             {
                 ModContent.GetInstance<TheSummit>().HarvestingLvl.Complete();

@@ -105,7 +105,7 @@ namespace PetsOverhaul.PetEffects
                             achievementDuration = 1080;
                         }
                         achievementCasts[0] = true;
-                            break;
+                        break;
                     case 1: //Lightning
                         Projectile petProj = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
                         petProj.DamageType = DamageClass.Generic;

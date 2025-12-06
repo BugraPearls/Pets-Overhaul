@@ -1,10 +1,8 @@
-﻿using Terraria.Achievements;
-using Terraria.ModLoader;
-using Terraria.GameContent.Achievements;
-using PetsOverhaul.Systems;
-using System.Linq;
+﻿using PetsOverhaul.Systems;
 using System.Collections.Generic;
-using Terraria.ID;
+using Terraria.Achievements;
+using Terraria.GameContent.Achievements;
+using Terraria.ModLoader;
 
 namespace PetsOverhaul.Achievements
 {
@@ -15,7 +13,7 @@ namespace PetsOverhaul.Achievements
         {
             List<int> list = [.. PetIDs.LightPetNamesAndItems.Values];
             list.AddRange(PetIDs.PetNamesAndItems.Values);
-            
+
             Achievement.SetCategory(AchievementCategory.Collector);
             PetCrafted = AddItemCraftCondition([.. list]);
         }

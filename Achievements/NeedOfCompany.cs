@@ -1,6 +1,6 @@
 ﻿using Terraria.Achievements;
-using Terraria.ModLoader;
 using Terraria.GameContent.Achievements;
+using Terraria.ModLoader;
 
 namespace PetsOverhaul.Achievements
 {
