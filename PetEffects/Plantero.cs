@@ -20,17 +20,20 @@ namespace PetsOverhaul.PetEffects
         public override PetClass PetClassPrimary => PetClassID.Offensive;
         public override bool CanUseItem(Item item)
         {
-            if (item.type == ItemID.SpicyPepper)
+            if (PetIsEquipped())
             {
-                timerForAchievementPepper = 60;
-                if (timerForAchievementNachos > 0)
-                    ModContent.GetInstance<PlantaHermano>().flag.Complete();
-            }
-            if (item.type == ItemID.Nachos)
-            {
-                timerForAchievementNachos = 60;
-                if (timerForAchievementPepper > 0)
-                    ModContent.GetInstance<PlantaHermano>().flag.Complete();
+                if (item.type == ItemID.SpicyPepper)
+                {
+                    timerForAchievementPepper = 60;
+                    if (timerForAchievementNachos > 0)
+                        ModContent.GetInstance<PlantaHermano>().flag.Complete();
+                }
+                if (item.type == ItemID.Nachos)
+                {
+                    timerForAchievementNachos = 60;
+                    if (timerForAchievementPepper > 0)
+                        ModContent.GetInstance<PlantaHermano>().flag.Complete();
+                }
             }
             return base.CanUseItem(item);
         }

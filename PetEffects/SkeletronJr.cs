@@ -109,7 +109,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override bool CanUseItem(Item item)
         {
-            if (item.potion && PetStackCurrent > Player.statLife && item.healLife + Player.statLife > PetStackCurrent)
+            if (PetIsEquipped() && item.potion && PetStackCurrent > Player.statLife && item.healLife + Player.statLife > PetStackCurrent)
             {
                 ModContent.GetInstance<INeededALittleMoreTime>().flag.Complete();
             }
