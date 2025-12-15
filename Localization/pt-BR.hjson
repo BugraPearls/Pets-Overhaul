@@ -1996,12 +1996,12 @@ Mods: {
 			}
 
 			ForgingPets: {
-				// Description: Craft any Pet on a Pet Forge using Pet Food, alongside other relevant items.
+				// Description: Craft any Pet on a Pet Forge using Pet Food, alongside other relevant items. Where does Pet Tamer supply all those Pet Forges from?
 				// FriendlyName: Forging Pets
 			}
 
 			QuestionableKibble: {
-				// Description: Shimmer a Pet into Pet Food. A shiny liquid being involved doesn't make this sound any better.
+				// Description: Shimmer a Pet Item, where will you only get Pet Food as the result. A shiny liquid being involved doesn't make this sound any better.
 				// FriendlyName: Questionable Kibble
 			}
 
@@ -2037,7 +2037,7 @@ Mods: {
 
 			IAmUntouchable: {
 				// FriendlyName: I Am Untouchable
-				// Description: Enter the Dungeon with the Baby Dungeon Guardian Pet equipped. Weak Dungeon enemies bows down before you. Somehow spikes included.
+				// Description: Enter The Dungeon with the Baby Dungeon Guardian Pet equipped. Weak dangers of The Dungeon bow down before you.
 			}
 
 			Petception: {
@@ -2196,7 +2196,7 @@ Mods: {
 			}
 
 			CrispyFriedCalamari: {
-				// Description: Shimmer Moonling Pet to turn it into Pet Food. Sounds delicious, but why?
+				// Description: Shimmer Moonling Pet to turn it into Pet Food. Sounds delicious, but why? Or did you expect something else but the Pet Food.
 				// FriendlyName: Crispy Fried Calamari
 			}
 
