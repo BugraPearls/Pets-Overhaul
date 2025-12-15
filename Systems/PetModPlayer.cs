@@ -762,7 +762,7 @@ namespace PetsOverhaul.Systems
                 petObtained = true;
             }
 
-            if (petObtained)
+            if (petObtained && Main.myPlayer == Player.whoAmI)
             {
                 ModContent.GetInstance<NeedOfCompany>().PetEquipped.Complete();
             }
