@@ -11,7 +11,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.CrimsonHeart;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out CrimsonHeart crimsonHeart))
+            if (TryGetLightPet(out CrimsonHeart crimsonHeart))
             {
                 Player.statLifeMax2 += crimsonHeart.Health.CurrentStatInt;
                 Pet.petHealMultiplier += crimsonHeart.HealingPower.CurrentStatFloat;

@@ -11,7 +11,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.ShadowOrb;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out ShadowOrb shadowOrb))
+            if (TryGetLightPet(out ShadowOrb shadowOrb))
             {
                 Player.statManaMax2 += shadowOrb.Mana.CurrentStatInt;
                 Pet.petShieldMultiplier += shadowOrb.ShieldingPower.CurrentStatFloat;

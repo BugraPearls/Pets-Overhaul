@@ -30,7 +30,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle))
+            if (TryGetLightPet(out WispInABottle wispInABottle))
             {
                 if (wispInABottle.CustomEffectActive == false)
                 {
@@ -42,7 +42,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && (item.DamageType == DamageClass.Magic || item.DamageType == DamageClass.Ranged))
+            if (TryGetLightPet(out WispInABottle wispInABottle) && (item.DamageType == DamageClass.Magic || item.DamageType == DamageClass.Ranged))
             {
                 if (wispInABottle.CustomEffectActive == false)
                 {
@@ -52,7 +52,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool(wispInABottle.CustomChance, 100) && timer <= 0)
+            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool(wispInABottle.CustomChance, 100) && timer <= 0)
             {
                 Projectile theWisp = null;
                 foreach (var projectile in Main.ActiveProjectiles)

@@ -11,7 +11,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.MagicLantern;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out MagicLantern magicLantern))
+            if (TryGetLightPet(out MagicLantern magicLantern))
             {
                 Player.statDefense += magicLantern.Defense.CurrentStatInt;
                 Player.statDefense *= magicLantern.DefensePercent.CurrentStatFloat + 1f;

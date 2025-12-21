@@ -11,7 +11,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.GolemPetItem;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out ToyGolem toyGolem))
+            if (TryGetLightPet(out ToyGolem toyGolem))
             {
                 Player.lifeRegen += toyGolem.HealthRegen.CurrentStatInt;
                 Player.manaRegenBonus += toyGolem.ManaRegen.CurrentStatInt;

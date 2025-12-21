@@ -11,7 +11,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.FairyBell;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out FairyBell fairyBell))
+            if (TryGetLightPet(out FairyBell fairyBell))
             {
                 Pet.abilityHaste += fairyBell.AbilityHaste.CurrentStatFloat;
                 Pet.globalFortune += fairyBell.GlobalFortune.CurrentStatInt;

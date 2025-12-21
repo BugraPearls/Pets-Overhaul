@@ -12,7 +12,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.FairyQueenPetItem;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out JewelOfLight empress))
+            if (TryGetLightPet(out JewelOfLight empress))
             {
                 Player.moveSpeed += empress.MovementSpeed.CurrentStatFloat;
                 if (Player.equippedWings != null)
@@ -23,7 +23,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void PostUpdateRunSpeeds()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out JewelOfLight empress))
+            if (TryGetLightPet(out JewelOfLight empress))
             {
                 Player.runAcceleration += empress.Acceleration.CurrentStatFloat;
             }

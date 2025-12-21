@@ -12,7 +12,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.SuspiciousLookingTentacle;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out SuspiciousLookingTentacle moonlord))
+            if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
                 Player.statDefense += moonlord.Defense.CurrentStatInt;
                 Player.moveSpeed += moonlord.MovementSpeed.CurrentStatFloat;
@@ -25,21 +25,21 @@ namespace PetsOverhaul.LightPets
         }
         public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out SuspiciousLookingTentacle moonlord))
+            if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
                 healValue += (int)(moonlord.ManaPotionIncrease.CurrentStatFloat * healValue);
             }
         }
         public override void ModifyItemScale(Item item, ref float scale)
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out SuspiciousLookingTentacle moonlord))
+            if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
                 scale += moonlord.MeleeSize.CurrentStatFloat;
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out SuspiciousLookingTentacle moonlord))
+            if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
                 if (modifiers.DamageType == DamageClass.Ranged)
                 {

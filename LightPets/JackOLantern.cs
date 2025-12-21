@@ -13,7 +13,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.PumpkingPetItem;
         public override void PostUpdateEquips()
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out JackOLantern jackOLantern))
+            if (TryGetLightPet(out JackOLantern jackOLantern))
             {
                 Player.GetAttackSpeed<GenericDamageClass>() += jackOLantern.AttackSpeed.CurrentStatFloat;
                 Pet.harvestingFortune += jackOLantern.HarvestingFortune.CurrentStatInt;
@@ -21,7 +21,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void ModifyLuck(ref float luck)
         {
-            if (Player.miscEquips[1].TryGetGlobalItem(out JackOLantern jackOLantern))
+            if (TryGetLightPet(out JackOLantern jackOLantern))
             {
                 luck += jackOLantern.Luck.CurrentStatFloat;
             }
