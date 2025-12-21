@@ -4,6 +4,7 @@ using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs;
+using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -150,6 +151,8 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public PetEffect currentActivePet = null;
 
+        public ActivePetSlots PetItemSlot => Player.GetModPlayer<ActivePetSlots>();
+
         #region Achievement Fields
         public List<int> FoundPets = new(PetIDs.PetNamesAndItems.Count);
         public List<int> FoundLightPets = new(PetIDs.LightPetNamesAndItems.Count);
@@ -287,6 +290,10 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public bool PetInUse(int petItemID)
         {
+            if (PetItemSlot.RegularPetItemSlot[Player.CurrentLoadoutIndex].type > 0 && PetIDs.PetNamesAndItems.ContainsValue(PetItemSlot.RegularPetItemSlot[Player.CurrentLoadoutIndex].type))
+            {
+                return PetItemSlot.RegularPetItemSlot[Player.CurrentLoadoutIndex].type == petItemID;
+            }
             return Player.CurrentPet() == petItemID;
         }
 

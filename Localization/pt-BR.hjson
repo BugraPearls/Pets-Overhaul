@@ -41,6 +41,13 @@ Mods: {
 			Disabled: Desabilitar
 			TownPetBuffTip: Apenas um bônus de mascote da cidade pode estar ativo por vez.
 			TownPetPetMe: " (Me faça carinho!)"
+			/* ActivePetSlotHover:
+				'''
+				Any Pet Item placed in this slot will have their effects active.
+				It will override the actual Pet Slot.
+				This Pet will not be visible by no means.
+				This Pet is saved & switched with your selected Loadout.
+				''' */
 		}
 
 		Classes: {

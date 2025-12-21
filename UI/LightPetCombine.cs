@@ -22,22 +22,22 @@ namespace PetsOverhaul.UI
     // I've added basic functionality for validating the item attempting to be placed in the slot via the validItem Func. 
     // See ExamplePersonUI for usage and use the Awesomify chat option of Example Person to see in action.
     // Took from VanillaItemSlotWrapper.cs of ExampleMod
-    internal class LightPetSlot : UIElement
+    internal class PetItemSlot : UIElement
     {
         internal Item Item;
         private readonly int _context;
         private readonly float _scale;
         internal Func<Item, bool> ValidItemFunc;
 
-        public LightPetSlot(int context = ItemSlot.Context.BankItem, float scale = 1f)
+        public PetItemSlot(int context = ItemSlot.Context.EquipLight, float scale = 1f)
         {
             _context = context;
             _scale = scale;
             Item = new Item();
             Item.SetDefaults(0);
 
-            Width.Set(40 * scale, 0f);
-            Height.Set(40 * scale, 0f);
+            Width.Set(30 * scale, 0f);
+            Height.Set(30 * scale, 0f);
         }
 
         protected override void DrawSelf(SpriteBatch spriteBatch)
@@ -88,8 +88,8 @@ namespace PetsOverhaul.UI
     public class LightPetCombineCanvas : UIState
     {
         internal Item NewItem => LightPetItem.CombineLightPets(slot1.Item, slot2.Item);
-        internal LightPetSlot slot1;
-        internal LightPetSlot slot2;
+        internal PetItemSlot slot1;
+        internal PetItemSlot slot2;
         internal UIText price;
         internal UIText infoRegardingState;
         internal int cost => NewItem.value;
@@ -123,14 +123,14 @@ namespace PetsOverhaul.UI
             infoText.Top.Set(125, 0);
             panel.Append(infoText);
 
-            slot1 = new();
+            slot1 = new(ItemSlot.Context.EquipLight, 1.25f);
             slot1.Top.Set(55, 0);
             slot1.Left.Set(20, 0);
             slot1.Width.Set(40, 0);
             slot1.Height.Set(40, 0);
             panel.Append(slot1);
 
-            slot2 = new();
+            slot2 = new(ItemSlot.Context.EquipLight, 1.25f);
             slot2.Top.Set(55, 0);
             slot2.Left.Set(95, 0);
             slot2.Width.Set(40, 0);
