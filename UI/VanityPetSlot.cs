@@ -36,7 +36,6 @@ namespace PetsOverhaul.UI
         internal PetItemSlot ActiveRegularPetSlot;
         internal PetItemSlot ActiveLightPetSlot;
         internal UIText HoverText;
-        internal UIText HoverTextLight;
         public override void Update(GameTime gameTime)
         {
             if (Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedPet is not null && Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedPet.IsAir == false)
@@ -73,8 +72,6 @@ namespace PetsOverhaul.UI
             HoverText = new("");
             Append(HoverText);
 
-            HoverTextLight = new("");
-            Append(HoverTextLight);
 
         }
         public override void Draw(SpriteBatch spriteBatch)
@@ -83,27 +80,17 @@ namespace PetsOverhaul.UI
             {
                 return;
             }
-            if (ActiveRegularPetSlot.IsMouseHovering && ActiveRegularPetSlot.Item is not null && ActiveRegularPetSlot.Item.IsAir)
+            if ((ActiveRegularPetSlot.IsMouseHovering && ActiveRegularPetSlot.Item is not null && ActiveRegularPetSlot.Item.IsAir) || (ActiveLightPetSlot.IsMouseHovering && ActiveLightPetSlot.Item is not null && ActiveLightPetSlot.Item.IsAir))
             {
                 HoverText.SetText(PetUtils.LocVal("Misc.ActivePetSlotHover"));
-                HoverText.Left.Set(Main.MouseScreen.X, 0);
+                HoverText.Left.Set(Main.MouseScreen.X - (Main.screenWidth - Main.MouseScreen.X), 0);
                 HoverText.Top.Set(Main.MouseScreen.Y + 50, 0);
+                HoverText.TextColor = Main.MouseTextColorReal;
                 HoverText.Draw(spriteBatch);
             }
             else
             {
                 HoverText.SetText("");
-            }
-            if (ActiveLightPetSlot.IsMouseHovering && ActiveLightPetSlot.Item is not null && ActiveLightPetSlot.Item.IsAir)
-            {
-                HoverTextLight.SetText(PetUtils.LocVal("Misc.ActiveLightPetSlotHover"));
-                HoverTextLight.Left.Set(Main.MouseScreen.X, 0);
-                HoverTextLight.Top.Set(Main.MouseScreen.Y + 50, 0);
-                HoverTextLight.Draw(spriteBatch);
-            }
-            else
-            {
-                HoverTextLight.SetText("");
             }
             Vector2 pos = new Vector2(Main.screenWidth - 190, Main.screenHeight / 2 - 55);
             Vector2 posLight = new Vector2(Main.screenWidth - 190, Main.screenHeight / 2 - 10);

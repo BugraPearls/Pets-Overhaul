@@ -1,4 +1,5 @@
 ﻿using PetsOverhaul.NPCs;
+using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -29,6 +30,21 @@ namespace PetsOverhaul.Systems
     }
     public abstract class LightPetEffect : ModPlayer
     {
+        public bool TryGetLightPet<T>(out T result) where T : LightPetItem
+        {
+            if (Pet.PetItemSlot.LightPetItemSlot[Player.CurrentLoadoutIndex].type > 0 && PetIDs.LightPetNamesAndItems.ContainsValue(Pet.PetItemSlot.LightPetItemSlot[Player.CurrentLoadoutIndex].type) && Pet.PetItemSlot.LightPetItemSlot[Player.CurrentLoadoutIndex].TryGetGlobalItem(out T result1))
+            {
+                result = result1;
+                return true;
+            }
+            else if (Player.miscEquips[1].TryGetGlobalItem(out T result2))
+            {
+                result = result2;
+                return true;
+            }
+            result = null;
+            return false;
+        }
         public PetModPlayer Pet => Player.PetPlayer();
         /// <summary>
         /// This field is to make this Light Pet appear on /pet light|lightpet|lightpets command(s).
