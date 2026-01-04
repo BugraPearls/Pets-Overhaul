@@ -6,6 +6,7 @@ using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Systems
@@ -32,7 +33,7 @@ namespace PetsOverhaul.Systems
     {
         public bool TryGetLightPet<T>(out T result) where T : LightPetItem
         {
-            if (Pet.PetItemSlot.LightPetItemSlot[Player.CurrentLoadoutIndex].type > 0 && PetIDs.LightPetNamesAndItems.ContainsValue(Pet.PetItemSlot.LightPetItemSlot[Player.CurrentLoadoutIndex].type) && Pet.PetItemSlot.LightPetItemSlot[Player.CurrentLoadoutIndex].TryGetGlobalItem(out T result1))
+            if (Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex].type > ItemID.None && PetIDs.LightPetNamesAndItems.ContainsValue(Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex].type) && Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex].TryGetGlobalItem(out T result1))
             {
                 result = result1;
                 return true;

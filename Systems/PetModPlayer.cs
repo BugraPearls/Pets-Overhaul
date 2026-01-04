@@ -151,8 +151,6 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public PetEffect currentActivePet = null;
 
-        public ActivePetSlots PetItemSlot => Player.GetModPlayer<ActivePetSlots>();
-
         #region Achievement Fields
         public List<int> FoundPets = new(PetIDs.PetNamesAndItems.Count);
         public List<int> FoundLightPets = new(PetIDs.LightPetNamesAndItems.Count);
@@ -290,10 +288,6 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public bool PetInUse(int petItemID)
         {
-            if (PetItemSlot.RegularPetItemSlot[Player.CurrentLoadoutIndex].type > 0 && PetIDs.PetNamesAndItems.ContainsValue(PetItemSlot.RegularPetItemSlot[Player.CurrentLoadoutIndex].type))
-            {
-                return PetItemSlot.RegularPetItemSlot[Player.CurrentLoadoutIndex].type == petItemID;
-            }
             return Player.CurrentPet() == petItemID;
         }
 
@@ -864,7 +858,8 @@ namespace PetsOverhaul.Systems
                     Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldown);
                 }
 
-                previousPetItem = Player.CurrentPet();
+
+                    previousPetItem = Player.CurrentPet();
             }
 
             if (Player.CurrentPet() != ItemID.None && FoundPets.Contains(Player.CurrentPet()) == false)

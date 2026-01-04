@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PetsOverhaul.Achievements;
+using PetsOverhaul.Buffs;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.Systems;
 using PetsOverhaul.UI;
@@ -25,54 +26,52 @@ namespace PetsOverhaul.UI
     {
         internal Item CurrentActivePet
         {
-            get { return Main.LocalPlayer.GetModPlayer<ActivePetSlots>().RegularPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex]; }
-            set { Main.LocalPlayer.GetModPlayer<ActivePetSlots>().RegularPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex] = value; }
+            get { return Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex]; }
+            set { Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex] = value; }
         }
         internal Item CurrentActiveLightPet
         {
-            get { return Main.LocalPlayer.GetModPlayer<ActivePetSlots>().LightPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex]; }
-            set { Main.LocalPlayer.GetModPlayer<ActivePetSlots>().LightPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex] = value; }
+            get { return Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex]; }
+            set { Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Main.LocalPlayer.CurrentLoadoutIndex] = value; }
         }
-        internal PetItemSlot ActiveRegularPetSlot;
-        internal PetItemSlot ActiveLightPetSlot;
+        internal PetItemSlot ActiveRegularUIPetSlot;
+        internal PetItemSlot ActiveLightUIPetSlot;
         internal UIText HoverText;
         public override void Update(GameTime gameTime)
         {
-            if (Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedPet is not null && Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedPet.IsAir == false)
+            if (Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedPet is not null && Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedPet.IsAir == false)
             {
-                ActiveRegularPetSlot.Item = Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedPet.Clone();
-                Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedPet.TurnToAir();
+                ActiveRegularUIPetSlot.Item = Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedPet.Clone();
+                Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedPet.TurnToAir(true);
             }
-            if (ActiveRegularPetSlot.Item != null && ActiveRegularPetSlot.Item.IsAir == false && ActiveRegularPetSlot.Item != CurrentActivePet)
+            if (ActiveRegularUIPetSlot.Item != null && ActiveRegularUIPetSlot.Item != CurrentActivePet)
             {
-                CurrentActivePet = ActiveRegularPetSlot.Item;
+                CurrentActivePet = ActiveRegularUIPetSlot.Item.Clone();
             }
-            if (Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedLightPet is not null && Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedLightPet.IsAir == false)
+            if (Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedLightPet is not null && Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedLightPet.IsAir == false)
             {
-                ActiveLightPetSlot.Item = Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedLightPet.Clone();
-                Main.LocalPlayer.GetModPlayer<ActivePetSlots>().loadedLightPet.TurnToAir();
+                ActiveLightUIPetSlot.Item = Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedLightPet.Clone();
+                Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedLightPet.TurnToAir(true);
             }
-            if (ActiveLightPetSlot.Item != null && ActiveLightPetSlot.Item.IsAir == false && ActiveLightPetSlot.Item != CurrentActiveLightPet)
+            if (ActiveLightUIPetSlot.Item != null && ActiveLightUIPetSlot.Item != CurrentActiveLightPet)
             {
-                CurrentActiveLightPet = ActiveLightPetSlot.Item;
+                CurrentActiveLightPet = ActiveLightUIPetSlot.Item.Clone();
             }
         }
         public override void OnInitialize()
         {
-            ActiveRegularPetSlot = new(ItemSlot.Context.EquipPet, 0.8f);
-            ActiveRegularPetSlot.Width.Set(40, 0);
-            ActiveRegularPetSlot.Height.Set(40, 0);
-            Append(ActiveRegularPetSlot);
+            ActiveRegularUIPetSlot = new(ItemSlot.Context.EquipPet, 0.8f);
+            ActiveRegularUIPetSlot.Width.Set(40, 0);
+            ActiveRegularUIPetSlot.Height.Set(40, 0);
+            Append(ActiveRegularUIPetSlot);
 
-            ActiveLightPetSlot = new(ItemSlot.Context.EquipLight, 0.8f);
-            ActiveLightPetSlot.Width.Set(40, 0);
-            ActiveLightPetSlot.Height.Set(40, 0);
-            Append(ActiveLightPetSlot);
+            ActiveLightUIPetSlot = new(ItemSlot.Context.EquipLight, 0.8f);
+            ActiveLightUIPetSlot.Width.Set(40, 0);
+            ActiveLightUIPetSlot.Height.Set(40, 0);
+            Append(ActiveLightUIPetSlot);
 
             HoverText = new("");
             Append(HoverText);
-
-
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -80,10 +79,15 @@ namespace PetsOverhaul.UI
             {
                 return;
             }
-            if ((ActiveRegularPetSlot.IsMouseHovering && ActiveRegularPetSlot.Item is not null && ActiveRegularPetSlot.Item.IsAir) || (ActiveLightPetSlot.IsMouseHovering && ActiveLightPetSlot.Item is not null && ActiveLightPetSlot.Item.IsAir))
+            if ((ActiveRegularUIPetSlot.IsMouseHovering && ActiveRegularUIPetSlot.Item is not null && ActiveRegularUIPetSlot.Item.IsAir) || (ActiveLightUIPetSlot.IsMouseHovering && ActiveLightUIPetSlot.Item is not null && ActiveLightUIPetSlot.Item.IsAir))
             {
                 HoverText.SetText(PetUtils.LocVal("Misc.ActivePetSlotHover"));
-                HoverText.Left.Set(Main.MouseScreen.X - (Main.screenWidth - Main.MouseScreen.X), 0);
+                float endOfTextX = 0;
+                if (Main.MouseScreen.X + HoverText.MinWidth.Pixels > Main.screenWidth)
+                {
+                    endOfTextX = Main.screenWidth - (Main.MouseScreen.X + HoverText.MinWidth.Pixels);
+                }
+                HoverText.Left.Set(Main.MouseScreen.X + endOfTextX, 0);
                 HoverText.Top.Set(Main.MouseScreen.Y + 50, 0);
                 HoverText.TextColor = Main.MouseTextColorReal;
                 HoverText.Draw(spriteBatch);
@@ -94,14 +98,14 @@ namespace PetsOverhaul.UI
             }
             Vector2 pos = new Vector2(Main.screenWidth - 190, Main.screenHeight / 2 - 55);
             Vector2 posLight = new Vector2(Main.screenWidth - 190, Main.screenHeight / 2 - 10);
-            ActiveRegularPetSlot.Left.Set(pos.X, 0);
-            ActiveRegularPetSlot.Top.Set(pos.Y, 0);
-            ActiveLightPetSlot.Left.Set(posLight.X, 0);
-            ActiveLightPetSlot.Top.Set(posLight.Y, 0);
+            ActiveRegularUIPetSlot.Left.Set(pos.X, 0);
+            ActiveRegularUIPetSlot.Top.Set(pos.Y, 0);
+            ActiveLightUIPetSlot.Left.Set(posLight.X, 0);
+            ActiveLightUIPetSlot.Top.Set(posLight.Y, 0);
             base.Draw(spriteBatch);
         }
     }
-    public class ActivePetSlots : ModPlayer
+    public class ActivePetSlotPlayer : ModPlayer
     {
         internal Item loadedPet;
         internal Item loadedLightPet;
@@ -111,13 +115,13 @@ namespace PetsOverhaul.UI
         internal List<Item> LightPetItemSlot = [new(0), new(0), new(0)];
         internal Item CurrentPetItem
         {
-            get { return ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveRegularPetSlot.Item; }
-            set { ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveRegularPetSlot.Item = value; }
+            get { return ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveRegularUIPetSlot.Item; }
+            set { ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveRegularUIPetSlot.Item = value; }
         }
         internal Item CurrentLightPetItem
         {
-            get { return ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveLightPetSlot.Item; }
-            set { ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveLightPetSlot.Item = value; }
+            get { return ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveLightUIPetSlot.Item; }
+            set { ModContent.GetInstance<ActivePetSlotSystem>().Display.ActiveLightUIPetSlot.Item = value; }
         }
         public override void OnEquipmentLoadoutSwitched(int oldLoadoutIndex, int loadoutIndex)
         {
@@ -183,14 +187,5 @@ namespace PetsOverhaul.UI
                 );
             }
         }
-        //public override void PreSaveAndQuit()
-        //{
-        //    if (Display is not null)
-        //    {
-        //        ActivePetSlots player = Main.LocalPlayer.GetModPlayer<ActivePetSlots>();
-        //        player.RegularPetItemSlot = Display.ActiveRegularPetSlot.Item;
-        //        player.LightPetItemSlot = Display.ActiveLightPetSlot.Item;
-        //    }
-        //}
     }
 }

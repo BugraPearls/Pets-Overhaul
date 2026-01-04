@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
 using PetsOverhaul.Config;
+using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
 using Terraria;
@@ -17,8 +18,24 @@ namespace PetsOverhaul.Systems
     public static class PetUtils
     {
         public static PetModPlayer PetPlayer(this Player player) => player.GetModPlayer<PetModPlayer>();
-        public static int CurrentPet(this Player player) => player.miscEquips[0].type;
-        public static int CurrentLightPet(this Player player) => player.miscEquips[1].type;
+        public static int CurrentPet(this Player player)
+        {
+            ActivePetSlotPlayer PetItemSlot = player.GetModPlayer<ActivePetSlotPlayer>();
+            if (PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type > 0 && PetIDs.PetNamesAndItems.ContainsValue(PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type))
+            {
+                return PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type;
+            }
+            return player.miscEquips[0].type;
+        }
+        public static int CurrentLightPet(this Player player)
+        {
+            ActivePetSlotPlayer PetItemSlot = player.GetModPlayer<ActivePetSlotPlayer>();
+            if (PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type > 0 && PetIDs.LightPetNamesAndItems.ContainsValue(PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type))
+            {
+                return PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type;
+            }
+            return player.miscEquips[1].type;
+        }
         public static bool ItemIsPetItem(int ItemId) => PetIDs.LightPetNamesAndItems.ContainsValue(ItemId) || PetIDs.PetNamesAndItems.ContainsValue(ItemId);
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {
