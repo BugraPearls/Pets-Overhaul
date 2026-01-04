@@ -4,7 +4,6 @@ using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs;
-using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -859,7 +858,7 @@ namespace PetsOverhaul.Systems
                 }
 
 
-                    previousPetItem = Player.CurrentPet();
+                previousPetItem = Player.CurrentPet();
             }
 
             if (Player.CurrentPet() != ItemID.None && FoundPets.Contains(Player.CurrentPet()) == false)
