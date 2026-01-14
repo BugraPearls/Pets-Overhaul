@@ -1,5 +1,6 @@
 ﻿using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
+using PetsOverhaul.UI;
 using System;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
@@ -23,10 +24,10 @@ namespace PetsOverhaul.PetEffects
 
         private static ItemDropAttemptResult ShadowMimicExtraDrop(On_ItemDropResolver.orig_ResolveRule orig, ItemDropResolver self, IItemDropRule rule, DropAttemptInfo info)
         {
-            ItemDropAttemptResult tempResult;
-            if (rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && ItemID.Sets.BossBag[drop.itemId] == false &&
-                ItemID.Sets.PreHardmodeLikeBossBag[drop.itemId] == false && info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped())
+            if (info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped() && rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && ItemID.Sets.BossBag[drop.itemId] == false &&
+                ItemID.Sets.PreHardmodeLikeBossBag[drop.itemId] == false)
             {
+                ItemDropAttemptResult tempResult;
                 if ((float)Math.Max(drop.chanceNumerator, 1) / Math.Max(drop.chanceDenominator, 1) <= mimic.lowChanceThreshold)
                 {
                     drop.chanceNumerator *= mimic.numeratorMult;
@@ -34,6 +35,10 @@ namespace PetsOverhaul.PetEffects
                     tempResult = orig(self, rule, info);
                     drop.chanceNumerator /= mimic.numeratorMult; //If not reversed back, this is applied permanently until reloaded.
                     drop.chanceDenominator /= mimic.denominatorMult;
+                    if (tempResult.State == ItemDropAttemptResultState.Success)
+                    {
+                        //ModContent.GetInstance<LootChaser>().Count.Value++;
+                    }
                     return tempResult;
                 }
                 else if (Main.rand.NextBool(mimic.chanceToRollDoubleItem, 100) && ContentSamples.ItemsByType[drop.itemId].maxStack != 1)
@@ -43,17 +48,14 @@ namespace PetsOverhaul.PetEffects
                     tempResult = orig(self, rule, info);
                     drop.amountDroppedMaximum /= 2; //If not reversed back, this is applied permanently until reloaded.
                     drop.amountDroppedMinimum /= 2;
+                    if (tempResult.State == ItemDropAttemptResultState.Success)
+                    {
+                        //ModContent.GetInstance<LootChaser>().Count.Value++;
+                    }
                     return tempResult;
                 }
             }
-            tempResult = orig(self, rule, info);
-
-            if (info.player.CurrentPet() == ItemID.OrnateShadowKey && tempResult.State == ItemDropAttemptResultState.Success)
-            {
-                ModContent.GetInstance<LootChaser>().Count.Value++;
-            }
-
-            return tempResult;
+            return orig(self, rule, info);
         }
 
     }
