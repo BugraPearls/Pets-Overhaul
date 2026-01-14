@@ -323,5 +323,20 @@ namespace PetsOverhaul.Systems
             return char.ToUpper(text[0]) + text[1..];
         }
         #endregion
+
+        /// <summary>
+        /// Basically Main.NewText() for multiplayer to help with debugging as many things runs solely on Server to make testings easier.
+        /// </summary>
+        /// <param name="text"></param>
+        public static void SendMultiplayerDebugText(string text)
+        {
+            if (Main.netMode != NetmodeID.SinglePlayer)
+            {
+                ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                packet.Write((byte)MessageType.MultiplayerDebugText);
+                packet.Write(text);
+                packet.Send();
+            }
+        }
     }
 }
