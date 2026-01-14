@@ -4,6 +4,7 @@ using PetsOverhaul.Systems;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.UI.Elements;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.UI;
@@ -35,6 +36,7 @@ namespace PetsOverhaul.UI
             if (ActiveRegularUIPetSlot.Item != null && ActiveRegularUIPetSlot.Item != CurrentActivePet)
             {
                 CurrentActivePet = ActiveRegularUIPetSlot.Item.Clone();
+                ActivePetSlotPlayer.SyncActiveRegular(ActiveRegularUIPetSlot.Item.Clone());
             }
             if (Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedLightPet is not null && Main.LocalPlayer.GetModPlayer<ActivePetSlotPlayer>().loadedLightPet.IsAir == false)
             {
@@ -44,6 +46,7 @@ namespace PetsOverhaul.UI
             if (ActiveLightUIPetSlot.Item != null && ActiveLightUIPetSlot.Item != CurrentActiveLightPet)
             {
                 CurrentActiveLightPet = ActiveLightUIPetSlot.Item.Clone();
+                ActivePetSlotPlayer.SyncActiveLight(ActiveLightUIPetSlot.Item.Clone());
             }
         }
         public override void OnInitialize()
@@ -95,6 +98,28 @@ namespace PetsOverhaul.UI
     }
     public class ActivePetSlotPlayer : ModPlayer
     {
+        public static void SyncActiveRegular(Item itemToBeSynced) //It doesn't 'fully' sync, but current active Pet Item should suffice.
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                packet.Write((byte)MessageType.ActivePetSlot);
+                packet.Write((byte)Main.LocalPlayer.whoAmI);
+                ItemIO.Send(itemToBeSynced, packet);
+                packet.Send();
+            }
+        }
+        public static void SyncActiveLight(Item itemToBeSynced)
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                packet.Write((byte)MessageType.ActiveLightPetSlot);
+                packet.Write((byte)Main.LocalPlayer.whoAmI);
+                ItemIO.Send(itemToBeSynced, packet);
+                packet.Send();
+            }
+        }
         internal Item loadedPet;
         internal Item loadedLightPet;
         internal PetItemSlot ActiveRegularPetSlot;
@@ -119,7 +144,14 @@ namespace PetsOverhaul.UI
                 LightPetItemSlot[oldLoadoutIndex] = CurrentLightPetItem;
                 CurrentPetItem = RegularPetItemSlot[loadoutIndex];
                 CurrentLightPetItem = LightPetItemSlot[loadoutIndex];
+                SyncActiveRegular(RegularPetItemSlot[loadoutIndex]);
+                SyncActiveLight(LightPetItemSlot[loadoutIndex]);
             }
+        }
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+             SyncActiveRegular(RegularPetItemSlot[Player.CurrentLoadoutIndex]);
+             SyncActiveLight(LightPetItemSlot[Player.CurrentLoadoutIndex]);
         }
         public override void SaveData(TagCompound tag)
         {

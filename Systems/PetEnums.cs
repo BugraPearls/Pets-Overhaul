@@ -3,6 +3,7 @@
 
     public enum MessageType : byte
     {
+        MultiplayerDebugText,
         ShieldFullAbsorb,
         SeaCreatureOnKill,
         HoneyBeeHeal,
@@ -11,6 +12,9 @@
         BlockRemove,
         PetSlow,
         NPCOnDeathEffect,
+        ActivePetSlot,
+        ActiveLightPetSlot,
+        PetButtonPressSync,
     }
     public enum EntitySourcePetIDs
     {

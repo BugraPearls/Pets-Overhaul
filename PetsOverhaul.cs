@@ -2,14 +2,17 @@ using MonoMod.RuntimeDetour;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
+using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul
 {
@@ -40,6 +43,20 @@ namespace PetsOverhaul
             MessageType msgType = (MessageType)reader.ReadByte();
             switch (msgType)
             {
+                case MessageType.MultiplayerDebugText:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)msgType);
+                        packet.Write(reader.ReadString());
+                        packet.Send();
+                    }
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        Main.NewText(reader.ReadString());
+                    }
+                    break;
+
                 case MessageType.ShieldFullAbsorb:
                     int damage = reader.ReadInt32();
                     PetModPlayer.HandleShieldBlockMessage(reader, whoAmI, damage);
@@ -98,6 +115,46 @@ namespace PetsOverhaul
                 case MessageType.NPCOnDeathEffect: //Only sent to Multiplayer clients currently, in NpcPet GlobalNPC class, inside OnKill hook.
                     int playerWho = reader.ReadByte();
                     PetGlobalNPC.OnKillInvokeDeathEffects(playerWho, Main.npc[reader.ReadByte()]);
+                    break;
+                case MessageType.ActivePetSlot:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        int whoami = reader.ReadByte();
+                        Item CurrentPetItemActive = ItemIO.Receive(reader);
+                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentPetItemActive;
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)MessageType.ActivePetSlot);
+                        packet.Write(whoami);
+                        ItemIO.Send(CurrentPetItemActive, packet);
+                        packet.Send(ignoreClient: whoami);
+                    }
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        int whoami = reader.ReadByte();
+                        Item CurrentPetItemActive = ItemIO.Receive(reader);
+                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentPetItemActive;
+                    }
+                    break;
+                case MessageType.ActiveLightPetSlot:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        int whoami = reader.ReadByte();
+                        Item CurrentLightPetItemActive = ItemIO.Receive(reader);
+                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)MessageType.ActiveLightPetSlot);
+                        packet.Write(whoami);
+                        ItemIO.Send(CurrentLightPetItemActive, packet);
+                        packet.Send(ignoreClient: whoami);
+                    }
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        int whoami = reader.ReadByte();
+                        Item CurrentLightPetItemActive = ItemIO.Receive(reader);
+                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
+                    }
+                    break;
+                case MessageType.PetButtonPressSync:
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
