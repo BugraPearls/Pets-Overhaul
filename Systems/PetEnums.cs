@@ -14,7 +14,7 @@
         NPCOnDeathEffect,
         ActivePetSlot,
         ActiveLightPetSlot,
-        PetButtonPressSync,
+        DoAchievementOnClient,
     }
     public enum EntitySourcePetIDs
     {

@@ -154,7 +154,8 @@ namespace PetsOverhaul
                         Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
                     }
                     break;
-                case MessageType.PetButtonPressSync:
+                case MessageType.DoAchievementOnClient:
+
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }

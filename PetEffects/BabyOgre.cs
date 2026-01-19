@@ -24,7 +24,8 @@ namespace PetsOverhaul.PetEffects
 
         public override void PostUpdateMiscEffects()
         {
-            PetUtils.OldOnesAchievementHelper(Player);
+            if (PetIsEquipped(false))
+                PetUtils.OldOnesAchievementHelper(Player);
 
             if (Main.masterMode == true)
             {
