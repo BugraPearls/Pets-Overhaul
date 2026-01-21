@@ -21,7 +21,6 @@ namespace PetsOverhaul.PetEffects
         {
             On_ItemDropResolver.ResolveRule += ShadowMimicExtraDrop;
         }
-
         private static ItemDropAttemptResult ShadowMimicExtraDrop(On_ItemDropResolver.orig_ResolveRule orig, ItemDropResolver self, IItemDropRule rule, DropAttemptInfo info)
         {
             if (info.player.TryGetModPlayer(out ShadowMimic mimic) && mimic.PetIsEquipped() && rule is CommonDrop drop && ItemID.Sets.OpenableBag[drop.itemId] == false && ItemID.Sets.BossBag[drop.itemId] == false &&
@@ -37,7 +36,16 @@ namespace PetsOverhaul.PetEffects
                     drop.chanceDenominator /= mimic.denominatorMult;
                     if (tempResult.State == ItemDropAttemptResultState.Success)
                     {
-                        //ModContent.GetInstance<LootChaser>().Count.Value++;
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                            packet.Write((byte)MessageType.LootChaser);
+                            packet.Send(toClient: mimic.Player.whoAmI);
+                        }
+                        else
+                        {
+                            ModContent.GetInstance<LootChaser>().Count.Value++;
+                        }
                     }
                     return tempResult;
                 }
@@ -50,7 +58,16 @@ namespace PetsOverhaul.PetEffects
                     drop.amountDroppedMinimum /= 2;
                     if (tempResult.State == ItemDropAttemptResultState.Success)
                     {
-                        //ModContent.GetInstance<LootChaser>().Count.Value++;
+                        if (Main.netMode == NetmodeID.Server)
+                        {
+                            ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                            packet.Write((byte)MessageType.LootChaser);
+                            packet.Send(toClient: mimic.Player.whoAmI);
+                        }
+                        else
+                        {
+                            ModContent.GetInstance<LootChaser>().Count.Value++;
+                        }
                     }
                     return tempResult;
                 }

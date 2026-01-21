@@ -84,7 +84,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         if (npc.dontTakeDamage == false && npc.friendly == false && Player.Distance(npc.Center) < queenRange)
                         {
-                            PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage, DamageClass.Generic), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck));
+                            PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage(freezeDamage, DamageClass.Generic), npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 0, DamageClass.Generic, true, Player.luck),Player.whoAmI);
                         }
                     }
                     if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
@@ -117,7 +117,7 @@ namespace PetsOverhaul.PetEffects
                 }
                 Player.statLife = 1;
                 Pet.timer = Pet.timerMax;
-                ModContent.GetInstance<FreezingTheReaper>().flag.Complete();
+                PetUtils.DoAchievementOnPlayer<FreezingTheReaper>(Player.whoAmI);
                 return false;
             }
             else

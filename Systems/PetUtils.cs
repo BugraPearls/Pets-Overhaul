@@ -4,8 +4,11 @@ using PetsOverhaul.Config;
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Terraria;
+using Terraria.Achievements;
 using Terraria.DataStructures;
+using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -115,12 +118,12 @@ namespace PetsOverhaul.Systems
             return textToRemove;
         }
         /// <summary>
-        /// Run npc.SimpleStrikeNPC() as parameter.
+        /// Run npc.SimpleStrikeNPC() as parameter, and which Player the damage is counted in for.
         /// </summary>
         /// <param name="dealtActualDmg">How much to be added to the achievement.</param>
-        public static void AddToDmgAchievement(int dealtActualDmg)
+        public static void AddToDmgAchievement(int dealtActualDmg, int playerWhoAmI)
         {
-            ModContent.GetInstance<WarriorPet>().Damage.Value += dealtActualDmg;
+            DoAchievementOnPlayer<WarriorPet>(playerWhoAmI,dealtActualDmg);
         }
         /// <summary>
         /// Randomizes the given number. numToBeRandomized / randomizeTo returns how many times its 100% chance and rolls if the leftover, non-100% amount is true. Randomizer(225) returns +2 and +1 more with 25% chance.
@@ -149,9 +152,9 @@ namespace PetsOverhaul.Systems
 
         public static void OldOnesAchievementHelper(Player player)
         {
-            if (player.ZoneOldOneArmy && (player.CurrentPet() == ItemID.DD2PetDragon || player.CurrentPet() == ItemID.DD2PetGato || player.CurrentLightPet() == ItemID.DD2PetGhost || player.CurrentPet() == ItemID.DD2BetsyPetItem || player.CurrentPet() == ItemID.DD2OgrePetItem))
+            if (player.ZoneOldOneArmy)
             {
-                ModContent.GetInstance<AnotherWorld>().flag.Complete();
+                DoAchievementOnPlayer<AnotherWorld>(player.whoAmI);
             }
         }
         #region Colors
@@ -323,7 +326,6 @@ namespace PetsOverhaul.Systems
             return char.ToUpper(text[0]) + text[1..];
         }
         #endregion
-
         /// <summary>
         /// Basically Main.NewText() for multiplayer to help with debugging as many things runs solely on Server to make testings easier.
         /// </summary>
@@ -336,6 +338,31 @@ namespace PetsOverhaul.Systems
                 packet.Write((byte)MessageType.MultiplayerDebugText);
                 packet.Write(text);
                 packet.Send();
+            }
+        }
+
+        /// <summary>
+        /// If achievement's condition is a 'flag', <paramref name="progress"/> parameter will be ignored and Condition will be completed. Otherwise, increases the condition by <paramref name="progress"/>.
+        /// </summary>
+        /// <param name="whoGetsCredit">whoAmI of the Player that will have this Achievement increased.</param>
+        public static void DoAchievementOnPlayer<T>(int whoGetsCredit, int progress = -1, string conditionName = "Condition") where T : ModAchievement => DoAchievementOnPlayer(ModContent.GetInstance<T>(), whoGetsCredit, progress, conditionName);
+
+        /// <summary>
+        /// If achievement's condition is a 'flag', <paramref name="progress"/> parameter will be ignored and Condition will be completed. Otherwise, increases the condition by <paramref name="progress"/>.
+        /// </summary>
+        /// <param name="whoGetsCredit">whoAmI of the Player that will have this Achievement increased.</param>
+        public static void DoAchievementOnPlayer(ModAchievement achievement, int whoGetsCredit, int progress = 1, string conditionName = "Condition")
+        {
+            if (Main.netMode == NetmodeID.SinglePlayer || (Main.netMode == NetmodeID.MultiplayerClient && Main.myPlayer == whoGetsCredit)) //we just do it if its singleplayer, or only if we are the Player thats supposed to get the Achievement if its a Multiplayer client
+            {
+                if (achievement.Achievement.GetCondition(conditionName) is CustomFlagCondition flagCondition)
+                {
+                    flagCondition.Complete();
+                }
+                else if (achievement.Achievement.GetCondition(conditionName) is CustomIntCondition condition)
+                {
+                    condition.Value += progress;
+                }
             }
         }
     }

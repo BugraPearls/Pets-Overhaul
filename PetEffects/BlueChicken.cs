@@ -31,7 +31,7 @@ namespace PetsOverhaul.PetEffects
                         if (Main.rand.NextBool(4, 100))
                         {
                             Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.HarvestingItem), ItemID.BlueEgg);
-                            ModContent.GetInstance<Petception>().flag.Complete();
+                            PetUtils.DoAchievementOnPlayer<Petception>(Player.whoAmI);
                         }
                         else
                         {
@@ -178,7 +178,7 @@ namespace PetsOverhaul.PetEffects
 
                     if (PetUtils.ItemIsPetItem(id))
                     {
-                        ModContent.GetInstance<Petception>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<Petception>(player.whoAmI);
                     }
                 }
             }

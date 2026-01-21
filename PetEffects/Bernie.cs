@@ -66,7 +66,7 @@ namespace PetsOverhaul.PetEffects
                     if (achievementTracker >= 60)
                     {
                         int modulus = achievementTracker % 60;
-                        ModContent.GetInstance<Arsonist>().BurnAmplifiedFrames.Value += (achievementTracker - modulus) / 60;
+                        PetUtils.DoAchievementOnPlayer<Arsonist>(Player.whoAmI, (achievementTracker - modulus) / 60);
                         achievementTracker = modulus;
                     }
                 }

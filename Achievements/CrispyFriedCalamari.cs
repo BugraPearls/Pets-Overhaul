@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using PetsOverhaul.Systems;
+using Terraria;
 using Terraria.Achievements;
 using Terraria.GameContent.Achievements;
 using Terraria.ID;
@@ -23,7 +24,16 @@ namespace PetsOverhaul.Achievements
         {
             if (self.type == ItemID.MoonLordPetItem)
             {
-                ModContent.GetInstance<CrispyFriedCalamari>().PetFried.Complete();
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                    packet.Write((byte)MessageType.CrispyFriedCalamari);
+                    packet.Send(toClient: self.playerIndexTheItemIsReservedFor);
+                }
+                else
+                {
+                    ModContent.GetInstance<CrispyFriedCalamari>().PetFried.Complete();
+                }
             }
             orig(self);
         }

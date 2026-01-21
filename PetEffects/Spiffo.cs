@@ -36,7 +36,7 @@ namespace PetsOverhaul.PetEffects
                 }
                 if (NPCID.Sets.Zombies[target.type])
                 {
-                    ModContent.GetInstance<ThisWontBeHowIDie>().Kills.Value++;
+                    PetUtils.DoAchievementOnPlayer<ThisWontBeHowIDie>(Player.whoAmI);
                 }
             }
         }

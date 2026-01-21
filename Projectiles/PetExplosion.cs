@@ -48,12 +48,12 @@ namespace PetsOverhaul.Projectiles
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (PetUtils.LifestealCheck(target))
+            if (PetUtils.LifestealCheck(target) && Projectile.owner != 255)
             {
                 achievementStrikes++;
                 if (achievementStrikes >= 10)
                 {
-                    ModContent.GetInstance<HeavyDutyPet>().flag.Complete();
+                    PetUtils.DoAchievementOnPlayer<HeavyDutyPet>(Projectile.owner);
                 }
             }
         }

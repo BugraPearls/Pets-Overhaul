@@ -693,17 +693,17 @@ namespace PetsOverhaul.PetEffects
 
             if (junimoHarvestingLevel >= 50)
             {
-                ModContent.GetInstance<TheSummit>().HarvestingLvl.Complete();
+                PetUtils.DoAchievementOnPlayer<TheSummit>(Player.whoAmI, conditionName: "HarvestingCondition");
             }
 
             if (junimoMiningLevel >= 50)
             {
-                ModContent.GetInstance<TheSummit>().MiningLvl.Complete();
+                PetUtils.DoAchievementOnPlayer<TheSummit>(Player.whoAmI, conditionName: "MiningCondition");
             }
 
             if (junimoFishingLevel >= 50)
             {
-                ModContent.GetInstance<TheSummit>().FishingLvl.Complete();
+                PetUtils.DoAchievementOnPlayer<TheSummit>(Player.whoAmI, conditionName: "FishingCondition");
             }
         }
         public override void SaveData(TagCompound tag)

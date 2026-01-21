@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.Achievements;
 using Terraria.GameContent.Achievements;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Achievements
@@ -22,7 +23,16 @@ namespace PetsOverhaul.Achievements
         {
             if (PetUtils.ItemIsPetItem(self.type))
             {
-                ModContent.GetInstance<QuestionableKibble>().PetShimmered.Complete();
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                    packet.Write((byte)MessageType.QuestionableKibble);
+                    packet.Send(toClient: self.playerIndexTheItemIsReservedFor);
+                }
+                else
+                {
+                    ModContent.GetInstance<QuestionableKibble>().PetShimmered.Complete();
+                }
             }
             orig(self);
         }

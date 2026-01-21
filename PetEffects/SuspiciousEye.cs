@@ -98,7 +98,7 @@ namespace PetsOverhaul.PetEffects
 
                     if (ragePoints >= 100)
                     {
-                        ModContent.GetInstance<DefensiveBuild>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<DefensiveBuild>(Player.whoAmI);
                     }
 
                     Player.statDefense *= 0;

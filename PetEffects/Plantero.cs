@@ -26,13 +26,13 @@ namespace PetsOverhaul.PetEffects
                 {
                     timerForAchievementPepper = 60;
                     if (timerForAchievementNachos > 0)
-                        ModContent.GetInstance<PlantaHermano>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<PlantaHermano>(Player.whoAmI);
                 }
                 if (item.type == ItemID.Nachos)
                 {
                     timerForAchievementNachos = 60;
                     if (timerForAchievementPepper > 0)
-                        ModContent.GetInstance<PlantaHermano>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<PlantaHermano>(Player.whoAmI);
                 }
             }
             return base.CanUseItem(item);

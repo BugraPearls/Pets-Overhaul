@@ -50,7 +50,7 @@ namespace PetsOverhaul.PetEffects
                 int bobChance = PetUtils.Randomizer(bobberChance);
                 if (bobChance > 1)
                 {
-                    ModContent.GetInstance<TooManyBobbers>().flag.Complete();
+                    PetUtils.DoAchievementOnPlayer<TooManyBobbers>(Player.whoAmI);
                 }
                 for (int i = 0; i < bobChance; i++)
                 {

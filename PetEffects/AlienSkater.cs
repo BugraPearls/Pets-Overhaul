@@ -33,7 +33,7 @@ namespace PetsOverhaul.PetEffects
                 if (achievementBank == 60)
                 {
                     achievementBank = 0;
-                    ModContent.GetInstance<HoverboardSkater>().TimeSaved.Value++;
+                    PetUtils.DoAchievementOnPlayer<HoverboardSkater>(Player.whoAmI);
                 }
             }
         }

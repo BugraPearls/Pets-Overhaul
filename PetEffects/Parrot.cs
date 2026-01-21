@@ -25,7 +25,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
-                    PetUtils.AddToDmgAchievement(target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * meleeDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck));
+                    PetUtils.AddToDmgAchievement(target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * meleeDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck),Player.whoAmI);
                     PlayParrotSound();
                 }
             }
@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
-                    PetUtils.AddToDmgAchievement(target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * projDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck));
+                    PetUtils.AddToDmgAchievement(target.SimpleStrikeNPC(Pet.PetDamage(hit.SourceDamage * projDamage, hit.DamageType), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType, true, Player.luck), Player.whoAmI);
                     PlayParrotSound();
                 }
             }
@@ -94,7 +94,7 @@ namespace PetsOverhaul.PetEffects
                         petProjectile.DamageType = damageType;
                         petProjectile.CritChance = (int)parrot.Player.GetTotalCritChance(damageType);
                         parrot.PlayParrotSound();
-                        ModContent.GetInstance<Copycat>().Count.Value++;
+                        PetUtils.DoAchievementOnPlayer<Copycat>(projectile.owner);
                     }
                 }
             }

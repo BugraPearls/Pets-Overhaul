@@ -42,7 +42,7 @@ namespace PetsOverhaul.PetEffects
             if (target.GetGlobalNPC<PetGlobalNPC>().maulCounter > maxStacks)
             {
                 target.GetGlobalNPC<PetGlobalNPC>().maulCounter = maxStacks;
-                ModContent.GetInstance<Vulnerable>().flag.Complete();
+                PetUtils.DoAchievementOnPlayer<Vulnerable>(Player.whoAmI);
             }
 
             if (target.HasBuff(ModContent.BuffType<Mauled>()))

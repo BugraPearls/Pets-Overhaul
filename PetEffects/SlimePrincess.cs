@@ -312,11 +312,11 @@ namespace PetsOverhaul.PetEffects
                 int count = 0;
                 foreach (var item in Player.ExtraJumps)
                 {
-                    if (item.Enabled)
+                    if (item.Available == false)
                         count++;
                 }
                 if (count >= 6)
-                    ModContent.GetInstance<HextupleJumper>().flag.Complete();
+                    PetUtils.DoAchievementOnPlayer<HextupleJumper>(Player.whoAmI);
             }
         }
     }

@@ -63,7 +63,7 @@ namespace PetsOverhaul.PetEffects
         {
             if ((triggersSet.Left || triggersSet.Right) && PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard].KeyStatus["Left"].Contains("A") == false && PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard].KeyStatus["Right"].Contains("D") == false)
             {
-                ModContent.GetInstance<ISeeWhatYoureDoing>().flag.Complete();
+                ModContent.GetInstance<ISeeWhatYoureDoing>().flag.Complete(); //This 100% doesn't need 'syncing', as its guaranteed to run on client always
             }
         }
         public override void ModifyLuck(ref float luck)

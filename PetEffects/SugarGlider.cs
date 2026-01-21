@@ -53,7 +53,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         Player.SetImmuneTimeForAllTypes(15);
                         Player.Center = npc.Center;
-                        PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck));
+                        PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck),Player.whoAmI);
                         enemy.shuricornMark = 0;
                         break;
                     }

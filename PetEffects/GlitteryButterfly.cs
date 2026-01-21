@@ -31,7 +31,7 @@ namespace PetsOverhaul.PetEffects
                     Player.wingTimeMax += (int)(Player.wingTimeMax * currentWingPercIncr) + wingTime;
                     if (Player.wingTimeMax >= 330)
                     {
-                        ModContent.GetInstance<PrettyButteryFlight>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<PrettyButteryFlight>(Player.whoAmI);
                     }
                 }
             }

@@ -48,7 +48,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (npc.type == NPCID.Eyezor && player.CurrentPet() == ItemID.EyeSpring && player.whoAmI == Main.myPlayer)
             {
-                ModContent.GetInstance<IveFoundYourEye>().flag.Complete();
+                PetUtils.DoAchievementOnPlayer<IveFoundYourEye>(player.whoAmI);
             }
         }
     }

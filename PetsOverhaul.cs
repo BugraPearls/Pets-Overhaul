@@ -1,4 +1,5 @@
 using MonoMod.RuntimeDetour;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
@@ -154,8 +155,16 @@ namespace PetsOverhaul
                         Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
                     }
                     break;
-                case MessageType.DoAchievementOnClient:
 
+                    //Achievement messages, these are received by the Multiplayer Client
+                case MessageType.LootChaser:
+                    ModContent.GetInstance<LootChaser>().Count.Value++;
+                    break;
+                case MessageType.QuestionableKibble:
+                    ModContent.GetInstance<QuestionableKibble>().PetShimmered.Complete();
+                    break;
+                case MessageType.CrispyFriedCalamari:
+                    ModContent.GetInstance<CrispyFriedCalamari>().PetFried.Complete();
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }

@@ -51,13 +51,13 @@ namespace PetsOverhaul.PetEffects
                     }
                     if (Main.rand.NextBool(pig.foodChance, 100))
                     {
-                        ModContent.GetInstance<Muncher>().Munchies.Value++;
+                        PetUtils.DoAchievementOnPlayer<Muncher>(player.whoAmI);
                         return false;
                     }
                 }
                 else if (item.buffType != 0 && Main.debuff[item.buffType] == false && Main.rand.NextBool(pig.potionChance, 100))
                 {
-                    ModContent.GetInstance<Muncher>().Munchies.Value++;
+                    PetUtils.DoAchievementOnPlayer<Muncher>(player.whoAmI);
                     return false;
                 }
             }

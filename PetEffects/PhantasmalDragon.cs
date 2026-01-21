@@ -76,7 +76,7 @@ namespace PetsOverhaul.PetEffects
                 achievementDuration--;
                 if (achievementCasts[0] && achievementCasts[1] && achievementCasts[2])
                 {
-                    ModContent.GetInstance<AncientSorcery>().flag.Complete();
+                    PetUtils.DoAchievementOnPlayer<AncientSorcery>(Player.whoAmI);
                 }
             }
         }

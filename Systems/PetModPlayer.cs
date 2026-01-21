@@ -238,28 +238,28 @@ namespace PetsOverhaul.Systems
                 {
                     int count = PetUtils.Randomizer(PickerPet.globalFortune * item.stack);
                     PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.GlobalFortuneItem, item.type, count);
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count); //So we increment the achievement for both the normal item drop (item.stack) from the Pet, and from Fortune stats thats buffing up the Pet drops.
+                    PetUtils.DoAchievementOnPlayer<UnpaidLabor>(player.whoAmI, item.value * (item.stack + count)); //So we increment the achievement for both the normal item drop (item.stack) from the Pet, and from Fortune stats thats buffing up the Pet drops.
                 }
 
                 if (fortune.harvestingDropFromPet)
                 {
                     int count = PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.harvestingFortune * 10) * item.stack, 1000);
                     PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingFortuneItem, item.type, count);
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count);
+                    PetUtils.DoAchievementOnPlayer<UnpaidLabor>(player.whoAmI, item.value * (item.stack + count));
                 }
 
                 if (fortune.miningDropFromPet)
                 {
                     int count = PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.miningFortune * 10) * item.stack, 1000);
                     PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.MiningFortuneItem, item.type, count);
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count);
+                    PetUtils.DoAchievementOnPlayer<UnpaidLabor>(player.whoAmI, item.value * (item.stack + count));
                 }
 
                 if (fortune.fishingDropFromPet)
                 {
                     int count = PetUtils.Randomizer((PickerPet.globalFortune * 10 / 2 + PickerPet.fishingFortune) * item.stack, 1000);
                     PickerPet.SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingFortuneItem, item.type, count);
-                    ModContent.GetInstance<UnpaidLabor>().CoinsGained.Value += item.value * (item.stack + count);
+                    PetUtils.DoAchievementOnPlayer<UnpaidLabor>(player.whoAmI, item.value * (item.stack + count));
                 }
 
                 //These are extra increases of Fortune stats. Ones above directly increases drops by Pets. Does not increment achievement. Fishing is down at ModifyCaughtFish.
@@ -392,7 +392,7 @@ namespace PetsOverhaul.Systems
                         Player.HealEffect(healEff);
                     }
 
-                    ModContent.GetInstance<SagePet>().Heal.Value += calculatedAmount;
+                    PetUtils.DoAchievementOnPlayer<SagePet>(Player.whoAmI, calculatedAmount);
                 }
                 else
                 {
@@ -762,9 +762,9 @@ namespace PetsOverhaul.Systems
                 petObtained = true;
             }
 
-            if (petObtained && Main.myPlayer == Player.whoAmI)
+            if (petObtained)
             {
-                ModContent.GetInstance<NeedOfCompany>().PetEquipped.Complete();
+                PetUtils.DoAchievementOnPlayer<NeedOfCompany>(Player.whoAmI);
             }
             if (petShield.Count > 0)
             {
@@ -787,7 +787,7 @@ namespace PetsOverhaul.Systems
                         petShield[index] = value;
                     }
                 }
-                ModContent.GetInstance<GuardPet>().Shield.Value += addToAchievement;
+                PetUtils.DoAchievementOnPlayer<GuardPet>(Player.whoAmI,addToAchievement);
 
                 shieldToBeReduced = 0;
                 currentShield = 0;
@@ -864,13 +864,13 @@ namespace PetsOverhaul.Systems
             if (Player.CurrentPet() != ItemID.None && FoundPets.Contains(Player.CurrentPet()) == false)
             {
                 FoundPets.Add(Player.CurrentPet());
-                ModContent.GetInstance<TheCollector>().CollectedPets.Value++;
+                PetUtils.DoAchievementOnPlayer<TheCollector>(Player.whoAmI);
             }
 
             if (Player.CurrentLightPet() != ItemID.None && FoundLightPets.Contains(Player.CurrentLightPet()) == false)
             {
                 FoundLightPets.Add(Player.CurrentLightPet());
-                ModContent.GetInstance<GleamingCollection>().CollectedPets.Value++;
+                PetUtils.DoAchievementOnPlayer<GleamingCollection>(Player.whoAmI);
             }
 
             PetSounds.PlayAmbientSoundFromItemId(Player.CurrentPet(), Player);

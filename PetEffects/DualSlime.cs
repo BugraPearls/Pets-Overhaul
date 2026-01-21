@@ -38,7 +38,7 @@ namespace PetsOverhaul.PetEffects
                     howManyIsAlive++;
                     if (howManyIsAlive >= 5)
                     {
-                        ModContent.GetInstance<YouAndSlimeArmy>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<YouAndSlimeArmy>(Player.whoAmI);
                     }
                 }
             }

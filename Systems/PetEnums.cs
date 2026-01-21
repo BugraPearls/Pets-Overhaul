@@ -14,7 +14,9 @@
         NPCOnDeathEffect,
         ActivePetSlot,
         ActiveLightPetSlot,
-        DoAchievementOnClient,
+        LootChaser,
+        QuestionableKibble,
+        CrispyFriedCalamari,
     }
     public enum EntitySourcePetIDs
     {

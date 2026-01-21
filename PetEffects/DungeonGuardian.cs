@@ -33,7 +33,7 @@ namespace PetsOverhaul.PetEffects
                 if (Player.ZoneDungeon == true)
                 {
                     Player.lifeRegen += lifeRegen;
-                    ModContent.GetInstance<IAmUntouchable>().flag.Complete();
+                    PetUtils.DoAchievementOnPlayer<IAmUntouchable>(Player.whoAmI);
                 }
                 Player.GetArmorPenetration<GenericDamageClass>() += armorPen;
             }

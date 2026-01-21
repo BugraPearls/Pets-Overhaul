@@ -128,7 +128,7 @@ namespace PetsOverhaul.NPCs
                     if (lizard.Player.whoAmI == Main.myPlayer)
                     {
                         Main.BestiaryTracker.Kills.RegisterKill(NPC); //Give Player bestiary Kill count if 'picked up' and complete their achievement
-                        ModContent.GetInstance<NutritiousDecoy>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<NutritiousDecoy>(lizard.Player.whoAmI);
                     }
                     lizard.Pet.PetRecovery(player.statLifeMax2, lizard.percentHpRecover, isLifesteal: false);
                     lizard.Pet.timer = (int)(lizard.Pet.timer * lizard.tailCdRefund);

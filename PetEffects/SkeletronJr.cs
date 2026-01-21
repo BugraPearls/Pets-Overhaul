@@ -111,7 +111,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && item.potion && PetStackCurrent > Player.statLife && item.healLife + Player.statLife > PetStackCurrent)
             {
-                ModContent.GetInstance<INeededALittleMoreTime>().flag.Complete();
+                PetUtils.DoAchievementOnPlayer<INeededALittleMoreTime>(Player.whoAmI);
             }
             return base.CanUseItem(item);
         }

@@ -48,7 +48,7 @@ namespace PetsOverhaul.PetEffects
 
                     if (harpyFlight <= 0 && Player.ZoneSkyHeight)
                     {
-                        ModContent.GetInstance<FakeHarpy>().flag.Complete();
+                        PetUtils.DoAchievementOnPlayer<FakeHarpy>(Player.whoAmI);
                     }
                 }
                 if (cooldownStarted == false && harpyFlight < fuelMax)

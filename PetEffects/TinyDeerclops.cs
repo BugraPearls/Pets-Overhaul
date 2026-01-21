@@ -139,7 +139,7 @@ namespace PetsOverhaul.PetEffects
                 void DoTheStrike(NPC npc)
                 {
                     PetGlobalNPC.AddSlow(new PetSlow(slowAmount, slowDuration, PetSlowID.Deerclops), npc);
-                    PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationReduction), DamageClass.Melee), Player.direction, false, 0, DamageClass.Melee, true, Player.luck));
+                    PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationReduction), DamageClass.Melee), Player.direction, false, 0, DamageClass.Melee, true, Player.luck), Player.whoAmI);
                     penetrationReduction += reductionRaise;
                     if (penetrationReduction > reductionCap)
                     {
@@ -167,7 +167,7 @@ namespace PetsOverhaul.PetEffects
                                 defIgnore.defShouldBeIgnoredForNextHit = true;
                                 if (consumedDamage >= PetStackMax)
                                 {
-                                    ModContent.GetInstance<FreezingRage>().flag.Complete();
+                                    PetUtils.DoAchievementOnPlayer<FreezingRage>(Player.whoAmI);
                                 }
                             }
                             //DR % increase is multiplicative here

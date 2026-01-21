@@ -32,7 +32,7 @@ namespace PetsOverhaul.PetEffects
                 PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowID.Snowman), target);
                 if (FrostArmorMult > 1)
                 {
-                    ModContent.GetInstance<AbsoluteZero>().flag.Complete();
+                    PetUtils.DoAchievementOnPlayer<AbsoluteZero>(Player.whoAmI);
                 }
             }
         }

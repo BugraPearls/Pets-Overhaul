@@ -66,8 +66,9 @@ namespace PetsOverhaul.TownPets
             {
                 if (self.PetPlayer().PettedTownPets.Contains(buffToAdd) == false)
                 {
+                    PetUtils.SendMultiplayerDebugText(Main.netMode.ToString());
                     self.PetPlayer().PettedTownPets.Add(buffToAdd);
-                    ModContent.GetInstance<GottaPetThemAll>().Petted.Value++;
+                    PetUtils.DoAchievementOnPlayer<GottaPetThemAll>(self.whoAmI);
                 }
                 self.AddBuff(buffToAdd, 1);
                 if (prevId == -1 || prevId != buffToAdd)

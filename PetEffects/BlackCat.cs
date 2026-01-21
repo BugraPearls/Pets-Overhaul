@@ -144,11 +144,14 @@ namespace PetsOverhaul.PetEffects
                             _ => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
                         };
                         Player.Hurt(new Player.HurtInfo() with { Damage = moonlightRoll, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)) });
+
+                        if (Main.myPlayer == Player.whoAmI)
                         ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value++;
                     }
                     else
                     {
                         Pet.PetRecovery(moonlightRoll, 1f, isLifesteal: false);
+                        if (Main.myPlayer == Player.whoAmI)
                         ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value = 0;
                     }
                     Pet.timer = Pet.timerMax;

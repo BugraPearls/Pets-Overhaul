@@ -70,7 +70,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (player.GetModPlayer<HoneyBee>().PetIsEquipped() && (item.type == ItemID.BottledHoney || item.type == ItemID.Honeyfin))
             {
-                ModContent.GetInstance<TooMuchHoney>().flag.Complete();
+                PetUtils.DoAchievementOnPlayer<TooMuchHoney>(player.whoAmI);
 
                 bool isBottledHoney = item.type == ItemID.BottledHoney;
                 HoneyBee.HealByHoneyBee(isBottledHoney, player.whoAmI, true);

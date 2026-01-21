@@ -61,7 +61,7 @@ namespace PetsOverhaul.Systems
         {
             if (petProj && PetUtils.LifestealCheck(target)) //lifestealcheck is valid here as it checks for statue/friendly etc.
             {
-                PetUtils.AddToDmgAchievement(damageDone);
+                PetUtils.AddToDmgAchievement(damageDone, projectile.whoAmI);
             }
         }
     }

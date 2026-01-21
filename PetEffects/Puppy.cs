@@ -71,7 +71,7 @@ namespace PetsOverhaul.PetEffects
             if (player.TryGetModPlayer(out Puppy pup) && pup.PetIsEquipped(false) && npc.rarity > 0 && npc.CountsAsACritter == false && npc.SpawnedFromStatue == false)
             {
                 pup.Pet.GiveCoins(PetUtils.Randomizer(pup.rareEnemyCoin * npc.rarity));
-                ModContent.GetInstance<ElusiveHunter>().Hunts.Value++;
+                PetUtils.DoAchievementOnPlayer<ElusiveHunter>(player.whoAmI);
             }
         }
         public override void OnCatchNPC(NPC npc, Item item, bool failed)
@@ -82,7 +82,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     Pet.GiveCoins(PetUtils.Randomizer(rareCritterCoin * npc.rarity));
                     Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.GlobalItem, npc.catchItem, PetUtils.Randomizer(rareCatchChance));
-                    ModContent.GetInstance<ElusiveHunter>().Hunts.Value++;
+                    PetUtils.DoAchievementOnPlayer<ElusiveHunter>(Player.whoAmI);
                 }
                 else
                 {
