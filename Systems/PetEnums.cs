@@ -4,7 +4,9 @@
     public enum MessageType : byte
     {
         MultiplayerDebugText,
+
         ShieldFullAbsorb,
+        CustomEffectSwitch,
         SeaCreatureOnKill,
         HoneyBeeHeal,
         BlockPlace,
@@ -17,6 +19,16 @@
         LootChaser,
         QuestionableKibble,
         CrispyFriedCalamari,
+        AlienSkater,
+        BabyRedPanda,
+        BlackCat,
+        Lizard,
+        Moonling,
+        PhantasmalDragonSpell,
+        PhantasmalDragonAbilitySwap,
+        SlimePrince,
+        SugarGliderGlide,
+        SugarGliderAbility,
     }
     public enum EntitySourcePetIDs
     {

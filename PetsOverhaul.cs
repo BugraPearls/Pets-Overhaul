@@ -44,21 +44,29 @@ namespace PetsOverhaul
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
             MessageType msgType = (MessageType)reader.ReadByte();
-            /// <summary>
-            /// Takes care of the Sync Message of the server portion of handling that is for when Pets uses trigger keys to make effects in multiplayer. Intended use is alongisde <see cref="PetModPlayer.BasicSyncMessage(MessageType)"/>
-            /// </summary>
-            void HandleBasicSyncMessage()
+
+            //USE THIS WITH CAUTION, only intended use is with HandleBasicSyncMessage!
+            Player EasyPlayer()
             {
                 if (Main.netMode == NetmodeID.Server)
                 {
+                    return Main.player[whoAmI];
+                }
+                return Main.player[reader.ReadByte()];
+            }
+            void HandleBasicSyncMessage(Action method)
+            {
+                method.Invoke();
+                if (Main.netMode == NetmodeID.Server)
+                {
                     ModPacket packet = GetPacket();
-                    byte playerThatDoneSomething = reader.ReadByte();
                     packet.Write((byte)msgType);
-                    packet.Write(playerThatDoneSomething);
-                    packet.Send(ignoreClient: playerThatDoneSomething);
-                    return;
+                    packet.Write(whoAmI);
+                    packet.Send(ignoreClient: whoAmI);
                 }
             }
+
+
             switch (msgType)
             {
                 case MessageType.MultiplayerDebugText:
@@ -172,8 +180,36 @@ namespace PetsOverhaul
                         Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
                     }
                     break;
+                case MessageType.CustomEffectSwitch:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        ModPacket packet = GetPacket();
+                        ushort modPlayerIndex = reader.ReadUInt16();
+                        if (Main.player[whoAmI].ModPlayers[modPlayerIndex].GetType().IsSubclassOf(typeof(PetEffect)))
+                        {
+                            PetEffect current = (PetEffect)Main.player[whoAmI].ModPlayers[modPlayerIndex];
+                            current.CustomEffectActive = !current.CustomEffectActive;
+                        }
+                        packet.Write((byte)msgType);
+                        packet.Write(whoAmI);
+                        packet.Write(modPlayerIndex);
+                        packet.Send(ignoreClient: whoAmI);
+                    }
+                    else
+                    {
+                        byte whoam = reader.ReadByte();
+                        ushort modPlayerIndex2 = reader.ReadUInt16();
+                        if (Main.player[whoam].ModPlayers[modPlayerIndex2].GetType().IsSubclassOf(typeof(PetEffect)))
+                        {
+                            PetEffect current = (PetEffect)Main.player[whoam].ModPlayers[modPlayerIndex2];
+                            current.CustomEffectActive = !current.CustomEffectActive;
+                        }
+                    }
+                    break;
+                case MessageType.AbilitySwitch:
+                    break;
 
-                    //Achievement messages, these are received by the Multiplayer Client
+                //Achievement messages, these are received by the Multiplayer Client
                 case MessageType.LootChaser:
                     ModContent.GetInstance<LootChaser>().Count.Value++;
                     break;
@@ -186,11 +222,14 @@ namespace PetsOverhaul
 
                 //Pet Trigger Syncs
                 case MessageType.AlienSkater:
-                    HandleBasicSyncMessage();
-                    Player player = Main.player[reader.ReadByte()];
-                    player.GetModPlayer<AlienSkater>().Fly();
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<AlienSkater>().Fly);
                     break;
-
+                case MessageType.BabyRedPanda:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<BabyRedPanda>().Alert);
+                    break;
+                case MessageType.BlackCat:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<BlackCat>().Moonlight);
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }

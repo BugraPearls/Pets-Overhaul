@@ -152,6 +152,13 @@ namespace PetsOverhaul.Systems
                 if (HasCustomEffect && PetKeybinds.PetCustomSwitch.JustPressed)
                 {
                     CustomEffectActive = !CustomEffectActive;
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                        packet.Write((byte)MessageType.CustomEffectSwitch);
+                        packet.Write(Index);
+                        packet.Send();
+                    }
                 }
             }
         }
@@ -159,13 +166,12 @@ namespace PetsOverhaul.Systems
         /// Intended use is for when the Pet does things when a key is triggered to simply call what the Pet's Player should do for all clients to sync properly.
         /// </summary>
         /// <param name="petMessage">Type of the message to trigger on server and other Multiplayer Clients.</param>
-        public void BasicSyncMessage(MessageType petMessage)
+        public static void BasicSyncMessage(MessageType petMessage)
         {
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
                 packet.Write((byte)petMessage);
-                packet.Write((byte)Player.whoAmI);
                 packet.Send();
             }
         }
