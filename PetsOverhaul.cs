@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices.JavaScript;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameInput;
@@ -39,9 +40,25 @@ namespace PetsOverhaul
 
             return orig(item, player);
         }
+
         public override void HandlePacket(BinaryReader reader, int whoAmI)
         {
             MessageType msgType = (MessageType)reader.ReadByte();
+            /// <summary>
+            /// Takes care of the Sync Message of the server portion of handling that is for when Pets uses trigger keys to make effects in multiplayer. Intended use is alongisde <see cref="PetModPlayer.BasicSyncMessage(MessageType)"/>
+            /// </summary>
+            void HandleBasicSyncMessage()
+            {
+                if (Main.netMode == NetmodeID.Server)
+                {
+                    ModPacket packet = GetPacket();
+                    byte playerThatDoneSomething = reader.ReadByte();
+                    packet.Write((byte)msgType);
+                    packet.Write(playerThatDoneSomething);
+                    packet.Send(ignoreClient: playerThatDoneSomething);
+                    return;
+                }
+            }
             switch (msgType)
             {
                 case MessageType.MultiplayerDebugText:
@@ -166,6 +183,14 @@ namespace PetsOverhaul
                 case MessageType.CrispyFriedCalamari:
                     ModContent.GetInstance<CrispyFriedCalamari>().PetFried.Complete();
                     break;
+
+                //Pet Trigger Syncs
+                case MessageType.AlienSkater:
+                    HandleBasicSyncMessage();
+                    Player player = Main.player[reader.ReadByte()];
+                    player.GetModPlayer<AlienSkater>().Fly();
+                    break;
+
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }
