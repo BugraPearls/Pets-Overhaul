@@ -104,7 +104,6 @@ namespace PetsOverhaul.UI
             {
                 ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
                 packet.Write((byte)MessageType.ActivePetSlot);
-                packet.Write((byte)Main.LocalPlayer.whoAmI);
                 ItemIO.Send(itemToBeSynced, packet);
                 packet.Send();
             }
@@ -115,7 +114,6 @@ namespace PetsOverhaul.UI
             {
                 ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
                 packet.Write((byte)MessageType.ActiveLightPetSlot);
-                packet.Write((byte)Main.LocalPlayer.whoAmI);
                 ItemIO.Send(itemToBeSynced, packet);
                 packet.Send();
             }
