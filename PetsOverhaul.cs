@@ -61,7 +61,7 @@ namespace PetsOverhaul
                 {
                     ModPacket packet = GetPacket();
                     packet.Write((byte)msgType);
-                    packet.Write(whoAmI);
+                    packet.Write((byte)whoAmI);
                     packet.Send(ignoreClient: whoAmI);
                 }
             }
@@ -145,39 +145,37 @@ namespace PetsOverhaul
                 case MessageType.ActivePetSlot:
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        int whoami = reader.ReadByte();
                         Item CurrentPetItemActive = ItemIO.Receive(reader);
-                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentPetItemActive;
+                        Main.player[whoAmI].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoAmI].CurrentLoadoutIndex] = CurrentPetItemActive;
                         ModPacket packet = GetPacket();
                         packet.Write((byte)MessageType.ActivePetSlot);
-                        packet.Write(whoami);
+                        packet.Write((byte)whoAmI);
                         ItemIO.Send(CurrentPetItemActive, packet);
-                        packet.Send(ignoreClient: whoami);
+                        packet.Send(ignoreClient: whoAmI);
                     }
                     else if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        int whoami = reader.ReadByte();
+                        int playrWho = reader.ReadByte();
                         Item CurrentPetItemActive = ItemIO.Receive(reader);
-                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentPetItemActive;
+                        Main.player[playrWho].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[playrWho].CurrentLoadoutIndex] = CurrentPetItemActive;
                     }
                     break;
                 case MessageType.ActiveLightPetSlot:
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        int whoami = reader.ReadByte();
                         Item CurrentLightPetItemActive = ItemIO.Receive(reader);
-                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
+                        Main.player[whoAmI].GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Main.player[whoAmI].CurrentLoadoutIndex] = CurrentLightPetItemActive;
                         ModPacket packet = GetPacket();
                         packet.Write((byte)MessageType.ActiveLightPetSlot);
-                        packet.Write(whoami);
+                        packet.Write((byte)whoAmI);
                         ItemIO.Send(CurrentLightPetItemActive, packet);
-                        packet.Send(ignoreClient: whoami);
+                        packet.Send(ignoreClient: whoAmI);
                     }
                     else if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        int whoami = reader.ReadByte();
+                        int playrWho = reader.ReadByte();
                         Item CurrentLightPetItemActive = ItemIO.Receive(reader);
-                        Main.player[whoami].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[whoami].CurrentLoadoutIndex] = CurrentLightPetItemActive;
+                        Main.player[playrWho].GetModPlayer<ActivePetSlotPlayer>().RegularPetItemSlot[Main.player[playrWho].CurrentLoadoutIndex] = CurrentLightPetItemActive;
                     }
                     break;
                 case MessageType.CustomEffectSwitch:
@@ -191,22 +189,20 @@ namespace PetsOverhaul
                             current.CustomEffectActive = !current.CustomEffectActive;
                         }
                         packet.Write((byte)msgType);
-                        packet.Write(whoAmI);
+                        packet.Write((byte)whoAmI);
                         packet.Write(modPlayerIndex);
                         packet.Send(ignoreClient: whoAmI);
                     }
                     else
                     {
-                        byte whoam = reader.ReadByte();
+                        byte switchinPlayer = reader.ReadByte();
                         ushort modPlayerIndex2 = reader.ReadUInt16();
-                        if (Main.player[whoam].ModPlayers[modPlayerIndex2].GetType().IsSubclassOf(typeof(PetEffect)))
+                        if (Main.player[switchinPlayer].ModPlayers[modPlayerIndex2].GetType().IsSubclassOf(typeof(PetEffect)))
                         {
-                            PetEffect current = (PetEffect)Main.player[whoam].ModPlayers[modPlayerIndex2];
+                            PetEffect current = (PetEffect)Main.player[switchinPlayer].ModPlayers[modPlayerIndex2];
                             current.CustomEffectActive = !current.CustomEffectActive;
                         }
                     }
-                    break;
-                case MessageType.AbilitySwitch:
                     break;
 
                 //Achievement messages, these are received by the Multiplayer Client
@@ -229,6 +225,36 @@ namespace PetsOverhaul
                     break;
                 case MessageType.BlackCat:
                     HandleBasicSyncMessage(EasyPlayer().GetModPlayer<BlackCat>().Moonlight);
+                    break;
+                case MessageType.Lizard:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<Lizard>().Decoy);
+                    break;
+                case MessageType.Moonling:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<Moonling>().SwapClass);
+                    break;
+                case MessageType.PhantasmalDragonSpell:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<PhantasmalDragon>().CastSpell);
+                    break;
+                case MessageType.PhantasmalDragonAbilitySwap:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<PhantasmalDragon>().SwitchSpell);
+                    break;
+                case MessageType.SlimePrince:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<SlimePrince>().Summon);
+                    break;
+                case MessageType.SugarGliderGlide: //Currently unused
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<SugarGlider>().Glide);
+                    break;
+                case MessageType.SugarGliderAbility:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<SugarGlider>().Shuricorn);
+                    break;
+                case MessageType.SuspiciousEye:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<SuspiciousEye>().ForceEnrage);
+                    break;
+                case MessageType.TinyDeerclops:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<TinyDeerclops>().InitiateStrike);
+                    break;
+                case MessageType.Turtle:
+                    HandleBasicSyncMessage(EasyPlayer().GetModPlayer<Turtle>().ShellUp);
                     break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
