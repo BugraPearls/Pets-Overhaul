@@ -4,6 +4,7 @@ using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs;
+using PetsOverhaul.PetEffects;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -539,6 +540,36 @@ namespace PetsOverhaul.Systems
                 PetGlobalTile.AddToList(X, Y);
             }
             return PlacedFlower;
+        }
+
+        public void SyncDataOfThis(BinaryReader reader)
+        {
+            timer = reader.ReadInt32();
+        }
+
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)MessageType.PetPlayerSync);
+            packet.Write((byte)Player.whoAmI);
+
+            packet.Write(timer);
+
+            packet.Send(toWho, fromWho);
+        }
+        public override void CopyClientState(ModPlayer targetCopy)
+        {
+            PetModPlayer clone = (PetModPlayer)targetCopy;
+            clone.timer = timer;
+        }
+        public override void SendClientChanges(ModPlayer clientPlayer)
+        {
+            PetModPlayer clone = (PetModPlayer)clientPlayer;
+
+            if (inCombatTimer != clone.inCombatTimer || timer != clone.timer)
+            {
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+            }
         }
 
         public override void SaveData(TagCompound tag)

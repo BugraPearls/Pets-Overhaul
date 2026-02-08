@@ -281,6 +281,41 @@ namespace PetsOverhaul
                         }
                     }
                     break;
+                case MessageType.MoonlingCurrent:
+                    byte playerNumber = reader.ReadByte();
+                    Moonling moonling = Main.player[playerNumber].GetModPlayer<Moonling>();
+                    moonling.currentClass = reader.ReadByte();
+
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        moonling.SyncPlayer(-1, whoAmI, false);
+                    }
+                    break;
+                case MessageType.PhantasmalCurrentAbility:
+                    byte playerNo = reader.ReadByte();
+                    PhantasmalDragon phantasmal = Main.player[playerNo].GetModPlayer<PhantasmalDragon>();
+                    phantasmal.currentAbility = reader.ReadByte();
+
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        phantasmal.SyncPlayer(-1, whoAmI, false);
+                    }
+                    break;
+
+
+
+
+                case MessageType.PetPlayerSync:
+                    byte petPlayer = reader.ReadByte();
+                    PetModPlayer petModPlayer = Main.player[petPlayer].GetModPlayer<PetModPlayer>();
+
+                    petModPlayer.timer = reader.ReadInt32();
+
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        petModPlayer.SyncPlayer(-1, whoAmI, false);
+                    }
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }

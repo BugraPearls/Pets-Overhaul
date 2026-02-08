@@ -67,7 +67,7 @@ namespace PetsOverhaul.PetEffects
             PetUtils.CircularDustEffect(Player.Center, 170, alertRadius, 80);
             if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                 SoundEngine.PlaySound(SoundID.Item37 with { Pitch = 1f }, Player.Center);
-            EmoteBubble.MakePlayerEmote(Player, EmoteID.EmotionAlert);
+            EmoteBubble.MakePlayerEmote(Player, EmoteID.EmotionAlert,false);
             alertEnemies = 1;
             foreach (var npc in Main.ActiveNPCs)
             {

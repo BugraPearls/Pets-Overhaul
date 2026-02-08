@@ -5,6 +5,7 @@
     {
         MultiplayerDebugText,
 
+        PetPlayerSync,
         ShieldFullAbsorb,
         CustomEffectSwitch,
         SeaCreatureOnKill,
@@ -24,8 +25,10 @@
         BlackCat,
         Lizard,
         Moonling,
+        MoonlingCurrent,
         PhantasmalDragonSpell,
         PhantasmalDragonAbilitySwap,
+        PhantasmalCurrentAbility,
         SlimePrince,
         SugarGliderGlide,
         SugarGliderAbility,
@@ -33,6 +36,7 @@
         SuspiciousEye,
         TinyDeerclops,
         Turtle,
+        P
     }
     public enum EntitySourcePetIDs
     {

@@ -6,6 +6,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -142,6 +143,28 @@ namespace PetsOverhaul.PetEffects
                     break;
             }
         }
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)MessageType.PhantasmalCurrentAbility);
+            packet.Write((byte)Player.whoAmI);
+            packet.Write((byte)currentAbility);
+            packet.Send(toWho,fromWho);
+        }
+        public override void CopyClientState(ModPlayer targetCopy)
+        {
+            PhantasmalDragon clone = (PhantasmalDragon)targetCopy;
+            clone.currentAbility = currentAbility;
+        }
+        public override void SendClientChanges(ModPlayer clientPlayer)
+        {
+            PhantasmalDragon clone = (PhantasmalDragon)clientPlayer;
+
+            if (currentAbility != clone.currentAbility)
+            {
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+            }
+        }
         public override void SaveData(TagCompound tag)
         {
             tag.Add("CurrentSpell", currentAbility);
@@ -154,7 +177,7 @@ namespace PetsOverhaul.PetEffects
             }
         }
     }
-    public sealed class LunaticCultistFriendlyProjectiles : GlobalProjectile //NOTE: Could not run the projectiles on Server properly, other players currently cannot see the projectiles, but they work fine in Multiplayer.
+    public sealed class LunaticCultistFriendlyProjectiles : GlobalProjectile
     {
         public override bool InstancePerEntity => true;
         public bool fromPhantasmalPet = false;

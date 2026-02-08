@@ -132,11 +132,34 @@ namespace PetsOverhaul.PetEffects
                 BasicSyncMessage(MessageType.Moonling);
             }
         }
+
         public void SwapClass()
         {
             currentClass++;
             if (currentClass >= Tooltips.Count)
                 currentClass = 0;
+        }
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)MessageType.MoonlingCurrent);
+            packet.Write((byte)Player.whoAmI);
+            packet.Write((byte)currentClass);
+            packet.Send(toWho, fromWho);
+        }
+        public override void CopyClientState(ModPlayer targetCopy)
+        {
+            Moonling clone = (Moonling)targetCopy;
+            clone.currentClass = currentClass;
+        }
+        public override void SendClientChanges(ModPlayer clientPlayer)
+        {
+            Moonling clone = (Moonling)clientPlayer;
+
+            if (currentClass != clone.currentClass)
+            {
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+            }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
