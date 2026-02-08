@@ -19,6 +19,13 @@ namespace PetsOverhaul.LightPets
             if (Main.HoverItem.type == LightPetItemID && PetKeybinds.PetCustomSwitch.JustPressed) //We want custom effect to swap when hovered over the item of same id
             {
                 CustomActive = !CustomActive;
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
+                    packet.Write((byte)MessageType.CustomEffectSwitch);
+                    packet.Write(Index);
+                    packet.Send();
+                }
             }
         }
         public override void PreUpdate()

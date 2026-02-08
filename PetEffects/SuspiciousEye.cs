@@ -46,17 +46,22 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                if (Player.statLife > Player.statLifeMax2 / 2)
-                {
-                    int damageTaken = (int)Math.Floor((float)Player.statLife % (Player.statLifeMax2 / 2));
-                    if (damageTaken == 0)
-                        damageTaken = Player.statLifeMax2 / 2;
-                    Player.Hurt(new Player.HurtInfo() with { Damage = damageTaken, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason("If you're seeing this death message, report it through our discord or steam page.") });
-                    Pet.AddShield((int)(damageTaken * forcedEnrageShield), shieldTime);
-                }
-                else
-                    Pet.inCombatTimer = Pet.inCombatTimerMax;
+                ForceEnrage();
+                BasicSyncMessage(MessageType.SuspiciousEye);
             }
+        }
+        public void ForceEnrage()
+        {
+            if (Player.statLife > Player.statLifeMax2 / 2)
+            {
+                int damageTaken = (int)Math.Floor((float)Player.statLife % (Player.statLifeMax2 / 2));
+                if (damageTaken == 0)
+                    damageTaken = Player.statLifeMax2 / 2;
+                Player.Hurt(new Player.HurtInfo() with { Damage = damageTaken, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason("If you're seeing this death message, report it through our discord or steam page.") });
+                Pet.AddShield((int)(damageTaken * forcedEnrageShield), shieldTime);
+            }
+            else
+                Pet.inCombatTimer = Pet.inCombatTimerMax;
         }
         public override void PostUpdateMiscEffects()
         {

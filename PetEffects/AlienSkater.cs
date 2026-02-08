@@ -41,14 +41,19 @@ namespace PetsOverhaul.PetEffects
         {
             if (Player.wingTime > 0 && PetIsEquipped() && triggersSet.Jump && Player.dead == false && Player.equippedWings is not null)
             {
-                float total = Math.Abs(Player.velocity.Y) + Math.Abs(Player.velocity.X);
-                float xRemain = Math.Abs(Player.velocity.X) / total;
-                if (xRemain is float.NaN)
-                {
-                    xRemain = 0;
-                }
-                wingTimeBank += Math.Abs(xRemain * wingTimeStore);
+                Fly();
+                BasicSyncMessage(MessageType.AlienSkater);
             }
+        }
+        public void Fly()
+        {
+            float total = Math.Abs(Player.velocity.Y) + Math.Abs(Player.velocity.X);
+            float xRemain = Math.Abs(Player.velocity.X) / total;
+            if (xRemain is float.NaN)
+            {
+                xRemain = 0;
+            }
+            wingTimeBank += Math.Abs(xRemain * wingTimeStore);
         }
     }
     public sealed class AlienSkaterWing : GlobalItem

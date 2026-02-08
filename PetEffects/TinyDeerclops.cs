@@ -208,13 +208,18 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                initiateStrike = 90;
-                Pet.timer = Pet.timerMax;
-                int damageVal = Math.Min(CurrentTotalDmgStored, (int)(Player.statLifeMax2 * maxHealthPerc));
-                consumedDamage = damageVal;
-                Pet.AddShield((int)(damageVal * shieldMult), shieldDuration);
-                deerclopsTakenDamage.Clear();
+                InitiateStrike();
+                BasicSyncMessage(MessageType.TinyDeerclops);
             }
+        }
+        public void InitiateStrike()
+        {
+            initiateStrike = 90;
+            Pet.timer = Pet.timerMax;
+            int damageVal = Math.Min(CurrentTotalDmgStored, (int)(Player.statLifeMax2 * maxHealthPerc));
+            consumedDamage = damageVal;
+            Pet.AddShield((int)(damageVal * shieldMult), shieldDuration);
+            deerclopsTakenDamage.Clear();
         }
     }
     internal sealed class DeerclopsDefIgnore : GlobalNPC

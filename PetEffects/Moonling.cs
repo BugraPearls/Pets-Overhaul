@@ -128,10 +128,15 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetKeybinds.PetAbilitySwitch.JustPressed)
             {
-                currentClass++;
-                if (currentClass >= Tooltips.Count)
-                    currentClass = 0;
+                SwapClass();
+                BasicSyncMessage(MessageType.Moonling);
             }
+        }
+        public void SwapClass()
+        {
+            currentClass++;
+            if (currentClass >= Tooltips.Count)
+                currentClass = 0;
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

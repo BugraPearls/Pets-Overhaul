@@ -49,14 +49,19 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                SoundEngine.PlaySound(SoundID.Item44 with { PitchVariance = 1.6f, Volume = 0.6f }, Player.Center);
-                NPC npc = NPC.NewNPCDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)Player.position.X, (int)Player.position.Y, ModContent.NPCType<SlimeServant>());
-                npc.GetGlobalNPC<SlimeServantOwner>().Owner = Player.whoAmI;
-                npc.defense += Player.statDefense * defMult;
-                npc.lifeMax += (int)(Player.statLifeMax2 * hpMult);
-                npc.life = npc.lifeMax;
-                Pet.timer = Pet.timerMax;
+                Summon();
+                BasicSyncMessage(MessageType.SlimePrince);
             }
+        }
+        public void Summon()
+        {
+            SoundEngine.PlaySound(SoundID.Item44 with { PitchVariance = 1.6f, Volume = 0.6f }, Player.Center);
+            NPC npc = NPC.NewNPCDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetNPC), (int)Player.position.X, (int)Player.position.Y, ModContent.NPCType<SlimeServant>());
+            npc.GetGlobalNPC<SlimeServantOwner>().Owner = Player.whoAmI;
+            npc.defense += Player.statDefense * defMult;
+            npc.lifeMax += (int)(Player.statLifeMax2 * hpMult);
+            npc.life = npc.lifeMax;
+            Pet.timer = Pet.timerMax;
         }
     }
     public sealed class KingSlimePetItem : PetTooltip

@@ -107,64 +107,69 @@ namespace PetsOverhaul.PetEffects
         {
             if (Main.dayTime == false && Pet.AbilityPressCheck())
             {
-                if (PetIsEquipped())
+                Moonlight();
+                BasicSyncMessage(MessageType.BlackCat);
+            }
+        }
+        public void Moonlight()
+        {
+            if (PetIsEquipped())
+            {
+                if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                 {
-                    if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
+                    SoundEngine.PlaySound(SoundID.Item29 with { PitchRange = (-1f, -0.8f) }, Player.Center);
+                }
+
+                int moonlightRoll = 0;
+                while (moonlightRoll == 0) //keeps re-rolling if we get 0 from rand.Next().
+                {
+                    if (Player.luck == 0)
                     {
-                        SoundEngine.PlaySound(SoundID.Item29 with { PitchRange = (-1f, -0.8f) }, Player.Center);
+                        moonlightRoll = Main.rand.Next(moonlightLowest, moonlightHighest + 1);
                     }
-
-                    int moonlightRoll = 0;
-                    while (moonlightRoll == 0) //keeps re-rolling if we get 0 from rand.Next().
+                    else if (Player.luck > 0)
                     {
-                        if (Player.luck == 0)
-                        {
-                            moonlightRoll = Main.rand.Next(moonlightLowest, moonlightHighest + 1);
-                        }
-                        else if (Player.luck > 0)
-                        {
-                            moonlightRoll = Main.rand.Next(moonlightLowest, PetUtils.Randomizer((int)(moonlightHighest * (Player.luck + 1) * 100)) + 1);
-                        }
-                        else
-                        {
-                            moonlightRoll = Main.rand.Next(PetUtils.Randomizer((int)(moonlightLowest * (Player.luck * -1 + 1) * 100)), moonlightHighest + 1);
-                        }
-                    }
-
-                    if (moonlightRoll < 0)
-                    {
-                        moonlightRoll *= -1;
-                        string reason = Main.rand.Next(5) switch
-                        {
-                            0 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
-                            1 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath2"),
-                            2 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath3"),
-                            3 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath4"),
-                            4 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath5"),
-                            _ => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
-                        };
-                        Player.Hurt(new Player.HurtInfo() with { Damage = moonlightRoll, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)) });
-
-                        if (Main.myPlayer == Player.whoAmI)
-                        ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value++;
+                        moonlightRoll = Main.rand.Next(moonlightLowest, PetUtils.Randomizer((int)(moonlightHighest * (Player.luck + 1) * 100)) + 1);
                     }
                     else
                     {
-                        Pet.PetRecovery(moonlightRoll, 1f, isLifesteal: false);
-                        if (Main.myPlayer == Player.whoAmI)
-                        ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value = 0;
+                        moonlightRoll = Main.rand.Next(PetUtils.Randomizer((int)(moonlightLowest * (Player.luck * -1 + 1) * 100)), moonlightHighest + 1);
                     }
-                    Pet.timer = Pet.timerMax;
                 }
-                else if (PetIsEquippedForCustom())
+
+                if (moonlightRoll < 0)
                 {
-                    if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
+                    moonlightRoll *= -1;
+                    string reason = Main.rand.Next(5) switch
                     {
-                        SoundEngine.PlaySound(SoundID.Item29 with { PitchRange = (-1f, -0.8f) }, Player.Center);
-                    }
-                    lunarVeilDuration = lunarVeilDurationMax;
-                    Pet.timer = Pet.timerMax;
+                        0 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
+                        1 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath2"),
+                        2 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath3"),
+                        3 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath4"),
+                        4 => PetUtils.LocVal("PetItemTooltips.BlackCatDeath5"),
+                        _ => PetUtils.LocVal("PetItemTooltips.BlackCatDeath1"),
+                    };
+                    Player.Hurt(new Player.HurtInfo() with { Damage = moonlightRoll, Dodgeable = false, Knockback = 0, DamageSource = PlayerDeathReason.ByCustomReason(reason.Replace("<name>", Player.name)) });
+
+                    if (Main.myPlayer == Player.whoAmI)
+                        ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value++;
                 }
+                else
+                {
+                    Pet.PetRecovery(moonlightRoll, 1f, isLifesteal: false);
+                    if (Main.myPlayer == Player.whoAmI)
+                        ModContent.GetInstance<BringsBadLuckAfterall>().Unluckies.Value = 0;
+                }
+                Pet.timer = Pet.timerMax;
+            }
+            else if (PetIsEquippedForCustom())
+            {
+                if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
+                {
+                    SoundEngine.PlaySound(SoundID.Item29 with { PitchRange = (-1f, -0.8f) }, Player.Center);
+                }
+                lunarVeilDuration = lunarVeilDurationMax;
+                Pet.timer = Pet.timerMax;
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)

@@ -58,25 +58,30 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                PetUtils.CircularDustEffect(Player.Center, 170, alertRadius, 80);
-                if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
-                    SoundEngine.PlaySound(SoundID.Item37 with { Pitch = 1f }, Player.Center);
-                EmoteBubble.MakePlayerEmote(Player, EmoteID.EmotionAlert);
-                alertEnemies = 1;
-                foreach (var npc in Main.ActiveNPCs)
-                {
-                    if (Player.Distance(npc.Center) < alertRadius)
-                    {
-                        alertEnemies++;
-                    }
-                }
-                if (alertEnemies > alertEnemiesMax)
-                {
-                    alertEnemies = alertEnemiesMax;
-                }
-                alertTimer = alertTime;
-                Pet.timer = Pet.timerMax;
+                Alert();
+                BasicSyncMessage(MessageType.BabyRedPanda);
             }
+        }
+        public void Alert()
+        {
+            PetUtils.CircularDustEffect(Player.Center, 170, alertRadius, 80);
+            if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
+                SoundEngine.PlaySound(SoundID.Item37 with { Pitch = 1f }, Player.Center);
+            EmoteBubble.MakePlayerEmote(Player, EmoteID.EmotionAlert);
+            alertEnemies = 1;
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (Player.Distance(npc.Center) < alertRadius)
+                {
+                    alertEnemies++;
+                }
+            }
+            if (alertEnemies > alertEnemiesMax)
+            {
+                alertEnemies = alertEnemiesMax;
+            }
+            alertTimer = alertTime;
+            Pet.timer = Pet.timerMax;
         }
         public override void Load()
         {

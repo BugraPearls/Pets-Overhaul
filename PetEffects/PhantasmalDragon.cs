@@ -84,52 +84,62 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetKeybinds.PetAbilitySwitch.JustPressed)
             {
-                currentAbility++;
-                if (currentAbility > 2)
-                    currentAbility = 0;
+                SwitchSpell();
+                BasicSyncMessage(MessageType.PhantasmalDragonAbilitySwap);
             }
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                Pet.timer = Pet.timerMax;
-                switch (currentAbility)
-                {
-                    case 0: //Ice
-                        Vector2 velocity = Main.rand.NextVector2CircularEdge(4f, 4f);
-                        Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, Pet.PetDamage(iceBase, DamageClass.Generic), 0, Player.whoAmI, 0f, 1f);
-                        petProjectile.DamageType = DamageClass.Generic;
-                        petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
-                        petProjectile.netUpdate = true;
+                CastSpell();
+                BasicSyncMessage(MessageType.PhantasmalDragonSpell);
+            }
+        }
+        public void SwitchSpell()
+        {
+            currentAbility++;
+            if (currentAbility > 2)
+                currentAbility = 0;
+        }
+        public void CastSpell()
+        {
+            Pet.timer = Pet.timerMax; //SO RN WE CAN GET THIS WORKING ON ANOTHER CLEINT, BUT MAIN MOUSEWORLD IS STATIC, SO OTHER CLIENTS THINK ITS THEIR OWN MOUSE. ALSO THE CURRENTABILITY FIELD IS NOT SAVED.
+            switch (currentAbility)
+            {
+                case 0: //Ice
+                    Vector2 velocity = Main.rand.NextVector2CircularEdge(4f, 4f);
+                    Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, Pet.PetDamage(iceBase, DamageClass.Generic), 0, Player.whoAmI, 0f, 1f);
+                    petProjectile.DamageType = DamageClass.Generic;
+                    petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
+                    petProjectile.netUpdate = true;
 
-                        if (achievementDuration <= 0)
-                        {
-                            achievementDuration = 1080;
-                        }
-                        achievementCasts[0] = true;
-                        break;
-                    case 1: //Lightning
-                        Projectile petProj = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
-                        petProj.DamageType = DamageClass.Generic;
-                        petProj.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
-                        petProj.netUpdate = true;
+                    if (achievementDuration <= 0)
+                    {
+                        achievementDuration = 1080;
+                    }
+                    achievementCasts[0] = true;
+                    break;
+                case 1: //Lightning
+                    Projectile petProj = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
+                    petProj.DamageType = DamageClass.Generic;
+                    petProj.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
+                    petProj.netUpdate = true;
 
-                        if (achievementDuration <= 0)
-                        {
-                            achievementDuration = 1080;
-                        }
-                        achievementCasts[1] = true;
-                        break;
-                    case 2: //Fire
-                        fireVolley = fireVolleyFrames;
+                    if (achievementDuration <= 0)
+                    {
+                        achievementDuration = 1080;
+                    }
+                    achievementCasts[1] = true;
+                    break;
+                case 2: //Fire
+                    fireVolley = fireVolleyFrames;
 
-                        if (achievementDuration <= 0)
-                        {
-                            achievementDuration = 1080;
-                        }
-                        achievementCasts[2] = true;
-                        break;
-                    default:
-                        break;
-                }
+                    if (achievementDuration <= 0)
+                    {
+                        achievementDuration = 1080;
+                    }
+                    achievementCasts[2] = true;
+                    break;
+                default:
+                    break;
             }
         }
         public override void SaveData(TagCompound tag)

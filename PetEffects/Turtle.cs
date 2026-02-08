@@ -86,11 +86,16 @@ namespace PetsOverhaul.PetEffects
         {
             if (Pet.AbilityPressCheck() && PetIsEquipped())
             {
-                timer = shellHardenDuration;
-                currentStacks = shellHardenStacks;
-                Pet.timer = Pet.timerMax;
-                Player.AddBuff(ModContent.BuffType<HardenedShell>(), shellHardenDuration);
+                ShellUp();
+                BasicSyncMessage(MessageType.Turtle);
             }
+        }
+        public void ShellUp()
+        {
+            timer = shellHardenDuration;
+            currentStacks = shellHardenStacks;
+            Pet.timer = Pet.timerMax;
+            Player.AddBuff(ModContent.BuffType<HardenedShell>(), shellHardenDuration);
         }
     }
     public sealed class Seaweed : PetTooltip
