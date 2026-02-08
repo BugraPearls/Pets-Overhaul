@@ -29,6 +29,10 @@
         SlimePrince,
         SugarGliderGlide,
         SugarGliderAbility,
+        SugarGliderAbilityHit,
+        SuspiciousEye,
+        TinyDeerclops,
+        Turtle,
     }
     public enum EntitySourcePetIDs
     {

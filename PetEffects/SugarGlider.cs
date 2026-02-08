@@ -19,6 +19,7 @@ namespace PetsOverhaul.PetEffects
         public int shuricornDamage = 20;
         public const int shuricornDuration = 300;
         public float shuricornKb = 7f;
+        public int shuricornTaggedNpc = -1;
         public override PetClass PetClassPrimary => PetClassID.Mobility;
         public override bool HasCustomEffect => true; //Dedicated to sskToji
         public override PetClass CustomPrimaryClass => PetClassID.Mobility;
@@ -26,38 +27,53 @@ namespace PetsOverhaul.PetEffects
         public override int PetAbilityCooldown => CustomEffectActive ? shuricornCooldown : base.PetAbilityCooldown;
         public override void ExtraProcessTriggers(TriggersSet triggersSet)
         {
-            if (Player.velocity.Y > 0 && triggersSet.Jump && Player.dead == false)
+            if (Player.velocity.Y > 0 && triggersSet.Jump && Player.dead == false && Player.CurrentPet() == PetItemID)
             {
-                if (PetIsEquipped())
+                Glide();
+                //BasicSyncMessage(MessageType.SugarGliderGlide); //This currently just doesn't work. Makes 0 sense why it doesn't work.
+            }
+            if (PetIsEquippedForCustom() && Player.dead == false && PetKeybinds.UsePetAbility.JustPressed)
+            {
+                Shuricorn();
+                BasicSyncMessage(MessageType.SugarGliderAbility);
+            }
+        }
+        public void Glide()
+        {
+            if (PetIsEquipped())
+            {
+                Player.maxFallSpeed *= glideSpeedMult;
+                Player.fallStart = (int)(Player.position.Y / 16.0);
+            }
+            if (PetIsEquippedForCustom())
+            {
+                Player.maxFallSpeed *= customGlideWeak;
+                Player.fallStart = (int)(Player.position.Y / 16.0);
+            }
+        }
+        public void Shuricorn()
+        {
+            if (shuricornTaggedNpc >= 0 && Main.npc[shuricornTaggedNpc].active)
+            {
+                NPC npc = Main.npc[shuricornTaggedNpc];
+
+                if (WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
                 {
-                    Player.maxFallSpeed *= glideSpeedMult;
-                    Player.fallStart = (int)(Player.position.Y / 16.0);
+                    Player.SetImmuneTimeForAllTypes(15);
+                    Player.Center = npc.Center;
+                    PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck), Player.whoAmI);
+                    shuricornTaggedNpc = -1;
                 }
-                else if (PetIsEquippedForCustom())
+                else if (Main.myPlayer == Player.whoAmI)
                 {
-                    Player.maxFallSpeed *= customGlideWeak;
-                    Player.fallStart = (int)(Player.position.Y / 16.0);
+                    CombatText.NewText(Player.getRect(), Color.Red, PetUtils.LocVal("Misc.EnemyUntargetable"));
                 }
             }
-            if (PetIsEquippedForCustom() && Pet.AbilityPressCheck())
+            else if (Pet.timer <= 0)
             {
                 Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
                 Player.velocity.X = 10 * Player.direction * -1;
                 Pet.timer = Pet.timerMax;
-            }
-            if (PetIsEquippedForCustom() && Player.dead == false && PetKeybinds.UsePetAbility.JustPressed)
-            {
-                foreach (var npc in Main.ActiveNPCs)
-                {
-                    if (npc.TryGetGlobalNPC(out PetGlobalNPC enemy) && enemy.shuricornMark > 0 && WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
-                    {
-                        Player.SetImmuneTimeForAllTypes(15);
-                        Player.Center = npc.Center;
-                        PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck),Player.whoAmI);
-                        enemy.shuricornMark = 0;
-                        break;
-                    }
-                }
             }
         }
         public override void SaveData(TagCompound tag)

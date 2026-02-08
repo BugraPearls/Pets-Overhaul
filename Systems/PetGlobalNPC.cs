@@ -76,7 +76,7 @@ namespace PetsOverhaul.Systems
         public int playerThatFishedUp;
         public int maulCounter;
         public int curseCounter;
-        public int shuricornMark = 0;
+        public int shuricornMark;
 
         public override bool InstancePerEntity => true;
 

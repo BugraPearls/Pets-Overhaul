@@ -256,6 +256,31 @@ namespace PetsOverhaul
                 case MessageType.Turtle:
                     HandleBasicSyncMessage(EasyPlayer().GetModPlayer<Turtle>().ShellUp);
                     break;
+                case MessageType.SugarGliderAbilityHit:
+                    short npcWho = reader.ReadInt16();
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)msgType);
+                        packet.Write(npcWho);
+                        packet.Write((byte)whoAmI);
+                        packet.Send(ignoreClient: whoAmI);
+
+                        Main.player[whoAmI].GetModPlayer<SugarGlider>().shuricornTaggedNpc = npcWho;
+                        if (Main.npc[npcWho].active && Main.npc[npcWho].TryGetGlobalNPC(out PetGlobalNPC shuricornNpc))
+                        {
+                            shuricornNpc.shuricornMark = 300;
+                        }
+                    }
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        Main.player[reader.ReadByte()].GetModPlayer<SugarGlider>().shuricornTaggedNpc = npcWho;
+                        if (Main.npc[npcWho].active && Main.npc[npcWho].TryGetGlobalNPC(out PetGlobalNPC shuricornNpc))
+                        {
+                            shuricornNpc.shuricornMark = 300;
+                        }
+                    }
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }
