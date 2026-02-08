@@ -48,6 +48,7 @@ Mods: {
 				This Pet will not be visible by no means.
 				This Pet is saved & switched with your selected Loadout.
 				''' */
+			// EnemyUntargetable: Unaccessible Target!
 		}
 
 		Classes: {
