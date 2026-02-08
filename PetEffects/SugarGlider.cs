@@ -57,8 +57,9 @@ namespace PetsOverhaul.PetEffects
             {
                 NPC npc = Main.npc[shuricornTaggedNpc];
 
-                if (WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false)
+                if (WorldGen.SolidTile(Utils.ToTileCoordinates(npc.Center)) == false && npc.TryGetGlobalNPC(out PetGlobalNPC petnpc))
                 {
+                    petnpc.shuricornMark = 0;
                     Player.SetImmuneTimeForAllTypes(15);
                     Player.Center = npc.Center;
                     PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck), Player.whoAmI);
