@@ -14,6 +14,9 @@ Additions
 - Extremely rare Mastery Shard item dropping from any mob and 100% chance only once per world from select bosses allowing you to craft Master Mode exclusive Pets in Non-Master Mode worlds!
 - Added Crafting Recipes for every single Pet, although costly, allowing you to get the Pet you want in an alternative way if you can't obtain it the original way! They all are crafted on a Pet Forge, which is bought from Pet Tamer, and contain the Pet Food item, which can be obtained by various means, or again bought from Pet Tamer.
 
+
+If you're interested in effects of some other Pet, but you're wondering if you cannot use your favourite Pet from another Mod? Don't worry. Pets Overhaul adds an "Active Pet Slot", which you can put your desired Pet to have their benefits active.
+
 Pets Overhaul currently supports Simplified Chinese, Russian and Brazilian Portuguese besides English for localization options. (See below for credits)
 
 Find out about Pet Effects etc. on our wiki page! (Credits to Th3Moo5e for their works on wiki)
