@@ -202,7 +202,7 @@ namespace PetsOverhaul.Systems
             Copper = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.CopperBar)}", [.. copper]);
             RecipeGroup.RegisterGroup(nameof(ItemID.CopperBar), Copper);
             Silver = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.SilverBar)}", [.. silver]);
-            RecipeGroup.RegisterGroup(nameof(ItemID.SilverBar), Silver);
+            RecipeGroup.RegisterGroup("AnySilverBar", Silver); //For whatever reason recipe group "SilverBar" exists, but vanilla doesn't seem to actually have it? So we have to name it AnySilverBar.
             Gold = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.GoldBar)}", [.. gold]);
             RecipeGroup.RegisterGroup(nameof(ItemID.GoldBar), Gold);
             Crowns = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.GoldCrown)}", [.. crowns]);
