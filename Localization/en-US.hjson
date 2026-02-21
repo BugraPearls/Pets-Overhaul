@@ -1605,20 +1605,12 @@ Mods: {
 
 			Mauled: {
 				DisplayName: Mauled
-				Description:
-					'''
-					A Werewolf has bruised you down!
-					Current stacks: <MaulCounter>.
-					'''
+				Description: Got mauled by a Baby Werewolf! Weaknesses may get worse...
 			}
 
 			QueensDamnation: {
 				DisplayName: Queen's Damnation
-				Description:
-					'''
-					The Wyvern Queen has cursed you.
-					Current stacks: <CurseCounter>.
-					'''
+				Description: The Wyvern Queen has cursed this creature. Defense is gradually lowered.
 			}
 
 			EocPetEnrage: {

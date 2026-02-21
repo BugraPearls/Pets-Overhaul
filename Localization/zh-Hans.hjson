@@ -1555,20 +1555,12 @@ Mods: {
 
 			Mauled: {
 				DisplayName: 重创
-				Description:
-					'''
-					一只狼人把你打得遍体鳞伤！
-					当前层数: <MaulCounter>
-					'''
+				Description: 一只狼人把你打得遍体鳞伤！
 			}
 
 			QueensDamnation: {
 				DisplayName: 女王的诅咒
-				Description:
-					'''
-					飞龙女王诅咒了你
-					当前层数：<CurseCounter>
-					'''
+				Description: 飞龙女王诅咒了你
 			}
 
 			EocPetEnrage: {

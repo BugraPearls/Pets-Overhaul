@@ -1601,20 +1601,12 @@ Mods: {
 
 			Mauled: {
 				DisplayName: Искалечен
-				Description:
-					'''
-					Оборотень нанёс вам серьёзные травмы!
-					Текущие стаки: <MaulCounter>.
-					'''
+				Description: Оборотень нанёс вам серьёзные травмы!
 			}
 
 			QueensDamnation: {
 				DisplayName: Проклятие Королевы
-				Description:
-					'''
-					Королева Виверн наложила на вас проклятие.
-					Текущие стаки: <CurseCounter>.
-					'''
+				Description: Королева Виверн наложила на вас проклятие.
 			}
 
 			EocPetEnrage: {

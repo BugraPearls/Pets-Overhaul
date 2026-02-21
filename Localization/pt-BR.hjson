@@ -1623,20 +1623,12 @@ Mods: {
 
 			Mauled: {
 				DisplayName: Espancado
-				Description:
-					'''
-					Um Lobisomen te arrebentou!
-					Acúmulo Atual: <MaulCounter>.
-					'''
+				Description: Um Lobisomen te arrebentou!
 			}
 
 			QueensDamnation: {
 				DisplayName: Condenação da Rainha
-				Description:
-					'''
-					A rainha dragão te amaldiçõou.
-					Acúmulo Máximo: <CurseCounter>.
-					'''
+				Description: A rainha dragão te amaldiçõou.
 			}
 
 			EocPetEnrage: {
