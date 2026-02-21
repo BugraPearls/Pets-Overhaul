@@ -39,8 +39,8 @@ namespace PetsOverhaul.PetEffects
         public int fireBurnTime = 180;
         public float fireKnockback = 3.8f;
 
-        private int achievementDuration = 0;
-        private bool[] achievementCasts = [false, false, false]; //0 = ice, 1 = lightning, 2 = fire
+        public const int AchievementTimerAmount = 1080;
+        private int[] achievementCasts = [0, 0, 0]; //0 = ice, 1 = lightning, 2 = fire. These are timers, if they are all above 0, Achievement is completed.
         public string CurrentSpellName => currentAbility switch
         {
             0 => PetUtils.LocVal("PetItemTooltips.DragonIceName"),
@@ -72,13 +72,24 @@ namespace PetsOverhaul.PetEffects
             if (fireVolley < 0)
                 fireVolley = 0;
 
-            if (achievementDuration > 0)
+            achievementCasts[0]--;
+            achievementCasts[1]--;
+            achievementCasts[2]--;
+            if (achievementCasts[0] < 0)
             {
-                achievementDuration--;
-                if (achievementCasts[0] && achievementCasts[1] && achievementCasts[2])
-                {
-                    PetUtils.DoAchievementOnPlayer<AncientSorcery>(Player.whoAmI);
-                }
+                achievementCasts[0] = 0;
+            }
+            if (achievementCasts[1] < 0)
+            {
+                achievementCasts[1] = 0;
+            }
+            if (achievementCasts[2] < 0)
+            {
+                achievementCasts[2] = 0;
+            }
+            if (achievementCasts[0] > 0 && achievementCasts[1]> 0 && achievementCasts[2] > 0)
+            {
+                PetUtils.DoAchievementOnPlayer<AncientSorcery>(Player.whoAmI);
             }
         }
         public override void ExtraProcessTriggers(TriggersSet triggersSet)
@@ -102,7 +113,7 @@ namespace PetsOverhaul.PetEffects
         }
         public void CastSpell()
         {
-            Pet.timer = Pet.timerMax; //SO RN WE CAN GET THIS WORKING ON ANOTHER CLEINT, BUT MAIN MOUSEWORLD IS STATIC, SO OTHER CLIENTS THINK ITS THEIR OWN MOUSE. ALSO THE CURRENTABILITY FIELD IS NOT SAVED.
+            Pet.timer = Pet.timerMax; //SO RN WE CAN GET THIS WORKING ON ANOTHER CLEINT, BUT MAIN MOUSEWORLD IS STATIC, SO OTHER CLIENTS THINK ITS THEIR OWN MOUSE.
             switch (currentAbility)
             {
                 case 0: //Ice
@@ -111,12 +122,7 @@ namespace PetsOverhaul.PetEffects
                     petProjectile.DamageType = DamageClass.Generic;
                     petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
                     petProjectile.netUpdate = true;
-
-                    if (achievementDuration <= 0)
-                    {
-                        achievementDuration = 1080;
-                    }
-                    achievementCasts[0] = true;
+                        achievementCasts[0] = AchievementTimerAmount;
                     break;
                 case 1: //Lightning
                     Projectile petProj = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
@@ -124,20 +130,12 @@ namespace PetsOverhaul.PetEffects
                     petProj.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
                     petProj.netUpdate = true;
 
-                    if (achievementDuration <= 0)
-                    {
-                        achievementDuration = 1080;
-                    }
-                    achievementCasts[1] = true;
+                    achievementCasts[1] = AchievementTimerAmount;
                     break;
                 case 2: //Fire
                     fireVolley = fireVolleyFrames;
 
-                    if (achievementDuration <= 0)
-                    {
-                        achievementDuration = 1080;
-                    }
-                    achievementCasts[2] = true;
+                    achievementCasts[2] = AchievementTimerAmount;
                     break;
                 default:
                     break;
