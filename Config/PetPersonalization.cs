@@ -55,6 +55,12 @@ namespace PetsOverhaul.Config
         [BackgroundColor(35, 120, 54, 190)]
         public bool EnableModNotice { get; set; }
 
+        [LabelKey("$Mods.PetsOverhaul.Config.ActivePetSlotPosLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.ActivePetSlotPosTooltip")]
+        [DefaultValue(typeof(Vector2), "0.89, 0.485")]
+        [BackgroundColor(35, 120, 54, 190)]
+        public Vector2 ActivePetSlotPos { get; set; }
+
         [DefaultValue(ShieldPosition.HealthBarRight)]
         [LabelKey("$Mods.PetsOverhaul.Config.ShieldLocationLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.ShieldLocationTooltip")]

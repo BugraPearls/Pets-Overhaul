@@ -238,6 +238,12 @@ Mods: {
 				playing sounds upon refreshing, in Frames. (60 frames = 1 second)
 				Changing this has no effect if "Ability sound for short cooldowns" is enabled.
 				'''
+			ActivePetSlotPosLabel: Active Pet Slot Position
+			ActivePetSlotPosTooltip:
+				'''
+				Determines where the Active Pet Slot that is displayed on Misc Equipment menu is on the Screen.
+				Light Pet Slot will be right below where this, the Regular Pet Slot positions at.
+				'''
 		}
 
 		LightPetCombineUI: {

@@ -233,6 +233,12 @@ Mods: {
 				刷新时播放音效，单位：帧（60帧 = 1秒）
 				如果“短时刷新音效”选项为启用状态，修改此项没有任何效果
 				'''
+			// ActivePetSlotPosLabel: Active Pet Slot Position
+			/* ActivePetSlotPosTooltip:
+				'''
+				Determines where the Active Pet Slot that is displayed on Misc. Equipment menu is on the Screen.
+				Light Pet Slot will be right below where this, the Regular Pet Slot positions at.
+				''' */
 		}
 
 		LightPetCombineUI: {

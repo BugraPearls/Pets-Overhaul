@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
 using System.Collections.Generic;
 using Terraria;
@@ -87,12 +88,11 @@ namespace PetsOverhaul.UI
             {
                 HoverText.SetText("");
             }
-            Vector2 pos = new Vector2(Main.screenWidth - 190, Main.screenHeight / 2 - 55);
-            Vector2 posLight = new Vector2(Main.screenWidth - 190, Main.screenHeight / 2 - 10);
-            ActiveRegularUIPetSlot.Left.Set(pos.X, 0);
-            ActiveRegularUIPetSlot.Top.Set(pos.Y, 0);
-            ActiveLightUIPetSlot.Left.Set(posLight.X, 0);
-            ActiveLightUIPetSlot.Top.Set(posLight.Y, 0);
+            Vector2 pos = ModContent.GetInstance<PetPersonalization>().ActivePetSlotPos;
+            ActiveRegularUIPetSlot.Left.Set(0, pos.X);
+            ActiveRegularUIPetSlot.Top.Set(0, pos.Y);
+            ActiveLightUIPetSlot.Left.Set(0, pos.X);
+            ActiveLightUIPetSlot.Top.Set(-45,pos.Y);
             base.Draw(spriteBatch);
         }
     }

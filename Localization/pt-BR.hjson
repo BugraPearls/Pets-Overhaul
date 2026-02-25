@@ -247,6 +247,12 @@ Mods: {
 				reproduzindo sons ao atualizar, em Quadros. (60 quadros = 1 segundo)
 				Alterar isso não tem efeito se "Habilitar som do temporizador de habilidade curta" estiver ativado.
 				'''
+			// ActivePetSlotPosLabel: Active Pet Slot Position
+			/* ActivePetSlotPosTooltip:
+				'''
+				Determines where the Active Pet Slot that is displayed on Misc. Equipment menu is on the Screen.
+				Light Pet Slot will be right below where this, the Regular Pet Slot positions at.
+				''' */
 		}
 
 		LightPetCombineUI: {
