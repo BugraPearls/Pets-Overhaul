@@ -26,8 +26,9 @@ Mods: {
 			CustomLine: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物原本效果]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul（宠物大修）3.8，最新改动：新增 Pets Overhaul 成就与系统改进]
+				[c/90C2AA:Pets Overhaul（宠物大修）3.8.3，最新改动：大量宠物的多人问题修复，以及有效宠物栏（照明宠物栏）]
 				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
+				[c/b4bfc5:浏览我们的Wiki百科：terrariamods.wiki.gg/wiki/Pets_Overhaul]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
 				'''
 			CalamityDetected:
@@ -41,14 +42,13 @@ Mods: {
 			Disabled: 已禁用
 			TownPetBuffTip: 同一时间只能激活一个城镇宠物增益
 			TownPetPetMe: “（抚摸我！）”
-			/* ActivePetSlotHover:
+			ActivePetSlotHover:
 				'''
-				Any Pet Item placed in this slot will have their effects active.
-				It will override the actual Pet Slot.
-				This Pet will not be visible by no means.
-				This Pet is saved & switched with your selected Loadout.
-				''' */
-			// EnemyUntargetable: Unaccessible Target!
+				放在此栏位的宠物会正常应用宠物效果，并覆盖原本的宠物栏
+				此宠物没有任何视觉可见性
+				适配配装栏
+				'''
+			EnemyUntargetable: 无法接近的目标！
 		}
 
 		Classes: {
@@ -233,12 +233,12 @@ Mods: {
 				刷新时播放音效，单位：帧（60帧 = 1秒）
 				如果“短时刷新音效”选项为启用状态，修改此项没有任何效果
 				'''
-			// ActivePetSlotPosLabel: Active Pet Slot Position
-			/* ActivePetSlotPosTooltip:
+			ActivePetSlotPosLabel: 有效宠物栏位置
+			ActivePetSlotPosTooltip:
 				'''
-				Determines where the Active Pet Slot that is displayed on Misc. Equipment menu is on the Screen.
-				Light Pet Slot will be right below where this, the Regular Pet Slot positions at.
-				''' */
+				修改显示在杂项装备上的有效宠物栏在屏幕上的位置
+				照明宠物栏将在这个位置的正下方
+				'''
 		}
 
 		LightPetCombineUI: {
@@ -474,7 +474,7 @@ Mods: {
 				'''
 				按下宠物技能键（<keybind>）以吸收月光
 				 - 随机恢复或受到 <moonlightMin> ~ <moonlightMax>点伤害
-				 - 负数运气会降低该数值，正数运气会提高该数值
+				 - 负数或正数运气会提高伤害或治疗量
 				 - 只能在晚上使用，且有<moonlightCd>秒冷却时间
 				运气提高<flatLuck>点并随着月相浮动,最低-<minimumMoon>,最高+<maximumMoon>
 				浮动数值取决于今天的月相,最高的是新月,最低的是满月
@@ -488,10 +488,11 @@ Mods: {
 			BlackCatDeath5: <name>的黑猫终究带来了噩运。
 			BlueEgg:
 				'''
-				收获以下东西能额外获得随机物品(种子,水果等)
+				收获以下东西能额外获得随机物品(来自一个特定的战利品表)
 				 - 植物与草药有<plantChance>%几率
 				 - 稀有植物有<rarePlantChance>%几率
 				 - 可砍伐物有<choppableChance>%几率
+				 - 所有战利品表变化很大，并且有自己的“稀有掉落”
 				大约每<eggMinute>分钟获得一个蛋[i:<egg>]
 				 - 有很小几率获得特别的蛋...
 				'''
@@ -1561,12 +1562,12 @@ Mods: {
 
 			Mauled: {
 				DisplayName: 重创
-				Description: 一只狼人把你打得遍体鳞伤！
+				Description: 一只狼人把你打得遍体鳞伤！弱点可能会变得更糟...
 			}
 
 			QueensDamnation: {
 				DisplayName: 女王的诅咒
-				Description: 飞龙女王诅咒了你
+				Description: 飞龙女王诅咒了这只生物。防御逐渐降低
 			}
 
 			EocPetEnrage: {
@@ -1574,7 +1575,8 @@ Mods: {
 				Description:
 					'''
 					你被激怒了！你只想杀杀杀杀杀杀！
-					你的防御和伤害减免将至0，你的克苏鲁护盾冷却加快
+					防御和伤害减免将至0，且生命值无法超过最大生命值的50%
+					提高进攻能力，克苏鲁护盾冷却加快
 					当前暴怒值：<rage>
 					当前伤害加成：<dmg>%
 					当前移速加成：<speed>%
@@ -1753,11 +1755,11 @@ Mods: {
 			}
 
 			PetForgeItem: {
-				DisplayName: 宠物熔炉
+				DisplayName: 宠物锻造炉
 				Tooltip:
 					'''
 					允许你制作所有宠物
-					由伟大的宠物驯养师精心设计
+					由伟大的驯宠师精心设计
 					'''
 			}
 
@@ -1767,7 +1769,7 @@ Mods: {
 					'''
 					没有宠物能拒绝这种多味宠物食品！
 					用于制作所有宠物
-					通过各种方式获得，宠物驯养师出售。微光分解此物品只会产生宠物食物。
+					通过各种方式获得，驯宠师出售。微光分解此物品只会产生宠物食物。
 					'''
 			}
 		}
@@ -1788,11 +1790,11 @@ Mods: {
 
 		NPCs: {
 			SlimeServant.DisplayName: 史莱姆仆从
-			/* SlimeServantBestiaryEntry:
+			SlimeServantBestiaryEntry:
 				'''
-				A loyal Slime Servant, underling of the Slime Prince.
-				Its strength mimics an enhanced Blue Slime, while also getting Power from the Player that Slime Prince serves to.
-				''' */
+				忠诚的史莱姆仆从，侍奉史莱姆王子
+				实力相当于强化版蓝史莱姆，同时还会从史莱姆王子所侍奉的玩家身上汲取力量
+				'''
 			LizardTail.DisplayName: 蜥蜴尾巴
 			LizardTailBestiaryEntry:
 				'''
@@ -1806,10 +1808,10 @@ Mods: {
 			MasteryShard5: 月亮领主掉落，每个世界只能掉落一个
 
 			PetTamer: {
-				DisplayName: 宠物驯养师
+				DisplayName: 驯宠师
 				Combine: 融合照明宠物
-				BestiaryFlavorText: 出色的宠物驯养师，没人比他更了解宠物。因其帮助照明宠物发挥最大潜能的能力而闻名。
-				GuideQuote: 我看你还没照顾过宠物。我听说如果你能找到一只并把它放在身边，一只宠物驯养师可能会入住！
+				BestiaryFlavorText: 出色的驯宠师，没人比他更了解宠物。因其帮助照明宠物发挥最大潜能的能力而闻名。
+				GuideQuote: 我看你还没照顾过宠物。我听说如果你能找到一只并把它放在身边，一只驯宠师可能会入住！
 				Census.SpawnCondition: 需要在常规或照明宠物栏中至少装备过一只宠物
 
 				Quotes: {
@@ -1817,7 +1819,7 @@ Mods: {
 					Common2: 如果你刚好有多只同种的照明宠物，我可以把它们最好的品质融合成一只照明宠物！当然是要收费的。
 					Common3: 嗯？你想知道更多关于你的宠物的能力？我正好有宠物监测平板可以卖给你。多方便啊。
 					Common4: 是的。有人给了我用暗影珠制作猩红之心的配方。我制作了。你猜怎么着？它的品级往往更差！
-					Common5: 是的！通过宠物熔炉，你可以制作任何你想要的宠物。不过可能需要付出一点精力。
+					Common5: 是的！通过宠物锻造炉，你可以制作任何你想要的宠物。不过可能需要付出一点精力。
 					Common6: 你应该永远记得给城镇的宠物和史莱姆一些爱。他们甚至可能会用一些增益来祝福你！
 					Common7: 你有注意过你的宠物减速效果对Boss效果减弱了吗？
 					Common8: 这个月[c/90C2AA:Kinga和ivanborquez]给我的宠物喂食了。伟大的人啊。
@@ -1920,223 +1922,223 @@ Mods: {
 
 		Achievements: {
 			NeedOfCompany: {
-				// Description: Equip any Regular Pet or Light Pet. This will catch the attention of the Pet Tamer town NPC.
-				// FriendlyName: Need Of Company
+				Description: 装备任意常规宠物或照明宠物。此举会吸引城镇NPC「驯宠师」的注意。
+				FriendlyName: 相伴之需
 			}
 
 			MasteryCraft: {
-				// Description: Craft any Master Mode Pet Item, using the Mastery Shard item. Which drops rarely from enemies.
-				// FriendlyName: Mastery Craft
+				Description: 使用怪物低概率掉落的大师碎片，制作任意一个大师模式专属宠物物品。
+				FriendlyName: 大师工艺
 			}
 
 			ForgingPets: {
-				// Description: Craft any Pet on a Pet Forge using Pet Food, alongside other relevant items. Where does Pet Tamer supply all those Pet Forges from?
-				// FriendlyName: Forging Pets
+				Description: 在宠物锻造炉上，使用宠物食物及其他对应材料，制作任意一个宠物物品。话说驯宠师到底从哪搞来这么多宠物锻造炉？
+				FriendlyName: 宠物锻铸
 			}
 
 			QuestionableKibble: {
-				// Description: Shimmer a Pet Item, where will you only get Pet Food as the result. A shiny liquid being involved doesn't make this sound any better.
-				// FriendlyName: Questionable Kibble
+				Description: 将任意宠物物品投入微光中，最终只会转化为宠物食品。就算有微光这闪亮的奇异液体掺和，也丝毫掩盖不了这事本身的骇人与离谱。
+				FriendlyName: 可疑口粮
 			}
 
 			Purrfection: {
-				// Description: Combine two Light Pets at Pet Tamer to obtain any Light Pet with maximum possible quality. I am perfect.
-				// FriendlyName: Purrfection
+				Description: 在驯宠师处将两个照明宠物合成，获得一个满品质的照明宠物。我，完美无缺。
+				FriendlyName: 臻至喵境
 			}
 
 			TheCollector: {
-				// Description: Equip all the Regular Pets in the game at least once.
-				// FriendlyName: The Collector
+				Description: 至少装备过游戏内所有常规宠物各一次。
+				FriendlyName: 宠物收藏家
 			}
 
 			GottaPetThemAll: {
-				// FriendlyName: Gotta Pet Them All
-				// Description: Pet every Town Pet, so that you obtain all of their respective buffs one by one.
+				FriendlyName: 全宠撸遍
+				Description: 抚摸每一只城镇宠物，依次获取它们对应的全部增益效果。
 			}
 
 			GleamingCollection: {
-				// FriendlyName: Gleaming Collection
-				// Description: Equip all the Light Pets in the game at least once.
+				FriendlyName: 辉光收藏家
+				Description: 至少装备过游戏内所有照明宠物各一次。
 			}
 
 			UnpaidLabor: {
-				// FriendlyName: Unpaid Labor
-				// Description: Obtain a total of 5 platinum coins worth of items from your Pets, such as Utility, Mining, Harvesting or Fishing Pets.
+				FriendlyName: 无偿苦力
+				Description: 通过通用、采掘、采集、钓鱼等各类宠物，获取总价值不低于5铂金币的物品。
 			}
 
 			HextupleJumper: {
-				// FriendlyName: Hextuple Jumper
-				// Description: Achieve 6 or above Bonus Jumps while using Fennec Fox Pet or using Slime Princess Pet while on a mount.
+				FriendlyName: 六段跳大师
+				Description: 装备耳廓狐宠物，或骑乘坐骑时装备史莱姆公主宠物，完成6次及以上的额外跳跃。
 			}
 
 			IAmUntouchable: {
-				// FriendlyName: I Am Untouchable
-				// Description: Enter The Dungeon with the Baby Dungeon Guardian Pet equipped. Weak dangers of The Dungeon bow down before you.
+				FriendlyName: 我，无人能及
+				Description: 装备地牢守卫宝宝宠物进入地牢。地牢里的弱小威胁，都将在你面前俯首称臣。
 			}
 
 			Petception: {
-				// Description: Obtain a Blue Chicken Egg, an Eucalyptus Sap or a Magical Pumpkin Seed while gaining extra drops with the Blue Chicken Pet.
-				// FriendlyName: Petception
+				Description: 从蓝鸡宠物的额外掉落中获取蓝鸡蛋、桉树汁或魔法南瓜子。
+				FriendlyName: 盗宠空间
 			}
 
 			AbsoluteZero: {
-				// FriendlyName: Absolute Zero
-				// Description: Slow down an enemy with Baby Snowman Pet while full Frozen Armor is equipped. It doesn't get any colder than this.
+				FriendlyName: 绝对零度
+				Description: 穿戴全套冰霜盔甲时，通过小雪人宠物减速敌人。没有比这更激冻人心的场面了。
 			}
 
 			Vulnerable: {
-				// FriendlyName: Vulnerable
-				// Description: Strike an enemy that has maximum Mauled debuff stacks on an enemy, which is applied by Baby Werewolf Pet, making them take more damage.
+				FriendlyName: 致命破绽
+				Description: 攻击被狼人宝宝宠物施加了满层「重伤」减益的敌人，该效果会使敌人承受更多伤害。
 			}
 
 			ISeeWhatYoureDoing: {
-				// FriendlyName: I See What You're Doing
-				// Description: Change both left and right movement controls while Baby Truffle Pet is equipped. Pet doesn't have any downsides now though does it?
+				FriendlyName: 我知道你在做什么
+				Description: 装备小松露人宠物时，修改左右移动的按键绑定。这下这只宠物没任何负面效果了，对吧？
 			}
 
 			Arsonist: {
-				// Description: Extend total of 1 hour Burn debuff duration using Bernie Pet. You can feel regaining your sanity...
-				// FriendlyName: Arsonist
+				Description: 通过伯尼宠物，累计延长「燃烧」减益效果时长达到1小时。你感觉自己的理智正在恢复……
+				FriendlyName: 纵火狂
 			}
 
 			BringsBadLuckAfterall: {
-				// Description: Take damage using Black Cat's ability 3 times in a row. Superstitions were right afterall.
-				// FriendlyName: Brings Bad Luck Afterall
+				Description: 连续3次触发黑猫宠物的技能并受到伤害。看来迷信终究是有道理的。
+				FriendlyName: 迷信诚不欺我
 			}
 
 			HeavyDutyPet: {
-				// Description: Strike 10 enemies at the same time with one explosion by your Dynamite Kitten Pet.
-				// FriendlyName: Heavy Duty Pet
+				Description: 用雷管小猫宠物的单次爆炸同时命中10名敌人。
+				FriendlyName: 重磅战宠
 			}
 
 			AnotherWorld: {
-				// FriendlyName: Another World
-				// Description: Have Itsy Betsy, Baby Ogre, Hoardagron, Propeller Gato or a Flickerwick equipped while an Old One's Army event is active.
+				FriendlyName: 异界同行
+				Description: 旧日军团事件进行期间，装备双足翼龙蛋，食人魔棍棒，龙蛋，Gato蛋或飞眼怪蛋。
 			}
 
 			FakeHarpy: {
-				// FriendlyName: Fake Harpy
-				// Description: Run out of Wing Time while flying in the Space using Lil' Harpy Pet. You can't even glide? What a knockoff.
+				FriendlyName: 冒牌鸟妖
+				Description: 装备小女妖宠物在太空层飞行时，耗尽飞行时间。连滑翔都不会？真是个山寨货。
 			}
 
 			IveFoundYourEye: {
-				// FriendlyName: I've Found Your Eye
-				// Description: Kill an Eyezor while Eye Spring Pet is equipped. Return to sender.
+				FriendlyName: 以眼还眼
+				Description: 装备弹簧眼宠物时，击杀眼怪。全数奉还。
 			}
 
 			PrettyButteryFlight: {
-				// FriendlyName: Pretty Buttery Flight
-				// Description: Achieve 5.5 seconds or more flight time while using Glittery Butterfly Pet. Believe it or not, flies does not like butter.
+				FriendlyName: 蝶影翩飞
+				Description: 装备闪光蝴蝶宠物时，达成5.5秒及以上的连续飞行时间。信不信由你，苍蝇可不喜欢黄油。
 			}
 
 			ThisWontBeHowIDie: {
-				// Description: Kill a total of 100 Zombie type of enemies while Spiffo Pet is equipped. I guess you get to live this life.
-				// FriendlyName: This won't be how I die
+				Description: 装备Spiffo宠物时，累计击杀100只僵尸类敌人。看来你这次能活下来了。
+				FriendlyName: 我不会就此殒命
 			}
 
 			TheSummit: {
-				// Description: Reach Level 50 on all three skills of your Junimo Pet. "It's been a long road... And you've made us very proud!"
-				// FriendlyName: The Summit
+				Description: 将祝尼魔宠物的三项技能全部提升至50级。“漫漫长路终有尽头……我们真为你骄傲！”
+				FriendlyName: 登峰造极
 			}
 
 			PlantaHermano: {
-				// Description: While you have Plantero Pet equipped, eat Nachos and Spicy Pepper within a second. Where is the guac though?
-				// FriendlyName: Planta Hermano
+				Description: 装备泥芽宠物时，在1秒内连续食用玉米片和辣椒。话说鳄梨酱去哪了？
+				FriendlyName: 植物兄弟
 			}
 
 			NutritiousDecoy: {
-				// Description: Drop down a Lizard Tail with your Lizard Pet, and pick it back up from the ground, replenishing health and recovering its cooldown.
-				// FriendlyName: Nutritious Decoy
+				Description: 操控蜥蜴宠物丢下蜥蜴断尾，再将其从地面捡起，恢复生命值并刷新技能冷却。
+				FriendlyName: 营养诱饵
 			}
 
 			Muncher: {
-				// Description: Save up 50 Food Items or Potions using your Pig Man Pet. Very hungry.
-				// FriendlyName: Muncher
+				Description: 通过猪人宠物累计节省50个食物或药水。饿坏了。
+				FriendlyName: 大胃王
 			}
 
 			LootChaser: {
-				// Description: Find 50 items with lower than 25% chance to drop from Enemy loot or Loot Bags with Shadow Mimic Pet, as the Pet increases the odds.
-				// FriendlyName: Loot Chaser
+				Description: 从暗影宝箱怪宠物的额外掉落中获取50件掉落概率低于25%的物品。
+				FriendlyName: 宝藏猎人
 			}
 
 			ElusiveHunter: {
-				// Description: Kill or catch 15 rare creatures with Puppy Pet to gain bonus money and to easily spot them. A born hunter.
-				// FriendlyName: Elusive Hunter
+				Description: 装备小狗宠物击杀或捕捉15只稀有生物，以获取额外金币并高亮标记它们。天生的猎手。
+				FriendlyName: 天生猎手
 			}
 
 			Copycat: {
-				// Description: Have your Parrot Pet shoot out 250 duplicate projectiles. Have your Parrot Pet shoot out 250 duplicate projectiles. What?
-				// FriendlyName: Copycat
+				Description: 让你的鹦鹉宠物累计发射250发复制弹幕。让你的鹦鹉宠物累计发射250发复制弹幕。啥？
+				FriendlyName: 回响形态
 			}
 
 			UnstoppableAndImmovable: {
-				// Description: What would happen if unstoppable force of Terraria, the Giant Tortoise that is charging were to meet an immovable object, you with the Turtle Pet, where your Pet's Hardened Shell ability is active.
-				// FriendlyName: Unstoppable Force vs Immovable Object
+				Description: 当泰拉瑞亚中无坚不摧的 “矛”—— 正在全力冲锋的巨型陆龟，撞上坚不可摧的 “盾”—— 开启乌龟宠物硬化甲壳技能的你，会发生什么？
+				FriendlyName: 以子之矛，攻子之盾
 			}
 
 			WarriorPet: {
-				// Description: Deal 25000 damage with Pet sourced damages. Whether it be projectiles spawned by your Pets or direct damages of their effects.
-				// FriendlyName: Warrior Pet
+				Description: 通过宠物造成的伤害累计达到25000点，包括宠物生成的弹幕，或是宠物效果造成的直接伤害。
+				FriendlyName: 宠物之剑
 			}
 
 			TooMuchHoney: {
-				// Description: Consume Bottled Honey or Honeyfin using Honey Bee Pet. In multiplayer, your friends will apreciate you overdosing on sugar.
-				// FriendlyName: Too Much Honey
+				Description: 装备闪耀蜂蜜时，饮用瓶装蜂蜜或食用蜂蜜鱼。多人模式下，你摄入超量糖分的操作，也会让你的队友们从中受益。
+				FriendlyName: 蜂蜜过量
 			}
 
 			SagePet: {
-				// Description: Heal 15000 health with Pet Healings. Any health recovery from your Pets count for this.
-				// FriendlyName: Sage Pet
+				Description: 通过宠物的治疗效果累计恢复15000点生命值，宠物提供的任何生命回复也会计入。
+				FriendlyName: 宠物之光
 			}
 
 			HoverboardSkater: {
-				// Description: Save up 10 minutes of Wing Time by flying in X axis with Alien Skater Pet. Flying upwards is lame anyways.
-				// FriendlyName: Hoverboard Skater
+				Description: 装备异星滑板小子宠物水平飞行，累计节省10分钟的飞行时间。反正往上飞也没什么意思。
+				FriendlyName: 悬浮滑板滑手
 			}
 
 			GuardPet: {
-				// Description: Block 5000 damage with Shields from your Pet Effects.
-				// FriendlyName: Guard Pet
+				Description: 通过宠物效果提供的护盾，累计格挡5000点伤害。
+				FriendlyName: 宠物之盾
 			}
 
 			FreezingTheReaper: {
-				// Description: Survive a fatal hit with your Ice Queen Pet's effect.
-				// FriendlyName: Freezing The Reaper
+				Description: 通过冰雪女王宠物的效果，阻挡一次致死攻击。
+				FriendlyName: 冻结死神
 			}
 
 			YouAndSlimeArmy: {
-				// Description: Have 5 Slime Servants alive at a time, a friendly NPC who will fight for you, who is summoned by Slime Prince Pet or Slime Royal Pets Ability.
-				// FriendlyName: You And Slime Army
+				Description: 同时拥有5只存活的史莱姆仆从——它们是由皇家怡口或华美甜点宠物技能召唤的、为你而战的友方单位。
+				FriendlyName: 黏滑军团统御者
 			}
 
 			TooManyBobbers: {
-				// Description: Throw 2 extra Bobbers while fishing using the Tiny Fishron Pet.
-				// FriendlyName: Too Many Bobbers
+				Description: 装备小猪龙鱼宠物钓鱼时，额外抛出2个鱼漂。
+				FriendlyName: 超多浮标
 			}
 
 			INeededALittleMoreTime: {
-				// Description: Receive more damage than 100% of your health in damage over time by your Skeletron Jr. Pet, and drink a Potion to increase your health enough to survive the damage over time.
-				// FriendlyName: I Needed A Little More Time
+				Description: 在小骷髅王宠物施加的持续伤害即将超过你最大生命值时，饮用药水提升生命值上限，撑过这次持续伤害。
+				FriendlyName: 再给我一点时间吧
 			}
 
 			FreezingRage: {
-				// Description: Strike enemies in the middle of the cone of Tiny Deerclops Pet's Ability, when the stored damage is at maximum; 50% of your health. Enemies in the middle has their defense ignored for the hit!
-				// FriendlyName: Freezing Rage
+				Description: 当小独眼巨鹿宠物的技能储存伤害达到最大值（相当于你最大生命值的50%）时，用技能命中扇形范围中心区域的敌人。处于中心区域的敌人，会被此次攻击无视防御！
+				FriendlyName: 冰封之怒
 			}
 
 			DefensiveBuild: {
-				// Description: Achieve 100 or above Rage Points by sacrificing all your defensive capabilities and maximum health by using your Suspicious Eye Pet's Ability, to heavily improve your offensive capabilities.
-				// FriendlyName: '''"Defensive Build"'''
+				Description: 通过可疑眼睛宠物的技能，牺牲所有防御能力和最大生命值，获得100点及以上的暴怒值，以此大幅提升你的输出能力。
+				FriendlyName: “肉装”
 			}
 
 			CrispyFriedCalamari: {
-				// Description: Shimmer Moonling Pet to turn it into Pet Food. Sounds delicious, but why? Or did you expect something else but the Pet Food.
-				// FriendlyName: Crispy Fried Calamari
+				Description: 将月亮乌贼投入微光中，将其转化为宠物食品。听着挺香的，但为啥要这么做？还是说你本来期待能变出点别的？
+				FriendlyName: 香炸鱿鱼圈
 			}
 
 			AncientSorcery: {
-				// Description: Use all 3 different spells of Phantasmal Dragon Pet within 18 seconds. Lunatic Cultist may or may not be impressed.
-				// FriendlyName: Ancient Sorcery
+				Description: 在18秒内，使用幻影龙宝宝宠物的3种不同法术。不知道拜月教邪教徒看了会不会刮目相看。
+				FriendlyName: 远古咒术
 			}
 		}
 	}
