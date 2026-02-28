@@ -26,7 +26,7 @@ Mods: {
 			CustomLine: "[c/a3bdf8:Press] <switchKey> [c/a3bdf8:to go back to base effect of this Pet.]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul 3.8.3, latest changes: Major Multiplayer fixes of countless Pets, addition of Active Pet Slot (Vanity Pet Slot)]
+				[c/90C2AA:Pets Overhaul 3.8.3, latest changes: Chinese Update by: ROH, Major Multiplayer fixes of countless Pets, addition of Active Pet Slot (Vanity Pet Slot)]
 				[c/b4bfc5:Join our discord server for feedback, bug reports & questions! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Check out our Wiki: terrariamods.wiki.gg/wiki/Pets_Overhaul]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul!]
@@ -138,7 +138,7 @@ Mods: {
 				Sets how much % lower damage the Player will deal and how much % extra damage the Player will receive.
 				This is implemented due to Pets Overhaul adding extra Powercreep into the game. Min 0, Max 20%.
 				Keep it at 0 if you wish it to be disabled. It's recommended it to be around 7 to 10%.
-				This won't take in effect until you obtain a Pet, since in that case this has no reason to be active.
+				This won't take in effect if you don't have any types of Pets equipped.
 				'''
 			SwapCooldownLabel: Pet Swap cooldown
 			SwapCooldownTooltip:
