@@ -39,6 +39,11 @@ namespace PetsOverhaul.Systems
             }
             return player.miscEquips[1].type;
         }
+        /// <summary>
+        /// Checks if the given ItemID is a Pet Item that Pets Overhaul does something with.
+        /// </summary>
+        /// <param name="ItemId"></param>
+        /// <returns></returns>
         public static bool ItemIsPetItem(int ItemId) => PetIDs.LightPetNamesAndItems.ContainsValue(ItemId) || PetIDs.PetNamesAndItems.ContainsValue(ItemId);
         public static IEntitySource GetSource_Pet(EntitySourcePetIDs typeId, string context = null)
         {

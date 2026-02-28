@@ -147,9 +147,14 @@ namespace PetsOverhaul.Systems
         public static bool CurrentTooltipIsSimple = true;
 
         /// <summary>
-        /// This is instance of current active Pet effect, lots of data can be accessed here.
+        /// This is instance of current active Pet effect (ModPlayer), lots of data can be accessed here.
         /// </summary>
         public PetEffect currentActivePet = null;
+
+        /// <summary>
+        /// This is instance of current active Light Pet item (GlobalItem), lots of data can be accessed here.
+        /// </summary>
+        public LightPetItem currentActiveLightPet = null;
 
         #region Achievement Fields
         public List<int> FoundPets = new(PetIDs.PetNamesAndItems.Count);
@@ -652,7 +657,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && petObtained)
+            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && (PetUtils.ItemIsPetItem(Player.CurrentPet()) || PetUtils.ItemIsPetItem(Player.CurrentLightPet())))
             {
                 modifiers.FinalDamage *= 1f - ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
@@ -660,7 +665,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
-            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && petObtained)
+            if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && (PetUtils.ItemIsPetItem(Player.CurrentPet()) || PetUtils.ItemIsPetItem(Player.CurrentLightPet())))
             {
                 modifiers.FinalDamage *= 1f + ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
@@ -719,6 +724,10 @@ namespace PetsOverhaul.Systems
             if (Player.CurrentPet() == ItemID.None)
             {
                 currentActivePet = null;
+            }
+            if (Player.CurrentLightPet() == ItemID.None)
+            {
+                currentActiveLightPet = null;
             }
 
             if (Main.mouseItem.TryGetGlobalItem(out PetGlobalItem item) && item.pickedUpBefore == false) //Player's hand slot is not being reckognized as 'inventory' in UpdateInventory() of GlobalItem, so manually updating the Hand slot

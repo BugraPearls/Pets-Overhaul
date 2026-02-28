@@ -36,11 +36,13 @@ namespace PetsOverhaul.Systems
             if (Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex].type > ItemID.None && PetIDs.LightPetNamesAndItems.ContainsValue(Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex].type) && Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex].TryGetGlobalItem(out T result1))
             {
                 result = result1;
+                Pet.currentActiveLightPet = result1;
                 return true;
             }
             else if (Player.miscEquips[1].TryGetGlobalItem(out T result2))
             {
                 result = result2;
+                Pet.currentActiveLightPet = result2;
                 return true;
             }
             result = null;
