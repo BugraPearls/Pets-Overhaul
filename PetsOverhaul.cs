@@ -305,17 +305,20 @@ namespace PetsOverhaul
 
 
 
-                case MessageType.PetPlayerSync:
-                    byte petPlayer = reader.ReadByte();
-                    PetModPlayer petModPlayer = Main.player[petPlayer].GetModPlayer<PetModPlayer>();
-
-                    petModPlayer.timer = reader.ReadInt32();
-
+                case MessageType.PetCooldownSync:
                     if (Main.netMode == NetmodeID.Server)
                     {
-                        petModPlayer.SyncPlayer(-1, whoAmI, false);
+                        Main.player[whoAmI].GetModPlayer<PetModPlayer>().timer = -1;
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)msgType);
+                        packet.Write((byte)whoAmI);
+                        packet.Send(ignoreClient: whoAmI);
                     }
-                    break;
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        Main.player[reader.ReadByte()].GetModPlayer<PetModPlayer>().timer = -1;
+                    }
+                        break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }

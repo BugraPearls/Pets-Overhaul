@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -547,35 +548,35 @@ namespace PetsOverhaul.Systems
             return PlacedFlower;
         }
 
-        public void SyncDataOfThis(BinaryReader reader)
-        {
-            timer = reader.ReadInt32();
-        }
+        //public void SyncDataOfThis(BinaryReader reader)
+        //{
+        //    timer = reader.ReadInt32();
+        //}
 
-        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
-        {
-            ModPacket packet = Mod.GetPacket();
-            packet.Write((byte)MessageType.PetPlayerSync);
-            packet.Write((byte)Player.whoAmI);
+        //public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        //{
+        //    ModPacket packet = Mod.GetPacket();
+        //    packet.Write((byte)MessageType.PetCooldownSync);
+        //    packet.Write((byte)Player.whoAmI);
 
-            packet.Write(timer);
+        //    packet.Write(timer);
 
-            packet.Send(toWho, fromWho);
-        }
-        public override void CopyClientState(ModPlayer targetCopy)
-        {
-            PetModPlayer clone = (PetModPlayer)targetCopy;
-            clone.timer = timer;
-        }
-        public override void SendClientChanges(ModPlayer clientPlayer)
-        {
-            PetModPlayer clone = (PetModPlayer)clientPlayer;
+        //    packet.Send(toWho, fromWho);
+        //}
+        //public override void CopyClientState(ModPlayer targetCopy)
+        //{
+        //    PetModPlayer clone = (PetModPlayer)targetCopy;
+        //    clone.timer = timer;
+        //}
+        //public override void SendClientChanges(ModPlayer clientPlayer)
+        //{
+        //    PetModPlayer clone = (PetModPlayer)clientPlayer;
 
-            if (inCombatTimer != clone.inCombatTimer || timer != clone.timer)
-            {
-                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
-            }
-        }
+        //    if (inCombatTimer != clone.inCombatTimer || timer != clone.timer)
+        //    {
+        //        SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+        //    }
+        //}
 
         public override void SaveData(TagCompound tag)
         {
@@ -783,6 +784,13 @@ namespace PetsOverhaul.Systems
 
             if (timer <= 0 && AbilityCdSoundPlayed == false)
             {
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    ModPacket packet = Mod.GetPacket();
+                    packet.Write((byte)MessageType.PetCooldownSync);
+                    packet.Send();
+                }
+
                 AbilityCdSoundPlayed = true;
                 if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled && (ModContent.GetInstance<PetPersonalization>().LowCooldownSoundEnabled == false && timerMax > ModContent.GetInstance<PetPersonalization>().LowCooldownThreshold || ModContent.GetInstance<PetPersonalization>().LowCooldownSoundEnabled))
                 {
