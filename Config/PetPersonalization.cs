@@ -9,6 +9,18 @@ using Terraria.ModLoader.Config;
 
 namespace PetsOverhaul.Config
 {
+    public class PetPersonalizationServer : ModConfig
+    {
+        public override LocalizedText DisplayName => Language.GetText("Mods.PetsOverhaul.Config.ServerPersonalization");
+        public override ConfigScope Mode => ConfigScope.ServerSide;
+
+        [Header("$Mods.PetsOverhaul.Config.HeaderGameplay")]
+        [LabelKey("$Mods.PetsOverhaul.Config.PetFoodDropLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.PetFoodDropTooltip")]
+        [DefaultValue(true)]
+        [BackgroundColor(35, 120, 54, 190)]
+        public bool PetFoodDrop { get; set; }
+    }
     [BackgroundColor(35, 54, 42, 220)]
     public class PetPersonalization : ModConfig
     {
@@ -38,6 +50,7 @@ namespace PetsOverhaul.Config
         [DefaultValue(false)]
         [BackgroundColor(35, 120, 54, 190)]
         public bool PhantasmalDragonVolleyFromMouth { get; set; }
+
         #endregion
 
         #region Display
