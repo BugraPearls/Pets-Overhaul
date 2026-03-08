@@ -924,7 +924,7 @@ namespace PetsOverhaul.Systems
         public override void ModifyCaughtFish(Item fish) //this is where fish is actually caught/reeled out.
         {
             SpawnItemSourcingFromPet(EntitySourcePetIDs.FishingFortuneItem, fish.type, PetUtils.Randomizer((globalFortune + fishingFortune) * 10 / 2 * fish.stack, 1000));
-            if (Main.rand.NextBool(5))
+            if (ModContent.GetInstance<PetPersonalizationServer>().PetFoodDrop && Main.rand.NextBool(5))
             {
                 Player.QuickSpawnItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), ModContent.ItemType<PetFood>(), Main.rand.Next(1, 3)); //Next(1,3) IS 1 or 2, not 1, 2 and 3.
             }
@@ -943,7 +943,7 @@ namespace PetsOverhaul.Systems
         }
         public override void AnglerQuestReward(float rareMultiplier, List<Item> rewardItems)
         {
-            if (Main.rand.NextBool(3))
+            if (ModContent.GetInstance<PetPersonalizationServer>().PetFoodDrop && Main.rand.NextBool(3))
             {
                 rewardItems.Add(new Item(ModContent.ItemType<PetFood>(), Main.rand.Next(5, 11))); //11 since we want 10 to be possible
             }

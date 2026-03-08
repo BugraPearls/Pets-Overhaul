@@ -133,6 +133,7 @@ Mods: {
 
 		Config: {
 			Personalization: Настройки
+			// ServerPersonalization: Server Side Settings
 			HeaderDisplay: Настройки отображения
 			HeaderSound: Настройки звука
 			HeaderGameplay: Настройки игрового процесса
@@ -251,6 +252,14 @@ Mods: {
 				'''
 				Determines where the Active Pet Slot that is displayed on Misc Equipment menu is on the Screen.
 				Light Pet Slot will be right below where this, the Regular Pet Slot positions at.
+				''' */
+			// PetFoodDropLabel: Bonus Pet Food Drops
+			/* PetFoodDropTooltip:
+				'''
+				Allows for Pet Food item to be dropped from various sources for free:
+				Angler Quests, Catching Fishes, Chopping & Shaking Trees, Herbs and Extractinator.
+				This does not intervene with any drops, acting entirely separate as a bonus drop.
+				Turn this off to disable mentioned ways of obtaining the Pet Food, which is used for Pet crafting recipes.
 				''' */
 		}
 

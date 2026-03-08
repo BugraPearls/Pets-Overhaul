@@ -126,6 +126,7 @@ Mods: {
 
 		Config: {
 			Personalization: 个性化设置
+			// ServerPersonalization: Server Side Settings
 			HeaderDisplay: 显示配置
 			HeaderSound: 音效配置
 			HeaderGameplay: 游戏性配置
@@ -239,6 +240,14 @@ Mods: {
 				修改显示在杂项装备上的有效宠物栏在屏幕上的位置
 				照明宠物栏将在这个位置的正下方
 				'''
+			// PetFoodDropLabel: Bonus Pet Food Drops
+			/* PetFoodDropTooltip:
+				'''
+				Allows for Pet Food item to be dropped from various sources for free:
+				Angler Quests, Catching Fishes, Chopping & Shaking Trees, Herbs and Extractinator.
+				This does not intervene with any drops, acting entirely separate as a bonus drop.
+				Turn this off to disable mentioned ways of obtaining the Pet Food, which is used for Pet crafting recipes.
+				''' */
 		}
 
 		LightPetCombineUI: {

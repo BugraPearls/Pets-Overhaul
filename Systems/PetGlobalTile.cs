@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Items;
+﻿using PetsOverhaul.Config;
+using PetsOverhaul.Items;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
@@ -14,18 +15,21 @@ namespace PetsOverhaul.Systems
         #region Pet Food related
         public override void Drop(int i, int j, int type)
         {
-            if (PetIDs.treeTile[type] && Main.rand.NextBool(50))
+            if (ModContent.GetInstance<PetPersonalizationServer>().PetFoodDrop)
             {
-                Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
-            }
-            else if (Main.rand.NextBool(3) && (type == TileID.MatureHerbs || type == TileID.BloomingHerbs))
-            {
-                Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+                if (PetIDs.treeTile[type] && Main.rand.NextBool(50))
+                {
+                    Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+                }
+                else if (Main.rand.NextBool(3) && (type == TileID.MatureHerbs || type == TileID.BloomingHerbs))
+                {
+                    Item.NewItem(PetUtils.GetSource_Pet(EntitySourcePetIDs.GlobalItem), i * 16, j * 16, 16, 16, ModContent.ItemType<PetFood>());
+                }
             }
         }
         public override bool ShakeTree(int x, int y, TreeTypes treeType)
         {
-            if (Main.rand.NextBool(10))
+            if (ModContent.GetInstance<PetPersonalizationServer>().PetFoodDrop && Main.rand.NextBool(10))
             {
                 Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), x * 16, y * 16, 16, 16, ModContent.ItemType<PetFood>(), Main.rand.NextBool() ? 1 : 2);
             }

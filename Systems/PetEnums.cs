@@ -5,7 +5,7 @@
     {
         MultiplayerDebugText,
 
-        PetPlayerSync,
+        PetCooldownSync,
         ShieldFullAbsorb,
         CustomEffectSwitch,
         SeaCreatureOnKill,
@@ -36,7 +36,6 @@
         SuspiciousEye,
         TinyDeerclops,
         Turtle,
-        P
     }
     public enum EntitySourcePetIDs
     {

@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Items;
+﻿using PetsOverhaul.Config;
+using PetsOverhaul.Items;
 using System;
 using System.IO;
 using System.Linq;
@@ -126,7 +127,7 @@ namespace PetsOverhaul.Systems
 
         public override void ExtractinatorUse(int extractType, int extractinatorBlockType, ref int resultType, ref int resultStack)
         {
-            if (resultType == ItemID.CopperCoin) //Only replacing Copper Coin drops
+            if (ModContent.GetInstance<PetPersonalizationServer>().PetFoodDrop && resultType == ItemID.CopperCoin) //Only replacing Copper Coin drops
             {
                 if (extractinatorBlockType == TileID.ChlorophyteExtractinator && Main.rand.NextBool(10)) //10% chance to replace if Chlorophyte
                 {
