@@ -33,6 +33,7 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public sealed class PetGlobalNPC : GlobalNPC
     {
+        public const float bossSlowMult = 0.2f; 
         /// <summary>
         /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
         /// </summary>
@@ -358,7 +359,7 @@ namespace PetsOverhaul.Systems
             {
                 if (npc.boss || PetIDs.NonBossTrueBosses.Contains(npc.type))
                 {
-                    slowToBeAdded.SlowAmount *= 0.2f;
+                    slowToBeAdded.SlowAmount *= bossSlowMult;
                 }
                 if (slowToBeAdded.SlowId == PetSlowID.Any)
                 {
