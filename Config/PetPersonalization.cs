@@ -70,7 +70,7 @@ namespace PetsOverhaul.Config
 
         [LabelKey("$Mods.PetsOverhaul.Config.ActivePetSlotPosLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.ActivePetSlotPosTooltip")]
-        [DefaultValue(typeof(Vector2), "0.89, 0.485")]
+        [DefaultValue(typeof(Vector2), "0.89, 0.439")]
         [BackgroundColor(35, 120, 54, 190)]
         public Vector2 ActivePetSlotPos { get; set; }
 

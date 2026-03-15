@@ -50,12 +50,12 @@ namespace PetsOverhaul.UI
         }
         public override void OnInitialize()
         {
-            ActiveRegularUIPetSlot = new(ItemSlot.Context.EquipPet, 0.8f);
+            ActiveRegularUIPetSlot = new(ItemSlot.Context.EquipPet, 0.83f);
             ActiveRegularUIPetSlot.Width.Set(40, 0);
             ActiveRegularUIPetSlot.Height.Set(40, 0);
             Append(ActiveRegularUIPetSlot);
 
-            ActiveLightUIPetSlot = new(ItemSlot.Context.EquipLight, 0.8f);
+            ActiveLightUIPetSlot = new(ItemSlot.Context.EquipLight, 0.83f);
             ActiveLightUIPetSlot.Width.Set(40, 0);
             ActiveLightUIPetSlot.Height.Set(40, 0);
             Append(ActiveLightUIPetSlot);
@@ -90,7 +90,7 @@ namespace PetsOverhaul.UI
             ActiveRegularUIPetSlot.Left.Set(0, pos.X);
             ActiveRegularUIPetSlot.Top.Set(0, pos.Y);
             ActiveLightUIPetSlot.Left.Set(0, pos.X);
-            ActiveLightUIPetSlot.Top.Set(-45, pos.Y);
+            ActiveLightUIPetSlot.Top.Set(47, pos.Y);
             base.Draw(spriteBatch);
         }
     }
