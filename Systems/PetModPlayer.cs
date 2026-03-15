@@ -662,6 +662,9 @@ namespace PetsOverhaul.Systems
             {
                 modifiers.FinalDamage *= 1f - ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
             }
+        }
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
             inCombatTimer = inCombatTimerMax;
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
@@ -688,12 +691,12 @@ namespace PetsOverhaul.Systems
             {
                 modifiers.DisableSound();
             }
-
-            inCombatTimer = inCombatTimerMax;
         }
         public override void OnHurt(Player.HurtInfo info)
         {
             PetSounds.PlayHurtSoundFromItemId(Player.CurrentPet(), Player);
+
+            inCombatTimer = inCombatTimerMax;
         }
         public override bool ConsumableDodge(Player.HurtInfo info)
         {
