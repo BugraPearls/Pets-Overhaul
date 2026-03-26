@@ -55,13 +55,20 @@ namespace PetsOverhaul.Systems
         }
 
         /// <summary>
-        /// Checks if the given enemy should not be lifestealen from, this can be used for non-lifesteal applications as some effects may not want to occur on friendly/statue/immortal etc. enemies.
+        /// Checks if the given enemy should not be lifestealen or 'drained' resource from. Use <see cref="ValidTargetCheck(NPC)"/> for targets that doesn't need the lifesteal check.
         /// </summary>
-        /// <param name="npc"></param>
-        /// <returns></returns>
+
         public static bool LifestealCheck(NPC npc)
         {
-            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type) && npc.canGhostHeal;
+            return ValidTargetCheck(npc)  && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type);
+        }
+
+        /// <summary>
+        /// Checks for if this enemy is a valid target for effects to trigger, mostly to prevent exploits and such. 
+        /// </summary>
+        public static bool ValidTargetCheck(NPC npc)
+        {
+            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && !npc.CountsAsACritter && !npc.isLikeATownNPC;
         }
         /// <summary>
         /// Creates a Circle of dusts around the given Center with the Dust ID.

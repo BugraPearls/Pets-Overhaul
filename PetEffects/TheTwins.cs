@@ -52,7 +52,7 @@ namespace PetsOverhaul.PetEffects
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (Player.Distance(target.Center) < closeRange && PetUtils.LifestealCheck(target) && PetIsEquipped())
+            if (Player.Distance(target.Center) < closeRange && PetUtils.ValidTargetCheck(target) && PetIsEquipped())
             {
                 if (Pet.timer <= 0 && target.TryGetGlobalNPC(out TwinsPermaDefDrop defDrop))
                 {
