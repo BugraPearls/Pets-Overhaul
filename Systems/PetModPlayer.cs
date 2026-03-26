@@ -330,11 +330,29 @@ namespace PetsOverhaul.Systems
         /// <param name="damageClass">Class that this damage should get damage bonuses from</param>
         public int PetDamage(float damage, DamageClass damageClass)
         {
-            damage = Player.GetTotalDamage(damageClass).ApplyTo(damage);
+            if (damageClass is not null)
+            {
+                damage = Player.GetTotalDamage(damageClass).ApplyTo(damage);
+            }
             damage *= petDirectDamageMultiplier;
             return (int)Math.Max(damage, 1);
 
         }
+
+        /// <summary>
+        /// Same as <see cref="NPC.SimpleStrikeNPC(int, int, bool, float, DamageClass, bool, float, bool)"/> but also uses Pet related tools, boosts damage and adds to achievement etc.
+        /// </summary>
+        public int PetStrike(NPC npc, int damage, int hitDirection, bool crit = false, float knockBack = 0f, DamageClass damageType = null, bool damageVariation = false, float luck = 0, bool noPlayerInteraction = false)
+        {
+            damage = PetDamage(damage, damageType);
+            var hit = npc.CalculateHitInfo(damage, hitDirection, crit, knockBack, damageType, damageVariation, luck);
+            int damageDone = npc.StrikeNPC(hit, fromNet: false, noPlayerInteraction);
+            if (Main.netMode != NetmodeID.SinglePlayer)
+                NetMessage.SendStrikeNPC(npc, hit);
+
+            return damageDone; //this currently prototype
+        }
+
         /// <summary>
         /// Used for Healing and Mana recovery purposes. Non converted amount can still grant +1, depending on a roll. Example: PetRecovery(215, 0.05f) will heal you for 10 health and 75% chance to heal +1 more, resulting in 11 health recovery.
         /// </summary>
