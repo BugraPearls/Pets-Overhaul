@@ -1,35 +1,33 @@
 [b]Pets Overhaul turns all of your solely cosmetic purposed Pets to directly impact and enhance your gameplay with unique, interesting, build-defining effects and abilities for every situation there is![/b]
 
-[b]Subscribe to: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3352461632]Pets Overhaul: Calamity Addon[/url], if you're using Calamity Mod alongside Pets Overhaul to enhance your Pets Overhaul experience![/b]
+[h3]Weekly Updates![/h3]
 
-Remember to use /pet to get further info on your questions & other useful stuff regarding the mod, such as Junimo Levels leaderboard & more!
-And to view any class of Pet to your liking, use /pet pets or /pet class [args] command!
-
-Additions
+[h3]Features[/h3]
 [list]
-[*] +65 Pet Effects that are; Complex, Unique, build-defining and aiding you with even non-combat tasks!
-[*] With their unique Quality Rolling system, 10 new Light Pet effects!
-[*] A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both! Once you equip a Pet of your own, he will be interested in moving in!
-[*] More than 10 Town Pet buffs obtained by "petting" the Town Pets!
-[*] 44 Achievements, related to Pets and their effects, even including some hidden ones!
-[*] Extremely rare Mastery Shard item dropping from any mob and 100% chance only once per world from select bosses allowing you to craft Master Mode exclusive Pets in Non-Master Mode worlds!
-[*] Added Crafting Recipes for every single Pet, although costly, allowing you to get the Pet you want in an alternative way if you can't obtain it the original way! They all are crafted on a Pet Forge, which is bought from Pet Tamer, and contain the Pet Food item, which can be obtained by various means, or again bought from Pet Tamer.
+[*] Explore 65+ complex Pet Effects, all with unique benefits that fits the Pets personality. Pick whichever Pet meets your needs the most!
+[*] 10 new Light Pet effects, with a unique Quality mechanic for their stats. Will you be lucky enough to obtain a perfect 100% Quality Light Pet?
+[*] 10+ Town Pet buffs obtained by "petting" the Town Pets.
+[*] Pet Tamer Town NPC, selling Pets Overhaul related items and combines your Light Pets.
+[*] 44 Achievements, related to Pets and their effects, even including some hidden easter eggs!
+[*] +10 Custom Items, mostly for recipe purposes.
+[*] Added Crafting Recipes for every single Pet (Expensive & difficult recipes, acting as alternate method of obtaining)
+[*] Active Regular and Active Light Pet slots to be able to place a Pet Item in to benefit from them, without them appearing on world.
 [/list]
 
-
-[b]If you're interested in effects of some other Pet, but you're wondering if you cannot use your favourite Pet from another Mod? Don't worry. Pets Overhaul adds an "Active Pet Slot", which you can put your desired Pet to have their benefits active.[/b]
+Use /pet command to see all Pets Overhaul commands in-game. ("/pet" = help command)
+Example: "/pet class all" will show all Pets affected by Pets Overhaul, or "/pet class offensive" will show all Pets classified as Offensive class. 
 
 Pets Overhaul currently supports Simplified Chinese, Russian and Brazilian Portuguese besides English for localization options. (See below for credits)
 
-Find out about Pet Effects etc. on our [url=https://terrariamods.wiki.gg/wiki/Pets_Overhaul]wiki page![/url] (Credits to Th3Moo5e for their works on wiki)
+[h3]Official Links[/h3]
+[b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3352461632]Pets Overhaul: Calamity Addon[/url][/b]
+[url=https://terrariamods.wiki.gg/wiki/Pets_Overhaul]Pets Overhaul Wiki Page[/url] (Credits to Th3Moo5e for their works on wiki)
+[url=https://discord.gg/KubSpqvDGE]Pets Overhaul Discord Server[/url]
+[url=https://github.com/BugraPearls/Pets-Overhaul]GitHub Page[/url]
+[url=https://www.patreon.com/pearlying]Patreon Page[/url]
 
-To give direct feedback, report bugs or to give suggestions join our [url=https://discord.gg/KubSpqvDGE]Discord server![/url]
-
-Check out our [url=https://github.com/BugraPearls/Pets-Overhaul]GitHub Page[/url] to check the code, contribute & submit issues!
-
-Check out our [url=https://www.patreon.com/pearlying]Patreon Page[/url] if you'd like to support the Mod!
-
-Check out Community made addon for [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3483467167]Wrath of the Gods![/url] Done by: [url=https://steamcommunity.com/profiles/76561198134124217]Redemption[/url]
+[h3]Community Work[/h3]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=3483467167]Wrath of the Gods Addon[/url] Done by: [url=https://steamcommunity.com/profiles/76561198134124217]Redemption[/url]
 
 Mod Trailer video, Most icons and artwork made by: [url=https://steamcommunity.com/id/IsThatFurqi]Furqi[/url]
 Chinese Translation done by: [url=https://steamcommunity.com/profiles/76561198849203846/]ROH[/url]

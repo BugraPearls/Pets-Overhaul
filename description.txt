@@ -1,36 +1,31 @@
 Pets Overhaul turns all of your solely cosmetic purposed Pets to directly impact and enhance your gameplay with unique, interesting, build-defining effects and abilities for every situation there is!
 
-Download: 'Pets Overhaul: Calamity Addon', if you're using Calamity Mod alongside Pets Overhaul to enhance your Pets Overhaul experience!
+Weekly updates!
 
-Remember to use /pet to get further info on your questions & other useful stuff regarding the mod, such as Junimo Levels leaderboard & more!
-And to view any class or type of Pet to your liking, use /pet pets or /pet class [args] command!
+Features
+Explore 65+ complex Pet Effects, all with unique benefits that fits the Pets personality. Pick whichever Pet meets your needs the most!
+10 new Light Pet effects, with a unique Quality mechanic for their stats. Will you be lucky enough to obtain a perfect 100% Quality Light Pet?
+10+ Town Pet buffs obtained by "petting" the Town Pets.
+Pet Tamer Town NPC, selling Pets Overhaul related items and combines your Light Pets.
+44 Achievements, related to Pets and their effects, even including some hidden easter eggs!
++10 Custom Items, mostly for recipe purposes.
+Added Crafting Recipes for every single Pet (Expensive & difficult recipes, acting as alternate method of obtaining)
+Active Regular and Active Light Pet slots to be able to place a Pet Item in to benefit from them, without them appearing on world.
 
-Additions
-- +65 Pet Effects that are; Complex, Unique, build-defining and aiding you with even non-combat tasks!
-- With their unique Quality Rolling system, 10 new Light Pet effects!
-- A new Pet Tamer Town NPC, who can combine two Light Pets into one that inherits highest qualities of both! Once you equip a Pet of your own, he will be interested in moving in!
-- More than 10 Town Pet buffs obtained by "petting" the Town Pets!
-- 44 Achievements, related to Pets and their effects, even including some hidden ones!
-- Extremely rare Mastery Shard item dropping from any mob and 100% chance only once per world from select bosses allowing you to craft Master Mode exclusive Pets in Non-Master Mode worlds!
-- Added Crafting Recipes for every single Pet, although costly, allowing you to get the Pet you want in an alternative way if you can't obtain it the original way! They all are crafted on a Pet Forge, which is bought from Pet Tamer, and contain the Pet Food item, which can be obtained by various means, or again bought from Pet Tamer.
-
-
-If you're interested in effects of some other Pet, but you're wondering if you cannot use your favourite Pet from another Mod? Don't worry. Pets Overhaul adds an "Active Pet Slot", which you can put your desired Pet to have their benefits active.
+Use /pet command to see all Pets Overhaul commands in-game. ("/pet" = help command)
+Example: "/pet class all" will show all Pets affected by Pets Overhaul, or "/pet class offensive" will show all Pets classified as Offensive class. 
 
 Pets Overhaul currently supports Simplified Chinese, Russian and Brazilian Portuguese besides English for localization options. (See below for credits)
 
-Find out about Pet Effects etc. on our wiki page! (Credits to Th3Moo5e for their works on wiki)
-https://terrariamods.wiki.gg/wiki/Pets_Overhaul
+We have:
+Pets Overhaul: Calamity Addon
+Pets Overhaul Wiki Page (Credits to Th3Moo5e for their works on wiki)
+Pets Overhaul Discord Server
+GitHub Page
+Patreon Page
 
-To give direct feedback, report bugs or to give suggestions join our Discord server!
-https://discord.gg/KubSpqvDGE
-
-Check out our GitHub Page to check the code, contribute & submit issues!
-https://github.com/BugraPearls/Pets-Overhaul
-
-Check out our Patreon Page (patreon.com/pearlying) if you'd like to support the Mod!
-
-Check out Community made addon for Wrath of the Gods! Done by: Redemption
+Community Work
+Wrath of the Gods Addon Done by: Redemption
 
 Mod Trailer video, Most icons and artwork made by: Furqi
 Chinese Translation by: ROH
