@@ -134,16 +134,16 @@ namespace PetsOverhaul.PetEffects
                 Vector2 InnerArcUpperEdge = new Vector2(Player.Center.X + abilityRadius, Player.Center.Y).RotatedBy((Main.MouseWorld - Player.Center).ToRotation() - SmallerArc, Player.Center);
                 Vector2 InnerArcLowerEdge = new Vector2(Player.Center.X + abilityRadius, Player.Center.Y).RotatedBy((Main.MouseWorld - Player.Center).ToRotation() + SmallerArc, Player.Center);
 
-                float penetrationReduction = 0f;
+                float penetrationPenalty = 0f;
 
                 void DoTheStrike(NPC npc)
                 {
                     PetGlobalNPC.AddSlow(new PetSlow(slowAmount, slowDuration, PetSlowID.Deerclops), npc);
-                    PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationReduction), DamageClass.Melee), Player.direction, false, 0, DamageClass.Melee, true, Player.luck), Player.whoAmI);
-                    penetrationReduction += reductionRaise;
-                    if (penetrationReduction > reductionCap)
+                    Pet.PetStrike(npc, (int)((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationPenalty)), Player.direction, false, 0, DamageClass.Melee);
+                    penetrationPenalty += reductionRaise;
+                    if (penetrationPenalty > reductionCap)
                     {
-                        penetrationReduction = reductionCap;
+                        penetrationPenalty = reductionCap;
                     }
                 }
 

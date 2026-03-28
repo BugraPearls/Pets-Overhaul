@@ -64,9 +64,7 @@ namespace PetsOverhaul.PetEffects
                             location = proj.Center;
                         }
                     }
-                Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), location, new Vector2(Main.MouseWorld.X - location.X - Main.rand.NextFloat(3f, -3f), Main.MouseWorld.Y - location.Y - Main.rand.NextFloat(6f, 7f)), ProjectileID.CultistBossFireBall, Pet.PetDamage(fireBase, DamageClass.Generic), fireKnockback, Player.whoAmI);
-                petProjectile.DamageType = DamageClass.Generic;
-                petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
+                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), location, new Vector2(Main.MouseWorld.X - location.X - Main.rand.NextFloat(3f, -3f), Main.MouseWorld.Y - location.Y - Main.rand.NextFloat(6f, 7f)), ProjectileID.CultistBossFireBall, fireBase, fireKnockback, Player.whoAmI, damageClass: DamageClass.Generic);
             }
             fireVolley--;
             if (fireVolley < 0)
@@ -118,23 +116,15 @@ namespace PetsOverhaul.PetEffects
             {
                 case 0: //Ice
                     Vector2 velocity = Main.rand.NextVector2CircularEdge(4f, 4f);
-                    Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, Pet.PetDamage(iceBase, DamageClass.Generic), 0, Player.whoAmI, 0f, 1f);
-                    petProjectile.DamageType = DamageClass.Generic;
-                    petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
-                    petProjectile.netUpdate = true;
-                        achievementCasts[0] = AchievementTimerAmount;
+                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, iceBase, 0, Player.whoAmI, 0f, 1f,damageClass: DamageClass.Generic);
+                    achievementCasts[0] = AchievementTimerAmount;
                     break;
                 case 1: //Lightning
-                    Projectile petProj = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, Pet.PetDamage(lightningOrbBase, DamageClass.Generic), 0, Player.whoAmI, 0f);
-                    petProj.DamageType = DamageClass.Generic;
-                    petProj.CritChance = (int)Player.GetTotalCritChance(DamageClass.Generic);
-                    petProj.netUpdate = true;
-
+                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, lightningOrbBase, 0, Player.whoAmI, 0f,damageClass:DamageClass.Generic);
                     achievementCasts[1] = AchievementTimerAmount;
                     break;
                 case 2: //Fire
                     fireVolley = fireVolleyFrames;
-
                     achievementCasts[2] = AchievementTimerAmount;
                     break;
                 default:
@@ -231,7 +221,8 @@ namespace PetsOverhaul.PetEffects
             {
                 if (Main.netMode != NetmodeID.SinglePlayer && projectile.type == ProjectileID.CultistBossIceMist && projectile.ai[1] == 1f && projectile.ai[0] % 30f == 0f)
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, projectile.rotation.ToRotationVector2(), 464, projectile.damage, projectile.knockBack, projectile.owner);
+                    PhantasmalDragon dragon = Main.player[projectile.owner].GetModPlayer<PhantasmalDragon>();
+                    dragon.Pet.NewPetSourcedProjectile(projectile.GetSource_FromThis(), projectile.Center, projectile.rotation.ToRotationVector2(), ProjectileID.CultistBossIceMist, dragon.iceBase, 0, projectile.owner, damageClass: DamageClass.Generic);
                 }
                 projectile.friendly = true;
                 projectile.hostile = false;

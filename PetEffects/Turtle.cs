@@ -68,11 +68,12 @@ namespace PetsOverhaul.PetEffects
                     int damageTaken = Math.Min(info.SourceDamage, Player.statLife);
                     if (entity is Projectile projectile && projectile.TryGetGlobalProjectile(out PetGlobalProjectile proj) && Main.npc[proj.sourceNpcId].active && Main.npc[proj.sourceNpcId].dontTakeDamage == false)
                     {
-                        PetUtils.AddToDmgAchievement(Main.npc[proj.sourceNpcId].SimpleStrikeNPC(Pet.PetDamage(damageTaken * dmgReflectProjectile, DamageClass.Generic), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic, true, Player.luck),Player.whoAmI);
+                        Pet.PetStrike(Main.npc[proj.sourceNpcId], damageTaken * dmgReflectProjectile, info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
+                        PetUtils.AddToDmgAchievement(Main.npc[proj.sourceNpcId].SimpleStrikeNPC(Pet.PetDamage(damageTaken * dmgReflectProjectile, DamageClass.Generic), info.HitDirection, false, 1f, DamageClass.Generic, true, Player.luck),Player.whoAmI);
                     }
                     else if (entity is NPC npc && npc.active == true && npc.dontTakeDamage == false)
                     {
-                        PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(Pet.PetDamage(damageTaken * dmgReflect, DamageClass.Generic), info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic, true, Player.luck), Player.whoAmI);
+                        Pet.PetStrike(npc, damageTaken * dmgReflect, info.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100), 100), 1f, DamageClass.Generic);
                         if (npc.type == NPCID.GiantTortoise && (npc.ai[0] == 3 || npc.ai[0] == 4)) //when its 3 and 4, thats where its midair.
                         {
                             PetUtils.DoAchievementOnPlayer<UnstoppableAndImmovable>(Player.whoAmI);

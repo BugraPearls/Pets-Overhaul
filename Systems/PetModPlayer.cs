@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
 using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
@@ -324,33 +325,105 @@ namespace PetsOverhaul.Systems
             return -1;
         }
         /// <summary>
-        /// Use this to properly scale Pet sourced damage values with the given damage class, Pet damage multiplier and a check to prevent this being lower than 1.
+        /// Creates a Projectile with given arguments. Almost same as <see cref="Projectile.NewProjectileDirect(IEntitySource, Vector2, Vector2, int, int, float, int, float, float, float)"/>. However; 
+        /// Damage always scales with given <paramref name="damageClass"/>, and uses <see cref="PetDamage(float)"/> to scale it even further.
+        /// Also has the given <paramref name="damageClass"/>'s total crit chance applied (so these projectiles can crit) and the damage class properly applied.
+        /// Contains some default values for easier use, see parameters
+        /// </summary>
+        /// <param name="entitySource">Set it to null to default to <see cref="EntitySource_Pet"/>. Source of the projectile.</param>
+        /// <param name="position">Spawning position of Projectile.</param>
+        /// <param name="velocity">Velocity/trajectory of the projectile</param>
+        /// <param name="type">Type of the projectile</param>
+        /// <param name="damage">Damage of the projectile. This method already calls <see cref="StatModifier.ApplyTo(float)"/> and all Projectiles that has EntitySource as <see cref="EntitySource_Pet"/> gets their damage increased, so do not use them again for double increase.</param>
+        /// <param name="knockback">Knockback of the projectile.</param>
+        /// <param name="owner">Defaults to Player.whoAmI, any number below 0 will default the owner to be Player.whoAmI. Owner of the projectile.</param>
+        /// <param name="ai0">ai0 value of the projectile.</param>
+        /// <param name="ai1">ai1 value of the projectile.</param>
+        /// <param name="ai2">ai2 value of the projectile.</param>
+        /// <param name="damageClass">Set it to null to default to Damage Class of the Projectile.</param>
+        public Projectile NewPetSourcedProjectile(IEntitySource entitySource, Vector2 position, Vector2 velocity, int type, int damage, float knockback, int owner = -1, float ai0 = 0, float ai1 = 0, float ai2 = 0, DamageClass damageClass = null)
+        {
+            entitySource ??= PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile);
+
+            damageClass ??= DamageClass.Generic;
+
+            if (owner <= 0)
+            {
+                owner = Player.whoAmI;
+            }
+
+            damage = (int)Player.GetTotalDamage(damageClass).ApplyTo(damage);
+
+            Projectile petProjectile = Projectile.NewProjectileDirect(entitySource, position, velocity, type, damage, knockback, owner, ai0, ai1, ai2);
+            petProjectile.DamageType = damageClass;
+            petProjectile.CritChance = (int)Player.GetTotalCritChance(damageClass);
+            return petProjectile;
+        }
+        /// <summary>
+        /// Do not use this with <see cref="NewPetSourcedProjectile(IEntitySource, Vector2, Vector2, int, int, float, int, float, float, float, DamageClass)"/> and <see cref="PetStrike(NPC, int, int, bool, float, DamageClass, bool, float?)"/>, as they already call this.
+        /// Use this if you want the damage to scale with Pet Damage Multiplier. Also ensures damage is at least 1.
         /// </summary>
         /// <param name="damage">Base damage value</param>
-        /// <param name="damageClass">Class that this damage should get damage bonuses from</param>
-        public int PetDamage(float damage, DamageClass damageClass)
-        {
-            if (damageClass is not null)
-            {
-                damage = Player.GetTotalDamage(damageClass).ApplyTo(damage);
-            }
-            damage *= petDirectDamageMultiplier;
-            return (int)Math.Max(damage, 1);
+        public int PetDamage(float damage) => (int)Math.Max(damage * petDirectDamageMultiplier, 1);
 
-        }
 
         /// <summary>
-        /// Same as <see cref="NPC.SimpleStrikeNPC(int, int, bool, float, DamageClass, bool, float, bool)"/> but also uses Pet related tools, boosts damage and adds to achievement etc.
+        /// Do not use this with <see cref="NewPetSourcedProjectile(IEntitySource, Vector2, Vector2, int, int, float, int, float, float, float, DamageClass)"/> and <see cref="PetStrike(NPC, int, int, bool, float, DamageClass, bool, float?)"/>, as they already call this.
+        /// Use this if you want the damage to scale with Pet Damage Multiplier and the DamageClass's damage modifiers. Also ensures damage is at least 1.
         /// </summary>
-        public int PetStrike(NPC npc, int damage, int hitDirection, bool crit = false, float knockBack = 0f, DamageClass damageType = null, bool damageVariation = false, float luck = 0, bool noPlayerInteraction = false)
+        /// <param name="damage">Base damage value</param>
+        public int PetDamage(float damage, DamageClass damageClass) => (int)Math.Max(Player.GetTotalDamage(damageClass ?? DamageClass.Default).ApplyTo(damage * petDirectDamageMultiplier), 1);
+
+        /// <summary>
+        /// Same as <see cref="Player.ApplyDamageToNPC(NPC, int, float, int, bool, DamageClass?, bool)"/> but also uses Pet related tools, boosts damage and adds to achievement etc.
+        /// </summary>
+        /// <param name="npc">NPC to be struck.</param>
+        /// <param name="damage">Damage amount. Only add the intended damage amount, do not increase it further to prevent double multipliers; <see cref="PetDamage(float, DamageClass)"/> is being called here. Which handles the class & pet damage modifiers.</param>
+        /// <param name="hitDirection">Direction of the hit 1 or -1</param>
+        /// <param name="crit">Use own logic to make hits crit, such as checking TotalCritChance to return true or false here.</param>
+        /// <param name="knockBack">Knockback of this hit.</param>
+        /// <param name="damageType">Damage Class of this hit.</param>
+        /// <param name="damageVariation">Damage variation. Set it to false if dealt damage wants to be a set amount.</param>
+        /// <param name="luck">Luck to be used for damage variation, if this is null, it will use Player.luck.</param>
+        public void PetStrike(NPC npc, float damage, int hitDirection, bool crit = false, float knockBack = 0f, DamageClass damageType = null, bool damageVariation = true, float? luck = null)
         {
+            if (!PlayerLoader.CanHitNPC(Player, npc))
+                return;
+
+            luck ??= Player.luck;
+
             damage = PetDamage(damage, damageType);
-            var hit = npc.CalculateHitInfo(damage, hitDirection, crit, knockBack, damageType, damageVariation, luck);
-            int damageDone = npc.StrikeNPC(hit, fromNet: false, noPlayerInteraction);
+
+            var modifiers = npc.GetIncomingStrikeModifiers(damageType ?? DamageClass.Default, hitDirection);
+
+            PlayerLoader.ModifyHitNPC(Player, npc, ref modifiers);
+
+            Player.ApplyBannerOffenseBuff(npc, ref modifiers);
+
+            modifiers.ArmorPenetration += Player.GetTotalArmorPenetration(damageType ?? DamageClass.Generic);
+
+            Player.OnHit(npc.Center.X, npc.Center.Y, npc);
+
+            var hit = modifiers.ToHitInfo(damage, crit, knockBack, damageVariation, (float)luck);
+
+            NPCKillAttempt attempt = new(npc);
+            int dmg = npc.StrikeNPC(hit);
+            PlayerLoader.OnHitNPC(Player, npc, hit, dmg);
+
+            if (Player.accDreamCatcher && !npc.HideStrikeDamage)
+                Player.addDPS(dmg);
+
+            PetUtils.AddToDmgAchievement(dmg, Player.whoAmI);
+
             if (Main.netMode != NetmodeID.SinglePlayer)
                 NetMessage.SendStrikeNPC(npc, hit);
 
-            return damageDone; //this currently prototype
+            int num2 = Item.NPCtoBanner(npc.BannerID());
+            if (num2 >= 0)
+                Player.lastCreatureHit = num2;
+
+            if (attempt.DidNPCDie())
+                Player.OnKillNPC(ref attempt, PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc, "Pet Damage"));
         }
 
         /// <summary>
@@ -856,7 +929,7 @@ namespace PetsOverhaul.Systems
                         petShield[index] = value;
                     }
                 }
-                PetUtils.DoAchievementOnPlayer<GuardPet>(Player.whoAmI,addToAchievement);
+                PetUtils.DoAchievementOnPlayer<GuardPet>(Player.whoAmI, addToAchievement);
 
                 shieldToBeReduced = 0;
                 currentShield = 0;

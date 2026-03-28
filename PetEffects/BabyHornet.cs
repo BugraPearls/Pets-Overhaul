@@ -66,15 +66,11 @@ namespace PetsOverhaul.PetEffects
             {
                 if (Player.strongBees == true && Main.rand.NextBool(1, 3))
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.GiantBee, Pet.PetDamage(beeDmg * 2, DamageClass.Summon), beeKb * 2, Player.whoAmI);
-                    petProjectile.DamageType = DamageClass.Summon;
-                    petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Summon);
+                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.GiantBee, beeDmg * 2, beeKb * 2, Player.whoAmI, damageClass: DamageClass.Summon);
                 }
                 else
                 {
-                    Projectile petProjectile = Projectile.NewProjectileDirect(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.Bee, Pet.PetDamage(beeDmg, DamageClass.Summon), beeKb, Player.whoAmI);
-                    petProjectile.DamageType = DamageClass.Summon;
-                    petProjectile.CritChance = (int)Player.GetTotalCritChance(DamageClass.Summon);
+                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), pos, Main.rand.NextVector2CircularEdge(7f, 7f), ProjectileID.Bee, beeDmg, beeKb, Player.whoAmI, damageClass: DamageClass.Summon);
                 }
                 Pet.timer = Pet.timerMax;
             }
