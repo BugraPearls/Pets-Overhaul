@@ -62,6 +62,7 @@ namespace PetsOverhaul.PetEffects
                     petnpc.shuricornMark = 0;
                     Player.SetImmuneTimeForAllTypes(15);
                     Player.Center = npc.Center;
+                    Pet.PetStrike(npc, shuricornDamage * 3, 2, false, shuricornKb * 3, DamageClass.Generic);
                     PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck), Player.whoAmI);
                     shuricornTaggedNpc = -1;
                 }
@@ -72,7 +73,7 @@ namespace PetsOverhaul.PetEffects
             }
             else if (Pet.timer <= 0)
             {
-                Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), 20, shuricornKb, Player.whoAmI);
+                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), shuricornDamage, shuricornKb,damageClass: DamageClass.Generic);
                 Player.velocity.X = 10 * Player.direction * -1;
                 Pet.timer = Pet.timerMax;
             }

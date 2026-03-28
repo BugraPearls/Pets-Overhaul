@@ -281,7 +281,7 @@ namespace PetsOverhaul.NPCs
                             kb = dual.knockback;
                             luck = dual.Player.luck;
                         }
-                        prince.Pet.PetStrike(npc, damage, npc.direction, crit, kb, DamageClass.Generic);
+                        prince.Pet.PetStrike(npc, damage, 2, crit, kb, DamageClass.Generic);
                         npc.GetImmuneTime(Owner, 10);
                     }
                 }

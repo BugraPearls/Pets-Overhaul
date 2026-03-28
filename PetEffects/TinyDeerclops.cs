@@ -139,7 +139,7 @@ namespace PetsOverhaul.PetEffects
                 void DoTheStrike(NPC npc)
                 {
                     PetGlobalNPC.AddSlow(new PetSlow(slowAmount, slowDuration, PetSlowID.Deerclops), npc);
-                    Pet.PetStrike(npc, (int)((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationPenalty)), Player.direction, false, 0, DamageClass.Melee);
+                    Pet.PetStrike(npc, (int)((consumedDamage + Player.statDefense) * (1 + Player.endurance) * (1f - penetrationPenalty)), 2, false, 0, DamageClass.Melee);
                     penetrationPenalty += reductionRaise;
                     if (penetrationPenalty > reductionCap)
                     {

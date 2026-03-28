@@ -84,7 +84,7 @@ namespace PetsOverhaul.PetEffects
                     {
                         if (npc.dontTakeDamage == false && npc.friendly == false && Player.Distance(npc.Center) < queenRange)
                         {
-                            Pet.PetStrike(npc, freezeDamage, npc.direction, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100)), 0, DamageClass.Generic);
+                            Pet.PetStrike(npc, freezeDamage, 2, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance<GenericDamageClass>(), 100)), 0, DamageClass.Generic);
                         }
                     }
                     if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)

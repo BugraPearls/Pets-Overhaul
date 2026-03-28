@@ -378,18 +378,23 @@ namespace PetsOverhaul.Systems
         /// </summary>
         /// <param name="npc">NPC to be struck.</param>
         /// <param name="damage">Damage amount. Only add the intended damage amount, do not increase it further to prevent double multipliers; <see cref="PetDamage(float, DamageClass)"/> is being called here. Which handles the class and pet damage modifiers.</param>
-        /// <param name="hitDirection">Direction of the hit 1 or -1</param>
+        /// <param name="hitDirection">Defaults to 2, if its 2 it will determine by calculating via Player's position and npc's position. -1 and 1 is for left and right, while 0 will result in no knockback.</param>
         /// <param name="crit">Use own logic to make hits crit, such as checking TotalCritChance to return true or false here.</param>
         /// <param name="knockBack">Knockback of this hit.</param>
         /// <param name="damageType">Damage Class of this hit.</param>
         /// <param name="damageVariation">Damage variation. Set it to false if dealt damage wants to be a set amount.</param>
         /// <param name="luck">Luck to be used for damage variation, if this is null, it will use Player.luck.</param>
-        public void PetStrike(NPC npc, float damage, int hitDirection, bool crit = false, float knockBack = 0f, DamageClass damageType = null, bool damageVariation = true, float? luck = null)
+        public void PetStrike(NPC npc, float damage, int hitDirection = 2, bool crit = false, float knockBack = 0f, DamageClass damageType = null, bool damageVariation = true, float? luck = null)
         {
             if (!PlayerLoader.CanHitNPC(Player, npc))
                 return;
 
             luck ??= Player.luck;
+            
+            if (hitDirection == 2)
+            {
+                hitDirection = Player.position.X < npc.position.X ? 1 : -1;
+            }
 
             damage = PetDamage(damage, damageType);
 

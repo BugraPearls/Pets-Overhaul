@@ -25,7 +25,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
-                    Pet.PetStrike(target, hit.SourceDamage * meleeDamage, hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
+                    Pet.PetStrike(target, hit.SourceDamage * meleeDamage, 2, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
                     PlayParrotSound();
                 }
             }
@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
-                    Pet.PetStrike(target, hit.SourceDamage * projDamage, hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
+                    Pet.PetStrike(target, hit.SourceDamage * projDamage, 2, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
                     PlayParrotSound();
                 }
             }
