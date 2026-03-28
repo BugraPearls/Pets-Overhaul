@@ -2,7 +2,6 @@
 using PetsOverhaul.Config;
 using PetsOverhaul.Projectiles;
 using PetsOverhaul.Systems;
-using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -25,7 +24,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && Pet.timer <= 0)
             {
-                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), target.Center, Vector2.Zero, ModContent.ProjectileType<PetExplosion>(), (int)(hit.SourceDamage * damageMult), hit.Knockback * kbMult, Player.whoAmI, explosionSize,damageClass: hit.DamageType);
+                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), target.Center, Vector2.Zero, ModContent.ProjectileType<PetExplosion>(),hit.SourceDamage * damageMult, hit.Knockback * kbMult, Player.whoAmI, explosionSize, damageClass: hit.DamageType);
                 if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                 {
                     SoundEngine.PlaySound(SoundID.Item14, target.Center);

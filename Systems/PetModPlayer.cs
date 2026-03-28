@@ -1,16 +1,13 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
 using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs;
-using PetsOverhaul.PetEffects;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.JavaScript;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -341,7 +338,7 @@ namespace PetsOverhaul.Systems
         /// <param name="ai1">ai1 value of the projectile.</param>
         /// <param name="ai2">ai2 value of the projectile.</param>
         /// <param name="damageClass">Set it to null to default to Damage Class of the Projectile.</param>
-        public Projectile NewPetSourcedProjectile(IEntitySource entitySource, Vector2 position, Vector2 velocity, int type, int damage, float knockback, int owner = -1, float ai0 = 0, float ai1 = 0, float ai2 = 0, DamageClass damageClass = null)
+        public Projectile NewPetSourcedProjectile(IEntitySource entitySource, Vector2 position, Vector2 velocity, int type, float damage, float knockback, int owner = -1, float ai0 = 0, float ai1 = 0, float ai2 = 0, DamageClass damageClass = null)
         {
             entitySource ??= PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile);
 
@@ -352,9 +349,11 @@ namespace PetsOverhaul.Systems
                 owner = Player.whoAmI;
             }
 
-            damage = (int)Player.GetTotalDamage(damageClass).ApplyTo(damage);
+            damage = Player.GetTotalDamage(damageClass).ApplyTo(damage);
 
-            Projectile petProjectile = Projectile.NewProjectileDirect(entitySource, position, velocity, type, damage, knockback, owner, ai0, ai1, ai2);
+            int finalDmg = PetUtils.Randomizer((int)(damage * 100)); //This to ensure any excess decimals (only first 2 digits) are still put in use
+
+            Projectile petProjectile = Projectile.NewProjectileDirect(entitySource, position, velocity, type, finalDmg, knockback, owner, ai0, ai1, ai2);
             petProjectile.DamageType = damageClass;
             petProjectile.CritChance = (int)Player.GetTotalCritChance(damageClass);
             return petProjectile;
@@ -378,7 +377,7 @@ namespace PetsOverhaul.Systems
         /// Same as <see cref="Player.ApplyDamageToNPC(NPC, int, float, int, bool, DamageClass?, bool)"/> but also uses Pet related tools, boosts damage and adds to achievement etc.
         /// </summary>
         /// <param name="npc">NPC to be struck.</param>
-        /// <param name="damage">Damage amount. Only add the intended damage amount, do not increase it further to prevent double multipliers; <see cref="PetDamage(float, DamageClass)"/> is being called here. Which handles the class & pet damage modifiers.</param>
+        /// <param name="damage">Damage amount. Only add the intended damage amount, do not increase it further to prevent double multipliers; <see cref="PetDamage(float, DamageClass)"/> is being called here. Which handles the class and pet damage modifiers.</param>
         /// <param name="hitDirection">Direction of the hit 1 or -1</param>
         /// <param name="crit">Use own logic to make hits crit, such as checking TotalCritChance to return true or false here.</param>
         /// <param name="knockBack">Knockback of this hit.</param>

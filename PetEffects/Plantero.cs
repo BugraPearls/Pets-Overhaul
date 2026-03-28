@@ -61,7 +61,7 @@ namespace PetsOverhaul.PetEffects
                         2 => ProjectileID.SporeGas3,
                         _ => ProjectileID.SporeGas,
                     };
-                    Projectile gas = Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), location, velocity, projId, (int)(damage * damageMult + flatDmg), knockBack,damageClass: dmgType);
+                    Projectile gas = Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), location, velocity, projId, damage * damageMult + flatDmg, knockBack, damageClass: dmgType);
                     gas.Resize(gas.width * 2, gas.height * 2);
                     gas.scale *= 2;
                     gas.penetrate = pen;

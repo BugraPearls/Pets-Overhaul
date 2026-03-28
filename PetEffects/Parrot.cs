@@ -25,7 +25,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
-                    Pet.PetStrike(target, (int)(hit.SourceDamage * meleeDamage), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
+                    Pet.PetStrike(target, hit.SourceDamage * meleeDamage, hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
                     PlayParrotSound();
                 }
             }
@@ -37,7 +37,7 @@ namespace PetsOverhaul.PetEffects
             {
                 for (int i = 0; i < PetUtils.Randomizer(meleeChance); i++)
                 {
-                    Pet.PetStrike(target, (int)(hit.SourceDamage * projDamage), hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
+                    Pet.PetStrike(target, hit.SourceDamage * projDamage, hit.HitDirection, Main.rand.NextBool((int)Math.Min(Player.GetTotalCritChance(hit.DamageType), 100), 100), 0, hit.DamageType);
                     PlayParrotSound();
                 }
             }
@@ -90,7 +90,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     for (int i = 0; i < PetUtils.Randomizer(parrot.projChance); i++)
                     {
-                        parrot.Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, (int)(projectile.damage * parrot.projDamage), projectile.knockBack, projectile.owner,damageClass: projectile.DamageType);
+                        parrot.Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, projectile.damage * parrot.projDamage, projectile.knockBack, projectile.owner, damageClass: projectile.DamageType);
                         parrot.PlayParrotSound();
                         PetUtils.DoAchievementOnPlayer<Copycat>(projectile.owner);
                     }
