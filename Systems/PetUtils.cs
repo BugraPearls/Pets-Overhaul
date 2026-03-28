@@ -60,7 +60,7 @@ namespace PetsOverhaul.Systems
 
         public static bool LifestealCheck(NPC npc)
         {
-            return ValidTargetCheck(npc)  && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type);
+            return ValidTargetCheck(npc) && npc.canGhostHeal && !PetIDs.EnemiesForLifestealToIgnore.Contains(npc.type);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public static bool ValidTargetCheck(NPC npc)
         {
-            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && !npc.CountsAsACritter && !npc.isLikeATownNPC;
+            return !npc.friendly && !npc.SpawnedFromStatue && !npc.immortal && !npc.CountsAsACritter && !npc.isLikeATownNPC && !npc.dontTakeDamage;
         }
         /// <summary>
         /// Creates a Circle of dusts around the given Center with the Dust ID.
@@ -135,7 +135,7 @@ namespace PetsOverhaul.Systems
         /// <param name="dealtActualDmg">How much to be added to the achievement.</param>
         public static void AddToDmgAchievement(int dealtActualDmg, int playerWhoAmI)
         {
-            DoAchievementOnPlayer<WarriorPet>(playerWhoAmI,dealtActualDmg);
+            DoAchievementOnPlayer<WarriorPet>(playerWhoAmI, dealtActualDmg);
         }
         /// <summary>
         /// Randomizes the given number. numToBeRandomized / randomizeTo returns how many times its 100% chance and rolls if the leftover, non-100% amount is true. Randomizer(225) returns +2 and +1 more with 25% chance.
