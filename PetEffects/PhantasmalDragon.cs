@@ -272,6 +272,10 @@ namespace PetsOverhaul.PetEffects
                     if (projectile.ai[0] % 30f == 0f && projectile.ai[0] < 180f) //Removed the code regarding targeting the player.
                     {
                         Vector2 vector162 = Main.MouseWorld - projectile.Center; //Directly uses Mouse position for velocity.
+                        if (vector162 == Vector2.Zero)
+                        {
+                            vector162 = Main.rand.NextVector2CircularEdge(1, 1);
+                        }
                         float ai = Main.rand.Next(100);
                         Vector2 vector163 = Vector2.Normalize(vector162.RotatedByRandom(0.7853981852531433)) * 7f;
                         Projectile petProjectile = Projectile.NewProjectileDirect(projectile.GetSource_FromThis(), projectile.Center, vector163, ProjectileID.CultistBossLightningOrbArc, projectile.damage / Main.player[projectile.owner].GetModPlayer<PhantasmalDragon>().lightningStrikeDivide, 0f, projectile.owner, vector162.ToRotation(), ai); //Changed ID for readability and the WhoAmI to .owner
