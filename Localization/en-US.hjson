@@ -699,7 +699,7 @@ Mods: {
 				'''
 			MudBud:
 				'''
-				- Damaging enemies have a <chance>% chance of causing big damaging spores to appear.
+				- Damaging enemies have a <chance>% (Boosted by Pet Ability Haste) chance of spawning spores.
 				  * Spores location is somewhere near the enemy randomly and travels slightly.
 				  * Spores deal <dmg>x of the initial damage that spawned them + <flatDmg>.
 				  * Spores have a <kb> knockback and can hit up to <pen> times before they disappear.
