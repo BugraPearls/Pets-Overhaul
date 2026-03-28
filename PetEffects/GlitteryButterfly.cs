@@ -18,7 +18,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
-                if (Player.equippedWings == null)
+                if (Player.equippedWings == null || Player.equippedWings.IsAir)
                 {
                     Player.statLifeMax2 -= (int)(Player.statLifeMax2 * healthPenalty);
                     Player.wings = 5; //butterfly wings

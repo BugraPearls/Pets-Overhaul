@@ -31,7 +31,7 @@ namespace PetsOverhaul.PetEffects
             }
             if (PetIsEquipped())
             {
-                if (Player.equippedWings == null)
+                if (Player.equippedWings == null || Player.equippedWings.IsAir)
                 {
                     if (harpyFlight == fuelMax && Player.wingTime == 0)
                     {
