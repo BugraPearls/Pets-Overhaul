@@ -6,7 +6,6 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
-using Terraria.GameContent.ItemDropRules;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -85,7 +84,7 @@ namespace PetsOverhaul.PetEffects
             {
                 achievementCasts[2] = 0;
             }
-            if (achievementCasts[0] > 0 && achievementCasts[1]> 0 && achievementCasts[2] > 0)
+            if (achievementCasts[0] > 0 && achievementCasts[1] > 0 && achievementCasts[2] > 0)
             {
                 PetUtils.DoAchievementOnPlayer<AncientSorcery>(Player.whoAmI);
             }
@@ -116,11 +115,11 @@ namespace PetsOverhaul.PetEffects
             {
                 case 0: //Ice
                     Vector2 velocity = Main.rand.NextVector2CircularEdge(4f, 4f);
-                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, iceBase, 0, Player.whoAmI, 0f, 1f,damageClass: DamageClass.Generic);
+                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, velocity, ProjectileID.CultistBossIceMist, iceBase, 0, Player.whoAmI, 0f, 1f, damageClass: DamageClass.Generic);
                     achievementCasts[0] = AchievementTimerAmount;
                     break;
                 case 1: //Lightning
-                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, lightningOrbBase, 0, Player.whoAmI, 0f,damageClass:DamageClass.Generic);
+                    Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile, "Phantasmal"), Main.MouseWorld, Vector2.Zero, ProjectileID.CultistBossLightningOrb, lightningOrbBase, 0, Player.whoAmI, 0f, damageClass: DamageClass.Generic);
                     achievementCasts[1] = AchievementTimerAmount;
                     break;
                 case 2: //Fire
@@ -137,7 +136,7 @@ namespace PetsOverhaul.PetEffects
             packet.Write((byte)MessageType.PhantasmalCurrentAbility);
             packet.Write((byte)Player.whoAmI);
             packet.Write((byte)currentAbility);
-            packet.Send(toWho,fromWho);
+            packet.Send(toWho, fromWho);
         }
         public override void CopyClientState(ModPlayer targetCopy)
         {

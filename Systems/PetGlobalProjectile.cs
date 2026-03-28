@@ -60,7 +60,7 @@ namespace PetsOverhaul.Systems
         {
             if (petProj)
             {
-                 modifiers.FinalDamage *= Main.player[projectile.owner].PetPlayer().petDirectDamageMultiplier;
+                modifiers.FinalDamage *= Main.player[projectile.owner].PetPlayer().petDirectDamageMultiplier;
             }
         }
 

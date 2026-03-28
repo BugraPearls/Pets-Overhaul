@@ -1,6 +1,5 @@
 ﻿using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
-using PetsOverhaul.UI;
 using System;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;

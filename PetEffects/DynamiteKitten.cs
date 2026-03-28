@@ -24,7 +24,7 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped() && Pet.timer <= 0)
             {
-                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), target.Center, Vector2.Zero, ModContent.ProjectileType<PetExplosion>(),hit.SourceDamage * damageMult, hit.Knockback * kbMult, Player.whoAmI, explosionSize, damageClass: hit.DamageType);
+                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), target.Center, Vector2.Zero, ModContent.ProjectileType<PetExplosion>(), hit.SourceDamage * damageMult, hit.Knockback * kbMult, Player.whoAmI, explosionSize, damageClass: hit.DamageType);
                 if (ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)
                 {
                     SoundEngine.PlaySound(SoundID.Item14, target.Center);

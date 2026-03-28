@@ -8,10 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices.JavaScript;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -318,7 +316,7 @@ namespace PetsOverhaul
                     {
                         Main.player[reader.ReadByte()].GetModPlayer<PetModPlayer>().timer = -1;
                     }
-                        break;
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }

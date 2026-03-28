@@ -1,5 +1,4 @@
-﻿using MonoMod.Core.Platforms;
-using PetsOverhaul.PetEffects;
+﻿using PetsOverhaul.PetEffects;
 using PetsOverhaul.Systems;
 using Terraria;
 using Terraria.ID;

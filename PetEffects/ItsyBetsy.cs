@@ -21,7 +21,7 @@ namespace PetsOverhaul.PetEffects
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped(false))
-            PetUtils.OldOnesAchievementHelper(Player);
+                PetUtils.OldOnesAchievementHelper(Player);
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
         {

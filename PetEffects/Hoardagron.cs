@@ -22,7 +22,7 @@ namespace PetsOverhaul.PetEffects
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped(false))
-            PetUtils.OldOnesAchievementHelper(Player);
+                PetUtils.OldOnesAchievementHelper(Player);
         }
         public override void ModifyShootStats(Item item, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {

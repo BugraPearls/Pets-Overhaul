@@ -1,10 +1,9 @@
-﻿using PetsOverhaul.Systems;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace PetsOverhaul.Buffs
 {
-    public class QueensDamnation : ModBuff //DrawEffects in NpcPet class
+    public class QueensDamnation : ModBuff //DrawEffects in PetGlobalNPC class
     {
         public override void SetStaticDefaults()
         {

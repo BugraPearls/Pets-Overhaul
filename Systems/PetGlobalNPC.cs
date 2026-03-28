@@ -33,7 +33,7 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public sealed class PetGlobalNPC : GlobalNPC
     {
-        public const float bossSlowMult = 0.2f; 
+        public const float bossSlowMult = 0.2f;
         /// <summary>
         /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
         /// </summary>
