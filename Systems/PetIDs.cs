@@ -137,7 +137,7 @@ namespace PetsOverhaul.Systems
             { (2000, [ItemID.JunoniaShell, ModContent.ItemType<Egg>() ]) },
             { (2500, [ItemID.Dragonfruit, ItemID.Starfruit, ItemID.Grapes ]) },
             { (3500, [ItemID.GreenMushroom, ItemID.TealMushroom, ItemID.SkyBlueFlower, ItemID.YellowMarigold, ItemID.BlueBerries, ItemID.LimeKelp, ItemID.PinkPricklyPear, ItemID.OrangeBloodroot, ItemID.StrangePlant1, ItemID.StrangePlant2, ItemID.StrangePlant3, ItemID.StrangePlant4]) },
-            { (5000, [ItemID.JungleRose, ItemID.ManaFlower ]) },
+            { (5000, [ItemID.JungleRose, ItemID.ManaFlower, ItemID.AbigailsFlower ]) },
             { (10000, [ItemID.LifeFruit, ItemID.LeafWand, ItemID.LivingWoodWand, ItemID.LivingMahoganyWand, ItemID.LivingMahoganyLeafWand, ItemID.BlueEgg ]) },
             { (25000, [ItemID.EucaluptusSap, ItemID.MagicalPumpkinSeed ]) }
         };
