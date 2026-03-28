@@ -357,7 +357,7 @@ namespace PetsOverhaul.Systems
         /// If achievement's condition is a 'flag', <paramref name="progress"/> parameter will be ignored and Condition will be completed. Otherwise, increases the condition by <paramref name="progress"/>.
         /// </summary>
         /// <param name="whoGetsCredit">whoAmI of the Player that will have this Achievement increased.</param>
-        public static void DoAchievementOnPlayer<T>(int whoGetsCredit, int progress = -1, string conditionName = "Condition") where T : ModAchievement => DoAchievementOnPlayer(ModContent.GetInstance<T>(), whoGetsCredit, progress, conditionName);
+        public static void DoAchievementOnPlayer<T>(int whoGetsCredit, int progress = 1, string conditionName = "Condition") where T : ModAchievement => DoAchievementOnPlayer(ModContent.GetInstance<T>(), whoGetsCredit, progress, conditionName);
 
         /// <summary>
         /// If achievement's condition is a 'flag', <paramref name="progress"/> parameter will be ignored and Condition will be completed. Otherwise, increases the condition by <paramref name="progress"/>.
