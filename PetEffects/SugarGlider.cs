@@ -63,7 +63,6 @@ namespace PetsOverhaul.PetEffects
                     Player.SetImmuneTimeForAllTypes(15);
                     Player.Center = npc.Center;
                     Pet.PetStrike(npc, shuricornDamage * 3, 2, false, shuricornKb * 3, DamageClass.Generic);
-                    PetUtils.AddToDmgAchievement(npc.SimpleStrikeNPC(shuricornDamage * 3, Player.position.X < npc.position.X ? 1 : -1, knockBack: shuricornKb * 3, damageVariation: true, luck: Player.luck), Player.whoAmI);
                     shuricornTaggedNpc = -1;
                 }
                 else if (Main.myPlayer == Player.whoAmI)
