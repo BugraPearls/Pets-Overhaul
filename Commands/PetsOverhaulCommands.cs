@@ -99,6 +99,7 @@ namespace PetsOverhaul.Commands
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
                                         .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
+                                    topFishing.Remove(topPlayer);
                                 }
 
                                 displayCounter = 0;
