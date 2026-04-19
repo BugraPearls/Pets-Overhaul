@@ -11,7 +11,7 @@ namespace PetsOverhaul.Commands
 {
     public class PetsOverhaulCommands : ModCommand
     {
-        string allClasses()
+        string AllClasses()
         {
             string text = "";
             foreach (var item in PetClassID.AllClasses)
@@ -35,7 +35,7 @@ namespace PetsOverhaul.Commands
             switch (args.Length)
             {
                 case 0:
-                    caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", allClasses()), Color.Gray);
+                    caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", AllClasses()), Color.Gray);
                     break;
                 case 1:
                     switch (args[0].ToLower())
@@ -223,7 +223,7 @@ namespace PetsOverhaul.Commands
                             break;
                         default:
                             caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", allClasses()), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", AllClasses()), Color.Gray);
                             break;
 
                     }
@@ -279,7 +279,7 @@ namespace PetsOverhaul.Commands
                                         iterate(dummy);
                                         return;
                                     }
-                                    caller.Reply(PetUtils.LocVal("Commands.ClassArgumentInvalid").Replace("<petClasses>", allClasses()), Color.Red);
+                                    caller.Reply(PetUtils.LocVal("Commands.ClassArgumentInvalid").Replace("<petClasses>", AllClasses()), Color.Red);
                                     break;
                             }
                             break;
@@ -328,7 +328,7 @@ namespace PetsOverhaul.Commands
                             break;
                         default:
                             caller.Reply(PetUtils.LocVal("Commands.ArgumentInvalid"), Color.Red);
-                            caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", allClasses()), Color.Gray);
+                            caller.Reply(PetUtils.LocVal("Commands.Help").Replace("<petClasses>", AllClasses()), Color.Gray);
                             break;
                     }
                     break;
