@@ -121,7 +121,7 @@ Mods: {
 			UseInMultiplayer: 请在多人游戏中使用此命令！如果你想查看你的祝尼魔经验值，用/pet junimo，/pet junimoscoreboard，或/pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:你的祝尼魔 <class> 等级： <level> 你的祝尼魔 <class> 经验： <exp>]"
 			LeaderboardList: "[c/<color>:祝尼魔 <class> 最高经验玩家列表：]"
-			PlayerRankings: <player>的 <class> 等级： <level> <class> 经验： <exp>
+			PlayerRankings: <player>的 <class> 等级： <level>
 		}
 
 		Config: {

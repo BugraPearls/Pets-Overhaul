@@ -128,7 +128,7 @@ Mods: {
 			UseInMultiplayer: Используйте эту команду в многопользовательской игре! Если вы хотите увидеть свои навыки Junimo, используйте /pet junimo, /pet junimoscoreboard или /pet junimoleaderboard.
 			SinglePlayerJunimo: "[c/<color>:Ваш <class> уровень Junimo: <level>, Ваш <class> опыт Junimo: <exp>]"
 			LeaderboardList: "[c/<color>:Список игроков с наибольшим опытом Junimo <class>:]"
-			PlayerRankings: Уровень <class> у <player>: <level> Опыт <class>: <exp>
+			PlayerRankings: Уровень <class> у <player>: <level>
 		}
 
 		Config: {

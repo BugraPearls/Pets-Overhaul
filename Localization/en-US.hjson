@@ -123,8 +123,8 @@ Mods: {
 			ArgumentInvalid: The given argument was invalid, here is a list of Pets Overhaul commands: (commands are not case sensitive)
 			UseInMultiplayer: Please use this command on Multiplayer! If you want to see your Junimo Skills, use /pet junimo, /pet junimoscoreboard, or /pet junimoleaderboard
 			SinglePlayerJunimo: "[c/<color>:Your Junimo <class> Level: <level> Your Junimo <class> EXP: <exp>]"
-			LeaderboardList: "[c/<color>:List of Players with highest Junimo <class> EXP:]"
-			PlayerRankings: <player>'s <class> Level: <level> <class> Exp: <exp>
+			LeaderboardList: "[c/<color>:List of Players with highest Junimo <class> Level:]"
+			PlayerRankings: <player>'s <class> Level: <level>
 		}
 
 		Config: {

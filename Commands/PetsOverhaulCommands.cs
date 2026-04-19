@@ -24,7 +24,6 @@ namespace PetsOverhaul.Commands
         {
             public string PlayerName { get; set; }
             public int PlayerLevel { get; set; }
-            public int PlayerExp { get; set; }
         }
         public override string Command => "pet";
         public override CommandType Type => CommandType.Chat;
@@ -73,9 +72,9 @@ namespace PetsOverhaul.Commands
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
-                                    topMining.Add(new TopPlayer() with { PlayerExp = juni.junimoMiningExp, PlayerLevel = juni.junimoMiningLevel, PlayerName = player.name });
-                                    topFishing.Add(new TopPlayer() with { PlayerExp = juni.junimoFishingExp, PlayerLevel = juni.junimoFishingLevel, PlayerName = player.name });
-                                    topHarvesting.Add(new TopPlayer() with { PlayerExp = juni.junimoHarvestingExp, PlayerLevel = juni.junimoHarvestingLevel, PlayerName = player.name });
+                                    topMining.Add(new TopPlayer() with { PlayerLevel = juni.junimoMiningLevel, PlayerName = player.name });
+                                    topFishing.Add(new TopPlayer() with { PlayerLevel = juni.junimoFishingLevel, PlayerName = player.name });
+                                    topHarvesting.Add(new TopPlayer() with { PlayerLevel = juni.junimoHarvestingLevel, PlayerName = player.name });
                                 }
                                 int displayCounter = 0;
 
@@ -83,9 +82,9 @@ namespace PetsOverhaul.Commands
                                     .Replace("<color>", PetUtils.GetClassColor(PetClassID.Mining).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Mining)));
                                 for (int i = topMining.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
-                                    TopPlayer topPlayer = topMining.Find(x => x.PlayerExp == topMining.Max(x => x.PlayerExp));
+                                    TopPlayer topPlayer = topMining.Find(x => x.PlayerLevel == topMining.Max(x => x.PlayerLevel));
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topMining.Remove(topPlayer);
                                 }
@@ -95,9 +94,9 @@ namespace PetsOverhaul.Commands
                                     .Replace("<color>", PetUtils.GetClassColor(PetClassID.Fishing).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)));
                                 for (int i = topFishing.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
-                                    TopPlayer topPlayer = topFishing.Find(x => x.PlayerExp == topFishing.Max(x => x.PlayerExp));
+                                    TopPlayer topPlayer = topFishing.Find(x => x.PlayerLevel == topFishing.Max(x => x.PlayerLevel));
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topFishing.Remove(topPlayer);
                                 }
@@ -107,9 +106,9 @@ namespace PetsOverhaul.Commands
                                     .Replace("<color>", PetUtils.GetClassColor(PetClassID.Harvesting).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Harvesting)));
                                 for (int i = topHarvesting.Count; i > 0 && displayCounter < 3; i--, displayCounter++)
                                 {
-                                    TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerExp == topHarvesting.Max(x => x.PlayerExp));
+                                    TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerLevel == topHarvesting.Max(x => x.PlayerLevel));
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topHarvesting.Remove(topPlayer);
                                 }
@@ -127,7 +126,7 @@ namespace PetsOverhaul.Commands
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
-                                    topMining.Add(new TopPlayer() with { PlayerExp = juni.junimoMiningExp, PlayerLevel = juni.junimoMiningLevel, PlayerName = player.name });
+                                    topMining.Add(new TopPlayer() with { PlayerLevel = juni.junimoMiningLevel, PlayerName = player.name });
                                 }
                                 int displayCounter = 0;
 
@@ -135,9 +134,9 @@ namespace PetsOverhaul.Commands
                                     .Replace("<color>", PetUtils.GetClassColor(PetClassID.Mining).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Mining)));
                                 for (int i = topMining.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
-                                    TopPlayer topPlayer = topMining.Find(x => x.PlayerExp == topMining.Max(x => x.PlayerExp));
+                                    TopPlayer topPlayer = topMining.Find(x => x.PlayerLevel == topMining.Max(x => x.PlayerLevel));
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Mining)).Replace("<level>", topPlayer.PlayerLevel.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topMining.Remove(topPlayer);
                                 }
@@ -155,7 +154,7 @@ namespace PetsOverhaul.Commands
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
-                                    topFishing.Add(new TopPlayer() with { PlayerExp = juni.junimoFishingExp, PlayerLevel = juni.junimoFishingLevel, PlayerName = player.name });
+                                    topFishing.Add(new TopPlayer() with { PlayerLevel = juni.junimoFishingLevel, PlayerName = player.name });
                                 }
                                 int displayCounter = 0;
 
@@ -163,9 +162,9 @@ namespace PetsOverhaul.Commands
                                     .Replace("<color>", PetUtils.GetClassColor(PetClassID.Fishing).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)));
                                 for (int i = topFishing.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
-                                    TopPlayer topPlayer = topFishing.Find(x => x.PlayerExp == topFishing.Max(x => x.PlayerExp));
+                                    TopPlayer topPlayer = topFishing.Find(x => x.PlayerLevel == topFishing.Max(x => x.PlayerLevel));
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Fishing)).Replace("<level>", topPlayer.PlayerLevel.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topFishing.Remove(topPlayer);
                                 }
@@ -183,7 +182,7 @@ namespace PetsOverhaul.Commands
                                 foreach (var player in Main.ActivePlayers)
                                 {
                                     Junimo juni = player.GetModPlayer<Junimo>();
-                                    topHarvesting.Add(new TopPlayer() with { PlayerExp = juni.junimoHarvestingExp, PlayerLevel = juni.junimoHarvestingLevel, PlayerName = player.name });
+                                    topHarvesting.Add(new TopPlayer() with { PlayerLevel = juni.junimoHarvestingLevel, PlayerName = player.name });
                                 }
                                 int displayCounter = 0;
 
@@ -191,9 +190,9 @@ namespace PetsOverhaul.Commands
                                     .Replace("<color>", PetUtils.GetClassColor(PetClassID.Harvesting).Hex3()).Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Harvesting)));
                                 for (int i = topHarvesting.Count; i > 0 && displayCounter < Main.maxPlayers; i--, displayCounter++)
                                 {
-                                    TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerExp == topHarvesting.Max(x => x.PlayerExp));
+                                    TopPlayer topPlayer = topHarvesting.Find(x => x.PlayerLevel == topHarvesting.Max(x => x.PlayerLevel));
                                     caller.Reply(PetUtils.LocVal("Commands.PlayerRankings").Replace("<player>", topPlayer.PlayerName)
-                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()).Replace("<exp>", topPlayer.PlayerExp.ToString()),
+                                        .Replace("<class>", PetUtils.PetClassLocalized(PetClassID.Harvesting)).Replace("<level>", topPlayer.PlayerLevel.ToString()),
                                         displayCounter == 0 ? Color.Lavender : displayCounter == 1 ? PetUtils.HighQuality : displayCounter == 2 ? PetUtils.MidQuality : PetUtils.LowQuality);
                                     topHarvesting.Remove(topPlayer);
                                 }
