@@ -74,8 +74,8 @@ Mods: {
 				[c/90C2AA:List of Pets Overhaul commands:] (commands are not case sensitive)
 				/pet fortune, /pet fortunestat, /pet fortunestats -> Displays your current fortune stats and explains their functionality.
 				/pet vanity, /pet vanitypet -> Explains how to use a 'vanity' Pet.
-				/pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Displays Top 3 Online Players with highest exp counts for all 3 skills of Junimo.
-				/pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
+				/pet lb, /pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Displays Top 3 Online Players with highest exp counts for all 3 skills of Junimo.
+				/pet mine|fish|harv, /pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
 				Displays a limitless amount of Online Players with the highest chosen skill's exp counts from Junimo's 3 skills.
 				/pet faq, /pet question -> Displays frequently asked questions regarding Pets Overhaul.
 				/pet pets, class {all, ability (or cooldown)<petClasses>}

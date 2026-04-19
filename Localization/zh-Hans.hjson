@@ -73,8 +73,8 @@ Mods: {
 				[c/90C2AA:宠物大修命令列表：] （不区分大小写）
 				/pet fortune，/pet fortunestat，/pet fortunestats -> 显示当前时运属性并解释它们的作用
 				/pet vanity，/pet vanitypet -> 教你如何获得一个 “时装” 宠物
-				/pet junimo，/pet junimoscoreboard，/pet junimoleaderboard -> 显示祝尼魔三个职业总计经验值最高的前三名在线玩家
-				/pet {mining|fishing|harvesting}scoreboard，/pet {mining|fishing|harvesting}leaderboard -> 显示所有玩家的祝尼魔对应职业的经验值
+				/pet lb, /pet junimo，/pet junimoscoreboard，/pet junimoleaderboard -> 显示祝尼魔三个职业总计经验值最高的前三名在线玩家
+				/pet mine|fish|harv, /pet {mining|fishing|harvesting}scoreboard，/pet {mining|fishing|harvesting}leaderboard -> 显示所有玩家的祝尼魔对应职业的经验值
 				/pet faq，/pet question -> 显示关于宠物大修的常见问题
 				/pet pets 或/pet class {all, ability（或cooldown), <petClasses>}
 				-> 在聊天栏中显示参数中的职业宠物列表。“all”参数会显示所有宠物。

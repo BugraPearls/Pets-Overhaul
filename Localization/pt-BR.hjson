@@ -73,8 +73,8 @@ Mods: {
 				[c/90C2AA:Lista de comandos do Pets Overhaul:] (os comandos não diferenciam maiúsculas de minúsculas)
 				/pet fortune, /pet fortunestat, /pet fortunestats -> Mostra seus status atuais de fortuna e explica sua funcionalidade.
 				/pet vanity, /pet vanitypet -> Explica como usar um pet 'Estético'.
-				/pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Mostra os 3 melhores jogadores online com as maiores contagens de Exp para todas as 3 habilidades de Junimo.
-				/pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
+				/pet lb, /pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Mostra os 3 melhores jogadores online com as maiores contagens de Exp para todas as 3 habilidades de Junimo.
+				/pet mine|fish|harv, /pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
 				Mostra uma quantidade ilimitada de jogadores online com as maiores contagens de Exp na habilidade escolhida entre as 3 habilidades de Junimo.
 				/pet faq, /pet question -> Mostra perguntas frequentes sobre o Pets Overhaul.
 				/pet pets, class {all, ability(or cooldown), <petClasses>}

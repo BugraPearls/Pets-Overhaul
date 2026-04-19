@@ -52,7 +52,7 @@ namespace PetsOverhaul.Commands
                             caller.Reply(PetUtils.LocVal("Commands.VanityPet"));
                             break;
 
-                        case "junimo" or "junimoscoreboard" or "junimoleaderboard":
+                        case "junimo" or "junimoscoreboard" or "junimoleaderboard" or "lb":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 Junimo junimoLvls = caller.Player.GetModPlayer<Junimo>();
@@ -116,7 +116,7 @@ namespace PetsOverhaul.Commands
                             }
                             break;
 
-                        case "miningscoreboard" or "miningleaderboard":
+                        case "miningscoreboard" or "miningleaderboard" or "mine":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 caller.Reply(PetUtils.LocVal("Commands.UseInMultiplayer"));
@@ -144,7 +144,7 @@ namespace PetsOverhaul.Commands
                             }
                             break;
 
-                        case "fishingscoreboard" or "fishingleaderboard":
+                        case "fishingscoreboard" or "fishingleaderboard" or "fish":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 caller.Reply(PetUtils.LocVal("Commands.UseInMultiplayer"));
@@ -172,7 +172,7 @@ namespace PetsOverhaul.Commands
                             }
                             break;
 
-                        case "harvestingscoreboard" or "harvestingleaderboard":
+                        case "harvestingscoreboard" or "harvestingleaderboard" or "harv":
                             if (Main.netMode == NetmodeID.SinglePlayer)
                             {
                                 caller.Reply(PetUtils.LocVal("Commands.UseInMultiplayer"));

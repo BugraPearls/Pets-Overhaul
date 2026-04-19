@@ -74,8 +74,8 @@ Mods: {
 				 [c/90C2AA:Список команд Pets Overhaul:] (команды нечувствительны к регистру)
 				 /pet fortune, /pet fortunestat, /pet fortunestats -> Отображает ваши текущие характеристики удачи и объясняет их функционал.
 				 /pet vanity, /pet vanitypet -> Объясняет, как использовать "косметических" питомцев.
-				 /pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Отображает топ 3 игроков онлайн с наибольшим количеством опыта для всех 3 навыков Junimo.
-				 /pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
+				 /pet lb, /pet junimo, /pet junimoscoreboard, /pet junimoleaderboard -> Отображает топ 3 игроков онлайн с наибольшим количеством опыта для всех 3 навыков Junimo.
+				 /pet mine|fish|harv, /pet {mining|fishing|harvesting}scoreboard, /pet {mining|fishing|harvesting}leaderboard -> 
 				 Отображает список онлайн игроков с наибольшим количеством опыта для выбранного навыка из 3 навыков Junimo.
 				 /pet faq, /pet question -> Отображает часто задаваемые вопросы по Pets Overhaul.
 				 /pet pets, class {all, ability(или cooldown), <petClasses>}
