@@ -317,6 +317,80 @@ namespace PetsOverhaul
                         Main.player[reader.ReadByte()].GetModPlayer<PetModPlayer>().timer = -1;
                     }
                     break;
+
+
+                case MessageType.JuniHarvesting:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        int whoIsJuni2 = reader.ReadByte();
+                        int level = Math.Clamp((int)reader.ReadByte(), 1, 50);
+                        Junimo junimo = Main.player[whoIsJuni2].GetModPlayer<Junimo>();
+                        junimo.junimoHarvestingLevel = level;
+                        junimo.junimoHarvestingExp = junimo.junimoHarvestingLevelsToXp[level - 1];
+
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)msgType);
+                        packet.Write((byte)whoIsJuni2);
+                        packet.Write((byte)level);
+                        packet.Send(ignoreClient: whoIsJuni2);
+                    }
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        int whoIsJuni = reader.ReadByte();
+                        int level = Math.Clamp((int)reader.ReadByte(), 1, 50);
+                        Junimo junimo = Main.player[whoIsJuni].GetModPlayer<Junimo>();
+                        junimo.junimoHarvestingLevel = level;
+                        junimo.junimoHarvestingExp = junimo.junimoHarvestingLevelsToXp[level - 1];
+                    }
+                    break;
+                case MessageType.JuniMining:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        int whoIsJuni2 = reader.ReadByte();
+                        int level = Math.Clamp((int)reader.ReadByte(),1,50);
+                        Junimo junimo = Main.player[whoIsJuni2].GetModPlayer<Junimo>();
+                        junimo.junimoMiningLevel = level;
+                        junimo.junimoMiningExp = junimo.junimoMiningLevelsToXp[level - 1];
+
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)msgType);
+                        packet.Write((byte)whoIsJuni2);
+                        packet.Write((byte)level);
+                        packet.Send(ignoreClient: whoIsJuni2);
+                    }
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        int whoIsJuni = reader.ReadByte();
+                        int level = Math.Clamp((int)reader.ReadByte(), 1, 50);
+                        Junimo junimo = Main.player[whoIsJuni].GetModPlayer<Junimo>();
+                        junimo.junimoMiningLevel = level;
+                        junimo.junimoMiningExp = junimo.junimoMiningLevelsToXp[level - 1];
+                    }
+                    break;
+                case MessageType.JuniFishing:
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        int whoIsJuni2 = reader.ReadByte();
+                        int level = Math.Clamp((int)reader.ReadByte(), 1, 50);
+                        Junimo junimo = Main.player[whoIsJuni2].GetModPlayer<Junimo>();
+                        junimo.junimoFishingLevel = level;
+                        junimo.junimoFishingExp = junimo.junimoFishingLevelsToXp[level - 1];
+
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)msgType);
+                        packet.Write((byte)whoIsJuni2);
+                        packet.Write((byte)level);
+                        packet.Send(ignoreClient: whoIsJuni2);
+                    }
+                    else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        int whoIsJuni = reader.ReadByte();
+                        int level = Math.Clamp((int)reader.ReadByte(), 1, 50);
+                        Junimo junimo = Main.player[whoIsJuni].GetModPlayer<Junimo>();
+                        junimo.junimoFishingLevel = level;
+                        junimo.junimoFishingExp = junimo.junimoFishingLevelsToXp[level - 1];
+                    }
+                    break;
                 default: throw new ArgumentOutOfRangeException(nameof(msgType));
             }
         }

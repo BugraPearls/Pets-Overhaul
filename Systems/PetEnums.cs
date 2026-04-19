@@ -36,6 +36,9 @@
         SuspiciousEye,
         TinyDeerclops,
         Turtle,
+        JuniHarvesting,
+        JuniMining,
+        JuniFishing,
     }
     public enum EntitySourcePetIDs
     {

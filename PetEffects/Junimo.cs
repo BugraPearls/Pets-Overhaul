@@ -40,12 +40,12 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                if (classThatGotExp == PetClassID.Harvesting)
-                    return junimoHarvestingExp - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
-                if (classThatGotExp == PetClassID.Mining)
-                    return junimoMiningExp - junimoMiningLevelsToXp[junimoMiningLevel - 1];
+                    if (classThatGotExp == PetClassID.Harvesting)
+                        return junimoHarvestingExp - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
+                    if (classThatGotExp == PetClassID.Mining)
+                        return junimoMiningExp - junimoMiningLevelsToXp[junimoMiningLevel - 1];
 
-                return junimoFishingExp - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
+                    return junimoFishingExp - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
             }
         }
         public int CurrentExpRequiredStack
@@ -585,6 +585,41 @@ namespace PetsOverhaul.PetEffects
                 classThatGotExp = PetClassID.Fishing;
             }
         }
+        public void SendLevelSync(MessageType messageType, int toWho = -1, int fromWho = -1)
+        {
+            switch (messageType)
+            {
+                case MessageType.JuniHarvesting:
+                    ModPacket packet = Mod.GetPacket();
+                    packet.Write((byte)MessageType.JuniHarvesting);
+                    packet.Write((byte)Player.whoAmI);
+                    packet.Write((byte)junimoHarvestingLevel);
+                    packet.Send(toWho, fromWho);
+                    break;
+                case MessageType.JuniMining:
+                    ModPacket packet2 = Mod.GetPacket();
+                    packet2.Write((byte)MessageType.JuniMining);
+                    packet2.Write((byte)Player.whoAmI);
+                    packet2.Write((byte)junimoMiningLevel);
+                    packet2.Send(toWho, fromWho);
+                    break;
+                case MessageType.JuniFishing:
+                    ModPacket packet3 = Mod.GetPacket();
+                    packet3.Write((byte)MessageType.JuniFishing);
+                    packet3.Write((byte)Player.whoAmI);
+                    packet3.Write((byte)junimoFishingLevel);
+                    packet3.Send(toWho, fromWho);
+                    break;
+                default:
+                    break;
+            }
+        }
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            SendLevelSync(MessageType.JuniHarvesting, toWho, fromWho);
+            SendLevelSync(MessageType.JuniMining, toWho, fromWho);
+            SendLevelSync(MessageType.JuniFishing, toWho, fromWho);
+        }
         public override void ExtraPreUpdateNoCheck()
         {
             if (popupIndexHarv > -1 && Main.popupText[popupIndexHarv].lifeTime <= 0)
@@ -638,59 +673,76 @@ namespace PetsOverhaul.PetEffects
             };
 
             bool soundOn = ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled;
-            if (junimoHarvestingLevel < maxLvls && junimoHarvestingExp >= junimoHarvestingLevelsToXp[junimoHarvestingLevel])
+            if (Main.myPlayer == Player.whoAmI)
             {
-                junimoHarvestingLevel++;
-                if (soundOn)
+                if (junimoHarvestingLevel < maxLvls && junimoHarvestingExp >= junimoHarvestingLevelsToXp[junimoHarvestingLevel])
                 {
-                    SoundEngine.PlaySound(SoundID.Item35 with { PitchVariance = 0.2f, Pitch = 0.5f }, Player.Center);
-                }
-
-                popupMessage.Color = PetUtils.HarvestingClass;
-                popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
-                    .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Harvesting"))
-                    .Replace("<upOrMax>", junimoHarvestingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
-                PopupText.NewText(popupMessage, Player.Center);
-            }
-
-            if (junimoMiningLevel < maxLvls && junimoMiningExp >= junimoMiningLevelsToXp[junimoMiningLevel])
-            {
-                junimoMiningLevel++;
-                if (soundOn)
-                {
-                    SoundEngine.PlaySound(SoundID.Item35 with
+                    junimoHarvestingLevel++;
+                    if (soundOn)
                     {
-                        PitchVariance = 0.2f,
-                        Pitch = 0.5f
-                    }, Player.Center);
-                }
+                        SoundEngine.PlaySound(SoundID.Item35 with { PitchVariance = 0.2f, Pitch = 0.5f }, Player.Center);
+                    }
 
-                popupMessage.Color = PetUtils.MiningClass;
-                popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
-                    .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Mining"))
-                    .Replace("<upOrMax>", junimoMiningLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
-                PopupText.NewText(popupMessage, Player.Center);
-            }
+                    popupMessage.Color = PetUtils.HarvestingClass;
+                    popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
+                        .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Harvesting"))
+                        .Replace("<upOrMax>", junimoHarvestingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
+                    PopupText.NewText(popupMessage, Player.Center);
 
-            if (junimoFishingLevel < maxLvls && junimoFishingExp >= junimoFishingLevelsToXp[junimoFishingLevel])
-            {
-                junimoFishingLevel++;
-                if (soundOn)
-                {
-                    SoundEngine.PlaySound(SoundID.Item35 with
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
-                        PitchVariance = 0.2f,
-                        Pitch = 0.5f
-                    }, Player.Center);
+                        SendLevelSync(MessageType.JuniHarvesting);
+                    }
                 }
 
-                popupMessage.Color = PetUtils.FishingClass;
-                popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
-                    .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Fishing"))
-                    .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
-                PopupText.NewText(popupMessage, Player.Center);
-            }
+                if (junimoMiningLevel < maxLvls && junimoMiningExp >= junimoMiningLevelsToXp[junimoMiningLevel])
+                {
+                    junimoMiningLevel++;
+                    if (soundOn)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item35 with
+                        {
+                            PitchVariance = 0.2f,
+                            Pitch = 0.5f
+                        }, Player.Center);
+                    }
 
+                    popupMessage.Color = PetUtils.MiningClass;
+                    popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
+                        .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Mining"))
+                        .Replace("<upOrMax>", junimoMiningLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
+                    PopupText.NewText(popupMessage, Player.Center);
+
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        SendLevelSync(MessageType.JuniMining);
+                    }
+                }
+
+                if (junimoFishingLevel < maxLvls && junimoFishingExp >= junimoFishingLevelsToXp[junimoFishingLevel])
+                {
+                    junimoFishingLevel++;
+                    if (soundOn)
+                    {
+                        SoundEngine.PlaySound(SoundID.Item35 with
+                        {
+                            PitchVariance = 0.2f,
+                            Pitch = 0.5f
+                        }, Player.Center);
+                    }
+
+                    popupMessage.Color = PetUtils.FishingClass;
+                    popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
+                        .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Fishing"))
+                        .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
+                    PopupText.NewText(popupMessage, Player.Center);
+
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
+                    {
+                        SendLevelSync(MessageType.JuniFishing);
+                    }
+                }
+            }
             if (junimoHarvestingLevel >= 50)
             {
                 PetUtils.DoAchievementOnPlayer<TheSummit>(Player.whoAmI, conditionName: "HarvestingCondition");
