@@ -2,6 +2,7 @@
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Terraria;
 using Terraria.DataStructures;
@@ -132,7 +133,7 @@ namespace PetsOverhaul.Systems
             {
                 Item oldLightPet = recipeResult.ConsumedItems.Find(x => PetIDs.LightPetNamesAndItems.ContainsValue(x.type));
                 float cap = 0;
-                foreach (var oldGlobal in oldLightPet.Globals)
+                    foreach (var oldGlobal in oldLightPet.Globals)
                 {
                     if (oldGlobal.GetType().IsSubclassOf(typeof(LightPetItem)))
                     {
@@ -204,6 +205,35 @@ namespace PetsOverhaul.Systems
             else if (tooltips.Exists(x => x.Name == "ItemName"))
                 tooltips.Find(x => x.Name == "ItemName").Text += tip;
 
+        }
+
+        public static List<LightPetStat> GetAllLightPetStats(Item item)
+        {
+            foreach (var LightPetGlobal in item.Globals)
+            {
+                if (LightPetGlobal.GetType().IsSubclassOf(typeof(LightPetItem)))
+                {
+                    FieldInfo[] allFields = LightPetGlobal.GetType().GetFields();
+                    List<LightPetStat> lightPetStats = new();
+                    foreach (var field in allFields)
+                    {
+                        if (field.FieldType == typeof(LightPetStat))
+                        {
+                            lightPetStats.Add((LightPetStat)field.GetValue(LightPetGlobal));
+                        }
+
+                    }
+                    return lightPetStats;
+                }
+            }
+            return null;
+        }
+        public void ApplyRolls(Item item, Player player)
+        {
+            foreach (LightPetStat stat in GetAllLightPetStats(item))
+            {
+                stat.SetRoll(player.luck);
+            }
         }
     }
     /// <summary>
