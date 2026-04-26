@@ -4,6 +4,7 @@ using PetsOverhaul.Config;
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Achievements;
@@ -374,6 +375,15 @@ namespace PetsOverhaul.Systems
                     condition.Value += progress;
                 }
             }
+        }
+
+        public static string Percentize(float percent)
+        {
+            return Math.Round(percent * 100, 2).ToString();
+        }
+        public static string Secondize(int frames)
+        {
+            return Math.Round(frames / 60f, 2).ToString();
         }
     }
 }
