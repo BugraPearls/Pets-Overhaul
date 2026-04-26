@@ -228,11 +228,22 @@ namespace PetsOverhaul.Systems
             }
             return null;
         }
-        public void ApplyRolls(Item item, Player player)
+        public static void ApplyQualities(Item item, Player player)
         {
             foreach (LightPetStat stat in GetAllLightPetStats(item))
             {
                 stat.SetRoll(player.luck);
+            }
+        }
+        /// <summary>
+        /// Return false to prevent Pets Overhaul's <see cref="ApplyQualities(Item, Player)"/> from running and to run own Quality logic if desired
+        /// </summary>
+        public virtual bool ExtraUpdateInventory(Item item, Player player) { return true; }
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if (ExtraUpdateInventory(item, player))
+            {
+                ApplyQualities(item, player);
             }
         }
     }
