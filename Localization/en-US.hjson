@@ -288,11 +288,9 @@ Mods: {
 				'''
 			CrimsonHeart:
 				'''
-				Increases Health by <hp>, Pet Healing by <heal>
-				Fishing Fortune by <fortune>, increasing your Fishing drops.
-				Health Bonus: <hpLine>
-				Pet Healing Bonus: <healLine>
-				Fishing Fortune Bonus: <fortuneLine>
+				Increases maximum health by <CrimsonHealth>
+				Increases Pet sourced healing by <CrimsonExp>
+				Increases Fishing Fortune by <CrimsonFort>
 				'''
 			FairyBell:
 				'''
