@@ -82,18 +82,6 @@ namespace PetsOverhaul.Config
         [SliderColor(120, 35, 54, 125)]
         public ShieldPosition ShieldLocation { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.CooldownDisplayLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.CooldownDisplayTooltip")]
-        [DefaultValue(true)]
-        [BackgroundColor(35, 120, 54, 190)]
-        public bool ShowAbilityDisplay { get; set; }
-
-        [LabelKey("$Mods.PetsOverhaul.Config.CooldownDisplayLocationLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.CooldownDisplayLocationTooltip")]
-        [DefaultValue(typeof(Vector2), "0.76, 0.73")]
-        [BackgroundColor(35, 120, 54, 190)]
-        public Vector2 AbilityDisplayPos { get; set; }
-
         [LabelKey("$Mods.PetsOverhaul.Config.ResourceDisplayLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.ResourceDisplayTooltip")]
         [DefaultValue(true)]
@@ -105,6 +93,18 @@ namespace PetsOverhaul.Config
         [DefaultValue(typeof(Vector2), "0.76, 0.67")]
         [BackgroundColor(35, 120, 54, 190)]
         public Vector2 ResourceDisplayPos { get; set; }
+
+        [LabelKey("$Mods.PetsOverhaul.Config.CooldownDisplayLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.CooldownDisplayTooltip")]
+        [DefaultValue(true)]
+        [BackgroundColor(35, 120, 54, 190)]
+        public bool ShowAbilityDisplay { get; set; }
+
+        [LabelKey("$Mods.PetsOverhaul.Config.CooldownDisplayLocationLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.CooldownDisplayLocationTooltip")]
+        [DefaultValue(typeof(Vector2), "0.76, 0.73")]
+        [BackgroundColor(35, 120, 54, 190)]
+        public Vector2 AbilityDisplayPos { get; set; }
 
         [DefaultValue(ParticleAmount.Normal)]
         [LabelKey("$Mods.PetsOverhaul.Config.DustAmountLabel")]
