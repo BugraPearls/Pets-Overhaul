@@ -2,13 +2,18 @@
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.ConstrainedExecution;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.Systems
 {
@@ -56,11 +61,15 @@ namespace PetsOverhaul.Systems
         public abstract int LightPetItemID { get; }
         public bool CustomActive = false; //This needs to be on the Player instance, as we both want it to trigger on all same items of same type, and allows for much, much easier access to the field. See WispInABottle.cs for implementation.
     }
+    /// <summary>
+    /// Core of Light Pet Quality System. ALWAYS MAKE SURE, name of this is same as the 
+    /// </summary>
     public abstract class LightPetItem : GlobalItem
     {
+        public bool hasRolled = false;
         public abstract int LightPetItemID { get; }
         public sealed override bool InstancePerEntity => true;
-        public abstract string PetsTooltip { get; }
+        public abstract string BaseTooltip { get; }
         public virtual string CustomPetsTooltip => string.Empty;
         public virtual bool HasCustomEffect => false;
         public virtual bool CustomEffectActive { get; set; }
@@ -127,13 +136,15 @@ namespace PetsOverhaul.Systems
             }
             return null;
         }
+        public virtual void ExtraOnCreated(Item item, ItemCreationContext context)
+        { }
         public override void OnCreated(Item item, ItemCreationContext context)
         {
             if (context is RecipeItemCreationContext recipeResult && recipeResult.ConsumedItems.Exists(x => PetIDs.LightPetNamesAndItems.ContainsValue(x.type)))
             {
                 Item oldLightPet = recipeResult.ConsumedItems.Find(x => PetIDs.LightPetNamesAndItems.ContainsValue(x.type));
                 float cap = 0;
-                    foreach (var oldGlobal in oldLightPet.Globals)
+                foreach (var oldGlobal in oldLightPet.Globals)
                 {
                     if (oldGlobal.GetType().IsSubclassOf(typeof(LightPetItem)))
                     {
@@ -173,18 +184,32 @@ namespace PetsOverhaul.Systems
             }
             ExtraOnCreated(item, context);
         }
-        public virtual void ExtraOnCreated(Item item, ItemCreationContext context)
-        { }
-
-        /// <summary>
-        /// Checkd for roll missing text. Supposed to return any of LightPetStat's CurrentRoll.
-        /// </summary>
-        /// <returns></returns>
-        public abstract int GetRoll();
-
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            string tip = "\n" + PetsTooltip;
+            int unrolledCount = 0;
+            int totalStatCount = 0;
+            string tip = "\n" + BaseTooltip;
+            foreach (var stat in GetAllLightPetStats())
+            {
+                LightPetStat tempStat = stat; //Apparently ModifyTooltips' item is a clone of the original, so thats good. But besides that, this temp assignment gives a lot of freedom, as we cant modify 'stat' due to it being the variable of foreach.
+
+                if (tempStat.CurrentRoll <= -1)
+                {
+                    tempStat.CurrentRoll = tempStat.MaxRoll;
+                    unrolledCount++;
+                }
+
+                if (tempStat.isInt)
+                {
+                    tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LightPetRarityColorConvert($"+{tempStat.CurrentStatInt} ({tempStat.BaseStat} + {tempStat.StatPerRoll} per ★) {tempStat.CurrentRoll} out of {tempStat.MaxRoll} ★", tempStat.CurrentRoll, tempStat.MaxRoll));
+                }
+                else
+                {
+                    tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LightPetRarityColorConvert($"{PetUtils.Percentize(tempStat.CurrentStatFloat)}% ({PetUtils.Percentize(tempStat.BaseStat)} + {PetUtils.Percentize(tempStat.StatPerRoll)} per ★) {tempStat.CurrentRoll} out of {tempStat.MaxRoll} ★", tempStat.CurrentRoll, tempStat.MaxRoll));
+                }
+                totalStatCount++;
+            }
+
             if (HasCustomEffect)
             {
                 if (CustomEffectActive)
@@ -195,8 +220,17 @@ namespace PetsOverhaul.Systems
                 }
             }
 
-            if (GetRoll() <= 0)
-                tip = string.Concat(tip, "\n" + PetUtils.RollMissingText());
+            if (unrolledCount > 0)
+            {
+                if (unrolledCount == totalStatCount)
+                {
+                    tip += $"\n[c/{PetUtils.LowQuality.Hex3()}:Maxed out Pet is display only!]\n[c/{PetUtils.LowQuality.Hex3()}:Stats are randomized when the Pet is obtained!]";
+                }
+                else
+                {
+                    tip += $"\n[c/{PetUtils.LowQuality.Hex3()}:Grab the pet in the Inventory to randomize the missing stats!]";
+                }
+            }
 
             if (tooltips.Exists(x => x.Name == "Tooltip0"))
                 tooltips.Find(x => x.Name == "Tooltip0").Text += tip;
@@ -207,70 +241,146 @@ namespace PetsOverhaul.Systems
 
         }
 
-        public static List<LightPetStat> GetAllLightPetStats(Item item)
+        /// <summary>
+        /// Returns a list containing info from all the Light Pet Stats in this instance. This is not the actual fields, but rather clones of the actual LightPetStat fields! Only use this to read data.
+        /// </summary>
+        /// <returns></returns>
+        public List<LightPetStat> GetAllLightPetStats()
         {
-            foreach (var LightPetGlobal in item.Globals)
+            List<LightPetStat> lightPetStats = new();
+            foreach (var field in this.GetType().GetFields())
             {
-                if (LightPetGlobal.GetType().IsSubclassOf(typeof(LightPetItem)))
+                if (field.FieldType == typeof(LightPetStat))
                 {
-                    FieldInfo[] allFields = LightPetGlobal.GetType().GetFields();
-                    List<LightPetStat> lightPetStats = new();
-                    foreach (var field in allFields)
-                    {
-                        if (field.FieldType == typeof(LightPetStat))
-                        {
-                            lightPetStats.Add((LightPetStat)field.GetValue(LightPetGlobal));
-                        }
-
-                    }
-                    return lightPetStats;
+                    LightPetStat stat = (LightPetStat)field.GetValue(this);
+                    lightPetStats.Add(stat);
                 }
             }
-            return null;
+            return lightPetStats;
         }
-        public static void ApplyQualities(Item item, Player player)
+        public void ApplyQualities(Player player)
         {
-            foreach (LightPetStat stat in GetAllLightPetStats(item))
+            if (hasRolled == false) //This exists only in sake of performance, so ApplyQualities runs only once in a regular gameplay. I don't want to save this as data, I think its unnecessary, its okay for this to run once in a while. Ex. if a Pet gets a new Stat, this can help triggering it.
             {
-                stat.SetRoll(player.luck);
+                foreach (var field in this.GetType().GetFields())
+                {
+                    if (field.FieldType == typeof(LightPetStat))
+                    {
+                        LightPetStat stat = (LightPetStat)field.GetValue(this);
+
+                        stat.SetRoll(player.luck);
+
+                        field.SetValue(this, stat);
+                    }
+                }
+                hasRolled = true;
             }
         }
         /// <summary>
-        /// Return false to prevent Pets Overhaul's <see cref="ApplyQualities(Item, Player)"/> from running and to run own Quality logic if desired
+        /// Return false to prevent Pets Overhaul's <see cref="ApplyQualities(Player)"/> from running and to run own Quality logic if desired
         /// </summary>
         public virtual bool ExtraUpdateInventory(Item item, Player player) { return true; }
         public override void UpdateInventory(Item item, Player player)
         {
             if (ExtraUpdateInventory(item, player))
             {
-                ApplyQualities(item, player);
+                ApplyQualities(player);
             }
+        }
+        /// <summary>
+        /// This works after Pets Overhaul's code for syncing Qualities for all clients. Pets Overhaul's code WILL NOT send data if a CurrentRoll is not within the <see cref="sbyte"/> limits, so send them here.
+        /// </summary>
+        public virtual void ExtraNetSend(Item item, BinaryWriter writer)
+        { }
+        public override void NetSend(Item item, BinaryWriter writer)
+        {
+            foreach (var stat in GetAllLightPetStats())
+            {
+                if (stat.CurrentRoll >= sbyte.MinValue && stat.CurrentRoll <= sbyte.MaxValue)
+                    writer.Write((sbyte)stat.CurrentRoll);
+            }
+            ExtraNetSend(item, writer);
+        }
+        /// <summary>
+        /// This works after Pets Overhaul's code for syncing Qualities for all clients. Pets Overhaul's code WILL NOT send data if a CurrentRoll is not within the <see cref="sbyte"/> limits during the <see cref="NetSend(Item, BinaryWriter)"/>, so make sure to send at <see cref="ExtraNetSend(Item, BinaryWriter)"/> and receive them here afterwards.
+        /// </summary>
+        public virtual void ExtraNetReceive(Item item, BinaryReader reader)
+        { }
+        public override void NetReceive(Item item, BinaryReader reader)
+        {
+            foreach (var field in this.GetType().GetFields()) //These are always in a order so it should work fine.
+            {
+                if (field.FieldType == typeof(LightPetStat))
+                {
+                    LightPetStat stat = (LightPetStat)field.GetValue(this);
+
+                    stat.CurrentRoll = reader.ReadSByte();
+                    field.SetValue(this, stat);
+                }
+            }
+            ExtraNetReceive(item, reader);
+        }
+        public virtual void ExtraSaveData(Item item, TagCompound tag)
+        { }
+        public override void SaveData(Item item, TagCompound tag)
+        {
+            foreach (var stat in GetAllLightPetStats())
+            {
+                tag.Add(stat.DataKey, stat.CurrentRoll);
+            }
+            ExtraSaveData(item, tag);
+        }
+        public virtual void ExtraLoadData(Item item, TagCompound tag)
+        { }
+        public override void LoadData(Item item, TagCompound tag)
+        {
+            foreach (var field in this.GetType().GetFields())
+            {
+                if (field.FieldType == typeof(LightPetStat))
+                {
+                    LightPetStat stat = (LightPetStat)field.GetValue(this);
+
+                    if (tag.TryGet(stat.DataKey, out int tagResult))
+                    {
+                        stat.CurrentRoll = tagResult;
+                    }
+
+                    field.SetValue(this, stat);
+                }
+            }
+            ExtraLoadData(item, tag);
         }
     }
     /// <summary>
-    /// Struct that contains all a singular Light Pet Stat has & methods for easy tooltip.
+    /// Struct that contains all important things for a singular Light Pet Stat. IMPORTANT: Make sure the key in localization files is exact name you put for this! Example: If this LightPetStat is named Health, make the localization key <![CDATA[<Health>]]>.
     /// </summary>
     public struct LightPetStat
     {
-        public int CurrentRoll = 0;
+        public string CustomDisplay = "";
+        public string DataKey = "";
+        public int CurrentRoll = -1;
         public int MaxRoll = 1;
         public float StatPerRoll = 0;
         public float BaseStat = 0;
-        private readonly bool isInt = false;
-        public LightPetStat(int maxRoll, int statPerRoll, int baseStat = 0)
+        internal readonly bool isInt = false;
+        public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, string customStatDisplay = "")
         {
             MaxRoll = maxRoll;
             StatPerRoll = statPerRoll;
             BaseStat = baseStat;
             isInt = true;
+            DataKey = dataKey;
+            CustomDisplay = customStatDisplay;
         }
 
-        public LightPetStat(int maxRoll, float statPerRoll, float baseStat = 0)
+        public LightPetStat(int maxRoll, float statPerRoll, string dataKey, float baseStat = 0, string customStatDisplay = "")
         {
             MaxRoll = maxRoll;
             StatPerRoll = statPerRoll;
             BaseStat = baseStat;
             isInt = false;
+            DataKey = dataKey;
+            CustomDisplay = customStatDisplay;
         }
         public readonly float CurrentStatFloat => BaseStat + StatPerRoll * CurrentRoll;
         public readonly int CurrentStatInt => (int)Math.Ceiling(CurrentStatFloat);
