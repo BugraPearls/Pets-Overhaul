@@ -839,6 +839,17 @@ namespace PetsOverhaul.Systems
                 trash.pickedUpBefore = true;
             }
 
+            if (PetIDs.LightPetNamesAndItems.ContainsValue(Main.mouseItem.type))
+            {
+                LightPetItem.ApplyQualities(Main.mouseItem, Player);
+            }
+
+            if (PetIDs.LightPetNamesAndItems.ContainsValue(Player.trashItem.type))
+            {
+                LightPetItem.ApplyQualities(Player.trashItem, Player);
+            }
+
+
             if (ColorVal >= 1f)
             {
                 colorSwitched = true;
