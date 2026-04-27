@@ -841,16 +841,35 @@ namespace PetsOverhaul.Systems
 
             if (PetIDs.LightPetNamesAndItems.ContainsValue(Main.mouseItem.type))
             {
-                LightPetItem.ApplyQualities(Main.mouseItem, Player);
+                foreach (var mouseItem in Main.mouseItem.Globals)
+                {
+                    if (mouseItem.GetType().IsSubclassOf(typeof(LightPetItem)))
+                    {
+                        LightPetItem lightPet = (LightPetItem)mouseItem;
+                        if (lightPet.hasRolled == false)
+                        {
+                            lightPet.ApplyQualities(Player);
+                        }
+                    }
+                }
             }
 
             if (PetIDs.LightPetNamesAndItems.ContainsValue(Player.trashItem.type))
             {
-                LightPetItem.ApplyQualities(Player.trashItem, Player);
+                foreach (var trashItem in Player.trashItem.Globals)
+                {
+                    if (trashItem.GetType().IsSubclassOf(typeof(LightPetItem)))
+                    {
+                        LightPetItem lightPet = (LightPetItem)trashItem;
+                        if (lightPet.hasRolled == false)
+                        {
+                            lightPet.ApplyQualities(Player);
+                        }
+                    }
+                }
             }
 
-
-            if (ColorVal >= 1f)
+                    if (ColorVal >= 1f)
             {
                 colorSwitched = true;
             }
