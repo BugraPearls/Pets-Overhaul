@@ -124,12 +124,12 @@ namespace PetsOverhaul.LightPets
             }
         }
     }
-    public sealed class WispInABottle : LightPetItem
+    public sealed class WispInABottle : LightPetItem //Check on 'custom effect'
     {
-        public LightPetStat MagicDamage = new(20, 0.004f, 0.04f);
-        public LightPetStat RangedDamage = new(20, 0.004f, 0.04f);
-        public LightPetStat ProjectileVelocity = new(12, 0.01f, 0.05f);
-        public LightPetStat PetDamage = new(25, 0.0065f, 0.0675f);
+        public LightPetStat MagicDamage = new(20, 0.004f, "WispMagic", 0.04f);
+        public LightPetStat RangedDamage = new(20, 0.004f, "WispRanged", 0.04f);
+        public LightPetStat ProjectileVelocity = new(12, 0.01f, "WispProjSpd", 0.05f);
+        public LightPetStat PetDamage = new(25, 0.0065f, "WispProjPet", 0.0675f);
         public int CustomFlat => MagicDamage.CurrentRoll + 10;
         public float CustomScaling => RangedDamage.CurrentRoll * 0.004f + 0.03f;
         public int CustomCooldown => ProjectileVelocity.CurrentRoll * -5 + 120;
@@ -137,58 +137,7 @@ namespace PetsOverhaul.LightPets
         public override int LightPetItemID => ItemID.WispinaBottle;
         public override bool HasCustomEffect => true;
         public override bool CustomEffectActive => Main.LocalPlayer.GetModPlayer<WispInABottleEffect>().CustomActive; //We make it so it uses the ModPlayer's CustomActive when access to the property is required.
-        public override void UpdateInventory(Item item, Player player)
-        {
-            MagicDamage.SetRoll(player.luck);
-            RangedDamage.SetRoll(player.luck);
-            ProjectileVelocity.SetRoll(player.luck);
-            PetDamage.SetRoll(player.luck);
-        }
-        public override void NetSend(Item item, BinaryWriter writer)
-        {
-            writer.Write((byte)MagicDamage.CurrentRoll);
-            writer.Write((byte)RangedDamage.CurrentRoll);
-            writer.Write((byte)ProjectileVelocity.CurrentRoll);
-            writer.Write((byte)PetDamage.CurrentRoll);
-        }
-        public override void NetReceive(Item item, BinaryReader reader)
-        {
-            MagicDamage.CurrentRoll = reader.ReadByte();
-            RangedDamage.CurrentRoll = reader.ReadByte();
-            ProjectileVelocity.CurrentRoll = reader.ReadByte();
-            PetDamage.CurrentRoll = reader.ReadByte();
-        }
-        public override void SaveData(Item item, TagCompound tag)
-        {
-            tag.Add("WispMagic", MagicDamage.CurrentRoll);
-            tag.Add("WispRanged", RangedDamage.CurrentRoll);
-            tag.Add("WispProjSpd", ProjectileVelocity.CurrentRoll);
-            tag.Add("WispProjPet", PetDamage.CurrentRoll);
-        }
-        public override void LoadData(Item item, TagCompound tag)
-        {
-            if (tag.TryGet("WispMagic", out int magic))
-            {
-                MagicDamage.CurrentRoll = magic;
-            }
-
-            if (tag.TryGet("WispRanged", out int ranged))
-            {
-                RangedDamage.CurrentRoll = ranged;
-            }
-
-            if (tag.TryGet("WispProjSpd", out int projSpd))
-            {
-                ProjectileVelocity.CurrentRoll = projSpd;
-            }
-
-            if (tag.TryGet("WispProjPet", out int petProj))
-            {
-                PetDamage.CurrentRoll = petProj;
-            }
-        }
-        public override int GetRoll() => MagicDamage.CurrentRoll;
-        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.WispInABottle")
+        public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.WispInABottle")
 
                         .Replace("<magic>", MagicDamage.BaseAndPerQuality())
                         .Replace("<ranged>", RangedDamage.BaseAndPerQuality())

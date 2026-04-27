@@ -62,7 +62,7 @@ namespace PetsOverhaul.Systems
         public bool CustomActive = false; //This needs to be on the Player instance, as we both want it to trigger on all same items of same type, and allows for much, much easier access to the field. See WispInABottle.cs for implementation.
     }
     /// <summary>
-    /// Core of Light Pet Quality System. ALWAYS MAKE SURE, name of this is same as the 
+    /// Core of Light Pet Quality System.
     /// </summary>
     public abstract class LightPetItem : GlobalItem
     {

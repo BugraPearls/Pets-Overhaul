@@ -31,60 +31,10 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class JewelOfLight : LightPetItem
     {
-        public LightPetStat MovementSpeed = new(8, 0.01f, 0.07f);
-        public LightPetStat WingTime = new(15, 4, 30);
-        public LightPetStat Acceleration = new(20, 0.0012f, 0.02f);
+        public LightPetStat MovementSpeed = new(8, 0.01f, "EmpressMoveSpd", 0.07f);
+        public LightPetStat WingTime = new(15, 4, "EmpressWing", 30);
+        public LightPetStat Acceleration = new(20, 0.0012f, "EmpressExp", 0.02f);
         public override int LightPetItemID => ItemID.FairyQueenPetItem;
-        public override void UpdateInventory(Item item, Player player)
-        {
-            MovementSpeed.SetRoll(player.luck);
-            WingTime.SetRoll(player.luck);
-            Acceleration.SetRoll(player.luck);
-        }
-        public override void NetSend(Item item, BinaryWriter writer)
-        {
-            writer.Write((byte)MovementSpeed.CurrentRoll);
-            writer.Write((byte)Acceleration.CurrentRoll);
-            writer.Write((byte)WingTime.CurrentRoll);
-        }
-        public override void NetReceive(Item item, BinaryReader reader)
-        {
-            MovementSpeed.CurrentRoll = reader.ReadByte();
-            Acceleration.CurrentRoll = reader.ReadByte();
-            WingTime.CurrentRoll = reader.ReadByte();
-        }
-        public override void SaveData(Item item, TagCompound tag)
-        {
-            tag.Add("EmpressMoveSpd", MovementSpeed.CurrentRoll);
-            tag.Add("EmpressWing", WingTime.CurrentRoll);
-            tag.Add("EmpressExp", Acceleration.CurrentRoll);
-        }
-        public override void LoadData(Item item, TagCompound tag)
-        {
-            if (tag.TryGet("EmpressMoveSpd", out int spd))
-            {
-                MovementSpeed.CurrentRoll = spd;
-            }
-
-            if (tag.TryGet("EmpressWing", out int wing))
-            {
-                WingTime.CurrentRoll = wing;
-            }
-
-            if (tag.TryGet("EmpressExp", out int exp))
-            {
-                Acceleration.CurrentRoll = exp;
-            }
-        }
-        public override int GetRoll() => WingTime.CurrentRoll;
-        public override string PetsTooltip => PetUtils.LocVal("LightPetTooltips.JewelOfLight")
-
-                        .Replace("<moveSpd>", MovementSpeed.BaseAndPerQuality())
-                        .Replace("<wingTime>", WingTime.BaseAndPerQuality(Math.Round(WingTime.StatPerRoll / 60f, 2).ToString(), Math.Round(WingTime.BaseStat / 60f, 2).ToString()))
-                        .Replace("<acceleration>", Acceleration.BaseAndPerQuality())
-
-                        .Replace("<moveSpdLine>", MovementSpeed.StatSummaryLine())
-                        .Replace("<wingTimeLine>", WingTime.StatSummaryLine(Math.Round(WingTime.CurrentStatInt / 60f, 2).ToString()))
-                        .Replace("<accelerationLine>", Acceleration.StatSummaryLine());
+        public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.JewelOfLight");
     }
 }
