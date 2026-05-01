@@ -138,7 +138,7 @@ namespace PetsOverhaul.Systems
         }
         public virtual void ExtraOnCreated(Item item, ItemCreationContext context)
         { }
-        public override void OnCreated(Item item, ItemCreationContext context)
+        public sealed override void OnCreated(Item item, ItemCreationContext context)
         {
             if (context is RecipeItemCreationContext recipeResult && recipeResult.ConsumedItems.Exists(x => PetIDs.LightPetNamesAndItems.ContainsValue(x.type)))
             {
@@ -184,8 +184,20 @@ namespace PetsOverhaul.Systems
             }
             ExtraOnCreated(item, context);
         }
+        /// <summary>
+        /// Runs after all ModifyTooltips does is thing of creating the Light Pet tooltip. Good usage is for Custom entries.
+        /// </summary>
+        public virtual void ModifyLightPetTooltip(ref string tooltip)
+        { }
+        /// <summary>
+        /// Runs before Pets Overhaul's Light Pet tooltip code
+        /// </summary>
+        public virtual void ExtraModifyTooltips(Item item, List<TooltipLine> tooltips)
+        { }
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
+            ExtraModifyTooltips(item, tooltips);
+
             int unrolledCount = 0;
             int totalStatCount = 0;
             string tip = "\n" + BaseTooltip;
@@ -231,6 +243,8 @@ namespace PetsOverhaul.Systems
                     tip += $"\n[c/{PetUtils.LowQuality.Hex3()}:Grab the pet in the Inventory to randomize the missing stats!]";
                 }
             }
+
+            ModifyLightPetTooltip(ref tip);
 
             if (tooltips.Exists(x => x.Name == "Tooltip0"))
                 tooltips.Find(x => x.Name == "Tooltip0").Text += tip;
@@ -280,7 +294,7 @@ namespace PetsOverhaul.Systems
         /// Return false to prevent Pets Overhaul's <see cref="ApplyQualities(Player)"/> from running and to run own Quality logic if desired
         /// </summary>
         public virtual bool ExtraUpdateInventory(Item item, Player player) { return true; }
-        public override void UpdateInventory(Item item, Player player)
+        public sealed override void UpdateInventory(Item item, Player player)
         {
             if (ExtraUpdateInventory(item, player))
             {
@@ -292,7 +306,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public virtual void ExtraNetSend(Item item, BinaryWriter writer)
         { }
-        public override void NetSend(Item item, BinaryWriter writer)
+        public sealed override void NetSend(Item item, BinaryWriter writer)
         {
             foreach (var stat in GetAllLightPetStats())
             {
@@ -306,7 +320,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public virtual void ExtraNetReceive(Item item, BinaryReader reader)
         { }
-        public override void NetReceive(Item item, BinaryReader reader)
+        public sealed override void NetReceive(Item item, BinaryReader reader)
         {
             foreach (var field in this.GetType().GetFields()) //These are always in a order so it should work fine.
             {
@@ -322,7 +336,7 @@ namespace PetsOverhaul.Systems
         }
         public virtual void ExtraSaveData(Item item, TagCompound tag)
         { }
-        public override void SaveData(Item item, TagCompound tag)
+        public sealed override void SaveData(Item item, TagCompound tag)
         {
             foreach (var stat in GetAllLightPetStats())
             {
@@ -332,7 +346,7 @@ namespace PetsOverhaul.Systems
         }
         public virtual void ExtraLoadData(Item item, TagCompound tag)
         { }
-        public override void LoadData(Item item, TagCompound tag)
+        public sealed override void LoadData(Item item, TagCompound tag)
         {
             foreach (var field in this.GetType().GetFields())
             {
