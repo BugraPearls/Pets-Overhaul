@@ -270,9 +270,8 @@ Mods: {
 
 		LightPetTooltips: {
 			NotRolled: 当物品第一次进入背包时，随机赋予其品级！
-			OutOf: /
-			Quality: 品级：
-			Per: 每级
+			// SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
+			// StatTooltipLine: <0> (<1> + <2> per ★) <3> out of <4> ★
 			CreeperEgg:
 				'''
 				召唤伤害增加：<sum>，近战伤害增加：<melee>

@@ -283,9 +283,8 @@ Mods: {
 
 		LightPetTooltips: {
 			NotRolled: Качество определяется при первом добавлении предмета в инвентарь!
-			OutOf: из
-			Quality: Качество:
-			Per: ""
+			// SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
+			// StatTooltipLine: <0> (<1> + <2> per ★) <3> out of <4> ★
 			CreeperEgg:
 				'''
 				Увеличивает урона призыва на <sum>, урон в ближнем бою на <melee>

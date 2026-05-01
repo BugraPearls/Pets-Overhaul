@@ -205,19 +205,25 @@ namespace PetsOverhaul.Systems
             {
                 LightPetStat tempStat = stat; //Apparently ModifyTooltips' item is a clone of the original, so thats good. But besides that, this temp assignment gives a lot of freedom, as we cant modify 'stat' due to it being the variable of foreach.
 
+
                 if (tempStat.CurrentRoll <= -1)
                 {
                     tempStat.CurrentRoll = tempStat.MaxRoll;
                     unrolledCount++;
                 }
 
-                if (tempStat.isInt)
+                tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LightPetRarityColorConvert(PetUtils.LocVal("LightPetTooltips.StatTooltipLine").Replace("<3>", tempStat.CurrentRoll.ToString()).Replace("<4>", tempStat.MaxRoll.ToString()), tempStat.CurrentRoll, tempStat.MaxRoll));
+
+                if (tempStat.CustomDisplay == false) //Disabling key <0> <1> and <2> if custom display is desired, which is to be handled at ModifyLightPetTooltip()
                 {
-                    tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LightPetRarityColorConvert($"+{tempStat.CurrentStatInt} ({tempStat.BaseStat} + {tempStat.StatPerRoll} per ★) {tempStat.CurrentRoll} out of {tempStat.MaxRoll} ★", tempStat.CurrentRoll, tempStat.MaxRoll));
-                }
-                else
-                {
-                    tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LightPetRarityColorConvert($"{PetUtils.Percentize(tempStat.CurrentStatFloat)}% ({PetUtils.Percentize(tempStat.BaseStat)} + {PetUtils.Percentize(tempStat.StatPerRoll)} per ★) {tempStat.CurrentRoll} out of {tempStat.MaxRoll} ★", tempStat.CurrentRoll, tempStat.MaxRoll));
+                    if (tempStat.isInt)
+                    {
+                        tip = tip.Replace("<0>", "+" + tempStat.CurrentStatInt.ToString()).Replace("<1>", tempStat.BaseStat.ToString()).Replace("<2>", tempStat.StatPerRoll.ToString());
+                    }
+                    else
+                    {
+                        tip = tip.Replace("<0>", PetUtils.Percentize(tempStat.CurrentStatFloat) + "%").Replace("<1>", PetUtils.Percentize(tempStat.BaseStat)).Replace("<2>", PetUtils.Percentize(tempStat.StatPerRoll) + "%");
+                    }
                 }
                 totalStatCount++;
             }
@@ -234,13 +240,15 @@ namespace PetsOverhaul.Systems
 
             if (unrolledCount > 0)
             {
+                tip += "\n";
+
                 if (unrolledCount == totalStatCount)
                 {
-                    tip += $"\n[c/{PetUtils.LowQuality.Hex3()}:Maxed out Pet is display only!]\n[c/{PetUtils.LowQuality.Hex3()}:Stats are randomized when the Pet is obtained!]";
+                    tip += PetUtils.LocVal("LightPetTooltips.NotRolled");
                 }
                 else
                 {
-                    tip += $"\n[c/{PetUtils.LowQuality.Hex3()}:Grab the pet in the Inventory to randomize the missing stats!]";
+                    tip += PetUtils.LocVal("LightPetTooltips.SomeStatsAreNotRolled");
                 }
             }
 
@@ -258,7 +266,6 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Returns a list containing info from all the Light Pet Stats in this instance. This is not the actual fields, but rather clones of the actual LightPetStat fields! Only use this to read data.
         /// </summary>
-        /// <returns></returns>
         public List<LightPetStat> GetAllLightPetStats()
         {
             List<LightPetStat> lightPetStats = new();
@@ -366,18 +373,18 @@ namespace PetsOverhaul.Systems
         }
     }
     /// <summary>
-    /// Struct that contains all important things for a singular Light Pet Stat. IMPORTANT: Make sure the key in localization files is exact name you put for this! Example: If this LightPetStat is named Health, make the localization key <![CDATA[<Health>]]>.
+    /// Struct that contains all important things for a singular Light Pet Stat. IMPORTANT: Make sure the key in localization files is exact name you put for <see cref="DataKey"/>! Example: If its "Health", make the localization key <![CDATA[<Health>]]>. <see cref="CustomDisplay"/> will disable normal Tooltip code from running for this stat.
     /// </summary>
     public struct LightPetStat
     {
-        public string CustomDisplay = "";
+        public bool CustomDisplay = false;
         public string DataKey = "";
         public int CurrentRoll = -1;
         public int MaxRoll = 1;
         public float StatPerRoll = 0;
         public float BaseStat = 0;
         internal readonly bool isInt = false;
-        public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, string customStatDisplay = "")
+        public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false)
         {
             MaxRoll = maxRoll;
             StatPerRoll = statPerRoll;
@@ -387,7 +394,7 @@ namespace PetsOverhaul.Systems
             CustomDisplay = customStatDisplay;
         }
 
-        public LightPetStat(int maxRoll, float statPerRoll, string dataKey, float baseStat = 0, string customStatDisplay = "")
+        public LightPetStat(int maxRoll, float statPerRoll, string dataKey, float baseStat = 0, bool customStatDisplay = false)
         {
             MaxRoll = maxRoll;
             StatPerRoll = statPerRoll;

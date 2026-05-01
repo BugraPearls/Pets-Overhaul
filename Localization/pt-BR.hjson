@@ -284,9 +284,8 @@ Mods: {
 
 		LightPetTooltips: {
 			NotRolled: As qualidades são Sorteadas quando o item está no inventário pela primeira vez!
-			OutOf: de
-			Quality: Qualidade:
-			Per: Por qualidade
+			// SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
+			// StatTooltipLine: <0> (<1> + <2> per ★) <3> out of <4> ★
 			CreeperEgg:
 				'''
 				Aumenta o Dano de Invocação por <sum>, Dano Corpo a Corpo por <melee>

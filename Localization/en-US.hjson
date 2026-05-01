@@ -274,10 +274,13 @@ Mods: {
 		}
 
 		LightPetTooltips: {
-			NotRolled: Qualities are rolled when the item is in the inventory for the first time!
-			OutOf: out of
-			Quality: Quality:
-			Per: per quality
+			NotRolled:
+				'''
+				[c/828282:Maxed out Light Pet is display only!]
+				[c/828282:Stats are randomized when the Pet is obtained!]
+				'''
+			SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
+			StatTooltipLine: <0> (<1> + <2> per ★) <3> out of <4> ★
 			CreeperEgg:
 				'''
 				Increases Summon Damage by <sum>, Melee Damage by <melee>
