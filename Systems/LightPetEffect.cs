@@ -360,10 +360,32 @@ namespace PetsOverhaul.Systems
                 if (field.FieldType == typeof(LightPetStat))
                 {
                     LightPetStat stat = (LightPetStat)field.GetValue(this);
-
                     if (tag.TryGet(stat.DataKey, out int tagResult))
                     {
                         stat.CurrentRoll = tagResult;
+                    }
+
+                    if (stat.LegacyDataKeys.Length > 0) //We will override the regular code here if the stat has a Legacy Key & Legacy Key has been given to a stat
+                    {
+                        int count = 0;
+                        double totalPerc = 0;
+                        foreach(var (oldKey, oldStatsMax) in stat.LegacyDataKeys)
+                        {
+                            if (tag.TryGet(oldKey, out int oldVal))
+                            {
+                                totalPerc += Math.Round((float)oldVal / oldStatsMax,1,MidpointRounding.AwayFromZero);
+                                count++;
+                                tag.Remove(oldKey); //the Legacy key is permanently removed with this
+                            }
+                        }
+                        if (count > 0) //If a LegacyKey has been succesfully found, then we actually do something...
+                        {
+                            totalPerc = Math.Clamp(totalPerc / count, 0, 1); //average perc
+
+                            int newRoll = (int)Math.Ceiling(stat.MaxRoll * totalPerc); //we get percentage of all 'legacydatakeys', sum them, and use that percentage to set how much the new max quality will be & rounded to ceiling.
+
+                            stat.CurrentRoll = newRoll; //Set the actual current roll
+                        }
                     }
 
                     field.SetValue(this, stat);
@@ -372,6 +394,7 @@ namespace PetsOverhaul.Systems
             ExtraLoadData(item, tag);
         }
     }
+
     /// <summary>
     /// Struct that contains all important things for a singular Light Pet Stat. IMPORTANT: Make sure the key in localization files is exact name you put for <see cref="DataKey"/>! Example: If its "Health", make the localization key <![CDATA[<Health>]]>. <see cref="CustomDisplay"/> will disable normal Tooltip code from running for this stat.
     /// </summary>
@@ -384,7 +407,8 @@ namespace PetsOverhaul.Systems
         public float StatPerRoll = 0;
         public float BaseStat = 0;
         internal readonly bool isInt = false;
-        public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false)
+        public (string oldKey, int oldStatsMax)[] LegacyDataKeys = [];
+        public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false, params (string oldKey, int oldStatsMax)[] LegacyKeysToInherit)
         {
             MaxRoll = maxRoll;
             StatPerRoll = statPerRoll;
@@ -392,9 +416,10 @@ namespace PetsOverhaul.Systems
             isInt = true;
             DataKey = dataKey;
             CustomDisplay = customStatDisplay;
+            LegacyDataKeys = LegacyKeysToInherit;
         }
 
-        public LightPetStat(int maxRoll, float statPerRoll, string dataKey, float baseStat = 0, bool customStatDisplay = false)
+        public LightPetStat(int maxRoll, float statPerRoll, string dataKey, float baseStat = 0, bool customStatDisplay = false, params (string oldKey, int oldStatsMax)[] LegacyKeysToInherit)
         {
             MaxRoll = maxRoll;
             StatPerRoll = statPerRoll;
@@ -402,6 +427,7 @@ namespace PetsOverhaul.Systems
             isInt = false;
             DataKey = dataKey;
             CustomDisplay = customStatDisplay;
+            LegacyDataKeys = LegacyKeysToInherit;
         }
         public readonly float CurrentStatFloat => BaseStat + StatPerRoll * CurrentRoll;
         public readonly int CurrentStatInt => (int)Math.Ceiling(CurrentStatFloat);

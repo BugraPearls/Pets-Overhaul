@@ -291,9 +291,9 @@ Mods: {
 				'''
 			CrimsonHeart:
 				'''
-				Increases maximum health by <CrimsonHealth>
-				Increases Pet sourced healing by <CrimsonExp>
-				Increases Fishing Fortune by <CrimsonFort>
+				Increases maximum health by <Health>
+				Increases Pet sourced healing by <Healing>
+				Increases Fishing Fortune by <Fishing>
 				'''
 			FairyBell:
 				'''
