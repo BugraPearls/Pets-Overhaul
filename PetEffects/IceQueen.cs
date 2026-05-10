@@ -55,7 +55,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     if (Player.Distance(npc.Center) < queenRange)
                     {
-                        PetGlobalNPC.AddSlow(new PetSlow(slowAmount, 1, PetSlowID.IceQueen), npc);
+                        PetGlobalNPC.AddSlow(new PetSlow(slowAmount, 1, PetSlowID.IceQueen), npc, Player);
                     }
                 }
                 if (iceQueenFrame % 30 == 0 && ModContent.GetInstance<PetPersonalization>().AbilitySoundEnabled)

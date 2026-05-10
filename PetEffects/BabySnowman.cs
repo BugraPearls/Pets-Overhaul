@@ -29,7 +29,7 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped())
             {
                 target.AddBuff(FrostBurnId, frostburnTime * FrostArmorMult);
-                PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowID.Snowman), target);
+                PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowID.Snowman), target, Player);
                 if (FrostArmorMult > 1)
                 {
                     PetUtils.DoAchievementOnPlayer<AbsoluteZero>(Player.whoAmI);

@@ -37,6 +37,10 @@ namespace PetsOverhaul.Systems
         public float knockbackResistance = 0f;
 
         /// <summary>
+        /// Modify this value if you want to reduce or increase slows applied by Pets to enemies. 
+        /// </summary>
+        public float petSlowPotency = 1f;
+        /// <summary>
         /// Modify this value if you want to reduce or increase lifesteal and healing by Pets for any reason, such as a Mod applying an effect that reduces healings. Basically a modifier on heals from Pets. Used in PetRecovery().
         /// </summary>
         public float petHealMultiplier = 1f;

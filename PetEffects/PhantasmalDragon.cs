@@ -198,15 +198,15 @@ namespace PetsOverhaul.PetEffects
                 PhantasmalDragon dragon = Main.player[projectile.owner].GetModPlayer<PhantasmalDragon>();
                 if (projectile.type == ProjectileID.CultistBossIceMist)
                 {
-                    PetGlobalNPC.AddSlow(new PetSlow(dragon.iceSlow, dragon.iceSlowDuration, PetSlowID.PhantasmalIce), target);
+                    PetGlobalNPC.AddSlow(new PetSlow(dragon.iceSlow, dragon.iceSlowDuration, PetSlowID.PhantasmalIce), target, dragon.Player);
                 }
                 else if (projectile.type == ProjectileID.CultistBossLightningOrb)
                 {
-                    PetGlobalNPC.AddSlow(new PetSlow(dragon.lightningSlow, dragon.lightningSlowDuration, PetSlowID.PhantasmalLightning), target);
+                    PetGlobalNPC.AddSlow(new PetSlow(dragon.lightningSlow, dragon.lightningSlowDuration, PetSlowID.PhantasmalLightning), target, dragon.Player);
                 }
                 else if (projectile.type == ProjectileID.CultistBossLightningOrbArc)
                 {
-                    PetGlobalNPC.AddSlow(new PetSlow(dragon.lightningSlow / dragon.lightningStrikeDivide, dragon.lightningSlowDuration, PetSlowID.PhantasmalLightning), target);
+                    PetGlobalNPC.AddSlow(new PetSlow(dragon.lightningSlow / dragon.lightningStrikeDivide, dragon.lightningSlowDuration, PetSlowID.PhantasmalLightning), target, dragon.Player);
                 }
                 else if (projectile.type == ProjectileID.CultistBossFireBall)
                 {

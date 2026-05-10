@@ -17,7 +17,7 @@ using Terraria.ModLoader;
 namespace PetsOverhaul.Systems
 {
     /// <summary>
-    /// Slow thats applied to an NPC, by a Pet. Use <see cref="PetGlobalNPC.AddSlow(PetSlow, NPC)"/> to add Slow to a NPC.
+    /// Slow thats applied to an NPC, by a Pet. Use <see cref="PetGlobalNPC.AddSlow(PetSlow, NPC, Player)"/> to add Slow to a NPC.
     /// </summary>
     /// <param name="slowAmount">% of slow to be applied to the NPC. Negative values will speed the enemy up, which cannot go below -0.9f.</param>
     /// <param name="slowTime">Time for slow to be applied in frames.</param>
@@ -29,7 +29,7 @@ namespace PetsOverhaul.Systems
         public int SlowId = Math.Clamp(slowId, PetSlowID.Any, PetSlowID.Search.Count);
     }
     /// <summary>
-    /// GlobalNPC class that carries out Slow Mechanics of Pets. <see cref="AddSlow(PetSlow, NPC)"/> can be used to add PetSlow to passed NPC instance.
+    /// GlobalNPC class that carries out Slow Mechanics of Pets. <see cref="AddSlow(PetSlow, NPC, Player)"/> can be used to add PetSlow to passed NPC instance.
     /// </summary>
     public sealed class PetGlobalNPC : GlobalNPC
     {
@@ -328,7 +328,15 @@ namespace PetsOverhaul.Systems
             }
         }
         /// <summary>
-        /// Use this to add Slow to an NPC. It will send proper messages to the Server, and Server will sync all Clients to match their Slow Lists for consistent slow mechanics.
+        /// Use this to properly apply a slow to the target. Applies <see cref="PetModPlayer.petSlowPotency"/> when this overload is used.
+        /// </summary>
+        /// <param name="petSlow">The PetSlow instance to be applied to NPC.</param>
+        /// <param name="npc">NPC to receive the slow.</param>
+        /// <param name="player">Player who is applying the Slow. Currently only used to apply <see cref="PetModPlayer.petSlowPotency"/> on the Slow amount.</param>
+        public static void AddSlow(PetSlow petSlow, NPC npc, Player player) => AddSlow(petSlow with { SlowAmount = petSlow.SlowAmount * player.PetPlayer().petSlowPotency }, npc);
+
+        /// <summary>
+        /// DOES NOT APPLY <see cref="PetModPlayer.petSlowPotency"/>! Use <see cref="AddSlow(PetSlow, NPC, Player)"/> whenever possible unless its desired to not apply <see cref="PetModPlayer.petSlowPotency"/>.
         /// </summary>
         public static void AddSlow(PetSlow petSlow, NPC npc)
         {
