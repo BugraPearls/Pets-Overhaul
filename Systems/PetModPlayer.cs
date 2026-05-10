@@ -834,6 +834,7 @@ namespace PetsOverhaul.Systems
             petHealMultiplier = 1f;
             petShieldMultiplier = 1f;
             petDirectDamageMultiplier = 1f;
+            petSlowPotency = 1f;
         }
         public override void PreUpdate()
         {

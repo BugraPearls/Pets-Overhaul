@@ -13,19 +13,19 @@ namespace PetsOverhaul.LightPets
         {
             if (TryGetLightPet(out MagicLantern magicLantern))
             {
-                Player.statDefense += magicLantern.Defense.CurrentStatInt;
-                Player.statDefense *= magicLantern.DefensePercent.CurrentStatFloat + 1f;
-                Player.endurance += magicLantern.DamageReduction.CurrentStatFloat;
-                Pet.miningFortune += magicLantern.MiningFortune.CurrentStatInt;
+                Pet.knockbackResistance += magicLantern.KnockbackResistance;
+                Pet.petShieldMultiplier += magicLantern.PetShielding;
+                Player.endurance += magicLantern.DamageReduction;
+                Pet.miningFortune += magicLantern.MiningFortune;
             }
         }
     }
     public sealed class MagicLantern : LightPetItem
     {
-        public LightPetStat Defense = new(3, 1,"LanternDef");
-        public LightPetStat DefensePercent = new(20, 0.002f, "LanternMult", 0.01f);
-        public LightPetStat DamageReduction = new(15, 0.002f, "LanternExp", 0.01f);
-        public LightPetStat MiningFortune = new(15, 1, "LanternFort", 5);
+        public LightPetStat KnockbackResistance = new(10, 0.004f, "KbResist", 0.025f, LegacyKeysToInherit: ("LanternMult",20));
+        public LightPetStat PetShielding = new(6, 1,"Shield", LegacyKeysToInherit: ("LanternDef", 3));
+        public LightPetStat DamageReduction = new(15, 0.002f, "DamageReduction", 0.01f, LegacyKeysToInherit: ("LanternExp",15));
+        public LightPetStat MiningFortune = new(15, 1, "Fortune", 5, LegacyKeysToInherit: ("LanternFort", 15));
         public override int LightPetItemID => ItemID.MagicLantern;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.MagicLantern");
     }

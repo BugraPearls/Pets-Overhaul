@@ -286,6 +286,7 @@ Mods: {
 				- Increases summon and melee damage by <Damage> 
 				- Increases whip and melee size by <Size>
 				- Increases knockback by <KbIncrease>
+				- Increases Pet slow potency by <Slow>
 				'''
 			CrimsonHeart:
 				'''
@@ -297,6 +298,7 @@ Mods: {
 				'''
 				- Increases Pet ability haste by <Haste>
 				- Increases global fortune by <Fortune>
+				- Increases Pet sourced healing by <Heal>
 				'''
 			JackOLantern:
 				'''
@@ -316,40 +318,42 @@ Mods: {
 				'''
 			MagicLantern:
 				'''
-				Increases mining fortune by <Fortune>
-				Increases damage reduction by <DamageReduction>
-				Increases knockback resistance by <KbResist>
-				Increases Pet sourced shields by <Shield>
+				- Increases mining fortune by <Fortune>
+				- Increases damage reduction by <DamageReduction>
+				- Increases knockback resistance by <KbResist>
+				- Increases Pet sourced shields by <Shield>
 				'''
 			ShadowOrb:
 				'''
-				Increases maximum health by <Health>
-				Increases Pet sourced shields by <Shield>
-				Increases harvesting fortune by <Fortune>
+				- Increases Pet slow potency by <Slow>
+				- Increases Pet sourced shields by <Shield>
+				- Increases harvesting fortune by <Fortune>
 				'''
 			SuspiciousLookingTentacle:
 				'''
-				Increases Defense by <def>
-				Movement Speed by <ms>
-				All Damage by <dmg>
-				Crit Chance by <crit>
-				Ranged Crit Damage by <rangedCritDmg>
-				Summoner Flat Armor Pen by <summonerPen>
-				Maximum Mana by <mana>
-				Melee Size by <size>
+				- Increases Pet ability haste by <Haste>
+				- Increases Pet slow potency by <Slow>
+				- Increases Pet sourced damage by <Damage>
+				- Increases Pet sourced shields by <Shield>
+				- Increases Pet sourced healing by <Heal>
+				- Increases Ranged Crit Damage by <Crit>
+				- Increases Summoner Flat Armor Pen by <Pen>
+				- Increases Maximum Mana by <Mana>
+				- Increases Melee Size by <Size>
 				'''
 			ToyGolem:
 				'''
-				Increases Life Regen by <lifeRegen>, 
-				Health by <healthPercent>,
-				and base Mana Regen value by <manaRegen>.
+				- Increases knockback resist by <KbResist>
+				- Increases maximum health by <Health>
+				- Increases defense by <Defense>
+				- Increases Pet sourced shields by <Shield>
 				'''
 			WispInABottle:
 				'''
-				Increases Magic Damage by <magic>, 
-				Ranged Damage by <ranged>.
-				Increases the traveling speed of Magic and Ranged projectiles by <velocity>.
-				Increases the damage that are sourcing from your pets by <petDmg>.
+				- Increases magic and ranged damage by <Damage> 
+				- Increases velocity of your projectiles by <Velocity>
+				[c/828282:  • This includes magic, ranged and Pet sourced projectiles.]
+				- Increases Pet sourced damage by <PetDamage>
 				'''
 		}
 
@@ -1547,13 +1551,10 @@ Mods: {
 				'''
 			WispInABottle:
 				'''
-				- Striking an enemy has a <chance>% chance for wisp to strike aswell.
-				  * Damage is <base> + <perc>% of initially dealt damage. <cooldown> seconds cooldown.
-				  * Ability does not work if Wisp Pet is not visible.
-				Trigger Chance Quality: <chanceLine>
-				Flat Damage Quality: <baseLine>
-				Percent Damage Quality: <percLine>
-				Cooldown Quality: <cooldownLine>
+				- Striking an enemy has a <Velocity> chance for wisp to strike aswell.
+				  • Bonus strike deals <PetDamage> base damage.
+				  • <Damage> of damage dealt from triggering hit is also added.
+				  • Ability does not work if Wisp Pet is not visible.
 				"We shall always remember the night."
 				'''
 		}

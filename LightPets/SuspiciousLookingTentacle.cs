@@ -14,27 +14,18 @@ namespace PetsOverhaul.LightPets
         {
             if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
-                Player.statDefense += moonlord.Defense.CurrentStatInt;
-                Player.moveSpeed += moonlord.MovementSpeed.CurrentStatFloat;
-                Player.GetDamage<GenericDamageClass>() += moonlord.DamageAll.CurrentStatFloat;
-                Player.GetCritChance<GenericDamageClass>() += moonlord.CritChanceAll.CurrentStatFloat * 100;
-                Player.whipRangeMultiplier += moonlord.WhipRange.CurrentStatFloat;
+                Pet.petSlowPotency += moonlord.PetSlow;
+                Pet.petDirectDamageMultiplier += moonlord.PetDamage;
+                Pet.petShieldMultiplier += moonlord.PetShield;
+                Pet.petHealMultiplier += moonlord.PetHeal;
                 Player.statManaMax2 += moonlord.Mana.CurrentStatInt;
-                Player.GetKnockback<MeleeDamageClass>() += moonlord.MeleeKnockback.CurrentStatFloat;
-            }
-        }
-        public override void GetHealMana(Item item, bool quickHeal, ref int healValue)
-        {
-            if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
-            {
-                healValue += (int)(moonlord.ManaPotionIncrease.CurrentStatFloat * healValue);
             }
         }
         public override void ModifyItemScale(Item item, ref float scale)
         {
-            if (TryGetLightPet(out SuspiciousLookingTentacle moonlord))
+            if (item.CountsAsClass<MeleeDamageClass>() && TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
-                scale += moonlord.MeleeSize.CurrentStatFloat;
+                scale *= 1 + moonlord.MeleeSize;
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -43,8 +34,7 @@ namespace PetsOverhaul.LightPets
             {
                 if (modifiers.DamageType == DamageClass.Ranged)
                 {
-                    modifiers.ScalingArmorPenetration += moonlord.RangedPercentPenetration.CurrentStatFloat;
-                    modifiers.CritDamage += moonlord.RangedCritDamage.CurrentStatFloat;
+                    modifiers.CritDamage += moonlord.RangedCritDamage;
                 }
                 if (modifiers.DamageType == DamageClass.Summon)
                 {
@@ -55,18 +45,15 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class SuspiciousLookingTentacle : LightPetItem
     {
-        public LightPetStat Defense = new(5, 1, "MlDef");
-        public LightPetStat MovementSpeed = new(20, 0.004f, "MlMs");
-        public LightPetStat DamageAll = new(20, 0.0025f, "MlDmg");
-        public LightPetStat CritChanceAll = new(20, 0.0025f, "MlCrit");
-        public LightPetStat RangedPercentPenetration = new(5, 0.025f, "MlPen");
-        public LightPetStat RangedCritDamage = new(5, 0.008f, "MlCrDmg");
-        public LightPetStat SummonerFlatPenetration = new(5, 3, "MlMin");
-        public LightPetStat WhipRange = new(5, 0.03f, "MlWhip");
-        public LightPetStat ManaPotionIncrease = new(5, 0.05f, "MlPot");
-        public LightPetStat Mana = new(5, 12, "MlMana");
-        public LightPetStat MeleeSize = new(5, 0.04f, "MlSize");
-        public LightPetStat MeleeKnockback = new(5, 0.12f,"MlHeal");
+        public LightPetStat Haste = new(5, 1, "Haste");
+        public LightPetStat PetSlow = new(5, 1, "Slow", LegacyKeysToInherit: ("MlMs", 20));
+        public LightPetStat PetDamage = new(5, 1, "Damage", LegacyKeysToInherit: ("MlDmg", 20));
+        public LightPetStat PetShield = new(5, 1, "Shield", LegacyKeysToInherit: ("MlDef", 5));
+        public LightPetStat PetHeal = new(5, 1, "Heal", LegacyKeysToInherit: ("MlCrit", 20));
+        public LightPetStat RangedCritDamage = new(5, 0.008f, "Crit", LegacyKeysToInherit: [("MlCrDmg", 5), ("MlPen", 5)]);
+        public LightPetStat SummonerFlatPenetration = new(5, 3, "Pen", LegacyKeysToInherit: [("MlMin", 5), ("MlWhip", 5)]);
+        public LightPetStat Mana = new(5, 0.05f, "Mana", LegacyKeysToInherit: [("MlPot", 5), ("MlMana", 5)]);
+        public LightPetStat MeleeSize = new(5, 0.04f, "Size", LegacyKeysToInherit: [("MlSize", 5), ("MlHeal", 5)]);
         public override int LightPetItemID => ItemID.SuspiciousLookingTentacle;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.SuspiciousLookingTentacle");
     }

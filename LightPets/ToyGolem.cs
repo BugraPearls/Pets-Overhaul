@@ -13,17 +13,19 @@ namespace PetsOverhaul.LightPets
         {
             if (TryGetLightPet(out ToyGolem toyGolem))
             {
-                Player.lifeRegen += toyGolem.HealthRegen.CurrentStatInt;
-                Player.manaRegenBonus += toyGolem.ManaRegen.CurrentStatInt;
+                Player.statDefense += toyGolem.Defense.CurrentStatInt;
                 Player.statLifeMax2 += (int)(Player.statLifeMax2 * toyGolem.PercentHealth.CurrentStatFloat);
+                Pet.knockbackResistance += toyGolem.KnockbackResist;
+                Pet.petShieldMultiplier += toyGolem.Shield;
             }
         }
     }
     public sealed class ToyGolem : LightPetItem
     {
-        public LightPetStat HealthRegen = new(4, 1, "GolemRegen");
-        public LightPetStat PercentHealth = new(35, 0.0018f, "GolemHealth", 0.022f);
-        public LightPetStat ManaRegen = new(20, 5, "GolemExp", 30);
+        public LightPetStat Defense = new(5, 5, "Defense", 30, LegacyKeysToInherit: ("GolemRegen", 4));
+        public LightPetStat PercentHealth = new(35, 0.0018f, "Health", 0.022f, LegacyKeysToInherit: ("GolemHealth",35));
+        public LightPetStat KnockbackResist = new(20, 1, "KbResist", LegacyKeysToInherit: ("GolemExp", 20));
+        public LightPetStat Shield = new(10, 4, "Shield", 2);
         public override int LightPetItemID => ItemID.GolemPetItem;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.ToyGolem");
     }

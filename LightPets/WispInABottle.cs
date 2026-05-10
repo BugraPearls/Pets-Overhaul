@@ -12,7 +12,6 @@ namespace PetsOverhaul.LightPets
 {
     public sealed class WispInABottleEffect : LightPetEffect
     {
-        public int timer = 0;
         public override int LightPetItemID => ItemID.WispinaBottle; //Custom effect dedicated to ROH
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -28,21 +27,14 @@ namespace PetsOverhaul.LightPets
                 }
             }
         }
-        public override void PreUpdate()
-        {
-            if (timer > 0)
-            {
-                timer--;
-            }
-        }
         public override void PostUpdateEquips()
         {
             if (TryGetLightPet(out WispInABottle wispInABottle))
             {
                 if (wispInABottle.CustomEffectActive == false)
                 {
-                    Player.GetDamage<MagicDamageClass>() += wispInABottle.MagicDamage.CurrentStatFloat;
-                    Player.GetDamage<RangedDamageClass>() += wispInABottle.RangedDamage.CurrentStatFloat;
+                    Player.GetDamage<MagicDamageClass>() += wispInABottle.MagicRangedDamage;
+                    Player.GetDamage<RangedDamageClass>() += wispInABottle.MagicRangedDamage;
                     Pet.petDirectDamageMultiplier += wispInABottle.PetDamage.CurrentStatFloat;
                 }
             }
@@ -59,7 +51,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool(wispInABottle.CustomChance, 100) && timer <= 0)
+            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool(wispInABottle.CustomChance, 100))
             {
                 Projectile theWisp = null;
                 foreach (var projectile in Main.ActiveProjectiles)
@@ -72,7 +64,6 @@ namespace PetsOverhaul.LightPets
                 if (theWisp != null)
                 {
                     SpawnGhostHurt(theWisp, wispInABottle.CustomFlat + (int)(wispInABottle.CustomScaling * damageDone), target);
-                    timer = wispInABottle.CustomCooldown;
                 }
             }
         }
@@ -126,38 +117,26 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class WispInABottle : LightPetItem //Check on 'custom effect'
     {
-        public LightPetStat MagicDamage = new(20, 0.004f, "WispMagic", 0.04f);
-        public LightPetStat RangedDamage = new(20, 0.004f, "WispRanged", 0.04f);
-        public LightPetStat ProjectileVelocity = new(12, 0.01f, "WispProjSpd", 0.05f);
-        public LightPetStat PetDamage = new(25, 0.0065f, "WispProjPet", 0.0675f);
-        public int CustomFlat => MagicDamage.CurrentRoll + 10;
-        public float CustomScaling => RangedDamage.CurrentRoll * 0.004f + 0.03f;
-        public int CustomCooldown => ProjectileVelocity.CurrentRoll * -5 + 120;
-        public int CustomChance => PetDamage.CurrentRoll + 15;
+        public LightPetStat MagicRangedDamage = new(20, 0.004f, "Damage", 0.04f, LegacyKeysToInherit: [("WispMagic",20),("WispRanged",20)]);
+        public LightPetStat ProjectileVelocity = new(12, 0.01f, "Velocity", 0.05f, LegacyKeysToInherit: ("WispProjSpd",12));
+        public LightPetStat PetDamage = new(25, 0.0065f, "PetDamage", 0.0675f, LegacyKeysToInherit: ("WispProjPet",25));
+        public int CustomFlat => PetDamage.CurrentRoll + 10;
+        public float CustomScaling => MagicRangedDamage.CurrentRoll * 0.004f + 0.03f;
+        public int CustomChance => ProjectileVelocity.CurrentRoll + 15;
+
+
+
         public override int LightPetItemID => ItemID.WispinaBottle;
         public override bool HasCustomEffect => true;
         public override bool CustomEffectActive => Main.LocalPlayer.GetModPlayer<WispInABottleEffect>().CustomActive; //We make it so it uses the ModPlayer's CustomActive when access to the property is required.
-        public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.WispInABottle")
-
-                        .Replace("<magic>", MagicDamage.BaseAndPerQuality())
-                        .Replace("<ranged>", RangedDamage.BaseAndPerQuality())
-                        .Replace("<velocity>", ProjectileVelocity.BaseAndPerQuality())
-                        .Replace("<petDmg>", PetDamage.BaseAndPerQuality())
-
-                        .Replace("<magicLine>", MagicDamage.StatSummaryLine())
-                        .Replace("<rangedLine>", RangedDamage.StatSummaryLine())
-                        .Replace("<velocityLine>", ProjectileVelocity.StatSummaryLine())
-                        .Replace("<petDmgLine>", PetDamage.StatSummaryLine());
-        public override string CustomPetsTooltip => PetUtils.LocVal("CustomPetEffects.WispInABottle")
-
-                        .Replace("<chance>", CustomChance.ToString())
-                        .Replace("<base>", CustomFlat.ToString())
-                        .Replace("<perc>", Math.Round(CustomScaling * 100, 2).ToString())
-                        .Replace("<cooldown>", Math.Round(CustomCooldown / 60f, 2).ToString())
-
-                        .Replace("<chanceLine>", PetDamage.QualityLine())
-                        .Replace("<baseLine>", MagicDamage.QualityLine())
-                        .Replace("<percLine>", RangedDamage.QualityLine())
-                        .Replace("<cooldownLine>", ProjectileVelocity.QualityLine());
+        public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.WispInABottle");
+        public override string CustomPetsTooltip => PetUtils.LocVal("CustomPetEffects.WispInABottle");
+        public override void ModifyLightPetTooltip(ref string tooltip)
+        {
+            if (CustomEffectActive) //I think this check is unnecessary; as original stat tooltips will already be added and not added for custom by this point. This check is solely for performance reasons.
+            {
+                tooltip = tooltip.Replace("<0Velocity>",CustomChance.ToString() + "%").Replace("<1Velocity>","");
+            }
+        }
     }
 }

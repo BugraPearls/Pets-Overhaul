@@ -20,14 +20,16 @@ namespace PetsOverhaul.LightPets
                 Player.GetDamage<SummonDamageClass>() += creeperEgg.MeleeSummonDamage;
                 Player.GetDamage<MeleeDamageClass>() += creeperEgg.MeleeSummonDamage;
                 Player.whipRangeMultiplier += creeperEgg.WhipMeleeSize;
-                Pet.knockbackResistance += creeperEgg.KnockbackResistance;
+                Player.GetKnockback<GenericDamageClass>() += creeperEgg.KnockbackIncrease;
+
+                Pet.petSlowPotency += creeperEgg.SlowPotency;
             }
         }
         public override void ModifyItemScale(Item item, ref float scale)
         {
-            if (TryGetLightPet(out CreeperEgg creeperEgg))
+            if (item.CountsAsClass<MeleeDamageClass>() && TryGetLightPet(out CreeperEgg creeperEgg))
             {
-                scale += creeperEgg.WhipMeleeSize;
+                scale *= 1 + creeperEgg.WhipMeleeSize;
             }
         }
     }
@@ -35,7 +37,8 @@ namespace PetsOverhaul.LightPets
     {
         public LightPetStat MeleeSummonDamage = new(20, 0.004f, "Damage", 0.04f, LegacyKeysToInherit: [("FlickerwickMelee", 16), ("FlickerwickSum", 16)]);
         public LightPetStat WhipMeleeSize = new(15, 0.004f, "Size", 0.04f, LegacyKeysToInherit: ("FlickerwickAtkSpd", 20));
-        public LightPetStat KnockbackResistance = new(10, 0.004f, "KbResist", 0.025f);
+        public LightPetStat KnockbackIncrease = new(10, 0.004f, "KbIncrease", 0.025f);
+        public LightPetStat SlowPotency = new(5, 2f, "Slow", 0.2f);
         public override int LightPetItemID => ItemID.DD2PetGhost;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.CreeperEgg");
     }
