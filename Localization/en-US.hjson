@@ -280,93 +280,76 @@ Mods: {
 				[c/828282:Stats are randomized when the Pet is obtained!]
 				'''
 			SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
-			StatTooltipLine: <0> (<1> + <2> per ★) <3> out of <4> ★
+			StatTooltipLine: <0> (<1> + <2> per ★, <3> out of <4> ★)
 			CreeperEgg:
 				'''
-				Increases Summon Damage by <sum>, Melee Damage by <melee>
-				and Melee and Whip Attack Speed by <atkSpd>.
-				Summon Damage Bonus: <sumLine>
-				Melee Damage Bonus: <meleeLine>
-				Melee/Whip Speed Bonus: <atkSpdLine>
+				- Increases summon and melee damage by <Damage> 
+				- Increases whip and melee size by <Size>
+				- Increases knockback by <KbIncrease>
 				'''
 			CrimsonHeart:
 				'''
-				Increases maximum health by <Health>
-				Increases Pet sourced healing by <Healing>
-				Increases Fishing Fortune by <Fishing>
+				- Increases maximum health by <Health>
+				- Increases Pet sourced healing by <Healing>
+				- Increases fishing fortune by <Fishing>
 				'''
 			FairyBell:
 				'''
-				Increases Pet Ability Haste by <haste> and Global Fortune by <fortune>
-				which increases all Mining, Harvesting, and Fishing drops.
-				Pet Ability Haste Bonus: <hasteLine>
-				Global Fortune Bonus: <fortuneLine>
+				- Increases Pet ability haste by <Haste>
+				- Increases global fortune by <Fortune>
 				'''
 			JackOLantern:
 				'''
-				Increases Attack Speed by <atkSpd>, Luck by <luck>
-				and Harvesting Fortune by <fortune>
-				Attack Speed Bonus: <atkSpdLine>
-				Luck Bonus: <luckLine>
-				Harvesting Fortune Bonus: <fortuneLine>
+				- Increases Pet sourced damage by <Damage>
+				- Increases luck by <Luck>
+				- Increases harvesting fortune by <Fortune>
+				- Grants a <Burn> chance to burn enemies on hit
+				[c/828282:  • The burn lasts for 2 seconds.]
 				'''
 			JewelOfLight:
 				'''
-				Increases Movement Speed by <moveSpd>, Wing Time by <wingTime> seconds,
-				and walking Acceleration by <acceleration>.
-				Movement Speed Bonus: <moveSpdLine>
-				Wing Time Bonus: <wingTimeLine>
-				Acceleration Bonus: <accelerationLine>
+				- Increases Pet ability haste by <Haste>
+				- Grants a Bonus Jump. 
+				  • Duration multiplier is increased by <JumpDuration>
+				  • Increases speed acceleration during the Bonus Jump by <Acceleration>
+				  • Increases maximum speed during the Bonus Jump by <MaxSpeed>
 				'''
 			MagicLantern:
 				'''
-				Increases Damage Reduction by <dr>, Mining Fortune by <fortune>, 
-				Defense by <def> flat and <defPercent> percent.
-				Damage Reduction Bonus: <drLine>
-				Defense Bonus: <defLine>
-				Percentage Defense Bonus: <defPercentLine>
-				Mining Fortune Bonus: <fortuneLine>
+				Increases mining fortune by <Fortune>
+				Increases damage reduction by <DamageReduction>
+				Increases knockback resistance by <KbResist>
+				Increases Pet sourced shields by <Shield>
 				'''
 			ShadowOrb:
 				'''
-				Increases Mana by <mana>, Pet Shielding by <shield>
-				Harvesting Fortune by <fortune>, increasing your Harvesting drops.
-				Mana Bonus: <manaLine>
-				Pet Shielding Bonus: <shieldLine>
-				Harvesting Fortune Bonus: <fortuneLine>
+				Increases maximum health by <Health>
+				Increases Pet sourced shields by <Shield>
+				Increases harvesting fortune by <Fortune>
 				'''
 			SuspiciousLookingTentacle:
 				'''
-				Increases Defense by <def>. Current: <defLine>,
-				Movement Speed by <ms>. Current: <msLine>,
-				All Damage by <dmg>. Current: <dmgLine>,
-				Crit Chance by <crit>. Current: <critLine>,
-				Ranged % Armor Pen by <rangedPen>. Current: <rangedPenLine>,
-				Ranged Crit Damage by <rangedCritDmg>. Current: <rangedCritDmgLine>,
-				Summoner Flat Armor Pen by <summonerPen>. Current: <summonerPenLine>,
-				Whip Range by <whip>. Current: <whipLine>,
-				Mana Potion Effectiveness by <manaPotion>. Current: <manaPotionLine>,
-				Maximum Mana by <mana>. Current: <manaLine>,
-				Melee Size by <size>. Current: <sizeLine> and
-				Melee Knockback by <knockback>. Current: <knockbackLine>
+				Increases Defense by <def>
+				Movement Speed by <ms>
+				All Damage by <dmg>
+				Crit Chance by <crit>
+				Ranged Crit Damage by <rangedCritDmg>
+				Summoner Flat Armor Pen by <summonerPen>
+				Maximum Mana by <mana>
+				Melee Size by <size>
 				'''
 			ToyGolem:
 				'''
-				Increases Life Regen by <lifeRegen>, Health by <healthPercent>,
+				Increases Life Regen by <lifeRegen>, 
+				Health by <healthPercent>,
 				and base Mana Regen value by <manaRegen>.
-				Life Regen Bonus: <lifeRegenLine>
-				Health Percentage Bonus: <healthPercentLine>
-				Mana Regen Bonus: <manaRegenLine>
 				'''
 			WispInABottle:
 				'''
-				Increases Magic Damage by <magic>, Ranged Damage by <ranged>.
+				Increases Magic Damage by <magic>, 
+				Ranged Damage by <ranged>.
 				Increases the traveling speed of Magic and Ranged projectiles by <velocity>.
 				Increases the damage that are sourcing from your pets by <petDmg>.
-				Magic Damage Bonus: <magicLine>
-				Ranged Damage Bonus: <rangedLine>
-				Magic/Ranged Projectile Speed Bonus: <velocityLine>
-				Pet Sourced Damage Bonus: <petDmgLine>
 				'''
 		}
 
@@ -1786,8 +1769,10 @@ Mods: {
 				Tooltip:
 					'''
 					Shows all Pets Overhaul related Player Stats.
+					Pet Slow Potency: <slow>x
+					[c/899499:When enemies are getting slowed by your Pets, they are slowed by <slowValue>% of the original value.]
 					Pet Ability Haste: <haste>%
-					[c/899499:Your Pet abilities cool off <hasteValue> <hastePosiOrNega> than normal.]
+					[c/899499:Your Pet abilities cool off <hasteValue>% <hastePosiOrNega> than normal.]
 					Pet Damage Multiplier: <damage>x
 					[c/899499:Projectiles and Direct Damages sourcing from your Pets deal <damageTooltip>% damage.]
 					Pet Healing Multiplier: <heal>x

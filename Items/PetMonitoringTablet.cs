@@ -28,62 +28,68 @@ namespace PetsOverhaul.Items
                     switch (line.Name)
                     {
                         case "Tooltip1":
-                            line.Text = line.Text.Replace("<haste>", Math.Round(pet.abilityHaste * 100, 2).ToString());
+                            line.Text = line.Text.Replace("<slow>", pet.petSlowPotency.ToString());
                             break;
                         case "Tooltip2":
-                            double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
-                            line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString() + "%")
-                                .Replace("<hastePosiOrNega>", (currentHaste >= 0 ? PetUtils.LocVal("Misc.Faster") : PetUtils.LocVal("Misc.Slower")));
+                            line.Text = line.Text.Replace("<slowValue>", PetUtils.Percentize(pet.petSlowPotency));
                             break;
                         case "Tooltip3":
-                            line.Text = line.Text.Replace("<damage>", pet.petDirectDamageMultiplier.ToString());
+                            line.Text = line.Text.Replace("<haste>", Math.Round(pet.abilityHaste * 100, 2).ToString());
                             break;
                         case "Tooltip4":
-                            line.Text = line.Text.Replace("<damageTooltip>", Math.Round(pet.petDirectDamageMultiplier * 100, 2).ToString());
+                            double currentHaste = Math.Round(pet.abilityHaste * 100, 2);
+                            line.Text = line.Text.Replace("<hasteValue>", currentHaste.ToString())
+                                .Replace("<hastePosiOrNega>", (currentHaste >= 0 ? PetUtils.LocVal("Misc.Faster") : PetUtils.LocVal("Misc.Slower")));
                             break;
                         case "Tooltip5":
-                            line.Text = line.Text.Replace("<heal>", pet.petHealMultiplier.ToString());
+                            line.Text = line.Text.Replace("<damage>", pet.petDirectDamageMultiplier.ToString());
                             break;
                         case "Tooltip6":
-                            line.Text = line.Text.Replace("<healTooltip>", Math.Round(pet.petHealMultiplier * 100, 2).ToString());
+                            line.Text = line.Text.Replace("<damageTooltip>", Math.Round(pet.petDirectDamageMultiplier * 100, 2).ToString());
                             break;
                         case "Tooltip7":
-                            line.Text = line.Text.Replace("<shield>", pet.petShieldMultiplier.ToString());
+                            line.Text = line.Text.Replace("<heal>", pet.petHealMultiplier.ToString());
                             break;
                         case "Tooltip8":
-                            line.Text = line.Text.Replace("<shieldTooltip>", Math.Round(pet.petShieldMultiplier * 100, 2).ToString());
+                            line.Text = line.Text.Replace("<healTooltip>", Math.Round(pet.petHealMultiplier * 100, 2).ToString());
                             break;
                         case "Tooltip9":
-                            line.Text = line.Text.Replace("<global>", pet.globalFortune.ToString());
+                            line.Text = line.Text.Replace("<shield>", pet.petShieldMultiplier.ToString());
                             break;
                         case "Tooltip10":
-                            line.Text = line.Text.Replace("<globalTooltip>", Math.Round(pet.globalFortune * 0.5f, 2).ToString());
+                            line.Text = line.Text.Replace("<shieldTooltip>", Math.Round(pet.petShieldMultiplier * 100, 2).ToString());
                             break;
                         case "Tooltip11":
-                            line.Text = line.Text.Replace("<globalTooltipIncr>", pet.globalFortune.ToString());
+                            line.Text = line.Text.Replace("<global>", pet.globalFortune.ToString());
                             break;
                         case "Tooltip12":
-                            line.Text = line.Text.Replace("<mining>", pet.miningFortune.ToString());
+                            line.Text = line.Text.Replace("<globalTooltip>", Math.Round(pet.globalFortune * 0.5f, 2).ToString());
                             break;
                         case "Tooltip13":
+                            line.Text = line.Text.Replace("<globalTooltipIncr>", pet.globalFortune.ToString());
+                            break;
+                        case "Tooltip14":
+                            line.Text = line.Text.Replace("<mining>", pet.miningFortune.ToString());
+                            break;
+                        case "Tooltip15":
                             line.Text = line.Text.Replace("<miningTooltip>", Math.Round(pet.miningFortune * 0.5f, 2).ToString())
                                 .Replace("<miningTooltipIncr>", pet.miningFortune.ToString());
                             break;
-                        case "Tooltip14":
+                        case "Tooltip16":
                             line.Text = line.Text.Replace("<harvesting>", pet.harvestingFortune.ToString());
                             break;
-                        case "Tooltip15":
+                        case "Tooltip17":
                             line.Text = line.Text.Replace("<harvestingTooltip>", Math.Round(pet.harvestingFortune * 0.5f, 2).ToString())
                                 .Replace("<harvestingTooltipIncr>", pet.harvestingFortune.ToString());
                             break;
-                        case "Tooltip16":
+                        case "Tooltip18":
                             line.Text = line.Text.Replace("<fishing>", pet.fishingFortune.ToString());
                             break;
-                        case "Tooltip17":
+                        case "Tooltip19":
                             line.Text = line.Text.Replace("<fishingTooltip>", Math.Round(pet.fishingFortune * 0.5f, 2).ToString())
                                 .Replace("<fishingTooltipIncr>", pet.fishingFortune.ToString());
                             break;
-                        case "Tooltip18":
+                        case "Tooltip20":
                             List<int> items = [];
                             if (PetModPlayer.eolConsumed)
                                 items.Add(ModContent.ItemType<PrismaticOptic>());
