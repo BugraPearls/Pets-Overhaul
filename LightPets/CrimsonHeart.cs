@@ -14,17 +14,17 @@ namespace PetsOverhaul.LightPets
         {
             if (TryGetLightPet(out CrimsonHeart crimsonHeart))
             {
-                Player.statLifeMax2 += crimsonHeart.Health.CurrentStatInt;
-                Pet.petHealMultiplier += crimsonHeart.HealingPower.CurrentStatFloat;
-                Pet.fishingFortune += crimsonHeart.FishingFortune.CurrentStatInt;
+                Player.statLifeMax2 += crimsonHeart.Health;
+                Pet.petHealMultiplier += crimsonHeart.HealingPower;
+                Pet.fishingFortune += crimsonHeart.FishingFortune;
             }
         }
     }
     public sealed class CrimsonHeart : LightPetItem
     {
-        public LightPetStat Health = new(10, 1, "Health",10, LegacyKeysToInherit: ("CrimsonHealth", 10)); //CrimsonHealth
-        public LightPetStat HealingPower = new(15, 0.005f, "Healing", 0.025f, LegacyKeysToInherit: ("CrimsonExp", 15)); //CrimsonExp
-        public LightPetStat FishingFortune = new(15, 1, "Fishing", 5, LegacyKeysToInherit: ("CrimsonFort", 15)); //CrimsonFort
+        public LightPetStat Health = new(10, 1, "Health",10, LegacyKeysToInherit: ("CrimsonHealth", 10));
+        public LightPetStat HealingPower = new(15, 0.005f, "Healing", 0.025f, LegacyKeysToInherit: ("CrimsonExp", 15));
+        public LightPetStat FishingFortune = new(15, 1, "Fishing", 5, LegacyKeysToInherit: ("CrimsonFort", 15));
         public override int LightPetItemID => ItemID.CrimsonHeart;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.CrimsonHeart");
     }

@@ -400,6 +400,17 @@ namespace PetsOverhaul.Systems
     /// </summary>
     public struct LightPetStat
     {
+        //Operators are for easier use if needed, they are not necessary. Simply calling CurrentStatX is good enough.
+        public static StatModifier operator +(StatModifier toBeAdded, LightPetStat stat) => toBeAdded + stat.CurrentStatFloat;
+        public static StatModifier operator -(StatModifier toBeAdded, LightPetStat stat) => toBeAdded - stat.CurrentStatFloat;
+
+        public static int operator +(int toBeAdded, LightPetStat stat) => toBeAdded + stat.CurrentStatInt;
+        public static int operator -(int toBeReduced, LightPetStat stat) => toBeReduced - stat.CurrentStatInt;
+
+        public static float operator +(float toBeAdded, LightPetStat stat) => toBeAdded + stat.CurrentStatFloat;
+        public static float operator -(float toBeReduced, LightPetStat stat) => toBeReduced - stat.CurrentStatFloat;
+
+
         public bool CustomDisplay = false;
         public string DataKey = "";
         public int CurrentRoll = -1;
