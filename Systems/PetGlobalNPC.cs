@@ -338,6 +338,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// DOES NOT APPLY <see cref="PetModPlayer.petSlowPotency"/>! Use <see cref="AddSlow(PetSlow, NPC, Player)"/> whenever possible unless its desired to not apply <see cref="PetModPlayer.petSlowPotency"/>.
         /// </summary>
+        [Obsolete("This overload does not use petSlowPotency stat, use other overload instead")]
         public static void AddSlow(PetSlow petSlow, NPC npc)
         {
             if (Main.netMode == NetmodeID.MultiplayerClient)
