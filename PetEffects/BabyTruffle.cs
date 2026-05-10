@@ -56,6 +56,7 @@ namespace PetsOverhaul.PetEffects
                 Pet.petShieldMultiplier += increaseFloat;
                 Pet.petHealMultiplier += increaseFloat;
                 Pet.petDirectDamageMultiplier += increaseFloat;
+                Pet.knockbackResistance += increaseFloat;
                 #endregion
             }
         }
@@ -116,13 +117,6 @@ namespace PetsOverhaul.PetEffects
                     }
                 }
                 Pet.timer = Pet.timerMax;
-            }
-        }
-        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
-        {
-            if (PetIsEquipped())
-            {
-                modifiers.Knockback *= 1f - increaseFloat;
             }
         }
     }

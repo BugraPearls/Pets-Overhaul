@@ -30,8 +30,14 @@ namespace PetsOverhaul.Systems
         public static bool pumpkingConsumed = false;
 
         public bool petObtained = false;
+
         /// <summary>
-        /// Modify this value if you want to reduce or increase lifesteal & healing by Pets for any reason, such as a Mod applying an effect that reduces healings. Basically a modifier on heals from Pets. Used in PetRecovery().
+        /// Influences how much knockback a Player takes. This isn't much of a "Pet Stat". Scales non-linearly, where it can exceed 100% to not completely remove taken knockback.
+        /// </summary>
+        public float knockbackResistance = 0f;
+
+        /// <summary>
+        /// Modify this value if you want to reduce or increase lifesteal and healing by Pets for any reason, such as a Mod applying an effect that reduces healings. Basically a modifier on heals from Pets. Used in PetRecovery().
         /// </summary>
         public float petHealMultiplier = 1f;
         /// <summary>
@@ -58,6 +64,7 @@ namespace PetsOverhaul.Systems
         /// Influences the chance to increase stack of the item that your Fishing Pet gave.
         /// </summary>
         public int fishingFortune = 0;
+
         public Color skin;
         public bool skinColorChanged = false;
 
@@ -390,7 +397,7 @@ namespace PetsOverhaul.Systems
                 return;
 
             luck ??= Player.luck;
-            
+
             if (hitDirection == 2)
             {
                 hitDirection = Player.position.X < npc.position.X ? 1 : -1;
@@ -764,6 +771,10 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
+            modifiers.Knockback *= 1 / (1 + knockbackResistance);
+
+
+
             if (ModContent.GetInstance<PetPersonalization>().DifficultAmount != 0 && (PetUtils.ItemIsPetItem(Player.CurrentPet()) || PetUtils.ItemIsPetItem(Player.CurrentLightPet())))
             {
                 modifiers.FinalDamage *= 1f + ModContent.GetInstance<PetPersonalization>().DifficultAmount * 0.01f;
@@ -807,6 +818,8 @@ namespace PetsOverhaul.Systems
         {
             petSwapCooldown = 600;
             inCombatTimerMax = 300;
+
+            knockbackResistance = 0f;
 
             fishingFortune = 0;
             harvestingFortune = 0;
@@ -869,7 +882,7 @@ namespace PetsOverhaul.Systems
                 }
             }
 
-                    if (ColorVal >= 1f)
+            if (ColorVal >= 1f)
             {
                 colorSwitched = true;
             }

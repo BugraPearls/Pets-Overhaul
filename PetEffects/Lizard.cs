@@ -80,6 +80,8 @@ namespace PetsOverhaul.PetEffects
         {
             if (PetIsEquipped())
             {
+                Pet.knockbackResistance += kbResist;
+
                 if (buffTimer > 0)
                 {
                     Player.moveSpeed += tailSpd;
@@ -101,13 +103,6 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped() && buffTimer > 0)
             {
                 Player.runAcceleration *= tailAcc + 1f;
-            }
-        }
-        public override void ModifyHurt(ref Player.HurtModifiers modifiers)
-        {
-            if (PetIsEquipped())
-            {
-                modifiers.Knockback *= 1f - kbResist;
             }
         }
     }

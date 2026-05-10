@@ -44,6 +44,7 @@ namespace PetsOverhaul.PetEffects
             {
                 Player.statDefense *= def + 1f;
                 Player.moveSpeed -= moveSpd;
+                Pet.knockbackResistance += kbResist;
             }
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
@@ -56,7 +57,6 @@ namespace PetsOverhaul.PetEffects
                     modifiers.FinalDamage *= 1f - dmgReduceShellHarden;
                     return;
                 }
-                modifiers.Knockback *= 1f - kbResist;
             }
         }
         public override void OnHurt(Player.HurtInfo info)
