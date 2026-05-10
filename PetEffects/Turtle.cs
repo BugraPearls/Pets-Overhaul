@@ -15,7 +15,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClass PetClassPrimary => PetClassID.Defensive;
         public float moveSpd = 0.12f;
         public float def = 0.07f;
-        public float kbResist = 0.55f;
+        public float kbResist = 0.45f;
 
         private int timer = 0;
         internal int currentStacks = 0;

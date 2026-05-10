@@ -32,7 +32,7 @@ namespace PetsOverhaul.Systems
         public bool petObtained = false;
 
         /// <summary>
-        /// Influences how much knockback a Player takes. This isn't much of a "Pet Stat". Scales non-linearly, where it can exceed 100% to not completely remove taken knockback.
+        /// Influences how much knockback a Player takes. This isn't much of a "Pet Stat". It can be negative values to increase taken knockback instead.
         /// </summary>
         public float knockbackResistance = 0f;
 
@@ -771,7 +771,7 @@ namespace PetsOverhaul.Systems
         }
         public override void ModifyHurt(ref Player.HurtModifiers modifiers)
         {
-            modifiers.Knockback *= 1 / (1 + knockbackResistance);
+            modifiers.Knockback *= 1 * (1 - Math.Min(knockbackResistance, 1)); //Either this stat increases knockback, or it multiplies by 0.
 
 
 
