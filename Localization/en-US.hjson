@@ -280,7 +280,7 @@ Mods: {
 				[c/828282:Stats are randomized when the Pet is obtained!]
 				'''
 			SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
-			StatTooltipLine: <0> (<1> + <2> per ★, <3> out of <4> ★)
+			StatTooltipLine: <0> (<1> + <2> per [c/<c>:★], [c/<c>:<3> out of <4> ★])
 			CreeperEgg:
 				'''
 				- Increases summon and melee damage by <Damage> 
@@ -1551,9 +1551,9 @@ Mods: {
 				'''
 			WispInABottle:
 				'''
-				- Striking an enemy has a <Velocity> chance for wisp to strike aswell.
-				  • Bonus strike deals <PetDamage> base damage.
-				  • <Damage> of damage dealt from triggering hit is also added.
+				- Striking an enemy has a <Chance> chance for wisp to strike aswell.
+				  • Bonus strike deals <Flat> base damage.
+				  • <Mult> of damage dealt from triggering hit is also added.
 				  • Ability does not work if Wisp Pet is not visible.
 				"We shall always remember the night."
 				'''

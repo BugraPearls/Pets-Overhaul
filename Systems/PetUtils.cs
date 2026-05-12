@@ -236,6 +236,27 @@ namespace PetsOverhaul.Systems
                 return $"[c/{LowQuality.Hex3()}:{text}]";
             }
         }
+
+
+        public static string LightPetRarityColorHex(int currentRoll, int maxRoll)
+        {
+            if (currentRoll == maxRoll)
+            {
+                return MaxQuality.Hex3();
+            }
+            else if (currentRoll > maxRoll * 0.66f)
+            {
+                return HighQuality.Hex3();
+            }
+            else if (currentRoll > maxRoll * 0.33f)
+            {
+                return MidQuality.Hex3();
+            }
+            else
+            {
+                return LowQuality.Hex3();
+            }
+        }
         /// <summary>
         /// Writes out Pet's Classes and their color mix. Works fine if only one class is given.
         /// </summary>

@@ -51,7 +51,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool(wispInABottle.CustomChance, 100))
+            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool((int)Math.Clamp(wispInABottle.ProcChance.CurrentStatFloat*100,0,100), 100))
             {
                 Projectile theWisp = null;
                 foreach (var projectile in Main.ActiveProjectiles)
@@ -63,7 +63,7 @@ namespace PetsOverhaul.LightPets
                 }
                 if (theWisp != null)
                 {
-                    SpawnGhostHurt(theWisp, wispInABottle.CustomFlat + (int)(wispInABottle.CustomScaling * damageDone), target);
+                    SpawnGhostHurt(theWisp, (int)(wispInABottle.MultDamage.CurrentStatFloat * damageDone) + wispInABottle.FlatDamage, target);
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace PetsOverhaul.LightPets
                 num9 = 4f / num9;
                 num7 *= num9;
                 num8 *= num9;
-                Projectile.NewProjectile(wisp.GetSource_OnHit(Victim), wisp.position.X, wisp.position.Y, num7, num8, 356, dmg, 0f, Player.whoAmI, num2);
+                Projectile.NewProjectile(wisp.GetSource_OnHit(Victim), wisp.position.X, wisp.position.Y, num7, num8, ProjectileID.SpectreWrath, dmg, 0f, Player.whoAmI, num2);
             }
         }
     }
@@ -120,23 +120,15 @@ namespace PetsOverhaul.LightPets
         public LightPetStat MagicRangedDamage = new(20, 0.004f, "Damage", 0.04f, LegacyKeysToInherit: [("WispMagic",20),("WispRanged",20)]);
         public LightPetStat ProjectileVelocity = new(12, 0.01f, "Velocity", 0.05f, LegacyKeysToInherit: ("WispProjSpd",12));
         public LightPetStat PetDamage = new(25, 0.0065f, "PetDamage", 0.0675f, LegacyKeysToInherit: ("WispProjPet",25));
-        public int CustomFlat => PetDamage.CurrentRoll + 10;
-        public float CustomScaling => MagicRangedDamage.CurrentRoll * 0.004f + 0.03f;
-        public int CustomChance => ProjectileVelocity.CurrentRoll + 15;
 
-
+        public CustomLightPetStat FlatDamage => new(MagicRangedDamage, 2, "Flat",10);
+        public CustomLightPetStat MultDamage => new(PetDamage, 0.02f, "Mult", 0.1f);
+        public CustomLightPetStat ProcChance => new(ProjectileVelocity, 0.02f, "Chance", 0.1f);
 
         public override int LightPetItemID => ItemID.WispinaBottle;
         public override bool HasCustomEffect => true;
         public override bool CustomEffectActive => Main.LocalPlayer.GetModPlayer<WispInABottleEffect>().CustomActive; //We make it so it uses the ModPlayer's CustomActive when access to the property is required.
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.WispInABottle");
         public override string CustomPetsTooltip => PetUtils.LocVal("CustomPetEffects.WispInABottle");
-        public override void ModifyLightPetTooltip(ref string tooltip)
-        {
-            if (CustomEffectActive) //I think this check is unnecessary; as original stat tooltips will already be added and not added for custom by this point. This check is solely for performance reasons.
-            {
-                tooltip = tooltip.Replace("<0Velocity>",CustomChance.ToString() + "%").Replace("<1Velocity>","");
-            }
-        }
     }
 }

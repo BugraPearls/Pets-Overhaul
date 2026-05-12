@@ -194,7 +194,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public virtual void ExtraModifyTooltips(Item item, List<TooltipLine> tooltips)
         { }
-        public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips) //Apparently ModifyTooltips' item is a clone of the original.
         {
             ExtraModifyTooltips(item, tooltips);
 
@@ -210,42 +210,85 @@ namespace PetsOverhaul.Systems
                 tip += BaseTooltip;
             }
 
-
-            foreach (var stat in GetAllLightPetStats())
+            if (HasCustomEffect && CustomEffectActive)
             {
-                LightPetStat tempStat = stat; //Apparently ModifyTooltips' item is a clone of the original, so thats good. But besides that, this temp assignment gives a lot of freedom, as we cant modify 'stat' due to it being the variable of foreach.
-
-
-                if (tempStat.CurrentRoll <= -1)
+                foreach (var property in this.GetType().GetProperties())
                 {
-                    tempStat.CurrentRoll = tempStat.MaxRoll;
-                    unrolledCount++;
-                }
-
-                tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LightPetRarityColorConvert(PetUtils.LocVal("LightPetTooltips.StatTooltipLine").Replace("<3>", tempStat.CurrentRoll.ToString()).Replace("<4>", tempStat.MaxRoll.ToString()), tempStat.CurrentRoll, tempStat.MaxRoll));
-
-                if (tempStat.CustomDisplay == false && CustomEffectActive == false) //Disabling key <0> <1> and <2> if custom display is desired, or if CustomEffect is active (then stat functionality changes entirely) which is to be handled at ModifyLightPetTooltip()
-                {
-                    if (tempStat.isInt)
+                    if (property.PropertyType == typeof(CustomLightPetStat)) //CustomLightPetStats are a property, not a field
                     {
-                        tip = tip.Replace("<0>", "+" + tempStat.CurrentStatInt.ToString()).Replace("<1>", tempStat.BaseStat.ToString()).Replace("<2>", tempStat.StatPerRoll.ToString());
-                    }
-                    else
-                    {
-                        tip = tip.Replace("<0>", PetUtils.Percentize(tempStat.CurrentStatFloat) + "%").Replace("<1>", PetUtils.Percentize(tempStat.BaseStat)).Replace("<2>", PetUtils.Percentize(tempStat.StatPerRoll) + "%");
+                        CustomLightPetStat stat = (CustomLightPetStat)property.GetValue(this);
+
+                        LightPetStat tempStat = stat.OriginalStat with { BaseStat = stat.BaseStat, StatPerRoll = stat.StatPerRoll, CustomDisplay = stat.CustomDisplay, DataKey = stat.DataKey };
+
+                        if (tempStat.CurrentRoll <= -1)
+                        {
+                            tempStat.CurrentRoll = tempStat.MaxRoll;
+                            unrolledCount++;
+                        }
+
+                        tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LocVal("LightPetTooltips.StatTooltipLine").Replace("<3>", tempStat.CurrentRoll.ToString()).Replace("<4>", tempStat.MaxRoll.ToString()))
+                            .Replace("<c>", PetUtils.LightPetRarityColorHex(tempStat.CurrentRoll, tempStat.MaxRoll));
+
+                        if (tempStat.CustomDisplay == false) //Disabling key <0> <1> and <2> if custom display is desired, which is to be handled at ModifyLightPetTooltip()
+                        {
+                            if (tempStat.isInt)
+                            {
+                                tip = tip.Replace("<0>", "+" + tempStat.CurrentStatInt.ToString()).Replace("<1>", tempStat.BaseStat.ToString()).Replace("<2>", tempStat.StatPerRoll.ToString());
+                            }
+                            else
+                            {
+                                tip = tip.Replace("<0>", PetUtils.Percentize(tempStat.CurrentStatFloat) + "%").Replace("<1>", PetUtils.Percentize(tempStat.BaseStat)).Replace("<2>", PetUtils.Percentize(tempStat.StatPerRoll) + "%");
+                            }
+                        }
+                        else
+                        {
+                            tip = tip.Replace("<0>", $"<0{tempStat.DataKey}>").Replace("<1>", $"<1{tempStat.DataKey}>").Replace("<2>", $"<2{tempStat.DataKey}>"); //If its custom, for example with JackOLantern, the key <0> will be replaced with <0Luck>, and it replaces <0Luck> in its code in ModifyLightPetTooltips().
+                        }
+                        totalStatCount++;
                     }
                 }
-                else
+            }
+            else
+            {
+                foreach (var field in this.GetType().GetFields())
                 {
-                    tip = tip.Replace("<0>", $"<0{stat.DataKey}>").Replace("<1>", $"<1{stat.DataKey}>").Replace("<2>", $"<2{stat.DataKey}>"); //If its custom, for example with JackOLantern, the key <0> will be replaced with <0Luck>, and it replaces <0Luck> in its code in ModifyLightPetTooltips().
+                    if (field.FieldType == typeof(LightPetStat))
+                    {
+                        LightPetStat tempStat = (LightPetStat)field.GetValue(this);
+                        if (tempStat.CurrentRoll <= -1)
+                        {
+                            tempStat.CurrentRoll = tempStat.MaxRoll;
+                            unrolledCount++;
+                        }
+
+                        tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LocVal("LightPetTooltips.StatTooltipLine").Replace("<3>", tempStat.CurrentRoll.ToString()).Replace("<4>", tempStat.MaxRoll.ToString()))
+                             .Replace("<c>", PetUtils.LightPetRarityColorHex(tempStat.CurrentRoll, tempStat.MaxRoll));
+                        if (tempStat.CustomDisplay == false) //Disabling key <0> <1> and <2> if custom display is desired, which is to be handled at ModifyLightPetTooltip()
+                        {
+                            if (tempStat.isInt)
+                            {
+                                tip = tip.Replace("<0>", "+" + tempStat.CurrentStatInt.ToString()).Replace("<1>", tempStat.BaseStat.ToString()).Replace("<2>", tempStat.StatPerRoll.ToString());
+                            }
+                            else
+                            {
+                                tip = tip.Replace("<0>", PetUtils.Percentize(tempStat.CurrentStatFloat) + "%").Replace("<1>", PetUtils.Percentize(tempStat.BaseStat)).Replace("<2>", PetUtils.Percentize(tempStat.StatPerRoll) + "%");
+                            }
+                        }
+                        else
+                        {
+                            tip = tip.Replace("<0>", $"<0{tempStat.DataKey}>").Replace("<1>", $"<1{tempStat.DataKey}>").Replace("<2>", $"<2{tempStat.DataKey}>"); //If its custom, for example with JackOLantern, the key <0> will be replaced with <0Luck>, and it replaces <0Luck> in its code in ModifyLightPetTooltips().
+                        }
+                        totalStatCount++;
+                    }
                 }
-                totalStatCount++;
             }
 
             if (HasCustomEffect)
             {
                 if (CustomEffectActive)
+                {
                     tip += "\n" + PetUtils.LocVal("Misc.CustomLine").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
+                }
                 else
                 {
                     tip += "\n" + PetUtils.LocVal("Misc.NonCustomLineContributor").Replace("<switchKey>", PetUtils.KeybindText(PetKeybinds.PetCustomSwitch));
@@ -515,5 +558,50 @@ namespace PetsOverhaul.Systems
                 }
             }
         }
+    }
+    /// <summary>
+    /// Refer to WispInABottle.cs for implementation
+    /// </summary>
+    public struct CustomLightPetStat
+    {
+        public static StatModifier operator +(StatModifier toBeAdded, CustomLightPetStat stat) => toBeAdded + stat.CurrentStatFloat;
+        public static StatModifier operator -(StatModifier toBeAdded, CustomLightPetStat stat) => toBeAdded - stat.CurrentStatFloat;
+
+        public static int operator +(int toBeAdded, CustomLightPetStat stat) => toBeAdded + stat.CurrentStatInt;
+        public static int operator -(int toBeReduced, CustomLightPetStat stat) => toBeReduced - stat.CurrentStatInt;
+
+        public static float operator +(float toBeAdded, CustomLightPetStat stat) => toBeAdded + stat.CurrentStatFloat;
+        public static float operator -(float toBeReduced, CustomLightPetStat stat) => toBeReduced - stat.CurrentStatFloat;
+
+        public LightPetStat OriginalStat;
+        public bool CustomDisplay = false;
+        public string DataKey = "";
+        public readonly int CurrentRoll => OriginalStat.CurrentRoll;
+        public readonly int MaxRoll => OriginalStat.MaxRoll;
+        public float StatPerRoll = 0;
+        public float BaseStat = 0;
+        internal readonly bool isInt = false;
+        public CustomLightPetStat(LightPetStat originalStat, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false)
+        {
+            OriginalStat = originalStat;
+            StatPerRoll = statPerRoll;
+            BaseStat = baseStat;
+            isInt = true;
+            DataKey = dataKey;
+            CustomDisplay = customStatDisplay;
+        }
+
+        public CustomLightPetStat(LightPetStat originalStat, float statPerRoll, string dataKey, float baseStat = 0, bool customStatDisplay = false)
+        {
+            OriginalStat = originalStat;
+            StatPerRoll = statPerRoll;
+            BaseStat = baseStat;
+            isInt = false;
+            DataKey = dataKey;
+            CustomDisplay = customStatDisplay;
+        }
+        public readonly float CurrentStatFloat => BaseStat + StatPerRoll * CurrentRoll;
+        public readonly int CurrentStatInt => (int)Math.Ceiling(CurrentStatFloat);
+        /// <summary>
     }
 }
