@@ -119,7 +119,7 @@ namespace PetsOverhaul.LightPets
     {
         public LightPetStat MagicRangedDamage = new(20, 0.0025f, "Damage", 0.02f, LegacyKeysToInherit: [("WispMagic",20),("WispRanged",20)]);
         public LightPetStat ProjectileVelocity = new(12, 0.015f, "Velocity", 0.07f, LegacyKeysToInherit: ("WispProjSpd",12));
-        public LightPetStat PetDamage = new(25, 0.0075f, "PetDamage", 0.0675f, LegacyKeysToInherit: ("WispProjPet",25));
+        public LightPetStat PetDamage = new(25, 0.0075f, "PetDamage", 0.075f, LegacyKeysToInherit: ("WispProjPet",25));
 
         public CustomLightPetStat FlatDamage => new(MagicRangedDamage, 1, "Flat",5);
         public CustomLightPetStat MultDamage => new(PetDamage, 0.005f, "Mult", 0.1f);

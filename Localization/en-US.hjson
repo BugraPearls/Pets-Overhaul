@@ -352,7 +352,7 @@ Mods: {
 				'''
 				- Increases magic and ranged damage by <Damage> 
 				- Increases velocity of your projectiles by <Velocity>
-				[c/828282:  • This includes magic, ranged and Pet sourced projectiles.]
+				[c/828282:  • This includes magic and ranged projectiles.]
 				- Increases Pet sourced damage by <PetDamage>
 				'''
 		}
