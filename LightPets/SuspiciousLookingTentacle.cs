@@ -45,15 +45,15 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class SuspiciousLookingTentacle : LightPetItem
     {
-        public LightPetStat Haste = new(5, 1, "Haste");
-        public LightPetStat PetSlow = new(5, 1, "Slow", LegacyKeysToInherit: ("MlMs", 20));
-        public LightPetStat PetDamage = new(5, 1, "Damage", LegacyKeysToInherit: ("MlDmg", 20));
-        public LightPetStat PetShield = new(5, 1, "Shield", LegacyKeysToInherit: ("MlDef", 5));
-        public LightPetStat PetHeal = new(5, 1, "Heal", LegacyKeysToInherit: ("MlCrit", 20));
-        public LightPetStat RangedCritDamage = new(5, 0.008f, "Crit", LegacyKeysToInherit: [("MlCrDmg", 5), ("MlPen", 5)]);
-        public LightPetStat SummonerFlatPenetration = new(5, 3, "Pen", LegacyKeysToInherit: [("MlMin", 5), ("MlWhip", 5)]);
-        public LightPetStat Mana = new(5, 0.05f, "Mana", LegacyKeysToInherit: [("MlPot", 5), ("MlMana", 5)]);
-        public LightPetStat MeleeSize = new(5, 0.04f, "Size", LegacyKeysToInherit: [("MlSize", 5), ("MlHeal", 5)]);
+        public LightPetStat Haste = new(5, 0.035f, "Haste");
+        public LightPetStat PetSlow = new(5, 0.035f, "Slow", LegacyKeysToInherit: ("MlMs", 20));
+        public LightPetStat PetDamage = new(5, 0.035f, "Damage", LegacyKeysToInherit: ("MlDmg", 20));
+        public LightPetStat PetShield = new(5, 0.035f, "Shield", LegacyKeysToInherit: ("MlDef", 5));
+        public LightPetStat PetHeal = new(5, 0.035f, "Heal", LegacyKeysToInherit: ("MlCrit", 20));
+        public LightPetStat RangedCritDamage = new(5, 0.01f, "Crit", LegacyKeysToInherit: [("MlCrDmg", 5), ("MlPen", 5)]);
+        public LightPetStat SummonerFlatPenetration = new(5, 4, "Pen", LegacyKeysToInherit: [("MlMin", 5), ("MlWhip", 5)]);
+        public LightPetStat Mana = new(5, 15, "Mana", LegacyKeysToInherit: [("MlPot", 5), ("MlMana", 5)]);
+        public LightPetStat MeleeSize = new(5, 0.05f, "Size", LegacyKeysToInherit: [("MlSize", 5), ("MlHeal", 5)]);
         public override int LightPetItemID => ItemID.SuspiciousLookingTentacle;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.SuspiciousLookingTentacle");
     }

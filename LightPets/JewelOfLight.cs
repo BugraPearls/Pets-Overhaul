@@ -85,10 +85,10 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class JewelOfLight : LightPetItem
     {
-        public LightPetStat AbilityHaste = new(10, 0.01f, "Haste", 0.07f, LegacyKeysToInherit: ("EmpressMoveSpd", 8));
-        public LightPetStat JumpDuration = new(20, 4, "JumpDuration", 30, LegacyKeysToInherit: ("EmpressWing", 15));
-        public LightPetStat Acceleration = new(5, 0.0012f, "Acceleration", 0.02f, LegacyKeysToInherit: ("EmpressExp", 20));
-        public LightPetStat MaxRunSpeed = new(5, 0.0012f, "MaxSpeed", 0.02f);
+        public LightPetStat AbilityHaste = new(10, 0.007f, "Haste", 0.08f, LegacyKeysToInherit: ("EmpressMoveSpd", 8));
+        public LightPetStat JumpDuration = new(5, 0.2f, "JumpDuration", 0.8f, LegacyKeysToInherit: ("EmpressWing", 15));
+        public LightPetStat Acceleration = new(15, 0.1f, "Acceleration", 2f, LegacyKeysToInherit: ("EmpressExp", 20));
+        public LightPetStat MaxRunSpeed = new(10, 0.1f, "MaxSpeed", 0.5f);
         public override int LightPetItemID => ItemID.FairyQueenPetItem;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.JewelOfLight");
     }

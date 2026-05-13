@@ -117,13 +117,13 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class WispInABottle : LightPetItem //Check on 'custom effect'
     {
-        public LightPetStat MagicRangedDamage = new(20, 0.004f, "Damage", 0.04f, LegacyKeysToInherit: [("WispMagic",20),("WispRanged",20)]);
-        public LightPetStat ProjectileVelocity = new(12, 0.01f, "Velocity", 0.05f, LegacyKeysToInherit: ("WispProjSpd",12));
-        public LightPetStat PetDamage = new(25, 0.0065f, "PetDamage", 0.0675f, LegacyKeysToInherit: ("WispProjPet",25));
+        public LightPetStat MagicRangedDamage = new(20, 0.0025f, "Damage", 0.02f, LegacyKeysToInherit: [("WispMagic",20),("WispRanged",20)]);
+        public LightPetStat ProjectileVelocity = new(12, 0.015f, "Velocity", 0.07f, LegacyKeysToInherit: ("WispProjSpd",12));
+        public LightPetStat PetDamage = new(25, 0.0075f, "PetDamage", 0.0675f, LegacyKeysToInherit: ("WispProjPet",25));
 
-        public CustomLightPetStat FlatDamage => new(MagicRangedDamage, 2, "Flat",10);
-        public CustomLightPetStat MultDamage => new(PetDamage, 0.02f, "Mult", 0.1f);
-        public CustomLightPetStat ProcChance => new(ProjectileVelocity, 0.02f, "Chance", 0.1f);
+        public CustomLightPetStat FlatDamage => new(MagicRangedDamage, 1, "Flat",5);
+        public CustomLightPetStat MultDamage => new(PetDamage, 0.005f, "Mult", 0.1f);
+        public CustomLightPetStat ProcChance => new(ProjectileVelocity, 0.008f, "Chance", 0.08f);
 
         public override int LightPetItemID => ItemID.WispinaBottle;
         public override bool HasCustomEffect => true;

@@ -35,10 +35,10 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class CreeperEgg : LightPetItem
     {
-        public LightPetStat MeleeSummonDamage = new(20, 0.004f, "Damage", 0.04f, LegacyKeysToInherit: [("FlickerwickMelee", 16), ("FlickerwickSum", 16)]);
-        public LightPetStat WhipMeleeSize = new(15, 0.004f, "Size", 0.04f, LegacyKeysToInherit: ("FlickerwickAtkSpd", 20));
-        public LightPetStat KnockbackIncrease = new(10, 0.004f, "KbIncrease", 0.025f);
-        public LightPetStat SlowPotency = new(5, 2f, "Slow", 0.2f);
+        public LightPetStat MeleeSummonDamage = new(20, 0.0025f, "Damage", 0.02f, LegacyKeysToInherit: [("FlickerwickMelee", 16), ("FlickerwickSum", 16)]);
+        public LightPetStat WhipMeleeSize = new(15, 0.006f, "Size", 0.04f, LegacyKeysToInherit: ("FlickerwickAtkSpd", 20));
+        public LightPetStat KnockbackIncrease = new(10, 0.02f, "KbIncrease", 0.1f);
+        public LightPetStat SlowPotency = new(5, 0.045f, "Slow", 0.105f);
         public override int LightPetItemID => ItemID.DD2PetGhost;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.CreeperEgg");
     }

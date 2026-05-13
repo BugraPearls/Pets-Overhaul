@@ -218,7 +218,7 @@ namespace PetsOverhaul.Systems
                     {
                         CustomLightPetStat stat = (CustomLightPetStat)property.GetValue(this);
 
-                        LightPetStat tempStat = stat.OriginalStat with { BaseStat = stat.BaseStat, StatPerRoll = stat.StatPerRoll, CustomDisplay = stat.CustomDisplay, DataKey = stat.DataKey };
+                        LightPetStat tempStat = stat.OriginalStat with { BaseStat = stat.BaseStat, StatPerRoll = stat.StatPerRoll, CustomDisplay = stat.CustomDisplay, DataKey = stat.DataKey, isInt = stat.isInt};
 
                         if (tempStat.CurrentRoll <= -1)
                         {
@@ -467,14 +467,14 @@ namespace PetsOverhaul.Systems
         public static float operator +(float toBeAdded, LightPetStat stat) => toBeAdded + stat.CurrentStatFloat;
         public static float operator -(float toBeReduced, LightPetStat stat) => toBeReduced - stat.CurrentStatFloat;
 
-
+        public readonly int GetDisplayRoll => CurrentRoll == -1 ? MaxRoll : CurrentRoll;
         public bool CustomDisplay = false;
         public string DataKey = "";
         public int CurrentRoll = -1;
         public int MaxRoll = 1;
         public float StatPerRoll = 0;
         public float BaseStat = 0;
-        internal readonly bool isInt = false;
+        public bool isInt = false;
         public (string oldKey, int oldStatsMax)[] LegacyDataKeys = [];
         public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false, params (string oldKey, int oldStatsMax)[] LegacyKeysToInherit)
         {
@@ -497,7 +497,7 @@ namespace PetsOverhaul.Systems
             CustomDisplay = customStatDisplay;
             LegacyDataKeys = LegacyKeysToInherit;
         }
-        public readonly float CurrentStatFloat => BaseStat + StatPerRoll * CurrentRoll;
+        public readonly float CurrentStatFloat => BaseStat + StatPerRoll * GetDisplayRoll;
         public readonly int CurrentStatInt => (int)Math.Ceiling(CurrentStatFloat);
         /// <summary>
         /// Sets the roll of this stat. Commonly used in UpdateInventory(). Player luck allows for it to be rolled again; replacing the initial roll if higher (or lower for negative luck.)
@@ -573,6 +573,8 @@ namespace PetsOverhaul.Systems
         public static float operator +(float toBeAdded, CustomLightPetStat stat) => toBeAdded + stat.CurrentStatFloat;
         public static float operator -(float toBeReduced, CustomLightPetStat stat) => toBeReduced - stat.CurrentStatFloat;
 
+        public readonly int GetDisplayRoll => CurrentRoll == -1 ? MaxRoll : CurrentRoll;
+
         public LightPetStat OriginalStat;
         public bool CustomDisplay = false;
         public string DataKey = "";
@@ -580,7 +582,7 @@ namespace PetsOverhaul.Systems
         public readonly int MaxRoll => OriginalStat.MaxRoll;
         public float StatPerRoll = 0;
         public float BaseStat = 0;
-        internal readonly bool isInt = false;
+        public bool isInt = false;
         public CustomLightPetStat(LightPetStat originalStat, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false)
         {
             OriginalStat = originalStat;
@@ -600,7 +602,7 @@ namespace PetsOverhaul.Systems
             DataKey = dataKey;
             CustomDisplay = customStatDisplay;
         }
-        public readonly float CurrentStatFloat => BaseStat + StatPerRoll * CurrentRoll;
+        public readonly float CurrentStatFloat => BaseStat + StatPerRoll * GetDisplayRoll;
         public readonly int CurrentStatInt => (int)Math.Ceiling(CurrentStatFloat);
         /// <summary>
     }
