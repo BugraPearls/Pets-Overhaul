@@ -399,32 +399,30 @@ namespace PetsOverhaul.Systems
         {
             if (currentTotalSlow > 0)
             {
-                int dustChance = PetUtils.Randomizer((int)(1000 / currentTotalSlow));
-                if (dustChance <= 0)
-                    dustChance = 1;
-                bool spawnDust = Main.rand.NextBool(dustChance); //We use random chance to spawn a dust, the chance for gets narrowed down the more slow there is.
-                if (electricSlow)
+                float dustSize = currentTotalSlow / 10;
+                if (Main.rand.NextBool(10))
                 {
-                    drawColor = Color.PaleTurquoise with { A = 235 };
+                    if (electricSlow)
+                    {
+                        drawColor = Color.PaleTurquoise with { A = 235 };
 
-                    if (spawnDust)
-                        Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Electric, Alpha: 100, Scale: Main.rand.NextFloat(0.7f, 1.1f))
-                        .noGravity = true;
-                }
-                if (coldSlow)
-                {
-                    drawColor = Color.DarkTurquoise with { A = 235 };
-                    if (spawnDust)
-                        Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Water_Snow, Alpha: 100, Scale: Main.rand.NextFloat(0.7f, 1.1f))
-                        .noGravity = true;
-                }
-                if (sickSlow)
-                {
-                    drawColor = new Color(218, 252, 222, 235);
+                            Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Electric, Alpha: 100, Scale: Main.rand.NextFloat(0.3f, 0.7f) * (1 + dustSize))
+                            .noGravity = true;
+                    }
+                    if (coldSlow)
+                    {
+                        drawColor = Color.DarkTurquoise with { A = 235 };
 
-                    if (spawnDust)
-                        Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Poisoned, Alpha: 100, Scale: Main.rand.NextFloat(0.9f, 1.3f))
-                        .noGravity = true;
+                            Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Water_Snow, Alpha: 100, Scale: Main.rand.NextFloat(0.3f, 0.7f) * (1 + dustSize))
+                            .noGravity = true;
+                    }
+                    if (sickSlow)
+                    {
+                        drawColor = new Color(218, 252, 222, 235);
+
+                            Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Poisoned, Alpha: 100, Scale: Main.rand.NextFloat(0.5f, 0.9f) * (1+dustSize))
+                            .noGravity = true;
+                    }
                 }
             }
             if (npc.HasBuff(ModContent.BuffType<Mauled>()) && Main.rand.NextBool(Math.Max(25 - maulCounter, 5)))
