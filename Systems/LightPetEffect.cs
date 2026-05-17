@@ -475,6 +475,9 @@ namespace PetsOverhaul.Systems
         public float StatPerRoll = 0;
         public float BaseStat = 0;
         public bool isInt = false;
+        /// <summary>
+        /// DO NOT remove old LegacyDataKeys. Add on top of existing ones, and NEVER make it same as existing DataKey! It is however, safe to add as much as desired on top of what the Stat already has, as long as they are unique and not same as current DataKey.
+        /// </summary>
         public (string oldKey, int oldStatsMax)[] LegacyDataKeys = [];
         public LightPetStat(int maxRoll, int statPerRoll, string dataKey, int baseStat = 0, bool customStatDisplay = false, params (string oldKey, int oldStatsMax)[] LegacyKeysToInherit)
         {
