@@ -269,7 +269,7 @@ namespace PetsOverhaul.Systems
         };
         #endregion
     }
-    public class TownPetBuffID
+    public static class TownPetBuffID
     {
         public static int Bunny => ModContent.BuffType<TownPetBunny>();
         public static int Cat => ModContent.BuffType<TownPetCat>();
@@ -356,21 +356,21 @@ namespace PetsOverhaul.Systems
     ///}
     /// </code>
     /// </summary>
-    public class PetClassID
+    public static class PetClassID
     {
         public static readonly PetClass None = new("None", PetUtils.LocVal("Classes.None"), Color.White, 0);
-        public static readonly PetClass Melee = new("Melee", PetUtils.LocVal("Classes.Melee"), PetUtils.MeleeClass, 1);
-        public static readonly PetClass Ranged = new("Ranged", PetUtils.LocVal("Classes.Ranged"), PetUtils.RangedClass, 2);
-        public static readonly PetClass Magic = new("Magic", PetUtils.LocVal("Classes.Magic"), PetUtils.MagicClass, 3);
-        public static readonly PetClass Summoner = new("Summoner", PetUtils.LocVal("Classes.Summoner"), PetUtils.SummonerClass, 4);
-        public static readonly PetClass Utility = new("Utility", PetUtils.LocVal("Classes.Utility"), PetUtils.UtilityClass, 5);
-        public static readonly PetClass Mobility = new("Mobility", PetUtils.LocVal("Classes.Mobility"), PetUtils.MobilityClass, 6);
-        public static readonly PetClass Harvesting = new("Harvesting", PetUtils.LocVal("Classes.Harvesting"), PetUtils.HarvestingClass, 7);
-        public static readonly PetClass Mining = new("Mining", PetUtils.LocVal("Classes.Mining"), PetUtils.MiningClass, 8);
-        public static readonly PetClass Fishing = new("Fishing", PetUtils.LocVal("Classes.Fishing"), PetUtils.FishingClass, 9);
-        public static readonly PetClass Offensive = new("Offensive", PetUtils.LocVal("Classes.Offensive"), PetUtils.OffensiveClass, 10);
-        public static readonly PetClass Defensive = new("Defensive", PetUtils.LocVal("Classes.Defensive"), PetUtils.DefensiveClass, 11);
-        public static readonly PetClass Supportive = new("Supportive", PetUtils.LocVal("Classes.Supportive"), PetUtils.SupportiveClass, 12);
+        public static readonly PetClass Melee = new("Melee", PetUtils.LocVal("Classes.Melee"), PetUtils.MeleeClassColor, 1);
+        public static readonly PetClass Ranged = new("Ranged", PetUtils.LocVal("Classes.Ranged"), PetUtils.RangedClassColor, 2);
+        public static readonly PetClass Magic = new("Magic", PetUtils.LocVal("Classes.Magic"), PetUtils.MagicClassColor, 3);
+        public static readonly PetClass Summoner = new("Summoner", PetUtils.LocVal("Classes.Summoner"), PetUtils.SummonerClassColor, 4);
+        public static readonly PetClass Utility = new("Utility", PetUtils.LocVal("Classes.Utility"), PetUtils.UtilityClassColor, 5);
+        public static readonly PetClass Mobility = new("Mobility", PetUtils.LocVal("Classes.Mobility"), PetUtils.MobilityClassColor, 6);
+        public static readonly PetClass Harvesting = new("Harvesting", PetUtils.LocVal("Classes.Harvesting"), PetUtils.HarvestingClassColor, 7);
+        public static readonly PetClass Mining = new("Mining", PetUtils.LocVal("Classes.Mining"), PetUtils.MiningClassColor, 8);
+        public static readonly PetClass Fishing = new("Fishing", PetUtils.LocVal("Classes.Fishing"), PetUtils.FishingClassColor, 9);
+        public static readonly PetClass Offensive = new("Offensive", PetUtils.LocVal("Classes.Offensive"), PetUtils.OffensiveClassColor, 10);
+        public static readonly PetClass Defensive = new("Defensive", PetUtils.LocVal("Classes.Defensive"), PetUtils.DefensiveClassColor, 11);
+        public static readonly PetClass Supportive = new("Supportive", PetUtils.LocVal("Classes.Supportive"), PetUtils.SupportiveClassColor, 12);
 
         public static List<PetClass> AllClasses = [None, Melee, Ranged, Magic, Summoner, Utility, Mobility, Harvesting, Mining, Fishing, Offensive, Defensive, Supportive];
 

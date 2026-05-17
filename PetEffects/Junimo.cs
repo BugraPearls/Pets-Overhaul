@@ -488,7 +488,7 @@ namespace PetsOverhaul.PetEffects
                     PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.harvestingCoin * juni.junimoHarvestingLevel * value * 100)));
                     juni.junimoHarvestingExp += value;
                     juni.popupExpHarv += value;
-                    juni.popupIndexHarv = juni.PopupExp(juni.popupIndexHarv, juni.popupExpHarv, PetUtils.HarvestingClass);
+                    juni.popupIndexHarv = juni.PopupExp(juni.popupIndexHarv, juni.popupExpHarv, PetUtils.HarvestingClassColor);
                     juni.classThatGotExp = PetClassID.Harvesting;
 
                 }
@@ -502,7 +502,7 @@ namespace PetsOverhaul.PetEffects
                     PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.fishingCoin * juni.junimoFishingLevel * value * 100)));
                     juni.junimoFishingExp += value;
                     juni.popupExpFish += value;
-                    juni.popupIndexFish = juni.PopupExp(juni.popupIndexFish, juni.popupExpFish, PetUtils.FishingClass);
+                    juni.popupIndexFish = juni.PopupExp(juni.popupIndexFish, juni.popupExpFish, PetUtils.FishingClassColor);
                     juni.classThatGotExp = PetClassID.Fishing;
                 }
                 else if (itemChck.blockNotByPlayer && (itemChck.oreBoost || itemChck.miningDropFromPet))
@@ -515,7 +515,7 @@ namespace PetsOverhaul.PetEffects
                     PickerPet.GiveCoins(PetUtils.Randomizer((int)(juni.miningCoin * juni.junimoMiningLevel * value * 100)));
                     juni.junimoMiningExp += value;
                     juni.popupExpMining += value;
-                    juni.popupIndexMining = juni.PopupExp(juni.popupIndexMining, juni.popupExpMining, PetUtils.MiningClass);
+                    juni.popupIndexMining = juni.PopupExp(juni.popupIndexMining, juni.popupExpMining, PetUtils.MiningClassColor);
                     juni.classThatGotExp = PetClassID.Mining;
                 }
             }
@@ -683,7 +683,7 @@ namespace PetsOverhaul.PetEffects
                         SoundEngine.PlaySound(SoundID.Item35 with { PitchVariance = 0.2f, Pitch = 0.5f }, Player.Center);
                     }
 
-                    popupMessage.Color = PetUtils.HarvestingClass;
+                    popupMessage.Color = PetUtils.HarvestingClassColor;
                     popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
                         .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Harvesting"))
                         .Replace("<upOrMax>", junimoHarvestingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
@@ -707,7 +707,7 @@ namespace PetsOverhaul.PetEffects
                         }, Player.Center);
                     }
 
-                    popupMessage.Color = PetUtils.MiningClass;
+                    popupMessage.Color = PetUtils.MiningClassColor;
                     popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
                         .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Mining"))
                         .Replace("<upOrMax>", junimoMiningLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));
@@ -731,7 +731,7 @@ namespace PetsOverhaul.PetEffects
                         }, Player.Center);
                     }
 
-                    popupMessage.Color = PetUtils.FishingClass;
+                    popupMessage.Color = PetUtils.FishingClassColor;
                     popupMessage.Text = PetUtils.LocVal("PetItemTooltips.JunimoLevel")
                         .Replace("<class>", Language.GetTextValue($"Mods.PetsOverhaul.Classes.Fishing"))
                         .Replace("<upOrMax>", junimoFishingLevel >= maxLvls ? PetUtils.LocVal("PetItemTooltips.JunimoMaxed") : PetUtils.LocVal("PetItemTooltips.JunimoUp"));

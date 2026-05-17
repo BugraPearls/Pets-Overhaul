@@ -23,7 +23,7 @@ namespace PetsOverhaul.Systems
         public static int CurrentPet(this Player player)
         {
             ActivePetSlotPlayer PetItemSlot = player.GetModPlayer<ActivePetSlotPlayer>();
-            if (PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type > 0 && PetIDs.PetNamesAndItems.ContainsValue(PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type))
+            if (PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type > ItemID.None && PetIDs.PetNamesAndItems.ContainsValue(PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type))
             {
                 return PetItemSlot.RegularPetItemSlot[player.CurrentLoadoutIndex].type;
             }
@@ -32,7 +32,7 @@ namespace PetsOverhaul.Systems
         public static int CurrentLightPet(this Player player)
         {
             ActivePetSlotPlayer PetItemSlot = player.GetModPlayer<ActivePetSlotPlayer>();
-            if (PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type > 0 && PetIDs.LightPetNamesAndItems.ContainsValue(PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type))
+            if (PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type > ItemID.None && PetIDs.LightPetNamesAndItems.ContainsValue(PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type))
             {
                 return PetItemSlot.LightPetItemSlot[player.CurrentLoadoutIndex].type;
             }
@@ -178,18 +178,18 @@ namespace PetsOverhaul.Systems
         public static Color MaxQuality => Color.Lerp(ModContent.GetInstance<PetPersonalization>().MaxQualityColor1, ModContent.GetInstance<PetPersonalization>().MaxQualityColor2, PetModPlayer.ColorVal);
         public static Color MaxQualityColor1 => new(165, 249, 255);
         public static Color MaxQualityColor2 => new(255, 207, 249);
-        public static Color MeleeClass => new(230, 145, 56);
-        public static Color RangedClass => new(255, 179, 186);
-        public static Color MagicClass => new(51, 153, 255);
-        public static Color SummonerClass => new(138, 43, 226);
-        public static Color UtilityClass => new(107, 65, 14);
-        public static Color MobilityClass => new(204, 245, 245);
-        public static Color HarvestingClass => new(205, 225, 0);
-        public static Color MiningClass => new(150, 168, 176);
-        public static Color FishingClass => new(27, 222, 255);
-        public static Color OffensiveClass => new(246, 84, 106);
-        public static Color DefensiveClass => new(14, 168, 14);
-        public static Color SupportiveClass => new(242, 82, 169);
+        public static Color MeleeClassColor => new(230, 145, 56);
+        public static Color RangedClassColor => new(255, 179, 186);
+        public static Color MagicClassColor => new(51, 153, 255);
+        public static Color SummonerClassColor => new(138, 43, 226);
+        public static Color UtilityClassColor => new(107, 65, 14);
+        public static Color MobilityClassColor => new(204, 245, 245);
+        public static Color HarvestingClassColor => new(205, 225, 0);
+        public static Color MiningClassColor => new(150, 168, 176);
+        public static Color FishingClassColor => new(27, 222, 255);
+        public static Color OffensiveClassColor => new(246, 84, 106);
+        public static Color DefensiveClassColor => new(14, 168, 14);
+        public static Color SupportiveClassColor => new(242, 82, 169);
         public static Color GetClassColor(PetClass Class)
         {
             return Class.ClassColor;
