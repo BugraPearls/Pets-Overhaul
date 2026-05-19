@@ -347,7 +347,7 @@ namespace PetsOverhaul
                     if (Main.netMode == NetmodeID.Server)
                     {
                         int whoIsJuni2 = reader.ReadByte();
-                        int level = Math.Clamp((int)reader.ReadByte(),1,50);
+                        int level = Math.Clamp((int)reader.ReadByte(), 1, 50);
                         Junimo junimo = Main.player[whoIsJuni2].GetModPlayer<Junimo>();
                         junimo.junimoMiningLevel = level;
                         junimo.junimoMiningExp = junimo.junimoMiningLevelsToXp[level - 1];

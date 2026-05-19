@@ -72,7 +72,7 @@ namespace PetsOverhaul.PetEffects
             }
             else if (Pet.timer <= 0)
             {
-                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), shuricornDamage, shuricornKb,damageClass: DamageClass.Generic);
+                Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), Player.Center, new Vector2(20 * Player.direction, 0), ModContent.ProjectileType<Shuricorn>(), shuricornDamage, shuricornKb, damageClass: DamageClass.Generic);
                 Player.velocity.X = 10 * Player.direction * -1;
                 Pet.timer = Pet.timerMax;
             }

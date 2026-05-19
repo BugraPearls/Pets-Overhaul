@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Systems;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.LightPets
 {

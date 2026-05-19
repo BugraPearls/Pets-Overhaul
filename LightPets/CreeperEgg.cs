@@ -1,10 +1,7 @@
 ﻿using PetsOverhaul.Systems;
-using System.IO;
 using Terraria;
-using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.LightPets
 {

@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Systems;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.LightPets
 {
@@ -51,7 +49,7 @@ namespace PetsOverhaul.LightPets
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool((int)Math.Clamp(wispInABottle.ProcChance.CurrentStatFloat*100,0,100), 100))
+            if (TryGetLightPet(out WispInABottle wispInABottle) && wispInABottle.CustomEffectActive && Main.rand.NextBool((int)Math.Clamp(wispInABottle.ProcChance.CurrentStatFloat * 100, 0, 100), 100))
             {
                 Projectile theWisp = null;
                 foreach (var projectile in Main.ActiveProjectiles)
@@ -87,7 +85,7 @@ namespace PetsOverhaul.LightPets
                 {
                     continue;
                 }
-                float num6 = Math.Abs(Main.npc[i].position.X + (float)(Main.npc[i].width / 2) - wisp.position.X + (float)(wisp.width / 2)) + Math.Abs(Main.npc[i].position.Y + (float)(Main.npc[i].height / 2) - wisp.position.Y + (float)(wisp.height / 2));
+                float num6 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - wisp.position.X + wisp.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - wisp.position.Y + wisp.height / 2);
                 if (num6 < 800f)
                 {
                     if (Collision.CanHit(wisp.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num6 > 50f)
@@ -117,11 +115,11 @@ namespace PetsOverhaul.LightPets
     }
     public sealed class WispInABottle : LightPetItem //Check on 'custom effect'
     {
-        public LightPetStat MagicRangedDamage = new(20, 0.0025f, "Damage", 0.02f, LegacyKeysToInherit: [("WispMagic",20),("WispRanged",20)]);
-        public LightPetStat ProjectileVelocity = new(12, 0.015f, "Velocity", 0.07f, LegacyKeysToInherit: ("WispProjSpd",12));
-        public LightPetStat PetDamage = new(25, 0.0075f, "PetDamage", 0.075f, LegacyKeysToInherit: ("WispProjPet",25));
+        public LightPetStat MagicRangedDamage = new(20, 0.0025f, "Damage", 0.02f, LegacyKeysToInherit: [("WispMagic", 20), ("WispRanged", 20)]);
+        public LightPetStat ProjectileVelocity = new(12, 0.015f, "Velocity", 0.07f, LegacyKeysToInherit: ("WispProjSpd", 12));
+        public LightPetStat PetDamage = new(25, 0.0075f, "PetDamage", 0.075f, LegacyKeysToInherit: ("WispProjPet", 25));
 
-        public CustomLightPetStat FlatDamage => new(MagicRangedDamage, 1, "Flat",5);
+        public CustomLightPetStat FlatDamage => new(MagicRangedDamage, 1, "Flat", 5);
         public CustomLightPetStat MultDamage => new(PetDamage, 0.005f, "Mult", 0.1f);
         public CustomLightPetStat ProcChance => new(ProjectileVelocity, 0.008f, "Chance", 0.08f);
 

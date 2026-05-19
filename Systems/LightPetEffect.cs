@@ -2,16 +2,12 @@
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.ConstrainedExecution;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -218,7 +214,7 @@ namespace PetsOverhaul.Systems
                     {
                         CustomLightPetStat stat = (CustomLightPetStat)property.GetValue(this);
 
-                        LightPetStat tempStat = stat.OriginalStat with { BaseStat = stat.BaseStat, StatPerRoll = stat.StatPerRoll, CustomDisplay = stat.CustomDisplay, DataKey = stat.DataKey, isInt = stat.isInt};
+                        LightPetStat tempStat = stat.OriginalStat with { BaseStat = stat.BaseStat, StatPerRoll = stat.StatPerRoll, CustomDisplay = stat.CustomDisplay, DataKey = stat.DataKey, isInt = stat.isInt };
 
                         if (tempStat.CurrentRoll <= -1)
                         {

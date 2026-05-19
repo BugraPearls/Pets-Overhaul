@@ -1,8 +1,6 @@
 ﻿using PetsOverhaul.Systems;
-using System.IO;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader.IO;
 
 namespace PetsOverhaul.LightPets
 {
@@ -23,8 +21,8 @@ namespace PetsOverhaul.LightPets
     public sealed class ToyGolem : LightPetItem
     {
         public LightPetStat Defense = new(5, 1, "Defense", 1, LegacyKeysToInherit: ("GolemRegen", 4));
-        public LightPetStat PercentHealth = new(35, 0.0015f, "Health", 0.02f, LegacyKeysToInherit: ("GolemHealth",35));
-        public LightPetStat KnockbackResist = new(20, 0.03f, "KbResist", 0.4f,LegacyKeysToInherit: ("GolemExp", 20));
+        public LightPetStat PercentHealth = new(35, 0.0015f, "Health", 0.02f, LegacyKeysToInherit: ("GolemHealth", 35));
+        public LightPetStat KnockbackResist = new(20, 0.03f, "KbResist", 0.4f, LegacyKeysToInherit: ("GolemExp", 20));
         public LightPetStat Shield = new(10, 0.01f, "Shield", 0.05f);
         public override int LightPetItemID => ItemID.GolemPetItem;
         public override string BaseTooltip => PetUtils.LocVal("LightPetTooltips.ToyGolem");

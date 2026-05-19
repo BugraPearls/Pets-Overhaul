@@ -40,12 +40,12 @@ namespace PetsOverhaul.PetEffects
         {
             get
             {
-                    if (classThatGotExp == PetClassID.Harvesting)
-                        return junimoHarvestingExp - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
-                    if (classThatGotExp == PetClassID.Mining)
-                        return junimoMiningExp - junimoMiningLevelsToXp[junimoMiningLevel - 1];
+                if (classThatGotExp == PetClassID.Harvesting)
+                    return junimoHarvestingExp - junimoHarvestingLevelsToXp[junimoHarvestingLevel - 1];
+                if (classThatGotExp == PetClassID.Mining)
+                    return junimoMiningExp - junimoMiningLevelsToXp[junimoMiningLevel - 1];
 
-                    return junimoFishingExp - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
+                return junimoFishingExp - junimoFishingLevelsToXp[junimoFishingLevel - 1]; //defaults to fishing if classThatGotExp is 'invalid'
             }
         }
         public int CurrentExpRequiredStack

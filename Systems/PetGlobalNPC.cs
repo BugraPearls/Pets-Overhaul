@@ -406,22 +406,22 @@ namespace PetsOverhaul.Systems
                     {
                         drawColor = Color.PaleTurquoise with { A = 235 };
 
-                            Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Electric, Alpha: 100, Scale: Main.rand.NextFloat(0.3f, 0.7f) * (1 + dustSize))
-                            .noGravity = true;
+                        Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Electric, Alpha: 100, Scale: Main.rand.NextFloat(0.3f, 0.7f) * (1 + dustSize))
+                        .noGravity = true;
                     }
                     if (coldSlow)
                     {
                         drawColor = Color.DarkTurquoise with { A = 235 };
 
-                            Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Water_Snow, Alpha: 100, Scale: Main.rand.NextFloat(0.3f, 0.7f) * (1 + dustSize))
-                            .noGravity = true;
+                        Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Water_Snow, Alpha: 100, Scale: Main.rand.NextFloat(0.3f, 0.7f) * (1 + dustSize))
+                        .noGravity = true;
                     }
                     if (sickSlow)
                     {
                         drawColor = new Color(218, 252, 222, 235);
 
-                            Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Poisoned, Alpha: 100, Scale: Main.rand.NextFloat(0.5f, 0.9f) * (1+dustSize))
-                            .noGravity = true;
+                        Dust.NewDustDirect(npc.position, npc.width, npc.height, DustID.Poisoned, Alpha: 100, Scale: Main.rand.NextFloat(0.5f, 0.9f) * (1 + dustSize))
+                        .noGravity = true;
                     }
                 }
             }

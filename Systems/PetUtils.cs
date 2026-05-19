@@ -4,7 +4,6 @@ using PetsOverhaul.Config;
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.GameContent.Achievements;
