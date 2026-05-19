@@ -312,7 +312,7 @@ namespace PetsOverhaul.PetEffects
                 int count = 0;
                 foreach (var item in Player.ExtraJumps)
                 {
-                    if (item.Available == false)
+                    if (item.Enabled && item.Available == false)
                         count++;
                 }
                 if (count >= 6)

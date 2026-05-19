@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.Systems;
 using System;
 using Terraria;
@@ -78,6 +79,15 @@ namespace PetsOverhaul.LightPets
             {
                 Player.GetJumpState<JewelOfLightJump>().Enable();
                 Pet.abilityHaste += empress.AbilityHaste;
+
+                int count = 0;
+                foreach (var item in Player.ExtraJumps)
+                {
+                    if (item.Enabled && item.Available == false)
+                        count++;
+                }
+                if (count >= 6)
+                    PetUtils.DoAchievementOnPlayer<HextupleJumper>(Player.whoAmI);
             }
         }
     }
