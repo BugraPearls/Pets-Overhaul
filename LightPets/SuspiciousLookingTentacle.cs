@@ -23,7 +23,7 @@ namespace PetsOverhaul.LightPets
         {
             if (item.CountsAsClass<MeleeDamageClass>() && TryGetLightPet(out SuspiciousLookingTentacle moonlord))
             {
-                scale *= 1 + moonlord.MeleeSize;
+                scale += moonlord.MeleeSize;
             }
         }
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)

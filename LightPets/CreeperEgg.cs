@@ -26,7 +26,7 @@ namespace PetsOverhaul.LightPets
         {
             if (item.CountsAsClass<MeleeDamageClass>() && TryGetLightPet(out CreeperEgg creeperEgg))
             {
-                scale *= 1 + creeperEgg.WhipMeleeSize;
+                scale += creeperEgg.WhipMeleeSize;
             }
         }
     }
