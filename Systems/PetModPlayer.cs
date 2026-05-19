@@ -4,6 +4,7 @@ using PetsOverhaul.Buffs;
 using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using PetsOverhaul.NPCs;
+using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -291,6 +292,23 @@ namespace PetsOverhaul.Systems
             }
         }
 
+        public void RollLightPetStats(Item item)
+        {
+            if (item.type != ItemID.None && PetIDs.LightPetNamesAndItems.ContainsValue(item.type))
+            {
+                foreach (var light in item.Globals)
+                {
+                    if (light.GetType().IsSubclassOf(typeof(LightPetItem)))
+                    {
+                        LightPetItem lightPet = (LightPetItem)light;
+                        if (lightPet.hasRolled == false)
+                        {
+                            lightPet.ApplyQualities(Player);
+                        }
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Checks if the given Pet Item is in use and checks if pet has been lately swapped or not.
         /// </summary>
@@ -857,35 +875,10 @@ namespace PetsOverhaul.Systems
                 trash.pickedUpBefore = true;
             }
 
-            if (PetIDs.LightPetNamesAndItems.ContainsValue(Main.mouseItem.type))
-            {
-                foreach (var mouseItem in Main.mouseItem.Globals)
-                {
-                    if (mouseItem.GetType().IsSubclassOf(typeof(LightPetItem)))
-                    {
-                        LightPetItem lightPet = (LightPetItem)mouseItem;
-                        if (lightPet.hasRolled == false)
-                        {
-                            lightPet.ApplyQualities(Player);
-                        }
-                    }
-                }
-            }
-
-            if (PetIDs.LightPetNamesAndItems.ContainsValue(Player.trashItem.type))
-            {
-                foreach (var trashItem in Player.trashItem.Globals)
-                {
-                    if (trashItem.GetType().IsSubclassOf(typeof(LightPetItem)))
-                    {
-                        LightPetItem lightPet = (LightPetItem)trashItem;
-                        if (lightPet.hasRolled == false)
-                        {
-                            lightPet.ApplyQualities(Player);
-                        }
-                    }
-                }
-            }
+            RollLightPetStats(Player.trashItem);
+            RollLightPetStats(Main.mouseItem);
+            RollLightPetStats(Player.miscEquips[1]);
+            RollLightPetStats(Player.GetModPlayer<ActivePetSlotPlayer>().LightPetItemSlot[Player.CurrentLoadoutIndex]);
 
             if (ColorVal >= 1f)
             {

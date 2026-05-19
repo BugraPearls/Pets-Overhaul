@@ -120,7 +120,7 @@ namespace PetsOverhaul.UI
         internal Item loadedLightPet;
         internal PetItemSlot ActiveRegularPetSlot;
         internal PetItemSlot ActiveLightPetSlot;
-        internal List<Item> RegularPetItemSlot = [new(0), new(0), new(0)];
+        internal List<Item> RegularPetItemSlot = [new(0), new(0), new(0)]; //Idk why I made these a List instead of just an array, they are fixed to 3 indexes
         internal List<Item> LightPetItemSlot = [new(0), new(0), new(0)];
         internal Item CurrentPetItemInTheUI
         {
