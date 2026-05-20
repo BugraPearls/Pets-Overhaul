@@ -10,6 +10,7 @@ Mods: {
 			Sec: 秒
 			Secs: 秒
 			Pet: 宠物
+			OutOf: /
 			And: 和
 			Ability: 技能
 			Faster: 快

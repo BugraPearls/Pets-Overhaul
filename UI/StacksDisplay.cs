@@ -36,7 +36,7 @@ namespace PetsOverhaul.UI
                 }
                 else
                 {
-                    stacks.SetText($"{currTxt} {CurrentStack} {PetUtils.LocVal("LightPetTooltips.OutOf")} {MaxStack}");
+                    stacks.SetText($"{currTxt} {CurrentStack} {PetUtils.LocVal("Misc.OutOf")} {MaxStack}");
                 }
                 stacks.Top.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.Y);
                 stacks.Left.Set(0, ModContent.GetInstance<PetPersonalization>().ResourceDisplayPos.X);

@@ -342,7 +342,7 @@ namespace PetsOverhaul.Systems
             {
                 return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
             }
-            return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("LightPetTooltips.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
+            return $"{Math.Round(firstValInFrames / 60f, 2)} {LocVal("Misc.OutOf")} {Math.Round(secondValInFrames / 60f, 2)} {LocVal("Misc.Secs")}";
         }
 
         /// <summary>
