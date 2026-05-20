@@ -295,10 +295,6 @@ namespace PetsOverhaul.Systems
         {
             return keybind.GetAssignedKeys(PetModPlayer.PlayerInputMode).Count > 0 ? keybind.GetAssignedKeys(PetModPlayer.PlayerInputMode)[0] : $"[c/{LowQuality.Hex3()}:{LocVal("Misc.KeybindMissing")}]";
         }
-        public static string RollMissingText()
-        {
-            return $"[c/{LowQuality.Hex3()}:{LocVal("LightPetTooltips.NotRolled")}]";
-        }
         public static string PetClassLocalized(PetClass petClass)
         {
             return Language.GetTextValue(petClass.LocalizationPath);
