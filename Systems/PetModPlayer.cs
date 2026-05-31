@@ -32,11 +32,15 @@ namespace PetsOverhaul.Systems
 
         public bool petObtained = false;
 
+        #region Pet Stats
+        /// <summary>
+        /// Increase this value to reduce ability cooldowns. Eg. 0.1f increases how fast ability will return by 10%. Increases potency of ticks going down every frame. Ex: 200% ability haste will make it tick 3 frames every frame, while 50% will make it tick 1 or 2 frames every frame randomly with equal chance. Can be negative; affecting the tick with diminishing returns.
+        /// </summary>
+        public float abilityHaste = 0;
         /// <summary>
         /// Influences how much knockback a Player takes. This isn't much of a "Pet Stat". It can be negative values to increase taken knockback instead.
         /// </summary>
         public float knockbackResistance = 0f;
-
         /// <summary>
         /// Modify this value if you want to reduce or increase slows applied by Pets to enemies. 
         /// </summary>
@@ -69,6 +73,7 @@ namespace PetsOverhaul.Systems
         /// Influences the chance to increase stack of the item that your Fishing Pet gave.
         /// </summary>
         public int fishingFortune = 0;
+        #endregion
 
         public Color skin;
         public bool skinColorChanged = false;
@@ -129,10 +134,6 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public int inCombatTimerMax = 300;
         /// <summary>
-        /// Increase this value to reduce ability cooldowns. Eg. 0.1f increases how fast ability will return by 10%. Increases potency of ticks going down every frame. Ex: 200% ability haste will make it tick 3 frames every frame, while 50% will make it tick 1 or 2 frames every frame randomly with equal chance. Can be negative; affecting the tick with diminishing returns.
-        /// </summary>
-        public float abilityHaste = 0;
-        /// <summary>
         /// Used to change alternating color of maximum Light Pet Rolls alongside colorSwitched, increases 0.01f every frame, until hitting 1f, where it decreases 0.01f every frame and so on.
         /// </summary>
         public static float ColorVal { get; internal set; }
@@ -166,7 +167,7 @@ namespace PetsOverhaul.Systems
         /// This is instance of current active Light Pet item (GlobalItem), lots of data can be accessed here.
         /// </summary>
         public LightPetItem currentActiveLightPet = null;
-
+        
         #region Achievement Fields
         public List<int> FoundPets = new(PetIDs.PetNamesAndItems.Count);
         public List<int> FoundLightPets = new(PetIDs.LightPetNamesAndItems.Count);
@@ -178,6 +179,10 @@ namespace PetsOverhaul.Systems
         /// Is invoked at PetNpc, OnKill hook, refer to Puppy Pet's OnEnemyKill() & Load/Unload to figure how its used properly. Only called on Player that last hit the NPC, when NPC is dead.
         /// </summary>
         public static Action<NPC, Player> OnEnemyDeath;
+
+        public bool ShowCalamityAddonPopup => activateCalamityAddonPopup && !NeverShowCalamityAddonPopup;
+        public bool activateCalamityAddonPopup = false;
+        public bool NeverShowCalamityAddonPopup = false;
 
         #region Utility related methods, that directly uses Player fields. For static methods, see PetUtils.cs.
 
@@ -715,6 +720,11 @@ namespace PetsOverhaul.Systems
             tag.Add("foundPets", FoundPets);
             tag.Add("foundLightPets", FoundLightPets);
             tag.Add("pettedTownPets", PettedTownPets);
+
+            if (NeverShowCalamityAddonPopup == true) //Only saving non-default value
+            {
+                tag.Add("CalamityPopup", NeverShowCalamityAddonPopup);
+            }
         }
         public override void LoadData(TagCompound tag)
         {
@@ -771,6 +781,11 @@ namespace PetsOverhaul.Systems
             if (tag.TryGet("pettedTownPets", out List<int> petted))
             {
                 PettedTownPets = petted;
+            }
+
+            if (tag.TryGet("CalamityPopup", out bool calPop))
+            {
+                NeverShowCalamityAddonPopup = calPop;
             }
         }
         public override void NaturalLifeRegen(ref float regen)
@@ -1015,7 +1030,9 @@ namespace PetsOverhaul.Systems
             if (ModContent.GetInstance<PetPersonalization>().EnableModNotice)
             {
                 if (ModLoader.TryGetMod("PetsOverhaulCalamityAddon", out _) == false && ModLoader.TryGetMod("CalamityMod", out _) == true)
-                    Main.NewText(PetUtils.LocVal("Misc.CalamityDetected"));
+                {
+                    activateCalamityAddonPopup = true;
+                }
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
