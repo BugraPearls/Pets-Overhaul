@@ -167,7 +167,7 @@ namespace PetsOverhaul.Systems
         /// This is instance of current active Light Pet item (GlobalItem), lots of data can be accessed here.
         /// </summary>
         public LightPetItem currentActiveLightPet = null;
-        
+
         #region Achievement Fields
         public List<int> FoundPets = new(PetIDs.PetNamesAndItems.Count);
         public List<int> FoundLightPets = new(PetIDs.LightPetNamesAndItems.Count);
@@ -1027,12 +1027,9 @@ namespace PetsOverhaul.Systems
             {
                 Main.NewText(PetUtils.LocVal("Misc.Notice"));
             }
-            if (ModContent.GetInstance<PetPersonalization>().EnableModNotice)
+            if (ModLoader.TryGetMod("PetsOverhaulCalamityAddon", out _) == false && ModLoader.TryGetMod("CalamityMod", out _) == true)
             {
-                if (ModLoader.TryGetMod("PetsOverhaulCalamityAddon", out _) == false && ModLoader.TryGetMod("CalamityMod", out _) == true)
-                {
-                    activateCalamityAddonPopup = true;
-                }
+                activateCalamityAddonPopup = true;
             }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)

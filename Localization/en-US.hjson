@@ -155,12 +155,6 @@ Mods: {
 				Enables messages sent by Pets Overhaul upon logging into the world.
 				Notices may contain brief information about the latest updates.
 				'''
-			ModNoticeLabel: Log-in Notice for missing addons
-			ModNoticeTooltip:
-				'''
-				Enable message sent upon logging into the world where;
-				An official addon (crossmod) of Pets Overhaul of a Mod exists but is not loaded.
-				'''
 			ShieldLocationLabel: Pet Shield Location
 			ShieldLocationTooltip:
 				'''

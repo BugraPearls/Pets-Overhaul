@@ -148,12 +148,6 @@ Mods: {
 				启用此模组在进入世界时发送的通知,
 				通知可能包含最近更新的简要信息.
 				'''
-			ModNoticeLabel: 启用没有添加附属模组的提示
-			ModNoticeTooltip:
-				'''
-				在启用灾厄模组但没有启用对应的联动附属模组时
-				启用进入世界时的提示
-				'''
 			ShieldLocationLabel: 宠物护盾位置
 			ShieldLocationTooltip:
 				'''

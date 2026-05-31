@@ -160,12 +160,6 @@ Mods: {
 				Habilitar mensagens enviadas pelo Pet Overhaul quando entrar no mundo.
 				Avisos talvez possuem informações sobre as ultimas atualizações
 				'''
-			ModNoticeLabel: Ativar aviso para addon de Mods não encontrados
-			ModNoticeTooltip:
-				'''
-				Habilitar mensagens enviadas ao entrar no mundo quando;
-				Um addon oficial (Conteúdo entre mods) do Pets Overhaul de outro Mod existe, mas não foi ativado.
-				'''
 			ShieldLocationLabel: Localização do Escudo de Pet
 			ShieldLocationTooltip:
 				'''
