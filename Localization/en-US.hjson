@@ -32,12 +32,6 @@ Mods: {
 				[c/b4bfc5:Check out our Wiki: terrariamods.wiki.gg/wiki/Pets_Overhaul]
 				[c/b4bfc5:Use] [c/ff8234:/pet] [c/b4bfc5:to see commands for Pets Overhaul!]
 				'''
-			CalamityDetected:
-				'''
-				It seems you're using Pets Overhaul alongside Calamity Mod without the addon!
-				You can find the addon under the name 'Pets Overhaul: Calamity Addon'
-				Adding even more unique pets & Calamity compatibility for the vanilla Pet effects!
-				'''
 			Current: Current
 			Enabled: Enabled
 			Disabled: Disabled
@@ -272,6 +266,20 @@ Mods: {
 			State4: Both items are not Light Pets.
 			State5: First item is not a Light Pet.
 			State6: Second item is not a Light Pet.
+		}
+
+		MissingAddonUI: {
+			CalamityMessage:
+				'''
+				Did you know that Pets Overhaul Mod	 has a official [c/9A0000:Calamity Addon]?
+
+				Its detected that you're using Pets Overhaul and Calamity Mod together, without the addon.
+
+				Find "[c/FF0000:Pets Overhaul: Calamity Addon]" on Steam Workshop or in your Mod Browser!
+				[c/828282:Adds all Calamity Pet & Light Pet effects, and adapts other existing systems to Calamity Mod.]
+				'''
+			Close: Close this message
+			Never: Never show this message
 		}
 
 		LightPetTooltips: {

@@ -32,12 +32,6 @@ Mods: {
 				[c/b4bfc5:浏览我们的Wiki百科：terrariamods.wiki.gg/wiki/Pets_Overhaul]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
 				'''
-			CalamityDetected:
-				'''
-				看起来你在没有启用灾厄扩展的情况下启动了灾厄
-				你可以在创意工坊搜索“Pets Overhaul: Calamity Addon”来订阅宠物大修：灾厄扩展
-				此扩展添加了很多独特的宠物和原版宠物效果的灾厄适配
-				'''
 			Current: 当前
 			Enabled: 已启用
 			Disabled: 已禁用
@@ -267,6 +261,20 @@ Mods: {
 			State4: 两个物品都不是照明宠
 			State5: 第一个物品不是照明宠物
 			State6: 第二个物品不是照明宠物
+		}
+
+		MissingAddonUI: {
+			/* CalamityMessage:
+				'''
+				Did you know that Pets Overhaul Mod	 has a official [c/9A0000:Calamity Addon]?
+
+				Its detected that you're using Pets Overhaul and Calamity Mod together, without the addon.
+
+				Find "[c/FF0000:Pets Overhaul: Calamity Addon]" on Steam Workshop or in your Mod Browser!
+				[c/828282:Adds all Calamity Pet & Light Pet effects, and adapts other existing systems to Calamity Mod.]
+				''' */
+			// Close: Close this message
+			// Never: Never show this message
 		}
 
 		LightPetTooltips: {

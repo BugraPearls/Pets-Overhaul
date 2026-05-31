@@ -32,12 +32,6 @@ Mods: {
 				[c/b4bfc5:Присоединяйтесь к нашему серверу Discord для отзывов и сообщений об ошибках! discord.gg/KubSpqvDGE]
 				[c/b4bfc5:Используйте] [c/ff8234:/pet] [c/b4bfc5:чтобы увидеть команды для Pets Overhaul и получить больше информации!]
 				'''
-			CalamityDetected:
-				'''
-				Похоже, вы используете Pets Overhaul вместе с модом Calamity без соответствующего дополнения!
-				Вы можете найти дополнение в мастерской Steam под названием 'Pets Overhaul: Calamity Addon'.
-				Оно добавляет ещё больше уникальных питомцев и совместимость Calamity с эффектами питомцев из оригинальной игры!
-				'''
 			Current: Текущий
 			Enabled: Включено
 			Disabled: Неполноценный
@@ -280,6 +274,20 @@ Mods: {
 			State4: Оба предмета не являются светящимися питомцами.
 			State5: Первый предмет не является светящимся питомцем.
 			State6: Второй предмет не является светящимся питомцем.
+		}
+
+		MissingAddonUI: {
+			/* CalamityMessage:
+				'''
+				Did you know that Pets Overhaul Mod	 has a official [c/9A0000:Calamity Addon]?
+
+				Its detected that you're using Pets Overhaul and Calamity Mod together, without the addon.
+
+				Find "[c/FF0000:Pets Overhaul: Calamity Addon]" on Steam Workshop or in your Mod Browser!
+				[c/828282:Adds all Calamity Pet & Light Pet effects, and adapts other existing systems to Calamity Mod.]
+				''' */
+			// Close: Close this message
+			// Never: Never show this message
 		}
 
 		LightPetTooltips: {
