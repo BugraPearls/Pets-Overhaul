@@ -197,10 +197,13 @@ namespace PetsOverhaul.UI
 
         public override void OnWorldLoad()
         {
-            Display = new ActivePetSlotCanvas();
-            Display.Activate();
-            _display = new UserInterface();
-            _display.SetState(Display);
+            if (!Main.dedServ)
+            {
+                Display = new ActivePetSlotCanvas();
+                Display.Activate();
+                _display = new UserInterface();
+                _display.SetState(Display);
+            }
         }
         public override void UpdateUI(GameTime gameTime)
         {

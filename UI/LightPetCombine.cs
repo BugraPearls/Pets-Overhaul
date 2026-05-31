@@ -259,11 +259,14 @@ namespace PetsOverhaul.UI
         private UserInterface _display;
         public override void OnWorldLoad() //Was originally in Load(), but in order to reset contents of the UI, its now in OnWorldLoad. Also added OpenLightPetCombineMenu = false so it won't have the menu open upon world load.
         {
-            PetTamer.openLightCombineMenu = false;
-            Display = new LightPetCombineCanvas();
-            Display.Activate();
-            _display = new UserInterface();
-            _display.SetState(Display);
+            if (!Main.dedServ)
+            {
+                PetTamer.openLightCombineMenu = false;
+                Display = new LightPetCombineCanvas();
+                Display.Activate();
+                _display = new UserInterface();
+                _display.SetState(Display);
+            }
         }
         public override void UpdateUI(GameTime gameTime)
         {

@@ -48,10 +48,13 @@ namespace PetsOverhaul.UI
         private UserInterface _cooldownDisplay;
         public override void Load()
         {
-            cooldownDisplay = new CooldownCanvas();
-            cooldownDisplay.Activate();
-            _cooldownDisplay = new UserInterface();
-            _cooldownDisplay.SetState(cooldownDisplay);
+            if (!Main.dedServ)
+            {
+                cooldownDisplay = new CooldownCanvas();
+                cooldownDisplay.Activate();
+                _cooldownDisplay = new UserInterface();
+                _cooldownDisplay.SetState(cooldownDisplay);
+            }
         }
         public override void UpdateUI(GameTime gameTime)
         {

@@ -51,10 +51,13 @@ namespace PetsOverhaul.UI
         private UserInterface _stackDisplay;
         public override void Load()
         {
-            stackDisplay = new StackCanvas();
-            stackDisplay.Activate();
-            _stackDisplay = new UserInterface();
-            _stackDisplay.SetState(stackDisplay);
+            if (!Main.dedServ)
+            {
+                stackDisplay = new StackCanvas();
+                stackDisplay.Activate();
+                _stackDisplay = new UserInterface();
+                _stackDisplay.SetState(stackDisplay);
+            }
         }
         public override void UpdateUI(GameTime gameTime)
         {

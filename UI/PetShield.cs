@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Terraria.UI;
 namespace PetsOverhaul.UI
 {
-    class MenuCanvas : UIState
+    class ShieldCanvas : UIState
     {
         public static int CurrentShieldVal => Main.LocalPlayer.PetPlayer().currentShield;
         public static UIText currentShield;
@@ -44,14 +44,17 @@ namespace PetsOverhaul.UI
     [Autoload(Side = ModSide.Client)]
     public class PetShieldDisplaySystem : ModSystem
     {
-        internal MenuCanvas Display;
+        internal ShieldCanvas Display;
         private UserInterface _display;
         public override void Load()
         {
-            Display = new MenuCanvas();
-            Display.Activate();
-            _display = new UserInterface();
-            _display.SetState(Display);
+            if (!Main.dedServ)
+            {
+                Display = new ShieldCanvas();
+                Display.Activate();
+                _display = new UserInterface();
+                _display.SetState(Display);
+            }
         }
         public override void UpdateUI(GameTime gameTime)
         {
