@@ -275,7 +275,7 @@ Mods: {
 		}
 
 		LightPetTooltips: {
-			NotRolled: 
+			NotRolled:
 				'''
 				[c/828282:满级的照明宠物仅供展示！]
 				[c/828282:获得宠物时属性会随机生成！]
