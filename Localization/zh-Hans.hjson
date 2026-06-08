@@ -27,7 +27,7 @@ Mods: {
 			CustomLine: "[c/a3bdf8:按下] <switchKey> [c/a3bdf8:以切换至此宠物原本效果]"
 			Notice:
 				'''
-				[c/90C2AA:Pets Overhaul（宠物大修）3.8.3，最新改动：大量宠物的多人问题修复，以及有效宠物栏（照明宠物栏）]
+				[c/90C2AA:Pets Overhaul（宠物大修）3.9，最新改动：照明宠物重做/重平衡，功能优化]
 				[c/b4bfc5:加入我们的discord服务器以反馈/报告bug！ discord.gg/KubSpqvDGE]
 				[c/b4bfc5:浏览我们的Wiki百科：terrariamods.wiki.gg/wiki/Pets_Overhaul]
 				[c/b4bfc5:使用] [c/ff8234:/pet 命令] [c/b4bfc5:来查看宠物大修的命令以获得更多信息！]
@@ -121,7 +121,7 @@ Mods: {
 
 		Config: {
 			Personalization: 个性化设置
-			// ServerPersonalization: Server Side Settings
+			ServerPersonalization: 服务端设置
 			HeaderDisplay: 显示配置
 			HeaderSound: 音效配置
 			HeaderGameplay: 游戏性配置
@@ -229,14 +229,14 @@ Mods: {
 				修改显示在杂项装备上的有效宠物栏在屏幕上的位置
 				照明宠物栏将在这个位置的正下方
 				'''
-			// PetFoodDropLabel: Bonus Pet Food Drops
-			/* PetFoodDropTooltip:
+			PetFoodDropLabel: 额外宠物食物掉落
+			PetFoodDropTooltip:
 				'''
-				Allows for Pet Food item to be dropped from various sources for free:
-				Angler Quests, Catching Fishes, Chopping & Shaking Trees, Herbs and Extractinator.
-				This does not intervene with any drops, acting entirely separate as a bonus drop.
-				Turn this off to disable mentioned ways of obtaining the Pet Food, which is used for Pet crafting recipes.
-				''' */
+				允许宠物食物物品从各种来源掉落：
+				钓鱼任务，钓鱼，砍树和摇树，草药和提炼机
+				这不会干预任何掉落，完全作为一个独立的额外掉落
+				关闭此选项将禁用上述获得宠物食物的方式，宠物食物用于宠物制作配方
+				'''
 		}
 
 		LightPetCombineUI: {
@@ -258,112 +258,93 @@ Mods: {
 		}
 
 		MissingAddonUI: {
-			/* CalamityMessage:
+			CalamityMessage:
 				'''
-				Did you know that Pets Overhaul Mod	 has a official [c/9A0000:Calamity Addon]?
-
-				Its detected that you're using Pets Overhaul and Calamity Mod together, without the addon.
-
-				Find "[c/FF0000:Pets Overhaul: Calamity Addon]" on Steam Workshop or in your Mod Browser!
-				[c/828282:Adds all Calamity Pet & Light Pet effects, and adapts other existing systems to Calamity Mod.]
-				''' */
-			// Close: Close this message
-			// Never: Never show this message
+				你知道宠物大修模组有一个官方的[c/9A0000:灾厄扩展]吗？
+				检测到你正在同时使用宠物大修和灾厄模组，但没有安装扩展
+				在Steam创意工坊或模组浏览器中找到 "[c/FF0000:宠物大修：灾厄扩展（Pets Overhaul: Calamity Addon）]"！
+				[c/828282:添加了所有灾厄宠物和照明宠物效果，并将其他现有系统适配到灾厄模组。]
+				'''
+			Close: 关闭此信息
+			Never: 不再显示此信息
 		}
 
 		LightPetTooltips: {
 			NotRolled: 当物品第一次进入背包时，随机赋予其品级！
-			// SomeStatsAreNotRolled: "[c/828282:Grab the pet in the Inventory to randomize the missing stats!]"
-			// StatTooltipLine: <0> (<1> + <2> per [c/<c>:★], [c/<c>:<3> out of <4> ★])
+			SomeStatsAreNotRolled: "[c/828282:将宠物拾取至背包以随机缺失的品级！]"
+			StatTooltipLine: <0> (<1> + <2> / [c/<c>:★], [c/<c>:<3> / <4> ★])
 			CreeperEgg:
 				'''
-				召唤伤害增加：<sum>，近战伤害增加：<melee>
-				近战和鞭子攻速增加：<atkSpd>
-				召唤伤害加成： <sumLine>
-				近战伤害加成： <meleeLine>
-				近战/鞭子攻速加成： <atkSpdLine>
+				召唤和近战伤害增加<Damage>
+				鞭子和近战武器大小增加<Size>
+				击退增加<KbIncrease>
+				宠物减速效力增加<Slow>
 				'''
 			CrimsonHeart:
 				'''
-				最大生命值增加：<hp>，宠物治疗量增加：<heal>
-				钓鱼时运提高：<fortune>，钓鱼时运会增加你的钓鱼收获
-				最大生命值加成： <hpLine>
-				宠物治疗量加成：<healLine>
-				钓鱼时运加成： <fortuneLine>
+				最大生命值增加<Health>
+				宠物治疗量增加<Healing>
+				钓鱼时运增加<Fishing>
 				'''
 			FairyBell:
 				'''
-				宠物技能急速增加：<haste>，通用时运增加：<fortune>
-				急速会减少宠物技能冷却时间，通用时运会增加挖矿，收获和钓鱼掉落
-				宠物技能急速加成： <hasteLine>
-				通用时运加成： <fortuneLine>
+				宠物技能急速增加<Haste>
+				通用时运增加<Fortune>
+				宠物治疗量增加<Healing>
 				'''
 			JackOLantern:
 				'''
-				攻速增加：<atkSpd>，运气增加：<luck> 
-				采集时运增加：<fortune>
-				攻速加成： <atkSpdLine>
-				运气加成： <luckLine>
-				采集时运加成： <fortuneLine>
+				宠物伤害增加<Damage>
+				幸运增加<Luck>
+				采集时运增加<Fortune>
+				攻击命中时有<Burn>几率点燃敌人
+				[c/828282:  • 持续2秒]
 				'''
 			JewelOfLight:
 				'''
-				移速增加：<moveSpd>，翅膀飞行时间增加：<wingTime> 秒
-				移动加速度增加：<acceleration>
-				移速加成： <moveSpdLine>
-				飞行时间加成： <wingTimeLine>
-				加速度加成： <accelerationLine>
+				宠物技能急速增加<Haste>
+				获得一次额外跳跃
+				 • 持续时间加成：<JumpDuration>
+				 • 加速度加成：<Acceleration>
+				 • 最大移动速度加成：<MaxSpeed>
 				'''
 			MagicLantern:
 				'''
-				伤害减免增加：<dr>，挖矿时运增加：<fortune>
-				防御增加：<def> 
-				防御提高：<defPercent> 百分比
-				伤害减免加成： <drLine>
-				防御加成： <defLine>
-				百分比防御加成： <defPercentLine>
-				挖矿时运加成： <fortuneLine>
+				挖矿时运增加<Fortune>
+				伤害减免增加<DamageReduction>
+				击退抗性增加<KbResist>
+				宠物护盾量增加<Shield>
 				'''
 			ShadowOrb:
 				'''
-				最大魔力值增加：<mana>，宠物护盾量增加：<shield>
-				采集时运增加：<fortune>，提高你的采集掉落
-				最大魔力加成： <manaLine>
-				宠物护盾量加成： <shieldLine>
-				采集时运加成： <fortuneLine>
+				宠物减速效力增加<Slow>
+				宠物护盾量增加<Shield>
+				采集时运增加<Fortune>
 				'''
 			SuspiciousLookingTentacle:
 				'''
-				防御增加：<def>；当前：<defLine>
-				移动速度增加：<ms>；当前：<msLine>
-				伤害增加：<dmg>；当前：<dmgLine>
-				暴击率增加：<crit>；当前：<critLine>
-				远程护甲穿透增加：<rangedPen>；当前：<rangedPenLine>
-				远程暴击伤害增加：<rangedCritDmg>；当前：<rangedCritDmgLine>
-				召唤护甲穿透增加：<summonerPen>；当前：<summonerPenLine>
-				鞭子范围增加：<whip>；当前：<whipLine>
-				魔力药水恢复量提高：<manaPotion>；当前：<manaPotionLine>
-				最大魔力值增加：<mana>：当前：<manaLine>
-				近战武器大小增加：<size>；当前：<sizeLine>
-				近战击退增加：<knockback>；当前：<knockbackLine>
+				宠物技能急速增加<Haste>
+				宠物减速效力增加<Slow>
+				宠物伤害增加<Damage>
+				宠物护盾量增加<Shield>
+				宠物治疗量增加<Heal>
+				远程暴击伤害增加<Crit>
+				召唤护甲穿透增加<Pen>
+				最大魔力值增加<Mana>
+				近战武器大小增加<Size>
 				'''
 			ToyGolem:
 				'''
-				生命再生增加：<lifeRegen>，生命值提高：<healthPercent>
-				基础魔力再生增加：<manaRegen>
-				生命再生加成： <lifeRegenLine>
-				百分比生命值加成： <healthPercentLine>
-				基础魔力再生加成： <manaRegenLine>
+				击退抗性增加<KbResist>
+				最大生命值增加<Health>
+				防御增加<Defense>
+				宠物护盾量增加<Shield>
 				'''
 			WispInABottle:
 				'''
-				魔法伤害增加：<magic>，远程伤害增加：<ranged>
-				魔法和远程弹幕速度提高：<velocity>
-				宠物攻击伤害提高：<petDmg>
-				魔法伤害加成： <magicLine>
-				远程伤害加成： <rangedLine>
-				魔法/远程弹幕速度加成： <velocityLine>
-				宠物攻击伤害加成： <petDmgLine>
+				魔法和远程伤害增加<Damage>
+				魔法和远程弹幕速度增加<Velocity>
+				宠物伤害增加<PetDamage>
 				'''
 		}
 
@@ -678,7 +659,7 @@ Mods: {
 				'''
 			MudBud:
 				'''
-				攻击敌人有<chance>%几率在其附近释放孢子毒气
+				攻击敌人有<chance>%几率（受宠物技能急速加成）在其附近释放孢子毒气
 				 - 孢子毒气能够造成攻击伤害<dmg>倍的伤害 + <flatDmg>点伤害
 				 - 孢子的击退力为<kb>，孢子在消失前能造成<pen>次伤害
 				'''
@@ -1516,13 +1497,10 @@ Mods: {
 				'''
 			WispInABottle:
 				'''
-				攻击敌人时鬼火也有<chance>%的几率攻击敌人
-				 - 伤害为初始伤害的<base> + <perc>%。<cooldown>秒冷却时间
-				 - 如果鬼火宠物不可见，该技能不起作用
-				触发几率:<chanceline>
-				基础伤害:<base>
-				百分比伤害:<percLine>
-				冷却时间:<cooldownLine>
+				攻击敌人时鬼火也有<Chance>的几率攻击敌人
+				 - 造成<Flat>点基础伤害
+				 - 额外伤害加成等同于你造成的伤害的<Mult>
+				 - 如果鬼火宠物不可见，该效果不起作用
 				“我们将永远铭记那个夜晚。”
 				'''
 		}
@@ -1739,6 +1717,8 @@ Mods: {
 				Tooltip:
 					'''
 					显示所有宠物大修相关玩家属性
+					宠物减速效力：<slow>x
+					[c/899499:当敌人被你的宠物减速时，它们的速度会降低原始速度的<slowValue>%]
 					宠物技能急速：<haste>%
 					[c/899499:你的宠物技能冷却速度比正常<hastePosiOrNega><hasteValue>]
 					宠物伤害加成：<damage>倍
@@ -1979,7 +1959,7 @@ Mods: {
 
 			HextupleJumper: {
 				FriendlyName: 六段跳大师
-				Description: 装备耳廓狐宠物，或骑乘坐骑时装备史莱姆公主宠物，完成6次及以上的额外跳跃。
+				Description: 装备耳廓狐或仙灵公主宠物，或骑乘坐骑时装备史莱姆公主宠物，完成6次及以上的额外跳跃。
 			}
 
 			IAmUntouchable: {
