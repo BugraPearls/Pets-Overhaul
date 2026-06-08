@@ -360,7 +360,7 @@ Mods: {
 				'''
 		}
 
-PetItemTooltips: {
+		PetItemTooltips: {
 			AmberMosquito:
 				'''
 				- Cavar um minério, joia, ou extraível tem <oreChance>% de chance
@@ -1744,7 +1744,7 @@ PetItemTooltips: {
 					'''
 			}
 
-Egg: {
+			Egg: {
 				DisplayName: Ovo
 				Tooltip:
 					'''
@@ -1971,7 +1971,7 @@ Egg: {
 			}
 		}
 
-Achievements: {
+		Achievements: {
 			NeedOfCompany: {
 				Description: Equipe qualquer Mascote Normal ou de Luz. Isso chamará a atenção do NPC Domador de Mascotes.
 				FriendlyName: Precisando de Companhia

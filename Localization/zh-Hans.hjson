@@ -360,7 +360,7 @@ Mods: {
 				'''
 		}
 
-PetItemTooltips: {
+		PetItemTooltips: {
 			AmberMosquito:
 				'''
 				- 挖掘矿石，宝石或可提炼物有<oreChance>%几率
@@ -766,7 +766,7 @@ PetItemTooltips: {
 				  • 不提供掉落伤害免疫，但滑翔会重置你的掉落伤害计算
 				  • 可以与翅膀一起使用，提供更强的滑翔能力
 				'''
-TikiTotem:
+			TikiTotem:
 				'''
 				- 你造成的所有召唤伤害都可以暴击
 				  • 非鞭子武器具有 -<nonWhipCrit>% 的暴击率
@@ -1864,7 +1864,7 @@ TikiTotem:
 					Common5: 是的！通过宠物锻造炉，你可以得到任何你想要的宠物。虽然可能有点困难和费力。
 					Common6: 你应该永远记住要关爱城镇里的宠物和史莱姆同伴。它们甚至可能会用一些增益来祝福你！
 					Common7: 你有没有注意到你的宠物减速效果对Boss的作用没那么大？
-					Common8: [c/90C2AA:Kinga 和 ivanborquez] 给我的宠物喂了食物。真是好人。
+					Common8: "[c/90C2AA:Kinga 和 ivanborquez] 给我的宠物喂了食物。真是好人。"
 					Rare1: 这条鞭子是干什么用的？当然是用来对付那些试图伤害我宠物的人！不然你以为呢？
 					WizardQuote: 真疯狂，当 <name> 告诉我那天我运气爆棚时，我那天训练的所有照明宠物似乎都具有了更高的潜能。
 				}
@@ -2184,5 +2184,4 @@ TikiTotem:
 			}
 		}
 	}
-}
 }
