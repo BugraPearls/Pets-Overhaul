@@ -47,6 +47,15 @@ Mods: {
 			EnemyUntargetable: 无法接近的目标！
 		}
 
+		GameTips: {
+			LightPetStatTip: 照明宠物提供的属性加成是随机的！这些属性在你获得宠物时决定，并且受你的运气影响。
+			PetClassTip: 你也可以使用非“本职业”的宠物！提供通用增益的宠物（如进攻、防御、机动、功能和辅助型宠物）都非常实用！
+			PetFoodTip: 将宠物物品投入微光中只会获得宠物食品，宠物食品可用于制作宠物。
+			LightPetCombineTip: 除了照明宠物融合之外，没有任何方法可以提升照明宠物的属性。
+			GatheringTip: 采矿、采集和钓鱼宠物的收集相关效果，通常在你实际拾取物品时才会生效。
+			PettingTip: 抚摸城镇宠物和史莱姆会为你提供强化宠物的增益效果。
+		}
+
 		Classes: {
 			None: 无
 			Melee: 近战

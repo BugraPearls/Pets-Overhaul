@@ -47,6 +47,15 @@ Mods: {
 			EnemyUntargetable: Unaccessible Target!
 		}
 
+		GameTips: {
+			LightPetStatTip: How much stats your Light Pets give are random! They are determined upon obtaining the Pet, and your luck affects this.
+			PetClassTip: You can use Pets that isn't 'Your class'! General buffing Pets that is Offensive, Defensive, Mobility, Utility and Supportive Pets are all viable!
+			PetFoodTip: Dropping a Pet Item into Shimmer will only give Pet Food, which can be used to craft Pets.
+			LightPetCombineTip: Light Pet stats cannot be increased by no means, except for Light Pet combination.
+			GatheringTip: Gathering related effects from Mining, Harvesting and Fishing Pets usually work upon actually picking up the item.
+			PettingTip: Petting Town Pets and Slimes gives you Pet-boosting buffs.
+		}
+
 		Classes: {
 			None: None
 			Melee: Melee

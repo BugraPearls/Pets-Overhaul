@@ -47,6 +47,15 @@ Mods: {
 			EnemyUntargetable: Alvo Inacessível!
 		}
 
+		GameTips: {
+			LightPetStatTip: A quantidade de atributos que seus PETs de Luz concedem é aleatória! Eles são determinados no momento em que você obtém o PET, e a sua Sorte afeta isso.
+			PetClassTip: Você pode usar PETs que não são da 'Sua classe'! PETs de bônus gerais que são Ofensivos, Defensivos, de Mobilidade, de Utilidade e de Suporte são todos viáveis!
+			PetFoodTip: Jogar um Item de PET no Shimmer dará apenas Comida para PET, que pode ser usada para criar PETs.
+			LightPetCombineTip: Os atributos dos PETs de Luz não podem ser aumentados de forma alguma, exceto pela combinação de PETs de Luz.
+			GatheringTip: Os efeitos de coleta dos PETs de Mineração, Colheita e Pesca geralmente funcionam no momento em que você realmente pega o item.
+			PettingTip: Fazer carinho nos PETs da Cidade e nos Slimes concede buffs que fortalecem seus PETs.
+		}
+
 		Classes: {
 			None: Nenhum
 			Melee: Físico
