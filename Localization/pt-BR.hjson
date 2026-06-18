@@ -286,6 +286,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
+			// PerfectChat: Found a perfect [i:<item>] <itemName>!
+			// PerfectPopup: Perfect Light Pet!
 			NotRolled:
 				'''
 				[c/828282:O Mascote de Luz maximizado é apenas para exibição!]
@@ -2199,6 +2201,11 @@ Mods: {
 			AncientSorcery: {
 				Description: Use todos os 3 feitiços diferentes do Mascote Dragão Fantasmal dentro de 18 segundos. O Cultista Lunático pode ou não ficar impressionado.
 				FriendlyName: Feitiçaria Antiga
+			}
+
+			PeakGenetics: {
+				// Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
+				// FriendlyName: Peak Genetics
 			}
 		}
 	}

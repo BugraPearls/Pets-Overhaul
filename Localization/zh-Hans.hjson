@@ -284,6 +284,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
+			// PerfectChat: Found a perfect [i:<item>] <itemName>!
+			// PerfectPopup: Perfect Light Pet!
 			NotRolled:
 				'''
 				[c/828282:满级的照明宠物仅供展示！]
@@ -2187,6 +2189,11 @@ Mods: {
 			AncientSorcery: {
 				Description: 在18秒内，使用幻影龙宝宝宠物的3种不同法术。不知道拜月教邪教徒看了会不会刮目相看。
 				FriendlyName: 远古咒术
+			}
+
+			PeakGenetics: {
+				// Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
+				// FriendlyName: Peak Genetics
 			}
 		}
 	}

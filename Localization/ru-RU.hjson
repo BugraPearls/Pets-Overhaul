@@ -286,6 +286,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
+			// PerfectChat: Found a perfect [i:<item>] <itemName>!
+			// PerfectPopup: Perfect Light Pet!
 			NotRolled:
 				'''
 				[c/828282:Максимальный уровень светящегося питомца — только для отображения!]
@@ -2196,6 +2198,11 @@ Mods: {
 			AncientSorcery: {
 				Description: Используйте все 3 различных заклинания питомца Фантомного дракона в течение 18 секунд. Культист-лунатик может быть впечатлен, а может и нет.
 				FriendlyName: Древнее колдовство
+			}
+
+			PeakGenetics: {
+				// Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
+				// FriendlyName: Peak Genetics
 			}
 		}
 	}

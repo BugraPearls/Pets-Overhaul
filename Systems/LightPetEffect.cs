@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.Achievements;
+﻿using Microsoft.Xna.Framework;
+using PetsOverhaul.Achievements;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.UI;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -337,16 +339,30 @@ namespace PetsOverhaul.Systems
         {
             if (hasRolled == false) //This exists only in sake of performance, so ApplyQualities runs only once in a regular gameplay. I don't want to save this as data, I think its unnecessary, its okay for this to run once in a while. Ex. if a Pet gets a new Stat, this can help triggering it.
             {
+                int perfectCount = 0;
+                int totalCount = 0;
                 foreach (var field in this.GetType().GetFields())
                 {
                     if (field.FieldType == typeof(LightPetStat))
                     {
                         LightPetStat stat = (LightPetStat)field.GetValue(this);
 
-                        stat.SetRoll(player.luck);
+                        if (stat.CurrentRoll <= 0)
+                        {
+                            stat.SetRoll(player.luck);
+                            totalCount++;
+                            if (stat.MaxRoll == stat.CurrentRoll)
+                            {
+                                perfectCount++;
+                            }
 
-                        field.SetValue(this, stat);
+                            field.SetValue(this, stat);
+                        }
                     }
+                }
+                if (perfectCount != 0 && perfectCount == totalCount)
+                {
+                    PerfectLightPetObtainment(player);
                 }
                 hasRolled = true;
             }
@@ -457,10 +473,21 @@ namespace PetsOverhaul.Systems
         }
         public void PerfectLightPetObtainment(Player player)
         {
-            PetUtils.DoAchievementOnPlayer<PeakGenetics>(player.whoAmI);
-            if (OnPerfectLightPetObtainment())
+            if (Main.myPlayer == player.whoAmI)
             {
-
+                PetUtils.DoAchievementOnPlayer<PeakGenetics>(player.whoAmI);
+                if (OnPerfectLightPetObtainment())
+                {
+                    player.PetPlayer().lightPetSoundEffect = 60;
+                    Main.NewText(PetUtils.LocVal("LightPetTooltips.PerfectChat").Replace("<item>", LightPetItemID.ToString()).Replace("<itemName>", ContentSamples.ItemsByType.GetValueOrDefault(LightPetItemID).Name), PetUtils.MaxQuality);
+                    PopupText.NewText(new AdvancedPopupRequest() with { Color = PetUtils.MaxQuality, Text = PetUtils.LocVal("LightPetTooltips.PerfectPopup"), DurationInFrames = 300 }, player.position);
+                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -8), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
+                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position with { X = player.position.X - 25}, new Vector2(0, -6), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
+                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position with { X = player.position.X + 25 }, new Vector2(0, -6), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
+                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(-10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                }
             }
         }
     }
@@ -520,28 +547,26 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public void SetRoll(float luck)
         {
-            if (CurrentRoll <= 0)
-            {
-                CurrentRoll = Main.rand.Next(MaxRoll) + 1;
-                int timesToRoll = PetUtils.Randomizer((int)(luck * 100));
-                if (timesToRoll > 0)
-                {
-                    for (int i = 0; i < timesToRoll; i++)
-                    {
-                        int luckRoll = Main.rand.Next(MaxRoll) + 1;
-                        if (luckRoll > CurrentRoll)
-                            CurrentRoll = luckRoll;
 
-                    }
-                }
-                else if (timesToRoll < 0)
+            CurrentRoll = Main.rand.Next(MaxRoll) + 1;
+            int timesToRoll = PetUtils.Randomizer((int)(luck * 100));
+            if (timesToRoll > 0)
+            {
+                for (int i = 0; i < timesToRoll; i++)
                 {
-                    for (int i = 0; i < timesToRoll * -1; i++)
-                    {
-                        int negativeLuckRoll = Main.rand.Next(MaxRoll) + 1;
-                        if (negativeLuckRoll < CurrentRoll)
-                            CurrentRoll = negativeLuckRoll;
-                    }
+                    int luckRoll = Main.rand.Next(MaxRoll) + 1;
+                    if (luckRoll > CurrentRoll)
+                        CurrentRoll = luckRoll;
+
+                }
+            }
+            else if (timesToRoll < 0)
+            {
+                for (int i = 0; i < timesToRoll * -1; i++)
+                {
+                    int negativeLuckRoll = Main.rand.Next(MaxRoll) + 1;
+                    if (negativeLuckRoll < CurrentRoll)
+                        CurrentRoll = negativeLuckRoll;
                 }
             }
         }

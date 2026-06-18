@@ -286,6 +286,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
+			PerfectChat: Found a perfect [i:<item>] <itemName>!
+			PerfectPopup: Perfect Light Pet!
 			NotRolled:
 				'''
 				[c/828282:Maxed out Light Pet is display only!]
@@ -2195,6 +2197,11 @@ Mods: {
 			AncientSorcery: {
 				Description: Use all 3 different spells of Phantasmal Dragon Pet within 18 seconds. Lunatic Cultist may or may not be impressed.
 				FriendlyName: Ancient Sorcery
+			}
+
+			PeakGenetics: {
+				Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
+				FriendlyName: Peak Genetics
 			}
 		}
 	}

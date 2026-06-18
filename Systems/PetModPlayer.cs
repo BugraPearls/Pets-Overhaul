@@ -134,6 +134,10 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public int inCombatTimerMax = 300;
         /// <summary>
+        /// Used by sound effects and such.
+        /// </summary>
+        public int lightPetSoundEffect = -1;
+        /// <summary>
         /// Used to change alternating color of maximum Light Pet Rolls alongside colorSwitched, increases 0.01f every frame, until hitting 1f, where it decreases 0.01f every frame and so on.
         /// </summary>
         public static float ColorVal { get; internal set; }
@@ -955,6 +959,29 @@ namespace PetsOverhaul.Systems
             if (Main.myPlayer == Player.whoAmI && (Player.talkNPC == -1 || Player.talkNPC != LastPetTamer)) //If currently not talking to an NPC, or, if current talked NPC is not Pet Tamer we've prompted to open Combination menu with (So if any other NPC is talked to while menu is open, it will close)
             { //If it isn't for Main.myPlayer == Player.whoAmI, this code runs on other clients too in the name of the original client. This causes Light Pet menu to insta close.
                 PetTamer.openLightCombineMenu = false;
+            }
+
+            if (lightPetSoundEffect >= 0)
+            {
+                switch (lightPetSoundEffect)
+                {
+                    case 60:
+                        SoundEngine.PlaySound(SoundID.GuitarAm with { PitchVariance = 0.2f, Volume = 0.6f});
+                        break;
+                    case 40:
+                        SoundEngine.PlaySound(SoundID.GuitarEm with { PitchVariance = 0.2f, Volume = 0.6f  });
+                        break;
+                    case 20:
+                        SoundEngine.PlaySound(SoundID.GuitarG with { PitchVariance = 0.2f, Volume = 0.6f });
+                        break;
+                    case 0:
+                        SoundEngine.PlaySound(SoundID.GuitarD with { PitchVariance = 0.2f, Volume = 0.6f });
+                        break;
+                    default:
+                        break;
+                }
+
+                lightPetSoundEffect--;
             }
         }
         public override void PostUpdate()
