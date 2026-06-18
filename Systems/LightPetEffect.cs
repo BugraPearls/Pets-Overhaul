@@ -1,4 +1,5 @@
-﻿using PetsOverhaul.NPCs;
+﻿using PetsOverhaul.Achievements;
+using PetsOverhaul.NPCs;
 using PetsOverhaul.UI;
 using System;
 using System.Collections.Generic;
@@ -445,6 +446,22 @@ namespace PetsOverhaul.Systems
                 }
             }
             ExtraLoadData(item, tag);
+        }
+        /// <summary>
+        /// Return true to have vanilla Pets Overhaul code running for obtaining a Light Pet with maxed out stats. Achievement always gets triggered, even if this is set to false. This can be used to trigger different celebratory effects etc. special to certain pets.
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool OnPerfectLightPetObtainment()
+        {
+            return true;
+        }
+        public void PerfectLightPetObtainment(Player player)
+        {
+            PetUtils.DoAchievementOnPlayer<PeakGenetics>(player.whoAmI);
+            if (OnPerfectLightPetObtainment())
+            {
+
+            }
         }
     }
 
