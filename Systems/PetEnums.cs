@@ -74,6 +74,12 @@
         Lowered,
         Normal,
         Increased,
-
+    }
+    public enum MaxLightPetCelebration
+    {
+        None,
+        Lowered,
+        Normal,
+        Increased,
     }
 }

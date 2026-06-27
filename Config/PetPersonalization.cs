@@ -130,6 +130,14 @@ namespace PetsOverhaul.Config
         #region Sounds
         [Header("$Mods.PetsOverhaul.Config.HeaderSound")]
 
+        [DefaultValue(MaxLightPetCelebration.Normal)]
+        [LabelKey("$Mods.PetsOverhaul.Config.MaxLightPetLabel")]
+        [TooltipKey("$Mods.PetsOverhaul.Config.MaxLightPetTooltip")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        [BackgroundColor(35, 120, 54, 190)]
+        [SliderColor(58, 28, 36, 125)]
+        public MaxLightPetCelebration MaxLightPetCelebration { get; set; }
+
         [LabelKey("$Mods.PetsOverhaul.Config.HurtSoundLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.HurtSoundTooltip")]
         [DefaultValue(true)]

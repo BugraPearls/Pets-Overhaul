@@ -963,23 +963,52 @@ namespace PetsOverhaul.Systems
 
             if (lightPetSoundEffect >= 0)
             {
-                switch (lightPetSoundEffect)
+                switch (ModContent.GetInstance<PetPersonalization>().MaxLightPetCelebration)
                 {
-                    case 60:
-                        SoundEngine.PlaySound(SoundID.GuitarAm with { PitchVariance = 0.2f, Volume = 0.6f});
+                    case MaxLightPetCelebration.None:
                         break;
-                    case 40:
-                        SoundEngine.PlaySound(SoundID.GuitarEm with { PitchVariance = 0.2f, Volume = 0.6f  });
+                    case MaxLightPetCelebration.Lowered:
+                        if (lightPetSoundEffect == 60)
+                        {
+                            SoundEngine.PlaySound(SoundID.GuitarAm with { PitchVariance = 0.2f, Volume = 0.6f });
+                        }
                         break;
-                    case 20:
-                        SoundEngine.PlaySound(SoundID.GuitarG with { PitchVariance = 0.2f, Volume = 0.6f });
+                    case MaxLightPetCelebration.Normal:
+                        switch (lightPetSoundEffect)
+                        {
+                            case 60:
+                                SoundEngine.PlaySound(SoundID.GuitarAm with { PitchVariance = 0.2f, Volume = 0.6f });
+                                break;
+                            case 40:
+                                SoundEngine.PlaySound(SoundID.GuitarEm with { PitchVariance = 0.2f, Volume = 0.6f });
+                                break;
+                            default:
+                                break;
+                        }
                         break;
-                    case 0:
-                        SoundEngine.PlaySound(SoundID.GuitarD with { PitchVariance = 0.2f, Volume = 0.6f });
+                    case MaxLightPetCelebration.Increased:
+                        switch (lightPetSoundEffect)
+                        {
+                            case 60:
+                                SoundEngine.PlaySound(SoundID.GuitarAm with { PitchVariance = 0.2f, Volume = 0.6f });
+                                break;
+                            case 40:
+                                SoundEngine.PlaySound(SoundID.GuitarEm with { PitchVariance = 0.2f, Volume = 0.6f });
+                                break;
+                            case 20:
+                                SoundEngine.PlaySound(SoundID.GuitarG with { PitchVariance = 0.2f, Volume = 0.6f });
+                                break;
+                            case 0:
+                                SoundEngine.PlaySound(SoundID.GuitarD with { PitchVariance = 0.2f, Volume = 0.6f });
+                                break;
+                            default:
+                                break;
+                        }
                         break;
                     default:
                         break;
                 }
+
 
                 lightPetSoundEffect--;
             }

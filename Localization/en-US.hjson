@@ -251,6 +251,12 @@ Mods: {
 				This does not intervene with any drops, acting entirely separate as a bonus drop.
 				Turn this off to disable mentioned ways of obtaining the Pet Food, which is used for Pet crafting recipes.
 				'''
+			MaxLightPetLabel: Perfect Light Pet Celebration
+			MaxLightPetTooltip:
+				'''
+				Determines how intense the celebration/effects are upon obtaining a perfect Light Pet.
+				Does not trigger when a perfect Light Pet is obtained by Light Pet Combining at Pet Tamer.
+				'''
 		}
 
 		LightPetCombineUI: {
@@ -1976,6 +1982,30 @@ Mods: {
 					Label: Common
 				}
 			}
+
+			MaxLightPetCelebration: {
+				Tooltip: ""
+
+				None: {
+					Label: Disabled
+					Tooltip: Completely disables any visual and sound effects for obtaining a Perfect Light Pet.
+				}
+
+				Lowered: {
+					Label: Lowered
+					Tooltip: Shows a pop-up message and a short guitar sound upon obtaining a Perfect Light Pet.
+				}
+
+				Normal: {
+					Label: Normal
+					Tooltip: Shows a pop-up and chat message, confettis and a guitar sound upon obtaining a Perfect Light Pet.
+				}
+
+				Increased: {
+					Label: Increased
+					Tooltip: Shows a pop-up and chat message, confettis, fireworks and an extensive guitar sound upon obtaining a Perfect Light Pet.
+				}
+			}
 		}
 
 		Achievements: {
@@ -2200,7 +2230,7 @@ Mods: {
 			}
 
 			PeakGenetics: {
-				Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
+				Description: Obtain a Light Pet with maximum possible quality on every stat, without combining Light Pets. You're pretty lucky!
 				FriendlyName: Peak Genetics
 			}
 		}

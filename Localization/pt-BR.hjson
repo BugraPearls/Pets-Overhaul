@@ -251,6 +251,12 @@ Mods: {
 				Isso não interfere em nenhum drop existente, agindo de forma totalmente separada como um drop bônus.
 				Desative isso para desabilitar as formas mencionadas de obter a Comida de Mascote, que é usada nas receitas de criação de Pets.
 				'''
+			MaxLightPetLabel: Comemoração de PET de Luz Perfeito
+			MaxLightPetTooltip:
+				'''
+				Determina quão intensos são os efeitos/comemoração ao obter um PET de Luz perfeito.
+				Não é acionado quando um PET de Luz perfeito é obtido pela Combinação de PETs de Luz no Domador de PETs.
+				'''
 		}
 
 		LightPetCombineUI: {
@@ -1980,6 +1986,30 @@ Mods: {
 					Label: Comum
 				}
 			}
+
+			MaxLightPetCelebration: {
+				Tooltip: ""
+
+				None: {
+					Label: Desativado
+					Tooltip: Desativa completamente quaisquer efeitos visuais e sonoros ao obter um PET de Luz Perfeito.
+				}
+
+				Lowered: {
+					Label: Reduzido
+					Tooltip: Mostra uma mensagem pop-up e um curto som de guitarra ao obter um PET de Luz Perfeito.
+				}
+
+				Normal: {
+					Label: Normal
+					Tooltip: Mostra um pop-up e uma mensagem no chat, confetes e um som de guitarra ao obter um PET de Luz Perfeito.
+				}
+
+				Increased: {
+					Label: Aumentado
+					Tooltip: Mostra um pop-up e uma mensagem no chat, confetes, fogos de artifício e um som prolongado de guitarra ao obter um PET de Luz Perfeito.
+				}
+			}
 		}
 
 		Achievements: {
@@ -2204,8 +2234,8 @@ Mods: {
 			}
 
 			PeakGenetics: {
-				// Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
-				// FriendlyName: Peak Genetics
+				Description: Obtenha um PET de Luz com a qualidade máxima possível em todos os atributos, sem combinar PETs de Luz. Você tem muita sorte!
+				FriendlyName: Genética de Ponta
 			}
 		}
 	}

@@ -251,6 +251,12 @@ Mods: {
 				这不会干预任何掉落，完全作为一个独立的额外掉落
 				关闭此选项将禁用上述获得宠物食物的方式，宠物食物用于宠物制作配方
 				'''
+			MaxLightPetLabel: 完美照明宠物庆祝效果
+			MaxLightPetTooltip:
+				'''
+				决定在获得完美的照明宠物时，庆祝效果的强烈程度。
+				如果完美的照明宠物是通过宠物驯兽师的融合功能获得的，则不会触发此效果。
+				'''
 		}
 
 		LightPetCombineUI: {
@@ -1968,6 +1974,30 @@ Mods: {
 					Label: 频繁
 				}
 			}
+
+			MaxLightPetCelebration: {
+				Tooltip: ""
+
+				None: {
+					Label: 禁用
+					Tooltip: 完全禁用获得完美照明宠物时的所有视觉和声音特效。
+				}
+
+				Lowered: {
+					Label: 较弱
+					Tooltip: 在获得完美的照明宠物时，显示弹出消息并播放简短的吉他音效。
+				}
+
+				Normal: {
+					Label: 正常
+					Tooltip: 在获得完美的照明宠物时，显示弹出消息和聊天信息，并伴有五彩纸屑和吉他音效。
+				}
+
+				Increased: {
+					Label: 增强
+					Tooltip: 在获得完美的照明宠物时，显示弹出消息和聊天信息，并伴有五彩纸屑、烟花以及一段较长的吉他音效。
+				}
+			}
 		}
 
 		Achievements: {
@@ -2192,8 +2222,8 @@ Mods: {
 			}
 
 			PeakGenetics: {
-				// Description: Mods.PetsOverhaul.Achievements.PeakGenetics.Description
-				// FriendlyName: Peak Genetics
+				Description: 在不进行照明宠物融合的情况下，获得一只所有属性均达到最高品质的照明宠物。你的运气真不错！
+				FriendlyName: 巅峰基因
 			}
 		}
 	}
