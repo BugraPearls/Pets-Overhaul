@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using PetsOverhaul.Achievements;
+using PetsOverhaul.Config;
 using PetsOverhaul.NPCs;
 using PetsOverhaul.UI;
 using System;
@@ -479,14 +480,32 @@ namespace PetsOverhaul.Systems
                 if (OnPerfectLightPetObtainment())
                 {
                     player.PetPlayer().lightPetSoundEffect = 60;
-                    Main.NewText(PetUtils.LocVal("LightPetTooltips.PerfectChat").Replace("<item>", LightPetItemID.ToString()).Replace("<itemName>", ContentSamples.ItemsByType.GetValueOrDefault(LightPetItemID).Name), PetUtils.MaxQuality);
-                    PopupText.NewText(new AdvancedPopupRequest() with { Color = PetUtils.MaxQuality, Text = PetUtils.LocVal("LightPetTooltips.PerfectPopup"), DurationInFrames = 300 }, player.position);
-                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -8), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
-                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position with { X = player.position.X - 25}, new Vector2(0, -6), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
-                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position with { X = player.position.X + 25 }, new Vector2(0, -6), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
-                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(-10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
-                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
-                    Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                    switch (ModContent.GetInstance<PetPersonalization>().MaxLightPetCelebration)
+                    {
+
+                        case MaxLightPetCelebration.Lowered:
+                            CombatText.NewText(player.getRect(), PetUtils.MaxQuality, PetUtils.LocVal("LightPetTooltips.PerfectPopup"), true);
+                            PopupText.NewText(new AdvancedPopupRequest() with { Color = PetUtils.MaxQuality, Text = PetUtils.LocVal("LightPetTooltips.PerfectPopup"), DurationInFrames = 300 }, player.position);
+                            break;
+                        case MaxLightPetCelebration.Normal:
+                            CombatText.NewText(player.getRect(), PetUtils.MaxQuality, PetUtils.LocVal("LightPetTooltips.PerfectPopup"), true);
+                            PopupText.NewText(new AdvancedPopupRequest() with { Color = PetUtils.MaxQuality, Text = PetUtils.LocVal("LightPetTooltips.PerfectPopup"), DurationInFrames = 300 }, player.position);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(-10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                            break;
+                        case MaxLightPetCelebration.Increased:  
+                            CombatText.NewText(player.getRect(), PetUtils.MaxQuality, PetUtils.LocVal("LightPetTooltips.PerfectPopup"), true);
+                            Main.NewText(PetUtils.LocVal("LightPetTooltips.PerfectChat").Replace("<item>", LightPetItemID.ToString()).Replace("<itemName>", ContentSamples.ItemsByType.GetValueOrDefault(LightPetItemID).Name), PetUtils.MaxQuality);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -8), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position with { X = player.position.X - 25 }, new Vector2(0, -6), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position with { X = player.position.X + 25 }, new Vector2(0, -6), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(-10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                            Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
