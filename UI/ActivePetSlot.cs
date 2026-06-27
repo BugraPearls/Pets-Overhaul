@@ -169,6 +169,11 @@ namespace PetsOverhaul.UI
                 SyncActiveLight(LightPetItemSlot[Player.CurrentLoadoutIndex], -1, Player.whoAmI);
             }
         }
+        public override void OnEnterWorld()
+        {
+            loadedPet = RegularPetItemSlot[Player.CurrentLoadoutIndex];
+            loadedLightPet = LightPetItemSlot[Player.CurrentLoadoutIndex];
+        }
         public override void SaveData(TagCompound tag)
         {
             tag.Add("RegularPet", RegularPetItemSlot);
