@@ -41,7 +41,7 @@ namespace PetsOverhaul.Systems
         }
         public override void OnSpawn(Item item, IEntitySource source) //This is called on server
         {
-            if (WorldGen.generatingWorld)
+            if (WorldGen.generatingWorld || source is null)
             {
                 return;
             }
@@ -83,7 +83,7 @@ namespace PetsOverhaul.Systems
             {
                 herbBoost = true;
             }
-            else if (source is EntitySource_TileBreak brokenTile)
+            else if (source is EntitySource_TileBreak brokenTile && WorldGen.InWorld(brokenTile.TileCoords.X, brokenTile.TileCoords.Y))
             {
                 ushort tileType = Main.tile[brokenTile.TileCoords].TileType;
 
