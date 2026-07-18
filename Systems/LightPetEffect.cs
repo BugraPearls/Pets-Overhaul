@@ -198,6 +198,7 @@ namespace PetsOverhaul.Systems
         {
             ExtraModifyTooltips(item, tooltips);
 
+            int maxStatCount = 0;
             int unrolledCount = 0;
             int totalStatCount = 0;
             string tip = "\n";
@@ -226,6 +227,11 @@ namespace PetsOverhaul.Systems
                             unrolledCount++;
                         }
 
+                        if (tempStat.CurrentRoll >= tempStat.MaxRoll)
+                        {
+                            maxStatCount++;
+                        }
+
                         tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LocVal("LightPetTooltips.StatTooltipLine").Replace("<3>", tempStat.CurrentRoll.ToString()).Replace("<4>", tempStat.MaxRoll.ToString()))
                             .Replace("<c>", PetUtils.LightPetRarityColorHex(tempStat.CurrentRoll, tempStat.MaxRoll));
 
@@ -247,6 +253,17 @@ namespace PetsOverhaul.Systems
                         totalStatCount++;
                     }
                 }
+
+                if (maxStatCount >= totalStatCount)
+                {
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.Mod == "Terraria" && line.Name == "ItemName")
+                        {
+                            line.OverrideColor = PetUtils.MaxQuality;
+                        }
+                    }
+                }
             }
             else
             {
@@ -259,6 +276,11 @@ namespace PetsOverhaul.Systems
                         {
                             tempStat.CurrentRoll = tempStat.MaxRoll;
                             unrolledCount++;
+                        }
+
+                        if (tempStat.CurrentRoll >= tempStat.MaxRoll)
+                        {
+                            maxStatCount++;
                         }
 
                         tip = tip.Replace($"<{tempStat.DataKey}>", PetUtils.LocVal("LightPetTooltips.StatTooltipLine").Replace("<3>", tempStat.CurrentRoll.ToString()).Replace("<4>", tempStat.MaxRoll.ToString()))
@@ -279,6 +301,17 @@ namespace PetsOverhaul.Systems
                             tip = tip.Replace("<0>", $"<0{tempStat.DataKey}>").Replace("<1>", $"<1{tempStat.DataKey}>").Replace("<2>", $"<2{tempStat.DataKey}>"); //If its custom, for example with JackOLantern, the key <0> will be replaced with <0Luck>, and it replaces <0Luck> in its code in ModifyLightPetTooltips().
                         }
                         totalStatCount++;
+                    }
+                }
+
+                if (maxStatCount >= totalStatCount)
+                {
+                    foreach (TooltipLine line in tooltips)
+                    {
+                        if (line.Mod == "Terraria" && line.Name == "ItemName")
+                        {
+                            line.OverrideColor = PetUtils.MaxQuality;
+                        }
                     }
                 }
             }
@@ -664,6 +697,5 @@ namespace PetsOverhaul.Systems
         }
         public readonly float CurrentStatFloat => BaseStat + StatPerRoll * GetDisplayRoll;
         public readonly int CurrentStatInt => (int)Math.Ceiling(CurrentStatFloat);
-        /// <summary>
     }
 }
