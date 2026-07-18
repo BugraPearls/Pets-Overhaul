@@ -37,6 +37,7 @@ Mods: {
 			Disabled: Disabled
 			TownPetBuffTip: Only one Town Pet buff can be active at a time.
 			TownPetPetMe: " (Pet me!)"
+			TownPetItemConsume: You can pet Town Pets to gain buffs!
 			ActivePetSlotHover:
 				'''
 				Any Pet Item placed in this slot will have their effects active.

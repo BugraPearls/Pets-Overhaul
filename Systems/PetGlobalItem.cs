@@ -1,6 +1,7 @@
 ﻿using PetsOverhaul.Config;
 using PetsOverhaul.Items;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
@@ -139,6 +140,13 @@ namespace PetsOverhaul.Systems
                     resultType = ModContent.ItemType<PetFood>();
                     resultStack = 1;
                 }
+            }
+        }
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+        {
+            if (item.type == ItemID.LicenseDog || item.type == ItemID.LicenseCat || item.type == ItemID.LicenseBunny)
+            {
+                tooltips.Add(new(Mod, "PettingTip", PetUtils.LocVal("Misc.TownPetItemConsume")));
             }
         }
     }

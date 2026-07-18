@@ -37,6 +37,7 @@ Mods: {
 			Disabled: Отключено
 			TownPetBuffTip: Одновременно может быть активен только один бафф городского питомца.
 			TownPetPetMe: " (Погладь меня!)"
+			// TownPetItemConsume: You can pet Town Pets to gain buffs!
 			ActivePetSlotHover:
 				'''
 				Любой предмет питомца, помещенный в этот слот, будет иметь активные эффекты.
