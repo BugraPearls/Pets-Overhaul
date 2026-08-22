@@ -37,7 +37,7 @@ Mods: {
 			Disabled: 已禁用
 			TownPetBuffTip: 同一时间只能激活一个城镇宠物增益。
 			TownPetPetMe: “（抚摸我！）”
-			// TownPetItemConsume: You can pet Town Pets to gain buffs!
+			TownPetItemConsume: [c/b4bfc5:你可以抚摸城镇宠物来获取增益效果！]
 			ActivePetSlotHover:
 				'''
 				放在此栏位的宠物物品会正常应用其效果。
@@ -291,8 +291,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
-			// PerfectChat: Found a perfect [i:<item>] <itemName>!
-			// PerfectPopup: Perfect Light Pet!
+PerfectChat: 找到了一只完美的 [i:<item>] <itemName>！
+PerfectPopup: 完美照明宠物！
 			NotRolled:
 				'''
 				[c/828282:满级的照明宠物仅供展示！]

@@ -37,7 +37,7 @@ Mods: {
 			Disabled: Desabilitado
 			TownPetBuffTip: Apenas um bônus de mascote da cidade pode estar ativo por vez.
 			TownPetPetMe: " (Me faça carinho!)"
-			// TownPetItemConsume: You can pet Town Pets to gain buffs!
+			TownPetItemConsume: [c/b4bfc5:Você pode fazer carinho nos PETs da Cidade para ganhar buffs!]
 			ActivePetSlotHover:
 				'''
 				Qualquer Item de Pet colocado neste slot terá seus efeitos ativos.
@@ -293,8 +293,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
-			// PerfectChat: Found a perfect [i:<item>] <itemName>!
-			// PerfectPopup: Perfect Light Pet!
+PerfectChat: Encontrou um [i:<item>] <itemName> perfeito!
+PerfectPopup: PET de Luz Perfeito!
 			NotRolled:
 				'''
 				[c/828282:O Mascote de Luz maximizado é apenas para exibição!]

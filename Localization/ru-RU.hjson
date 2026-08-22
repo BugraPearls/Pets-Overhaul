@@ -37,7 +37,7 @@ Mods: {
 			Disabled: Отключено
 			TownPetBuffTip: Одновременно может быть активен только один бафф городского питомца.
 			TownPetPetMe: " (Погладь меня!)"
-			// TownPetItemConsume: You can pet Town Pets to gain buffs!
+			TownPetItemConsume: [c/b4bfc5:Вы можете гладить городских питомцев, чтобы получать баффы!]
 			ActivePetSlotHover:
 				'''
 				Любой предмет питомца, помещенный в этот слот, будет иметь активные эффекты.
@@ -293,8 +293,8 @@ Mods: {
 		}
 
 		LightPetTooltips: {
-			// PerfectChat: Found a perfect [i:<item>] <itemName>!
-			// PerfectPopup: Perfect Light Pet!
+PerfectChat: Найден идеальный [i:<item>] <itemName>!
+PerfectPopup: Идеальный светящийся питомец!
 			NotRolled:
 				'''
 				[c/828282:Максимальный уровень светящегося питомца — только для отображения!]
