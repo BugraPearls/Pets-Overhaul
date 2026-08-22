@@ -155,13 +155,30 @@ namespace PetsOverhaul.NPCs
         public override List<string> SetNPCNameList()
         {
             return [
-                "Gumshoe", //I like ace attorney and he has a dog. 
-                "Kled", //I like Kled from league of legends & has a lizard & elderly.
-                "Lance", //pokemon1 & cape & he looks like a Lance??
-                "Alder", //pokemon2 & elder
-                "Leon", //pokemon3 & cape lol
-                "Fuji", //pokemon4 & Cubone reference & elderly
-                //Idk please help me with names
+                "Gumshoe",
+                "Kled",
+                "Lance",
+                "Alder",
+                "Leon",
+                "Fuji", 
+                "David",
+                "Marshall",
+                "Corbin",
+                "Ronan",
+                "Callum",
+                "Gavin",
+                "Drake",
+                "Arthur",
+                "Falkner",
+                "Hector",
+                "Gustavo",
+                "James",
+                "Tanaka",
+                "Jack",
+                "Mark",
+                "Callum",
+                "Ursa",
+                "Lynx",
             ];
         }
 
