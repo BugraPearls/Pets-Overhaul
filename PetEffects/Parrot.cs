@@ -90,7 +90,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     for (int i = 0; i < PetUtils.Randomizer(parrot.projChance); i++)
                     {
-                        parrot.Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, projectile.damage * parrot.projDamage, projectile.knockBack, projectile.owner, damageClass: projectile.DamageType);
+                        parrot.Pet.NewPetSourcedProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetProjectile), projectile.Center, projectile.velocity.RotateRandom(0.5f), projectile.type, projectile.damage * parrot.projDamage, projectile.knockBack, projectile.owner, damageClass: damageType);
                         parrot.PlayParrotSound();
                         PetUtils.DoAchievementOnPlayer<Copycat>(projectile.owner);
                     }
