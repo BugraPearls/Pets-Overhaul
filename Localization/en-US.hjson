@@ -1899,8 +1899,10 @@ Mods: {
 					LoveSpace: Since my pets have the space to breathe and play around, that is making me happy.
 					DislikeCrowded: My pets don't like too many people around besides me.
 					HateCrowded: Because my pets are unable to be theirselves with too many people around, I really don't like the current conditions.
+					LoveBiome: Ever since being in {BiomeName}, we are in total peace. Its like a dream!
 					LikeBiome: You know, being in {BiomeName} is very nice for my pets.
 					DislikeBiome: While we're at {BiomeName}, my pets seem uncomfortable.
+					HateBiome: Man, {BiomeName} really makes us feel on alarm at all times!
 					LoveNPC: I love {NPCName}! She always takes cares of my Pets when I am not around, and my pets and her pets get along very well!
 					LikeNPC: I like {NPCName}. My pets enjoy their time with his own pet!
 					DislikeNPC: I dislike {NPCName}. I know he had no bad intentions, but him trying to dye the fur of my pet scared her off.
