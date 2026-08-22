@@ -1903,8 +1903,10 @@ Mods: {
 					LoveSpace: Já que meus mascotes têm espaço para respirar e brincar, isso está me fazendo feliz.
 					DislikeCrowded: Meus mascotes não gostam de muitas pessoas por perto além de mim.
 					HateCrowded: Como meus mascotes não conseguem ser eles mesmos com muitas pessoas por perto, eu realmente não gosto das condições atuais.
+					LoveBiome: Desde que viemos para {BiomeName}, estamos em total paz. Parece até um sonho!
 					LikeBiome: Sabe, estar em {BiomeName} é muito bom para os meus mascotes.
 					DislikeBiome: Enquanto estamos em {BiomeName}, meus mascotes parecem desconfortáveis.
+					HateBiome: Cara, {BiomeName} realmente nos deixa em estado de alerta o tempo todo!
 					LoveNPC: Eu amo a {NPCName}! Ela sempre cuida dos meus Mascotes quando eu não estou por perto, e meus mascotes e os dela se dão muito bem!
 					LikeNPC: Eu gosto do {NPCName}. Meus mascotes aproveitam o tempo com o mascote dele!
 					DislikeNPC: Eu não gosto do {NPCName}. Eu sei que ele não teve más intenções, mas ele tentar tingir o pelo da minha mascote a assustou.

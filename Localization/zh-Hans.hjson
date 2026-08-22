@@ -1891,8 +1891,10 @@ Mods: {
 					LoveSpace: 因为我的宠物有呼吸和玩耍的空间，这让我很高兴。
 					DislikeCrowded: 我的宠物不喜欢周围有太多人，除了我。
 					HateCrowded: 因为我的宠物在太多人面前无法做自己，所以我真的不喜欢目前的环境。
+					LoveBiome: 自从来到{BiomeName}之后，我们感到前所未有的宁静。简直就像做梦一样！
 					LikeBiome: 你知道，在 {BiomeName} 对我的宠物非常有利。
 					DislikeBiome: 虽然我们在 {BiomeName}，但我的宠物似乎很不舒服。
+					HateBiome: 伙计，{BiomeName}真的让我们时刻提心吊胆！
 					LoveNPC: 我爱 {NPCName}！我不在时她总是照顾我的宠物，而且我的宠物和她的宠物相处得很好！
 					LikeNPC: 我喜欢 {NPCName}。我的宠物喜欢和他的宠物共度时光！
 					DislikeNPC: 我不喜欢 {NPCName}。我知道他没有恶意，但他试图给我的宠物毛发染色，把它吓跑了。
