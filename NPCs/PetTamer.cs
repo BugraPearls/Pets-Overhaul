@@ -82,7 +82,7 @@ namespace PetsOverhaul.NPCs
             NPC.friendly = true;
             NPC.width = 18;
             NPC.height = 40;
-            NPC.aiStyle = 7;
+            NPC.aiStyle = NPCAIStyleID.Passive;
             NPC.damage = 10;
             NPC.defense = 15;
             NPC.lifeMax = 250;
@@ -160,7 +160,7 @@ namespace PetsOverhaul.NPCs
                 "Lance",
                 "Alder",
                 "Leon",
-                "Fuji", 
+                "Fuji",
                 "David",
                 "Marshall",
                 "Corbin",

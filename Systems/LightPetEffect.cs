@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Terraria;
-using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
@@ -358,7 +357,7 @@ namespace PetsOverhaul.Systems
         /// </summary>
         public List<LightPetStat> GetAllLightPetStats()
         {
-            List<LightPetStat> lightPetStats = new();
+            List<LightPetStat> lightPetStats = [];
             foreach (var field in this.GetType().GetFields())
             {
                 if (field.FieldType == typeof(LightPetStat))
@@ -526,7 +525,7 @@ namespace PetsOverhaul.Systems
                             Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(-10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
                             Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(10 + Main.rand.NextFloat(-3, 3), -5), ProjectileID.ConfettiGun, 0, 0, player.whoAmI);
                             break;
-                        case MaxLightPetCelebration.Increased:  
+                        case MaxLightPetCelebration.Increased:
                             CombatText.NewText(player.getRect(), PetUtils.MaxQuality, PetUtils.LocVal("LightPetTooltips.PerfectPopup"), true);
                             Main.NewText(PetUtils.LocVal("LightPetTooltips.PerfectChat").Replace("<item>", LightPetItemID.ToString()).Replace("<itemName>", ContentSamples.ItemsByType.GetValueOrDefault(LightPetItemID).Name), PetUtils.MaxQuality);
                             Projectile.NewProjectile(PetUtils.GetSource_Pet(EntitySourcePetIDs.PetMisc), player.position, new Vector2(0, -8), 415 + Main.rand.Next(4), 0, 0, player.whoAmI);

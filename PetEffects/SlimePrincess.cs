@@ -123,7 +123,7 @@ namespace PetsOverhaul.PetEffects
                         }
                     }
                 }
-                if (self.mount.Active && self.mount.Type == 17 && self.velocity.Y > 0f)
+                if (self.mount.Active && self.mount.Type == MountID.GolfCartSomebodySaveMe && self.velocity.Y > 0f)
                 {
                     Rectangle rect3 = self.getRect();
                     rect3.Offset(0, self.height - 1);
@@ -173,7 +173,7 @@ namespace PetsOverhaul.PetEffects
                         self.wetSlime = 0;
                         flag = true;
                     }
-                    if (self.mount.Active && self.mount.Type == 43 && self.releaseJump && self.velocity.Y != 0f)
+                    if (self.mount.Active && self.mount.Type == MountID.PogoStick && self.releaseJump && self.velocity.Y != 0f)
                     {
                         self.isPerformingPogostickTricks = true;
                     }
@@ -219,7 +219,7 @@ namespace PetsOverhaul.PetEffects
                         }
                         if (self.velocity.Y == 0f || flag2 || self.sliding || flag)
                         {
-                            if (self.mount.Active && self.mount.Type == 43)
+                            if (self.mount.Active && self.mount.Type == MountID.PogoStick)
                             {
                                 SoundEngine.PlaySound(in SoundID.Item168, self.Center);
                             }

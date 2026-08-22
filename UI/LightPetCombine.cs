@@ -34,7 +34,7 @@ namespace PetsOverhaul.UI
             _context = context;
             _scale = scale;
             Item = new Item();
-            Item.SetDefaults(0);
+            Item.SetDefaults(ItemID.None);
 
             Width.Set(30 * scale, 0f);
             Height.Set(30 * scale, 0f);
@@ -102,8 +102,10 @@ namespace PetsOverhaul.UI
             panel.VAlign = 0.5f;
             Append(panel);
 
-            UIText header = new(PetUtils.LocVal("LightPetCombineUI.Header"));
-            header.HAlign = 0.5f;
+            UIText header = new(PetUtils.LocVal("LightPetCombineUI.Header"))
+            {
+                HAlign = 0.5f
+            };
             header.Top.Set(15, 0);
             panel.Append(header);
 

@@ -36,7 +36,7 @@ namespace PetsOverhaul.PetEffects
                 {
                     Player.pickSpeed -= Player.pickSpeed * nonOreSpeed;
                 }
-                if (Player.controlUseItem && Player.HeldItem.pick > 0 && Main.tile[prevX, prevY].TileType == 0 && oldTileType != 0 && (TileID.Sets.Ore[oldTileType] || PetIDs.gemTile[oldTileType]))
+                if (Player.controlUseItem && Player.HeldItem.pick > 0 && Main.tile[prevX, prevY].TileType == TileID.Dirt && oldTileType != 0 && (TileID.Sets.Ore[oldTileType] || PetIDs.gemTile[oldTileType]))
                 {
                     for (mineX = -tileBreakXSpread; mineX <= tileBreakXSpread; mineX++)
                     {

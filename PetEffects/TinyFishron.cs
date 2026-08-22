@@ -55,7 +55,7 @@ namespace PetsOverhaul.PetEffects
                 for (int i = 0; i < bobChance; i++)
                 {
                     Vector2 bobberSpeed = velocity + new Vector2(Main.rand.NextFloat(-50f, 50f) * 0.05f, Main.rand.NextFloat(-50f, 50f) * 0.05f);
-                    Projectile petProjectile = Projectile.NewProjectileDirect(source, position, bobberSpeed, ProjectileID.FishingBobber, 0, 0f, Player.whoAmI);
+                    Projectile.NewProjectileDirect(source, position, bobberSpeed, ProjectileID.FishingBobber, 0, 0f, Player.whoAmI);
                 }
             }
             return base.Shoot(item, source, position, velocity, type, damage, knockback);

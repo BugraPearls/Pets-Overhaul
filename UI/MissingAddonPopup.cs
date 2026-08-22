@@ -1,13 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using PetsOverhaul.Achievements;
-using PetsOverhaul.Config;
 using PetsOverhaul.Systems;
-using ReLogic.Utilities;
 using System.Collections.Generic;
-using System.Reflection;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.Localization;
@@ -27,8 +22,10 @@ namespace PetsOverhaul.UI
             panel.VAlign = 0.5f;
             Append(panel);
 
-            UIText message = new(Language.GetText("Mods.PetsOverhaul.MissingAddonUI.CalamityMessage"));
-            message.HAlign = 0.5f;
+            UIText message = new(Language.GetText("Mods.PetsOverhaul.MissingAddonUI.CalamityMessage"))
+            {
+                HAlign = 0.5f
+            };
             message.Top.Set(15, 0);
             panel.Append(message);
 

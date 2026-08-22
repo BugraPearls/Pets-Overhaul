@@ -126,7 +126,7 @@ namespace PetsOverhaul.NPCs
                 Lighting.AddLight((int)(NPC.Center.X / 16f), (int)(NPC.Center.Y / 16f), 0.8f * num, 0.7f * num, 0.1f * num);
                 if (Main.rand.NextBool(12))
                 {
-                    Dust dust = Dust.NewDustPerfect(NPC.Center + new Vector2(0f, NPC.height * 0.2f) + Main.rand.NextVector2CircularEdge(NPC.width, NPC.height * 0.6f) * (0.3f + Main.rand.NextFloat() * 0.5f), 228, new Vector2(0f, (0f - Main.rand.NextFloat()) * 0.3f - 1.5f), 127);
+                    Dust dust = Dust.NewDustPerfect(NPC.Center + new Vector2(0f, NPC.height * 0.2f) + Main.rand.NextVector2CircularEdge(NPC.width, NPC.height * 0.6f) * (0.3f + Main.rand.NextFloat() * 0.5f), DustID.GoldFlame, new Vector2(0f, (0f - Main.rand.NextFloat()) * 0.3f - 1.5f), 127);
                     dust.scale = 0.5f;
                     dust.fadeIn = 1.1f;
                     dust.noGravity = true;

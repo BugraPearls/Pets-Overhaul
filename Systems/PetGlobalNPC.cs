@@ -333,7 +333,9 @@ namespace PetsOverhaul.Systems
         /// <param name="petSlow">The PetSlow instance to be applied to NPC.</param>
         /// <param name="npc">NPC to receive the slow.</param>
         /// <param name="player">Player who is applying the Slow. Currently only used to apply <see cref="PetModPlayer.petSlowPotency"/> on the Slow amount.</param>
+#pragma warning disable CS0618 // This use is okay, warning should be supressed here
         public static void AddSlow(PetSlow petSlow, NPC npc, Player player) => AddSlow(petSlow with { SlowAmount = petSlow.SlowAmount * player.PetPlayer().petSlowPotency }, npc);
+#pragma warning restore CS0618
 
         /// <summary>
         /// DOES NOT APPLY <see cref="PetModPlayer.petSlowPotency"/>! Use <see cref="AddSlow(PetSlow, NPC, Player)"/> whenever possible unless its desired to not apply <see cref="PetModPlayer.petSlowPotency"/>.
