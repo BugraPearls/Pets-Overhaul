@@ -146,13 +146,6 @@ Mods: {
 				Mantenha em 0 se desejar que isso seja desativado. O recomendado é entre 7% e 10%.
 				Isso não terá efeito se você não tiver nenhum tipo de PET equipado.
 				'''
-			SwapCooldownLabel: Tempo de Recarga da Troca de PET
-			SwapCooldownTooltip:
-				'''
-				Permite que o jogador receba o Debuff de PET Desatento ao trocar de Pet.
-				Isto impede que quaisquer benefícios relacionados ao combate fiquem ativos durante esse período.
-				(Recomendado manter ativado por razões óbvias de balanceamento.)
-				'''
 			PhantasmalDragonShootLabel: Rajada de Fogo do Dragão Fantasmal vinda do Dragão
 			PhantasmalDragonShootTooltip:
 				'''

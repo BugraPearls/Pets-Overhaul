@@ -13,7 +13,7 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.DogWhistle;
         public override PetClass PetClassPrimary => PetClassID.Utility;
         public int catchChance = 65;
-        public int rareCatchChance = 15;
+        public int rareCatchChance = 45;
         public int rareCritterCoin = 25000;
         public int rareEnemyCoin = 70000;
         public override void Load()

@@ -96,8 +96,7 @@ namespace PetsOverhaul.Systems
         public int shieldToBeReduced = 0;
         public bool jumpRegistered = false;
         public static bool anyAliveBosses = false;
-        public const int petSwapCooldownIfBoss = 480;
-        public int petSwapCooldownCurrent = 0;
+        public int petSwapCooldown = 480;
         internal int previousPetItem = 0;
         /// <summary>
         /// This field ticks down every frame in PreUpdate() hook. Does not go below -1. Plays 'cooldown refreshment' sound effect upon reaching 0 and displays Timer while higher than 0. Usually is recommended to use Mod's timer mechanic for timers that the Player should be aware of.
@@ -859,12 +858,6 @@ namespace PetsOverhaul.Systems
         }
         public override void ResetEffects() //ResetEffects runs AFTER PreUpdate().
         {
-            petSwapCooldownCurrent = 0;
-            if (anyAliveBosses)
-            {
-                petSwapCooldownCurrent = petSwapCooldownIfBoss;
-            }
-
             inCombatTimerMax = 300;
 
             fishingFortune = 0;
@@ -1076,10 +1069,9 @@ namespace PetsOverhaul.Systems
             if (updateReplacedTile.Count > 0)
             {
                 PlayerPlacedBlockList.placedBlocksByPlayer.AddRange(updateReplacedTile);
-                updateReplacedTile.Clear();
             }
         }
-        public override void PostUpdateMiscEffects()
+        public override void PostUpdateEquips()
         {
             Player.buffImmune[ModContent.BuffType<ObliviousPet>()] = !anyAliveBosses;
         }
@@ -1116,10 +1108,8 @@ namespace PetsOverhaul.Systems
                 timerMax = 0;
                 currentPetStacksMax = -1;
                 currentPetStackSpecialText = string.Empty;
-                if (petSwapCooldownCurrent > 0)
-                {
-                    Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldownCurrent);
-                }
+
+                Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldown);
 
                 previousPetItem = Player.CurrentPet();
             }

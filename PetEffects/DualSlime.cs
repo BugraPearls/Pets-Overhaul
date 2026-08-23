@@ -17,7 +17,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClass PetClassSecondary => PetClassID.Defensive;
         public int shield = 55;
         public int shieldTime = 1500;
-        public float mountDmgIncr = 0.45f;
+        public float mountDmgIncr = 0.25f;
         public int cooldown = 1200;
         public float knockback = 8f;
         public int baseDmg = 18; //Most values are used inside the SlimeServant's code

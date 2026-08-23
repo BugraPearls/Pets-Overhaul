@@ -59,7 +59,7 @@ namespace PetsOverhaul.PetEffects
         public int slowDuration = 240;
         public int shield = 15;
         public int shieldTime = 420;
-        public float mountDmgIncr = 0.35f;
+        public float mountDmgIncr = 0.18f;
         public int cooldown = 180;
         public override int PetAbilityCooldown => cooldown;
         public override PetClass PetClassPrimary => PetClassID.Utility;

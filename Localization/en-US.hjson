@@ -398,6 +398,8 @@ Mods: {
 			BabyGrinchMischiefWhistle:
 				'''
 				- Slows all non-boss enemies in a <slowRange>-block radius by <slowAmount>%.
+				  • This slow increases up to 3x, depending on how close enemy is.
+				  • Maximum slow is reached when an enemy is in <maxSlowRadius>-block radius.
 				- Grants a permanent warmth effect, reducing cold-sourced damage.
 				- All weapons from Frost Moon gains <dmg>% damage and <crit>% crit chance.
 				  Affected Weapons: <weapons>
@@ -456,7 +458,9 @@ Mods: {
 				- Applies <frostburnTime>-second Frostburn on-hit.
 				  • Adds Frostburn visuals to all your weapons & projectiles.
 				- Applies <slowAmount>% slow for <slowTime> seconds on hit.
-				  • All values are multiplied by <frostMult> if full Frost Armor [i:684] is worn.
+				  • Subsequent hits on same target adds <slowAdd>% slow and <timeAdd> seconds to the existing slow.
+				  • Slow stacking is capped at <slowCap>%, and time can be extended up to <timeCap> seconds.
+				  • All values except the caps are multiplied by <frostMult> if full Frost Armor [i:684] is worn.
 				'''
 			StrangeGlowingMushroom:
 				'''
@@ -696,7 +700,7 @@ Mods: {
 				  • Reduced to <potionChance>% for potions.
 				- Eating foods gives you a shield that scales with the stage of Well Fed.
 				  • <shield1>/<shield2>/<shield3> shield respectively for every Well Fed stage.
-				  • Shield persists for <shieldTime> seconds + 1 second per consumed food's Well Fed duration.
+				  • Shield persists for <shieldTime> + <foodShieldTime> seconds per 1 minute of Well Fed duration.
 				  • This has a <cooldown> seconds cooldown.
 				'''
 			MudBud:
@@ -2072,7 +2076,7 @@ Mods: {
 
 			Vulnerable: {
 				FriendlyName: Vulnerable
-				Description: Strike an enemy that has maximum Mauled debuff stacks on an enemy, which is applied by Baby Werewolf Pet, making them take more damage.
+				Description: Strike an enemy that has maximum Mauled debuff stacks on them, which is applied by Baby Werewolf Pet, making them take more damage.
 			}
 
 			ISeeWhatYoureDoing: {
@@ -2166,7 +2170,7 @@ Mods: {
 			}
 
 			TooMuchHoney: {
-				Description: Consume Bottled Honey or Honeyfin using Honey Bee Pet. In multiplayer, your friends will apreciate you overdosing on sugar.
+				Description: Consume Bottled Honey or Honeyfin using Honey Bee Pet. In multiplayer, your friends will appreciate you overdosing on sugar.
 				FriendlyName: Too Much Honey
 			}
 

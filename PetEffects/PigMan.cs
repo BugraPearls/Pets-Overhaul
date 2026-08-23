@@ -13,11 +13,12 @@ namespace PetsOverhaul.PetEffects
         public override PetClass PetClassPrimary => PetClassID.Utility;
         public int foodChance = 15;
         public int potionChance = 10;
-        public int shieldCooldown = 420;
+        public int shieldCooldown = 600;
         public int tier1Shield = 10;
         public int tier2Shield = 20;
         public int tier3Shield = 30;
-        public int shieldTime = 1650;
+        public int shieldTime = 300;
+        public int foodTimeDivider = 30;
         public override int PetAbilityCooldown => shieldCooldown;
     }
     public sealed class PigmanEat : GlobalItem
@@ -46,7 +47,7 @@ namespace PetsOverhaul.PetEffects
                         {
                             shieldAmount = pig.tier3Shield;
                         }
-                        Pet.AddShield(shieldAmount, pig.shieldTime + item.buffTime / 60);
+                        Pet.AddShield(shieldAmount, pig.shieldTime + item.buffTime / pig.foodTimeDivider);
                         Pet.timer = Pet.timerMax;
                     }
                     if (Main.rand.NextBool(pig.foodChance, 100))
@@ -84,7 +85,8 @@ namespace PetsOverhaul.PetEffects
                        .Replace("<shield2>", pigman.tier2Shield.ToString())
                        .Replace("<shield3>", pigman.tier3Shield.ToString())
                        .Replace("<shieldTime>", Math.Round(pigman.shieldTime / 60f, 2).ToString())
-                       .Replace("<cooldown>", Math.Round(pigman.shieldCooldown / 60f, 2).ToString());
+                       .Replace("<cooldown>", Math.Round(pigman.shieldCooldown / 60f, 2).ToString())
+            .Replace("<foodShieldTime>", Math.Round(60f / pigman.foodTimeDivider, 2).ToString());
         public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.PigPetItem");
     }
 }

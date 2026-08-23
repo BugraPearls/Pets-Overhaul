@@ -37,7 +37,7 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// This is cumulative un-balanced slow value just added by all various sources. It is properly calculated in NpcPet.RetrievePetSlowedVelocity().
         /// </summary>
-        internal float currentTotalSlow = 0f;
+        public float currentTotalSlow = 0f;
         /// <summary>
         /// Returns the correct velocity of the NPC with total slow value. This is used by IL edits to replace npc.velocity values.
         /// </summary>

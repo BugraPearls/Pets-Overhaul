@@ -12,7 +12,7 @@ namespace PetsOverhaul.PetEffects
         public override PetClass PetClassPrimary => PetClassID.Mobility;
         public float moveSpd = 0.11f;
         public float jumpSpd = 0.65f;
-        public int fallDamageTile = 30;
+        public int fallDamageTile = 50;
         public override void PostUpdateMiscEffects()
         {
             if (PetIsEquipped())

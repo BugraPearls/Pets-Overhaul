@@ -146,13 +146,6 @@ Mods: {
 				如果希望其禁用，请将其保持为0。建议调整至7%到10%左右。
 				如果你没有装备任何类型的宠物，它将不会生效。
 				'''
-			SwapCooldownLabel: 宠物切换冷却
-			SwapCooldownTooltip:
-				'''
-				开启后，玩家在切换宠物时会获得遗忘宠物减益。
-				这将在期间内禁用任何与战斗相关的增益。
-				(出于显而易见的平衡原因，建议开启此项)
-				'''
 			PhantasmalDragonShootLabel: 幻影龙宝宝的火球连射从其嘴部发射
 			PhantasmalDragonShootTooltip:
 				'''

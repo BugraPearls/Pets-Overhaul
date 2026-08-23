@@ -11,10 +11,14 @@ namespace PetsOverhaul.PetEffects
     public sealed class BabySnowman : PetEffect
     {
         public override int PetItemID => ItemID.ToySled;
-        public int frostburnTime = 300;
-        public float snowmanSlow = 0.3f;
-        public int slowTime = 180;
-        public int frostMult = 3;
+        public int frostburnTime = 120;
+        public float initialSlow = 0.2f;
+        public float addedSlow = 0.1f;
+        public float slowCap = 0.8f;
+        public int initialSlowTime = 120;
+        public int addedSlowTime = 30;
+        public int slowTimeCap = 300;
+        public int frostMult = 2;
         public int FrostArmorMult => Player.frostBurn ? frostMult : 1;
 
         /// <summary>
@@ -29,7 +33,29 @@ namespace PetsOverhaul.PetEffects
             if (PetIsEquipped())
             {
                 target.AddBuff(FrostBurnId, frostburnTime * FrostArmorMult);
-                PetGlobalNPC.AddSlow(new PetSlow(snowmanSlow * FrostArmorMult, slowTime * FrostArmorMult, PetSlowID.Snowman), target, Player);
+                if (target.TryGetGlobalNPC(out PetGlobalNPC globalNPC))
+                {
+                    int index = globalNPC.SlowList.FindIndex(x => x.SlowId == PetSlowID.Snowman);
+                    if (index <= -1)
+                    {
+                        PetGlobalNPC.AddSlow(new PetSlow(initialSlow * FrostArmorMult, initialSlowTime * FrostArmorMult, PetSlowID.Snowman), target, Player);
+                    }
+                    else
+                    {
+                        PetSlow newSlow = globalNPC.SlowList[index];
+                        newSlow.SlowAmount += addedSlow * FrostArmorMult;
+                        newSlow.SlowTime += addedSlowTime * FrostArmorMult;
+                        if (newSlow.SlowAmount > slowCap)
+                        {
+                            newSlow.SlowAmount = slowCap;
+                        }
+                        if (newSlow.SlowTime > slowTimeCap)
+                        {
+                            newSlow.SlowTime = slowTimeCap;
+                        }
+                        globalNPC.SlowList[index] = newSlow; //structs on lists are readonly, so we have to reassign a new PetSlow value
+                    }
+                }
                 if (FrostArmorMult > 1)
                 {
                     PetUtils.DoAchievementOnPlayer<AbsoluteZero>(Player.whoAmI);
@@ -89,8 +115,12 @@ namespace PetsOverhaul.PetEffects
         }
         public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.ToySled")
                 .Replace("<frostburnTime>", Math.Round(babySnowman.frostburnTime / 60f * babySnowman.FrostArmorMult, 2).ToString())
-                .Replace("<slowAmount>", Math.Round(babySnowman.snowmanSlow * 100 * babySnowman.FrostArmorMult, 2).ToString())
-                .Replace("<slowTime>", Math.Round(babySnowman.slowTime / 60f * babySnowman.FrostArmorMult, 2).ToString())
+                .Replace("<slowAmount>", Math.Round(babySnowman.initialSlow * 100 * babySnowman.FrostArmorMult, 2).ToString())
+                .Replace("<slowTime>", Math.Round(babySnowman.initialSlowTime / 60f * babySnowman.FrostArmorMult, 2).ToString())
+                .Replace("<slowAdd>", Math.Round(babySnowman.addedSlow * 100 * babySnowman.FrostArmorMult, 2).ToString())
+                .Replace("<timeAdd>", Math.Round(babySnowman.addedSlowTime / 60f * babySnowman.FrostArmorMult, 2).ToString())
+                .Replace("<slowCap>", Math.Round(babySnowman.slowCap * 100, 2).ToString())
+                .Replace("<timeCap>", Math.Round(babySnowman.slowTimeCap / 60f, 2).ToString())
                 .Replace("<frostMult>", babySnowman.frostMult.ToString());
         public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.ToySled");
     }

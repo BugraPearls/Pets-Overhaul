@@ -12,8 +12,9 @@ namespace PetsOverhaul.PetEffects
         public override int PetItemID => ItemID.BabyGrinchMischiefWhistle;
         public float winterDmg = 0.15f;
         public int winterCrit = 10;
-        public float grinchSlow = 0.9f;
-        public int grinchRange = 400;
+        public float grinchSlow = 0.3f;
+        public int grinchRange = 480;
+        public int maxSlowRange = 80;
         public static List<int> FrostMoonWeapons = [ItemID.ChristmasTreeSword, ItemID.Razorpine, ItemID.ElfMelter, ItemID.ChainGun, ItemID.BlizzardStaff, ItemID.SnowmanCannon, ItemID.NorthPole];
         public override PetClass PetClassPrimary => PetClassID.Utility;
         public override PetClass PetClassSecondary => PetClassID.Offensive;
@@ -40,9 +41,21 @@ namespace PetsOverhaul.PetEffects
 
                 foreach (var npc in Main.ActiveNPCs)
                 {
-                    if (Player.Distance(npc.Center) < grinchRange)
+                    float dist = Player.Distance(npc.Center);
+                    if (dist < grinchRange)
                     {
-                        PetGlobalNPC.AddSlow(new PetSlow(grinchSlow, 1, PetSlowID.Grinch), npc, Player);
+                        dist -= maxSlowRange;
+                        float slow = grinchSlow;
+                        if (dist <= 0)
+                        {
+                            slow *= 3;
+                        }
+                        else
+                        {
+                            slow *= 3 - 1f / (grinchRange - maxSlowRange) * 2f * dist; 
+                            //Basically 1 / (grinchRange - maxSlowRange) gives us 0.0025 here, which is then multiplied by how many points of distance there is, which scales up to 1 (100%), which is then doubled so we can subtract the 3 up to 2 at max range so we do a 1x at the end.
+                        }
+                        PetGlobalNPC.AddSlow(new PetSlow(slow, 1, PetSlowID.Grinch), npc, Player);
                     }
                 }
             }
@@ -64,9 +77,10 @@ namespace PetsOverhaul.PetEffects
         public override string PetsTooltip => PetUtils.LocVal("PetItemTooltips.BabyGrinchMischiefWhistle")
                 .Replace("<slowAmount>", Math.Round(babyGrinch.grinchSlow * 100, 2).ToString())
                 .Replace("<slowRange>", Math.Round(babyGrinch.grinchRange / 16f, 2).ToString())
+                .Replace("<maxSlowRange>", Math.Round(babyGrinch.maxSlowRange / 16f, 2).ToString())
                 .Replace("<dmg>", Math.Round(babyGrinch.winterDmg * 100, 2).ToString())
                 .Replace("<crit>", babyGrinch.winterCrit.ToString())
-            .Replace("<weapons>", PetUtils.ItemsToTooltipImages(BabyGrinch.FrostMoonWeapons));
+                .Replace("<weapons>", PetUtils.ItemsToTooltipImages(BabyGrinch.FrostMoonWeapons));
         public override string SimpleTooltip => PetUtils.LocVal("SimpleTooltips.BabyGrinchMischiefWhistle");
     }
 }
