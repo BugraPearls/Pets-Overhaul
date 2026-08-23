@@ -39,12 +39,6 @@ namespace PetsOverhaul.Config
         [SliderColor(54, 35, 120, 125)]
         public int DifficultAmount { get; set; }
 
-        [LabelKey("$Mods.PetsOverhaul.Config.SwapCooldownLabel")]
-        [TooltipKey("$Mods.PetsOverhaul.Config.SwapCooldownTooltip")]
-        [DefaultValue(true)]
-        [BackgroundColor(35, 120, 54, 190)]
-        public bool SwapCooldown { get; set; }
-
         [LabelKey("$Mods.PetsOverhaul.Config.PhantasmalDragonShootLabel")]
         [TooltipKey("$Mods.PetsOverhaul.Config.PhantasmalDragonShootTooltip")]
         [DefaultValue(false)]

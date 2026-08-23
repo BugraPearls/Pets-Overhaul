@@ -146,13 +146,6 @@ Mods: {
 				Keep it at 0 if you wish it to be disabled. It's recommended it to be around 7 to 10%.
 				This won't take in effect if you don't have any types of Pets equipped.
 				'''
-			SwapCooldownLabel: Pet Swap cooldown
-			SwapCooldownTooltip:
-				'''
-				Enables Player to gain Oblivious Pet Debuff upon swapping a Pet.
-				Which prevents any Combat-related perks from being active during the time.
-				(Recommended to keep this on due to obvious balancing reasons.)
-				'''
 			PhantasmalDragonShootLabel: Phantasmal Dragon Fire Volley From Dragon
 			PhantasmalDragonShootTooltip:
 				'''
@@ -1663,7 +1656,7 @@ Mods: {
 				DisplayName: Oblivious Pet
 				Description:
 					'''
-					Your pet has no idea what's going on due to being swapped recently!
+					Your pet has no idea what's going on due to being swapped recently, while a boss is alive!
 					Your pet's all combat-related effects are disabled!
 					'''
 			}

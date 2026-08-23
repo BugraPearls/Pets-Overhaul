@@ -95,7 +95,9 @@ namespace PetsOverhaul.Systems
         public int currentShield = 0;
         public int shieldToBeReduced = 0;
         public bool jumpRegistered = false;
-        public int petSwapCooldown = 600;
+        public static bool anyAliveBosses = false;
+        public const int petSwapCooldownIfBoss = 480;
+        public int petSwapCooldownCurrent = 0;
         internal int previousPetItem = 0;
         /// <summary>
         /// This field ticks down every frame in PreUpdate() hook. Does not go below -1. Plays 'cooldown refreshment' sound effect upon reaching 0 and displays Timer while higher than 0. Usually is recommended to use Mod's timer mechanic for timers that the Player should be aware of.
@@ -857,10 +859,13 @@ namespace PetsOverhaul.Systems
         }
         public override void ResetEffects() //ResetEffects runs AFTER PreUpdate().
         {
-            petSwapCooldown = 600;
-            inCombatTimerMax = 300;
+            petSwapCooldownCurrent = 0;
+            if (anyAliveBosses)
+            {
+                petSwapCooldownCurrent = petSwapCooldownIfBoss;
+            }
 
-            knockbackResistance = 0f;
+            inCombatTimerMax = 300;
 
             fishingFortune = 0;
             harvestingFortune = 0;
@@ -872,6 +877,8 @@ namespace PetsOverhaul.Systems
             petShieldMultiplier = 1f;
             petDirectDamageMultiplier = 1f;
             petSlowPotency = 1f;
+
+            knockbackResistance = 0f;
         }
         public override void PreUpdate()
         {
@@ -1074,7 +1081,7 @@ namespace PetsOverhaul.Systems
         }
         public override void PostUpdateMiscEffects()
         {
-            Player.buffImmune[ModContent.BuffType<ObliviousPet>()] = !ModContent.GetInstance<PetPersonalization>().SwapCooldown; //If Swap cooldown is turned off, player will be 'immune' to the debuff.
+            Player.buffImmune[ModContent.BuffType<ObliviousPet>()] = !anyAliveBosses;
         }
         public override void OnEnterWorld()
         {
@@ -1109,11 +1116,10 @@ namespace PetsOverhaul.Systems
                 timerMax = 0;
                 currentPetStacksMax = -1;
                 currentPetStackSpecialText = string.Empty;
-                if (ModContent.GetInstance<PetPersonalization>().SwapCooldown)
+                if (petSwapCooldownCurrent > 0)
                 {
-                    Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldown);
+                    Player.AddBuff(ModContent.BuffType<ObliviousPet>(), petSwapCooldownCurrent);
                 }
-
 
                 previousPetItem = Player.CurrentPet();
             }
