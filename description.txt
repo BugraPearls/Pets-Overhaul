@@ -33,7 +33,7 @@ Russian Translation by: Teokai
 Brazillian Portuguese Translation by: Erstarisk
 Previous Chinese Translation by: Celestepic
 Previous Brazillian Portuguese Translation by: Starite_Fusion
-Buff Icons by: Furqi & konte1m
+Most Sprites by: Furqi & konte1m
 Pet Forge Sprites by: Piper
 Much thanks to my entire community for providing me with Feedback & bug reports & testings!
 and thanks to ROH, WaffleDevs, Andro951 and tModLoader community for helping/contributing to the code!
