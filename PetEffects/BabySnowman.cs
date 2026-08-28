@@ -53,7 +53,7 @@ namespace PetsOverhaul.PetEffects
                         {
                             newSlow.SlowTime = slowTimeCap;
                         }
-                        globalNPC.SlowList[index] = newSlow; //structs on lists are readonly, so we have to reassign a new PetSlow value
+                        PetGlobalNPC.AddSlow(newSlow, target, Player);
                     }
                 }
                 if (FrostArmorMult > 1)
