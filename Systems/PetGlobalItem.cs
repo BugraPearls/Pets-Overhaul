@@ -88,7 +88,7 @@ namespace PetsOverhaul.Systems
             {
                 ushort tileType = Main.tile[brokenTile.TileCoords].TileType;
 
-                if (PlayerPlacedBlockList.placedBlocksByPlayer.Contains(new Point16(brokenTile.TileCoords.X, brokenTile.TileCoords.Y)) == false)
+                if (PlayerPlacedBlockList.PlayerPlacedBlocks.Contains(new Point16(brokenTile.TileCoords.X, brokenTile.TileCoords.Y)) == false)
                 {
                     oreBoost = TileID.Sets.Ore[tileType] || PetIDs.gemTile[tileType] || PetIDs.extractableAndOthers[tileType] || PetIDs.MiningXpPerBlock.Exists(x => x.oreList.Contains(item.type));
                     blockNotByPlayer = true;

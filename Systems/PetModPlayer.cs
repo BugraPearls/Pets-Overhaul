@@ -81,12 +81,12 @@ namespace PetsOverhaul.Systems
         /// <summary>
         /// Ran and is reset at end of PostUpdate().
         /// </summary>
-        public static List<Point16> CoordsToRemove = [];
+        public static List<Point16> BrokenTiles = [];
 
         /// <summary>
         /// Ran and is reset at end of PostUpdate().
         /// </summary>
-        public static List<Point16> updateReplacedTile = [];
+        public static List<Point16> ReplacedTiles = [];
 
         /// <summary>
         /// shieldTimer is reduced in PostUpdate(), so if you want to do a '1 frame passive shield', make the timer 2 instead of 1.
@@ -1061,14 +1061,19 @@ namespace PetsOverhaul.Systems
                 }
             }
 
-            if (CoordsToRemove.Count > 0)
+            if (BrokenTiles.Count > 0)
             {
-                PlayerPlacedBlockList.placedBlocksByPlayer.RemoveAll(CoordsToRemove.Contains);
-                CoordsToRemove.Clear();
+                PlayerPlacedBlockList.PlayerPlacedBlocks.RemoveWhere(BrokenTiles.Contains);
+                BrokenTiles.Clear();
             }
-            if (updateReplacedTile.Count > 0)
+            if (ReplacedTiles.Count > 0)
             {
-                PlayerPlacedBlockList.placedBlocksByPlayer.AddRange(updateReplacedTile);
+                foreach (var item in ReplacedTiles)
+                {
+                    PlayerPlacedBlockList.PlayerPlacedBlocks.Add(item);
+                }
+
+                ReplacedTiles.Clear();
             }
         }
         public override void PostUpdateEquips()

@@ -105,17 +105,17 @@ namespace PetsOverhaul
                 case MessageType.BlockPlace: //Currently only sent to Server.
                     int xPlace = reader.ReadInt32();
                     int yPlace = reader.ReadInt32();
-                    PlayerPlacedBlockList.placedBlocksByPlayer.Add(new Point16(xPlace, yPlace));
+                    PlayerPlacedBlockList.PlayerPlacedBlocks.Add(new Point16(xPlace, yPlace));
                     break;
                 case MessageType.BlockReplace: //Currently only sent to Server.
                     int xReplace = reader.ReadInt32();
                     int yReplace = reader.ReadInt32();
-                    PetModPlayer.updateReplacedTile.Add(new Point16(xReplace, yReplace));
+                    PetModPlayer.ReplacedTiles.Add(new Point16(xReplace, yReplace));
                     break;
                 case MessageType.BlockRemove: //Currently only sent to Server.
                     int xRemove = reader.ReadInt32();
                     int yRemove = reader.ReadInt32();
-                    PetModPlayer.CoordsToRemove.Add(new Point16(xRemove, yRemove));
+                    PetModPlayer.BrokenTiles.Add(new Point16(xRemove, yRemove));
                     break;
                 case MessageType.PetSlow:
                     NPC npc = Main.npc[reader.ReadByte()];

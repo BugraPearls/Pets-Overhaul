@@ -50,16 +50,11 @@ namespace PetsOverhaul.Systems
             }
             else
             {
-                PetModPlayer.CoordsToRemove.Add(new Point16(i, j));
+                PetModPlayer.BrokenTiles.Add(new Point16(i, j));
             }
         }
         public static void AddToList(int i, int j)
         {
-            if (PlayerPlacedBlockList.placedBlocksByPlayer.Contains(new Point16(i, j)))
-            {
-                return;
-            }
-
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 ModPacket packet = ModContent.GetInstance<PetsOverhaul>().GetPacket();
@@ -70,7 +65,7 @@ namespace PetsOverhaul.Systems
             }
             else
             {
-                PlayerPlacedBlockList.placedBlocksByPlayer.Add(new Point16(i, j));
+                PlayerPlacedBlockList.PlayerPlacedBlocks.Add(new Point16(i, j));
             }
         }
         public static void ReplacedBlockToList(int i, int j)
@@ -85,34 +80,31 @@ namespace PetsOverhaul.Systems
             }
             else
             {
-                PetModPlayer.updateReplacedTile.Add(new Point16(i, j));
+                PetModPlayer.ReplacedTiles.Add(new Point16(i, j));
             }
         }
         public override void PlaceInWorld(int i, int j, int type, Item item)
         {
             AddToList(i, j);
         }
-        public override bool CanReplace(int i, int j, int type, int tileTypeBeingPlaced)
+        public override void ReplaceTile(int i, int j, int type, int targetType, int targetStyle)
         {
             ReplacedBlockToList(i, j);
-
-            return base.CanReplace(i, j, type, tileTypeBeingPlaced);
         }
     }
     public class PlayerPlacedBlockList : ModSystem
     {
-        public static List<Point16> placedBlocksByPlayer = [];
+        public static HashSet<Point16> PlayerPlacedBlocks = [];
         public override void SaveWorldData(TagCompound tag)
         {
-            tag.Add("placedBlocksByPlayer", placedBlocksByPlayer);
+            tag.Add("placedBlocksByPlayer", PlayerPlacedBlocks.ToList());
         }
         public override void LoadWorldData(TagCompound tag)
         {
-            if (tag.TryGet("placedBlocksByPlayer", out List<Point16> listOfPlacedBlocks))
+            if (tag.TryGet("placedBlocksByPlayer", out List<Point16> playerPlacedBlocks))
             {
-                placedBlocksByPlayer = listOfPlacedBlocks;
-                placedBlocksByPlayer = [.. placedBlocksByPlayer.Distinct()]; //Removes duplicate entries
-                placedBlocksByPlayer.RemoveAll(x => WorldGen.TileEmpty(x.X, x.Y) && Main.tile[x].HasActuator == false); //Removes 'empty' tile entries
+                PlayerPlacedBlocks = playerPlacedBlocks.ToHashSet();
+                PlayerPlacedBlocks.RemoveWhere(x => WorldGen.TileEmpty(x.X, x.Y) && Main.tile[x].HasActuator == false);
             }
         }
     }
