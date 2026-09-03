@@ -75,4 +75,14 @@ namespace PetsOverhaul.Commands
                 caller.Player.PetPlayer().timer = -1;
         }
     }
+
+    public class PlacedBlocks : ModCommand
+    {
+        public override CommandType Type => CommandType.Chat;
+        public override string Command => "block";
+        public override void Action(CommandCaller caller, string input, string[] args)
+        {
+                caller.Reply(PlayerPlacedBlockList.PlayerPlacedBlocks.Count.ToString());
+        }
+    }
 }
