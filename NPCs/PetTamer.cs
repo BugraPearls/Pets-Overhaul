@@ -240,7 +240,7 @@ namespace PetsOverhaul.NPCs
 
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Bonemerang>()));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Bonemerang>(),10)); //1 in 10
         }
 
         // Make this Town NPC teleport to the King and/or Queen statue when triggered. Return toKingStatue for only King Statues. Return !toKingStatue for only Queen Statues. Return true for both.
