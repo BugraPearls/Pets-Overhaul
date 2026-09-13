@@ -163,7 +163,7 @@ namespace PetsOverhaul.PetEffects
                 if (itemChck.herbBoost)
                 {
                     int id = 0; //for achievement to check if we got a Pet item
-                    if (PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant)
+                    if (PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetIDs.MinimumExpForRarePlant)
                     {
                         id = chick.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, PoolRarePlant(), PetUtils.Randomizer(chick.rarePlantChance * item.stack));
                     }

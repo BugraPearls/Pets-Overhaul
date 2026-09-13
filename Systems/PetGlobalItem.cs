@@ -17,10 +17,6 @@ namespace PetsOverhaul.Systems
     public sealed class PetGlobalItem : GlobalItem
     {
         public override bool InstancePerEntity => true;
-        /// <summary>
-        /// 1000 is 10 exp.
-        /// </summary>
-        public const int MinimumExpForRarePlant = 1000;
 
         #region Item checks to determine which Pet benefits
         public bool herbBoost = false;

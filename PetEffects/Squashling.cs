@@ -26,7 +26,7 @@ namespace PetsOverhaul.PetEffects
             {
                 if (itemChck.herbBoost == true)
                 {
-                    int count = PetUtils.Randomizer(PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetGlobalItem.MinimumExpForRarePlant ? squash.squashlingRareChance : squash.squashlingCommonChance) * item.stack;
+                    int count = PetUtils.Randomizer(PetIDs.HarvestingXpPerGathered.Find(x => x.plantList.Contains(item.type)).expAmount >= PetIDs.MinimumExpForRarePlant ? squash.squashlingRareChance : squash.squashlingCommonChance) * item.stack;
                     squash.Pet.SpawnItemSourcingFromPet(EntitySourcePetIDs.HarvestingItem, item.type, count);
                 }
             }

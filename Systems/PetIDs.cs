@@ -117,6 +117,7 @@ namespace PetsOverhaul.Systems
             { (12500, [ItemID.QueenSlimeCrystal ]) },
             { (100000, [ItemID.DirtiestBlock ]) }
         };
+        public const int MinimumExpForRarePlant = 1000;
         /// <summary>
         /// Remember to insert the expAmount as *100 from intended amount, eg. 2.5 exp should be written as 250.
         /// </summary>
