@@ -17,7 +17,7 @@ namespace PetsOverhaul.Items
             Item.height = 32;
             Item.width = 32;
             Item.shoot = ModContent.ProjectileType<BonemerangProj>();
-            Item.damage = 17;
+            Item.damage = 19;
         }
     }
 }
