@@ -117,30 +117,30 @@ namespace PetsOverhaul.Systems
             { (12500, [ItemID.QueenSlimeCrystal ]) },
             { (100000, [ItemID.DirtiestBlock ]) }
         };
-        public const int MinimumExpForRarePlant = 1000;
+        public const int MinimumExpForRarePlant = 2000;
         /// <summary>
         /// Remember to insert the expAmount as *100 from intended amount, eg. 2.5 exp should be written as 250.
         /// </summary>
         public static List<(int expAmount, int[] plantList)> HarvestingXpPerGathered = new()
         {
-            { (50, [ItemID.Hay]) },
-            { (69, [ItemID.RottenEgg]) },
-            { (110, [ItemID.Acorn ]) },
-            { (125, [ItemID.AshGrassSeeds, ItemID.BlinkrootSeeds, ItemID.CorruptSeeds, ItemID.CrimsonSeeds, ItemID.DaybloomSeeds, ItemID.DeathweedSeeds, ItemID.FireblossomSeeds, ItemID.GrassSeeds, ItemID.HallowedSeeds, ItemID.JungleGrassSeeds, ItemID.MoonglowSeeds, ItemID.MushroomGrassSeeds, ItemID.ShiverthornSeeds, ItemID.WaterleafSeeds ]) },
-            { (165, [ItemID.Wood, ItemID.AshWood, ItemID.BorealWood, ItemID.PalmWood, ItemID.Ebonwood, ItemID.Shadewood, ItemID.StoneBlock, ItemID.RichMahogany ]) },
-            { (220, [ItemID.Daybloom, ItemID.Blinkroot, ItemID.Deathweed, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Waterleaf, ItemID.GlowingMushroom, ItemID.Pumpkin ]) },
-            { (250, [ItemID.GemTreeAmberSeed, ItemID.GemTreeAmethystSeed, ItemID.GemTreeDiamondSeed, ItemID.GemTreeEmeraldSeed, ItemID.GemTreeRubySeed, ItemID.GemTreeSapphireSeed, ItemID.GemTreeTopazSeed, ItemID.Amethyst, ItemID.Topaz, ItemID.Sapphire, ItemID.Emerald, ItemID.Ruby, ItemID.Amber, ItemID.Diamond ]) },
-            { (300, [ItemID.Pearlwood, ItemID.SpookyWood, ItemID.Cactus, ItemID.BambooBlock, ItemID.Mushroom, ItemID.VileMushroom, ItemID.ViciousMushroom ]) },
-            { (500, [ItemID.Coral, ItemID.Seashell, ItemID.Starfish, ItemID.JungleSpores ]) },
-            { (900, [ItemID.LightningWhelkShell, ItemID.TulipShell]) },
-            { (1250, [ModContent.ItemType<PetFood>()]) },
-            { (1750, [ItemID.SpicyPepper, ItemID.Pomegranate, ItemID.Elderberry, ItemID.BlackCurrant, ItemID.Apple, ItemID.Apricot, ItemID.Banana, ItemID.BloodOrange, ItemID.Cherry, ItemID.Coconut, ItemID.Grapefruit, ItemID.Lemon, ItemID.Mango, ItemID.Peach, ItemID.Pineapple, ItemID.Plum, ItemID.Rambutan ]) },
-            { (2000, [ItemID.JunoniaShell, ModContent.ItemType<Egg>() ]) },
-            { (2500, [ItemID.Dragonfruit, ItemID.Starfruit, ItemID.Grapes ]) },
-            { (3500, [ItemID.GreenMushroom, ItemID.TealMushroom, ItemID.SkyBlueFlower, ItemID.YellowMarigold, ItemID.BlueBerries, ItemID.LimeKelp, ItemID.PinkPricklyPear, ItemID.OrangeBloodroot, ItemID.StrangePlant1, ItemID.StrangePlant2, ItemID.StrangePlant3, ItemID.StrangePlant4]) },
-            { (5000, [ItemID.JungleRose, ItemID.ManaFlower, ItemID.AbigailsFlower ]) },
-            { (10000, [ItemID.LifeFruit, ItemID.LeafWand, ItemID.LivingWoodWand, ItemID.LivingMahoganyWand, ItemID.LivingMahoganyLeafWand, ItemID.BlueEgg ]) },
-            { (25000, [ItemID.EucaluptusSap, ItemID.MagicalPumpkinSeed ]) }
+            { (100, [ItemID.Hay]) },
+            { (140, [ItemID.RottenEgg]) },
+            { (220, [ItemID.Acorn ]) },
+            { (250, [ItemID.AshGrassSeeds, ItemID.BlinkrootSeeds, ItemID.CorruptSeeds, ItemID.CrimsonSeeds, ItemID.DaybloomSeeds, ItemID.DeathweedSeeds, ItemID.FireblossomSeeds, ItemID.GrassSeeds, ItemID.HallowedSeeds, ItemID.JungleGrassSeeds, ItemID.MoonglowSeeds, ItemID.MushroomGrassSeeds, ItemID.ShiverthornSeeds, ItemID.WaterleafSeeds ]) },
+            { (330, [ItemID.Wood, ItemID.AshWood, ItemID.BorealWood, ItemID.PalmWood, ItemID.Ebonwood, ItemID.Shadewood, ItemID.StoneBlock, ItemID.RichMahogany ]) },
+            { (440, [ItemID.Daybloom, ItemID.Blinkroot, ItemID.Deathweed, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Waterleaf, ItemID.GlowingMushroom, ItemID.Pumpkin ]) },
+            { (500, [ItemID.GemTreeAmberSeed, ItemID.GemTreeAmethystSeed, ItemID.GemTreeDiamondSeed, ItemID.GemTreeEmeraldSeed, ItemID.GemTreeRubySeed, ItemID.GemTreeSapphireSeed, ItemID.GemTreeTopazSeed, ItemID.Amethyst, ItemID.Topaz, ItemID.Sapphire, ItemID.Emerald, ItemID.Ruby, ItemID.Amber, ItemID.Diamond ]) },
+            { (600, [ItemID.Pearlwood, ItemID.SpookyWood, ItemID.Cactus, ItemID.BambooBlock, ItemID.Mushroom, ItemID.VileMushroom, ItemID.ViciousMushroom ]) },
+            { (1000, [ItemID.Coral, ItemID.Seashell, ItemID.Starfish, ItemID.JungleSpores ]) },
+            { (1800, [ItemID.LightningWhelkShell, ItemID.TulipShell]) },
+            { (2500, [ModContent.ItemType<PetFood>()]) },
+            { (3500, [ItemID.SpicyPepper, ItemID.Pomegranate, ItemID.Elderberry, ItemID.BlackCurrant, ItemID.Apple, ItemID.Apricot, ItemID.Banana, ItemID.BloodOrange, ItemID.Cherry, ItemID.Coconut, ItemID.Grapefruit, ItemID.Lemon, ItemID.Mango, ItemID.Peach, ItemID.Pineapple, ItemID.Plum, ItemID.Rambutan ]) },
+            { (4000, [ItemID.JunoniaShell, ModContent.ItemType<Egg>() ]) },
+            { (5000, [ItemID.Dragonfruit, ItemID.Starfruit, ItemID.Grapes ]) },
+            { (7000, [ItemID.GreenMushroom, ItemID.TealMushroom, ItemID.SkyBlueFlower, ItemID.YellowMarigold, ItemID.BlueBerries, ItemID.LimeKelp, ItemID.PinkPricklyPear, ItemID.OrangeBloodroot, ItemID.StrangePlant1, ItemID.StrangePlant2, ItemID.StrangePlant3, ItemID.StrangePlant4]) },
+            { (10000, [ItemID.JungleRose, ItemID.ManaFlower, ItemID.AbigailsFlower ]) },
+            { (20000, [ItemID.LifeFruit, ItemID.LeafWand, ItemID.LivingWoodWand, ItemID.LivingMahoganyWand, ItemID.LivingMahoganyLeafWand, ItemID.BlueEgg ]) },
+            { (50000, [ItemID.EucaluptusSap, ItemID.MagicalPumpkinSeed ]) }
         };
 
         //public int defaultSeaCreatureExp = 1500;
