@@ -26,7 +26,7 @@ namespace PetsOverhaul.PetEffects
         public float harvestingMoveSpeedPerLevel = 0.0025f;
         public float fishingDamagePerLevel = 0.0025f;
         public double miningHealthPerLevel = 1.5;
-        public float harvestingCoin = 0.6f;
+        public float harvestingCoin = 0.3f;
         public float miningCoin = 0.4f;
         public float fishingCoin = 6f;
         public int popupExpHarv = 0; //Represents current existing exp value on popup texts
